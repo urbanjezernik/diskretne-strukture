@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+    <title>$pagetitle$</title>
+  
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+  
+    $for(css)$
+    <link rel="stylesheet" href="$css$" $if(html5)$$else$type="text/css" $endif$ />
+    $endfor$
+  
+    $if(math)$
+    <script>
+      window.MathJax = {
+        startup: {
+          ready: () => {
+            MathJax.startup.defaultReady();
+            MathJax.startup.promise.then(() => {
+              document.getElementById("spinner").style.display = "none";
+              document.getElementById("hidden_contents").style.display = "";
+            });
+          }
+        }
+      };
+    </script>
+    $math$
+    $endif$
+  </head>
+
+  <body>
+    $for(include-before)$
+    $include-before$
+    $endfor$
+
+    <div class="container-fluid">
+      <div class="row flex-nowrap">
+        <div class="col-lg-7 mx-auto p-4">
+
+          <div class="naslov">
+            <h1>$pagetitle$</h1>
+
+            <strong> Urban Jezernik <br>
+              Univerza v Ljubljani, Fakulteta za matematiko in fiziko </strong> <br>
+
+            Zadnja posodobitev: $date$
+          </div>
+
+          <div id="spinner" class="text-center">
+            <div class="spinner-border" style="width: 3rem; height: 3rem;" role="status"></div>
+          </div>
+
+          <div id="hidden_contents" style="display:none">
+
+            <div class="kazalo">
+              <h3>Kazalo</h3>
+              $toc$
+            </div>
+
+            $body$
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script>
+      var tables = document.getElementsByTagName("table");
+      for (var i = 0; i < tables.length; ++i) {
+        tables[i].className += "table table-striped";
+        old_html = tables[i].outerHTML;
+        new_html = "<div class='table-responsive'>" + old_html + "</div>";
+        tables[i].outerHTML = new_html;
+      }
+    </script>
+    <script>
+      var proofClasses = document.getElementsByClassName("proof");
+
+      for (var i = 0; i < proofClasses.length; i++) {
+        var html = proofClasses[i].innerHTML;
+        html = html.replace(/Proof./g, "Dokaz.");
+        proofClasses[i].innerHTML = html;
+      }
+    </script>
+  </body>
+
+  </html>
