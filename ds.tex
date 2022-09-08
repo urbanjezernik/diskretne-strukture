@@ -219,7 +219,21 @@
 
 \subsection*{Kratek opis predmeta}
 
-Pri predmetu se bomo naučili, kako \emph{formalizirati} različne matematične \emph{izjave} in kaj natančno je pravilno matematično \emph{sklepanje}. Spoznali bomo nekaj \emph{diskretnih struktur}, najbolj podrobno si bomo ogledali \emph{grafe}.
+Pri predmetu se bomo najprej naučili, kaj točno so \emph{izjave} in kako jih matematično \emph{formalizirati}. Eden pomembnih ciljev tega je eksakten opis  \emph{sklepanja}, ki ga uporabljamo počez matematike. Te koncepte bomo najprej razvili v osnovnem \emph{izjavnem računu}, nato pa ga bomo še posplošili do \emph{predikatnega računa}, s katerim bomo podrobneje raziskali matematične izjave. 
+
+\begin{zgled}
+Nepridipravi so razbili vhodna vrata FMF. Glavni osumljenci so študenti Ana, Bor in Cveto. Ko jih vprašamo, kdo je kriv, odgovorijo z naslednjimi izjavami:
+
+\begin{itemize}
+    \item Ana: ``Bor je kriv, Cveto pa ne.''
+    \item Bor: ``Če je kriva Ana, je kriv tudi Cveto.''
+    \item Cveto: ``Jaz nisem kriv, toda vsaj eden od drugih dveh je kriv.''
+\end{itemize}
+
+Pri predmetu se bomo naučili, kako lahko na \emph{sistematičen način} odkrijemo, kdo je lagal, če krivi lažejo, nedolžni pa govorijo resnico.
+\end{zgled}
+
+Za tem bomo pri predmetu spoznali nekaj osnovnih diskretnih struktur, po katerih se ta predmet imenuje. Najprej bomo raziskali \emph{relacije}, s katerimi opisujemo odnose med elementi dane množice. Pomemben poseben primer teh so \emph{urejenosti}, ki posplošujejo običajne ureditve števil po velikosti. Najbolj podrobno si bomo ogledali \emph{grafe}, s katerimi lahko abstraktno predstavimo mnogo pomembnih primerov relacij.
 
 \begin{zgled}
 Graf je diskretna struktura, pri kateri dano množico \emph{vozlišč} povežemo s \emph{povezavami}. Konkreten graf na spodnji sliki se imenuje {\definicija Petersenov graf}. Ta graf bomo tekom predmeta večkrat srečali. Na koncu predmeta bomo znali \emph{dokazati}, da se tega grafa ne da narisati v ravnini, brez da bi se vsaj dve povezavi sekali.
@@ -243,12 +257,62 @@ Graf je diskretna struktura, pri kateri dano množico \emph{vozlišč} povežemo
 
 \chapter{Izjavni račun}
 
-$1$
+V tem poglavju si bomo pogledali, kako \emph{formaliziramo} preproste izjave in kako \emph{dokazujemo} njihovo veljavnost oziroma neveljavnost.
+
+\section{Izjave in izjavni vezniki}
+
+{\definicija Izjava} je poved, ki je bodisi resnična bodisi lažna.
+
+\begin{zgled} \leavevmode
+\begin{itemize}
+    \item Ena in ena je tri. \emph{Lažna izjava.}
+    \item Ena in ena je dve. \emph{Resnična izjava.}
+    \item Koliko je ena in ena? \emph{Ni izjava.}
+    \item Pojdimo na kavo! \emph{Ni izjava.}
+\end{itemize}
+\end{zgled}
+
+Izjave lahko razdelimo na dve skupini \emph{po vsebini}, in sicer:
+\begin{itemize}
+    \item {\definicija resnične izjave}, ki imajo resničnostno vrednost $1$ ali $\top$ ali \texttt{true},
+    \item {\definicija lažne izjave}, ki imajo resničnostno vrednost $0$ ali $\bot$ ali \texttt{false}.
+\end{itemize}
+Po \emph{zgradbi} oziroma \emph{obliki} pa izjave razdelimo na:
+\begin{itemize}
+    \item {\definicija osnovne}, ki ne vsebujejo izjavnih veznikov,
+    \item {\definicija sestavljene}, ki vsebujejo izjavne veznike.
+\end{itemize}
+
+\begin{zgled} \leavevmode
+\begin{itemize}
+    \item Vreme je lepo. \emph{Osnovna izjava.}
+    \item Špela gre v hribe. \emph{Osnovna izjava.}
+    \item Vreme je lepo \emph{in} Špela gre v hribe. \emph{Sestavljena izjava.}
+    \item \emph{Če} je vreme lepo, \emph{potem} gre Špela v hribe. \emph{Sestavljena izjava.}
+    \item Špela \emph{ne} gre v hribe. \emph{Sestavljena izjava.}
+\end{itemize}
+\end{zgled}
+
+Naj bo $n \in \NN_0$. {\definicija Izjavni veznik reda $n$} (ali {\definicija $n$-mestni izjavni veznik}) je funkcija, ki vsaki urejeni $n$-terici ničel in enic priredi vrednost $0$ ali $1$.
+
+\begin{zgled} \leavevmode
+\begin{itemize}
+    \item Primer izjavnega veznika reda $1$ je {\definicija negacija}, ki $1$-terici $0$ priredi vrednost $1$, $1$-terici $1$ pa priredi vrednost $0$. Simbol za ta veznik je $\lnot$. Če je $p$ izjava, njeno negacijo označimo kot $\lnot p$ in preberemo kot \emph{ne $p$} ali kot \emph{ni res, da velja $p$}.
+\end{itemize}
+\end{zgled}
+
+\section{Izjavni izrazi}
+\section{Tavtologije in enakovredni izrazi}
+\section{DNO in KNO}
+\section{Sklepanje v izjavnem računu}
+\section{Polni nabori izjavnih veznikov}
+
 
 \chapter{Predikatni račun}
 \chapter{Relacije}
 \chapter{Urejenosti}
 \chapter{Grafi}
 
+$1$
 
 \end{document}
