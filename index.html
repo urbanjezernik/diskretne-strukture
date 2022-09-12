@@ -43,7 +43,7 @@
             <strong> Urban Jezernik <br>
               Univerza v Ljubljani, Fakulteta za matematiko in fiziko </strong> <br>
 
-            Zadnja posodobitev: 07. 09. 2022
+            Zadnja posodobitev: 12. 09. 2022
           </div>
 
           <div id="spinner" class="text-center">
@@ -56,7 +56,25 @@
               <h3>Kazalo</h3>
               <ul>
               <li><a href="#izjavni-račun"
-              id="toc-izjavni-račun">Izjavni račun</a></li>
+              id="toc-izjavni-račun">Izjavni račun</a>
+              <ul>
+              <li><a href="#izjave-in-izjavni-vezniki"
+              id="toc-izjave-in-izjavni-vezniki">Izjave in izjavni
+              vezniki</a></li>
+              <li><a href="#izjavni-izrazi"
+              id="toc-izjavni-izrazi">Izjavni izrazi</a></li>
+              <li><a href="#tavtologije-in-enakovredni-izrazi"
+              id="toc-tavtologije-in-enakovredni-izrazi">Tavtologije in
+              enakovredni izrazi</a></li>
+              <li><a href="#dno-in-kno" id="toc-dno-in-kno">DNO in
+              KNO</a></li>
+              <li><a href="#sklepanje-v-izjavnem-računu"
+              id="toc-sklepanje-v-izjavnem-računu">Sklepanje v izjavnem
+              računu</a></li>
+              <li><a href="#polni-nabori-izjavnih-veznikov"
+              id="toc-polni-nabori-izjavnih-veznikov">Polni nabori
+              izjavnih veznikov</a></li>
+              </ul></li>
               <li><a href="#predikatni-račun"
               id="toc-predikatni-račun">Predikatni račun</a></li>
               <li><a href="#relacije"
@@ -69,13 +87,39 @@
 
             <h3 class="unnumbered" id="kratek-opis-predmeta">Kratek opis
             predmeta</h3>
-            <p>Pri predmetu se bomo naučili, kako <em>formalizirati</em>
-            različne matematične <em>izjave</em> in kaj natančno je
-            pravilno matematično <em>sklepanje</em>. Spoznali bomo nekaj
-            <em>diskretnih struktur</em>, najbolj podrobno si bomo
-            ogledali <em>grafe</em>.</p>
+            <p>Pri predmetu se bomo najprej naučili, kaj točno so
+            <em>izjave</em> in kako jih matematično
+            <em>formalizirati</em>. Eden pomembnih ciljev tega je
+            eksakten opis <em>sklepanja</em>, ki ga uporabljamo počez
+            matematike. Te koncepte bomo najprej razvili v osnovnem
+            <em>izjavnem računu</em>, nato pa ga bomo še posplošili do
+            <em>predikatnega računa</em>, s katerim bomo podrobneje
+            raziskali matematične izjave.</p>
             <div class="zgled">
-            <p><strong>Zgled 1</strong>. Graf je diskretna struktura,
+            <p><strong>Zgled 1</strong>. Nepridipravi so razbili vhodna
+            vrata FMF. Glavni osumljenci so študenti Ana, Bor in Cveto.
+            Ko jih vprašamo, kdo je kriv, odgovorijo z naslednjimi
+            izjavami:</p>
+            <ul>
+            <li><p>Ana: “Bor je kriv, Cveto pa ne.”</p></li>
+            <li><p>Bor: “Če je kriva Ana, je kriv tudi Cveto.”</p></li>
+            <li><p>Cveto: “Jaz nisem kriv, toda vsaj eden od drugih dveh
+            je kriv.”</p></li>
+            </ul>
+            <p>Pri predmetu se bomo naučili, kako lahko na
+            <em>sistematičen način</em> odkrijemo, kdo je lagal, če
+            krivi lažejo, nedolžni pa govorijo resnico.</p>
+            </div>
+            <p>Za tem bomo pri predmetu spoznali nekaj osnovnih
+            diskretnih struktur, po katerih se ta predmet imenuje.
+            Najprej bomo raziskali <em>relacije</em>, s katerimi
+            opisujemo odnose med elementi dane množice. Pomemben poseben
+            primer teh so <em>urejenosti</em>, ki posplošujejo običajne
+            ureditve števil po velikosti. Najbolj podrobno si bomo
+            ogledali <em>grafe</em>, s katerimi lahko abstraktno
+            predstavimo mnogo pomembnih primerov relacij.</p>
+            <div class="zgled">
+            <p><strong>Zgled 2</strong>. Graf je diskretna struktura,
             pri kateri dano množico <em>vozlišč</em> povežemo s
             <em>povezavami</em>. Konkreten graf na spodnji sliki se
             imenuje <span><strong><em>Petersenov
@@ -101,7 +145,793 @@
             I</em>, DMFA-založništvo, Ljubljana, 1992.</span></p></li>
             </ul>
             <h1 id="izjavni-račun">Izjavni račun</h1>
-            <p><span class="math inline">\(1\)</span></p>
+            <p>V tem poglavju si bomo pogledali, kako
+            <em>formaliziramo</em> preproste izjave in kako
+            <em>dokazujemo</em> njihovo veljavnost oziroma
+            neveljavnost.</p>
+            <h2 id="izjave-in-izjavni-vezniki">Izjave in izjavni
+            vezniki</h2>
+            <p><span><strong><em>Izjava</em></strong></span> je poved,
+            ki je bodisi resnična bodisi lažna.</p>
+            <div class="zgled">
+            <p><strong>Zgled 1.1</strong>. </p>
+            <ul>
+            <li><p>Ena in ena je tri. <em>Lažna izjava.</em></p></li>
+            <li><p>Ena in ena je dve. <em>Resnična izjava.</em></p></li>
+            <li><p>Koliko je ena in ena? <em>Ni izjava.</em></p></li>
+            <li><p>Pojdimo na kavo! <em>Ni izjava.</em></p></li>
+            </ul>
+            </div>
+            <p>Izjave lahko razdelimo na dve skupini <em>po
+            vsebini</em>, in sicer:</p>
+            <ul>
+            <li><p><span><strong><em>resnične
+            izjave</em></strong></span>, ki imajo resničnostno vrednost
+            <span class="math inline">\(1\)</span> ali <span
+            class="math inline">\(\top\)</span> ali
+            <code>true</code>,</p></li>
+            <li><p><span><strong><em>lažne izjave</em></strong></span>,
+            ki imajo resničnostno vrednost <span
+            class="math inline">\(0\)</span> ali <span
+            class="math inline">\(\bot\)</span> ali
+            <code>false</code>.</p></li>
+            </ul>
+            <p>Po <em>zgradbi</em> oziroma <em>obliki</em> pa izjave
+            razdelimo na:</p>
+            <ul>
+            <li><p><span><strong><em>osnovne</em></strong></span>, ki ne
+            vsebujejo izjavnih veznikov,</p></li>
+            <li><p><span><strong><em>sestavljene</em></strong></span>,
+            ki vsebujejo izjavne veznike.</p></li>
+            </ul>
+            <div class="zgled">
+            <p><strong>Zgled 1.2</strong>. </p>
+            <ul>
+            <li><p>Vreme je lepo. <em>Osnovna izjava.</em></p></li>
+            <li><p>Špela gre v hribe. <em>Osnovna izjava.</em></p></li>
+            <li><p>Vreme je lepo <em>in</em> Špela gre v hribe.
+            <em>Sestavljena izjava.</em></p></li>
+            <li><p><em>Če</em> je vreme lepo, <em>potem</em> gre Špela v
+            hribe. <em>Sestavljena izjava.</em></p></li>
+            <li><p>Špela <em>ne</em> gre v hribe. <em>Sestavljena
+            izjava.</em></p></li>
+            </ul>
+            </div>
+            <p>Naj bo <span class="math inline">\(n \in
+            \mathbf{N}_0\)</span>. <span><strong><em>Izjavni veznik reda
+            <span class="math inline">\(n\)</span></em></strong></span>
+            (ali <span><strong><em><span
+            class="math inline">\(n\)</span>-mestni izjavni
+            veznik</em></strong></span>) je funkcija, ki vsaki urejeni
+            <span class="math inline">\(n\)</span>-terici ničel in enic
+            priredi vrednost <span class="math inline">\(0\)</span> ali
+            <span class="math inline">\(1\)</span>.</p>
+            <div class="zgled">
+            <p><strong>Zgled 1.3</strong>. </p>
+            <ul>
+            <li><p>Primer izjavnega veznika reda <span
+            class="math inline">\(1\)</span> je
+            <span><strong><em>negacija</em></strong></span>. Simbol za
+            ta veznik je <span class="math inline">\(\lnot\)</span>. Če
+            je <span class="math inline">\(p\)</span> izjava, njeno
+            negacijo označimo kot <span class="math inline">\(\lnot
+            p\)</span> in preberemo kot <em>ne <span
+            class="math inline">\(p\)</span></em> ali kot <em>ni res, da
+            velja <span class="math inline">\(p\)</span></em>. Negacija
+            <span class="math inline">\(1\)</span>-terici <span
+            class="math inline">\(0\)</span> priredi vrednost <span
+            class="math inline">\(1\)</span>, <span
+            class="math inline">\(1\)</span>-terici <span
+            class="math inline">\(1\)</span> pa priredi vrednost <span
+            class="math inline">\(0\)</span>.</p>
+            <table>
+            <caption>Resničnostna tabela negacije</caption>
+            <thead>
+            <tr class="header">
+            <th style="text-align: center;"><span
+            class="math inline">\(p\)</span></th>
+            <th style="text-align: center;"><span
+            class="math inline">\(\lnot p\)</span></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="odd">
+            <td style="text-align: center;">0</td>
+            <td style="text-align: center;">1</td>
+            </tr>
+            <tr class="even">
+            <td style="text-align: center;">1</td>
+            <td style="text-align: center;">0</td>
+            </tr>
+            </tbody>
+            </table></li>
+            <li><p>Oglejmo si nekaj pomembnih dvomestnih izjavnih
+            veznikov. Njihovi predpisi so zbrani v tabeli.</p>
+            <ul>
+            <li><p><span><strong><em>Konjunkcija</em></strong></span>
+            izjav <span class="math inline">\(p\)</span> in <span
+            class="math inline">\(q\)</span> ima simbol <span
+            class="math inline">\(p \land q\)</span>, kar preberemo kot
+            <em><span class="math inline">\(p\)</span> in <span
+            class="math inline">\(q\)</span></em>.</p></li>
+            <li><p><span><strong><em>Disjunkcija</em></strong></span>
+            izjav <span class="math inline">\(p\)</span> in <span
+            class="math inline">\(q\)</span> ima simbol <span
+            class="math inline">\(p \lor q\)</span>, kar preberemo kot
+            <em><span class="math inline">\(p\)</span> ali <span
+            class="math inline">\(q\)</span></em>.</p></li>
+            <li><p><span><strong><em>Implikacija</em></strong></span>
+            izjav <span class="math inline">\(p\)</span> in <span
+            class="math inline">\(q\)</span> ima simbol <span
+            class="math inline">\(p \Rightarrow q\)</span>, kar
+            preberemo kot <em>če <span class="math inline">\(p\)</span>,
+            potem <span class="math inline">\(q\)</span></em> ali kot
+            <em>iz <span class="math inline">\(p\)</span> sledi <span
+            class="math inline">\(q\)</span></em> ali kot <em><span
+            class="math inline">\(p\)</span> je zadosten pogoj za <span
+            class="math inline">\(q\)</span></em> ali <em>kot <span
+            class="math inline">\(q\)</span> je potreben pogoj za <span
+            class="math inline">\(p\)</span></em>.</p></li>
+            <li><p><span><strong><em>Ekvivalenca</em></strong></span>
+            izjav <span class="math inline">\(p\)</span> in <span
+            class="math inline">\(q\)</span> ima simbol <span
+            class="math inline">\(p \Leftrightarrow q\)</span>, kar
+            preberemo kot <em><span class="math inline">\(p\)</span>
+            natanko tedaj, ko <span
+            class="math inline">\(q\)</span></em> ali kot <em><span
+            class="math inline">\(p\)</span>, če in samo če <span
+            class="math inline">\(q\)</span></em> ali kot <em><span
+            class="math inline">\(p\)</span> je ekvivalentno <span
+            class="math inline">\(q\)</span></em>.</p></li>
+            </ul>
+            <table>
+            <caption>Resničnostna tabela nekaterih pomembnih dvomestnih
+            izjavnih veznikov</caption>
+            <thead>
+            <tr class="header">
+            <th style="text-align: center;"><span
+            class="math inline">\(p\)</span></th>
+            <th style="text-align: center;"><span
+            class="math inline">\(q\)</span></th>
+            <th style="text-align: center;"><span
+            class="math inline">\(p \land q\)</span></th>
+            <th style="text-align: center;"><span
+            class="math inline">\(p \lor q\)</span></th>
+            <th style="text-align: center;"><span
+            class="math inline">\(p \Rightarrow q\)</span></th>
+            <th style="text-align: center;"><span
+            class="math inline">\(p \Leftrightarrow q\)</span></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="odd">
+            <td style="text-align: center;">1</td>
+            <td style="text-align: center;">1</td>
+            <td style="text-align: center;">1</td>
+            <td style="text-align: center;">1</td>
+            <td style="text-align: center;">1</td>
+            <td style="text-align: center;">1</td>
+            </tr>
+            <tr class="even">
+            <td style="text-align: center;">1</td>
+            <td style="text-align: center;">0</td>
+            <td style="text-align: center;">0</td>
+            <td style="text-align: center;">1</td>
+            <td style="text-align: center;">0</td>
+            <td style="text-align: center;">0</td>
+            </tr>
+            <tr class="odd">
+            <td style="text-align: center;">0</td>
+            <td style="text-align: center;">1</td>
+            <td style="text-align: center;">0</td>
+            <td style="text-align: center;">1</td>
+            <td style="text-align: center;">1</td>
+            <td style="text-align: center;">0</td>
+            </tr>
+            <tr class="even">
+            <td style="text-align: center;">0</td>
+            <td style="text-align: center;">0</td>
+            <td style="text-align: center;">0</td>
+            <td style="text-align: center;">0</td>
+            <td style="text-align: center;">1</td>
+            <td style="text-align: center;">1</td>
+            </tr>
+            </tbody>
+            </table></li>
+            <li><p>Izjavni veznik reda <span
+            class="math inline">\(0\)</span> je funkcija iz množice
+            urejenih <span class="math inline">\(0\)</span>-teric ničel
+            in enic. Obstaja natanko ena taka <span
+            class="math inline">\(0\)</span>-terica, in sicer <em>prazna
+            <span class="math inline">\(0\)</span>-terica</em>. Izjavni
+            veznik reda <span class="math inline">\(0\)</span> je torej
+            natanko določen s sliko te <span
+            class="math inline">\(0\)</span>-terice, za kar imamo dve
+            možnosti, <span class="math inline">\(0\)</span> ali <span
+            class="math inline">\(1\)</span>.</p>
+            <ul>
+            <li><p>Izjavni veznik reda <span
+            class="math inline">\(0\)</span>, ki ima vselej resničnostno
+            vrednost <span class="math inline">\(0\)</span>, imenujemo
+            <span><strong><em>0</em></strong></span> in preberemo kot
+            <em>lažna izjava</em>.</p></li>
+            <li><p>Izjavni veznik reda <span
+            class="math inline">\(0\)</span>, ki ima vselej resničnostno
+            vrednost <span class="math inline">\(1\)</span>, imenujemo
+            <span><strong><em>1</em></strong></span> in preberemo kot
+            <em>resnična izjava</em>.</p></li>
+            </ul>
+            <p>Izjavnima veznikoma reda <span
+            class="math inline">\(0\)</span> pravimo tudi
+            <span><strong><em>izjavni
+            konstanti</em></strong></span>.</p></li>
+            </ul>
+            </div>
+            <p>Glede na zgornjo obravnavamo izjavnih veznikov redov
+            <span class="math inline">\(0\)</span>, <span
+            class="math inline">\(1\)</span> in <span
+            class="math inline">\(2\)</span> se lahko vprašamo, koliko
+            je vseh <span class="math inline">\(n\)</span>-mestnih
+            izjavnih veznikov za poljuben <span class="math inline">\(n
+            \in \mathbf{N}_0\)</span>. Vsak tak veznik je enolično
+            določen s svojo resničnostno tabelo, v kateri zabeležimo
+            vrednosti veznika v <span><strong><em>izjavnih
+            spremenljivkah</em></strong></span> <span
+            class="math inline">\(p_1, p_2, \dots, p_n\)</span>, kjer
+            vsak <span class="math inline">\(p_i\)</span> zavzema
+            vrednosti <span class="math inline">\(0\)</span> ali <span
+            class="math inline">\(1\)</span>.</p>
+            <table>
+            <caption>Resničnostna tabela <span
+            class="math inline">\(n\)</span>-mestnega izjavnega
+            veznika</caption>
+            <thead>
+            <tr class="header">
+            <th style="text-align: center;"><span
+            class="math inline">\(p_1\)</span></th>
+            <th style="text-align: center;"><span
+            class="math inline">\(p_1\)</span></th>
+            <th style="text-align: center;"><span
+            class="math inline">\(\cdots\)</span></th>
+            <th style="text-align: center;"><span
+            class="math inline">\(p_n\)</span></th>
+            <th style="text-align: center;">veznik(<span
+            class="math inline">\(p_1\)</span>, <span
+            class="math inline">\(p_2\)</span>, …, <span
+            class="math inline">\(p_n\)</span>)</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="odd">
+            <td style="text-align: center;">1</td>
+            <td style="text-align: center;">1</td>
+            <td style="text-align: center;"><span
+            class="math inline">\(\cdots\)</span></td>
+            <td style="text-align: center;">1</td>
+            <td style="text-align: center;">0 ali 1 <em>(dve
+            možnosti)</em></td>
+            </tr>
+            <tr class="even">
+            <td style="text-align: center;">1</td>
+            <td style="text-align: center;">1</td>
+            <td style="text-align: center;"><span
+            class="math inline">\(\cdots\)</span></td>
+            <td style="text-align: center;">0</td>
+            <td style="text-align: center;">0 ali 1 <em>(dve
+            možnosti)</em></td>
+            </tr>
+            <tr class="odd">
+            <td style="text-align: center;"><span
+            class="math inline">\(\vdots\)</span></td>
+            <td style="text-align: center;"><span
+            class="math inline">\(\vdots\)</span></td>
+            <td style="text-align: center;"></td>
+            <td style="text-align: center;"><span
+            class="math inline">\(\vdots\)</span></td>
+            <td style="text-align: center;"><span
+            class="math inline">\(\vdots\)</span></td>
+            </tr>
+            <tr class="even">
+            <td style="text-align: center;">0</td>
+            <td style="text-align: center;">0</td>
+            <td style="text-align: center;"><span
+            class="math inline">\(\cdots\)</span></td>
+            <td style="text-align: center;">0</td>
+            <td style="text-align: center;">0 ali 1 <em>(dve
+            možnosti)</em></td>
+            </tr>
+            </tbody>
+            </table>
+            <p>Število vseh <span
+            class="math inline">\(n\)</span>-mestnih izjavnih veznikov
+            torej izračunamo tako, da preštejemo število vseh možnih
+            resničnostnih tabel. Število vrstic tabele je enako <span
+            class="math inline">\(2^n\)</span>, število vseh tabel pa je
+            zato enako <span class="math inline">\(2^{2^n}\)</span>.</p>
+            <table>
+            <caption>Hitra rast števila <span
+            class="math inline">\(n\)</span>-mestnih izjavnih
+            veznikov</caption>
+            <thead>
+            <tr class="header">
+            <th style="text-align: center;"><span
+            class="math inline">\(n\)</span></th>
+            <th style="text-align: center;"><span
+            class="math inline">\(2^n\)</span></th>
+            <th style="text-align: center;"><span
+            class="math inline">\(2^{2^n}\)</span></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="odd">
+            <td style="text-align: center;">0</td>
+            <td style="text-align: center;">1</td>
+            <td style="text-align: center;">2</td>
+            </tr>
+            <tr class="even">
+            <td style="text-align: center;">1</td>
+            <td style="text-align: center;">2</td>
+            <td style="text-align: center;">4</td>
+            </tr>
+            <tr class="odd">
+            <td style="text-align: center;">2</td>
+            <td style="text-align: center;">4</td>
+            <td style="text-align: center;">16</td>
+            </tr>
+            <tr class="even">
+            <td style="text-align: center;">3</td>
+            <td style="text-align: center;">8</td>
+            <td style="text-align: center;">256</td>
+            </tr>
+            <tr class="odd">
+            <td style="text-align: center;">4</td>
+            <td style="text-align: center;">16</td>
+            <td style="text-align: center;">65536</td>
+            </tr>
+            <tr class="even">
+            <td style="text-align: center;">5</td>
+            <td style="text-align: center;">32</td>
+            <td style="text-align: center;"><span
+            class="math inline">\(\sim 4 \cdot 10^9\)</span></td>
+            </tr>
+            <tr class="odd">
+            <td style="text-align: center;">6</td>
+            <td style="text-align: center;">64</td>
+            <td style="text-align: center;"><span
+            class="math inline">\(\sim 2 \cdot 10^{19}\)</span></td>
+            </tr>
+            </tbody>
+            </table>
+            <h2 id="izjavni-izrazi">Izjavni izrazi</h2>
+            <p><span><strong><em>Izjavni izraz</em></strong></span>
+            definiramo induktivno na naslednji način:</p>
+            <ul>
+            <li><p><em>Osnovni izraz 1:</em> Vsaka <em>izjavna
+            konstanta</em> (torej <span class="math inline">\(0\)</span>
+            ali <span class="math inline">\(1\)</span>) je izjavni
+            izraz.</p></li>
+            <li><p><em>Osnovni izraz 2:</em> Vsaka <em>izjavna
+            spremenljivka</em> <span class="math inline">\(p_1, p_2,
+            \dots\)</span> je izjavni izraz.</p></li>
+            <li><p><em>Sestavljeni izraz:</em> Če je <span
+            class="math inline">\(f\)</span> <em>izjavni veznik</em>
+            reda <span class="math inline">\(n\)</span> in so <span
+            class="math inline">\(A_1, A_2, \dots, A_n\)</span> izjavni
+            izrazi, potem je <span
+            class="math inline">\((f(A_1,A_2,\dots,A_n))\)</span>
+            izjavni izraz.</p></li>
+            </ul>
+            <p>Izjavni izrazi so torej izjave, ki jih dobimo iz <span
+            class="math inline">\(0,1\)</span> in izjavnih spremenljivk
+            z (večkratno) uporabo izjavnih veznikov.</p>
+            <div class="zgled">
+            <p><strong>Zgled 1.4</strong>. Naj bodo <span
+            class="math inline">\(p,q,r\)</span> izjavne spremenljivke.
+            Tvorimo lahko izjavne izraze <span class="math inline">\((p
+            \Rightarrow q)\)</span>, <span class="math inline">\((\lnot
+            r)\)</span>, <span class="math inline">\(((p \Rightarrow q)
+            \land (\lnot r))\)</span>, …</p>
+            </div>
+            <p>Pri pisanju bolj zakompliciranih izjavnih izrazov se
+            prične pojavljati mnogo oklepajev. V izogib pisanju
+            prevelikega števila teh oklepajev uporabljamo naslednji
+            <span><strong><em>dogovor o prednostnem vrstnem redu
+            veznikov</em></strong></span>:</p>
+            <ul>
+            <li><p><span class="math inline">\(\lnot\)</span> ima
+            prednost pred dvomestnimi vezniki,</p></li>
+            <li><p>veznik iz <span class="math inline">\((\land, \lor,
+            \Rightarrow, \Leftrightarrow)\)</span> ima prednost pred
+            vezniki desno od sebe,</p></li>
+            <li><p>če isti veznik nastopi večkrat zapored, ima levi
+            nastop prednost pred desnim,</p></li>
+            <li><p>zunanji oklepaj spuščamo.</p></li>
+            </ul>
+            <div class="zgled">
+            <p><strong>Zgled 1.5</strong>. </p>
+            <ul>
+            <li><p>Izjavni izraz <span class="math inline">\((p
+            \Rightarrow (q \land r))\)</span> pišemo krajše kot <span
+            class="math inline">\(p \Rightarrow q \land
+            r\)</span>.</p></li>
+            <li><p>Izraz <span class="math inline">\(p \Rightarrow q
+            \Rightarrow r \Rightarrow s\)</span> je okrajšava za izjavni
+            izraz <span class="math inline">\((((p \Rightarrow q)
+            \Rightarrow r) \Rightarrow s)\)</span>.</p></li>
+            <li><p>Izraz <span class="math inline">\(p \lor \lnot q
+            \Leftrightarrow r \Rightarrow q\)</span> je okrajšava za
+            izjavni izraz <span class="math inline">\((( p \lor (\lnot
+            q)) \Leftrightarrow (r \Rightarrow p))\)</span>.</p></li>
+            </ul>
+            </div>
+            <p>Izjavni izrazi vsebujejo izjavne spremenljivke, zato
+            določajo neko resničnostno tabelo in s tem tudi nek izjavni
+            veznik.</p>
+            <div class="zgled">
+            <p><strong>Zgled 1.6</strong>. Naj bodo <span
+            class="math inline">\(p,q,r\)</span> izjavne spremenljivke
+            in naj bo <span class="math inline">\(f(p,q,r) = (p
+            \Rightarrow q) \land \lnot r\)</span> izjavni izraz.
+            Izračunamo lahko resničnostno tabelo tega izraza in na ta
+            način lahko na <span class="math inline">\(f\)</span>
+            gledamo kot na izjavni veznik reda <span
+            class="math inline">\(3\)</span>.</p>
+            <table>
+            <caption>Resničnostna tabela izjavnega izraza <span
+            class="math inline">\((p \Rightarrow q) \land \lnot
+            r\)</span></caption>
+            <thead>
+            <tr class="header">
+            <th style="text-align: center;"><span
+            class="math inline">\(p\)</span></th>
+            <th style="text-align: center;"><span
+            class="math inline">\(q\)</span></th>
+            <th style="text-align: center;"><span
+            class="math inline">\(r\)</span></th>
+            <th style="text-align: center;"><span
+            class="math inline">\((p \Rightarrow q) \land \lnot
+            r\)</span></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="odd">
+            <td style="text-align: center;">1</td>
+            <td style="text-align: center;">1</td>
+            <td style="text-align: center;">1</td>
+            <td style="text-align: center;">0</td>
+            </tr>
+            <tr class="even">
+            <td style="text-align: center;">1</td>
+            <td style="text-align: center;">1</td>
+            <td style="text-align: center;">0</td>
+            <td style="text-align: center;">1</td>
+            </tr>
+            <tr class="odd">
+            <td style="text-align: center;">1</td>
+            <td style="text-align: center;">0</td>
+            <td style="text-align: center;">1</td>
+            <td style="text-align: center;">0</td>
+            </tr>
+            <tr class="even">
+            <td style="text-align: center;">1</td>
+            <td style="text-align: center;">0</td>
+            <td style="text-align: center;">0</td>
+            <td style="text-align: center;">0</td>
+            </tr>
+            <tr class="odd">
+            <td style="text-align: center;">0</td>
+            <td style="text-align: center;">1</td>
+            <td style="text-align: center;">1</td>
+            <td style="text-align: center;">0</td>
+            </tr>
+            <tr class="even">
+            <td style="text-align: center;">0</td>
+            <td style="text-align: center;">1</td>
+            <td style="text-align: center;">0</td>
+            <td style="text-align: center;">1</td>
+            </tr>
+            <tr class="odd">
+            <td style="text-align: center;">0</td>
+            <td style="text-align: center;">0</td>
+            <td style="text-align: center;">1</td>
+            <td style="text-align: center;">0</td>
+            </tr>
+            <tr class="even">
+            <td style="text-align: center;">0</td>
+            <td style="text-align: center;">0</td>
+            <td style="text-align: center;">0</td>
+            <td style="text-align: center;">1</td>
+            </tr>
+            </tbody>
+            </table>
+            </div>
+            <h2 id="tavtologije-in-enakovredni-izrazi">Tavtologije in
+            enakovredni izrazi</h2>
+            <p>Če je izjavni izraz <em>resničen</em> pri vseh naborih
+            svojih izjavnih spremenljivk, mu rečemo
+            <span><strong><em>tavtologija</em></strong></span>. Če je
+            <em>lažen</em> pri vseh naborih, mu rečemo
+            <span><strong><em>protislovje</em></strong></span>. Če ni
+            niti tavtologija niti protislovje, je
+            <span><strong><em>kontingenten</em></strong></span>.</p>
+            <div class="zgled">
+            <p><strong>Zgled 1.7</strong>. </p>
+            <ul>
+            <li><p>Izjavna izraza <span class="math inline">\(1\)</span>
+            in <span class="math inline">\(p \lor \lnot p\)</span> sta
+            tavtologiji.</p></li>
+            <li><p>Izjavna izraza <span
+            class="math inline">\(0\)</span>, <span
+            class="math inline">\(p \land \lnot p\)</span> sta
+            protislovji.</p></li>
+            <li><p>Izračunajmo resničnostne tabele izjavnih izrazov
+            <span class="math inline">\(p \Rightarrow q \Leftrightarrow
+            \lnot p \lor q\)</span>, <span class="math inline">\(p \land
+            \lnot (q \Rightarrow p)\)</span> in <span
+            class="math inline">\(p \land (\lnot q \lor p)\)</span>.</p>
+            <table>
+            <caption>Resničnostne tabele treh izjavnih izrazov</caption>
+            <thead>
+            <tr class="header">
+            <th style="text-align: center;"><span
+            class="math inline">\(p\)</span></th>
+            <th style="text-align: center;"><span
+            class="math inline">\(q\)</span></th>
+            <th style="text-align: center;"><span
+            class="math inline">\(p \Rightarrow q \Leftrightarrow \lnot
+            p \lor q\)</span></th>
+            <th style="text-align: center;"><span
+            class="math inline">\(p \land \lnot (q \Rightarrow
+            p)\)</span></th>
+            <th style="text-align: center;"><span
+            class="math inline">\(p \land (\lnot q \lor p)\)</span></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="odd">
+            <td style="text-align: center;">1</td>
+            <td style="text-align: center;">1</td>
+            <td style="text-align: center;">1</td>
+            <td style="text-align: center;">0</td>
+            <td style="text-align: center;">1</td>
+            </tr>
+            <tr class="even">
+            <td style="text-align: center;">1</td>
+            <td style="text-align: center;">0</td>
+            <td style="text-align: center;">1</td>
+            <td style="text-align: center;">0</td>
+            <td style="text-align: center;">1</td>
+            </tr>
+            <tr class="odd">
+            <td style="text-align: center;">0</td>
+            <td style="text-align: center;">1</td>
+            <td style="text-align: center;">1</td>
+            <td style="text-align: center;">0</td>
+            <td style="text-align: center;">0</td>
+            </tr>
+            <tr class="even">
+            <td style="text-align: center;">0</td>
+            <td style="text-align: center;">0</td>
+            <td style="text-align: center;">1</td>
+            <td style="text-align: center;">0</td>
+            <td style="text-align: center;">0</td>
+            </tr>
+            </tbody>
+            </table>
+            <p>Vidimo, da je prvi izraz tavtologija, drugi protislovje,
+            tretji pa kontingenten.</p>
+            <div class="domacanaloga">
+            <p><strong>Domača naloga 1.1</strong>. Prepričaj se, da je
+            resničnostna tabela izjavnega izraza <span
+            class="math inline">\(p \land (\lnot q \lor p)\)</span>
+            enaka resničnosti tabeli izjavnega izraza <span
+            class="math inline">\(p\)</span>. Sklepaj, da je izjava
+            <span class="math inline">\(p \land (\lnot q \lor p)
+            \Leftrightarrow p\)</span> tavtologija. Na podoben način se
+            prepričaj, da je izraz <span class="math inline">\(p
+            \Rightarrow q \Leftrightarrow \lnot q \Rightarrow \lnot
+            p\)</span> tavtologija.</p>
+            </div></li>
+            </ul>
+            </div>
+            <p>Naj bosta <span class="math inline">\(A\)</span> in <span
+            class="math inline">\(B\)</span> izjavna izraza. Kadar je
+            <span class="math inline">\(A \Leftrightarrow B\)</span>
+            tavtologija, tedaj rečemo, da sta izraza <span
+            class="math inline">\(A\)</span> in <span
+            class="math inline">\(B\)</span>
+            <span><strong><em>enakovredna</em></strong></span>. Z
+            drugimi besedami, izraza <span
+            class="math inline">\(A\)</span> in <span
+            class="math inline">\(B\)</span> sta enakovrednosta, kadar
+            imata enaka stolpca v resničnostni tabeli. V tem primeru
+            uporabimo oznako <span class="math inline">\(A \sim
+            B\)</span>.</p>
+            <div class="zgled">
+            <p><strong>Zgled 1.8</strong>. Velja <span
+            class="math inline">\(p \Rightarrow q \sim \lnot p \lor q
+            \sim \lnot q \Rightarrow \lnot p\)</span> in <span
+            class="math inline">\(p \land (\lnot q \lor p) \sim
+            p\)</span>.</p>
+            </div>
+            <p>Enakovrednemu paru izjavnih izrazov <span
+            class="math inline">\(A \sim B\)</span> rečemo
+            <span><strong><em>zakoni izjavnega
+            računa</em></strong></span>. V vsakem izjavnem izrazu lahko
+            poljuben izraz zamenjamo z enakovrednim in s tem
+            poenostavimo izjavni izraz.</p>
+            <div class="zgled">
+            <p><strong>Zgled 1.9</strong>. Velja <span
+            class="math display">\[p \land (\lnot q \lor p) \Rightarrow
+            (\lnot q \Rightarrow \lnot p) \sim
+                p \Rightarrow (p \Rightarrow q).\]</span></p>
+            </div>
+            <p>Navedimo nekaj uporabnih zakonov izjavnega računa, ki
+            veljajo za vse izjavne izraze <span
+            class="math inline">\(A,B,C\)</span>.</p>
+            <ul>
+            <li><p><span class="math inline">\(\lnot 0 \sim 1\)</span>,
+            <span class="math inline">\(\lnot 1 \sim 0\)</span></p></li>
+            <li><p><span class="math inline">\(A \land 0 \sim
+            0\)</span>, <span class="math inline">\(A \land 1 \sim
+            A\)</span>, <span class="math inline">\(A \lor 0 \sim
+            A\)</span>, <span class="math inline">\(A \lor 1 \sim
+            1\)</span></p></li>
+            <li><p><span class="math inline">\(A \land A \sim
+            A\)</span>, <span class="math inline">\(A \lor A \sim
+            A\)</span>
+            (<span><strong><em>idempotentnost</em></strong></span>)</p></li>
+            <li><p><span class="math inline">\(A \land B \sim B \land
+            A\)</span>, <span class="math inline">\(A \lor B \sim B \lor
+            A\)</span>
+            (<span><strong><em>komutativnost</em></strong></span>)</p></li>
+            <li><p><span class="math inline">\(A \land (B \land C) \sim
+            (A \land B) \land C\)</span>, <span class="math inline">\(A
+            \lor (B \lor C) \sim (A \lor B) \lor C\)</span>
+            (<span><strong><em>asociativnost</em></strong></span>)</p></li>
+            <li><p><span class="math inline">\(A \land (A \lor B) \sim
+            A\)</span>, <span class="math inline">\(A \lor (A \land B)
+            \sim A\)</span>
+            (<span><strong><em>absorpcija</em></strong></span>)</p></li>
+            <li><p><span class="math inline">\(A \land (B \lor C) \sim
+            (A \land B) \lor (A \land C)\)</span>, <span
+            class="math inline">\(A \lor (B \land C) \sim (A \lor B)
+            \land (A \lor C)\)</span>
+            (<span><strong><em>distributivnost</em></strong></span>)</p></li>
+            <li><p><span class="math inline">\(\lnot \lnot A \sim
+            A\)</span> (<span><strong><em>dvojna
+            negacija</em></strong></span>)</p></li>
+            <li><p><span class="math inline">\(\lnot (A \land B) \sim
+            \lnot A \lor \lnot B\)</span>, <span
+            class="math inline">\(\lnot (A \lor B) \sim \lnot A \land
+            \lnot B\)</span> (<span><strong><em>De Morganova
+            zakona</em></strong></span>)</p></li>
+            <li><p><span class="math inline">\(A \Rightarrow B \sim
+            \lnot B \Rightarrow \lnot A\)</span>
+            (<span><strong><em>kontrapozicija</em></strong></span>),
+            <span class="math inline">\(A \Rightarrow B \sim \lnot A
+            \lor B\)</span></p></li>
+            <li><p><span class="math inline">\(A \Leftrightarrow B \sim
+            (A \Rightarrow B) \land (B \Rightarrow A)\)</span></p></li>
+            </ul>
+            <div class="zgled">
+            <p><strong>Zgled 1.10</strong>. Izjavni izraz iz zadnjega
+            zgleda lahko z naštetimi zakoni poenostavimo do <span
+            class="math display">\[p \Rightarrow (p \Rightarrow q) \sim
+                \lnot p \lor (\lnot p \lor q) \sim
+                (\lnot p \lor \lnot p) \lor q \sim
+                \lnot p \lor q \sim
+                p \Rightarrow q.\]</span></p>
+            </div>
+            <h2 id="dno-in-kno">DNO in KNO</h2>
+            <p>Do sedaj smo govorili o tem, kako za dan izjavni izraz
+            določimo njegovo resničnostno tabelo. V tem razdelku si bomo
+            zastavili obratno nalogo. Recimo, da je dana resničnostna
+            tabela nekega kontingentnega izjavnega izraza <span
+            class="math inline">\(A\)</span>. Pokazali bomo, da lahko
+            zgolj z uporabo izjavnih veznikov <span
+            class="math inline">\(\lnot\)</span>, <span
+            class="math inline">\(\land\)</span>, <span
+            class="math inline">\(\lor\)</span> sestavimo izjavni izraz
+            <span class="math inline">\(D\)</span>, tako da bo <span
+            class="math inline">\(A \sim D\)</span>. Za začetek si
+            oglejmo, kako to naredimo na enem konkretnem primeru.</p>
+            <div class="zgled">
+            <p><strong>Zgled 1.11</strong>. Naj bo izjavni izraz <span
+            class="math inline">\(A\)</span> dan z resničnostno tabelo
+            <span class="math inline">\(T\)</span>.</p>
+            <table>
+            <caption>Resničnostna tabela <span
+            class="math inline">\(T\)</span> izjavnega izraza <span
+            class="math inline">\(A\)</span></caption>
+            <thead>
+            <tr class="header">
+            <th style="text-align: center;"><span
+            class="math inline">\(p\)</span></th>
+            <th style="text-align: center;"><span
+            class="math inline">\(q\)</span></th>
+            <th style="text-align: center;"><span
+            class="math inline">\(r\)</span></th>
+            <th style="text-align: center;"><span
+            class="math inline">\(A\)</span></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="odd">
+            <td style="text-align: center;">1</td>
+            <td style="text-align: center;">1</td>
+            <td style="text-align: center;">1</td>
+            <td style="text-align: center;">0</td>
+            </tr>
+            <tr class="even">
+            <td style="text-align: center;">1</td>
+            <td style="text-align: center;">1</td>
+            <td style="text-align: center;">0</td>
+            <td style="text-align: center;">1</td>
+            </tr>
+            <tr class="odd">
+            <td style="text-align: center;">1</td>
+            <td style="text-align: center;">0</td>
+            <td style="text-align: center;">1</td>
+            <td style="text-align: center;">0</td>
+            </tr>
+            <tr class="even">
+            <td style="text-align: center;">1</td>
+            <td style="text-align: center;">0</td>
+            <td style="text-align: center;">0</td>
+            <td style="text-align: center;">0</td>
+            </tr>
+            <tr class="odd">
+            <td style="text-align: center;">0</td>
+            <td style="text-align: center;">1</td>
+            <td style="text-align: center;">1</td>
+            <td style="text-align: center;">0</td>
+            </tr>
+            <tr class="even">
+            <td style="text-align: center;">0</td>
+            <td style="text-align: center;">1</td>
+            <td style="text-align: center;">0</td>
+            <td style="text-align: center;">1</td>
+            </tr>
+            <tr class="odd">
+            <td style="text-align: center;">0</td>
+            <td style="text-align: center;">0</td>
+            <td style="text-align: center;">1</td>
+            <td style="text-align: center;">0</td>
+            </tr>
+            <tr class="even">
+            <td style="text-align: center;">0</td>
+            <td style="text-align: center;">0</td>
+            <td style="text-align: center;">0</td>
+            <td style="text-align: center;">1</td>
+            </tr>
+            </tbody>
+            </table>
+            <p>Iskani izjavni izraz <span
+            class="math inline">\(D\)</span> mora biti resničen natanko
+            v 2., 6. in 8. vrstici tabele <span
+            class="math inline">\(T\)</span>. To je res natanko tedaj,
+            ko velja <span class="math inline">\(p \land q \land \lnot
+            r\)</span> ali <span class="math inline">\(\lnot p \land q
+            \land \lnot r\)</span> ali <span class="math inline">\(\lnot
+            p \land \lnot q \land \lnot r\)</span>. Torej lahko vzamemo
+            preprosto <span class="math display">\[D = (p \land q \land
+            \lnot r) \lor (\lnot p \land q \land \lnot r) \lor (\lnot p
+            \land \lnot q \land \lnot r)\]</span> in res velja <span
+            class="math inline">\(D \sim A\)</span>. Dobljeni izjavni
+            izraz <span class="math inline">\(D\)</span> lahko nekoliko
+            poenostavimo.</p>
+            <div class="domacanaloga">
+            <p><strong>Domača naloga 1.2</strong>. Z uporabo zakonov
+            izjavnega računa se prepričaj, da velja <span
+            class="math inline">\(D \sim \lnot (p \Rightarrow q
+            \Rightarrow r)\)</span>.</p>
+            </div>
+            </div>
+            <h2 id="sklepanje-v-izjavnem-računu">Sklepanje v izjavnem
+            računu</h2>
+            <h2 id="polni-nabori-izjavnih-veznikov">Polni nabori
+            izjavnih veznikov</h2>
             <h1 id="predikatni-račun">Predikatni račun</h1>
             <h1 id="relacije">Relacije</h1>
             <h1 id="urejenosti">Urejenosti</h1>

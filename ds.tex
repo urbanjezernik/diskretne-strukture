@@ -255,6 +255,8 @@ Graf je diskretna struktura, pri kateri dano množico \emph{vozlišč} povežemo
 \item {\literatura N. Prijatelj, \emph{Osnove matematične logike I}, DMFA-založništvo, Ljubljana, 1992.}
 \end{itemize}
 
+\todo{Dodaj literaturo za vaje.}
+
 \chapter{Izjavni račun}
 
 V tem poglavju si bomo pogledali, kako \emph{formaliziramo} preproste izjave in kako \emph{dokazujemo} njihovo veljavnost oziroma neveljavnost.
@@ -297,13 +299,239 @@ Naj bo $n \in \NN_0$. {\definicija Izjavni veznik reda $n$} (ali {\definicija $n
 
 \begin{zgled} \leavevmode
 \begin{itemize}
-    \item Primer izjavnega veznika reda $1$ je {\definicija negacija}, ki $1$-terici $0$ priredi vrednost $1$, $1$-terici $1$ pa priredi vrednost $0$. Simbol za ta veznik je $\lnot$. Če je $p$ izjava, njeno negacijo označimo kot $\lnot p$ in preberemo kot \emph{ne $p$} ali kot \emph{ni res, da velja $p$}.
+    \item Primer izjavnega veznika reda $1$ je {\definicija negacija}. Simbol za ta veznik je $\lnot$. Če je $p$ izjava, njeno negacijo označimo kot $\lnot p$ in preberemo kot \emph{ne $p$} ali kot \emph{ni res, da velja $p$}. Negacija $1$-terici $0$ priredi vrednost $1$, $1$-terici $1$ pa priredi vrednost $0$.
+    
+    \begin{table}[h]
+        \centering
+        \begin{tabular}{c|c}
+            $p$ & $\lnot p$ \\ \hline
+            0 & 1 \\
+            1 & 0
+        \end{tabular}
+        \caption{Resničnostna tabela negacije}
+    \end{table}
+
+    \item Oglejmo si nekaj pomembnih dvomestnih izjavnih veznikov. Njihovi predpisi so zbrani v tabeli.
+    \begin{itemize}
+        \item {\definicija Konjunkcija} izjav $p$ in $q$ ima simbol $p \land q$, kar preberemo kot \emph{$p$ in $q$}.
+        \item {\definicija Disjunkcija} izjav $p$ in $q$ ima simbol $p \lor q$, kar preberemo kot \emph{$p$ ali $q$}.
+        \item {\definicija Implikacija} izjav $p$ in $q$ ima simbol $p \Rightarrow q$, kar preberemo kot \emph{če $p$, potem $q$} ali kot \emph{iz $p$ sledi $q$} ali kot \emph{$p$ je zadosten pogoj za $q$} ali \emph{kot $q$ je potreben pogoj za $p$}.
+        \item {\definicija Ekvivalenca} izjav $p$ in $q$ ima simbol $p \Leftrightarrow q$, kar preberemo kot \emph{$p$ natanko tedaj, ko $q$} ali kot \emph{$p$, če in samo če $q$} ali kot \emph{$p$ je ekvivalentno $q$}.
+    \end{itemize}
+
+    \begin{table}[h]
+        \centering
+        \begin{tabular}{cc|cccc}
+            $p$ & $q$ & $p \land q$ & $p \lor q$ & $p \Rightarrow q$ & $p \Leftrightarrow q$ \\ \hline
+            1 & 1 & 1 & 1 & 1 & 1 \\
+            1 & 0 & 0 & 1 & 0 & 0 \\
+            0 & 1 & 0 & 1 & 1 & 0 \\
+            0 & 0 & 0 & 0 & 1 & 1
+        \end{tabular}
+        \caption{Resničnostna tabela nekaterih pomembnih dvomestnih izjavnih veznikov}
+    \end{table}
+
+    \item Izjavni veznik reda $0$ je funkcija iz množice urejenih $0$-teric ničel in enic. Obstaja natanko ena taka $0$-terica, in sicer \emph{prazna $0$-terica}. Izjavni veznik reda $0$ je torej natanko določen s sliko te $0$-terice, za kar imamo dve možnosti, $0$ ali $1$.
+    \begin{itemize}
+        \item Izjavni veznik reda $0$, ki ima vselej resničnostno vrednost $0$, imenujemo {\definicija 0} in preberemo kot \emph{lažna izjava}.
+        \item Izjavni veznik reda $0$, ki ima vselej resničnostno vrednost $1$, imenujemo {\definicija 1} in preberemo kot \emph{resnična izjava}.
+    \end{itemize}
+    Izjavnima veznikoma reda $0$ pravimo tudi {\definicija izjavni konstanti}.
 \end{itemize}
 \end{zgled}
 
+Glede na zgornjo obravnavamo izjavnih veznikov redov $0$, $1$ in $2$ se lahko vprašamo, koliko je vseh $n$-mestnih izjavnih veznikov za poljuben $n \in \NN_0$. Vsak tak veznik je enolično določen s svojo resničnostno tabelo, v kateri zabeležimo vrednosti veznika v {\definicija izjavnih spremenljivkah} $p_1, p_2, \dots, p_n$, kjer vsak $p_i$ zavzema vrednosti $0$ ali $1$.
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{cccc|c}
+        $p_1$ & $p_1$ & $\cdots$ & $p_n$ & veznik($p_1$, $p_2$, \dots, $p_n$) \\ \hline
+        1 & 1 & $\cdots$ & 1 & 0 ali 1 \emph{(dve možnosti)} \\
+        1 & 1 & $\cdots$ & 0 & 0 ali 1 \emph{(dve možnosti)} \\
+        $\vdots$ & $\vdots$ & & $\vdots$ & $\vdots$ \\
+        0 & 0 & $\cdots$ & 0 & 0 ali 1 \emph{(dve možnosti)} \\
+    \end{tabular}
+    \caption{Resničnostna tabela $n$-mestnega izjavnega veznika}
+\end{table}
+
+Število vseh $n$-mestnih izjavnih veznikov torej izračunamo tako, da preštejemo število vseh možnih resničnostnih tabel. Število vrstic tabele je enako $2^n$, število vseh tabel pa je zato enako $2^{2^n}$.
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{c|cc}
+        $n$ & $2^n$ & $2^{2^n}$ \\ \hline
+        0 & 1 & 2 \\
+        1 & 2 & 4 \\
+        2 & 4 & 16 \\
+        3 & 8 & 256 \\
+        4 & 16 & 65536 \\
+        5 & 32 & $\sim 4 \cdot 10^9$ \\
+        6 & 64 & $\sim 2 \cdot 10^{19}$
+    \end{tabular}
+    \caption{Hitra rast števila $n$-mestnih izjavnih veznikov}
+\end{table}
+
 \section{Izjavni izrazi}
+
+{\definicija Izjavni izraz} definiramo induktivno na naslednji način:
+\begin{itemize}
+    \item \emph{Osnovni izraz 1:} Vsaka \emph{izjavna konstanta} (torej $0$ ali $1$) je izjavni izraz. 
+    \item \emph{Osnovni izraz 2:} Vsaka \emph{izjavna spremenljivka} $p_1, p_2, \dots$ je izjavni izraz.
+    \item \emph{Sestavljeni izraz:} Če je $f$ \emph{izjavni veznik} reda $n$ in so $A_1, A_2, \dots, A_n$ izjavni izrazi, potem je $(f(A_1,A_2,\dots,A_n))$ izjavni izraz.
+\end{itemize}
+
+Izjavni izrazi so torej izjave, ki jih dobimo iz $0,1$ in izjavnih spremenljivk z (večkratno) uporabo izjavnih veznikov.
+
+\begin{zgled}
+    Naj bodo $p,q,r$ izjavne spremenljivke. Tvorimo lahko izjavne izraze $(p \Rightarrow q)$, $(\lnot r)$, $((p \Rightarrow q) \land (\lnot r))$, \dots
+\end{zgled}
+
+Pri pisanju bolj zakompliciranih izjavnih izrazov se prične pojavljati mnogo oklepajev. V izogib pisanju prevelikega števila teh oklepajev uporabljamo naslednji {\definicija dogovor o prednostnem vrstnem redu veznikov}:
+\begin{itemize}
+    \item $\lnot$ ima prednost pred dvomestnimi vezniki,
+    \item veznik iz $(\land, \lor, \Rightarrow, \Leftrightarrow)$ ima prednost pred vezniki desno od sebe,
+    \item če isti veznik nastopi večkrat zapored, ima levi nastop prednost pred desnim,
+    \item zunanji oklepaj spuščamo.
+\end{itemize}
+
+\begin{zgled} \leavevmode
+\begin{itemize}
+    \item Izjavni izraz $(p \Rightarrow (q \land r))$ pišemo krajše kot $p \Rightarrow q \land r$.
+    \item Izraz $p \Rightarrow q \Rightarrow r \Rightarrow s$ je okrajšava za izjavni izraz $(((p \Rightarrow q) \Rightarrow r) \Rightarrow s)$.
+    \item Izraz $p \lor \lnot q \Leftrightarrow r \Rightarrow q$ je okrajšava za izjavni izraz $(( p \lor (\lnot q)) \Leftrightarrow (r \Rightarrow p))$.
+\end{itemize}
+\end{zgled}
+
+Izjavni izrazi vsebujejo izjavne spremenljivke, zato določajo neko resničnostno tabelo in s tem tudi nek izjavni veznik.
+
+\begin{zgled}
+Naj bodo $p,q,r$ izjavne spremenljivke in naj bo $f(p,q,r) = (p \Rightarrow q) \land \lnot r$ izjavni izraz. Izračunamo lahko resničnostno tabelo tega izraza in na ta način lahko na $f$ gledamo kot na izjavni veznik reda $3$.
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{ccc|c}
+        $p$ & $q$ & $r$ & $(p \Rightarrow q) \land \lnot r$ \\ \hline
+        1 & 1 & 1 & 0 \\
+        1 & 1 & 0 & 1 \\
+        1 & 0 & 1 & 0 \\
+        1 & 0 & 0 & 0 \\
+        0 & 1 & 1 & 0 \\
+        0 & 1 & 0 & 1 \\
+        0 & 0 & 1 & 0 \\
+        0 & 0 & 0 & 1
+    \end{tabular}
+    \caption{Resničnostna tabela izjavnega izraza $(p \Rightarrow q) \land \lnot r$}
+\end{table}
+\end{zgled}
+
 \section{Tavtologije in enakovredni izrazi}
+
+Če je izjavni izraz \emph{resničen} pri vseh naborih svojih izjavnih spremenljivk, mu rečemo {\definicija tavtologija}. Če je \emph{lažen} pri vseh naborih, mu rečemo {\definicija protislovje}. Če ni niti tavtologija niti protislovje, je {\definicija kontingenten}.
+
+\begin{zgled} \leavevmode
+\begin{itemize}
+    \item Izjavna izraza $1$ in $p \lor \lnot p$ sta tavtologiji.
+    \item Izjavna izraza $0$, $p \land \lnot p$ sta protislovji.
+    \item Izračunajmo resničnostne tabele izjavnih izrazov $p \Rightarrow q \Leftrightarrow \lnot p \lor q$, $p \land \lnot (q \Rightarrow p)$ in $p \land (\lnot q \lor p)$. 
+    
+    \begin{table}[h]
+        \centering
+        \begin{tabular}{cc|ccc}
+            $p$ & $q$ & $p \Rightarrow q \Leftrightarrow \lnot p \lor q$ & $p \land \lnot (q \Rightarrow p)$ & $p \land (\lnot q \lor p)$ \\ \hline
+            1 & 1 & 1 & 0 & 1 \\
+            1 & 0 & 1 & 0 & 1 \\
+            0 & 1 & 1 & 0 & 0 \\
+            0 & 0 & 1 & 0 & 0 \\
+        \end{tabular}
+        \caption{Resničnostne tabele treh izjavnih izrazov}
+    \end{table}
+
+    Vidimo, da je prvi izraz tavtologija, drugi protislovje, tretji pa kontingenten.
+
+    \begin{domacanaloga}
+        Prepričaj se, da je resničnostna tabela izjavnega izraza $p \land (\lnot q \lor p)$ enaka resničnosti tabeli izjavnega izraza $p$. Sklepaj, da je izjava $p \land (\lnot q \lor p) \Leftrightarrow p$ tavtologija. Na podoben način se prepričaj, da je izraz $p \Rightarrow q \Leftrightarrow \lnot q \Rightarrow \lnot p$ tavtologija.
+    \end{domacanaloga}        
+\end{itemize}
+\end{zgled}
+
+Naj bosta $A$ in $B$ izjavna izraza. Kadar je $A \Leftrightarrow B$ tavtologija, tedaj rečemo, da sta izraza $A$ in $B$ {\definicija enakovredna}. Z drugimi besedami, izraza $A$ in $B$ sta enakovrednosta, kadar imata enaka stolpca v resničnostni tabeli. V tem primeru uporabimo oznako $A \sim B$.
+
+\begin{zgled}
+Velja $p \Rightarrow q \sim \lnot p \lor q \sim \lnot q \Rightarrow \lnot p$ in $p \land (\lnot q \lor p) \sim p$.
+\end{zgled}
+
+Enakovrednemu paru izjavnih izrazov $A \sim B$ rečemo {\definicija zakoni izjavnega računa}. V vsakem izjavnem izrazu lahko poljuben izraz zamenjamo z enakovrednim in s tem poenostavimo izjavni izraz.
+
+\begin{zgled}
+Velja
+\[
+    p \land (\lnot q \lor p) \Rightarrow (\lnot q \Rightarrow \lnot p) \sim
+    p \Rightarrow (p \Rightarrow q).
+\]
+\end{zgled}
+
+Navedimo nekaj uporabnih zakonov izjavnega računa, ki veljajo za vse izjavne izraze $A,B,C$.
+\begin{itemize}
+    \item $\lnot 0 \sim 1$, $\lnot 1 \sim 0$
+    \item $A \land 0 \sim 0$, $A \land 1 \sim A$, $A \lor 0 \sim A$, $A \lor 1 \sim 1$
+    \item $A \land A \sim A$, $A \lor A \sim A$ ({\definicija idempotentnost})
+    \item $A \land B \sim B \land A$, $A \lor B \sim B \lor A$ ({\definicija komutativnost})
+    \item $A \land (B \land C) \sim (A \land B) \land C$, $A \lor (B \lor C) \sim (A \lor B) \lor C$ ({\definicija asociativnost})
+    \item $A \land (A \lor B) \sim A$, $A \lor (A \land B) \sim A$ ({\definicija absorpcija})
+    \item $A \land (B \lor C) \sim (A \land B) \lor (A \land C)$, $A \lor (B \land C) \sim (A \lor B) \land (A \lor C)$ ({\definicija distributivnost})
+    \item $\lnot \lnot A \sim A$ ({\definicija dvojna negacija})
+    \item $\lnot (A \land B) \sim \lnot A \lor \lnot B$, $\lnot (A \lor B) \sim \lnot A \land \lnot B$ ({\definicija De Morganova zakona})
+    \item $A \Rightarrow B \sim \lnot B \Rightarrow \lnot A$ ({\definicija kontrapozicija}), $A \Rightarrow B \sim \lnot A \lor B$
+    \item $A \Leftrightarrow B \sim (A \Rightarrow B) \land (B \Rightarrow A)$
+\end{itemize}
+
+\begin{zgled}
+Izjavni izraz iz zadnjega zgleda lahko z naštetimi zakoni poenostavimo do
+\[
+    p \Rightarrow (p \Rightarrow q) \sim
+    \lnot p \lor (\lnot p \lor q) \sim
+    (\lnot p \lor \lnot p) \lor q \sim
+    \lnot p \lor q \sim
+    p \Rightarrow q.
+\]
+\end{zgled}
+
 \section{DNO in KNO}
+
+Do sedaj smo govorili o tem, kako za dan izjavni izraz določimo njegovo resničnostno tabelo. V tem razdelku si bomo zastavili obratno nalogo. Recimo, da je dana resničnostna tabela nekega kontingentnega izjavnega izraza $A$. Pokazali bomo, da lahko zgolj z uporabo izjavnih veznikov $\lnot$, $\land$, $\lor$ sestavimo izjavni izraz $D$, tako da bo $A \sim D$. Za začetek si oglejmo, kako to naredimo na enem konkretnem primeru.
+
+\begin{zgled}
+Naj bo izjavni izraz $A$ dan z resničnostno tabelo $T$.
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{ccc|c}
+        $p$ & $q$ & $r$ & $A$ \\ \hline
+        1 & 1 & 1 & 0 \\
+        1 & 1 & 0 & 1 \\
+        1 & 0 & 1 & 0 \\
+        1 & 0 & 0 & 0 \\
+        0 & 1 & 1 & 0 \\
+        0 & 1 & 0 & 1 \\
+        0 & 0 & 1 & 0 \\
+        0 & 0 & 0 & 1
+    \end{tabular}
+    \caption{Resničnostna tabela $T$ izjavnega izraza $A$}
+\end{table}
+
+Iskani izjavni izraz $D$ mora biti resničen natanko v 2., 6. in 8. vrstici tabele $T$. To je res natanko tedaj, ko velja $p \land q \land \lnot r$ ali $\lnot p \land q \land \lnot r$ ali $\lnot p \land \lnot q \land \lnot r$. Torej lahko vzamemo preprosto
+\[
+    D = (p \land q \land \lnot r) \lor (\lnot p \land q \land \lnot r) \lor (\lnot p \land \lnot q \land \lnot r)
+\]
+in res velja $D \sim A$. Dobljeni izjavni izraz $D$ lahko nekoliko poenostavimo. 
+
+\begin{domacanaloga}
+    Z uporabo zakonov izjavnega računa se prepričaj, da velja $D \sim \lnot (p \Rightarrow q \Rightarrow r)$.
+\end{domacanaloga}
+\end{zgled}
+
+
+
 \section{Sklepanje v izjavnem računu}
 \section{Polni nabori izjavnih veznikov}
 
@@ -312,7 +540,5 @@ Naj bo $n \in \NN_0$. {\definicija Izjavni veznik reda $n$} (ali {\definicija $n
 \chapter{Relacije}
 \chapter{Urejenosti}
 \chapter{Grafi}
-
-$1$
 
 \end{document}
