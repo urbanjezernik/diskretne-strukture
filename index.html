@@ -43,7 +43,7 @@
             <strong> Urban Jezernik <br>
               Univerza v Ljubljani, Fakulteta za matematiko in fiziko </strong> <br>
 
-            Zadnja posodobitev: 12. 09. 2022
+            Zadnja posodobitev: 27. 09. 2022
           </div>
 
           <div id="spinner" class="text-center">
@@ -919,14 +919,147 @@
             \lnot r) \lor (\lnot p \land q \land \lnot r) \lor (\lnot p
             \land \lnot q \land \lnot r)\]</span> in res velja <span
             class="math inline">\(D \sim A\)</span>. Dobljeni izjavni
-            izraz <span class="math inline">\(D\)</span> lahko nekoliko
-            poenostavimo.</p>
+            izraz <span class="math inline">\(D\)</span> lahko še
+            nekoliko poenostavimo.</p>
             <div class="domacanaloga">
             <p><strong>Domača naloga 1.2</strong>. Z uporabo zakonov
             izjavnega računa se prepričaj, da velja <span
             class="math inline">\(D \sim \lnot (p \Rightarrow q
             \Rightarrow r)\)</span>.</p>
             </div>
+            </div>
+            <p>Naj bo zdaj <span class="math inline">\(A\)</span>
+            poljuben kontingenten izjavni izraz in <span
+            class="math inline">\(T\)</span> njegova resničnostna
+            tabela. <span><strong><em>Disjunktivna normalna
+            oblika</em></strong></span> izraza <span
+            class="math inline">\(A\)</span> je disjunkcija <em>osnovnih
+            konjunkcij</em> tistih vrstic, kjer je <span
+            class="math inline">\(A\)</span> resničen. Pri tem je
+            osnovna konjunkcija neke vrstice konjunkcija tistih izjavnih
+            spremenljivk, ki so v tej vrstici resnične, in negacij
+            tistih izjavnih spremenljivk, ki so v tej vrstici lažne.
+            Disjunktivno normalno obliko izraza <span
+            class="math inline">\(A\)</span> krajše pišemo kot <span
+            class="math inline">\(\mathop{\mathrm{DNO}}(A)\)</span>.</p>
+            <div class="zgled">
+            <p><strong>Zgled 1.12</strong>. V zadnjem zgledu je <span
+            class="math inline">\(\mathop{\mathrm{DNO}}(A) =
+            D\)</span>.</p>
+            </div>
+            <p>Disjunktivna normalna oblika <span
+            class="math inline">\(\mathop{\mathrm{DNO}}(A)\)</span> je
+            izjavni izraz, ki je zapisan le z uporabo izjavnih veznikov
+            <span class="math inline">\(\lnot\)</span>, <span
+            class="math inline">\(\land\)</span>, <span
+            class="math inline">\(\lor\)</span>. Preverimo še, da je ta
+            izraz res enakovreden začetnemu izrazu <span
+            class="math inline">\(A\)</span>.</p>
+            <div class="trditev">
+            <p><strong>Trditev 1.1</strong>. Naj bo <span
+            class="math inline">\(A\)</span> kontingenten izraz. Potem
+            je <span class="math inline">\(A \sim
+            \mathop{\mathrm{DNO}}(A)\)</span>.</p>
+            </div>
+            <div class="proof">
+            <p><em>Proof.</em> Naj bo <span
+            class="math inline">\(T\)</span> resničnostna tabela izraza
+            <span class="math inline">\(A\)</span>. Naj bo <span
+            class="math inline">\(i\)</span> poljubna vrstica <span
+            class="math inline">\(T\)</span>. Dokazati želimo, da imata
+            <span class="math inline">\(T\)</span> in <span
+            class="math inline">\(\mathop{\mathrm{DNO}}(A)\)</span> v
+            tej vrstici enako resničnostno vrednost.</p>
+            <dl>
+            <dt>Če je <span class="math inline">\(A\)</span> resničen v
+            vrstici <span class="math inline">\(i\)</span>:</dt>
+            <dd>
+            <p>Po definiciji disjunktivne normalne oblike je <span
+            class="math inline">\(\mathop{\mathrm{DNO}}(A)\)</span>
+            disjunkcija osnovnih konjunkcij vrstic <span
+            class="math inline">\(T\)</span>. V posebnem osnovna
+            konjunkcija vrstice <span class="math inline">\(i\)</span>
+            nastopa v <span
+            class="math inline">\(\mathop{\mathrm{DNO}}(A)\)</span>. Ta
+            osnovna konjunkcija je v vrstici <span
+            class="math inline">\(i\)</span> resnična, zato je resnična
+            tudi disjunkcija <span
+            class="math inline">\(\mathop{\mathrm{DNO}}(A)\)</span>.
+            <span class="math inline">\(\checkmark\)</span></p>
+            </dd>
+            <dt>Če je <span
+            class="math inline">\(\mathop{\mathrm{DNO}}(A)\)</span>
+            resničen v vrstici <span
+            class="math inline">\(i\)</span>:</dt>
+            <dd>
+            <p>V tem primeru mora biti resničen vsaj en člen disjunkcije
+            <span
+            class="math inline">\(\mathop{\mathrm{DNO}}(A)\)</span>,
+            torej mora biti v vrstici <span
+            class="math inline">\(i\)</span> resnična osnovna
+            konjunkcija neke vrstice <span
+            class="math inline">\(j\)</span>. Osnovna konjunkcija
+            vrstice <span class="math inline">\(j\)</span> je izraz, ki
+            je v vrstici <span class="math inline">\(j\)</span>
+            resničen, v vseh ostalih vrsticah pa lažen. Od tod sledi, da
+            je <span class="math inline">\(i = j\)</span>. Torej <span
+            class="math inline">\(\mathop{\mathrm{DNO}}(A)\)</span>
+            vsebuje osnovno konjunkcijo vrstice <span
+            class="math inline">\(i\)</span>, zato je <span
+            class="math inline">\(A\)</span> resničen v vrstici <span
+            class="math inline">\(i\)</span>. <span
+            class="math inline">\(\checkmark\)</span></p>
+            </dd>
+            </dl>
+            <p>Res imata torej <span class="math inline">\(T\)</span> in
+            <span
+            class="math inline">\(\mathop{\mathrm{DNO}}(A)\)</span>
+            enake resničnostne vrednosti, torej sta <span
+            class="math inline">\(A\)</span> in <span
+            class="math inline">\(\mathop{\mathrm{DNO}}(A)\)</span>
+            enakovredna. ◻</p>
+            </div>
+            <p>V sestavljanju disjunktivne normalne oblike smo opazovali
+            vrstice, kjer je dan izjavni izraz <span
+            class="math inline">\(A\)</span> resničen. Analogno bi lahko
+            opazovali vrstice, kjer je izraz <span
+            class="math inline">\(A\)</span> lažen, in sestavili izjavni
+            izraz, ki bo <em>lažen</em> natanko v vrsticah, v katerih je
+            <span class="math inline">\(A\)</span> lažen. Na primeru
+            pojasnimo, kako lahko na ta način dobimo alternativen
+            izjavni izraz, ki je zopet izražen le z vezniki <span
+            class="math inline">\(\lnot\)</span>, <span
+            class="math inline">\(\land\)</span>, <span
+            class="math inline">\(\lor\)</span> in je enakovreden izrazu
+            <span class="math inline">\(A\)</span>.</p>
+            <div class="zgled">
+            <p><strong>Zgled 1.13</strong>. Naj bo <span
+            class="math inline">\(T\)</span> resničnostna tabela
+            izjavnega izraza <span class="math inline">\(A\)</span> iz
+            predzadnjega zgleda. Ta tabela je lažna v vrsticah <span
+            class="math inline">\(1,3,4,5,7\)</span>. Sestavimo izjavni
+            izraz <span class="math inline">\(K\)</span>, ki bo lažen
+            natanko v teh vrsticah. To je enakovredno zahtevi, da je
+            <span class="math inline">\(K\)</span> resničen natanko
+            tedaj, ko nismo v nobeni od vrstic <span
+            class="math inline">\(1,3,4,5,7\)</span>. Slednjo zahtevo
+            lahko izrazimo kot konjunkcijo <em>osnovnih disjunkcij</em>
+            vrstic <span class="math inline">\(1,3,4,5,7\)</span>, se
+            pravi kot <span class="math display">\[K =
+                (\lnot p \lor \lnot q \lor \lnot r) \land
+                (\lnot p \lor q \lor \lnot r) \land
+                (\lnot p \lor q \lor r) \land
+                (o \lor \lnot q \lor \lnot r) \land
+                (p \lor q \lor \lnot r).\]</span> Tako sestavljenemu
+            izravnemu izrazu <span class="math inline">\(K\)</span>
+            pravimo <span><strong><em>konjunktivna normalna
+            oblika</em></strong></span> izraza <span
+            class="math inline">\(A\)</span>, krajše <span
+            class="math inline">\(\mathop{\mathrm{KNO}}(A)\)</span>.
+            Sorodno kot za disjunktivno normalno obliko se prepričamo,
+            da velja <span
+            class="math inline">\(\mathop{\mathrm{KNO}}(A) \sim
+            A\)</span>.</p>
             </div>
             <h2 id="sklepanje-v-izjavnem-računu">Sklepanje v izjavnem
             računu</h2>

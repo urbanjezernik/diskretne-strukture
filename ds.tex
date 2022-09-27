@@ -83,6 +83,9 @@
 \DeclareMathOperator\St{St}
 \DeclareMathOperator\Realpart{Re}
 
+\DeclareMathOperator\DNO{DNO}
+\DeclareMathOperator\KNO{KNO}
+
 
 \DeclareMathOperator\Aut{Aut}
 \DeclareMathOperator\GL{GL}
@@ -523,14 +526,49 @@ Iskani izjavni izraz $D$ mora biti resničen natanko v 2., 6. in 8. vrstici tabe
 \[
     D = (p \land q \land \lnot r) \lor (\lnot p \land q \land \lnot r) \lor (\lnot p \land \lnot q \land \lnot r)
 \]
-in res velja $D \sim A$. Dobljeni izjavni izraz $D$ lahko nekoliko poenostavimo. 
+in res velja $D \sim A$. Dobljeni izjavni izraz $D$ lahko še nekoliko poenostavimo. 
 
 \begin{domacanaloga}
     Z uporabo zakonov izjavnega računa se prepričaj, da velja $D \sim \lnot (p \Rightarrow q \Rightarrow r)$.
 \end{domacanaloga}
 \end{zgled}
 
+Naj bo zdaj $A$ poljuben kontingenten izjavni izraz in $T$ njegova resničnostna tabela. {\definicija Disjunktivna normalna oblika} izraza $A$ je disjunkcija \emph{osnovnih konjunkcij} tistih vrstic, kjer je $A$ resničen. Pri tem je osnovna konjunkcija neke vrstice konjunkcija tistih izjavnih spremenljivk, ki so v tej vrstici resnične, in negacij tistih izjavnih spremenljivk, ki so v tej vrstici lažne. Disjunktivno normalno obliko izraza $A$ krajše pišemo kot $\DNO(A)$.
 
+\begin{zgled}
+V zadnjem zgledu je $\DNO(A) = D$.
+\end{zgled}
+
+Disjunktivna normalna oblika $\DNO(A)$ je izjavni izraz, ki je zapisan le z uporabo izjavnih veznikov $\lnot$, $\land$, $\lor$. Preverimo še, da je ta izraz res enakovreden začetnemu izrazu $A$.
+
+\begin{trditev}
+Naj bo $A$ kontingenten izraz. Potem je $A \sim \DNO(A)$.
+\end{trditev}
+\begin{dokaz}
+Naj bo $T$ resničnostna tabela izraza $A$. Naj bo $i$ poljubna vrstica $T$. Dokazati želimo, da imata $T$ in $\DNO(A)$ v tej vrstici enako resničnostno vrednost.
+
+\begin{description}
+    \item[Če je $A$ resničen v vrstici $i$:] Po definiciji disjunktivne normalne oblike je $\DNO(A)$ disjunkcija osnovnih konjunkcij vrstic $T$. V posebnem osnovna konjunkcija vrstice $i$ nastopa v $\DNO(A)$. Ta osnovna konjunkcija je v vrstici $i$ resnična, zato je resnična tudi disjunkcija $\DNO(A)$. \kljuka
+    \item[Če je $\DNO(A)$ resničen v vrstici $i$:] V tem primeru mora biti resničen vsaj en člen disjunkcije $\DNO(A)$, torej mora biti v vrstici $i$ resnična osnovna konjunkcija neke vrstice $j$. Osnovna konjunkcija vrstice $j$ je izraz, ki je v vrstici $j$ resničen, v vseh ostalih vrsticah pa lažen. Od tod sledi, da je $i = j$. Torej $\DNO(A)$ vsebuje osnovno konjunkcijo vrstice $i$, zato je $A$ resničen v vrstici $i$. \kljuka
+\end{description}
+
+Res imata torej $T$ in $\DNO(A)$ enake resničnostne vrednosti, torej sta $A$ in $\DNO(A)$ enakovredna.
+\end{dokaz}
+
+V sestavljanju disjunktivne normalne oblike smo opazovali vrstice, kjer je dan izjavni izraz $A$ resničen. Analogno bi lahko opazovali vrstice, kjer je izraz $A$ lažen, in sestavili izjavni izraz, ki bo \emph{lažen} natanko v vrsticah, v katerih je $A$ lažen. Na primeru pojasnimo, kako lahko na ta način dobimo alternativen izjavni izraz, ki je zopet izražen le z vezniki $\lnot$, $\land$, $\lor$ in je enakovreden izrazu $A$.
+
+\begin{zgled}
+Naj bo $T$ resničnostna tabela izjavnega izraza $A$ iz predzadnjega zgleda. Ta tabela je lažna v vrsticah $1,3,4,5,7$. Sestavimo izjavni izraz $K$, ki bo lažen natanko v teh vrsticah. To je enakovredno zahtevi, da je $K$ resničen natanko tedaj, ko nismo v nobeni od vrstic $1,3,4,5,7$. Slednjo zahtevo lahko izrazimo kot konjunkcijo \emph{osnovnih  disjunkcij} vrstic $1,3,4,5,7$, se pravi kot
+\[
+    K = 
+    (\lnot p \lor \lnot q \lor \lnot r) \land
+    (\lnot p \lor q \lor \lnot r) \land
+    (\lnot p \lor q \lor r) \land
+    (o \lor \lnot q \lor \lnot r) \land
+    (p \lor q \lor \lnot r).
+\]
+Tako sestavljenemu izravnemu izrazu $K$ pravimo {\definicija konjunktivna normalna oblika} izraza $A$, krajše $\KNO(A)$. Sorodno kot za disjunktivno normalno obliko se prepričamo, da velja $\KNO(A) \sim A$.
+\end{zgled}
 
 \section{Sklepanje v izjavnem računu}
 \section{Polni nabori izjavnih veznikov}
