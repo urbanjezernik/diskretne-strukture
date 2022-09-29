@@ -239,7 +239,9 @@ Pri predmetu se bomo naučili, kako lahko na \emph{sistematičen način} odkrije
 Za tem bomo pri predmetu spoznali nekaj osnovnih diskretnih struktur, po katerih se ta predmet imenuje. Najprej bomo raziskali \emph{relacije}, s katerimi opisujemo odnose med elementi dane množice. Pomemben poseben primer teh so \emph{urejenosti}, ki posplošujejo običajne ureditve števil po velikosti. Najbolj podrobno si bomo ogledali \emph{grafe}, s katerimi lahko abstraktno predstavimo mnogo pomembnih primerov relacij.
 
 \begin{zgled}
-Graf je diskretna struktura, pri kateri dano množico \emph{vozlišč} povežemo s \emph{povezavami}. Konkreten graf na spodnji sliki se imenuje {\definicija Petersenov graf}. Ta graf bomo tekom predmeta večkrat srečali. Na koncu predmeta bomo znali \emph{dokazati}, da se tega grafa ne da narisati v ravnini, brez da bi se vsaj dve povezavi sekali.
+Graf je diskretna struktura, pri kateri dano množico \emph{vozlišč} povežemo s \emph{povezavami}. Z grafi lahko opišemo veliko različnih vrst omrežij, na primer internetno omrežje, omrežje prijateljskih povezav na Facebooku, omrežja veriženja blokov (kriptovalute) \dots 
+
+Konkreten graf na spodnji sliki se imenuje {\definicija Petersenov graf}. Ta graf bomo tekom predmeta večkrat srečali. Na koncu predmeta bomo znali \emph{dokazati}, da se tega grafa ne da narisati v ravnini, brez da bi se vsaj dve povezavi sekali.
 
 \begin{figure}[h]
     \centering
@@ -571,6 +573,78 @@ Tako sestavljenemu izravnemu izrazu $K$ pravimo {\definicija konjunktivna normal
 \end{zgled}
 
 \section{Sklepanje v izjavnem računu}
+
+{\definicija Sklep} je končno zaporedje izjav $p_1, p_2, \dots, p_k, z$. Pri tem izjavam $p_1, p_2, \dots, p_k$ pravimo {\definicija predpostavke}, izjavi $z$ pa {\definicija zaključek}.
+
+\begin{zgled}
+Opazujmo naslednje zaporedje izjav.
+
+\begin{description}
+    \item[$p_1$:] Če je ta žival ptič, potem ima krila.
+    \item[$p_2$:] Ta žival nima kril.
+    \item[$z$:] Ta žival ni ptič. 
+\end{description}
+
+Imamo torej sklep $p_1, p_2, z$. Ta sklep lahko zapišemo nekoliko bolj natančno z upoštevanjem sestavljene strukture izjav v sklepu. Uvedimo izjavi $p$ in $q$ kot:
+
+\begin{description}
+    \item[$p$:] Ta žival je ptič.
+    \item[$q$:] Ta žival ima krila.  
+\end{description}
+
+Sklep $p_1, p_2, z$ lahko torej zapišemo v obliki $p \Rightarrow q, \ \lnot q, \ \lnot p$.
+\end{zgled}
+
+Zaporedje izjavnih izrazov $A_1, A_2, \dots, A_k, B$ je {\definicija pravilen sklep} (rekli bomo tudi {\definicija veljaven sklep}), če je zaključek $B$ resničen pri vseh tistih naborih izjavnih spremenljivk, pri katerih so resnične vse predpostavke $A_1, A_2, \dots, A_k$. V tem primeru pišemo $A_1, A_2, \dots, A_k \models B$.
+
+\begin{zgled}
+Sklep iz zadnjega zgleda smo zapisali v obliki $p \Rightarrow q, \ \lnot q, \ \lnot p$. Če pri tem gledamo na $p$ in $q$ kot na izjavni spremenljivki (in ne kot oznaki za konkretne izjave), se lahko vprašamo o veljavnosti sklepa. V ta namen sestavimo resničnostno tabelo vseh izjavnih izrazov v sklepu.
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{cc|ccc}
+        $p$ & $q$ & $p \Rightarrow q$ & $\lnot q$ & $\lnot p$ \\ \hline
+        1 & 1 & 1 & 0 & 0 \\
+        1 & 0 & 0 & 1 & 0 \\
+        0 & 1 & 1 & 0 & 1 \\
+        0 & 0 & 1 & 1 & 1
+    \end{tabular}
+    \caption{Resničnostna tabela sklepa $p \Rightarrow q, \ \lnot q \models \lnot p$}
+\end{table}
+
+Edini nabor izjavnih spremenljivk, pri katerih sta resnični obe predpostavki sklepa, je nabor $(p,q)=(0,0)$. Pri tem naboru je resničen tudi zaključek sklepa. Sklep je torej veljaven, se pravi $p \Rightarrow q, \ \lnot q \models \lnot p$.
+\end{zgled}
+
+Zabeležimo nekaj pomembnih veljavnih sklepov, ki jim pravimo {\definicija osnovna pravila sklepanja}.
+
+\begin{itemize}
+    \item $A, \ A \Rightarrow B \models B$ ({\definicija modus ponens (MP)})
+    \item $A \Rightarrow B, \ \lnot B \models \lnot A$ ({\definicija modus tollens (MT)})
+    \item $A \lor B, \ \lnot B \models A$ ({\definicija disjunktivni silogizem (DS)})
+    \item $A \Rightarrow B, \ B \Rightarrow C \models A \Rightarrow C$ ({\definicija hipotetični silogizem (HS)})
+    \item $A \land B \models A$ ({\definicija poenostavitev (Po)})
+    \item $A, \ B \models A$ ({\definicija združitev (Zd)})
+    \item $A \models A \lor B$ ({\definicija pridružitev (Pr)})
+\end{itemize}
+
+Drugo od teh pravil smo spoznali v zadnjem zgledu in se tudi prepričali o veljavnosti. Na podoben način preverimo veljavnosti preostalih.
+
+Pri večjem številu izjavnih spremenljivk je lahko preverjanje veljavnosti sklepa z resničnostno tabelo precej zamudno.
+
+\begin{zgled}
+Ali je sklep
+\[
+    p \Rightarrow q, \ p \lor r, \ q \Rightarrow s, \ r \Rightarrow t, \ \lnot s \models t
+\]
+veljaven? Ta sklep vsebuje $5$ izjavnih spremenljivk, zato bi za preverjanje veljavnosti morali sestaviti resničnostno tabelo z $2^5 = 32$ vrsticami.
+\end{zgled}
+
+V takih primerih si lahko pomagamo z naslednjim alternativnim načinom preverjanja veljavnosti sklepa.
+
+\begin{izrek}[o naravni dedukciji]
+\todo{}
+\end{izrek}
+
 \section{Polni nabori izjavnih veznikov}
 
 

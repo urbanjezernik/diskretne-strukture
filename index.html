@@ -121,12 +121,16 @@
             <div class="zgled">
             <p><strong>Zgled 2</strong>. Graf je diskretna struktura,
             pri kateri dano množico <em>vozlišč</em> povežemo s
-            <em>povezavami</em>. Konkreten graf na spodnji sliki se
-            imenuje <span><strong><em>Petersenov
-            graf</em></strong></span>. Ta graf bomo tekom predmeta
-            večkrat srečali. Na koncu predmeta bomo znali
-            <em>dokazati</em>, da se tega grafa ne da narisati v
-            ravnini, brez da bi se vsaj dve povezavi sekali.</p>
+            <em>povezavami</em>. Z grafi lahko opišemo veliko različnih
+            vrst omrežij, na primer internetno omrežje, omrežje
+            prijateljskih povezav na Facebooku, omrežja veriženja blokov
+            (kriptovalute) …</p>
+            <p>Konkreten graf na spodnji sliki se imenuje
+            <span><strong><em>Petersenov graf</em></strong></span>. Ta
+            graf bomo tekom predmeta večkrat srečali. Na koncu predmeta
+            bomo znali <em>dokazati</em>, da se tega grafa ne da
+            narisati v ravnini, brez da bi se vsaj dve povezavi
+            sekali.</p>
             <figure>
             <img src="img/opis-petersen.png" alt="Petersenov graf" />
             <figcaption aria-hidden="true">Petersenov graf</figcaption>
@@ -1063,6 +1067,173 @@
             </div>
             <h2 id="sklepanje-v-izjavnem-računu">Sklepanje v izjavnem
             računu</h2>
+            <p><span><strong><em>Sklep</em></strong></span> je končno
+            zaporedje izjav <span class="math inline">\(p_1, p_2, \dots,
+            p_k, z\)</span>. Pri tem izjavam <span
+            class="math inline">\(p_1, p_2, \dots, p_k\)</span> pravimo
+            <span><strong><em>predpostavke</em></strong></span>, izjavi
+            <span class="math inline">\(z\)</span> pa
+            <span><strong><em>zaključek</em></strong></span>.</p>
+            <div class="zgled">
+            <p><strong>Zgled 1.14</strong>. Opazujmo naslednje zaporedje
+            izjav.</p>
+            <dl>
+            <dt><span class="math inline">\(p_1\)</span>:</dt>
+            <dd>
+            <p>Če je ta žival ptič, potem ima krila.</p>
+            </dd>
+            <dt><span class="math inline">\(p_2\)</span>:</dt>
+            <dd>
+            <p>Ta žival nima kril.</p>
+            </dd>
+            <dt><span class="math inline">\(z\)</span>:</dt>
+            <dd>
+            <p>Ta žival ni ptič.</p>
+            </dd>
+            </dl>
+            <p>Imamo torej sklep <span class="math inline">\(p_1, p_2,
+            z\)</span>. Ta sklep lahko zapišemo nekoliko bolj natančno z
+            upoštevanjem sestavljene strukture izjav v sklepu. Uvedimo
+            izjavi <span class="math inline">\(p\)</span> in <span
+            class="math inline">\(q\)</span> kot:</p>
+            <dl>
+            <dt><span class="math inline">\(p\)</span>:</dt>
+            <dd>
+            <p>Ta žival je ptič.</p>
+            </dd>
+            <dt><span class="math inline">\(q\)</span>:</dt>
+            <dd>
+            <p>Ta žival ima krila.</p>
+            </dd>
+            </dl>
+            <p>Sklep <span class="math inline">\(p_1, p_2, z\)</span>
+            lahko torej zapišemo v obliki <span class="math inline">\(p
+            \Rightarrow q, \ \lnot q, \ \lnot p\)</span>.</p>
+            </div>
+            <p>Zaporedje izjavnih izrazov <span
+            class="math inline">\(A_1, A_2, \dots, A_k, B\)</span> je
+            <span><strong><em>pravilen sklep</em></strong></span> (rekli
+            bomo tudi <span><strong><em>veljaven
+            sklep</em></strong></span>), če je zaključek <span
+            class="math inline">\(B\)</span> resničen pri vseh tistih
+            naborih izjavnih spremenljivk, pri katerih so resnične vse
+            predpostavke <span class="math inline">\(A_1, A_2, \dots,
+            A_k\)</span>. V tem primeru pišemo <span
+            class="math inline">\(A_1, A_2, \dots, A_k \models
+            B\)</span>.</p>
+            <div class="zgled">
+            <p><strong>Zgled 1.15</strong>. Sklep iz zadnjega zgleda smo
+            zapisali v obliki <span class="math inline">\(p \Rightarrow
+            q, \ \lnot q, \ \lnot p\)</span>. Če pri tem gledamo na
+            <span class="math inline">\(p\)</span> in <span
+            class="math inline">\(q\)</span> kot na izjavni
+            spremenljivki (in ne kot oznaki za konkretne izjave), se
+            lahko vprašamo o veljavnosti sklepa. V ta namen sestavimo
+            resničnostno tabelo vseh izjavnih izrazov v sklepu.</p>
+            <table>
+            <caption>Resničnostna tabela sklepa <span
+            class="math inline">\(p \Rightarrow q, \ \lnot q \models
+            \lnot p\)</span></caption>
+            <thead>
+            <tr class="header">
+            <th style="text-align: center;"><span
+            class="math inline">\(p\)</span></th>
+            <th style="text-align: center;"><span
+            class="math inline">\(q\)</span></th>
+            <th style="text-align: center;"><span
+            class="math inline">\(p \Rightarrow q\)</span></th>
+            <th style="text-align: center;"><span
+            class="math inline">\(\lnot q\)</span></th>
+            <th style="text-align: center;"><span
+            class="math inline">\(\lnot p\)</span></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="odd">
+            <td style="text-align: center;">1</td>
+            <td style="text-align: center;">1</td>
+            <td style="text-align: center;">1</td>
+            <td style="text-align: center;">0</td>
+            <td style="text-align: center;">0</td>
+            </tr>
+            <tr class="even">
+            <td style="text-align: center;">1</td>
+            <td style="text-align: center;">0</td>
+            <td style="text-align: center;">0</td>
+            <td style="text-align: center;">1</td>
+            <td style="text-align: center;">0</td>
+            </tr>
+            <tr class="odd">
+            <td style="text-align: center;">0</td>
+            <td style="text-align: center;">1</td>
+            <td style="text-align: center;">1</td>
+            <td style="text-align: center;">0</td>
+            <td style="text-align: center;">1</td>
+            </tr>
+            <tr class="even">
+            <td style="text-align: center;">0</td>
+            <td style="text-align: center;">0</td>
+            <td style="text-align: center;">1</td>
+            <td style="text-align: center;">1</td>
+            <td style="text-align: center;">1</td>
+            </tr>
+            </tbody>
+            </table>
+            <p>Edini nabor izjavnih spremenljivk, pri katerih sta
+            resnični obe predpostavki sklepa, je nabor <span
+            class="math inline">\((p,q)=(0,0)\)</span>. Pri tem naboru
+            je resničen tudi zaključek sklepa. Sklep je torej veljaven,
+            se pravi <span class="math inline">\(p \Rightarrow q, \
+            \lnot q \models \lnot p\)</span>.</p>
+            </div>
+            <p>Zabeležimo nekaj pomembnih veljavnih sklepov, ki jim
+            pravimo <span><strong><em>osnovna pravila
+            sklepanja</em></strong></span>.</p>
+            <ul>
+            <li><p><span class="math inline">\(A, \ A \Rightarrow B
+            \models B\)</span> (<span><strong><em>modus ponens
+            (MP)</em></strong></span>)</p></li>
+            <li><p><span class="math inline">\(A \Rightarrow B, \ \lnot
+            B \models \lnot A\)</span> (<span><strong><em>modus tollens
+            (MT)</em></strong></span>)</p></li>
+            <li><p><span class="math inline">\(A \lor B, \ \lnot B
+            \models A\)</span> (<span><strong><em>disjunktivni silogizem
+            (DS)</em></strong></span>)</p></li>
+            <li><p><span class="math inline">\(A \Rightarrow B, \ B
+            \Rightarrow C \models A \Rightarrow C\)</span>
+            (<span><strong><em>hipotetični silogizem
+            (HS)</em></strong></span>)</p></li>
+            <li><p><span class="math inline">\(A \land B \models
+            A\)</span> (<span><strong><em>poenostavitev
+            (Po)</em></strong></span>)</p></li>
+            <li><p><span class="math inline">\(A, \ B \models A\)</span>
+            (<span><strong><em>združitev
+            (Zd)</em></strong></span>)</p></li>
+            <li><p><span class="math inline">\(A \models A \lor
+            B\)</span> (<span><strong><em>pridružitev
+            (Pr)</em></strong></span>)</p></li>
+            </ul>
+            <p>Drugo od teh pravil smo spoznali v zadnjem zgledu in se
+            tudi prepričali o veljavnosti. Na podoben način preverimo
+            veljavnosti preostalih.</p>
+            <p>Pri večjem številu izjavnih spremenljivk je lahko
+            preverjanje veljavnosti sklepa z resničnostno tabelo precej
+            zamudno.</p>
+            <div class="zgled">
+            <p><strong>Zgled 1.16</strong>. Ali je sklep <span
+            class="math display">\[p \Rightarrow q, \ p \lor r, \ q
+            \Rightarrow s, \ r \Rightarrow t, \ \lnot s \models
+            t\]</span> veljaven? Ta sklep vsebuje <span
+            class="math inline">\(5\)</span> izjavnih spremenljivk, zato
+            bi za preverjanje veljavnosti morali sestaviti resničnostno
+            tabelo z <span class="math inline">\(2^5 = 32\)</span>
+            vrsticami.</p>
+            </div>
+            <p>V takih primerih si lahko pomagamo z naslednjim
+            alternativnim načinom preverjanja veljavnosti sklepa.</p>
+            <div class="izrek">
+            <p><strong>Izrek 1.1</strong> (o naravni dedukciji). </p>
+            </div>
             <h2 id="polni-nabori-izjavnih-veznikov">Polni nabori
             izjavnih veznikov</h2>
             <h1 id="predikatni-račun">Predikatni račun</h1>
