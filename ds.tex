@@ -642,11 +642,206 @@ veljaven? Ta sklep vsebuje $5$ izjavnih spremenljivk, zato bi za preverjanje vel
 V takih primerih si lahko pomagamo z naslednjim alternativnim načinom preverjanja veljavnosti sklepa.
 
 \begin{izrek}[o naravni dedukciji]
-\todo{}
+Naj bodo $A_1, A_2, \dots, A_k$ izjavni izrazi. Če obstaja zaporedje izjavnih izrazov $B_1, B_2, \dots, B_n$, tako da za vsak $i = 1, 2, \dots, n$ velja vsaj ena od možnosti:
+\begin{enumerate}
+    \item $B_i$ je eden on $A_1, A_2, \dots, A_k$,
+    \item $B_i$ je tavtologija,
+    \item $B_i \sim B_j$ za nek $j < i$,
+    \item $B_i$ logično sledi iz $B_1, B_2, \dots, B_{i-1}$ po enem od osnovnih pravil sklepanja,
+\end{enumerate}
+potem velja $A_1, A_2, \dots, A_k \models B$.
+\end{izrek}
+\begin{dokaz}
+Dokazujemo z indukcijo na $n$.
+
+Baza indukcije je $n = 1$. V tem primeru je po predpostavki izjavni izraz $B_1$ lahko le eden od $A_1, A_2, \dots, A_k$ ali tavtologija. V vsakem od teh primerov velja $A_1, A_2, \dots, A_k \models B$. \kljuka
+
+Predpostavimo zdaj, da trditev že velja za $1, 2, \dots, n-1$ in dokažimo veljavnost za $n$. Drži torej $A_1, A_2, \dots, A_k \models B_j$ za vsak $j = 1, 2, \dots, n-1$. Obravnavajmo različne možnosti glede na to, katera od predpostavk velja za $B_n$.
+\begin{enumerate}
+    \item Če je $B_n$ eden od $A_1, A_2, \dots, A_k$, potem velja $A_1, A_2, \dots, A_k \models B$. \kljuka
+    \item Če je $B_n$ tavtologija, potem velja $A_1, A_2, \dots, A_k \models B$. \kljuka
+    \item Če je $B_n \sim B_j$ za nek $j < n$, potem po indukcijski predpostavki $A_1, A_2, \dots, A_k \models B_j$ velja $A_1, A_2, \dots, A_k \models B$. \kljuka
+    \item Naj nazadnje $B_n$ logično sledi iz $B_1, B_2, \dots, B_{n-1}$. Ker vsak $B_j$ za $j < n$ logično sledi iz $A_1, A_2, \dots, A_k$, velja tudi $A_1, A_2, \dots, A_k \models B$. \kljuka
+\end{enumerate}
+\end{dokaz}
+
+\begin{zgled}
+S pomočjo izreka o naravni dedukciji utemeljimo veljavnost sklepa iz zadnjega zgleda.
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{lll}
+        $i$ & $B_i$ & utemeljitev \\ \hline
+        1 & $p \Rightarrow q$ & predpostavka \\
+        2 & $p \lor r$ & predpostavka \\
+        3 & $q \Rightarrow s$ & predpostavka \\
+        4 & $r \Rightarrow t$ & predpostavka \\
+        5 & $\lnot s$ & predpostavka \\
+        6 & $p \Rightarrow s$ & HS(1,3) \\
+        7 & $\lnot p$ & MT(6,5) \\
+        8 & $r \lor p$ & $\sim$ 2 \\
+        9 & $r$ & DS(8,7) \\
+        10 & \underline{$t$} & MP(9,4) \\
+    \end{tabular}
+    \caption{Uporaba naravne dedukcije za dokazovanje veljavnosti sklepa}
+\end{table}
+\end{zgled}
+
+Do zdaj smo se ukvarjali z dokazovanjem veljavnosti danega sklepa. Oglejmo si še, kako pokažemo, da sklep \emph{ni} veljaven. Namesto tega, da sestavimo resničnostno tabelo vseh izjavnih izrazov v sklepu, lahko preprosteje pokažemo le na tisto vrstico resničnoste tabele, ki opazi neveljavnost sklepa. To pomeni, da poiščemo nek nabor vrednosti izjavnih spremenljivk, pri katerem so vse predpostavke resnične, zaključek pa je lažen. Takemu naboru rečemo {\definicija protiprimer}.
+
+\begin{zgled}
+Opazujmo naslednji sklep.
+
+    \begin{description}
+        \item[$p_1$:] Ta žival ima krila ali pa ni ptič.
+        \item[$p_2$:] Če je ta žival pritč, potem leže jajca.
+        \item[$p_3$:] Ta žival nima kril.
+        \item[$z$:] Torej ta žival ne leže jajc.
+    \end{description}
+
+Ta sklep lahko zapišemo nekoliko bolj natančno, če uvedemo izjave $p,q,r$ kot:
+
+\begin{description}
+    \item[$p$:] Ta žival ima krila.
+    \item[$q$:] Ta žival je ptič.
+    \item[$r$:] Ta žival leže jajca.
+\end{description}
+
+Sklep lahko torej zapišemo na naslednji način:
+\[
+    p \lor \lnot q, \ q \Rightarrow r, \ \lnot p \models \lnot r.
+\]
+
+Poiščimo protiprimer. Želimo, da so resnične vse predpostavke, zaključek pa lažen. Vzeti moramo torej $r = 1$ in $p = 0$, od koder iz prve predpostavke dobimo še $q = 0$. S to izbiro je tudi druga predpostavka resnična. Nabor $p = 0, q = 0, r = 1$ je torej protiprimer, ki opazi, da sklep ni pravilen.
+
+Če to prevedemo nazaj v človeški jezik, protiprimer torej predstavlja žival, ki nima kril, ni ptič in leže jajca. Konkretna taka žival je na primer kača ali krokodil.
+\end{zgled}
+
+Pri dokazovanju bolj kompleksnih sklepov si lahko včasih pomagamo tudi s kakšnimi {\definicija pomožnimi sklepi}. Pogledali si bomo tri take osnovne pomožne sklepe, in sicer pogojni sklep, sklepanje s protislovjem in analiza primerov. Vse te pomožne sklepe bomo izpeljali s pomočjo naslednje trditve.
+
+\begin{trditev}
+Velja $A_1, A_2, \dots, A_k \models B$, če in samo če je $A_1 \land A_2 \land \cdot \land A_k \models B$ tavtologija.
+\end{trditev}
+\begin{dokaz}
+Predpostavimo najprej, da velja $A_1, A_2, \dots, A_k \models B$. Če je $A_1 \land A_2 \land \cdots \land A_k$ resnična izjava, potem so resnične vse izjave $A_i$ za $i = 1,2, \dots, k$, torej so vse predpostavke $A_1, A_2, \dots, A_k$ resnične. Od tod sledi, da je resničen tudi zaključek $B$. Torej je $A_1 \land A_2 \land \cdot \land A_k \models B$ tavtologija. \kljuka
+
+Predpostavimo sedaj, da je $A_1 \land A_2 \land \cdot \land A_k \models B$ tavtologija. Dokazati želimo veljavnost sklepa $A_1, A_2, \dots, A_k \models B$. Predpostavimo torej, da so resnične vse predpostavke $A_1, A_2, \dots, A_k$. Potem je resnična tudi njihova konjunkcija $A_1 \land A_2 \land \cdots \land A_k$. Iz predpostavke od tod sledi, da mora biti resnična tudi izjava $B$. Sklep $A_1, A_2, \dots, A_k \models B$ je torej veljaven. \kljuka
+\end{dokaz}
+
+{\definicija Pogojni sklep} (PS) uporabimo, kadar dokazujemo sklep, v katerem ima zaključek obliko implikacije. Če želimo sklepati na zaključek $B \Rightarrow C$, dodamo izjavo $B$ med predpostavke in skušamo sklepati na zaključek $C$. Veljavnost tega pomožnega sklepa sledi iz naslednjega izreka.
+
+\begin{izrek}[o pogojnem sklepu]
+Velja $A_1, A_2, \dots, A_k \models B \Rightarrow C$, če in samo če velja $A_1, A_2, \dots, A_k, B \models C$.
+\end{izrek}
+\begin{dokaz}
+Naj bo $A = A_1 \land A_2 \land \cdots \land A_k$. Po zadnji trditvi je dovolj dokazati, da je $A \Rightarrow (B \Rightarrow C)$ tavtologija, če in samo če je $A \land B \Rightarrow C$ tavtologija. Ta dva izjavna izraza pa sta si v resnici enakovredna, saj velja
+\[
+    A \Rightarrow (B \Rightarrow C) \sim \lnot A \lor (\lnot B \lor C) \sim (\lnot A \lor \lnot B) \lor C \sim \lnot (A \land B) \lor C \sim A \land B \Rightarrow C.
+\]
+Izraza sta torej bodisi oba tavtologiji bodisi nobenen od njiju ni tavtologija. S tem je izrek dokazan.
+\end{dokaz}
+
+\begin{zgled}
+Dokažimo veljavnost sklepa
+\[
+    p \Rightarrow q \lor r, \ \lnot r \models p \Rightarrow q.
+\]
+Ker ima zaključek obliko implikacije, lahko uporabimo pogojni sklep.
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{lll}
+        $i$ & $B_i$ & utemeljitev \\ \hline
+        1 & $p \Rightarrow q \lor r$ & predpostavka \\
+        2 & $\lnot r$ & predpostavka \\
+        3.1 & $p$ & predpostavka PS \\
+        3.2 & $q \lor r$ & MP(3.1, 1) \\
+        3.3 & $q$ & DS(3.2, 2) \\
+        3 & \underline{$p \Rightarrow q$} & PS(3.1--3.3) \\
+    \end{tabular}
+    \caption{Uporaba pogojnega sklepa}
+\end{table}
+\end{zgled}
+
+Pomožni {\definicija sklep s protislovjem} (RA\footnote{Lat. \emph{Reductio ad absurdum}.}) lahko uporabimo kadar koli. Če želimo sklepati na zaključek $B$, dodamo izjavo $\lnot B$ med predpostavke in skušamo sklepati na zaključek $0$. To je še posebej uporabno, kadar ima zaključek obliko negacije $\lnot B$, saj v tem primeru dodatna predpostavka postane $\lnot \lnot B \sim B$. Veljavnost tega pomožnega sklepa sledi iz naslednjega izreka.
+
+\begin{izrek}[o sklepu s protislovjem]
+Velja $A_1, A_2, \dots, A_k \models B$, če in samo če velja $A_1, A_2, \dots, A_k, \lnot B \models 0$.
+\end{izrek}
+\begin{dokaz}
+Naj bo $A = A_1 \land A_2 \land \cdots \land A_k$. Kot v dokazu zadnjega izreka je dovolj dokazati, da je $A \Rightarrow B$ tavtologija, če in samo če je $A \land \lnot B \Rightarrow 0$ tavtologija. Ta dva izjavna izraza pa sta si v resnici enakovredna, saj velja
+\[
+    A \land \lnot B \Rightarrow 0 \sim
+    \lnot A \lor \lnot \lnot B \sim
+    \lnot A \lor B \sim
+    A \Rightarrow B.
+\]
+\end{dokaz}
+
+\begin{zgled}
+Dokažimo veljavnost sklepa
+\[
+    p \Rightarrow \lnot (p \Rightarrow r), \ q \land s, \ s \models \lnot p.
+\]
+Ker ima zaključek obliko negacije, še posebej radi uporabimo sklepanje s protislovjem.
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{lll}
+        $i$ & $B_i$ & utemeljitev \\ \hline
+        1 & $p \Rightarrow \lnot(q \Rightarrow r)$ & predpostavka \\
+        2 & $q \land s \Rightarrow r$ & predpostavka \\
+        3 & $s$ & predpostavka \\
+        4.1 & $\lnot \lnot p$ & predpostavka RA \\
+        4.2 & $p$ & $\sim$ 4.1 \\
+        4.3 & $\lnot (q \Rightarrow r)$ & MP(4.2, 1) \\
+        4.4 & $q \land \lnot r$ & $\sim$ 4.3 \\
+        4.5 & $q$ & Po(4.4) \\
+        4.6 & $q \land s$ & Zd(4.5, 3) \\
+        4.7 & $r$ & MP(4.6, 2) \\
+        4.8 & $\lnot r \land q$ & $\sim$ 4.4 \\
+        4.9 & $\lnot r$ & Po(4.8) \\
+        4.10 & $r \land \lnot r$ & Zd(4.7, 4.9) \\
+        4.11 & $0$ & $\sim$ 4.10 \\
+        4 & \underline{$\lnot p$} & RA(4.1--4.11) \\
+    \end{tabular}
+    \caption{Uporaba sklepa s protislovjem}
+\end{table}
+\end{zgled}
+
+Pomožni sklep {\definicija analiza primerov} (AP) uporabimo, kadar dokazujemo sklep, v katerem ima ena od predpostavk obliko disjunkcije $B_1 \lor B_2$. V tem primeru lahko sklep razdelimo na dva preprostejša sklepa, pri čemer prvemu dodamo predpostavko $B_1$, drugemu pa predpostavko $B_2$. Podobno kot pri prejšnjih dveh pomožnih sklepih veljavnost tega pomožnega sklepa sledi iz naslednjega izreka.
+
+\begin{izrek}[o analizi primerov]
+Velja $A_1, A_2, \dots, A_k, B_1 \lor B_2 \models C$, če in samo če veljata oba sklepa $A_1, A_2, \dots, A_k, B_1 \models C$ in $A_1, A_2, \dots, A_k, B_2 \models C$.
 \end{izrek}
 
-\section{Polni nabori izjavnih veznikov}
+\begin{domacanaloga}
+Dokaži izrek o analizi primerov.
+\end{domacanaloga}
 
+\begin{zgled}
+Dokažimo veljavnost sklepa
+\[
+    p \Rightarrow r, \ q \Rightarrow r, \ p \lor q \models r.
+\]
+Tretja predpostavka ima obliko disjunkcije, zato lahko sklep dokažemo s pomočjo analize primerov.
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{lll}
+        $i$ & $B_i$ & utemeljitev \\ \hline
+        1 & $p \Rightarrow r$ & predpostavka \\
+        2 & $q \Rightarrow r$ & predpostavka \\
+        3 & $p \lor q$ & predpostavka\\
+        4.1.1 & $p$ & predpostavka AP(3) \\
+        4.1.2 & $r$ & MP(4.1.1, 1) \\
+        4.2.1 & $q$ & predpostavka AP(3) \\
+        4.2.2 & $r$ & MP(4.1.1, 2) \\
+        4. & \underline{$r$} & AP(3, 4.1.1--4.1.2, 4.2.1--4.2.2)
+    \end{tabular}
+    \caption{Uporaba analize primerov}
+\end{table}
+\end{zgled}
 
 \chapter{Predikatni račun}
 \chapter{Relacije}

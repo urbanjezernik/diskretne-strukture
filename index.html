@@ -43,7 +43,7 @@
             <strong> Urban Jezernik <br>
               Univerza v Ljubljani, Fakulteta za matematiko in fiziko </strong> <br>
 
-            Zadnja posodobitev: 29. 09. 2022
+            Zadnja posodobitev: 19. 10. 2022
           </div>
 
           <div id="spinner" class="text-center">
@@ -71,9 +71,6 @@
               <li><a href="#sklepanje-v-izjavnem-računu"
               id="toc-sklepanje-v-izjavnem-računu">Sklepanje v izjavnem
               računu</a></li>
-              <li><a href="#polni-nabori-izjavnih-veznikov"
-              id="toc-polni-nabori-izjavnih-veznikov">Polni nabori
-              izjavnih veznikov</a></li>
               </ul></li>
               <li><a href="#predikatni-račun"
               id="toc-predikatni-račun">Predikatni račun</a></li>
@@ -1233,14 +1230,603 @@
             <p>V takih primerih si lahko pomagamo z naslednjim
             alternativnim načinom preverjanja veljavnosti sklepa.</p>
             <div class="izrek">
-            <p><strong>Izrek 1.1</strong> (o naravni dedukciji). </p>
+            <p><strong>Izrek 1.1</strong> (o naravni dedukciji). Naj
+            bodo <span class="math inline">\(A_1, A_2, \dots,
+            A_k\)</span> izjavni izrazi. Če obstaja zaporedje izjavnih
+            izrazov <span class="math inline">\(B_1, B_2, \dots,
+            B_n\)</span>, tako da za vsak <span class="math inline">\(i
+            = 1, 2, \dots, n\)</span> velja vsaj ena od možnosti:</p>
+            <ol>
+            <li><p><span class="math inline">\(B_i\)</span> je eden on
+            <span class="math inline">\(A_1, A_2, \dots,
+            A_k\)</span>,</p></li>
+            <li><p><span class="math inline">\(B_i\)</span> je
+            tavtologija,</p></li>
+            <li><p><span class="math inline">\(B_i \sim B_j\)</span> za
+            nek <span class="math inline">\(j &lt; i\)</span>,</p></li>
+            <li><p><span class="math inline">\(B_i\)</span> logično
+            sledi iz <span class="math inline">\(B_1, B_2, \dots,
+            B_{i-1}\)</span> po enem od osnovnih pravil
+            sklepanja,</p></li>
+            </ol>
+            <p>potem velja <span class="math inline">\(A_1, A_2, \dots,
+            A_k \models B\)</span>.</p>
             </div>
-            <h2 id="polni-nabori-izjavnih-veznikov">Polni nabori
-            izjavnih veznikov</h2>
+            <div class="proof">
+            <p><em>Proof.</em> Dokazujemo z indukcijo na <span
+            class="math inline">\(n\)</span>.</p>
+            <p>Baza indukcije je <span class="math inline">\(n =
+            1\)</span>. V tem primeru je po predpostavki izjavni izraz
+            <span class="math inline">\(B_1\)</span> lahko le eden od
+            <span class="math inline">\(A_1, A_2, \dots, A_k\)</span>
+            ali tavtologija. V vsakem od teh primerov velja <span
+            class="math inline">\(A_1, A_2, \dots, A_k \models
+            B\)</span>. <span
+            class="math inline">\(\checkmark\)</span></p>
+            <p>Predpostavimo zdaj, da trditev že velja za <span
+            class="math inline">\(1, 2, \dots, n-1\)</span> in dokažimo
+            veljavnost za <span class="math inline">\(n\)</span>. Drži
+            torej <span class="math inline">\(A_1, A_2, \dots, A_k
+            \models B_j\)</span> za vsak <span class="math inline">\(j =
+            1, 2, \dots, n-1\)</span>. Obravnavajmo različne možnosti
+            glede na to, katera od predpostavk velja za <span
+            class="math inline">\(B_n\)</span>.</p>
+            <ol>
+            <li><p>Če je <span class="math inline">\(B_n\)</span> eden
+            od <span class="math inline">\(A_1, A_2, \dots,
+            A_k\)</span>, potem velja <span class="math inline">\(A_1,
+            A_2, \dots, A_k \models B\)</span>. <span
+            class="math inline">\(\checkmark\)</span></p></li>
+            <li><p>Če je <span class="math inline">\(B_n\)</span>
+            tavtologija, potem velja <span class="math inline">\(A_1,
+            A_2, \dots, A_k \models B\)</span>. <span
+            class="math inline">\(\checkmark\)</span></p></li>
+            <li><p>Če je <span class="math inline">\(B_n \sim
+            B_j\)</span> za nek <span class="math inline">\(j &lt;
+            n\)</span>, potem po indukcijski predpostavki <span
+            class="math inline">\(A_1, A_2, \dots, A_k \models
+            B_j\)</span> velja <span class="math inline">\(A_1, A_2,
+            \dots, A_k \models B\)</span>. <span
+            class="math inline">\(\checkmark\)</span></p></li>
+            <li><p>Naj nazadnje <span class="math inline">\(B_n\)</span>
+            logično sledi iz <span class="math inline">\(B_1, B_2,
+            \dots, B_{n-1}\)</span>. Ker vsak <span
+            class="math inline">\(B_j\)</span> za <span
+            class="math inline">\(j &lt; n\)</span> logično sledi iz
+            <span class="math inline">\(A_1, A_2, \dots, A_k\)</span>,
+            velja tudi <span class="math inline">\(A_1, A_2, \dots, A_k
+            \models B\)</span>. <span
+            class="math inline">\(\checkmark\)</span></p></li>
+            </ol>
+            <p> ◻</p>
+            </div>
+            <div class="zgled">
+            <p><strong>Zgled 1.17</strong>. S pomočjo izreka o naravni
+            dedukciji utemeljimo veljavnost sklepa iz zadnjega
+            zgleda.</p>
+            <table>
+            <caption>Uporaba naravne dedukcije za dokazovanje
+            veljavnosti sklepa</caption>
+            <thead>
+            <tr class="header">
+            <th style="text-align: left;"><span
+            class="math inline">\(i\)</span></th>
+            <th style="text-align: left;"><span
+            class="math inline">\(B_i\)</span></th>
+            <th style="text-align: left;">utemeljitev</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="odd">
+            <td style="text-align: left;">1</td>
+            <td style="text-align: left;"><span class="math inline">\(p
+            \Rightarrow q\)</span></td>
+            <td style="text-align: left;">predpostavka</td>
+            </tr>
+            <tr class="even">
+            <td style="text-align: left;">2</td>
+            <td style="text-align: left;"><span class="math inline">\(p
+            \lor r\)</span></td>
+            <td style="text-align: left;">predpostavka</td>
+            </tr>
+            <tr class="odd">
+            <td style="text-align: left;">3</td>
+            <td style="text-align: left;"><span class="math inline">\(q
+            \Rightarrow s\)</span></td>
+            <td style="text-align: left;">predpostavka</td>
+            </tr>
+            <tr class="even">
+            <td style="text-align: left;">4</td>
+            <td style="text-align: left;"><span class="math inline">\(r
+            \Rightarrow t\)</span></td>
+            <td style="text-align: left;">predpostavka</td>
+            </tr>
+            <tr class="odd">
+            <td style="text-align: left;">5</td>
+            <td style="text-align: left;"><span
+            class="math inline">\(\lnot s\)</span></td>
+            <td style="text-align: left;">predpostavka</td>
+            </tr>
+            <tr class="even">
+            <td style="text-align: left;">6</td>
+            <td style="text-align: left;"><span class="math inline">\(p
+            \Rightarrow s\)</span></td>
+            <td style="text-align: left;">HS(1,3)</td>
+            </tr>
+            <tr class="odd">
+            <td style="text-align: left;">7</td>
+            <td style="text-align: left;"><span
+            class="math inline">\(\lnot p\)</span></td>
+            <td style="text-align: left;">MT(6,5)</td>
+            </tr>
+            <tr class="even">
+            <td style="text-align: left;">8</td>
+            <td style="text-align: left;"><span class="math inline">\(r
+            \lor p\)</span></td>
+            <td style="text-align: left;"><span
+            class="math inline">\(\sim\)</span> 2</td>
+            </tr>
+            <tr class="odd">
+            <td style="text-align: left;">9</td>
+            <td style="text-align: left;"><span
+            class="math inline">\(r\)</span></td>
+            <td style="text-align: left;">DS(8,7)</td>
+            </tr>
+            <tr class="even">
+            <td style="text-align: left;">10</td>
+            <td style="text-align: left;"><u><span
+            class="math inline">\(t\)</span></u></td>
+            <td style="text-align: left;">MP(9,4)</td>
+            </tr>
+            </tbody>
+            </table>
+            </div>
+            <p>Do zdaj smo se ukvarjali z dokazovanjem veljavnosti
+            danega sklepa. Oglejmo si še, kako pokažemo, da sklep
+            <em>ni</em> veljaven. Namesto tega, da sestavimo
+            resničnostno tabelo vseh izjavnih izrazov v sklepu, lahko
+            preprosteje pokažemo le na tisto vrstico resničnoste tabele,
+            ki opazi neveljavnost sklepa. To pomeni, da poiščemo nek
+            nabor vrednosti izjavnih spremenljivk, pri katerem so vse
+            predpostavke resnične, zaključek pa je lažen. Takemu naboru
+            rečemo
+            <span><strong><em>protiprimer</em></strong></span>.</p>
+            <div class="zgled">
+            <p><strong>Zgled 1.18</strong>. Opazujmo naslednji
+            sklep.</p>
+            <dl>
+            <dt><span class="math inline">\(p_1\)</span>:</dt>
+            <dd>
+            <p>Ta žival ima krila ali pa ni ptič.</p>
+            </dd>
+            <dt><span class="math inline">\(p_2\)</span>:</dt>
+            <dd>
+            <p>Če je ta žival pritč, potem leže jajca.</p>
+            </dd>
+            <dt><span class="math inline">\(p_3\)</span>:</dt>
+            <dd>
+            <p>Ta žival nima kril.</p>
+            </dd>
+            <dt><span class="math inline">\(z\)</span>:</dt>
+            <dd>
+            <p>Torej ta žival ne leže jajc.</p>
+            </dd>
+            </dl>
+            <p>Ta sklep lahko zapišemo nekoliko bolj natančno, če
+            uvedemo izjave <span class="math inline">\(p,q,r\)</span>
+            kot:</p>
+            <dl>
+            <dt><span class="math inline">\(p\)</span>:</dt>
+            <dd>
+            <p>Ta žival ima krila.</p>
+            </dd>
+            <dt><span class="math inline">\(q\)</span>:</dt>
+            <dd>
+            <p>Ta žival je ptič.</p>
+            </dd>
+            <dt><span class="math inline">\(r\)</span>:</dt>
+            <dd>
+            <p>Ta žival leže jajca.</p>
+            </dd>
+            </dl>
+            <p>Sklep lahko torej zapišemo na naslednji način: <span
+            class="math display">\[p \lor \lnot q, \ q \Rightarrow r, \
+            \lnot p \models \lnot r.\]</span></p>
+            <p>Poiščimo protiprimer. Želimo, da so resnične vse
+            predpostavke, zaključek pa lažen. Vzeti moramo torej <span
+            class="math inline">\(r = 1\)</span> in <span
+            class="math inline">\(p = 0\)</span>, od koder iz prve
+            predpostavke dobimo še <span class="math inline">\(q =
+            0\)</span>. S to izbiro je tudi druga predpostavka resnična.
+            Nabor <span class="math inline">\(p = 0, q = 0, r =
+            1\)</span> je torej protiprimer, ki opazi, da sklep ni
+            pravilen.</p>
+            <p>Če to prevedemo nazaj v človeški jezik, protiprimer torej
+            predstavlja žival, ki nima kril, ni ptič in leže jajca.
+            Konkretna taka žival je na primer kača ali krokodil.</p>
+            </div>
+            <p>Pri dokazovanju bolj kompleksnih sklepov si lahko včasih
+            pomagamo tudi s kakšnimi <span><strong><em>pomožnimi
+            sklepi</em></strong></span>. Pogledali si bomo tri take
+            osnovne pomožne sklepe, in sicer pogojni sklep, sklepanje s
+            protislovjem in analiza primerov. Vse te pomožne sklepe bomo
+            izpeljali s pomočjo naslednje trditve.</p>
+            <div class="trditev">
+            <p><strong>Trditev 1.2</strong>. Velja <span
+            class="math inline">\(A_1, A_2, \dots, A_k \models
+            B\)</span>, če in samo če je <span class="math inline">\(A_1
+            \land A_2 \land \cdot \land A_k \models B\)</span>
+            tavtologija.</p>
+            </div>
+            <div class="proof">
+            <p><em>Proof.</em> Predpostavimo najprej, da velja <span
+            class="math inline">\(A_1, A_2, \dots, A_k \models
+            B\)</span>. Če je <span class="math inline">\(A_1 \land A_2
+            \land \cdots \land A_k\)</span> resnična izjava, potem so
+            resnične vse izjave <span class="math inline">\(A_i\)</span>
+            za <span class="math inline">\(i = 1,2, \dots, k\)</span>,
+            torej so vse predpostavke <span class="math inline">\(A_1,
+            A_2, \dots, A_k\)</span> resnične. Od tod sledi, da je
+            resničen tudi zaključek <span
+            class="math inline">\(B\)</span>. Torej je <span
+            class="math inline">\(A_1 \land A_2 \land \cdot \land A_k
+            \models B\)</span> tavtologija. <span
+            class="math inline">\(\checkmark\)</span></p>
+            <p>Predpostavimo sedaj, da je <span
+            class="math inline">\(A_1 \land A_2 \land \cdot \land A_k
+            \models B\)</span> tavtologija. Dokazati želimo veljavnost
+            sklepa <span class="math inline">\(A_1, A_2, \dots, A_k
+            \models B\)</span>. Predpostavimo torej, da so resnične vse
+            predpostavke <span class="math inline">\(A_1, A_2, \dots,
+            A_k\)</span>. Potem je resnična tudi njihova konjunkcija
+            <span class="math inline">\(A_1 \land A_2 \land \cdots \land
+            A_k\)</span>. Iz predpostavke od tod sledi, da mora biti
+            resnična tudi izjava <span class="math inline">\(B\)</span>.
+            Sklep <span class="math inline">\(A_1, A_2, \dots, A_k
+            \models B\)</span> je torej veljaven. <span
+            class="math inline">\(\checkmark\)</span> ◻</p>
+            </div>
+            <p><span><strong><em>Pogojni sklep</em></strong></span> (PS)
+            uporabimo, kadar dokazujemo sklep, v katerem ima zaključek
+            obliko implikacije. Če želimo sklepati na zaključek <span
+            class="math inline">\(B \Rightarrow C\)</span>, dodamo
+            izjavo <span class="math inline">\(B\)</span> med
+            predpostavke in skušamo sklepati na zaključek <span
+            class="math inline">\(C\)</span>. Veljavnost tega pomožnega
+            sklepa sledi iz naslednjega izreka.</p>
+            <div class="izrek">
+            <p><strong>Izrek 1.2</strong> (o pogojnem sklepu). Velja
+            <span class="math inline">\(A_1, A_2, \dots, A_k \models B
+            \Rightarrow C\)</span>, če in samo če velja <span
+            class="math inline">\(A_1, A_2, \dots, A_k, B \models
+            C\)</span>.</p>
+            </div>
+            <div class="proof">
+            <p><em>Proof.</em> Naj bo <span class="math inline">\(A =
+            A_1 \land A_2 \land \cdots \land A_k\)</span>. Po zadnji
+            trditvi je dovolj dokazati, da je <span
+            class="math inline">\(A \Rightarrow (B \Rightarrow
+            C)\)</span> tavtologija, če in samo če je <span
+            class="math inline">\(A \land B \Rightarrow C\)</span>
+            tavtologija. Ta dva izjavna izraza pa sta si v resnici
+            enakovredna, saj velja <span class="math display">\[A
+            \Rightarrow (B \Rightarrow C) \sim \lnot A \lor (\lnot B
+            \lor C) \sim (\lnot A \lor \lnot B) \lor C \sim \lnot (A
+            \land B) \lor C \sim A \land B \Rightarrow C.\]</span>
+            Izraza sta torej bodisi oba tavtologiji bodisi nobenen od
+            njiju ni tavtologija. S tem je izrek dokazan. ◻</p>
+            </div>
+            <div class="zgled">
+            <p><strong>Zgled 1.19</strong>. Dokažimo veljavnost sklepa
+            <span class="math display">\[p \Rightarrow q \lor r, \ \lnot
+            r \models p \Rightarrow q.\]</span> Ker ima zaključek obliko
+            implikacije, lahko uporabimo pogojni sklep.</p>
+            <table>
+            <caption>Uporaba pogojnega sklepa</caption>
+            <thead>
+            <tr class="header">
+            <th style="text-align: left;"><span
+            class="math inline">\(i\)</span></th>
+            <th style="text-align: left;"><span
+            class="math inline">\(B_i\)</span></th>
+            <th style="text-align: left;">utemeljitev</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="odd">
+            <td style="text-align: left;">1</td>
+            <td style="text-align: left;"><span class="math inline">\(p
+            \Rightarrow q \lor r\)</span></td>
+            <td style="text-align: left;">predpostavka</td>
+            </tr>
+            <tr class="even">
+            <td style="text-align: left;">2</td>
+            <td style="text-align: left;"><span
+            class="math inline">\(\lnot r\)</span></td>
+            <td style="text-align: left;">predpostavka</td>
+            </tr>
+            <tr class="odd">
+            <td style="text-align: left;">3.1</td>
+            <td style="text-align: left;"><span
+            class="math inline">\(p\)</span></td>
+            <td style="text-align: left;">predpostavka PS</td>
+            </tr>
+            <tr class="even">
+            <td style="text-align: left;">3.2</td>
+            <td style="text-align: left;"><span class="math inline">\(q
+            \lor r\)</span></td>
+            <td style="text-align: left;">MP(3.1, 1)</td>
+            </tr>
+            <tr class="odd">
+            <td style="text-align: left;">3.3</td>
+            <td style="text-align: left;"><span
+            class="math inline">\(q\)</span></td>
+            <td style="text-align: left;">DS(3.2, 2)</td>
+            </tr>
+            <tr class="even">
+            <td style="text-align: left;">3</td>
+            <td style="text-align: left;"><u><span
+            class="math inline">\(p \Rightarrow q\)</span></u></td>
+            <td style="text-align: left;">PS(3.1–3.3)</td>
+            </tr>
+            </tbody>
+            </table>
+            </div>
+            <p>Pomožni <span><strong><em>sklep s
+            protislovjem</em></strong></span> (RA<a href="#fn1"
+            class="footnote-ref" id="fnref1"
+            role="doc-noteref"><sup>1</sup></a>) lahko uporabimo kadar
+            koli. Če želimo sklepati na zaključek <span
+            class="math inline">\(B\)</span>, dodamo izjavo <span
+            class="math inline">\(\lnot B\)</span> med predpostavke in
+            skušamo sklepati na zaključek <span
+            class="math inline">\(0\)</span>. To je še posebej uporabno,
+            kadar ima zaključek obliko negacije <span
+            class="math inline">\(\lnot B\)</span>, saj v tem primeru
+            dodatna predpostavka postane <span
+            class="math inline">\(\lnot \lnot B \sim B\)</span>.
+            Veljavnost tega pomožnega sklepa sledi iz naslednjega
+            izreka.</p>
+            <div class="izrek">
+            <p><strong>Izrek 1.3</strong> (o sklepu s protislovjem).
+            Velja <span class="math inline">\(A_1, A_2, \dots, A_k
+            \models B\)</span>, če in samo če velja <span
+            class="math inline">\(A_1, A_2, \dots, A_k, \lnot B \models
+            0\)</span>.</p>
+            </div>
+            <div class="proof">
+            <p><em>Proof.</em> Naj bo <span class="math inline">\(A =
+            A_1 \land A_2 \land \cdots \land A_k\)</span>. Kot v dokazu
+            zadnjega izreka je dovolj dokazati, da je <span
+            class="math inline">\(A \Rightarrow B\)</span> tavtologija,
+            če in samo če je <span class="math inline">\(A \land \lnot B
+            \Rightarrow 0\)</span> tavtologija. Ta dva izjavna izraza pa
+            sta si v resnici enakovredna, saj velja <span
+            class="math display">\[A \land \lnot B \Rightarrow 0 \sim
+                \lnot A \lor \lnot \lnot B \sim
+                \lnot A \lor B \sim
+                A \Rightarrow B.\]</span> ◻</p>
+            </div>
+            <div class="zgled">
+            <p><strong>Zgled 1.20</strong>. Dokažimo veljavnost sklepa
+            <span class="math display">\[p \Rightarrow \lnot (p
+            \Rightarrow r), \ q \land s, \ s \models \lnot p.\]</span>
+            Ker ima zaključek obliko negacije, še posebej radi uporabimo
+            sklepanje s protislovjem.</p>
+            <table>
+            <caption>Uporaba sklepa s protislovjem</caption>
+            <thead>
+            <tr class="header">
+            <th style="text-align: left;"><span
+            class="math inline">\(i\)</span></th>
+            <th style="text-align: left;"><span
+            class="math inline">\(B_i\)</span></th>
+            <th style="text-align: left;">utemeljitev</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="odd">
+            <td style="text-align: left;">1</td>
+            <td style="text-align: left;"><span class="math inline">\(p
+            \Rightarrow \lnot(q \Rightarrow r)\)</span></td>
+            <td style="text-align: left;">predpostavka</td>
+            </tr>
+            <tr class="even">
+            <td style="text-align: left;">2</td>
+            <td style="text-align: left;"><span class="math inline">\(q
+            \land s \Rightarrow r\)</span></td>
+            <td style="text-align: left;">predpostavka</td>
+            </tr>
+            <tr class="odd">
+            <td style="text-align: left;">3</td>
+            <td style="text-align: left;"><span
+            class="math inline">\(s\)</span></td>
+            <td style="text-align: left;">predpostavka</td>
+            </tr>
+            <tr class="even">
+            <td style="text-align: left;">4.1</td>
+            <td style="text-align: left;"><span
+            class="math inline">\(\lnot \lnot p\)</span></td>
+            <td style="text-align: left;">predpostavka RA</td>
+            </tr>
+            <tr class="odd">
+            <td style="text-align: left;">4.2</td>
+            <td style="text-align: left;"><span
+            class="math inline">\(p\)</span></td>
+            <td style="text-align: left;"><span
+            class="math inline">\(\sim\)</span> 4.1</td>
+            </tr>
+            <tr class="even">
+            <td style="text-align: left;">4.3</td>
+            <td style="text-align: left;"><span
+            class="math inline">\(\lnot (q \Rightarrow r)\)</span></td>
+            <td style="text-align: left;">MP(4.2, 1)</td>
+            </tr>
+            <tr class="odd">
+            <td style="text-align: left;">4.4</td>
+            <td style="text-align: left;"><span class="math inline">\(q
+            \land \lnot r\)</span></td>
+            <td style="text-align: left;"><span
+            class="math inline">\(\sim\)</span> 4.3</td>
+            </tr>
+            <tr class="even">
+            <td style="text-align: left;">4.5</td>
+            <td style="text-align: left;"><span
+            class="math inline">\(q\)</span></td>
+            <td style="text-align: left;">Po(4.4)</td>
+            </tr>
+            <tr class="odd">
+            <td style="text-align: left;">4.6</td>
+            <td style="text-align: left;"><span class="math inline">\(q
+            \land s\)</span></td>
+            <td style="text-align: left;">Zd(4.5, 3)</td>
+            </tr>
+            <tr class="even">
+            <td style="text-align: left;">4.7</td>
+            <td style="text-align: left;"><span
+            class="math inline">\(r\)</span></td>
+            <td style="text-align: left;">MP(4.6, 2)</td>
+            </tr>
+            <tr class="odd">
+            <td style="text-align: left;">4.8</td>
+            <td style="text-align: left;"><span
+            class="math inline">\(\lnot r \land q\)</span></td>
+            <td style="text-align: left;"><span
+            class="math inline">\(\sim\)</span> 4.4</td>
+            </tr>
+            <tr class="even">
+            <td style="text-align: left;">4.9</td>
+            <td style="text-align: left;"><span
+            class="math inline">\(\lnot r\)</span></td>
+            <td style="text-align: left;">Po(4.8)</td>
+            </tr>
+            <tr class="odd">
+            <td style="text-align: left;">4.10</td>
+            <td style="text-align: left;"><span class="math inline">\(r
+            \land \lnot r\)</span></td>
+            <td style="text-align: left;">Zd(4.7, 4.9)</td>
+            </tr>
+            <tr class="even">
+            <td style="text-align: left;">4.11</td>
+            <td style="text-align: left;"><span
+            class="math inline">\(0\)</span></td>
+            <td style="text-align: left;"><span
+            class="math inline">\(\sim\)</span> 4.10</td>
+            </tr>
+            <tr class="odd">
+            <td style="text-align: left;">4</td>
+            <td style="text-align: left;"><u><span
+            class="math inline">\(\lnot p\)</span></u></td>
+            <td style="text-align: left;">RA(4.1–4.11)</td>
+            </tr>
+            </tbody>
+            </table>
+            </div>
+            <p>Pomožni sklep <span><strong><em>analiza
+            primerov</em></strong></span> (AP) uporabimo, kadar
+            dokazujemo sklep, v katerem ima ena od predpostavk obliko
+            disjunkcije <span class="math inline">\(B_1 \lor
+            B_2\)</span>. V tem primeru lahko sklep razdelimo na dva
+            preprostejša sklepa, pri čemer prvemu dodamo predpostavko
+            <span class="math inline">\(B_1\)</span>, drugemu pa
+            predpostavko <span class="math inline">\(B_2\)</span>.
+            Podobno kot pri prejšnjih dveh pomožnih sklepih veljavnost
+            tega pomožnega sklepa sledi iz naslednjega izreka.</p>
+            <div class="izrek">
+            <p><strong>Izrek 1.4</strong> (o analizi primerov). Velja
+            <span class="math inline">\(A_1, A_2, \dots, A_k, B_1 \lor
+            B_2 \models C\)</span>, če in samo če veljata oba sklepa
+            <span class="math inline">\(A_1, A_2, \dots, A_k, B_1
+            \models C\)</span> in <span class="math inline">\(A_1, A_2,
+            \dots, A_k, B_2 \models C\)</span>.</p>
+            </div>
+            <div class="domacanaloga">
+            <p><strong>Domača naloga 1.3</strong>. Dokaži izrek o
+            analizi primerov.</p>
+            </div>
+            <div class="zgled">
+            <p><strong>Zgled 1.21</strong>. Dokažimo veljavnost sklepa
+            <span class="math display">\[p \Rightarrow r, \ q
+            \Rightarrow r, \ p \lor q \models r.\]</span> Tretja
+            predpostavka ima obliko disjunkcije, zato lahko sklep
+            dokažemo s pomočjo analize primerov.</p>
+            <table>
+            <caption>Uporaba analize primerov</caption>
+            <thead>
+            <tr class="header">
+            <th style="text-align: left;"><span
+            class="math inline">\(i\)</span></th>
+            <th style="text-align: left;"><span
+            class="math inline">\(B_i\)</span></th>
+            <th style="text-align: left;">utemeljitev</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="odd">
+            <td style="text-align: left;">1</td>
+            <td style="text-align: left;"><span class="math inline">\(p
+            \Rightarrow r\)</span></td>
+            <td style="text-align: left;">predpostavka</td>
+            </tr>
+            <tr class="even">
+            <td style="text-align: left;">2</td>
+            <td style="text-align: left;"><span class="math inline">\(q
+            \Rightarrow r\)</span></td>
+            <td style="text-align: left;">predpostavka</td>
+            </tr>
+            <tr class="odd">
+            <td style="text-align: left;">3</td>
+            <td style="text-align: left;"><span class="math inline">\(p
+            \lor q\)</span></td>
+            <td style="text-align: left;">predpostavka</td>
+            </tr>
+            <tr class="even">
+            <td style="text-align: left;">4.1.1</td>
+            <td style="text-align: left;"><span
+            class="math inline">\(p\)</span></td>
+            <td style="text-align: left;">predpostavka AP(3)</td>
+            </tr>
+            <tr class="odd">
+            <td style="text-align: left;">4.1.2</td>
+            <td style="text-align: left;"><span
+            class="math inline">\(r\)</span></td>
+            <td style="text-align: left;">MP(4.1.1, 1)</td>
+            </tr>
+            <tr class="even">
+            <td style="text-align: left;">4.2.1</td>
+            <td style="text-align: left;"><span
+            class="math inline">\(q\)</span></td>
+            <td style="text-align: left;">predpostavka AP(3)</td>
+            </tr>
+            <tr class="odd">
+            <td style="text-align: left;">4.2.2</td>
+            <td style="text-align: left;"><span
+            class="math inline">\(r\)</span></td>
+            <td style="text-align: left;">MP(4.1.1, 2)</td>
+            </tr>
+            <tr class="even">
+            <td style="text-align: left;">4.</td>
+            <td style="text-align: left;"><u><span
+            class="math inline">\(r\)</span></u></td>
+            <td style="text-align: left;">AP(3, 4.1.1–4.1.2,
+            4.2.1–4.2.2)</td>
+            </tr>
+            </tbody>
+            </table>
+            </div>
             <h1 id="predikatni-račun">Predikatni račun</h1>
             <h1 id="relacije">Relacije</h1>
             <h1 id="urejenosti">Urejenosti</h1>
             <h1 id="grafi">Grafi</h1>
+            <section class="footnotes footnotes-end-of-document"
+            role="doc-endnotes">
+            <hr />
+            <ol>
+            <li id="fn1" role="doc-endnote"><p>Lat. <em>Reductio ad
+            absurdum</em>.<a href="#fnref1" class="footnote-back"
+            role="doc-backlink">↩︎</a></p></li>
+            </ol>
+            </section>
 
           </div>
         </div>
