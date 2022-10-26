@@ -1109,6 +1109,124 @@ Opazujmo izjavno formulo $\phi = \forall x \exists y \colon R(x,y)$. Poglejmo si
 
 Dani zaprti izjavni formuli $\phi$ lahko torej v nekaterih interpretacijah ustrezajo resnične izjave, v drugih interpretacijah pa lažje izjave. Rečemo, da je zaprta izjavna formula $\phi$ {\definicija resnična v interpretaciji} $I$, če je resnična izjava $\bar \phi$. V tem primeru pišemo $I \models \varphi$.
 
+\section{Logično veljavne formule in enakovrednosti}
+
+Kadar je zaprta izjavna formula $\phi$ resnična v \emph{vseh} interpretacijah, ji pravimo {\definicija logično veljavna}. Sorodno izjavni formuli $\phi$, ki je lažna v \emph{vseh} interpretacijah, pravimo {\definicija protislovna}.
+
+\begin{zgled}
+Naj bosta $P$ in $Q$ enomestna predikata. Opazujmo izjavno formulo
+\[
+    \phi = \forall x \colon P(x) \lor \forall x \colon Q(x) \Rightarrow \forall x \colon (P(x) \lor Q(x)).
+\]
+Prepričajmo se, da je $\phi$ logično veljavna formula.
+
+V ta namen moramo dokazati, da za \emph{vsako} interpretacijo $I$ velja $I \models \bar \phi$. Naj bo torej $I$ poljubna interpretacija. V tej interpretaciji moramo torej dokazati, da je izjava $\bar \phi$ veljavna, kar je enakovredno veljavnosti sklepa $\models \bar \phi$, se pravi veljavnosti sklepa
+\[
+    \models 
+    \forall x \colon \bar P(x) \lor \forall x \colon \bar Q(x) \Rightarrow \forall x \colon (\bar P(x) \lor \bar Q(x)).
+\]
+Zaključek tega sklepa ima obliko implikacije, zato lahko uporabimo pogojni sklep. Dokazati moramo torej veljavnost sklepa
+\[
+    \forall x \colon \bar P(x) \lor \forall x \colon \bar Q(x)
+    \models
+    \forall x \colon (\bar P(x) \lor \bar Q(x)).
+\]
+Predpostavka tega sklepa ima obliko disjunkcije, zato lahko uporabimo analizo primerov.
+\begin{enumerate}
+    \item Predpostavimo $\forall x \colon \bar P(x)$. Dokazati želimo, da je izjava $\forall x \colon (\bar P(x) \lor \bar Q(x))$ resnična. V ta namen izberimo poljuben $x_0 \in D$. Po predpostavki za vsak $x$ iz $D$ velja $\bar P(x)$, zato v posebnem to velja za element $x_0$, se pravi da je izjava $\bar P(x_0)$ resnična. Od tod sledi, da je resnična tudi izjava $\bar P(x_0) \lor \bar Q(x_0)$. Ker je bil $x_0$ poljuben element iz $D$, smo s tem premislili, da je izjava $\forall x \colon (\bar P(x) \lor \bar Q(x))$ resnična. To je bil naš cilj, zato je sklep v tem primeru veljaven.
+    \item Predpostavimo $\forall x \colon \bar Q(x)$. Kot zgoraj želimo dokazati, da je izjava $\forall x \colon (\bar P(x) \lor \bar Q(x))$ resnična. Dokaz je povsem analogen tistemu iz prejšnje točke, le $P$ in $Q$ zamenjamo med sabo.
+\end{enumerate}
+S tem smo dokazali veljavnost sklepa in torej veljavnost $I \models \bar \phi$. Ker je bila interpretacija $I$ poljubna, je torej $\phi$ res logično veljavna formula.
+\end{zgled}
+
+\begin{zgled}
+Naj bosta $P$ in $Q$ enomestna predikata. Opazujmo izjavno formulo
+\[
+    \psi = \forall x \colon (P(x) \lor Q(x)) \Rightarrow \forall x \colon P(x) \lor \forall x \colon Q(x).
+\]
+Prepričajmo se, da $\psi$ ni logično veljavna.
+
+V ta namen zadošča poiskati neko interpretacijo $I$, v kateri $\psi$ ni resnična. Možnosti za to je veliko. Vzamemo lahko naslednjo interpretacijo:
+\[
+    D = \NN, \ \bar P = \{ 2 n \mid n \in \NN \}, \ \bar Q = \{ 2n - 1 \mid n \in \NN \}.
+\]
+Velja $\psi = \psi_1 \Rightarrow \psi_2$, kjer je 
+\[
+    \psi_1 = \forall x \colon (P(x) \lor Q(x)), \
+    \psi_2 = \forall x \colon P(x) \lor \forall x \colon Q(x).
+\]
+V interpretaciji $I$ je izjava $\bar \psi_1$ enakovredna izjavi, da je vsako naravno število sodo ali liho, izjava $\bar \psi_2$ pa je enakovredna izjavi, da so vsa naravna števila soda ali pa so vsa naravna števila liha. Prva od teh dveh izjav je resnična, druga pa je lažna. V interpretaciji $I$ je zato $\bar \psi_1 \Rightarrow \bar \psi_2$ lažna izjava, torej je $\bar\psi$ lažna v $I$. Izjavna formula $\psi$ torej res ni logično veljavna.
+
+\begin{domacanaloga}
+    Poišči kakšno interpretacijo, v kateri je izjavna formula $\psi$ resnična.
+\end{domacanaloga}
+\end{zgled}
+
+\begin{zgled}
+Naj bo $R$ dvomestni predikat. Opazujmo izjavno formulo
+\[
+    \chi = \exists y \forall x \colon (R(x,y) \Leftrightarrow \lnot R(x,x)).
+\]
+Prepričajmo se, da je $\chi$ protislovna izjavna formula.
+
+V ta namen moramo dokazati, da za \emph{vsako} interpretacijo $I$ velja, da je izjava $\bar \chi$ lažna v $I$. Naj bo torej $I$ poljubna interpretacija. Dokazati želimo veljavnost sklepa
+\[
+  \models \lnot \left( \exists y \forall x \colon (\bar R(x,y) \Leftrightarrow \lnot \bar R(x,x)) \right).
+\]
+Ker ima zaključek obliko negacije, lahko uporabimo sklepanje s protislovjem. Predpostavimo torej, da je v interpretaciji $I$ izjava $\lnot \bar \chi$ lažna, se pravi da je $\bar \chi$ resnična. Dokazati želimo protislovje $0$. Po predpostavki o resničnosti $\bar \chi$ obstaja nek $y_0 \in D$, za da je izjava 
+\[
+    \forall x \colon (\bar R(x, y_0) \Leftrightarrow \lnot \bar R(x,x))
+\]
+resnična. Torej za vsak $x$ iz $D$ velja $\bar R(x, y_0) \Leftrightarrow \lnot \bar R(x,x)$. V posebnem to velja za element $y_0$, se pravi da je izjava $\bar R(x_0, y_0) \Leftrightarrow \lnot \bar R(x_0,x_0)$ resnična. Ampak zadnja izjava je po izjavnem računu enakovredna $0$. Na ta način smo izpeljali, da je $0$ resnična izjava. To je lažno, zato smo izpeljali $0$, kar je bil naš cilj dokazovanja s protislovjem. Izjava $\lnot \bar \chi$ je torej v interpretaciji $I$ resnična, kar pomeni, da $\chi$ ni resnična v $I$. Ker je bila $I$ poljubna interpretacija, smo se s tem prepričali, da je $\chi$ protislovna izjavna formula.
+\end{zgled}
+
+Po analogiji z izjavnim računom rečemo, da sta izjavni formuli $\phi, \psi$ {\definicija enakovredni}, če je formula $\phi \Leftrightarrow \psi$ logično veljavna. V tem primeru pišemo $\phi \sim \psi$.
+
+Zabeležimo nekaj pomembnih enakovrednosti, ki veljajo v predikatnem računu. Za vsaki izjavni formuli $\phi, \psi$ in individualni spremenljivki $x,y$ velja:
+\begin{itemize}
+    \item $\lnot \forall x \colon \phi \sim \exists x \colon \lnot \phi$, \\ $\lnot \exists x \colon \phi \sim \forall x \colon \lnot \phi$ ({\definicija negacija kvantificirane formule}) 
+    \item $\forall x \forall y \colon \phi \sim \forall y \forall x \colon \phi$, \\ $\exists x \exists y \colon \phi \sim \exists y \exists x \colon \phi$ ({\definicija komutativnost istovrstnih kvantifikatorjev})
+    \item $\forall x \colon (\phi \land \psi) \sim \forall x \colon \psi \land \forall x \colon \psi$, \\ $\exists x \colon (\phi \lor \psi) \sim \exists x \colon \psi \lor \exists x \colon \psi$ ({\definicija distributivnost kvantifikatorjev glede na $\land, \lor$})
+    \item $\forall x \colon (\phi \lor \psi) \sim \forall x \colon \phi \lor \psi$, če $x$ ne nastopa prosto v $\psi$; \\ $\exists x \colon (\phi \land \psi) \sim \exists x \colon \phi \land \psi$, če $x$ ne nastopa prosto v $\psi$
+    \item $\forall x \colon \phi \sim \phi$, če $x$ ne nastopa prosto v $\phi$; \\ $\exists x \colon \phi \sim \phi$, če $x$ ne nastopa prosto v $\phi$ ({\definicija opuščanje odvečnih kvantifikatorjev})
+    \item $\forall x \colon \phi(x) \sim \forall y \colon \phi(y)$, če $y$ ne nastopa v $\phi(x)$ niti prosto niti vezano; \\ $\exists x \colon \phi(x) \sim \exists y \colon \phi(y)$, če $y$ ne nastopa v $\phi(x)$ niti prosto niti vezano ({\definicija preimenovanje vezanih spremenljivk}).
+\end{itemize}
+
+\begin{zgled}
+Za vsako izjavno formulo $\phi$ obstaja enakovredna formula $\psi$, pri kateri stojijo vsi kvantifikatorji na začetku formule. Rečemo, da je $\psi$ v {\definicija preneksni obliki}. Kako ta transformacija deluje, si oglejmo na dveh konkretnih primerih.
+
+Opazujmo najprej izjavno formulo
+\[
+    \lnot \forall x \exists y \colon R(x,y).
+\]
+S pomočjo negacije kvantificirane formule izpeljemo, da je ta izjavna formula enakovredna formuli
+\[
+    \exists x \colon (\lnot \exists y \colon R(x,y))
+    \sim \exists x \forall y \colon \lnot R(x,y),
+\] 
+slednja pa je v preneksni obliki.
+
+Oglejmo si zdaj še izjavno formulo
+\[
+    \exists x \colon P(x) \land \exists x \colon Q(x).
+\]
+Spremenljivki $x$ v obeh delih konjunkcije sta neodvisni, zato lahko za večjo jasnost v drugem delu to spremenljivko preimenujemo in dobimo enakovredno izjavno formulo
+\[
+    \exists x \colon P(x) \land \exists y \colon Q(y).
+\]
+Zdaj lahko uporabimo distributivnost kvantifikatorjev glede na konjunkcijo, da dobimo 
+\[
+    \exists x \colon ( P(x) \land \exists y \colon Q(y) )
+    \sim 
+    \exists x \colon ( \exists y \colon Q(y) \land \colon P(x) ).
+\]
+Slednja formula je enakovredna
+\[
+    \exists x \exists y \colon (Q(y) \land P(x)),
+\]
+ki je v preneksni obliki.
+\end{zgled}
+
 \chapter{Relacije}
 \chapter{Urejenosti}
 \chapter{Grafi}

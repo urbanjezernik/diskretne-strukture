@@ -83,6 +83,9 @@
               <li><a href="#semantika-predikatnega-računa"
               id="toc-semantika-predikatnega-računa">Semantika
               predikatnega računa</a></li>
+              <li><a href="#logično-veljavne-formule-in-enakovrednosti"
+              id="toc-logično-veljavne-formule-in-enakovrednosti">Logično
+              veljavne formule in enakovrednosti</a></li>
               </ul></li>
               <li><a href="#relacije"
               id="toc-relacije">Relacije</a></li>
@@ -2416,6 +2419,269 @@
             <span class="math inline">\(\bar \phi\)</span>. V tem
             primeru pišemo <span class="math inline">\(I \models
             \varphi\)</span>.</p>
+            <h2 id="logično-veljavne-formule-in-enakovrednosti">Logično
+            veljavne formule in enakovrednosti</h2>
+            <p>Kadar je zaprta izjavna formula <span
+            class="math inline">\(\phi\)</span> resnična v <em>vseh</em>
+            interpretacijah, ji pravimo <span><strong><em>logično
+            veljavna</em></strong></span>. Sorodno izjavni formuli <span
+            class="math inline">\(\phi\)</span>, ki je lažna v
+            <em>vseh</em> interpretacijah, pravimo
+            <span><strong><em>protislovna</em></strong></span>.</p>
+            <div class="zgled">
+            <p><strong>Zgled 2.11</strong>. Naj bosta <span
+            class="math inline">\(P\)</span> in <span
+            class="math inline">\(Q\)</span> enomestna predikata.
+            Opazujmo izjavno formulo <span class="math display">\[\phi =
+            \forall x \colon P(x) \lor \forall x \colon Q(x) \Rightarrow
+            \forall x \colon (P(x) \lor Q(x)).\]</span> Prepričajmo se,
+            da je <span class="math inline">\(\phi\)</span> logično
+            veljavna formula.</p>
+            <p>V ta namen moramo dokazati, da za <em>vsako</em>
+            interpretacijo <span class="math inline">\(I\)</span> velja
+            <span class="math inline">\(I \models \bar \phi\)</span>.
+            Naj bo torej <span class="math inline">\(I\)</span> poljubna
+            interpretacija. V tej interpretaciji moramo torej dokazati,
+            da je izjava <span class="math inline">\(\bar \phi\)</span>
+            veljavna, kar je enakovredno veljavnosti sklepa <span
+            class="math inline">\(\models \bar \phi\)</span>, se pravi
+            veljavnosti sklepa <span class="math display">\[\models
+                \forall x \colon \bar P(x) \lor \forall x \colon \bar
+            Q(x) \Rightarrow \forall x \colon (\bar P(x) \lor \bar
+            Q(x)).\]</span> Zaključek tega sklepa ima obliko
+            implikacije, zato lahko uporabimo pogojni sklep. Dokazati
+            moramo torej veljavnost sklepa <span
+            class="math display">\[\forall x \colon \bar P(x) \lor
+            \forall x \colon \bar Q(x)
+                \models
+                \forall x \colon (\bar P(x) \lor \bar Q(x)).\]</span>
+            Predpostavka tega sklepa ima obliko disjunkcije, zato lahko
+            uporabimo analizo primerov.</p>
+            <ol>
+            <li><p>Predpostavimo <span class="math inline">\(\forall x
+            \colon \bar P(x)\)</span>. Dokazati želimo, da je izjava
+            <span class="math inline">\(\forall x \colon (\bar P(x) \lor
+            \bar Q(x))\)</span> resnična. V ta namen izberimo poljuben
+            <span class="math inline">\(x_0 \in D\)</span>. Po
+            predpostavki za vsak <span class="math inline">\(x\)</span>
+            iz <span class="math inline">\(D\)</span> velja <span
+            class="math inline">\(\bar P(x)\)</span>, zato v posebnem to
+            velja za element <span class="math inline">\(x_0\)</span>,
+            se pravi da je izjava <span class="math inline">\(\bar
+            P(x_0)\)</span> resnična. Od tod sledi, da je resnična tudi
+            izjava <span class="math inline">\(\bar P(x_0) \lor \bar
+            Q(x_0)\)</span>. Ker je bil <span
+            class="math inline">\(x_0\)</span> poljuben element iz <span
+            class="math inline">\(D\)</span>, smo s tem premislili, da
+            je izjava <span class="math inline">\(\forall x \colon (\bar
+            P(x) \lor \bar Q(x))\)</span> resnična. To je bil naš cilj,
+            zato je sklep v tem primeru veljaven.</p></li>
+            <li><p>Predpostavimo <span class="math inline">\(\forall x
+            \colon \bar Q(x)\)</span>. Kot zgoraj želimo dokazati, da je
+            izjava <span class="math inline">\(\forall x \colon (\bar
+            P(x) \lor \bar Q(x))\)</span> resnična. Dokaz je povsem
+            analogen tistemu iz prejšnje točke, le <span
+            class="math inline">\(P\)</span> in <span
+            class="math inline">\(Q\)</span> zamenjamo med
+            sabo.</p></li>
+            </ol>
+            <p>S tem smo dokazali veljavnost sklepa in torej veljavnost
+            <span class="math inline">\(I \models \bar \phi\)</span>.
+            Ker je bila interpretacija <span
+            class="math inline">\(I\)</span> poljubna, je torej <span
+            class="math inline">\(\phi\)</span> res logično veljavna
+            formula.</p>
+            </div>
+            <div class="zgled">
+            <p><strong>Zgled 2.12</strong>. Naj bosta <span
+            class="math inline">\(P\)</span> in <span
+            class="math inline">\(Q\)</span> enomestna predikata.
+            Opazujmo izjavno formulo <span class="math display">\[\psi =
+            \forall x \colon (P(x) \lor Q(x)) \Rightarrow \forall x
+            \colon P(x) \lor \forall x \colon Q(x).\]</span> Prepričajmo
+            se, da <span class="math inline">\(\psi\)</span> ni logično
+            veljavna.</p>
+            <p>V ta namen zadošča poiskati neko interpretacijo <span
+            class="math inline">\(I\)</span>, v kateri <span
+            class="math inline">\(\psi\)</span> ni resnična. Možnosti za
+            to je veliko. Vzamemo lahko naslednjo interpretacijo: <span
+            class="math display">\[D = \mathbf{N}, \ \bar P = \{ 2 n
+            \mid n \in \mathbf{N}\}, \ \bar Q = \{ 2n - 1 \mid n \in
+            \mathbf{N}\}.\]</span> Velja <span
+            class="math inline">\(\psi = \psi_1 \Rightarrow
+            \psi_2\)</span>, kjer je <span class="math display">\[\psi_1
+            = \forall x \colon (P(x) \lor Q(x)), \
+                \psi_2 = \forall x \colon P(x) \lor \forall x \colon
+            Q(x).\]</span> V interpretaciji <span
+            class="math inline">\(I\)</span> je izjava <span
+            class="math inline">\(\bar \psi_1\)</span> enakovredna
+            izjavi, da je vsako naravno število sodo ali liho, izjava
+            <span class="math inline">\(\bar \psi_2\)</span> pa je
+            enakovredna izjavi, da so vsa naravna števila soda ali pa so
+            vsa naravna števila liha. Prva od teh dveh izjav je
+            resnična, druga pa je lažna. V interpretaciji <span
+            class="math inline">\(I\)</span> je zato <span
+            class="math inline">\(\bar \psi_1 \Rightarrow \bar
+            \psi_2\)</span> lažna izjava, torej je <span
+            class="math inline">\(\bar\psi\)</span> lažna v <span
+            class="math inline">\(I\)</span>. Izjavna formula <span
+            class="math inline">\(\psi\)</span> torej res ni logično
+            veljavna.</p>
+            <div class="domacanaloga">
+            <p><strong>Domača naloga 2.1</strong>. Poišči kakšno
+            interpretacijo, v kateri je izjavna formula <span
+            class="math inline">\(\psi\)</span> resnična.</p>
+            </div>
+            </div>
+            <div class="zgled">
+            <p><strong>Zgled 2.13</strong>. Naj bo <span
+            class="math inline">\(R\)</span> dvomestni predikat.
+            Opazujmo izjavno formulo <span class="math display">\[\chi =
+            \exists y \forall x \colon (R(x,y) \Leftrightarrow \lnot
+            R(x,x)).\]</span> Prepričajmo se, da je <span
+            class="math inline">\(\chi\)</span> protislovna izjavna
+            formula.</p>
+            <p>V ta namen moramo dokazati, da za <em>vsako</em>
+            interpretacijo <span class="math inline">\(I\)</span> velja,
+            da je izjava <span class="math inline">\(\bar \chi\)</span>
+            lažna v <span class="math inline">\(I\)</span>. Naj bo torej
+            <span class="math inline">\(I\)</span> poljubna
+            interpretacija. Dokazati želimo veljavnost sklepa <span
+            class="math display">\[\models \lnot \left( \exists y
+            \forall x \colon (\bar R(x,y) \Leftrightarrow \lnot \bar
+            R(x,x)) \right).\]</span> Ker ima zaključek obliko negacije,
+            lahko uporabimo sklepanje s protislovjem. Predpostavimo
+            torej, da je v interpretaciji <span
+            class="math inline">\(I\)</span> izjava <span
+            class="math inline">\(\lnot \bar \chi\)</span> lažna, se
+            pravi da je <span class="math inline">\(\bar \chi\)</span>
+            resnična. Dokazati želimo protislovje <span
+            class="math inline">\(0\)</span>. Po predpostavki o
+            resničnosti <span class="math inline">\(\bar \chi\)</span>
+            obstaja nek <span class="math inline">\(y_0 \in D\)</span>,
+            za da je izjava <span class="math display">\[\forall x
+            \colon (\bar R(x, y_0) \Leftrightarrow \lnot \bar
+            R(x,x))\]</span> resnična. Torej za vsak <span
+            class="math inline">\(x\)</span> iz <span
+            class="math inline">\(D\)</span> velja <span
+            class="math inline">\(\bar R(x, y_0) \Leftrightarrow \lnot
+            \bar R(x,x)\)</span>. V posebnem to velja za element <span
+            class="math inline">\(y_0\)</span>, se pravi da je izjava
+            <span class="math inline">\(\bar R(x_0, y_0) \Leftrightarrow
+            \lnot \bar R(x_0,x_0)\)</span> resnična. Ampak zadnja izjava
+            je po izjavnem računu enakovredna <span
+            class="math inline">\(0\)</span>. Na ta način smo izpeljali,
+            da je <span class="math inline">\(0\)</span> resnična
+            izjava. To je lažno, zato smo izpeljali <span
+            class="math inline">\(0\)</span>, kar je bil naš cilj
+            dokazovanja s protislovjem. Izjava <span
+            class="math inline">\(\lnot \bar \chi\)</span> je torej v
+            interpretaciji <span class="math inline">\(I\)</span>
+            resnična, kar pomeni, da <span
+            class="math inline">\(\chi\)</span> ni resnična v <span
+            class="math inline">\(I\)</span>. Ker je bila <span
+            class="math inline">\(I\)</span> poljubna interpretacija,
+            smo se s tem prepričali, da je <span
+            class="math inline">\(\chi\)</span> protislovna izjavna
+            formula.</p>
+            </div>
+            <p>Po analogiji z izjavnim računom rečemo, da sta izjavni
+            formuli <span class="math inline">\(\phi, \psi\)</span>
+            <span><strong><em>enakovredni</em></strong></span>, če je
+            formula <span class="math inline">\(\phi \Leftrightarrow
+            \psi\)</span> logično veljavna. V tem primeru pišemo <span
+            class="math inline">\(\phi \sim \psi\)</span>.</p>
+            <p>Zabeležimo nekaj pomembnih enakovrednosti, ki veljajo v
+            predikatnem računu. Za vsaki izjavni formuli <span
+            class="math inline">\(\phi, \psi\)</span> in individualni
+            spremenljivki <span class="math inline">\(x,y\)</span>
+            velja:</p>
+            <ul>
+            <li><p><span class="math inline">\(\lnot \forall x \colon
+            \phi \sim \exists x \colon \lnot \phi\)</span>,<br />
+            <span class="math inline">\(\lnot \exists x \colon \phi \sim
+            \forall x \colon \lnot \phi\)</span>
+            (<span><strong><em>negacija kvantificirane
+            formule</em></strong></span>)</p></li>
+            <li><p><span class="math inline">\(\forall x \forall y
+            \colon \phi \sim \forall y \forall x \colon
+            \phi\)</span>,<br />
+            <span class="math inline">\(\exists x \exists y \colon \phi
+            \sim \exists y \exists x \colon \phi\)</span>
+            (<span><strong><em>komutativnost istovrstnih
+            kvantifikatorjev</em></strong></span>)</p></li>
+            <li><p><span class="math inline">\(\forall x \colon (\phi
+            \land \psi) \sim \forall x \colon \psi \land \forall x
+            \colon \psi\)</span>,<br />
+            <span class="math inline">\(\exists x \colon (\phi \lor
+            \psi) \sim \exists x \colon \psi \lor \exists x \colon
+            \psi\)</span> (<span><strong><em>distributivnost
+            kvantifikatorjev glede na <span class="math inline">\(\land,
+            \lor\)</span></em></strong></span>)</p></li>
+            <li><p><span class="math inline">\(\forall x \colon (\phi
+            \lor \psi) \sim \forall x \colon \phi \lor \psi\)</span>, če
+            <span class="math inline">\(x\)</span> ne nastopa prosto v
+            <span class="math inline">\(\psi\)</span>;<br />
+            <span class="math inline">\(\exists x \colon (\phi \land
+            \psi) \sim \exists x \colon \phi \land \psi\)</span>, če
+            <span class="math inline">\(x\)</span> ne nastopa prosto v
+            <span class="math inline">\(\psi\)</span></p></li>
+            <li><p><span class="math inline">\(\forall x \colon \phi
+            \sim \phi\)</span>, če <span
+            class="math inline">\(x\)</span> ne nastopa prosto v <span
+            class="math inline">\(\phi\)</span>;<br />
+            <span class="math inline">\(\exists x \colon \phi \sim
+            \phi\)</span>, če <span class="math inline">\(x\)</span> ne
+            nastopa prosto v <span class="math inline">\(\phi\)</span>
+            (<span><strong><em>opuščanje odvečnih
+            kvantifikatorjev</em></strong></span>)</p></li>
+            <li><p><span class="math inline">\(\forall x \colon \phi(x)
+            \sim \forall y \colon \phi(y)\)</span>, če <span
+            class="math inline">\(y\)</span> ne nastopa v <span
+            class="math inline">\(\phi(x)\)</span> niti prosto niti
+            vezano;<br />
+            <span class="math inline">\(\exists x \colon \phi(x) \sim
+            \exists y \colon \phi(y)\)</span>, če <span
+            class="math inline">\(y\)</span> ne nastopa v <span
+            class="math inline">\(\phi(x)\)</span> niti prosto niti
+            vezano (<span><strong><em>preimenovanje vezanih
+            spremenljivk</em></strong></span>).</p></li>
+            </ul>
+            <div class="zgled">
+            <p><strong>Zgled 2.14</strong>. Za vsako izjavno formulo
+            <span class="math inline">\(\phi\)</span> obstaja
+            enakovredna formula <span
+            class="math inline">\(\psi\)</span>, pri kateri stojijo vsi
+            kvantifikatorji na začetku formule. Rečemo, da je <span
+            class="math inline">\(\psi\)</span> v
+            <span><strong><em>preneksni obliki</em></strong></span>.
+            Kako ta transformacija deluje, si oglejmo na dveh konkretnih
+            primerih.</p>
+            <p>Opazujmo najprej izjavno formulo <span
+            class="math display">\[\lnot \forall x \exists y \colon
+            R(x,y).\]</span> S pomočjo negacije kvantificirane formule
+            izpeljemo, da je ta izjavna formula enakovredna formuli
+            <span class="math display">\[\exists x \colon (\lnot \exists
+            y \colon R(x,y))
+                \sim \exists x \forall y \colon \lnot R(x,y),\]</span>
+            slednja pa je v preneksni obliki.</p>
+            <p>Oglejmo si zdaj še izjavno formulo <span
+            class="math display">\[\exists x \colon P(x) \land \exists x
+            \colon Q(x).\]</span> Spremenljivki <span
+            class="math inline">\(x\)</span> v obeh delih konjunkcije
+            sta neodvisni, zato lahko za večjo jasnost v drugem delu to
+            spremenljivko preimenujemo in dobimo enakovredno izjavno
+            formulo <span class="math display">\[\exists x \colon P(x)
+            \land \exists y \colon Q(y).\]</span> Zdaj lahko uporabimo
+            distributivnost kvantifikatorjev glede na konjunkcijo, da
+            dobimo <span class="math display">\[\exists x \colon ( P(x)
+            \land \exists y \colon Q(y) )
+                \sim
+                \exists x \colon ( \exists y \colon Q(y) \land \colon
+            P(x) ).\]</span> Slednja formula je enakovredna <span
+            class="math display">\[\exists x \exists y \colon (Q(y)
+            \land P(x)),\]</span> ki je v preneksni obliki.</p>
+            </div>
             <h1 id="relacije">Relacije</h1>
             <h1 id="urejenosti">Urejenosti</h1>
             <h1 id="grafi">Grafi</h1>
