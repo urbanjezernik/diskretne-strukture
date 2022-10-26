@@ -77,6 +77,9 @@
               <ul>
               <li><a href="#motivacija"
               id="toc-motivacija">Motivacija</a></li>
+              <li><a href="#sintaksa-predikatnega-računa"
+              id="toc-sintaksa-predikatnega-računa">Sintaksa
+              predikatnega računa</a></li>
               </ul></li>
               <li><a href="#relacije"
               id="toc-relacije">Relacije</a></li>
@@ -2033,6 +2036,190 @@
             <span class="math inline">\(f\)</span>, ki iz danih števil
             izračuna njun produkt.</p>
             </div>
+            <h2 id="sintaksa-predikatnega-računa">Sintaksa predikatnega
+            računa</h2>
+            <p>Zdaj smo pripravljeni, da formalno definiramo vse
+            koncepte v predikatnem računu. Sistematično bomo našteli
+            sibmole, ki jih uporabljamo, in opisali, kako iz njih
+            sestavljamo izjavne formule.</p>
+            <p>Naj bo področje pogovora dano z neko množico <span
+            class="math inline">\(D\)</span>.</p>
+            <h3 id="simboli">Simboli</h3>
+            <p>V predikatnem računu uporabljamo naslednje simbole:</p>
+            <ol>
+            <li><p><span><strong><em>Individualne
+            konstante</em></strong></span>, ki jih bomo označevali z
+            <span class="math inline">\(a,b,c,\dots\)</span>. To so
+            <em>konkretni</em> elementi množice <span
+            class="math inline">\(D\)</span>.</p></li>
+            <li><p><span><strong><em>Individualne
+            spremenljivke</em></strong></span>, ki jih bomo označevali z
+            <span class="math inline">\(x,y,z,\dots\)</span>. To so
+            <em>poljubni</em> elementi množice <span
+            class="math inline">\(D\)</span>.</p></li>
+            <li><p><span><strong><em>Predikati</em></strong></span>, ki
+            jih bomo označevali s <span
+            class="math inline">\(P,Q,R,\dots\)</span>. Ti predstavljajo
+            relacije med elementi množice <span
+            class="math inline">\(D\)</span>. Predikati so lahko
+            enomestni, dvomestni, …, <span
+            class="math inline">\(n\)</span>-mestni, …</p></li>
+            <li><p><span><strong><em>Funkcijski
+            simboli</em></strong></span>, ki jih bomo označevali s <span
+            class="math inline">\(f,g,h,\dots\)</span>. Tudi ti so lahko
+            <span class="math inline">\(n\)</span>-mestni za poljubno
+            naravno število <span class="math inline">\(n\)</span>.
+            Funkcijski simboli predstavljajo funkcije iz <span
+            class="math inline">\(n\)</span>-teric elementov <span
+            class="math inline">\(D\)</span> v <span
+            class="math inline">\(D\)</span>.</p></li>
+            <li><p>Izjavni vezniki iz izjavnega računa</p></li>
+            <li><p><span><strong><em>Simbola
+            kvantifikacije</em></strong></span> <span
+            class="math inline">\(\forall\)</span> in <span
+            class="math inline">\(\exists\)</span>.</p></li>
+            <li><p>Ločila <code>():,</code></p></li>
+            </ol>
+            <h3 id="termi">Termi</h3>
+            <p>Najosnovnejše izjave, ki jih v predikatnem računu
+            sestavljamo z naštetimi simboli, so
+            <span><strong><em>termi</em></strong></span>. Definiramo jih
+            induktivno,<a href="#fn2" class="footnote-ref" id="fnref2"
+            role="doc-noteref"><sup>2</sup></a> in sicer na naslednji
+            način:</p>
+            <ul>
+            <li><p><em>Osnovni term 1:</em> Vsaka <em>individualna
+            konstanta</em> je term.</p></li>
+            <li><p><em>Osnovni term 2:</em> Vsaka <em>individualna
+            spremenljivka</em> je term.</p></li>
+            <li><p><em>Sestavljeni term:</em> Če je <span
+            class="math inline">\(f\)</span> <em><span
+            class="math inline">\(n\)</span>-mesten funkcijski
+            simbol</em> in so <span class="math inline">\(t_1, t_2,
+            \dots, t_n\)</span> termi, potem je <span
+            class="math inline">\(f(t_1,t_2,\dots,t_n)\)</span>
+            term.</p></li>
+            </ul>
+            <p>Termi, ki <em>ne</em> vsebujejo nobenih individualnih
+            spremenljivk, se imenujejo <span><strong><em>zaprti
+            termi</em></strong></span>.</p>
+            <div class="zgled">
+            <p><strong>Zgled 2.5</strong>. Naj bo <span
+            class="math inline">\(a\)</span> individualna konstanta,
+            <span class="math inline">\(x,y\)</span> individualni
+            spremenljivki, <span class="math inline">\(f\)</span>
+            enomesten funkcijski simbol, <span
+            class="math inline">\(g\)</span> dvomesten funkcijski
+            simbol. Tedaj so <span class="math display">\[x, \ y, \ a, \
+            f(x), \ f(a), \ f(f(a)), \ g(x,f(f(y)))\]</span> termi.
+            Tretji, peti in šesti izmed teh so zaprti termi.</p>
+            </div>
+            <h3 id="izjavne-formule">Izjavne formule</h3>
+            <p><span><strong><em>Izjavne formule</em></strong></span> so
+            bolj kompleksne izjave v predikatnem računu, ki jih
+            sestavljamo s pomočjo termov. Njihova definicija je
+            induktivna, in sicer:</p>
+            <ul>
+            <li><p><em>Osnovna izjavna formula:</em> Naj bo <span
+            class="math inline">\(P\)</span> neki <span
+            class="math inline">\(n\)</span>-mestni predikat in <span
+            class="math inline">\(t_1, t_2, \dots, t_n\)</span> termi.
+            Potem je <span class="math inline">\(P(t_1, t_2, \dots,
+            t_n)\)</span> izjavna formula. Taki izjavni formuli rečemo
+            <span><strong><em>atomarna</em></strong></span>.</p></li>
+            <li><p><em>Sestavljena izjavna formula 1:</em> Naj bo <span
+            class="math inline">\(F\)</span> neki <span
+            class="math inline">\(n\)</span>-mestni izjavni veznik in
+            <span class="math inline">\(\phi_1, \phi_2, \dots,
+            \phi_n\)</span> izjavne formule. Potem je <span
+            class="math inline">\(F(\phi_1, \phi_2, \dots,
+            \phi_n)\)</span> izjavna formula.</p></li>
+            <li><p><em>Sestavljena izjavna formula 2:</em> Naj bo <span
+            class="math inline">\(\phi\)</span> izjavna formula in <span
+            class="math inline">\(x\)</span> individualna spremenljivka.
+            Potem sta <span class="math inline">\((\forall x \colon
+            \phi)\)</span> in <span class="math inline">\((\exists x
+            \colon \phi)\)</span> izjavni formuli. Pri tem je <span
+            class="math inline">\(\forall x\)</span>
+            <span><strong><em>univerzalni
+            kvantifikator</em></strong></span>, <span
+            class="math inline">\(\exists x\)</span>
+            <span><strong><em>eksistenčni
+            kvantifikator</em></strong></span>, formula <span
+            class="math inline">\(\phi\)</span> pa je
+            <span><strong><em>doseg
+            kvantifikatorja</em></strong></span>.</p></li>
+            </ul>
+            <p>Kot pri izjavnem računu sprejmemo
+            <span><strong><em>dogovor o prednostnem vrstnem redu
+            kvantifikatorjev in opuščjanju
+            ločil</em></strong></span>:</p>
+            <ul>
+            <li><p>za izjavne veznike in zunanje oklepaje velja dogovor
+            iz izjavnega računa,</p></li>
+            <li><p>kvantifikatorji imajo prednost pred izjavnimi
+            vezniki,</p></li>
+            <li><p>ločila med zaporednimi kvantifikatorji
+            izpuščamo.</p></li>
+            </ul>
+            <div class="zgled">
+            <p><strong>Zgled 2.6</strong>. V zgledih na začetku tega
+            poglavja smo srečali naslednje izjavne formule: <span
+            class="math display">\[Z(x), \ K(x), \ Z(a), \ K(a), \ \lnot
+            H(x), \ \forall x \colon (G(x) \Rightarrow H(x)), \ \forall
+            x \exists y \colon (V(y,x) \land P(x)).\]</span></p>
+            </div>
+            <p>Analogno definiciji zaprtosti termov uvedemo koncept
+            zaprtosti izjavnih formul. Nastop individualne spremenljivke
+            v izjavni formuli je
+            <span><strong><em>vezan</em></strong></span>, če je del
+            kvantifikatorja ali leži v dosegu kvantifikatorja, ki
+            vsebuje to spremenljivko. Če nastop ni vezan, je
+            <span><strong><em>prost</em></strong></span>. Izjavna
+            formula je <span><strong><em>zaprta</em></strong></span>, če
+            so vsi nastopi individualnih spremenljivk v njej vezani.</p>
+            <div class="zgled">
+            <p><strong>Zgled 2.7</strong>. Naslednje izjavne formule so
+            zaprte: <span class="math display">\[P(a), \ \forall x
+            \colon P(x), \ \forall x \exists y \colon V(x,y).\]</span>
+            Naslednje izjavne formule pa niso zaprte: <span
+            class="math display">\[P(x), \ \exists y \colon V(x,y), \
+            \forall x \colon (V(x,y) \Rightarrow \exists
+            P(y)).\]</span></p>
+            </div>
+            <p>Postojmo le še pri enem osnovnem konceptu v zvezi z
+            izjavnimi formulami, in sicer substitucijo. Naj bo <span
+            class="math inline">\(\phi\)</span> izjavna formula z
+            individualno spremenljivko <span
+            class="math inline">\(x\)</span>, tako da lahko zapišemo
+            formulo kot <span class="math inline">\(\phi(x)\)</span>. Če
+            je <span class="math inline">\(t\)</span> nek term, potem s
+            <span class="math inline">\(\phi(t)\)</span> označimo
+            izjavno formulo, ki jo dobimo iz <span
+            class="math inline">\(\phi(x)\)</span>, če v njej vse
+            <em>proste</em> nastope <span
+            class="math inline">\(x\)</span> zamenjamo s <span
+            class="math inline">\(t\)</span>. V tem primeru rečemo, da
+            smo <span class="math inline">\(\phi(t)\)</span> dobili s
+            <span><strong><em>substitucijo</em></strong></span> iz <span
+            class="math inline">\(\phi(x)\)</span> spremenljivke <span
+            class="math inline">\(x\)</span> s termom <span
+            class="math inline">\(t\)</span>.</p>
+            <div class="zgled">
+            <p><strong>Zgled 2.8</strong>. Naj bo <span
+            class="math inline">\(\phi(x) = \exists y \colon
+            R(x,y)\)</span> in <span class="math inline">\(t =
+            f(a)\)</span>. Potem je <span class="math inline">\(\phi(t)
+            = \exists y \colon R(f(a), y)\)</span>.</p>
+            </div>
+            <p>Analogno lahko v formuli <span
+            class="math inline">\(\phi(x_1, x_2, \dots, x_n)\)</span> z
+            različnimi individualnimi spremenljivkami <span
+            class="math inline">\(x_1, x_2, \dots, x_n\)</span> izvedemo
+            substitucijo vseh prostih nastopov <span
+            class="math inline">\(x_i\)</span> s termom <span
+            class="math inline">\(t_i\)</span> za <span
+            class="math inline">\(i = 1,2,\dots,n\)</span>.</p>
             <h1 id="relacije">Relacije</h1>
             <h1 id="urejenosti">Urejenosti</h1>
             <h1 id="grafi">Grafi</h1>
@@ -2042,6 +2229,10 @@
             <ol>
             <li id="fn1" role="doc-endnote"><p>Lat. <em>Reductio ad
             absurdum</em>.<a href="#fnref1" class="footnote-back"
+            role="doc-backlink">↩︎</a></p></li>
+            <li id="fn2" role="doc-endnote"><p>Ta induktivna definicija
+            je podobna kot induktivna definicija izjavnih izrazov v
+            izjavnem računu.<a href="#fnref2" class="footnote-back"
             role="doc-backlink">↩︎</a></p></li>
             </ol>
             </section>

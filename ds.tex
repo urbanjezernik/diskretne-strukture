@@ -956,6 +956,90 @@ Definicijo predikata $P$ lahko zapišemo na naslednji način:
 Tukaj smo naleteli še na zadnji fenomen, ki ga bomo imeli v predikatnem računu, in sicer je to {\definicija funkcijski simbol} $f$, ki iz danih števil izračuna njun produkt.
 \end{zgled}
 
+\section{Sintaksa predikatnega računa}
+
+Zdaj smo pripravljeni, da formalno definiramo vse koncepte v predikatnem računu. Sistematično bomo našteli sibmole, ki jih uporabljamo, in opisali, kako iz njih sestavljamo izjavne formule.
+
+Naj bo področje pogovora dano z neko množico $D$.
+
+\subsection{Simboli}
+
+V predikatnem računu uporabljamo naslednje simbole:
+
+\begin{enumerate}
+    \item {\definicija Individualne konstante}, ki jih bomo označevali z $a,b,c,\dots$. To so \emph{konkretni} elementi množice $D$.
+    \item {\definicija Individualne spremenljivke}, ki jih bomo označevali z $x,y,z,\dots$. To so \emph{poljubni} elementi množice $D$.
+    \item {\definicija Predikati}, ki jih bomo označevali s $P,Q,R,\dots$. Ti predstavljajo relacije med elementi množice $D$. Predikati so lahko enomestni, dvomestni, \dots, $n$-mestni, \dots
+    \item {\definicija Funkcijski simboli}, ki jih bomo označevali s $f,g,h,\dots$. Tudi ti so lahko $n$-mestni za poljubno naravno število $n$. Funkcijski simboli predstavljajo funkcije iz $n$-teric elementov $D$ v $D$.
+    \item Izjavni vezniki iz izjavnega računa
+    \item {\definicija Simbola kvantifikacije} $\forall$ in $\exists$.
+    \item Ločila \texttt{():,}
+\end{enumerate}
+
+\subsection{Termi}
+
+Najosnovnejše izjave, ki jih v predikatnem računu sestavljamo z naštetimi simboli, so {\definicija termi}. Definiramo jih induktivno,\footnote{Ta induktivna definicija je podobna kot induktivna definicija izjavnih izrazov v izjavnem računu.} in sicer na naslednji način:
+
+\begin{itemize}
+    \item \emph{Osnovni term 1:} Vsaka \emph{individualna konstanta} je term. 
+    \item \emph{Osnovni term 2:} Vsaka \emph{individualna spremenljivka} je term.
+    \item \emph{Sestavljeni term:} Če je $f$ \emph{$n$-mesten funkcijski simbol} in so $t_1, t_2, \dots, t_n$ termi, potem je $f(t_1,t_2,\dots,t_n)$ term.
+\end{itemize}
+
+Termi, ki \emph{ne} vsebujejo nobenih individualnih spremenljivk, se imenujejo {\definicija zaprti termi}.
+
+\begin{zgled}
+Naj bo $a$ individualna konstanta, $x,y$ individualni spremenljivki, $f$ enomesten funkcijski simbol, $g$ dvomesten funkcijski simbol. Tedaj so
+\[
+    x, \ y, \ a, \ f(x), \ f(a), \ f(f(a)), \ g(x,f(f(y)))
+\]
+termi. Tretji, peti in šesti izmed teh so zaprti termi.
+\end{zgled}
+
+\subsection{Izjavne formule}
+
+{\definicija Izjavne formule} so bolj kompleksne izjave v predikatnem računu, ki jih sestavljamo s pomočjo termov. Njihova definicija je induktivna, in sicer:
+
+\begin{itemize}
+    \item \emph{Osnovna izjavna formula:} Naj bo $P$ neki $n$-mestni predikat in $t_1, t_2, \dots, t_n$ termi. Potem je $P(t_1, t_2, \dots, t_n)$ izjavna formula. Taki izjavni formuli rečemo {\definicija atomarna}.  
+    \item \emph{Sestavljena izjavna formula 1:} Naj bo $F$ neki $n$-mestni izjavni veznik in $\phi_1, \phi_2, \dots, \phi_n$ izjavne formule. Potem je $F(\phi_1, \phi_2, \dots, \phi_n)$ izjavna formula.
+    \item \emph{Sestavljena izjavna formula 2:} Naj bo $\phi$ izjavna formula in $x$ individualna spremenljivka. Potem sta $(\forall x \colon \phi)$ in $(\exists x \colon \phi)$ izjavni formuli. Pri tem je $\forall x$ {\definicija univerzalni kvantifikator}, $\exists x$ {\definicija eksistenčni kvantifikator}, formula $\phi$ pa je {\definicija doseg kvantifikatorja}.
+\end{itemize}
+
+Kot pri izjavnem računu sprejmemo {\definicija dogovor o prednostnem vrstnem redu kvantifikatorjev in opuščjanju ločil}:
+\begin{itemize}
+    \item za izjavne veznike in zunanje oklepaje velja dogovor iz izjavnega računa,
+    \item kvantifikatorji imajo prednost pred izjavnimi vezniki,
+    \item ločila med zaporednimi kvantifikatorji izpuščamo.
+\end{itemize}
+
+\begin{zgled}
+V zgledih na začetku tega poglavja smo srečali naslednje izjavne formule:
+\[
+    Z(x), \ K(x), \ Z(a), \ K(a), \ \lnot H(x), \ \forall x \colon (G(x) \Rightarrow H(x)), \ \forall x \exists y \colon (V(y,x) \land P(x)).
+\]
+\end{zgled}
+
+Analogno definiciji zaprtosti termov uvedemo koncept zaprtosti izjavnih formul. Nastop individualne spremenljivke v izjavni formuli je {\definicija vezan}, če je del kvantifikatorja ali leži v dosegu kvantifikatorja, ki vsebuje to spremenljivko. Če nastop ni vezan, je {\definicija prost}. Izjavna formula je {\definicija zaprta}, če so vsi nastopi individualnih spremenljivk v njej vezani.
+
+\begin{zgled}
+Naslednje izjavne formule so zaprte:
+\[
+    P(a), \ \forall x \colon P(x), \ \forall x \exists y \colon V(x,y).
+\]
+Naslednje izjavne formule pa niso zaprte:
+\[
+    P(x), \ \exists y \colon V(x,y), \ \forall x \colon (V(x,y) \Rightarrow \exists P(y)).
+\]
+\end{zgled}
+
+Postojmo le še pri enem osnovnem konceptu v zvezi z izjavnimi formulami, in sicer substitucijo. Naj bo $\phi$ izjavna formula z individualno spremenljivko $x$, tako da lahko zapišemo formulo kot $\phi(x)$. Če je $t$ nek term, potem s $\phi(t)$ označimo izjavno formulo, ki jo dobimo iz $\phi(x)$, če v njej vse \emph{proste} nastope $x$ zamenjamo s $t$. V tem primeru rečemo, da smo $\phi(t)$ dobili s {\definicija substitucijo} iz $\phi(x)$ spremenljivke $x$ s termom $t$.
+
+\begin{zgled}
+Naj bo $\phi(x) = \exists y \colon R(x,y)$ in $t = f(a)$. Potem je $\phi(t) = \exists y \colon R(f(a), y)$.
+\end{zgled}
+
+Analogno lahko v formuli $\phi(x_1, x_2, \dots, x_n)$ z različnimi individualnimi spremenljivkami $x_1, x_2, \dots, x_n$ izvedemo substitucijo vseh prostih nastopov $x_i$ s termom $t_i$ za $i = 1,2,\dots,n$.
 
 \chapter{Relacije}
 \chapter{Urejenosti}
