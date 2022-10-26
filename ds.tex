@@ -1041,6 +1041,74 @@ Naj bo $\phi(x) = \exists y \colon R(x,y)$ in $t = f(a)$. Potem je $\phi(t) = \e
 
 Analogno lahko v formuli $\phi(x_1, x_2, \dots, x_n)$ z različnimi individualnimi spremenljivkami $x_1, x_2, \dots, x_n$ izvedemo substitucijo vseh prostih nastopov $x_i$ s termom $t_i$ za $i = 1,2,\dots,n$.
 
+\section{Semantika predikatnega računa}
+
+Do zdaj smo se ukvarjali s tem, kako v predikatnem računu zapišemo izjavne formule. Te formule same po sebi pa seveda nimajo nikakršnega pomena, dokler ne določimo, kaj je domena in kaj predstavljajo individualne konstante, predikati in funkcijski simboli. S tem se ukvarja \emph{semantika} predikatnega računa. Če smo torej do zdaj iz izjav v slovenščini sestavljali formule, bomo tukaj iz formul sestavljali izjave v slovenščini.
+
+Naj bo $\Fcal$ neka množica izjavnih formul, ki jim želimo določiti pomen. {\definicija Interpretacijo} $I$ formul iz $\Fcal$ podamo tako, da:
+\begin{enumerate}
+    \item izberemo neprazno množico objektov (to je {\definicija domena} ali področje pogovora),
+    \item vsaki individualni konstanti $a$ iz $\Fcal$ priredimo nek element $\bar a \in D$,
+    \item vsakemu $n$-mestnemu predikatu $P$ iz $\Fcal$ priredimo neko podmnožico $\bar P$ v $D^n = D \times D \times \cdots \times D$, ki  predstavlja vse $n$-terice elementov, za katere je $P$ resničen,\footnote{Podmnožicam $D^n$ rečemo tudi {\definicija $n$-mestne relacije} v $D$.}
+    \item vsakemu $n$-mestnemu funkcijskemu simbolu $f$ priredimo preslikavo $\bar f$, ki vsako urejeno $n$-terico elementov $D$ preslika v točno določen element $D$, se pravi funkcijo iz $D^n$ v $D$.
+\end{enumerate}
+
+Izjavne veznike iz izjavnega računa interpretiramo,kot smo jih že v izjavnem računu. Simbola kvantifikacije interpretiramo na naslednji način:
+\begin{itemize}
+    \item $\forall x$ intepretiramo kot \emph{za vsak $x$ iz $D$},
+    \item $\exists x$ interpretiramo kot \emph{obstaja $x$ iz $D$}.
+\end{itemize}
+
+\begin{zgled}
+Naj bo
+\[
+    \Fcal = \{ P(a), P(x), \forall x \colon P(x), P(f(a,b)) \}
+\]
+množica izjavnih formul. Da lahko te formule interpretiramo, moramo izbrati neko intepretacijo. Vzemimo tole intepretacijo $I$:
+\[
+    D = \NN, \ \bar a = 2, \ \bar b = 3, \ \bar P = \PP, \ \bar f(x,y) = 2x + y,
+\] 
+kjer je $\PP$ množica praštevil. V tej interpretaciji term $\overline{f(a,b)}$ torej intepretiramo kot
+\[
+    \overline{f(a,b)}
+    = \bar f (\bar a, \bar b)
+    = 2 \bar a + \bar b
+    = 7.
+\]
+Oglejmo si pomene izjavnih formul v $\Fcal$ v interpretaciji $I$.
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{cll}
+        formula $\phi$ & poved $\bar \phi$ & komentar \\ \hline
+        $P(a)$ & $2$ je praštevilo & resnična izjava \\
+        $P(x)$ & $x$ je praštevilo & ni izjava \\
+        $\forall x \colon P(x)$ & vsako naravno število je praštevilo & lažna izjava \\
+        $P(f(a,b))$ & $7$ je praštevilo & resnična izjava
+    \end{tabular}
+    \caption{Interpretacije formul iz $\Fcal$ v $I$}
+\end{table}
+\end{zgled}
+
+Zaprtemu termu $t$ ustreza element $\bar t \in D$, zaprti izjavni formuli $\phi$ pa ustreza izjava $\bar \phi$. Kadar izjavna formula $\phi$ ni zaprta, tedaj $\bar \phi$ \emph{ni} izjava, saj je odvisna od prostih spremenljivk.
+
+\begin{zgled}
+Opazujmo izjavno formulo $\phi = \forall x \exists y \colon R(x,y)$. Poglejmo si nekaj različnih interpretacij te formule.
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{lll}
+        interpretacija $I$ & poved $\bar \phi$ & komentar \\ \hline
+        $I_1$: $D = \NN$, $\bar R(x,y) = x < y$ & za vsako naravno število obstaja večje naravno število & resnična izjava \\
+        $I_2$: $D = \NN$, $\bar R(x,y) = x > y$ & za vsako naravno število obstaja manjše naravno število & lažna izjava \\
+        $I_3$: $D = \ZZ$, $\bar R(x,y) = x > y$ & za vsako celo število obstaja manjše celo število & resnična izjava
+    \end{tabular}
+    \caption{Različne interpretacije formule $\phi$}
+\end{table}
+\end{zgled}
+
+Dani zaprti izjavni formuli $\phi$ lahko torej v nekaterih interpretacijah ustrezajo resnične izjave, v drugih interpretacijah pa lažje izjave. Rečemo, da je zaprta izjavna formula $\phi$ {\definicija resnična v interpretaciji} $I$, če je resnična izjava $\bar \phi$. V tem primeru pišemo $I \models \varphi$.
+
 \chapter{Relacije}
 \chapter{Urejenosti}
 \chapter{Grafi}

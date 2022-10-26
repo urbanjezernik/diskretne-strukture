@@ -80,6 +80,9 @@
               <li><a href="#sintaksa-predikatnega-računa"
               id="toc-sintaksa-predikatnega-računa">Sintaksa
               predikatnega računa</a></li>
+              <li><a href="#semantika-predikatnega-računa"
+              id="toc-semantika-predikatnega-računa">Semantika
+              predikatnega računa</a></li>
               </ul></li>
               <li><a href="#relacije"
               id="toc-relacije">Relacije</a></li>
@@ -2220,6 +2223,199 @@
             class="math inline">\(x_i\)</span> s termom <span
             class="math inline">\(t_i\)</span> za <span
             class="math inline">\(i = 1,2,\dots,n\)</span>.</p>
+            <h2 id="semantika-predikatnega-računa">Semantika
+            predikatnega računa</h2>
+            <p>Do zdaj smo se ukvarjali s tem, kako v predikatnem računu
+            zapišemo izjavne formule. Te formule same po sebi pa seveda
+            nimajo nikakršnega pomena, dokler ne določimo, kaj je domena
+            in kaj predstavljajo individualne konstante, predikati in
+            funkcijski simboli. S tem se ukvarja <em>semantika</em>
+            predikatnega računa. Če smo torej do zdaj iz izjav v
+            slovenščini sestavljali formule, bomo tukaj iz formul
+            sestavljali izjave v slovenščini.</p>
+            <p>Naj bo <span class="math inline">\(\mathcal{F}\)</span>
+            neka množica izjavnih formul, ki jim želimo določiti pomen.
+            <span><strong><em>Interpretacijo</em></strong></span> <span
+            class="math inline">\(I\)</span> formul iz <span
+            class="math inline">\(\mathcal{F}\)</span> podamo tako,
+            da:</p>
+            <ol>
+            <li><p>izberemo neprazno množico objektov (to je
+            <span><strong><em>domena</em></strong></span> ali področje
+            pogovora),</p></li>
+            <li><p>vsaki individualni konstanti <span
+            class="math inline">\(a\)</span> iz <span
+            class="math inline">\(\mathcal{F}\)</span> priredimo nek
+            element <span class="math inline">\(\bar a \in
+            D\)</span>,</p></li>
+            <li><p>vsakemu <span
+            class="math inline">\(n\)</span>-mestnemu predikatu <span
+            class="math inline">\(P\)</span> iz <span
+            class="math inline">\(\mathcal{F}\)</span> priredimo neko
+            podmnožico <span class="math inline">\(\bar P\)</span> v
+            <span class="math inline">\(D^n = D \times D \times \cdots
+            \times D\)</span>, ki predstavlja vse <span
+            class="math inline">\(n\)</span>-terice elementov, za katere
+            je <span class="math inline">\(P\)</span> resničen,<a
+            href="#fn3" class="footnote-ref" id="fnref3"
+            role="doc-noteref"><sup>3</sup></a></p></li>
+            <li><p>vsakemu <span
+            class="math inline">\(n\)</span>-mestnemu funkcijskemu
+            simbolu <span class="math inline">\(f\)</span> priredimo
+            preslikavo <span class="math inline">\(\bar f\)</span>, ki
+            vsako urejeno <span class="math inline">\(n\)</span>-terico
+            elementov <span class="math inline">\(D\)</span> preslika v
+            točno določen element <span
+            class="math inline">\(D\)</span>, se pravi funkcijo iz <span
+            class="math inline">\(D^n\)</span> v <span
+            class="math inline">\(D\)</span>.</p></li>
+            </ol>
+            <p>Izjavne veznike iz izjavnega računa interpretiramo,kot
+            smo jih že v izjavnem računu. Simbola kvantifikacije
+            interpretiramo na naslednji način:</p>
+            <ul>
+            <li><p><span class="math inline">\(\forall x\)</span>
+            intepretiramo kot <em>za vsak <span
+            class="math inline">\(x\)</span> iz <span
+            class="math inline">\(D\)</span></em>,</p></li>
+            <li><p><span class="math inline">\(\exists x\)</span>
+            interpretiramo kot <em>obstaja <span
+            class="math inline">\(x\)</span> iz <span
+            class="math inline">\(D\)</span></em>.</p></li>
+            </ul>
+            <div class="zgled">
+            <p><strong>Zgled 2.9</strong>. Naj bo <span
+            class="math display">\[\mathcal{F}= \{ P(a), P(x), \forall x
+            \colon P(x), P(f(a,b)) \}\]</span> množica izjavnih formul.
+            Da lahko te formule interpretiramo, moramo izbrati neko
+            intepretacijo. Vzemimo tole intepretacijo <span
+            class="math inline">\(I\)</span>: <span
+            class="math display">\[D = \mathbf{N}, \ \bar a = 2, \ \bar
+            b = 3, \ \bar P = \mathbf{P}, \ \bar f(x,y) = 2x +
+            y,\]</span> kjer je <span
+            class="math inline">\(\mathbf{P}\)</span> množica praštevil.
+            V tej interpretaciji term <span
+            class="math inline">\(\overline{f(a,b)}\)</span> torej
+            intepretiramo kot <span
+            class="math display">\[\overline{f(a,b)}
+                = \bar f (\bar a, \bar b)
+                = 2 \bar a + \bar b
+                = 7.\]</span> Oglejmo si pomene izjavnih formul v <span
+            class="math inline">\(\mathcal{F}\)</span> v interpretaciji
+            <span class="math inline">\(I\)</span>.</p>
+            <table>
+            <caption>Interpretacije formul iz <span
+            class="math inline">\(\mathcal{F}\)</span> v <span
+            class="math inline">\(I\)</span></caption>
+            <thead>
+            <tr class="header">
+            <th style="text-align: center;">formula <span
+            class="math inline">\(\phi\)</span></th>
+            <th style="text-align: left;">poved <span
+            class="math inline">\(\bar \phi\)</span></th>
+            <th style="text-align: left;">komentar</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="odd">
+            <td style="text-align: center;"><span
+            class="math inline">\(P(a)\)</span></td>
+            <td style="text-align: left;"><span
+            class="math inline">\(2\)</span> je praštevilo</td>
+            <td style="text-align: left;">resnična izjava</td>
+            </tr>
+            <tr class="even">
+            <td style="text-align: center;"><span
+            class="math inline">\(P(x)\)</span></td>
+            <td style="text-align: left;"><span
+            class="math inline">\(x\)</span> je praštevilo</td>
+            <td style="text-align: left;">ni izjava</td>
+            </tr>
+            <tr class="odd">
+            <td style="text-align: center;"><span
+            class="math inline">\(\forall x \colon P(x)\)</span></td>
+            <td style="text-align: left;">vsako naravno število je
+            praštevilo</td>
+            <td style="text-align: left;">lažna izjava</td>
+            </tr>
+            <tr class="even">
+            <td style="text-align: center;"><span
+            class="math inline">\(P(f(a,b))\)</span></td>
+            <td style="text-align: left;"><span
+            class="math inline">\(7\)</span> je praštevilo</td>
+            <td style="text-align: left;">resnična izjava</td>
+            </tr>
+            </tbody>
+            </table>
+            </div>
+            <p>Zaprtemu termu <span class="math inline">\(t\)</span>
+            ustreza element <span class="math inline">\(\bar t \in
+            D\)</span>, zaprti izjavni formuli <span
+            class="math inline">\(\phi\)</span> pa ustreza izjava <span
+            class="math inline">\(\bar \phi\)</span>. Kadar izjavna
+            formula <span class="math inline">\(\phi\)</span> ni zaprta,
+            tedaj <span class="math inline">\(\bar \phi\)</span>
+            <em>ni</em> izjava, saj je odvisna od prostih
+            spremenljivk.</p>
+            <div class="zgled">
+            <p><strong>Zgled 2.10</strong>. Opazujmo izjavno formulo
+            <span class="math inline">\(\phi = \forall x \exists y
+            \colon R(x,y)\)</span>. Poglejmo si nekaj različnih
+            interpretacij te formule.</p>
+            <table>
+            <caption>Različne interpretacije formule <span
+            class="math inline">\(\phi\)</span></caption>
+            <thead>
+            <tr class="header">
+            <th style="text-align: left;">interpretacija <span
+            class="math inline">\(I\)</span></th>
+            <th style="text-align: left;">poved <span
+            class="math inline">\(\bar \phi\)</span></th>
+            <th style="text-align: left;">komentar</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="odd">
+            <td style="text-align: left;"><span
+            class="math inline">\(I_1\)</span>: <span
+            class="math inline">\(D = \mathbf{N}\)</span>, <span
+            class="math inline">\(\bar R(x,y) = x &lt; y\)</span></td>
+            <td style="text-align: left;">za vsako naravno število
+            obstaja večje naravno število</td>
+            <td style="text-align: left;">resnična izjava</td>
+            </tr>
+            <tr class="even">
+            <td style="text-align: left;"><span
+            class="math inline">\(I_2\)</span>: <span
+            class="math inline">\(D = \mathbf{N}\)</span>, <span
+            class="math inline">\(\bar R(x,y) = x &gt; y\)</span></td>
+            <td style="text-align: left;">za vsako naravno število
+            obstaja manjše naravno število</td>
+            <td style="text-align: left;">lažna izjava</td>
+            </tr>
+            <tr class="odd">
+            <td style="text-align: left;"><span
+            class="math inline">\(I_3\)</span>: <span
+            class="math inline">\(D = \mathbf{Z}\)</span>, <span
+            class="math inline">\(\bar R(x,y) = x &gt; y\)</span></td>
+            <td style="text-align: left;">za vsako celo število obstaja
+            manjše celo število</td>
+            <td style="text-align: left;">resnična izjava</td>
+            </tr>
+            </tbody>
+            </table>
+            </div>
+            <p>Dani zaprti izjavni formuli <span
+            class="math inline">\(\phi\)</span> lahko torej v nekaterih
+            interpretacijah ustrezajo resnične izjave, v drugih
+            interpretacijah pa lažje izjave. Rečemo, da je zaprta
+            izjavna formula <span class="math inline">\(\phi\)</span>
+            <span><strong><em>resnična v
+            interpretaciji</em></strong></span> <span
+            class="math inline">\(I\)</span>, če je resnična izjava
+            <span class="math inline">\(\bar \phi\)</span>. V tem
+            primeru pišemo <span class="math inline">\(I \models
+            \varphi\)</span>.</p>
             <h1 id="relacije">Relacije</h1>
             <h1 id="urejenosti">Urejenosti</h1>
             <h1 id="grafi">Grafi</h1>
@@ -2234,6 +2430,13 @@
             je podobna kot induktivna definicija izjavnih izrazov v
             izjavnem računu.<a href="#fnref2" class="footnote-back"
             role="doc-backlink">↩︎</a></p></li>
+            <li id="fn3" role="doc-endnote"><p>Podmnožicam <span
+            class="math inline">\(D^n\)</span> rečemo tudi
+            <span><strong><em><span
+            class="math inline">\(n\)</span>-mestne
+            relacije</em></strong></span> v <span
+            class="math inline">\(D\)</span>.<a href="#fnref3"
+            class="footnote-back" role="doc-backlink">↩︎</a></p></li>
             </ol>
             </section>
 
