@@ -43,7 +43,7 @@
             <strong> Urban Jezernik <br>
               Univerza v Ljubljani, Fakulteta za matematiko in fiziko </strong> <br>
 
-            Zadnja posodobitev: 19. 10. 2022
+            Zadnja posodobitev: 26. 10. 2022
           </div>
 
           <div id="spinner" class="text-center">
@@ -73,7 +73,11 @@
               računu</a></li>
               </ul></li>
               <li><a href="#predikatni-račun"
-              id="toc-predikatni-račun">Predikatni račun</a></li>
+              id="toc-predikatni-račun">Predikatni račun</a>
+              <ul>
+              <li><a href="#motivacija"
+              id="toc-motivacija">Motivacija</a></li>
+              </ul></li>
               <li><a href="#relacije"
               id="toc-relacije">Relacije</a></li>
               <li><a href="#urejenosti"
@@ -1205,8 +1209,7 @@
             A\)</span> (<span><strong><em>poenostavitev
             (Po)</em></strong></span>)</p></li>
             <li><p><span class="math inline">\(A, \ B \models A \land
-            B\)</span>
-            (<span><strong><em>združitev
+            B\)</span> (<span><strong><em>združitev
             (Zd)</em></strong></span>)</p></li>
             <li><p><span class="math inline">\(A \models A \lor
             B\)</span> (<span><strong><em>pridružitev
@@ -1816,6 +1819,220 @@
             </table>
             </div>
             <h1 id="predikatni-račun">Predikatni račun</h1>
+            <p>Predikatni račun je <em>nadgradnja</em> izjavnega računa,
+            ki omogoča bolj natančno logično izražanje. Najprej si bomo
+            na konkretnih primerih pogledali, katere novosti prinaša
+            predikatni račun. Za tem bomo te formalno definirali in
+            razvili podobno teorijo kot v izjavnem računu.</p>
+            <h2 id="motivacija">Motivacija</h2>
+            <p>Na konkretnih zgledih si oglejmo nekaj simbolov in
+            formul, ki jih bomo videli v predikatnem računu. Ti zgledi
+            nam bodo pomagali, da bomo v naslednjem razdelku lažje
+            predelali formalne definicije predikatnega računa.</p>
+            <div class="zgled">
+            <p><strong>Zgled 2.1</strong>. Oglejmo si naslednji sklep,
+            zapisan v slovenščini.</p>
+            <dl>
+            <dt><span class="math inline">\(p_1\)</span>:</dt>
+            <dd>
+            <p>Vsak zajec ljubi korenje.</p>
+            </dd>
+            <dt><span class="math inline">\(p_2\)</span>:</dt>
+            <dd>
+            <p>Feliks je zajec.</p>
+            </dd>
+            <dt><span class="math inline">\(z\)</span>:</dt>
+            <dd>
+            <p>Torej Feliks ljubi korenje.</p>
+            </dd>
+            </dl>
+            <p>V izjavnem računu ta sklep zapišemo kot <span
+            class="math inline">\(p_1, p_2 \models z\)</span>. Seveda pa
+            ta sklep v izjavnem računu ni veljaven, protiprimer je
+            namreč nabor <span class="math inline">\(p_1 = 1, p_2 = 1, z
+            = 0\)</span>.</p>
+            <p>Kljub temu se zdi, da je ta sklep v slovenščini vsekakor
+            pravilen. Predikatni račun je nadgradnja izjavnega računa, v
+            katerem izjavne spremeljivke <span
+            class="math inline">\(p_1, p_2, z\)</span> obravnavamo
+            nekoliko podrobneje, tako da bo ta sklep pravilen tudi v tem
+            novem računu.</p>
+            <p>Uvedimo naslednje oznake:</p>
+            <dl>
+            <dt><span class="math inline">\(Z(x)\)</span>:</dt>
+            <dd>
+            <p><span class="math inline">\(x\)</span> je zajec.</p>
+            </dd>
+            <dt><span class="math inline">\(K(x)\)</span>:</dt>
+            <dd>
+            <p><span class="math inline">\(x\)</span> ljubi korenje.</p>
+            </dd>
+            <dt><span class="math inline">\(a\)</span>:</dt>
+            <dd>
+            <p>Feliks</p>
+            </dd>
+            <dt><span class="math inline">\(\forall x\)</span>:</dt>
+            <dd>
+            <p>za vsak <span class="math inline">\(x\)</span></p>
+            </dd>
+            </dl>
+            <p>S temi oznakami lahko sklep zapišemo bolj natančno
+            takole:</p>
+            <dl>
+            <dt><span class="math inline">\(p_1\)</span>:</dt>
+            <dd>
+            <p><span class="math inline">\(\forall x \colon (Z(x)
+            \Rightarrow K(x))\)</span></p>
+            </dd>
+            <dt><span class="math inline">\(p_2\)</span>:</dt>
+            <dd>
+            <p><span class="math inline">\(Z(a)\)</span></p>
+            </dd>
+            <dt><span class="math inline">\(z\)</span>:</dt>
+            <dd>
+            <p><span class="math inline">\(K(a)\)</span></p>
+            </dd>
+            </dl>
+            <p>V predikatnem jeziku bomo torej poleg izjavnih vezikov in
+            ločil iz izjavnega računa imeli
+            <span><strong><em>individualne
+            spremenljivke</em></strong></span> (<span
+            class="math inline">\(x\)</span>),
+            <span><strong><em>individualne
+            konstante</em></strong></span> (<span
+            class="math inline">\(a\)</span>),
+            <span><strong><em>predikate</em></strong></span> (<span
+            class="math inline">\(Z\)</span>, <span
+            class="math inline">\(K\)</span>) in
+            <span><strong><em>univerzalni
+            kvantifikator</em></strong></span> (<span
+            class="math inline">\(\forall\)</span>).</p>
+            </div>
+            <div class="zgled">
+            <p><strong>Zgled 2.2</strong>. Prevedimo nekaj izjav iz
+            slovenščine v nov jezik predikatnega računa, kot smo to
+            storili v zadnjem zgledu. Izjave so naslednje:</p>
+            <ol>
+            <li><p>Vsi gasilci so hrabri.</p></li>
+            <li><p>Nekateri gasilci so hrabri.</p></li>
+            <li><p>Nekateri gasilci niso hrabri.</p></li>
+            <li><p>Noben gasilec ni hraber.</p></li>
+            </ol>
+            <p>Uvedimo naslednje oznake:</p>
+            <dl>
+            <dt><span class="math inline">\(G(x)\)</span>:</dt>
+            <dd>
+            <p><span class="math inline">\(x\)</span> je gasilec.</p>
+            </dd>
+            <dt><span class="math inline">\(H(x)\)</span>:</dt>
+            <dd>
+            <p><span class="math inline">\(x\)</span> je hraber.</p>
+            </dd>
+            <dt><span class="math inline">\(\exists x\)</span>:</dt>
+            <dd>
+            <p>obstaja <span class="math inline">\(x\)</span></p>
+            </dd>
+            </dl>
+            <p>Izjave v slovenščini lahko s temi oznakami zapišemo na
+            naslednji način:</p>
+            <ol>
+            <li><p><span class="math inline">\(\forall x \colon (G(x)
+            \Rightarrow H(x))\)</span></p></li>
+            <li><p><span class="math inline">\(\exists x \colon (G(x)
+            \land H(x))\)</span></p></li>
+            <li><p><span class="math inline">\(\exists x \colon (G(x)
+            \land \lnot H(x))\)</span></p></li>
+            <li><p><span class="math inline">\(\forall x \colon (G(x)
+            \Rightarrow \lnot H(x))\)</span></p></li>
+            </ol>
+            <p>Tukaj smo videli še en simbol kvantifikacije, ki ga bomo
+            imeli v predikatnem računu, in sicer
+            <span><strong><em>eksistenčni
+            kvantifikator</em></strong></span> (<span
+            class="math inline">\(\exists\)</span>).</p>
+            </div>
+            <div class="zgled">
+            <p><strong>Zgled 2.3</strong>. Storimo podobno kot v zadnjih
+            dveh zgledih še za naslednjo matematično izjavo.
+            <em>Evklidov izrek</em> nam pove, da obstaja neskončno mnogo
+            praštevil.</p>
+            <p>Če želimo to izjavo zapisati na podoben način kot
+            prejšnje izjave v tem poglavju, nam bo v pomoč, če jo
+            prepišemo v nekoliko drugačno obliko, in sicer kot izjavo,
+            da obstajajo poljubno velika praštevila. Še vedno ni jasno,
+            kako bi izrazili del izjave, ki pravi, da obstajajo
+            <em>poljubno velika</em> števila, zato bodimo še nekoliko
+            bolj eksplicitni glede tega dela izjave. Evklidov izrek je
+            ekvivalenten izjavi, da za vsako naravno število obstaja
+            večje naravno število, ki je praštevilo. To zadnjo izjavo pa
+            lahko zapišemo v predikatnem računu.</p>
+            <p>Uvedimo naslednje oznake:</p>
+            <dl>
+            <dt><span class="math inline">\(P(x)\)</span>:</dt>
+            <dd>
+            <p><span class="math inline">\(x\)</span> je praštevilo.</p>
+            </dd>
+            <dt><span class="math inline">\(V(x,y)\)</span>:</dt>
+            <dd>
+            <p><span class="math inline">\(x\)</span> je večje od <span
+            class="math inline">\(y\)</span>.</p>
+            </dd>
+            </dl>
+            <p>V tem zgledu so naše spremenljivke <span
+            class="math inline">\(x\)</span> iz množice naravnih števil,
+            v prejšnjih zgledih pa so bile iz množice živali. Pomembno
+            je, da se na začetku dogovorimo o področju pogovora oziroma
+            <span><strong><em>domeni</em></strong></span>, saj izjave,
+            ki jih zapišemo, morda v drugi domeni pomenijo čisto nekaj
+            drugega.</p>
+            <p>Evklidov izrek lahko nazadnje zapišemo v predikatnem
+            računu na naslednji način: <span
+            class="math display">\[\forall x \exists y \colon (V(y,x)
+            \land P(y)).\]</span></p>
+            <p>Tukaj smo srečali predikat <span
+            class="math inline">\(V\)</span>, ki je nekoliko drugačen od
+            predikatov, ki smo jih videli do sedaj. Predikat <span
+            class="math inline">\(V\)</span> je namreč
+            <em>dvomesten</em> (ima dva parametra), drugi predikati pa
+            so bili vsi <em>enomestni</em>.</p>
+            </div>
+            <div class="zgled">
+            <p><strong>Zgled 2.4</strong>. V prejšnjem zgledu smo
+            govorili o praštevilih, za katere smo uvedli predikat <span
+            class="math inline">\(P\)</span>. Seveda pa bi lahko samo
+            dejstvo, da je spremenljivka <span
+            class="math inline">\(x\)</span> praštevilo, se pravi da je
+            izjava <span class="math inline">\(P(x)\)</span> resnična,
+            podrobneje opisali v predikatnem računu. To storimo v tem
+            zgledu.</p>
+            <p>Po definiciji je naravno število <span
+            class="math inline">\(n\)</span> praštevilo, če in samo če
+            ima natanko dva naravna delitelja. Uvedimo naslednje
+            oznake:</p>
+            <dl>
+            <dt><span class="math inline">\(f(x,y)\)</span>:</dt>
+            <dd>
+            <p>produkt <span class="math inline">\(x\)</span> in <span
+            class="math inline">\(y\)</span></p>
+            </dd>
+            <dt><span class="math inline">\(E(x,y)\)</span>:</dt>
+            <dd>
+            <p><span class="math inline">\(x\)</span> je enak <span
+            class="math inline">\(y\)</span>.</p>
+            </dd>
+            </dl>
+            <p>Definicijo predikata <span
+            class="math inline">\(P\)</span> lahko zapišemo na naslednji
+            način: <span class="math display">\[\forall x \colon \left(
+                P(x) \Leftrightarrow V(x,1) \land \forall u \forall v
+            \colon ( E(x, f(u,v)) \Rightarrow E(u,1) \land E(v,1) ).
+                \right)\]</span></p>
+            <p>Tukaj smo naleteli še na zadnji fenomen, ki ga bomo imeli
+            v predikatnem računu, in sicer je to
+            <span><strong><em>funkcijski simbol</em></strong></span>
+            <span class="math inline">\(f\)</span>, ki iz danih števil
+            izračuna njun produkt.</p>
+            </div>
             <h1 id="relacije">Relacije</h1>
             <h1 id="urejenosti">Urejenosti</h1>
             <h1 id="grafi">Grafi</h1>

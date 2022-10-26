@@ -844,6 +844,119 @@ Tretja predpostavka ima obliko disjunkcije, zato lahko sklep dokažemo s pomočj
 \end{zgled}
 
 \chapter{Predikatni račun}
+
+Predikatni račun je \emph{nadgradnja} izjavnega računa, ki omogoča bolj natančno logično izražanje. Najprej si bomo na konkretnih primerih pogledali, katere novosti prinaša predikatni račun. Za tem bomo te formalno definirali in razvili podobno teorijo kot v izjavnem računu.
+
+\section{Motivacija}
+
+Na konkretnih zgledih si oglejmo nekaj simbolov in formul, ki jih bomo videli v predikatnem računu. Ti zgledi nam bodo pomagali, da bomo v naslednjem razdelku lažje predelali formalne definicije predikatnega računa.
+
+\begin{zgled}
+Oglejmo si naslednji sklep, zapisan v slovenščini.
+
+\begin{description}
+    \item[$p_1$:] Vsak zajec ljubi korenje.
+    \item[$p_2$:] Feliks je zajec.
+    \item[$z$:] Torej Feliks ljubi korenje.
+\end{description}
+
+V izjavnem računu ta sklep zapišemo kot $p_1, p_2 \models z$. Seveda pa ta sklep v izjavnem računu ni veljaven, protiprimer je namreč nabor $p_1 = 1, p_2 = 1, z = 0$. 
+
+Kljub temu se zdi, da je ta sklep v slovenščini vsekakor pravilen. Predikatni račun je nadgradnja izjavnega računa, v katerem izjavne spremeljivke $p_1, p_2, z$ obravnavamo nekoliko podrobneje, tako da bo ta sklep pravilen tudi v tem novem računu.
+
+Uvedimo naslednje oznake:
+
+\begin{description}
+    \item[$Z(x)$:] $x$ je zajec.
+    \item[$K(x)$:] $x$ ljubi korenje.
+    \item[$a$:] Feliks
+    \item[$\forall x$:] za vsak $x$
+\end{description}
+
+S temi oznakami lahko sklep zapišemo bolj natančno takole:
+
+\begin{description}
+    \item[$p_1$:] $\forall x \colon (Z(x) \Rightarrow K(x))$
+    \item[$p_2$:] $Z(a)$
+    \item[$z$:] $K(a)$
+\end{description}
+
+V predikatnem jeziku bomo torej poleg izjavnih vezikov in ločil iz izjavnega računa imeli {\definicija individualne spremenljivke} ($x$), {\definicija individualne konstante} ($a$), {\definicija predikate} ($Z$, $K$) in {\definicija univerzalni kvantifikator} ($\forall$).
+\end{zgled}
+
+\begin{zgled}
+Prevedimo nekaj izjav iz slovenščine v nov jezik predikatnega računa, kot smo to storili v zadnjem zgledu. Izjave so naslednje:
+
+\begin{enumerate}
+    \item Vsi gasilci so hrabri.
+    \item Nekateri gasilci so hrabri.
+    \item Nekateri gasilci niso hrabri.
+    \item Noben gasilec ni hraber.
+\end{enumerate}
+
+Uvedimo naslednje oznake:
+
+\begin{description}
+    \item[$G(x)$:] $x$ je gasilec.
+    \item[$H(x)$:] $x$ je hraber.
+    \item[$\exists x$:] obstaja $x$
+\end{description}
+
+Izjave v slovenščini lahko s temi oznakami zapišemo na naslednji način:
+
+\begin{enumerate}
+    \item $\forall x \colon (G(x) \Rightarrow H(x))$
+    \item $\exists x \colon (G(x) \land H(x))$
+    \item $\exists x \colon (G(x) \land \lnot H(x))$
+    \item $\forall x \colon (G(x) \Rightarrow \lnot H(x))$
+\end{enumerate}
+
+Tukaj smo videli še en simbol kvantifikacije, ki ga bomo imeli v predikatnem računu, in sicer {\definicija eksistenčni kvantifikator} ($\exists$).
+\end{zgled}
+
+\begin{zgled}
+Storimo podobno kot v zadnjih dveh zgledih še za naslednjo matematično izjavo. \emph{Evklidov izrek} nam pove, da obstaja neskončno mnogo praštevil. 
+
+Če želimo to izjavo zapisati na podoben način kot prejšnje izjave v tem poglavju, nam bo v pomoč, če jo prepišemo v nekoliko drugačno obliko, in sicer kot izjavo, da obstajajo poljubno velika praštevila. Še vedno ni jasno, kako bi izrazili del izjave, ki pravi, da obstajajo \emph{poljubno velika} števila, zato bodimo še nekoliko bolj eksplicitni glede tega dela izjave. Evklidov izrek je ekvivalenten izjavi, da za vsako naravno število obstaja večje naravno število, ki je praštevilo. To zadnjo izjavo pa lahko zapišemo v predikatnem računu. 
+
+Uvedimo naslednje oznake:
+
+\begin{description}
+    \item[$P(x)$:] $x$ je praštevilo.
+    \item[$V(x,y)$:] $x$ je večje od $y$.
+\end{description}
+
+V tem zgledu so naše spremenljivke $x$ iz množice naravnih števil, v prejšnjih zgledih pa so bile iz množice živali. Pomembno je, da se na začetku dogovorimo o področju pogovora oziroma {\definicija domeni}, saj izjave, ki jih zapišemo, morda v drugi domeni pomenijo čisto nekaj drugega.
+
+Evklidov izrek lahko nazadnje zapišemo v predikatnem računu na naslednji način:
+\[
+    \forall x \exists y \colon (V(y,x) \land P(y)).
+\]
+
+Tukaj smo srečali predikat $V$, ki je nekoliko drugačen od predikatov, ki smo jih videli do sedaj. Predikat $V$ je namreč \emph{dvomesten} (ima dva parametra), drugi predikati pa so bili vsi \emph{enomestni}.
+\end{zgled}
+
+\begin{zgled}
+V prejšnjem zgledu smo govorili o praštevilih, za katere smo uvedli predikat $P$. Seveda pa bi lahko samo dejstvo, da je spremenljivka $x$ praštevilo, se pravi da je izjava $P(x)$ resnična, podrobneje opisali v predikatnem računu. To storimo v tem zgledu.
+
+Po definiciji je naravno število $n$ praštevilo, če in samo če ima natanko dva naravna delitelja. Uvedimo naslednje oznake:
+
+\begin{description}
+    \item[$f(x,y)$:] produkt $x$ in $y$
+    \item[$E(x,y)$:] $x$ je enak $y$.
+\end{description}
+
+Definicijo predikata $P$ lahko zapišemo na naslednji način:
+\[
+    \forall x \colon \left( 
+    P(x) \Leftrightarrow V(x,1) \land \forall u \forall v \colon ( E(x, f(u,v)) \Rightarrow E(u,1) \land E(v,1) ).
+    \right)
+\]
+
+Tukaj smo naleteli še na zadnji fenomen, ki ga bomo imeli v predikatnem računu, in sicer je to {\definicija funkcijski simbol} $f$, ki iz danih števil izračuna njun produkt.
+\end{zgled}
+
+
 \chapter{Relacije}
 \chapter{Urejenosti}
 \chapter{Grafi}
