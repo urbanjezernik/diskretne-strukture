@@ -1344,7 +1344,7 @@ Množica $R$ je {\definicija dvomestna relacija} v množici $A$, če je $R \subs
 
         \begin{figure}[h]
             \centering
-            \includegraphics[width=0.3\linewidth]{img/relacije-graf.png}
+            % \includegraphics[width=0.3\linewidth]{img/relacije-graf.png}
             \caption{Graf relacije $R$}
         \end{figure}
 
@@ -1385,9 +1385,88 @@ Izpostavimo {\definicija nekaj lastnosti, ki jih lahko ima relacija} $R \subsete
 \begin{itemize}
     \item {\definicija refleksivna}, če $\forall x \in A \colon x R x$,
     \item {\definicija irefleksivna}, če $\forall x \in A \colon \lnot x R x$,
+    \item {\definicija simetrična}, če $\forall x,y \in A \colon (x R y \Rightarrow y R x)$,
+    \item {\definicija asimetrična}, če $\forall x,y \in A \colon (x R y \Rightarrow \lnot y R x)$,
+    \item {\definicija antisimetrična}, če $\forall x,y \in A \colon (xRy \land yRx \Rightarrow x = y)$,
+    \item {\definicija tranzitivna}, če $\forall x,y,z \in A \colon (xRy \land yRz \Rightarrow xRz)$,
+    \item {\definicija intranzitivna}, če $\forall x,y,z \in A \colon (xRy \land yRz \Rightarrow \lnot xRz)$,
+    \item {\definicija strogo sovisna}, če $\forall x,y \in A \colon (xRy \lor yRx)$,
+    \item {\definicija sovisna}, če $\forall x,y \in A \colon x \neq y \Rightarrow xRy \lor yRx$,
+    \item {\definicija enolična}, če $\forall x,y,z \in A \colon (xRy \land xRz \Rightarrow y = z)$.
 \end{itemize}
 
+\begin{zgled} \leavevmode
+    \begin{itemize}
+        \item Opazujmo relacijo enakosti $=$ v množici $A$. Od naštetih lastnosti je ta relacija refleksivna, simetrična, antisimetrična, tranzitivna in enolična.
+        \item Opazujmo relacijo $\leq$ v $\NN_0$. Ta relacija je refleksivna, antisimetrična, tranzitivna in strogo sovisna.
+        \item Opazujmo relacijo $<$ v $\NN_0$. Ta relacija je irefleksivna, asimetrična, tranzitivna in sovisna.
+        \item Opazujmo relacijo \emph{je mama} v množici ljudi. Ta relacija je irefleksivna, asimetrična, antisimetrična in intranzitivna.
+    \end{itemize}
+\end{zgled}
+
 \section{Ekvivalenčne relacije}
+
+Relacija $R \subseteq A \times A$ je {\definicija ekvivalenčna}, če je refleksivna, simetrična in tranzitivna.
+
+\begin{zgled}
+Naslednje relacije so ekvivalenčne:
+\begin{itemize}
+    \item relacija enakosti $=$,
+    \item univerzalna relacija $A \times A$,
+    \item relacija vzporednosti premic v $\RR^2$,
+    \item relacija \emph{ima enako barvo oči kot} v množici ljudi,
+    \item relacija \emph{ima enak BDP kot} v množici držav.
+\end{itemize}
+\end{zgled}
+
+Naj bo $R \subseteq A \times A$ ekvivalenčna relacija. Vsakemu elementu $x \in A$ priredimo njegov {\definicija ekvivalenčni razred} 
+\[
+    R[x] = \{ y \in A \mid yRx \}.
+\]
+Element $x$ je {\definicija predstavnik} ekvivalenčnega razreda $R[x]$. Množico vseh ekvivalenčnih razredov označimo z
+\[
+    A/R = \{ R[x] \mid x \in A \}
+\]
+in jo imenujemo {\definicija kvocientna množica} množice $A$ po relaciji $R$.
+
+\begin{lema}
+Naj bo $R \subseteq A \times A$ ekvivalenčna relacija. Tedaj velja
+\[
+    \forall x,y \in A \colon (R[x] = R[y] \Leftrightarrow xRy).
+\]
+\end{lema}
+\begin{dokaz}
+Vzemimo poljubna $x,y \in A$.
+
+$(\Rightarrow)$: Predpostavimo, da velja $R[x] = R[y]$. Ker je $R$ refleksivna relacija, velja $xRx$, torej je $x \in R[x]$. Od tod sledi $x \in R[y]$, zato je $xRy$. \kljuka
+
+$(\Leftarrow)$: Predpostavimo, da velja $xRy$. Izberimo poljuben $z \in R[x]$. Velja torej $zRx$. Ker je $R$ tranzitivna relacija, iz $xRy$ in $zRx$ sledi $zRy$. To pomeni, da je $z \in R[y]$. Ker je bil $z$ poljuben element $R[x]$, od tod sklepamo, da velja $R[x] \subseteq R[y]$. Zaradi simetričnosti relacije $R$ lahko ponovimo ta argument, pri čemer vlogi $x$ in $y$ zamenjamo med sabo. Na ta način dobimo še vsebovanost $R[y] \subseteq R[x]$. Res torej velja $R[x] = R[y]$. \kljuka
+\end{dokaz}
+
+Iz leme v posebnem sledi, da je vsak element danega ekvivalenčnega razreda tudi njegov predstavnik.
+
+\begin{izrek}
+Naj bo $R \subseteq A \times A$ ekvivalenčna relacija. Tedaj velja:
+\begin{enumerate}
+    \item $\forall x \in A \colon R[x] \neq \emptyset$,
+    \item $\forall x, y \in A \colon (R[x] \neq R[y] \Rightarrow R[x] \cap R[y] = \emptyset)$,
+    \item $\bigcup_{x \in A} R[x] = A$.
+\end{enumerate}
+\end{izrek}
+
+Povedano še drugače, ekvivalenčna relacija razdeli množico $A$ na paroma tuje neprazne bloke.
+
+\begin{dokaz}
+1. Vzemimo poljuben $x \in A$. Ker je $R$ refleksivna, velja $x R x$, zato je $x \in R[x]$. Torej je res $R[x] \neq \emptyset$. \kljuka
+
+2. Vzemimo poljubna $x,y \in A$. Dokažimo kontrapozicijo trditve, se pravi veljavnost implikacije 
+\[
+    R[x]\cap R[y] \neq \emptyset \Rightarrow R[x] = R[y].
+\]
+Predpostavimo lahko, da obstaja $z \in R[x] \cap R[y]$. To pomeni, da velja $zRx \land zRy$. Zaradi simetričnosti $R$ sledi $xRz \land zRy$, od koder zaradi tranzitivnosti $R$ velja $xRy$. Iz leme zdaj sledi, da je $R[x] = R[y]$. \kljuka
+
+3. Vzemimo poljuben $x \in A$. Velja $x \in R[x]$, zato je $x \in \bigcup_{y \in A} R[y]$. Ker je bil $x$ poljuben, sledi $\bigcup_{y \in A} R[y] \supseteq A$. Obratna vsebovanost je očitna. \kljuka
+\end{dokaz}
 
 \chapter{Urejenosti}
 \chapter{Grafi}

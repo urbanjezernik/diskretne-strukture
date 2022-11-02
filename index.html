@@ -90,8 +90,15 @@
               id="toc-sklepanje-v-predikatnem-računu">Sklepanje v
               predikatnem računu</a></li>
               </ul></li>
-              <li><a href="#relacije"
-              id="toc-relacije">Relacije</a></li>
+              <li><a href="#relacije" id="toc-relacije">Relacije</a>
+              <ul>
+              <li><a href="#definicija-in-lastnosti-relacij"
+              id="toc-definicija-in-lastnosti-relacij">Definicija in
+              lastnosti relacij</a></li>
+              <li><a href="#ekvivalenčne-relacije"
+              id="toc-ekvivalenčne-relacije">Ekvivalenčne
+              relacije</a></li>
+              </ul></li>
               <li><a href="#urejenosti"
               id="toc-urejenosti">Urejenosti</a></li>
               <li><a href="#grafi" id="toc-grafi">Grafi</a></li>
@@ -2809,6 +2816,312 @@
             dokazati.</p>
             </div>
             <h1 id="relacije">Relacije</h1>
+            <p>Ena od pomembnih komponent predikatnega računa so
+            <em>predikati</em>. V konkretni interpretaciji <span
+            class="math inline">\(I\)</span> z domeno <span
+            class="math inline">\(D\)</span> te predstavimo kot množice
+            nekaterih <span class="math inline">\(n\)</span>-teric iz
+            <span class="math inline">\(D\)</span>. Enomestni predikati
+            so torej kar podmnožice <span
+            class="math inline">\(D\)</span>, dvomestni predikati pa so
+            podmnožice <span class="math inline">\(D \times D\)</span>.
+            V tem poglavju si bomo podrobneje pogledali dvomestne
+            predikate, ki jih nasploh v matematiki imenujemo
+            <em>relacije</em>. Pogledali si bomo njihove
+            <em>lastnosti</em> ter različne <em>konstrukcije</em>
+            relacij.</p>
+            <h2 id="definicija-in-lastnosti-relacij">Definicija in
+            lastnosti relacij</h2>
+            <p>Množica <span class="math inline">\(R\)</span> je
+            <span><strong><em>dvomestna relacija</em></strong></span> v
+            množici <span class="math inline">\(A\)</span>, če je <span
+            class="math inline">\(R \subseteq A \times A\)</span>.</p>
+            <div class="zgled">
+            <p><strong>Zgled 3.1</strong>. </p>
+            <ul>
+            <li><p>Naj bo <span class="math inline">\(A = \{ 1,2,3,4
+            \}\)</span>. V tej množici imamo relacijo <span
+            class="math display">\[R = \{ (1,2), (2,3), (3,1), (3,3),
+            (3,4) \} \subseteq A \times A.\]</span> To relacijo lahko
+            predstavimo grafično z <span><strong><em>grafom
+            relacije</em></strong></span>. Elementi množice <span
+            class="math inline">\(A\)</span> so vozlišča, vozlišči <span
+            class="math inline">\(a\)</span> in <span
+            class="math inline">\(b\)</span> pa povežemo s puščico od
+            <span class="math inline">\(a\)</span> do <span
+            class="math inline">\(b\)</span>, če je <span
+            class="math inline">\((a,b) \in R\)</span>.</p></li>
+            <li><p>Naj bo <span class="math inline">\(A =
+            \mathbf{N}_0\)</span> in <span
+            class="math inline">\(R\)</span> relacija, podana kot <span
+            class="math display">\[R = \{ (x,y) \in \mathbf{N}_0 \times
+            \mathbf{N}_0 \mid \exists z \in \mathbf{N}_0 \colon x + y =
+            z \}.\]</span> Ta relacija <span
+            class="math inline">\(R\)</span> predstavlja relacijo <span
+            class="math inline">\(\leq\)</span> na množici <span
+            class="math inline">\(\mathbf{N}_0\)</span>, se pravi <span
+            class="math inline">\((x,y) \in R \Leftrightarrow x \leq
+            y\)</span>.</p></li>
+            <li><p>V vsaki množici <span
+            class="math inline">\(A\)</span> imamo naslednje
+            relacije:</p>
+            <ul>
+            <li><p><span class="math inline">\(R = \emptyset \subset A
+            \times A\)</span>. To je <span><strong><em>prazna
+            relacija</em></strong></span>. V tej relaciji noben element
+            množice <span class="math inline">\(A\)</span> ni v relaciji
+            z nobenim drugim.</p></li>
+            <li><p><span class="math inline">\(R = A \times A \subseteq
+            A \times A\)</span>. To je <span><strong><em>univerzalna
+            relacija</em></strong></span>. V tej relaciji je vsak
+            element množice <span class="math inline">\(A\)</span> v
+            relaciji z vsakim drugim.</p></li>
+            <li><p><span class="math inline">\(R = id_A = \{ (x,x) \mid
+            x \in A \} \subseteq A \times A\)</span>. To je
+            <span><strong><em>relacija enakosti</em></strong></span>. V
+            tej relaciji je vsak element množice <span
+            class="math inline">\(A\)</span> v relaciji le s
+            sabo.</p></li>
+            </ul></li>
+            </ul>
+            </div>
+            <p>Če je <span class="math inline">\(R \subseteq A \times
+            A\)</span> relacija, potem namesto oznake <span
+            class="math inline">\((x,y) \in R\)</span> pišemo tudi <span
+            class="math inline">\(xRy\)</span> in beremo <em><span
+            class="math inline">\(x\)</span> je v relaciji <span
+            class="math inline">\(R\)</span> z <span
+            class="math inline">\(y\)</span></em>.</p>
+            <p>Relacijo si lahko predstavljamo kot množico točk v
+            <em>kvadratu</em> <span class="math inline">\(A \times
+            A\)</span>. Za vsaka <span class="math inline">\(x,y \in
+            A\)</span>, za katera je <span
+            class="math inline">\(xRy\)</span>, označimo točko <span
+            class="math inline">\((x,y)\)</span> v tem kvadratu. Na ta
+            način lahko relacijo <span class="math inline">\(R\)</span>
+            vidimo kot neko množico točk v <span class="math inline">\(A
+            \times A\)</span>. Kot pri grafih funkcij uporabimo
+            terminologijo, ki nam pove, kako izgleda ta množica točk.
+            <span><strong><em>Domena/definicijsko
+            območje</em></strong></span> relacije <span
+            class="math inline">\(R\)</span> je množica <span
+            class="math display">\[\mathcal{D}_R = \{ x \in A \mid
+            \exists y \in A \colon x R y \},\]</span>
+            <span><strong><em>zaloga vrednosti</em></strong></span>
+            relacije <span class="math inline">\(R\)</span> pa je <span
+            class="math display">\[\mathcal{Z}_R = \{ y \in A \mid
+            \exists x \in A \colon x R y \}.\]</span></p>
+            <div class="zgled">
+            <p><strong>Zgled 3.2</strong>. </p>
+            <ul>
+            <li><p>Naj bo <span class="math inline">\(A = \{ 1,2,3,4
+            \}\)</span> in <span class="math inline">\(R = \{ (1,3),
+            (2,2), (4,3) \}\)</span>. V tem primeru je <span
+            class="math inline">\(\mathcal{D}_R = \{1,2,3\}\)</span> in
+            <span class="math inline">\(\mathcal{Z}_R =
+            \{2,3\}\)</span>.</p></li>
+            <li><p>Naj bo <span class="math inline">\(A =
+            \mathbf{N}_0\)</span> in <span class="math inline">\(R  = \{
+            (x,y) \in \mathbf{N}_0 \times \mathbf{N}_0 \mid \exists z
+            \in \mathbf{N}_0 \colon x + z + 1 = y \}\)</span>. Relacija
+            <span class="math inline">\(R\)</span> predstavlja relacijo
+            <span class="math inline">\(&lt;\)</span> v <span
+            class="math inline">\(\mathbf{N}_0\)</span>. V tem primeru
+            je <span class="math inline">\(\mathcal{D}_R =
+            \mathbf{N}_0\)</span> in <span
+            class="math inline">\(\mathcal{Z}_R =
+            \mathbf{N}\)</span>.</p></li>
+            </ul>
+            </div>
+            <p>Izpostavimo <span><strong><em>nekaj lastnosti, ki jih
+            lahko ima relacija</em></strong></span> <span
+            class="math inline">\(R \subseteq A \times A\)</span>.
+            Rečemo, da je relacija <span
+            class="math inline">\(R\)</span>:</p>
+            <ul>
+            <li><p><span><strong><em>refleksivna</em></strong></span>,
+            če <span class="math inline">\(\forall x \in A \colon x R
+            x\)</span>,</p></li>
+            <li><p><span><strong><em>irefleksivna</em></strong></span>,
+            če <span class="math inline">\(\forall x \in A \colon \lnot
+            x R x\)</span>,</p></li>
+            <li><p><span><strong><em>simetrična</em></strong></span>, če
+            <span class="math inline">\(\forall x,y \in A \colon (x R y
+            \Rightarrow y R x)\)</span>,</p></li>
+            <li><p><span><strong><em>asimetrična</em></strong></span>,
+            če <span class="math inline">\(\forall x,y \in A \colon (x R
+            y \Rightarrow \lnot y R x)\)</span>,</p></li>
+            <li><p><span><strong><em>antisimetrična</em></strong></span>,
+            če <span class="math inline">\(\forall x,y \in A \colon (xRy
+            \land yRx \Rightarrow x = y)\)</span>,</p></li>
+            <li><p><span><strong><em>tranzitivna</em></strong></span>,
+            če <span class="math inline">\(\forall x,y,z \in A \colon
+            (xRy \land yRz \Rightarrow xRz)\)</span>,</p></li>
+            <li><p><span><strong><em>intranzitivna</em></strong></span>,
+            če <span class="math inline">\(\forall x,y,z \in A \colon
+            (xRy \land yRz \Rightarrow \lnot xRz)\)</span>,</p></li>
+            <li><p><span><strong><em>strogo
+            sovisna</em></strong></span>, če <span
+            class="math inline">\(\forall x,y \in A \colon (xRy \lor
+            yRx)\)</span>,</p></li>
+            <li><p><span><strong><em>sovisna</em></strong></span>, če
+            <span class="math inline">\(\forall x,y \in A \colon x \neq
+            y \Rightarrow xRy \lor yRx\)</span>,</p></li>
+            <li><p><span><strong><em>enolična</em></strong></span>, če
+            <span class="math inline">\(\forall x,y,z \in A \colon (xRy
+            \land xRz \Rightarrow y = z)\)</span>.</p></li>
+            </ul>
+            <div class="zgled">
+            <p><strong>Zgled 3.3</strong>. </p>
+            <ul>
+            <li><p>Opazujmo relacijo enakosti <span
+            class="math inline">\(=\)</span> v množici <span
+            class="math inline">\(A\)</span>. Od naštetih lastnosti je
+            ta relacija refleksivna, simetrična, antisimetrična,
+            tranzitivna in enolična.</p></li>
+            <li><p>Opazujmo relacijo <span
+            class="math inline">\(\leq\)</span> v <span
+            class="math inline">\(\mathbf{N}_0\)</span>. Ta relacija je
+            refleksivna, antisimetrična, tranzitivna in strogo
+            sovisna.</p></li>
+            <li><p>Opazujmo relacijo <span
+            class="math inline">\(&lt;\)</span> v <span
+            class="math inline">\(\mathbf{N}_0\)</span>. Ta relacija je
+            irefleksivna, asimetrična, tranzitivna in sovisna.</p></li>
+            <li><p>Opazujmo relacijo <em>je mama</em> v množici ljudi.
+            Ta relacija je irefleksivna, asimetrična, antisimetrična in
+            intranzitivna.</p></li>
+            </ul>
+            </div>
+            <h2 id="ekvivalenčne-relacije">Ekvivalenčne relacije</h2>
+            <p>Relacija <span class="math inline">\(R \subseteq A \times
+            A\)</span> je
+            <span><strong><em>ekvivalenčna</em></strong></span>, če je
+            refleksivna, simetrična in tranzitivna.</p>
+            <div class="zgled">
+            <p><strong>Zgled 3.4</strong>. Naslednje relacije so
+            ekvivalenčne:</p>
+            <ul>
+            <li><p>relacija enakosti <span
+            class="math inline">\(=\)</span>,</p></li>
+            <li><p>univerzalna relacija <span class="math inline">\(A
+            \times A\)</span>,</p></li>
+            <li><p>relacija vzporednosti premic v <span
+            class="math inline">\(\mathbf{R}^2\)</span>,</p></li>
+            <li><p>relacija <em>ima enako barvo oči kot</em> v množici
+            ljudi,</p></li>
+            <li><p>relacija <em>ima enak BDP kot</em> v množici
+            držav.</p></li>
+            </ul>
+            </div>
+            <p>Naj bo <span class="math inline">\(R \subseteq A \times
+            A\)</span> ekvivalenčna relacija. Vsakemu elementu <span
+            class="math inline">\(x \in A\)</span> priredimo njegov
+            <span><strong><em>ekvivalenčni razred</em></strong></span>
+            <span class="math display">\[R[x] = \{ y \in A \mid yRx
+            \}.\]</span> Element <span class="math inline">\(x\)</span>
+            je <span><strong><em>predstavnik</em></strong></span>
+            ekvivalenčnega razreda <span
+            class="math inline">\(R[x]\)</span>. Množico vseh
+            ekvivalenčnih razredov označimo z <span
+            class="math display">\[A/R = \{ R[x] \mid x \in A
+            \}\]</span> in jo imenujemo <span><strong><em>kvocientna
+            množica</em></strong></span> množice <span
+            class="math inline">\(A\)</span> po relaciji <span
+            class="math inline">\(R\)</span>.</p>
+            <div class="lema">
+            <p><strong>Lema 3.1</strong>. Naj bo <span
+            class="math inline">\(R \subseteq A \times A\)</span>
+            ekvivalenčna relacija. Tedaj velja <span
+            class="math display">\[\forall x,y \in A \colon (R[x] = R[y]
+            \Leftrightarrow xRy).\]</span></p>
+            </div>
+            <div class="proof">
+            <p><em>Proof.</em> Vzemimo poljubna <span
+            class="math inline">\(x,y \in A\)</span>.</p>
+            <p><span class="math inline">\((\Rightarrow)\)</span>:
+            Predpostavimo, da velja <span class="math inline">\(R[x] =
+            R[y]\)</span>. Ker je <span class="math inline">\(R\)</span>
+            refleksivna relacija, velja <span
+            class="math inline">\(xRx\)</span>, torej je <span
+            class="math inline">\(x \in R[x]\)</span>. Od tod sledi
+            <span class="math inline">\(x \in R[y]\)</span>, zato je
+            <span class="math inline">\(xRy\)</span>. <span
+            class="math inline">\(\checkmark\)</span></p>
+            <p><span class="math inline">\((\Leftarrow)\)</span>:
+            Predpostavimo, da velja <span
+            class="math inline">\(xRy\)</span>. Izberimo poljuben <span
+            class="math inline">\(z \in R[x]\)</span>. Velja torej <span
+            class="math inline">\(zRx\)</span>. Ker je <span
+            class="math inline">\(R\)</span> tranzitivna relacija, iz
+            <span class="math inline">\(xRy\)</span> in <span
+            class="math inline">\(zRx\)</span> sledi <span
+            class="math inline">\(zRy\)</span>. To pomeni, da je <span
+            class="math inline">\(z \in R[y]\)</span>. Ker je bil <span
+            class="math inline">\(z\)</span> poljuben element <span
+            class="math inline">\(R[x]\)</span>, od tod sklepamo, da
+            velja <span class="math inline">\(R[x] \subseteq
+            R[y]\)</span>. Zaradi simetričnosti relacije <span
+            class="math inline">\(R\)</span> lahko ponovimo ta argument,
+            pri čemer vlogi <span class="math inline">\(x\)</span> in
+            <span class="math inline">\(y\)</span> zamenjamo med sabo.
+            Na ta način dobimo še vsebovanost <span
+            class="math inline">\(R[y] \subseteq R[x]\)</span>. Res
+            torej velja <span class="math inline">\(R[x] =
+            R[y]\)</span>. <span
+            class="math inline">\(\checkmark\)</span> ◻</p>
+            </div>
+            <p>Iz leme v posebnem sledi, da je vsak element danega
+            ekvivalenčnega razreda tudi njegov predstavnik.</p>
+            <div class="izrek">
+            <p><strong>Izrek 3.1</strong>. Naj bo <span
+            class="math inline">\(R \subseteq A \times A\)</span>
+            ekvivalenčna relacija. Tedaj velja:</p>
+            <ol>
+            <li><p><span class="math inline">\(\forall x \in A \colon
+            R[x] \neq \emptyset\)</span>,</p></li>
+            <li><p><span class="math inline">\(\forall x, y \in A \colon
+            (R[x] \neq R[y] \Rightarrow R[x] \cap R[y] =
+            \emptyset)\)</span>,</p></li>
+            <li><p><span class="math inline">\(\bigcup_{x \in A} R[x] =
+            A\)</span>.</p></li>
+            </ol>
+            </div>
+            <p>Povedano še drugače, ekvivalenčna relacija razdeli
+            množico <span class="math inline">\(A\)</span> na paroma
+            tuje neprazne bloke.</p>
+            <div class="proof">
+            <p><em>Proof.</em> 1. Vzemimo poljuben <span
+            class="math inline">\(x \in A\)</span>. Ker je <span
+            class="math inline">\(R\)</span> refleksivna, velja <span
+            class="math inline">\(x R x\)</span>, zato je <span
+            class="math inline">\(x \in R[x]\)</span>. Torej je res
+            <span class="math inline">\(R[x] \neq \emptyset\)</span>.
+            <span class="math inline">\(\checkmark\)</span></p>
+            <p>2. Vzemimo poljubna <span class="math inline">\(x,y \in
+            A\)</span>. Dokažimo kontrapozicijo trditve, se pravi
+            veljavnost implikacije <span class="math display">\[R[x]\cap
+            R[y] \neq \emptyset \Rightarrow R[x] = R[y].\]</span>
+            Predpostavimo lahko, da obstaja <span
+            class="math inline">\(z \in R[x] \cap R[y]\)</span>. To
+            pomeni, da velja <span class="math inline">\(zRx \land
+            zRy\)</span>. Zaradi simetričnosti <span
+            class="math inline">\(R\)</span> sledi <span
+            class="math inline">\(xRz \land zRy\)</span>, od koder
+            zaradi tranzitivnosti <span class="math inline">\(R\)</span>
+            velja <span class="math inline">\(xRy\)</span>. Iz leme zdaj
+            sledi, da je <span class="math inline">\(R[x] =
+            R[y]\)</span>. <span
+            class="math inline">\(\checkmark\)</span></p>
+            <p>3. Vzemimo poljuben <span class="math inline">\(x \in
+            A\)</span>. Velja <span class="math inline">\(x \in
+            R[x]\)</span>, zato je <span class="math inline">\(x \in
+            \bigcup_{y \in A} R[y]\)</span>. Ker je bil <span
+            class="math inline">\(x\)</span> poljuben, sledi <span
+            class="math inline">\(\bigcup_{y \in A} R[y] \supseteq
+            A\)</span>. Obratna vsebovanost je očitna. <span
+            class="math inline">\(\checkmark\)</span> ◻</p>
+            </div>
             <h1 id="urejenosti">Urejenosti</h1>
             <h1 id="grafi">Grafi</h1>
             <section class="footnotes footnotes-end-of-document"
