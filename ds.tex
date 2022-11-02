@@ -1107,7 +1107,7 @@ Opazujmo izjavno formulo $\phi = \forall x \exists y \colon R(x,y)$. Poglejmo si
 \end{table}
 \end{zgled}
 
-Dani zaprti izjavni formuli $\phi$ lahko torej v nekaterih interpretacijah ustrezajo resnične izjave, v drugih interpretacijah pa lažje izjave. Rečemo, da je zaprta izjavna formula $\phi$ {\definicija resnična v interpretaciji} $I$, če je resnična izjava $\bar \phi$. V tem primeru pišemo $I \models \varphi$.
+Dani zaprti izjavni formuli $\phi$ lahko torej v nekaterih interpretacijah ustrezajo resnične izjave, v drugih interpretacijah pa lažje izjave. Rečemo, da je zaprta izjavna formula $\phi$ {\definicija resnična v interpretaciji} $I$, če je resnična izjava $\bar \phi$. V tem primeru pišemo $I \models \phi$.
 
 \section{Logično veljavne formule in enakovrednosti}
 
@@ -1225,6 +1225,105 @@ Slednja formula je enakovredna
     \exists x \exists y \colon (Q(y) \land P(x)),
 \]
 ki je v preneksni obliki.
+\end{zgled}
+
+\section{Sklepanje v predikatnem računu}
+
+Končno zaporedje izjavnih formul $\phi_1, \phi_2, \dots, \phi_k, \psi$ je {\definicija veljaven} ali {\definicija pravilen sklep}, če je izjavna formula $\phi_1 \land \phi_2 \land \cdots \land \phi_k \Rightarrow \psi$ logično veljavna. V tem primeru uporabljamo oznako $\phi_1, \phi_2, \dots, \phi_k \models \psi$.
+
+Podrobno si oglejmo, kako lahko uporabimo znanje o predikatnem in izjavnem računu, da dokažemo veljavnost nekaterih sklepov.
+
+\begin{zgled}
+Dokažimo veljavnost sklepa
+\[
+    P(a), \ \forall x \colon (P(x) \Rightarrow Q(x)) \models Q(a).
+\]
+Dokazati torej želimo, da je formula
+\[
+    P(a) \land \forall x \colon (P(x) \Rightarrow Q(x)) \Rightarrow Q(a)
+\]
+logično veljavna. 
+
+V ta namen na bo $I$ \emph{poljubna} interpretacija. Dokažimo resničnost izjave
+\[
+    \bar P( \bar a) \land \forall x \colon (\bar P(x) \Rightarrow \bar Q(x)) \Rightarrow \bar Q(\bar a).
+\]
+Za to lahko uporabimo \emph{pogojni sklep}. Predpostavimo, da je resnična izjava
+\[
+    \bar P( \bar a) \land \forall x \colon (\bar P(x) \Rightarrow \bar Q(x)) 
+\]
+Dokazati želimo, da je resnična tudi izjava $\bar Q(\bar a)$. 
+
+Najprej na predpostavki uporabimo \emph{poenostavitev}. Resnični sta torej izjavi
+\[
+    \bar P( \bar a), \ \forall x \colon (\bar P(x) \Rightarrow \bar Q(x)).
+\] 
+Torej je za vsak $x_0 \in D$ resnična izjava $P(x_0) \Rightarrow Q(x_0)$. V posebnem to velja za $x_0 = \bar a$, zato je izjava $\bar P(\bar a) \Rightarrow \bar Q(\bar a)$ resnična. Ker je resnična tudi izjava $\bar P( \bar a)$, lahko uporabimo \emph{modus ponens}. Sledi, da je resnična tudi izjava $\bar Q(\bar a)$. S tem je dokaz zaključen. 
+
+Res torej velja
+\[
+    I \models \bar P( \bar a) \land \forall x \colon (\bar P(x) \Rightarrow \bar Q(x)) \Rightarrow \bar Q(\bar a).
+\]
+Ker je bila interpretacija $I$ poljubna, smo s tem dokazali veljavnost sklepa
+\[
+    P(a), \ \forall x \colon (P(x) \Rightarrow Q(x)) \models Q(a).
+\]
+
+V posebnem je veljaven sklep, ki smo ga videli na začetku tega poglavja in ki nas je motiviral k definiciji predikatnega računa.
+
+\begin{description}
+    \item Vsak zajec ljubi korenje.
+    \item Feliks je zajec.
+    \item Torej Feliks ljubi korenje.
+\end{description}
+\end{zgled}
+
+\begin{zgled}
+Dokažimo veljavnost sklepa
+\[
+    \exists x \colon P(x), \
+    \forall x \colon (P(x) \Rightarrow \lnot Q(x) \lor \forall y \colon R(y) \models
+    \exists x \colon (Q(x) \Rightarrow R(x)).
+\]
+V ta namen naj bo $I$ \emph{poljubna} interpretacija. Zopet lahko uporabimo pogojni sklep in predpostavimo, da sta resnični izjavi
+\[
+    \exists x \colon \bar P(x), \
+    \forall x \colon (\bar P(x) \Rightarrow \lnot \bar Q(x) \lor \forall y \colon \bar R(y).
+\]
+Dokazati želimo resničnost izjave $\exists x \colon (\bar Q(x) \Rightarrow \bar R(x))$, ki trdi, da obstaja element v $D$ z neko posebno lastnostjo. 
+
+Kako najti ta element? Uporabimo lahko prvo predpostavko, po kateri obstaja element $\bar a \in D$, da je izjava $\bar P(\bar a)$ resnična. Hkrati po drugi predpostavki za vsak $x_0 \in D$ velja
+\[
+    \bar P(x_0) \Rightarrow \lnot \bar Q(x_0) \lor \forall y \colon \bar R(y).  
+\]
+V posebnem to velja za $x_0 = \bar a$, zato je resnična izjava
+\[
+    \bar P(\bar a) \Rightarrow \lnot \bar Q(\bar a) \lor \forall y \colon \bar R(y).  
+\]
+Ker je po predpostavki izjava $\bar P(\bar a)$ resnična, lahko uporabimo \emph{modus ponens} in sklenemo, da je resnična tudi izjava
+\[
+    \lnot \bar Q(\bar a) \lor \forall y \colon \bar R(y).   
+\]
+Zdaj lahko uporabimo \emph{analizo primerov}.
+\begin{enumerate}
+    \item Predpostavimo, da je resnična izjava $\lnot \bar Q(\bar a)$. Uporabimo \emph{pridružitev} in sklenemo, da je resnična izjava
+    \[
+        \lnot \bar Q(\bar a) \lor \bar R(\bar a) \sim \bar Q(\bar a) \Rightarrow \bar R(\bar a)
+    \]
+    \item Predpostavimo, da je resnična izjava $\forall y \colon \bar R(y)$. Torej za vsak $y_0 \in D$ velja $\bar R(y_0)$. V posebnem to velja za $y_0 = \bar a$. Torej je resnična izjava $\bar R(\bar a)$. Uporabimo \emph{pridružitev} in sklenemo, da je resnična izjava 
+    \[
+        \lnot \bar Q(\bar a) \lor \bar R(\bar a) \sim \bar Q(\bar a) \Rightarrow \bar R(\bar a).
+    \]
+\end{enumerate}
+Z analizo primerov smo zaključili, da je resnična izjava
+\[
+    \bar Q(\bar a) \Rightarrow \bar R(\bar a).
+\]
+Torej je resnična tudi izjava
+\[
+    \exists x \colon ( \bar Q(x) \Rightarrow \bar R(x) ),
+\]
+kar smo ravno želeli dokazati.
 \end{zgled}
 
 \chapter{Relacije}

@@ -43,7 +43,7 @@
             <strong> Urban Jezernik <br>
               Univerza v Ljubljani, Fakulteta za matematiko in fiziko </strong> <br>
 
-            Zadnja posodobitev: 26. 10. 2022
+            Zadnja posodobitev: 02. 11. 2022
           </div>
 
           <div id="spinner" class="text-center">
@@ -86,6 +86,9 @@
               <li><a href="#logično-veljavne-formule-in-enakovrednosti"
               id="toc-logično-veljavne-formule-in-enakovrednosti">Logično
               veljavne formule in enakovrednosti</a></li>
+              <li><a href="#sklepanje-v-predikatnem-računu"
+              id="toc-sklepanje-v-predikatnem-računu">Sklepanje v
+              predikatnem računu</a></li>
               </ul></li>
               <li><a href="#relacije"
               id="toc-relacije">Relacije</a></li>
@@ -2418,7 +2421,7 @@
             class="math inline">\(I\)</span>, če je resnična izjava
             <span class="math inline">\(\bar \phi\)</span>. V tem
             primeru pišemo <span class="math inline">\(I \models
-            \varphi\)</span>.</p>
+            \phi\)</span>.</p>
             <h2 id="logično-veljavne-formule-in-enakovrednosti">Logično
             veljavne formule in enakovrednosti</h2>
             <p>Kadar je zaprta izjavna formula <span
@@ -2681,6 +2684,129 @@
             P(x) ).\]</span> Slednja formula je enakovredna <span
             class="math display">\[\exists x \exists y \colon (Q(y)
             \land P(x)),\]</span> ki je v preneksni obliki.</p>
+            </div>
+            <h2 id="sklepanje-v-predikatnem-računu">Sklepanje v
+            predikatnem računu</h2>
+            <p>Končno zaporedje izjavnih formul <span
+            class="math inline">\(\phi_1, \phi_2, \dots, \phi_k,
+            \psi\)</span> je
+            <span><strong><em>veljaven</em></strong></span> ali
+            <span><strong><em>pravilen sklep</em></strong></span>, če je
+            izjavna formula <span class="math inline">\(\phi_1 \land
+            \phi_2 \land \cdots \land \phi_k \Rightarrow \psi\)</span>
+            logično veljavna. V tem primeru uporabljamo oznako <span
+            class="math inline">\(\phi_1, \phi_2, \dots, \phi_k \models
+            \psi\)</span>.</p>
+            <p>Podrobno si oglejmo, kako lahko uporabimo znanje o
+            predikatnem in izjavnem računu, da dokažemo veljavnost
+            nekaterih sklepov.</p>
+            <div class="zgled">
+            <p><strong>Zgled 2.15</strong>. Dokažimo veljavnost sklepa
+            <span class="math display">\[P(a), \ \forall x \colon (P(x)
+            \Rightarrow Q(x)) \models Q(a).\]</span> Dokazati torej
+            želimo, da je formula <span class="math display">\[P(a)
+            \land \forall x \colon (P(x) \Rightarrow Q(x)) \Rightarrow
+            Q(a)\]</span> logično veljavna.</p>
+            <p>V ta namen na bo <span class="math inline">\(I\)</span>
+            <em>poljubna</em> interpretacija. Dokažimo resničnost izjave
+            <span class="math display">\[\bar P( \bar a) \land \forall x
+            \colon (\bar P(x) \Rightarrow \bar Q(x)) \Rightarrow \bar
+            Q(\bar a).\]</span> Za to lahko uporabimo <em>pogojni
+            sklep</em>. Predpostavimo, da je resnična izjava <span
+            class="math display">\[\bar P( \bar a) \land \forall x
+            \colon (\bar P(x) \Rightarrow \bar Q(x))\]</span> Dokazati
+            želimo, da je resnična tudi izjava <span
+            class="math inline">\(\bar Q(\bar a)\)</span>.</p>
+            <p>Najprej na predpostavki uporabimo <em>poenostavitev</em>.
+            Resnični sta torej izjavi <span class="math display">\[\bar
+            P( \bar a), \ \forall x \colon (\bar P(x) \Rightarrow \bar
+            Q(x)).\]</span> Torej je za vsak <span
+            class="math inline">\(x_0 \in D\)</span> resnična izjava
+            <span class="math inline">\(P(x_0) \Rightarrow
+            Q(x_0)\)</span>. V posebnem to velja za <span
+            class="math inline">\(x_0 = \bar a\)</span>, zato je izjava
+            <span class="math inline">\(\bar P(\bar a) \Rightarrow \bar
+            Q(\bar a)\)</span> resnična. Ker je resnična tudi izjava
+            <span class="math inline">\(\bar P( \bar a)\)</span>, lahko
+            uporabimo <em>modus ponens</em>. Sledi, da je resnična tudi
+            izjava <span class="math inline">\(\bar Q(\bar a)\)</span>.
+            S tem je dokaz zaključen.</p>
+            <p>Res torej velja <span class="math display">\[I \models
+            \bar P( \bar a) \land \forall x \colon (\bar P(x)
+            \Rightarrow \bar Q(x)) \Rightarrow \bar Q(\bar a).\]</span>
+            Ker je bila interpretacija <span
+            class="math inline">\(I\)</span> poljubna, smo s tem
+            dokazali veljavnost sklepa <span
+            class="math display">\[P(a), \ \forall x \colon (P(x)
+            \Rightarrow Q(x)) \models Q(a).\]</span></p>
+            <p>V posebnem je veljaven sklep, ki smo ga videli na začetku
+            tega poglavja in ki nas je motiviral k definiciji
+            predikatnega računa.</p>
+            <div class="description">
+            <p>Vsak zajec ljubi korenje.</p>
+            <p>Feliks je zajec.</p>
+            <p>Torej Feliks ljubi korenje.</p>
+            </div>
+            </div>
+            <div class="zgled">
+            <p><strong>Zgled 2.16</strong>. Dokažimo veljavnost sklepa
+            <span class="math display">\[\exists x \colon P(x), \
+                \forall x \colon (P(x) \Rightarrow \lnot Q(x) \lor
+            \forall y \colon R(y) \models
+                \exists x \colon (Q(x) \Rightarrow R(x)).\]</span> V ta
+            namen naj bo <span class="math inline">\(I\)</span>
+            <em>poljubna</em> interpretacija. Zopet lahko uporabimo
+            pogojni sklep in predpostavimo, da sta resnični izjavi <span
+            class="math display">\[\exists x \colon \bar P(x), \
+                \forall x \colon (\bar P(x) \Rightarrow \lnot \bar Q(x)
+            \lor \forall y \colon \bar R(y).\]</span> Dokazati želimo
+            resničnost izjave <span class="math inline">\(\exists x
+            \colon (\bar Q(x) \Rightarrow \bar R(x))\)</span>, ki trdi,
+            da obstaja element v <span class="math inline">\(D\)</span>
+            z neko posebno lastnostjo.</p>
+            <p>Kako najti ta element? Uporabimo lahko prvo predpostavko,
+            po kateri obstaja element <span class="math inline">\(\bar a
+            \in D\)</span>, da je izjava <span
+            class="math inline">\(\bar P(\bar a)\)</span> resnična.
+            Hkrati po drugi predpostavki za vsak <span
+            class="math inline">\(x_0 \in D\)</span> velja <span
+            class="math display">\[\bar P(x_0) \Rightarrow \lnot \bar
+            Q(x_0) \lor \forall y \colon \bar R(y).\]</span> V posebnem
+            to velja za <span class="math inline">\(x_0 = \bar
+            a\)</span>, zato je resnična izjava <span
+            class="math display">\[\bar P(\bar a) \Rightarrow \lnot \bar
+            Q(\bar a) \lor \forall y \colon \bar R(y).\]</span> Ker je
+            po predpostavki izjava <span class="math inline">\(\bar
+            P(\bar a)\)</span> resnična, lahko uporabimo <em>modus
+            ponens</em> in sklenemo, da je resnična tudi izjava <span
+            class="math display">\[\lnot \bar Q(\bar a) \lor \forall y
+            \colon \bar R(y).\]</span> Zdaj lahko uporabimo <em>analizo
+            primerov</em>.</p>
+            <ol>
+            <li><p>Predpostavimo, da je resnična izjava <span
+            class="math inline">\(\lnot \bar Q(\bar a)\)</span>.
+            Uporabimo <em>pridružitev</em> in sklenemo, da je resnična
+            izjava <span class="math display">\[\lnot \bar Q(\bar a)
+            \lor \bar R(\bar a) \sim \bar Q(\bar a) \Rightarrow \bar
+            R(\bar a)\]</span></p></li>
+            <li><p>Predpostavimo, da je resnična izjava <span
+            class="math inline">\(\forall y \colon \bar R(y)\)</span>.
+            Torej za vsak <span class="math inline">\(y_0 \in D\)</span>
+            velja <span class="math inline">\(\bar R(y_0)\)</span>. V
+            posebnem to velja za <span class="math inline">\(y_0 = \bar
+            a\)</span>. Torej je resnična izjava <span
+            class="math inline">\(\bar R(\bar a)\)</span>. Uporabimo
+            <em>pridružitev</em> in sklenemo, da je resnična izjava
+            <span class="math display">\[\lnot \bar Q(\bar a) \lor \bar
+            R(\bar a) \sim \bar Q(\bar a) \Rightarrow \bar R(\bar
+            a).\]</span></p></li>
+            </ol>
+            <p>Z analizo primerov smo zaključili, da je resnična izjava
+            <span class="math display">\[\bar Q(\bar a) \Rightarrow \bar
+            R(\bar a).\]</span> Torej je resnična tudi izjava <span
+            class="math display">\[\exists x \colon ( \bar Q(x)
+            \Rightarrow \bar R(x) ),\]</span> kar smo ravno želeli
+            dokazati.</p>
             </div>
             <h1 id="relacije">Relacije</h1>
             <h1 id="urejenosti">Urejenosti</h1>
