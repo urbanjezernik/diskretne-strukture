@@ -1327,6 +1327,68 @@ kar smo ravno želeli dokazati.
 \end{zgled}
 
 \chapter{Relacije}
+
+Ena od pomembnih komponent predikatnega računa so \emph{predikati}. V konkretni interpretaciji $I$ z domeno $D$ te predstavimo kot množice nekaterih $n$-teric iz $D$. Enomestni predikati so torej kar podmnožice $D$, dvomestni predikati pa so podmnožice $D \times D$. V tem poglavju si bomo podrobneje pogledali dvomestne predikate, ki jih nasploh v matematiki imenujemo \emph{relacije}. Pogledali si bomo njihove \emph{lastnosti} ter različne \emph{konstrukcije} relacij.
+
+\section{Definicija in lastnosti relacij}
+
+Množica $R$ je {\definicija dvomestna relacija} v množici $A$, če je $R \subseteq A \times A$.
+
+\begin{zgled} \leavevmode
+    \begin{itemize}
+        \item Naj bo $A = \{ 1,2,3,4 \}$. V tej množici imamo relacijo
+        \[
+            R = \{ (1,2), (2,3), (3,1), (3,3), (3,4) \} \subseteq A \times A.
+        \]
+        To relacijo lahko predstavimo grafično z {\definicija grafom relacije}. Elementi množice $A$ so vozlišča, vozlišči $a$ in $b$ pa povežemo s puščico od $a$ do $b$, če je $(a,b) \in R$.
+
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=0.3\linewidth]{img/relacije-graf.png}
+            \caption{Graf relacije $R$}
+        \end{figure}
+
+        \item Naj bo $A = \NN_0$ in $R$ relacija, podana kot
+        \[
+            R = \{ (x,y) \in \NN_0 \times \NN_0 \mid \exists z \in \NN_0 \colon x + y = z \}.
+        \]
+        Ta relacija $R$ predstavlja relacijo $\leq$ na množici $\NN_0$, se pravi $(x,y) \in R \Leftrightarrow x \leq y$.
+
+        \item V vsaki množici $A$ imamo naslednje relacije:
+        \begin{itemize}
+            \item $R = \emptyset \subset A \times A$. To je {\definicija prazna relacija}. V tej relaciji noben element množice $A$ ni v relaciji z nobenim drugim.
+            \item $R = A \times A \subseteq A \times A$. To je {\definicija univerzalna relacija}. V tej relaciji je vsak element množice $A$ v relaciji z vsakim drugim.
+            \item $R = id_A = \{ (x,x) \mid x \in A \} \subseteq A \times A$. To je {\definicija relacija enakosti}. V tej relaciji je vsak element množice $A$ v relaciji le s sabo.
+        \end{itemize}
+    \end{itemize}
+\end{zgled}
+
+Če je $R \subseteq A \times A$ relacija, potem namesto oznake $(x,y) \in R$ pišemo tudi $xRy$ in beremo \emph{$x$ je v relaciji $R$ z $y$}. 
+
+Relacijo si lahko predstavljamo kot množico točk v \emph{kvadratu} $A \times A$. Za vsaka $x,y \in A$, za katera je $xRy$, označimo točko $(x,y)$ v tem kvadratu. Na ta način lahko relacijo $R$ vidimo kot neko množico točk v $A \times A$. Kot pri grafih funkcij uporabimo terminologijo, ki nam pove, kako izgleda ta množica točk. {\definicija Domena/definicijsko območje} relacije $R$ je množica
+\[
+    \mathcal{D}_R = \{ x \in A \mid \exists y \in A \colon x R y \},
+\]
+{\definicija zaloga vrednosti} relacije $R$ pa je
+\[
+    \mathcal{Z}_R = \{ y \in A \mid \exists x \in A \colon x R y \}.
+\]
+
+\begin{zgled} \leavevmode
+    \begin{itemize}
+        \item Naj bo $A = \{ 1,2,3,4 \}$ in $R = \{ (1,3), (2,2), (4,3) \}$. V tem primeru je $\mathcal{D}_R = \{1,2,3\}$ in $\mathcal{Z}_R = \{2,3\}$.
+        \item Naj bo $A = \NN_0$ in $R  = \{ (x,y) \in \NN_0 \times \NN_0 \mid \exists z \in \NN_0 \colon x + z + 1 = y \}$. Relacija $R$ predstavlja relacijo $<$ v $\NN_0$. V tem primeru je $\mathcal{D}_R = \NN_0$ in $\mathcal{Z}_R = \NN$.
+    \end{itemize}
+\end{zgled}
+
+Izpostavimo {\definicija nekaj lastnosti, ki jih lahko ima relacija} $R \subseteq A \times A$. Rečemo, da je relacija $R$:
+\begin{itemize}
+    \item {\definicija refleksivna}, če $\forall x \in A \colon x R x$,
+    \item {\definicija irefleksivna}, če $\forall x \in A \colon \lnot x R x$,
+\end{itemize}
+
+\section{Ekvivalenčne relacije}
+
 \chapter{Urejenosti}
 \chapter{Grafi}
 
