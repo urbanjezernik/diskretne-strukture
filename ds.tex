@@ -1344,7 +1344,7 @@ Množica $R$ je {\definicija dvomestna relacija} v množici $A$, če je $R \subs
 
         \begin{figure}[h]
             \centering
-            % \includegraphics[width=0.3\linewidth]{img/relacije-graf.png}
+            \includegraphics[width=0.3\linewidth]{img/relacije-graf.png}
             \caption{Graf relacije $R$}
         \end{figure}
 
@@ -1467,6 +1467,114 @@ Predpostavimo lahko, da obstaja $z \in R[x] \cap R[y]$. To pomeni, da velja $zRx
 
 3. Vzemimo poljuben $x \in A$. Velja $x \in R[x]$, zato je $x \in \bigcup_{y \in A} R[y]$. Ker je bil $x$ poljuben, sledi $\bigcup_{y \in A} R[y] \supseteq A$. Obratna vsebovanost je očitna. \kljuka
 \end{dokaz}
+
+\begin{zgled} \leavevmode
+\begin{itemize}
+    \item Naj bo $A$ množica ljudi in $R$ relacija \emph{ima enako barvo oči kot}. Ekvivalenčni razred neke osebe z modrimi očmi torej sestavljajo ravno vse osebe z modrimi očmi. Ekvivalenčni razredi torej ustrezajo barvam oči.
+    \item Naj bo $A$ poljubna množica in $R$ relacija enakosti v $A$. Za vsak $x \in A$ velja $R[x] = \{ x \}$. Množica ekvivalenčnih razredov je enaka $A/R = \{ \{ x \} \mid x \in A \}$.
+    \item Naj bo $A$ poljubna množica in $R$ univerzalna relacija v $A$. Za vsak $x \in A$ velja $R[x] = A$. Imamo torej en sam ekvivalenčni razred in velja $A/R = \{ A \}$.
+    \item Naj bo $A$ množica premic v prostoru $\RR^3$ in naj bo $R$ relacija vzporednosti premic. Za dano premico $p$ je torej $R[p]$ ravno množica vseh premic, ki so vzporedne $p$. Ekvivalenčni razredi torej ustrezajo vsem smerem v $\RR^3$ oziroma enotskim vektorjem v $\RR^3$.
+    \item Množico $\ZZ$ lahko definiramo kot kvocientno množico množice $A = \NN_0 \times \NN_0$ po relaciji $R$, kjer je $(a,b)R(c,d)$, če in samo če $a+d = b+c$. Velja $R[(a,b)] = \{ (c,d) \in \NN_0 \times \NN_0 \mid c-d = a-b \}$, zato lahko množic ekvivalenčnih razredov $A/R$ identificiramo z množico $\ZZ$ prek bijekcije $R[(a,b)] \mapsto a-b$ za $(a,b) \in A$.
+    \item Naj bo $m \in \NN$. Na množici celih števil $\ZZ$ definiramo relacijo {\definicija kongruence po modulu} $m$ kot
+    \[
+        x \equiv y \pmod{m} \Longleftarrow \exists k \in \ZZ \mid x - y = k \cdot m.
+    \]
+    Elementa $x,y \in \ZZ$ sta torej kongruentna po modulu $m$, če im samo če dajeta isti ostanek pri deljenju z $m$. Ni se težko prepričati, da je to ekvivalenčni relacija. Označimo jo z $R_m$. Ekvivalenčni razredi ustrezajo ostankom pri deljenju z $m$:
+    \begin{align*}
+        R_m[0] &= \{ x \in \ZZ \mid \exists k \in \ZZ \colon x = k m \}, \\
+        R_m[1] &= \{ x \in \ZZ \mid \exists k \in \ZZ \colon x = k m + 1 \}, \\
+        \vdots \\
+        R_m[m-1] &= \{ x \in \ZZ \mid \exists k \in \ZZ \colon x = k m +m-1 \}.
+    \end{align*}
+    Za $m = 1$ je torej $R_1 = A$, za $m = 2$ pa ima $R_2$ dva ekvivalenčna razreda, in sicer množico sodih števil in množico lihih števil.
+\end{itemize}
+\end{zgled}
+
+\section{Operacije z relacijami}
+
+Relacije v dani množici $A$ so podmnožice $A \times A$, zato lahko z njimi izvajamo vse operacije, ki jih imamo na voljo z množicami. Nekaj osnovnih takih operacij in njihovih interpretacij je zbranih v naslednji trditvi.
+
+\begin{trditev}
+Naj bosta $R,S \subseteq A \times A$ relaciji. Potem so tudi
+\[
+    R \cup S, \
+    R \cap S, \
+    R \backslash S, \
+    R \oplus S
+\]
+relacije v $A$ in za vse $x,y \in A$ velja:
+\begin{itemize}
+    \item $x(R \cup S) y \Leftrightarrow x R y \lor x S y$,
+    \item $x(R \cap S) y \Leftrightarrow x R y \land x S y$,
+    \item $x(R \backslash S) y \Leftrightarrow x R y \land \lnot (x S y)$,
+    \item $x(R \oplus S) y \Leftrightarrow x R y + x S y$.
+\end{itemize}
+\end{trditev}
+
+Oglejmo si še nekaj manj poznanih operacij z relacijami. Za dano relacijo $R \subseteq A \times A$ je {\definicija komplement relacije} $R$ relacija $R^c = A \times A \backslash R$. {\definicija Transponirana relacija} relacije $R$ je relacija $R^T = \{ (x,y) \in A \times A \mid (y,x) \in R \}$. Tudi ti dve relaciji lahko intepretiramo na enostaven način.
+
+\begin{trditev}
+Za vse $x,y \in A$ velja:
+    \begin{itemize}
+        \item $x R^c y \Leftrightarrow \lnot (x R y)$,
+        \item $x R^T y \Leftrightarrow y R x$.
+    \end{itemize}
+\end{trditev}
+
+\begin{zgled}
+Naj bo $A = \NN$. Med dobro poznanimi relacijami v $\NN$ veljajo naslednje enakosti:
+\begin{itemize}
+    \item $(<) \cup (=) = (\leq)$
+    \item $(\leq) \backslash (=) = (<)$,
+    \item $(\leq) \cap (\geq) = (=)$,
+    \item $(\leq) \cup (\geq) = \NN \times \NN$,
+    \item $(<) \cap (>) = \emptyset$,
+    \item $(<) \cup (>) = (\neq) = (=)^c$,
+    \item $(\leq)^c = (>)$,
+    \item $(\leq)^T = (\geq)$.
+\end{itemize}
+\end{zgled}
+
+Nazadnje si oglejmo še eno nekoliko bolj zapleteno operacijo. Naj bosta $R,S$ relaciji v $A$. {\definicija Kompozitum} relacij $R,S$ je relacija
+\[
+    R \circ S = \{ (x,y) \in A \times A \mid \exists u \in A \mid (x S u \land u R y)\}.
+\]
+
+Oglejmo si nekaj osnovnih lastnosti operacij transponiranja in kompozituma. Za vse relacije $R,S,T \subseteq A \times A$ velja:
+\begin{itemize}
+    \item $(R^T)^T = R$,
+    \item $(R \cup S)^T = R^T \cup S^T$, \\ $(R \cap S)^T = R^T \cap S^T$, \\ $(R \backslash S)^T = R^T \backslash S^T$, \\ $(R \oplus S)^T = R^T \oplus S^T$,
+    \item $R \circ id_A = R = id_A \circ R$ ({\definicija $id_A$ je enota za komponiranje}),
+    \item $(R \circ S) \circ T = R \circ (S \circ T)$ ({\definicija asociativnost komponiranja}),
+    \item $(R \circ S)^T = S^T \circ R^T$,
+    \item $(R \cup S) \circ T = R \circ T \cup S \circ T$, \\ $R \circ (S \cup T) = R \circ S \cup R \circ T$ ({\definicija distributivnost $\circ$ glede na $\cup$}),
+    \item $R \subseteq S \Rightarrow R \circ T \subseteq S \circ T$, \\ $R \subseteq S \Rightarrow T \circ R \subseteq T \circ S$ ({\definicija monotonost $\circ$ glede na $\subseteq$}).
+\end{itemize}
+
+Preverimo le zelo pomembno asociativnost komponiranja. Za vsaka $x,y \in A$ velja
+\begin{align*}
+    x (R \circ S) \circ T y &\Leftrightarrow \exists u \colon (xTu \land u R \circ S y) \\
+    &\Leftrightarrow \exists u \colon (xTu \land \exists v \colon (uSv \land v Ry)) \\
+    &\Leftrightarrow \exists u \exists v \colon (xTu \land (uSv \land vRy)) \\
+    &\Leftrightarrow \exists v \exists u \colon ((xTu \land uSv) \land vRy) \\
+    &\Leftrightarrow \exists v \colon (\exists u \colon ( (x T u \land uSv) \land vRy) ) \\
+    &\Leftrightarrow \exists v \colon (x S \circ T v \land vRy) \\
+    &\Leftrightarrow x R \circ (S \circ T) y.
+\end{align*}
+
+\begin{zgled}
+Naj bo $A$ množica ljudi.
+\begin{itemize}
+    \item Kaj je relacija $\text{hči} \circ \text{mož}$? Za osebi $x,y \in A$ velja
+    \[
+        x (\text{hči} \circ \text{mož}) y \Leftrightarrow
+        \exists u \colon (x \text{mož} u \land u \text{hči} y),
+    \]
+    torej kadar je $x$ hčerin mož $y$-a, se pravi kadar je $x$ zet $y$. Velja torej $\text{hči} \circ \text{mož} = \text{zet}$.
+    \item $\text{oče} \circ \text{brat} = \text{stric}$
+    \item $\text{zakonec} \circ \text{mati} = \text{tašča}$
+\end{itemize}
+\end{zgled}
 
 \chapter{Urejenosti}
 \chapter{Grafi}

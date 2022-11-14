@@ -43,7 +43,7 @@
             <strong> Urban Jezernik <br>
               Univerza v Ljubljani, Fakulteta za matematiko in fiziko </strong> <br>
 
-            Zadnja posodobitev: 02. 11. 2022
+            Zadnja posodobitev: 14. 11. 2022
           </div>
 
           <div id="spinner" class="text-center">
@@ -98,6 +98,9 @@
               <li><a href="#ekvivalenčne-relacije"
               id="toc-ekvivalenčne-relacije">Ekvivalenčne
               relacije</a></li>
+              <li><a href="#operacije-z-relacijami"
+              id="toc-operacije-z-relacijami">Operacije z
+              relacijami</a></li>
               </ul></li>
               <li><a href="#urejenosti"
               id="toc-urejenosti">Urejenosti</a></li>
@@ -2850,7 +2853,12 @@
             class="math inline">\(b\)</span> pa povežemo s puščico od
             <span class="math inline">\(a\)</span> do <span
             class="math inline">\(b\)</span>, če je <span
-            class="math inline">\((a,b) \in R\)</span>.</p></li>
+            class="math inline">\((a,b) \in R\)</span>.</p>
+            <figure>
+            <img src="img/relacije-graf.png" alt="Graf relacije R" />
+            <figcaption aria-hidden="true">Graf relacije <span
+            class="math inline">\(R\)</span></figcaption>
+            </figure></li>
             <li><p>Naj bo <span class="math inline">\(A =
             \mathbf{N}_0\)</span> in <span
             class="math inline">\(R\)</span> relacija, podana kot <span
@@ -3121,6 +3129,254 @@
             class="math inline">\(\bigcup_{y \in A} R[y] \supseteq
             A\)</span>. Obratna vsebovanost je očitna. <span
             class="math inline">\(\checkmark\)</span> ◻</p>
+            </div>
+            <div class="zgled">
+            <p><strong>Zgled 3.5</strong>. </p>
+            <ul>
+            <li><p>Naj bo <span class="math inline">\(A\)</span> množica
+            ljudi in <span class="math inline">\(R\)</span> relacija
+            <em>ima enako barvo oči kot</em>. Ekvivalenčni razred neke
+            osebe z modrimi očmi torej sestavljajo ravno vse osebe z
+            modrimi očmi. Ekvivalenčni razredi torej ustrezajo barvam
+            oči.</p></li>
+            <li><p>Naj bo <span class="math inline">\(A\)</span>
+            poljubna množica in <span class="math inline">\(R\)</span>
+            relacija enakosti v <span class="math inline">\(A\)</span>.
+            Za vsak <span class="math inline">\(x \in A\)</span> velja
+            <span class="math inline">\(R[x] = \{ x \}\)</span>. Množica
+            ekvivalenčnih razredov je enaka <span
+            class="math inline">\(A/R = \{ \{ x \} \mid x \in A
+            \}\)</span>.</p></li>
+            <li><p>Naj bo <span class="math inline">\(A\)</span>
+            poljubna množica in <span class="math inline">\(R\)</span>
+            univerzalna relacija v <span
+            class="math inline">\(A\)</span>. Za vsak <span
+            class="math inline">\(x \in A\)</span> velja <span
+            class="math inline">\(R[x] = A\)</span>. Imamo torej en sam
+            ekvivalenčni razred in velja <span class="math inline">\(A/R
+            = \{ A \}\)</span>.</p></li>
+            <li><p>Naj bo <span class="math inline">\(A\)</span> množica
+            premic v prostoru <span
+            class="math inline">\(\mathbf{R}^3\)</span> in naj bo <span
+            class="math inline">\(R\)</span> relacija vzporednosti
+            premic. Za dano premico <span
+            class="math inline">\(p\)</span> je torej <span
+            class="math inline">\(R[p]\)</span> ravno množica vseh
+            premic, ki so vzporedne <span
+            class="math inline">\(p\)</span>. Ekvivalenčni razredi torej
+            ustrezajo vsem smerem v <span
+            class="math inline">\(\mathbf{R}^3\)</span> oziroma enotskim
+            vektorjem v <span
+            class="math inline">\(\mathbf{R}^3\)</span>.</p></li>
+            <li><p>Množico <span
+            class="math inline">\(\mathbf{Z}\)</span> lahko definiramo
+            kot kvocientno množico množice <span class="math inline">\(A
+            = \mathbf{N}_0 \times \mathbf{N}_0\)</span> po relaciji
+            <span class="math inline">\(R\)</span>, kjer je <span
+            class="math inline">\((a,b)R(c,d)\)</span>, če in samo če
+            <span class="math inline">\(a+d = b+c\)</span>. Velja <span
+            class="math inline">\(R[(a,b)] = \{ (c,d) \in \mathbf{N}_0
+            \times \mathbf{N}_0 \mid c-d = a-b \}\)</span>, zato lahko
+            množic ekvivalenčnih razredov <span
+            class="math inline">\(A/R\)</span> identificiramo z množico
+            <span class="math inline">\(\mathbf{Z}\)</span> prek
+            bijekcije <span class="math inline">\(R[(a,b)] \mapsto
+            a-b\)</span> za <span class="math inline">\((a,b) \in
+            A\)</span>.</p></li>
+            <li><p>Naj bo <span class="math inline">\(m \in
+            \mathbf{N}\)</span>. Na množici celih števil <span
+            class="math inline">\(\mathbf{Z}\)</span> definiramo
+            relacijo <span><strong><em>kongruence po
+            modulu</em></strong></span> <span
+            class="math inline">\(m\)</span> kot <span
+            class="math display">\[x \equiv y \pmod{m} \Longleftarrow
+            \exists k \in \mathbf{Z}\mid x - y = k \cdot m.\]</span>
+            Elementa <span class="math inline">\(x,y \in
+            \mathbf{Z}\)</span> sta torej kongruentna po modulu <span
+            class="math inline">\(m\)</span>, če im samo če dajeta isti
+            ostanek pri deljenju z <span
+            class="math inline">\(m\)</span>. Ni se težko prepričati, da
+            je to ekvivalenčni relacija. Označimo jo z <span
+            class="math inline">\(R_m\)</span>. Ekvivalenčni razredi
+            ustrezajo ostankom pri deljenju z <span
+            class="math inline">\(m\)</span>: <span
+            class="math display">\[\begin{aligned}
+                    R_m[0] &amp;= \{ x \in \mathbf{Z}\mid \exists k \in
+            \mathbf{Z}\colon x = k m \}, \\
+                    R_m[1] &amp;= \{ x \in \mathbf{Z}\mid \exists k \in
+            \mathbf{Z}\colon x = k m + 1 \}, \\
+                    \vdots \\
+                    R_m[m-1] &amp;= \{ x \in \mathbf{Z}\mid \exists k
+            \in \mathbf{Z}\colon x = k m +m-1 \}.
+                \end{aligned}\]</span> Za <span class="math inline">\(m
+            = 1\)</span> je torej <span class="math inline">\(R_1 =
+            A\)</span>, za <span class="math inline">\(m = 2\)</span> pa
+            ima <span class="math inline">\(R_2\)</span> dva
+            ekvivalenčna razreda, in sicer množico sodih števil in
+            množico lihih števil.</p></li>
+            </ul>
+            </div>
+            <h2 id="operacije-z-relacijami">Operacije z relacijami</h2>
+            <p>Relacije v dani množici <span
+            class="math inline">\(A\)</span> so podmnožice <span
+            class="math inline">\(A \times A\)</span>, zato lahko z
+            njimi izvajamo vse operacije, ki jih imamo na voljo z
+            množicami. Nekaj osnovnih takih operacij in njihovih
+            interpretacij je zbranih v naslednji trditvi.</p>
+            <div class="trditev">
+            <p><strong>Trditev 3.1</strong>. Naj bosta <span
+            class="math inline">\(R,S \subseteq A \times A\)</span>
+            relaciji. Potem so tudi <span class="math display">\[R \cup
+            S, \
+                R \cap S, \
+                R \backslash S, \
+                R \oplus S\]</span> relacije v <span
+            class="math inline">\(A\)</span> in za vse <span
+            class="math inline">\(x,y \in A\)</span> velja:</p>
+            <ul>
+            <li><p><span class="math inline">\(x(R \cup S) y
+            \Leftrightarrow x R y \lor x S y\)</span>,</p></li>
+            <li><p><span class="math inline">\(x(R \cap S) y
+            \Leftrightarrow x R y \land x S y\)</span>,</p></li>
+            <li><p><span class="math inline">\(x(R \backslash S) y
+            \Leftrightarrow x R y \land \lnot (x S y)\)</span>,</p></li>
+            <li><p><span class="math inline">\(x(R \oplus S) y
+            \Leftrightarrow x R y + x S y\)</span>.</p></li>
+            </ul>
+            </div>
+            <p>Oglejmo si še nekaj manj poznanih operacij z relacijami.
+            Za dano relacijo <span class="math inline">\(R \subseteq A
+            \times A\)</span> je <span><strong><em>komplement
+            relacije</em></strong></span> <span
+            class="math inline">\(R\)</span> relacija <span
+            class="math inline">\(R^c = A \times A \backslash
+            R\)</span>. <span><strong><em>Transponirana
+            relacija</em></strong></span> relacije <span
+            class="math inline">\(R\)</span> je relacija <span
+            class="math inline">\(R^T = \{ (x,y) \in A \times A \mid
+            (y,x) \in R \}\)</span>. Tudi ti dve relaciji lahko
+            intepretiramo na enostaven način.</p>
+            <div class="trditev">
+            <p><strong>Trditev 3.2</strong>. Za vse <span
+            class="math inline">\(x,y \in A\)</span> velja:</p>
+            <ul>
+            <li><p><span class="math inline">\(x R^c y \Leftrightarrow
+            \lnot (x R y)\)</span>,</p></li>
+            <li><p><span class="math inline">\(x R^T y \Leftrightarrow y
+            R x\)</span>.</p></li>
+            </ul>
+            </div>
+            <div class="zgled">
+            <p><strong>Zgled 3.6</strong>. Naj bo <span
+            class="math inline">\(A = \mathbf{N}\)</span>. Med dobro
+            poznanimi relacijami v <span
+            class="math inline">\(\mathbf{N}\)</span> veljajo naslednje
+            enakosti:</p>
+            <ul>
+            <li><p><span class="math inline">\((&lt;) \cup (=) =
+            (\leq)\)</span></p></li>
+            <li><p><span class="math inline">\((\leq) \backslash (=) =
+            (&lt;)\)</span>,</p></li>
+            <li><p><span class="math inline">\((\leq) \cap (\geq) =
+            (=)\)</span>,</p></li>
+            <li><p><span class="math inline">\((\leq) \cup (\geq) =
+            \mathbf{N}\times \mathbf{N}\)</span>,</p></li>
+            <li><p><span class="math inline">\((&lt;) \cap (&gt;) =
+            \emptyset\)</span>,</p></li>
+            <li><p><span class="math inline">\((&lt;) \cup (&gt;) =
+            (\neq) = (=)^c\)</span>,</p></li>
+            <li><p><span class="math inline">\((\leq)^c =
+            (&gt;)\)</span>,</p></li>
+            <li><p><span class="math inline">\((\leq)^T =
+            (\geq)\)</span>.</p></li>
+            </ul>
+            </div>
+            <p>Nazadnje si oglejmo še eno nekoliko bolj zapleteno
+            operacijo. Naj bosta <span
+            class="math inline">\(R,S\)</span> relaciji v <span
+            class="math inline">\(A\)</span>.
+            <span><strong><em>Kompozitum</em></strong></span> relacij
+            <span class="math inline">\(R,S\)</span> je relacija <span
+            class="math display">\[R \circ S = \{ (x,y) \in A \times A
+            \mid \exists u \in A \mid (x S u \land u R
+            y)\}.\]</span></p>
+            <p>Oglejmo si nekaj osnovnih lastnosti operacij
+            transponiranja in kompozituma. Za vse relacije <span
+            class="math inline">\(R,S,T \subseteq A \times A\)</span>
+            velja:</p>
+            <ul>
+            <li><p><span class="math inline">\((R^T)^T =
+            R\)</span>,</p></li>
+            <li><p><span class="math inline">\((R \cup S)^T = R^T \cup
+            S^T\)</span>,<br />
+            <span class="math inline">\((R \cap S)^T = R^T \cap
+            S^T\)</span>,<br />
+            <span class="math inline">\((R \backslash S)^T = R^T
+            \backslash S^T\)</span>,<br />
+            <span class="math inline">\((R \oplus S)^T = R^T \oplus
+            S^T\)</span>,</p></li>
+            <li><p><span class="math inline">\(R \circ id_A = R = id_A
+            \circ R\)</span> (<span><strong><em><span
+            class="math inline">\(id_A\)</span> je enota za
+            komponiranje</em></strong></span>),</p></li>
+            <li><p><span class="math inline">\((R \circ S) \circ T = R
+            \circ (S \circ T)\)</span> (<span><strong><em>asociativnost
+            komponiranja</em></strong></span>),</p></li>
+            <li><p><span class="math inline">\((R \circ S)^T = S^T \circ
+            R^T\)</span>,</p></li>
+            <li><p><span class="math inline">\((R \cup S) \circ T = R
+            \circ T \cup S \circ T\)</span>,<br />
+            <span class="math inline">\(R \circ (S \cup T) = R \circ S
+            \cup R \circ T\)</span> (<span><strong><em>distributivnost
+            <span class="math inline">\(\circ\)</span> glede na <span
+            class="math inline">\(\cup\)</span></em></strong></span>),</p></li>
+            <li><p><span class="math inline">\(R \subseteq S \Rightarrow
+            R \circ T \subseteq S \circ T\)</span>,<br />
+            <span class="math inline">\(R \subseteq S \Rightarrow T
+            \circ R \subseteq T \circ S\)</span>
+            (<span><strong><em>monotonost <span
+            class="math inline">\(\circ\)</span> glede na <span
+            class="math inline">\(\subseteq\)</span></em></strong></span>).</p></li>
+            </ul>
+            <p>Preverimo le zelo pomembno asociativnost komponiranja. Za
+            vsaka <span class="math inline">\(x,y \in A\)</span> velja
+            <span class="math display">\[\begin{aligned}
+                x (R \circ S) \circ T y &amp;\Leftrightarrow \exists u
+            \colon (xTu \land u R \circ S y) \\
+                &amp;\Leftrightarrow \exists u \colon (xTu \land \exists
+            v \colon (uSv \land v Ry)) \\
+                &amp;\Leftrightarrow \exists u \exists v \colon (xTu
+            \land (uSv \land vRy)) \\
+                &amp;\Leftrightarrow \exists v \exists u \colon ((xTu
+            \land uSv) \land vRy) \\
+                &amp;\Leftrightarrow \exists v \colon (\exists u \colon
+            ( (x T u \land uSv) \land vRy) ) \\
+                &amp;\Leftrightarrow \exists v \colon (x S \circ T v
+            \land vRy) \\
+                &amp;\Leftrightarrow x R \circ (S \circ T)
+            y.\end{aligned}\]</span></p>
+            <div class="zgled">
+            <p><strong>Zgled 3.7</strong>. Naj bo <span
+            class="math inline">\(A\)</span> množica ljudi.</p>
+            <ul>
+            <li><p>Kaj je relacija <span
+            class="math inline">\(\text{hči} \circ \text{mož}\)</span>?
+            Za osebi <span class="math inline">\(x,y \in A\)</span>
+            velja <span class="math display">\[x (\text{hči} \circ
+            \text{mož}) y \Leftrightarrow
+                    \exists u \colon (x \text{mož} u \land u \text{hči}
+            y),\]</span> torej kadar je <span
+            class="math inline">\(x\)</span> hčerin mož <span
+            class="math inline">\(y\)</span>-a, se pravi kadar je <span
+            class="math inline">\(x\)</span> zet <span
+            class="math inline">\(y\)</span>. Velja torej <span
+            class="math inline">\(\text{hči} \circ \text{mož} =
+            \text{zet}\)</span>.</p></li>
+            <li><p><span class="math inline">\(\text{oče} \circ
+            \text{brat} = \text{stric}\)</span></p></li>
+            <li><p><span class="math inline">\(\text{zakonec} \circ
+            \text{mati} = \text{tašča}\)</span></p></li>
+            </ul>
             </div>
             <h1 id="urejenosti">Urejenosti</h1>
             <h1 id="grafi">Grafi</h1>
