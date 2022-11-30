@@ -1723,6 +1723,69 @@ Naj bo $A$ množica ljudi. Velja
 \end{zgled}
 
 \chapter{Urejenosti}
+
+V tem poglavju si bomo podrobneje pogledali \emph{strukture urejenosti}. To so relacije na dani množici, ki imajo določene dodatne lastnosti, s katerimi izrazimo, da te relacije podajajo \emph{ureditev} elementov dane množice. Glede na lastnosti razlikujemo več tipov urejenosti.
+
+\section{Delna in linearna urejenost}
+
+Naj bo $R$ relacija v $A$. Rečemo, da $R$ {\definicija delno ureja} $A$, če je $R$ refleksivna, antisimetrična in tranzitivna. Rečemo, da $R$ {\definicija linearno ureja} $A$, če $R$ delno ureja $A$ in je $R$ sovisna.
+
+\begin{zgled} \leavevmode
+\begin{itemize}
+    \item Relacija $\leq$ linearno ureja realna števila $\RR$.
+    \item Relacija deljivosti $|$ delno ureja naravna števila $\NN$.
+    \item Naj bo $A$ neka množica množic, na primer $A = \{ B \mid B \subseteq \{ 1,2,\dots, 10\} \}$. Tedaj relacija $\subseteq$ vsebovanosti množic delno ureja $A$.
+\end{itemize}
+\end{zgled}
+
+Kadar je $R$ relacija delne urejenosti, ponavadi namesto oznake $R$ pišemo kar $\leq$. Formulo $x R y$ torej zapišemo kot $x \leq y$, preberemo pa jo kot \emph{$x$ je pod $y$}.
+
+Iz vsake relacije delne urejenosti $\leq$ v $A$ lahko konstruiramo še dve relaciji, in sicer:
+\begin{itemize}
+    \item {\definicija relacija stroge delne urejenosti} $<$:
+    \[
+        \forall x, y \in A \colon (x < y \Leftrightarrow x \leq y \land x \neq y),
+        \]
+    \item {\definicija relacija neposrednega predhodnika} $< \cdot$:
+    \[
+        \forall x, y \in A \colon \left( x < \cdot y \Leftrightarrow x < y \land \lnot \exists z \in A \colon (x < z \land z < y) \right).
+    \]
+\end{itemize}
+
+Relacija $<$ je vselej irefleksivna, asimetrična in tranzitivna. Relacija $< \cdot$ je vselej irefleksivna, asimetrična in intranzitivna.
+
+Delno urejeno množico $A$ lahko predstavimo grafično s {\definicija Hassejevim diagramom}. Elemente množice $A$ pri tem narišemo kot točke v ravnini. Če je $x < y$, potem $x$ narišemo niže od točke $y$. Če je $x < \cdot y$, potem $x$ in $y$ povežemo s črto.
+
+\begin{zgled} \leavevmode
+\begin{itemize}
+    \item Naj bo $A = \{ 1,2,\dots, 10 \}$, opremljena z relacijo deljivosti naravnih števil $|$.
+    
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.5\linewidth]{img/relacije-hasse.png}
+        \caption{Hassejev diagram relacije deljivosti}
+    \end{figure}
+    
+    \item Naj bo $A = \{ B \mid B \subseteq \{ 1,2,3 \} \}$, opremljena z relacijo $\subseteq$ vsebovanosti množic.
+    
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.5\linewidth]{img/relacije-hasse-mnozice.png}
+        \caption{Hassejev diagram relacije vsebovanosti množic}
+    \end{figure}
+
+    \item Naj bo $A = \{ 1,2,3,4,5 \}$, opremljena z običajno relacijo $\leq$ (manjše ali enako).
+    
+    \begin{figure}[h]
+        \centering
+        \includegraphics[height=0.5\linewidth]{img/relacije-hasse-linearna.png}
+        \caption{Hassejev diagram običajne relacije $\leq$}
+    \end{figure}
+
+\end{itemize}
+\end{zgled}
+
+
 \chapter{Grafi}
 
 \end{document}

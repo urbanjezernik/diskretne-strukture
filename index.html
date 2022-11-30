@@ -106,7 +106,12 @@
               relacij</a></li>
               </ul></li>
               <li><a href="#urejenosti"
-              id="toc-urejenosti">Urejenosti</a></li>
+              id="toc-urejenosti">Urejenosti</a>
+              <ul>
+              <li><a href="#delna-in-linearna-urejenost"
+              id="toc-delna-in-linearna-urejenost">Delna in linearna
+              urejenost</a></li>
+              </ul></li>
               <li><a href="#grafi" id="toc-grafi">Grafi</a></li>
               </ul>
             </div>
@@ -3717,6 +3722,119 @@
             \text{potomka}.\]</span></p>
             </div>
             <h1 id="urejenosti">Urejenosti</h1>
+            <p>V tem poglavju si bomo podrobneje pogledali <em>strukture
+            urejenosti</em>. To so relacije na dani množici, ki imajo
+            določene dodatne lastnosti, s katerimi izrazimo, da te
+            relacije podajajo <em>ureditev</em> elementov dane množice.
+            Glede na lastnosti razlikujemo več tipov urejenosti.</p>
+            <h2 id="delna-in-linearna-urejenost">Delna in linearna
+            urejenost</h2>
+            <p>Naj bo <span class="math inline">\(R\)</span> relacija v
+            <span class="math inline">\(A\)</span>. Rečemo, da <span
+            class="math inline">\(R\)</span> <span><strong><em>delno
+            ureja</em></strong></span> <span
+            class="math inline">\(A\)</span>, če je <span
+            class="math inline">\(R\)</span> refleksivna, antisimetrična
+            in tranzitivna. Rečemo, da <span
+            class="math inline">\(R\)</span> <span><strong><em>linearno
+            ureja</em></strong></span> <span
+            class="math inline">\(A\)</span>, če <span
+            class="math inline">\(R\)</span> delno ureja <span
+            class="math inline">\(A\)</span> in je <span
+            class="math inline">\(R\)</span> sovisna.</p>
+            <div class="zgled">
+            <p><strong>Zgled 4.1</strong>. </p>
+            <ul>
+            <li><p>Relacija <span class="math inline">\(\leq\)</span>
+            linearno ureja realna števila <span
+            class="math inline">\(\mathbf{R}\)</span>.</p></li>
+            <li><p>Relacija deljivosti <span
+            class="math inline">\(|\)</span> delno ureja naravna števila
+            <span class="math inline">\(\mathbf{N}\)</span>.</p></li>
+            <li><p>Naj bo <span class="math inline">\(A\)</span> neka
+            množica množic, na primer <span class="math inline">\(A = \{
+            B \mid B \subseteq \{ 1,2,\dots, 10\} \}\)</span>. Tedaj
+            relacija <span class="math inline">\(\subseteq\)</span>
+            vsebovanosti množic delno ureja <span
+            class="math inline">\(A\)</span>.</p></li>
+            </ul>
+            </div>
+            <p>Kadar je <span class="math inline">\(R\)</span> relacija
+            delne urejenosti, ponavadi namesto oznake <span
+            class="math inline">\(R\)</span> pišemo kar <span
+            class="math inline">\(\leq\)</span>. Formulo <span
+            class="math inline">\(x R y\)</span> torej zapišemo kot
+            <span class="math inline">\(x \leq y\)</span>, preberemo pa
+            jo kot <em><span class="math inline">\(x\)</span> je pod
+            <span class="math inline">\(y\)</span></em>.</p>
+            <p>Iz vsake relacije delne urejenosti <span
+            class="math inline">\(\leq\)</span> v <span
+            class="math inline">\(A\)</span> lahko konstruiramo še dve
+            relaciji, in sicer:</p>
+            <ul>
+            <li><p><span><strong><em>relacija stroge delne
+            urejenosti</em></strong></span> <span
+            class="math inline">\(&lt;\)</span>: <span
+            class="math display">\[\forall x, y \in A \colon (x &lt; y
+            \Leftrightarrow x \leq y \land x \neq y),\]</span></p></li>
+            <li><p><span><strong><em>relacija neposrednega
+            predhodnika</em></strong></span> <span
+            class="math inline">\(&lt; \cdot\)</span>: <span
+            class="math display">\[\forall x, y \in A \colon \left( x
+            &lt; \cdot y \Leftrightarrow x &lt; y \land \lnot \exists z
+            \in A \colon (x &lt; z \land z &lt; y)
+            \right).\]</span></p></li>
+            </ul>
+            <p>Relacija <span class="math inline">\(&lt;\)</span> je
+            vselej irefleksivna, asimetrična in tranzitivna. Relacija
+            <span class="math inline">\(&lt; \cdot\)</span> je vselej
+            irefleksivna, asimetrična in intranzitivna.</p>
+            <p>Delno urejeno množico <span
+            class="math inline">\(A\)</span> lahko predstavimo grafično
+            s <span><strong><em>Hassejevim
+            diagramom</em></strong></span>. Elemente množice <span
+            class="math inline">\(A\)</span> pri tem narišemo kot točke
+            v ravnini. Če je <span class="math inline">\(x &lt;
+            y\)</span>, potem <span class="math inline">\(x\)</span>
+            narišemo niže od točke <span
+            class="math inline">\(y\)</span>. Če je <span
+            class="math inline">\(x &lt; \cdot y\)</span>, potem <span
+            class="math inline">\(x\)</span> in <span
+            class="math inline">\(y\)</span> povežemo s črto.</p>
+            <div class="zgled">
+            <p><strong>Zgled 4.2</strong>. </p>
+            <ul>
+            <li><p>Naj bo <span class="math inline">\(A = \{ 1,2,\dots,
+            10 \}\)</span>, opremljena z relacijo deljivosti naravnih
+            števil <span class="math inline">\(|\)</span>.</p>
+            <figure>
+            <img src="img/relacije-hasse.png"
+            alt="Hassejev diagram relacije deljivosti" />
+            <figcaption aria-hidden="true">Hassejev diagram relacije
+            deljivosti</figcaption>
+            </figure></li>
+            <li><p>Naj bo <span class="math inline">\(A = \{ B \mid B
+            \subseteq \{ 1,2,3 \} \}\)</span>, opremljena z relacijo
+            <span class="math inline">\(\subseteq\)</span> vsebovanosti
+            množic.</p>
+            <figure>
+            <img src="img/relacije-hasse-mnozice.png"
+            alt="Hassejev diagram relacije vsebovanosti množic" />
+            <figcaption aria-hidden="true">Hassejev diagram relacije
+            vsebovanosti množic</figcaption>
+            </figure></li>
+            <li><p>Naj bo <span class="math inline">\(A = \{ 1,2,3,4,5
+            \}\)</span>, opremljena z običajno relacijo <span
+            class="math inline">\(\leq\)</span> (manjše ali enako).</p>
+            <figure>
+            <img src="img/relacije-hasse-linearna.png"
+            alt="Hassejev diagram običajne relacije \leq" />
+            <figcaption aria-hidden="true">Hassejev diagram običajne
+            relacije <span
+            class="math inline">\(\leq\)</span></figcaption>
+            </figure></li>
+            </ul>
+            </div>
             <h1 id="grafi">Grafi</h1>
             <section class="footnotes footnotes-end-of-document"
             role="doc-endnotes">
