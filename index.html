@@ -43,7 +43,7 @@
             <strong> Urban Jezernik <br>
               Univerza v Ljubljani, Fakulteta za matematiko in fiziko </strong> <br>
 
-            Zadnja posodobitev: 28. 11. 2022
+            Zadnja posodobitev: 30. 11. 2022
           </div>
 
           <div id="spinner" class="text-center">
@@ -101,6 +101,9 @@
               <li><a href="#operacije-z-relacijami"
               id="toc-operacije-z-relacijami">Operacije z
               relacijami</a></li>
+              <li><a href="#potence-in-ovojnice-relacij"
+              id="toc-potence-in-ovojnice-relacij">Potence in ovojnice
+              relacij</a></li>
               </ul></li>
               <li><a href="#urejenosti"
               id="toc-urejenosti">Urejenosti</a></li>
@@ -3378,6 +3381,341 @@
             \text{mati} = \text{tašča}\)</span></p></li>
             </ul>
             </div>
+            <p>Osnovne lastnosti relacij lahko opišemo v jeziku operacij
+            z relacijami na naslednji način.</p>
+            <div class="izrek">
+            <p><strong>Izrek 3.2</strong> (algebraična karakterizacija
+            lastnosti relacij). Naj bo <span class="math inline">\(R
+            \subseteq A \times A\)</span>. Tedaj je:</p>
+            <ol>
+            <li><p><span class="math inline">\(R\)</span> refleksivna,
+            če in samo če <span class="math inline">\(id_A \subseteq
+            R\)</span>,</p></li>
+            <li><p><span class="math inline">\(R\)</span> irefleksivna,
+            če in samo če <span class="math inline">\(R \cap id_A =
+            \emptyset\)</span>,</p></li>
+            <li><p><span class="math inline">\(R\)</span> simetrična, če
+            in samo če <span class="math inline">\(R =
+            R^T\)</span>,</p></li>
+            <li><p><span class="math inline">\(R\)</span> asimetrična,
+            če in samo če <span class="math inline">\(R \cap R^T =
+            \emptyset\)</span>,</p></li>
+            <li><p><span class="math inline">\(R\)</span>
+            antisimetrična, če in samo če <span class="math inline">\(R
+            \cap R^T \subseteq id_A\)</span>,</p></li>
+            <li><p><span class="math inline">\(R\)</span> tranzitivna,
+            če in samo če <span class="math inline">\(R \circ R
+            \subseteq R\)</span>,</p></li>
+            <li><p><span class="math inline">\(R\)</span> intranzitivna,
+            če in samo če <span class="math inline">\((R \circ R) \cap R
+            = \emptyset\)</span>,</p></li>
+            <li><p><span class="math inline">\(R\)</span> strogo
+            sovisna, če in samo če <span class="math inline">\(R \cup
+            R^T = A \times A\)</span>,</p></li>
+            <li><p><span class="math inline">\(R\)</span> sovisna, če in
+            samo če <span class="math inline">\(R \cup R^T \cup id_A = A
+            \times A\)</span>,</p></li>
+            <li><p><span class="math inline">\(R\)</span> enolična, če
+            in samo če <span class="math inline">\(R \circ R^T \subseteq
+            id_A\)</span>.</p></li>
+            </ol>
+            </div>
+            <div class="proof">
+            <p><em>Proof.</em> 6. <span
+            class="math inline">\((\Rightarrow)\)</span>: Predpostavimo,
+            da je <span class="math inline">\(R\)</span> tranzitivna.
+            Dokazati želimo, da je <span class="math inline">\(R \circ R
+            \subseteq R\)</span>. V ta namen izberimo poljuben element
+            <span class="math inline">\((x,y) \in R \circ R\)</span>. To
+            pomeni, da obstaja <span class="math inline">\(u \in
+            A\)</span>, za katerega velja <span
+            class="math inline">\(xRu \land uRy\)</span>. Iz
+            tranzitivnosti relacije <span
+            class="math inline">\(R\)</span> od tod sledi <span
+            class="math inline">\(xRy\)</span>. Slednje pomeni ravno
+            <span class="math inline">\((x,y) \in R\)</span>. Ker je bil
+            <span class="math inline">\((x,y)\)</span> poljuben element
+            <span class="math inline">\(R \circ R\)</span>, smo s tem
+            dokazali vsebovanost <span class="math inline">\(R \circ R
+            \subseteq R\)</span>. <span
+            class="math inline">\(\checkmark\)</span></p>
+            <p>6. <span class="math inline">\((\Leftarrow)\)</span>:
+            Predpostavimo, da je <span class="math inline">\(R \circ R
+            \subseteq R\)</span>. Dokazati želimo, da je <span
+            class="math inline">\(R\)</span> tranzitivna. V ta namen
+            predpostavimo, da za poljubne elemente <span
+            class="math inline">\(x,y,z \in A\)</span> velja <span
+            class="math inline">\(xRy\)</span> in <span
+            class="math inline">\(yRz\)</span>. Torej <span
+            class="math inline">\(\exists u \colon (xRu \land
+            uRz)\)</span>, kar pomeni, da je <span
+            class="math inline">\((x,z) \in R \circ R\)</span>. Ker je
+            <span class="math inline">\(R \circ R \subseteq R\)</span>,
+            od tod sledi <span class="math inline">\((x,z) \in
+            R\)</span>, se pravi <span
+            class="math inline">\(xRz\)</span>. S tem smo dokazali
+            tranzitivnost relacije <span
+            class="math inline">\(R\)</span>. <span
+            class="math inline">\(\checkmark\)</span></p>
+            <p>10. Velja <span class="math display">\[\begin{aligned}
+                \text{$R$ enolična} &amp;\Leftrightarrow \forall x,y,z
+            \colon (xRy \land xRz \Rightarrow y=z) \\
+                &amp;\Leftrightarrow \forall x,y,z \colon (yR^Tx \land
+            xRy \Rightarrow y = z) \\
+                &amp;\Leftrightarrow \forall y,z \colon \left( \forall x
+            \colon (\lnot(yR^Tx \land xRy) \lor y=z) \right) \\
+                &amp;\Leftrightarrow \forall y,z \colon \left( \lnot
+            \exists x \colon (yR^Tx \land xRy) \lor y=z \right) \\
+                &amp;\Leftrightarrow \forall y,z \colon \left( \lnot (y
+            R \circ R^T z) \lor y = z \right) \\
+                &amp;\Leftrightarrow \forall y,z \colon (y R \circ R^T z
+            \Rightarrow y = z) \\
+                &amp;\Leftrightarrow \forall y,z \colon \left( (y,z) \in
+            R \circ R^T \Rightarrow y = z \right) \\
+                &amp;\Leftrightarrow R \circ R^T \subseteq
+            id_A.\end{aligned}\]</span> ◻</p>
+            </div>
+            <h2 id="potence-in-ovojnice-relacij">Potence in ovojnice
+            relacij</h2>
+            <p>Naj bo <span class="math inline">\(R \subseteq A \times
+            A\)</span>. <span><strong><em>Kompozicijsko
+            potenco</em></strong></span> relacije <span
+            class="math inline">\(R\)</span> definiramo induktivno na
+            naslednji način:</p>
+            <dl>
+            <dt>osnova:</dt>
+            <dd>
+            <p><span class="math inline">\(R^0 = id_A\)</span>,</p>
+            </dd>
+            <dt>indukcijski korak:</dt>
+            <dd>
+            <p><span class="math inline">\(\forall n \in \mathbf{N}_0
+            \colon R^{n+1} = R^n \circ R^0\)</span>.</p>
+            </dd>
+            </dl>
+            <div class="zgled">
+            <p><strong>Zgled 3.8</strong>. Najprej velja <span
+            class="math display">\[R^1 = R^{0+1} = R^0 \circ R = id_A
+            \circ R = R,\]</span> za tem velja <span
+            class="math display">\[R^2 = R^{1+1} = R^1 \circ R = R \circ
+            R\]</span> in induktivno je <span
+            class="math inline">\(R^n\)</span> enak kompoziciji <span
+            class="math inline">\(n\)</span>-tih <span
+            class="math inline">\(R\)</span>-jev. Ker je operacija
+            komponiranja asociativna, nam pri tem ni potrebno
+            postavljati oklepajev, saj je rezultat neodvisen od vrstnega
+            reda izvajanja kompozicij.</p>
+            </div>
+            <p>Kompozicijske potence delijo nekatere lastnosti s
+            potencami števil.</p>
+            <div class="trditev">
+            <p><strong>Trditev 3.3</strong>. Za vse <span
+            class="math inline">\(m,n \in \mathbf{N}_0\)</span> velja
+            <span class="math inline">\(R^n \circ R^m = R^{n+m}\)</span>
+            in <span class="math inline">\((R^n)^m = R^{n \cdot
+            m}\)</span>.</p>
+            </div>
+            <div class="proof">
+            <p><em>Proof.</em> Vaja. Najlažje bo šlo z indukcijo na
+            <span class="math inline">\(m\)</span>. ◻</p>
+            </div>
+            <div class="zgled">
+            <p><strong>Zgled 3.9</strong>. Naj bo <span
+            class="math inline">\(A\)</span> množica ljudi in <span
+            class="math inline">\(R = \text{otrok}\)</span>. Tedaj je
+            <span class="math inline">\(R^2 = \text{vnuk} \cup
+            \text{vnukinja}\)</span> in <span class="math inline">\(R^3
+            = \text{pravnuk} \cup \text{pravnukinja}\)</span> in za vsak
+            <span class="math inline">\(n \geq 2\)</span> je <span
+            class="math display">\[R^n = \text{(pra)$^{n-2}$vnuk} \cup
+            \text{(pra)$^{n-2}$vnukinja}.\]</span></p>
+            </div>
+            <p>Naj bo <span class="math inline">\(R \subseteq A \times
+            A\)</span>. S pomočjo kompozicijske potence definirajmo še
+            dve pomembni konstrukciji, in sicer</p>
+            <ul>
+            <li><p><span class="math inline">\(R^+ = \bigcup_{k =
+            1}^\infty R^k = R \cup R^2 \cup R^3 \cup
+            \cdots\)</span>,</p></li>
+            <li><p><span class="math inline">\(R^* = \bigcup_{k =
+            0}^\infty R^k = id_A \cup R \cup R^2 \cup R^3 \cup
+            \cdots\)</span>,</p></li>
+            </ul>
+            <p>Seveda velja <span class="math inline">\(R^* = R^+ \cup
+            id_A\)</span>. Relaciji <span
+            class="math inline">\(R^+\)</span> in <span
+            class="math inline">\(R^*\)</span> lahko opišemo še na
+            naslednji način. Za vsaka <span class="math inline">\(x,y
+            \in A\)</span> velja:</p>
+            <ul>
+            <li><p><span class="math inline">\(x R^+ y \Leftrightarrow
+            \exists k \in \mathbf{N}\colon x R^k y\)</span>,<a
+            href="#fn4" class="footnote-ref" id="fnref4"
+            role="doc-noteref"><sup>4</sup></a></p></li>
+            <li><p><span class="math inline">\(x R^+ y \Leftrightarrow
+            \exists k \in \mathbf{N}_0 \colon x R^k y\)</span>,<a
+            href="#fn5" class="footnote-ref" id="fnref5"
+            role="doc-noteref"><sup>5</sup></a></p></li>
+            </ul>
+            <div class="zgled">
+            <p><strong>Zgled 3.10</strong>. Naj bo <span
+            class="math inline">\(A\)</span> množica ljudi in <span
+            class="math inline">\(R = \text{otrok}\)</span>. Velja <span
+            class="math inline">\(R^+ = \text{potomec} \cup
+            \text{potomka}\)</span>.</p>
+            </div>
+            <p>Nazadnje se pogovorimo še o tem, kako dano relacijo <span
+            class="math inline">\(R \subseteq A \times A\)</span>, ki ne
+            zadošča določenim želenim lastnostim,<a href="#fn6"
+            class="footnote-ref" id="fnref6"
+            role="doc-noteref"><sup>6</sup></a> <em>popraviti</em> do
+            nove relacije, ki ni preveč drugačna od <span
+            class="math inline">\(R\)</span>, a za razliko od <span
+            class="math inline">\(R\)</span> zadošča želenim lastnostim.
+            Iščemo torej novo relacijo, ki <em>vsebuje</em> relacijo
+            <span class="math inline">\(R\)</span>, ima želene lastnosti
+            in je hkrati <em>najmanjša</em> relacija med vsemi
+            relacijami, ki imajo ti dve lastnosti.</p>
+            <p>Naj bo <span class="math inline">\(\mathcal{L}\)</span>
+            neka lasnost relacij v množici <span
+            class="math inline">\(A\)</span>. Naj bo <span
+            class="math inline">\(R \subseteq A \times A\)</span>.
+            Relacija <span
+            class="math inline">\(R^{\mathcal{L}}\)</span> je
+            <span><strong><em><span
+            class="math inline">\(\mathcal{L}\)</span>-ovojnica</em></strong></span>
+            relacije <span class="math inline">\(R\)</span>, če
+            velja:</p>
+            <ul>
+            <li><p><span class="math inline">\(R \subseteq
+            R^{\mathcal{L}}\)</span>,</p></li>
+            <li><p><span class="math inline">\(R^{\mathcal{L}}\)</span>
+            ima lastnost <span
+            class="math inline">\(\mathcal{L}\)</span>,</p></li>
+            <li><p>če ima poljubna relacija <span
+            class="math inline">\(S \subseteq A \times A\)</span>
+            lastnost <span class="math inline">\(\mathcal{L}\)</span> in
+            velja <span class="math inline">\(R \subseteq S\)</span>,
+            potem je <span class="math inline">\(R^{\mathcal{L}}
+            \subseteq S\)</span>.</p></li>
+            </ul>
+            <p>V primeru, ko relacija <span
+            class="math inline">\(R\)</span> že ima lastnost <span
+            class="math inline">\(\mathcal{L}\)</span>, je seveda <span
+            class="math inline">\(R^{\mathcal{L}} = R\)</span>. V
+            splošnem pa ovojnica <span
+            class="math inline">\(R^{\mathcal{L}}\)</span> ne obstaja
+            vedno. Prepričajmo se, da vselej obstajajo vsaj ovojnice
+            glede na najbolj pomembne lastnosti relacij.</p>
+            <div class="izrek">
+            <p><strong>Izrek 3.3</strong>. Za vsako relacijo <span
+            class="math inline">\(R \subseteq A \times A\)</span>
+            obstajajo ovojnice <span
+            class="math inline">\(R^\text{refleksivnost}\)</span>, <span
+            class="math inline">\(R^\text{simetričnost}\)</span>, <span
+            class="math inline">\(R^\text{tranzitivnost}\)</span>, <span
+            class="math inline">\(R^\text{ekvivalenčnost}\)</span> in
+            velja:</p>
+            <ul>
+            <li><p><span class="math inline">\(R^\text{refleksivnost} =
+            R \cup id_A\)</span> (<span><strong><em>refleksivna
+            ovojnica</em></strong></span>),</p></li>
+            <li><p><span class="math inline">\(R^\text{simetričnost} = R
+            \cup R^T\)</span> (<span><strong><em>simetrična
+            ovojnica</em></strong></span>),</p></li>
+            <li><p><span class="math inline">\(R^\text{tranzitivnost} =
+            R^+\)</span> (<span><strong><em>tranzitivna
+            ovojnica</em></strong></span>),</p></li>
+            <li><p><span class="math inline">\(R^\text{ekvivalenčnost} =
+            (R \cup R^T)^*\)</span> (<span><strong><em>ekvivalenčna
+            ovojnica</em></strong></span>).</p></li>
+            </ul>
+            </div>
+            <div class="proof">
+            <p><em>Proof.</em> Preverimo le trditev glede tranzitivne
+            ovojnice. Dokazati torej želimo, da relacija <span
+            class="math inline">\(R^+\)</span> zadošča vsem trem
+            kriterijem v definiciji ovojnice.</p>
+            <p>Preverimo najprej, da velja <span class="math inline">\(R
+            \subseteq R^+\)</span>. Res, ker je <span
+            class="math inline">\(R^+ = R \cup R^2 \cup \cdots\)</span>,
+            je seveda <span class="math inline">\(R \subseteq
+            R^+\)</span>. <span
+            class="math inline">\(\checkmark\)</span></p>
+            <p>Prepričajmo se zdaj, da je relacija <span
+            class="math inline">\(R^+\)</span> vselej tranzitivna. V ta
+            namen predpostavimo, da za poljubne <span
+            class="math inline">\(x,y,z \in A\)</span> velja <span
+            class="math inline">\(xR^+y\)</span> in <span
+            class="math inline">\(yR^+z\)</span>. To pomeni <span
+            class="math display">\[\exists k \in \mathbf{N}\colon x R^k
+            y \land \exists l \in \mathbf{N}\colon y R^l z,\]</span> kar
+            lahko prepišemo v <span class="math display">\[\exists k, l
+            \in \mathbf{N}\colon (x R^k y \land y R^l z).\]</span> Od
+            tod sklepamo, da velja <span class="math display">\[\exists
+            k, l \in \mathbf{N}\colon (x R^l \circ R^k z),\]</span>
+            torej velja tudi <span class="math display">\[\exists m \in
+            \mathbf{N}\colon x R^m z,\]</span> saj lahko vzamemo <span
+            class="math inline">\(m = k + l\)</span>. S tem smo dokazali
+            <span class="math inline">\(x R^+ z\)</span>, kar pomeni, da
+            je relacija <span class="math inline">\(R^+\)</span> res
+            tranzitivna. <span
+            class="math inline">\(\checkmark\)</span></p>
+            <p>Nazadnje preverimo še, da je <span
+            class="math inline">\(R^+\)</span> najmanjša tranzitivna
+            relacija, ki vsebuje <span class="math inline">\(R\)</span>.
+            V ta namen naj bo <span class="math inline">\(S\)</span>
+            tranzitivna relacija v <span
+            class="math inline">\(A\)</span>, za katero velja <span
+            class="math inline">\(R \subseteq S\)</span>. Dokazati
+            želimo, da velja <span class="math inline">\(R^+ \subseteq
+            S\)</span>. Ker je <span class="math inline">\(R^+ = R \cup
+            R^2 \cup R^3 \cup \cdots\)</span>, bo za to dovolj dokazati,
+            da za vsak <span class="math inline">\(k \in
+            \mathbf{N}\)</span> velja vsebovanost <span
+            class="math inline">\(R^k \subseteq S\)</span>. Slednje
+            dokažimo z indukcijo na <span
+            class="math inline">\(k\)</span>.</p>
+            <dl>
+            <dt>Osnova indukcije (<span class="math inline">\(k =
+            1\)</span>):</dt>
+            <dd>
+            <p>Dokazati želimo <span class="math inline">\(R \subseteq
+            S\)</span>. To velja po predpostavki. <span
+            class="math inline">\(\checkmark\)</span></p>
+            </dd>
+            <dt>Indukcijski korak (<span class="math inline">\(k \to
+            k+1\)</span>):</dt>
+            <dd>
+            <p>Predpostavimo, da velja <span class="math inline">\(R^k
+            \subseteq S\)</span>. Dokazati želimo, da velja <span
+            class="math inline">\(R^{k+1} \subseteq S\)</span>. Na
+            predpostavki uporabimo <span class="math inline">\(\circ
+            R\)</span> in zaradi monotonosti kompozicije dobimo <span
+            class="math inline">\(R^{k+1} = R^k \circ R \subseteq S
+            \circ R\)</span>. Hkrati lahko na predpostavki <span
+            class="math inline">\(R \subseteq S\)</span> uporabimo <span
+            class="math inline">\(S \circ\)</span> in zopet iz
+            monotonosti sledi <span class="math inline">\(S \circ S
+            \subseteq S \circ S\)</span>. Ker je <span
+            class="math inline">\(S\)</span> tranzitivna relacija, velja
+            <span class="math inline">\(S \circ S \subseteq S\)</span>.
+            S tem smo torej dokazali <span
+            class="math display">\[R^{k+1} \subseteq S \circ R \subseteq
+            S \circ S \subseteq S,\]</span> kar je ravno želena
+            vsebovanost. <span
+            class="math inline">\(\checkmark\)</span></p>
+            </dd>
+            </dl>
+            <p> ◻</p>
+            </div>
+            <div class="zgled">
+            <p><strong>Zgled 3.11</strong>. Naj bo <span
+            class="math inline">\(A\)</span> množica ljudi. Velja <span
+            class="math display">\[\text{otrok}^\text{tranzitivnost} =
+            \text{otrok}^+ = \text{potomec} \cup
+            \text{potomka}.\]</span></p>
+            </div>
             <h1 id="urejenosti">Urejenosti</h1>
             <h1 id="grafi">Grafi</h1>
             <section class="footnotes footnotes-end-of-document"
@@ -3398,6 +3736,24 @@
             relacije</em></strong></span> v <span
             class="math inline">\(D\)</span>.<a href="#fnref3"
             class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn4" role="doc-endnote"><p>To pomeni, da v grafu
+            relacije <span class="math inline">\(R\)</span> obstaja
+            usmerjena pot dolžine vsaj <span
+            class="math inline">\(1\)</span> od <span
+            class="math inline">\(x\)</span> do <span
+            class="math inline">\(y\)</span>. Več o takih poteh bomo
+            spoznali v razdelku o grafih.<a href="#fnref4"
+            class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn5" role="doc-endnote"><p>To pomeni, da v grafu
+            relacije <span class="math inline">\(R\)</span> obstaja
+            usmerjena pot od <span class="math inline">\(x\)</span> do
+            <span class="math inline">\(y\)</span>, pri čemer dopuščamo
+            tudi možnost zanke.<a href="#fnref5" class="footnote-back"
+            role="doc-backlink">↩︎</a></p></li>
+            <li id="fn6" role="doc-endnote"><p>Na primer, <span
+            class="math inline">\(R\)</span> morda ni refleksivna ali pa
+            ni tranzitivna.<a href="#fnref6" class="footnote-back"
+            role="doc-backlink">↩︎</a></p></li>
             </ol>
             </section>
 

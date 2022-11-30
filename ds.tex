@@ -1576,6 +1576,152 @@ Naj bo $A$ množica ljudi.
 \end{itemize}
 \end{zgled}
 
+Osnovne lastnosti relacij lahko opišemo v jeziku operacij z relacijami na naslednji način.
+
+\begin{izrek}[algebraična karakterizacija lastnosti relacij]
+Naj bo $R \subseteq A \times A$. Tedaj je:
+\begin{enumerate}
+    \item $R$ refleksivna, če in samo če $id_A \subseteq R$,
+    \item $R$ irefleksivna, če in samo če $R \cap id_A = \emptyset$,
+    \item $R$ simetrična, če in samo če $R = R^T$,
+    \item $R$ asimetrična, če in samo če $R \cap R^T = \emptyset$,
+    \item $R$ antisimetrična, če in samo če $R \cap R^T \subseteq id_A$,
+    \item $R$ tranzitivna, če in samo če $R \circ R \subseteq R$,
+    \item $R$ intranzitivna, če in samo če $(R \circ R) \cap R = \emptyset$,
+    \item $R$ strogo sovisna, če in samo če $R \cup R^T = A \times A$,
+    \item $R$ sovisna, če in samo če $R \cup R^T \cup id_A = A \times A$,
+    \item $R$ enolična, če in samo če $R \circ R^T \subseteq id_A$.
+\end{enumerate}
+\end{izrek}
+\begin{dokaz}
+6. $(\Rightarrow)$: Predpostavimo, da je $R$ tranzitivna. Dokazati želimo, da je $R \circ R \subseteq R$. V ta namen izberimo poljuben element $(x,y) \in R \circ R$. To pomeni, da obstaja $u \in A$, za katerega velja $xRu \land uRy$. Iz tranzitivnosti relacije $R$ od tod sledi $xRy$. Slednje pomeni ravno $(x,y) \in R$. Ker je bil $(x,y)$ poljuben element $R \circ R$, smo s tem dokazali vsebovanost $R \circ R \subseteq R$. \kljuka
+
+6. $(\Leftarrow)$: Predpostavimo, da je $R \circ R \subseteq R$. Dokazati želimo, da je $R$ tranzitivna. V ta namen predpostavimo, da za poljubne elemente $x,y,z \in A$ velja $xRy$ in $yRz$. Torej $\exists u \colon (xRu \land uRz)$, kar pomeni, da je $(x,z) \in R \circ R$. Ker je $R \circ R \subseteq R$, od tod sledi $(x,z) \in R$, se pravi $xRz$. S tem smo dokazali tranzitivnost relacije $R$. \kljuka
+
+10. Velja 
+\begin{align*}
+    \text{$R$ enolična} &\Leftrightarrow \forall x,y,z \colon (xRy \land xRz \Rightarrow y=z) \\
+    &\Leftrightarrow \forall x,y,z \colon (yR^Tx \land xRy \Rightarrow y = z) \\
+    &\Leftrightarrow \forall y,z \colon \left( \forall x \colon (\lnot(yR^Tx \land xRy) \lor y=z) \right) \\
+    &\Leftrightarrow \forall y,z \colon \left( \lnot \exists x \colon (yR^Tx \land xRy) \lor y=z \right) \\
+    &\Leftrightarrow \forall y,z \colon \left( \lnot (y R \circ R^T z) \lor y = z \right) \\
+    &\Leftrightarrow \forall y,z \colon (y R \circ R^T z \Rightarrow y = z) \\
+    &\Leftrightarrow \forall y,z \colon \left( (y,z) \in R \circ R^T \Rightarrow y = z \right) \\
+    &\Leftrightarrow R \circ R^T \subseteq id_A.
+\end{align*}
+\end{dokaz}
+
+\section{Potence in ovojnice relacij}
+
+Naj bo $R \subseteq A \times A$. {\definicija Kompozicijsko potenco} relacije $R$ definiramo induktivno na naslednji način:
+\begin{description}
+    \item[osnova:] $R^0 = id_A$,
+    \item[indukcijski korak:] $\forall n \in \NN_0 \colon R^{n+1} = R^n \circ R^0$.
+\end{description}
+
+\begin{zgled}
+Najprej velja
+\[
+    R^1 = R^{0+1} = R^0 \circ R = id_A \circ R = R,
+\]
+za tem velja
+\[
+    R^2 = R^{1+1} = R^1 \circ R = R \circ R
+\]
+in induktivno je $R^n$ enak kompoziciji $n$-tih $R$-jev. Ker je operacija komponiranja asociativna, nam pri tem ni potrebno postavljati oklepajev, saj je rezultat neodvisen od vrstnega reda izvajanja kompozicij.
+\end{zgled}
+
+Kompozicijske potence delijo nekatere lastnosti s potencami števil.
+
+\begin{trditev}
+Za vse $m,n \in \NN_0$ velja $R^n \circ R^m = R^{n+m}$ in $(R^n)^m = R^{n \cdot m}$.
+\end{trditev}
+\begin{dokaz}
+    Vaja. Najlažje bo šlo z indukcijo na $m$.
+\end{dokaz}
+
+\begin{zgled}
+Naj bo $A$ množica ljudi in $R = \text{otrok}$. Tedaj je $R^2 = \text{vnuk} \cup \text{vnukinja}$ in $R^3 = \text{pravnuk} \cup \text{pravnukinja}$ in za vsak $n \geq 2$ je
+\[
+    R^n = \text{(pra)$^{n-2}$vnuk} \cup \text{(pra)$^{n-2}$vnukinja}.
+\]
+\end{zgled}
+
+Naj bo $R \subseteq A \times A$. S pomočjo kompozicijske potence definirajmo še dve pomembni konstrukciji, in sicer
+\begin{itemize}
+    \item $R^+ = \bigcup_{k = 1}^\infty R^k = R \cup R^2 \cup R^3 \cup \cdots$,
+    \item $R^* = \bigcup_{k = 0}^\infty R^k = id_A \cup R \cup R^2 \cup R^3 \cup \cdots$,
+\end{itemize}
+Seveda velja $R^* = R^+ \cup id_A$. Relaciji $R^+$ in $R^*$ lahko opišemo še na naslednji način. Za vsaka $x,y \in A$ velja:
+\begin{itemize}
+    \item $x R^+ y \Leftrightarrow \exists k \in \NN \colon x R^k y$,\footnote{To pomeni, da v grafu relacije $R$ obstaja usmerjena pot dolžine vsaj $1$ od $x$ do $y$. Več o takih poteh bomo spoznali v razdelku o grafih.}
+    \item $x R^+ y \Leftrightarrow \exists k \in \NN_0 \colon x R^k y$,\footnote{To pomeni, da v grafu relacije $R$ obstaja usmerjena pot od $x$ do $y$, pri čemer dopuščamo tudi možnost zanke.}
+\end{itemize}
+
+\begin{zgled}
+Naj bo $A$ množica ljudi in $R = \text{otrok}$. Velja $R^+ = \text{potomec} \cup \text{potomka}$.
+\end{zgled}
+
+Nazadnje se pogovorimo še o tem, kako dano relacijo $R \subseteq A \times A$, ki ne zadošča določenim želenim lastnostim,\footnote{Na primer, $R$ morda ni refleksivna ali pa ni tranzitivna.} \emph{popraviti} do nove relacije, ki ni preveč drugačna od $R$, a za razliko od $R$ zadošča želenim lastnostim. Iščemo torej novo relacijo, ki \emph{vsebuje} relacijo $R$, ima želene lastnosti in je hkrati \emph{najmanjša} relacija med vsemi relacijami, ki imajo ti dve lastnosti.
+
+Naj bo $\mathcal{L}$ neka lasnost relacij v množici $A$. Naj bo $R \subseteq A \times A$. Relacija $R^{\mathcal{L}}$ je {\definicija $\mathcal{L}$-ovojnica} relacije $R$, če velja:
+\begin{itemize}
+    \item $R \subseteq R^{\mathcal{L}}$,
+    \item $R^{\mathcal{L}}$ ima lastnost $\mathcal{L}$,
+    \item če ima poljubna relacija $S \subseteq A \times A$ lastnost $\mathcal{L}$ in velja $R \subseteq S$, potem je $R^{\mathcal{L}} \subseteq S$.
+\end{itemize}
+V primeru, ko relacija $R$ že ima lastnost $\mathcal{L}$, je seveda $R^{\mathcal{L}} = R$. V splošnem pa ovojnica $R^{\mathcal{L}}$ ne obstaja vedno. Prepričajmo se, da vselej obstajajo vsaj ovojnice glede na najbolj pomembne lastnosti relacij.
+
+\begin{izrek}
+Za vsako relacijo $R \subseteq A \times A$ obstajajo ovojnice $R^\text{refleksivnost}$, $R^\text{simetričnost}$, $R^\text{tranzitivnost}$, $R^\text{ekvivalenčnost}$ in velja:
+\begin{itemize}
+    \item $R^\text{refleksivnost} = R \cup id_A$ ({\definicija refleksivna ovojnica}), 
+    \item $R^\text{simetričnost} = R \cup R^T$ ({\definicija simetrična ovojnica}), 
+    \item $R^\text{tranzitivnost} = R^+$ ({\definicija tranzitivna ovojnica}), 
+    \item $R^\text{ekvivalenčnost} = (R \cup R^T)^*$ ({\definicija ekvivalenčna ovojnica}).
+\end{itemize}
+\end{izrek}
+\begin{dokaz}
+Preverimo le trditev glede tranzitivne ovojnice. Dokazati torej želimo, da relacija $R^+$ zadošča vsem trem kriterijem v definiciji ovojnice.
+
+Preverimo najprej, da velja $R \subseteq R^+$. Res, ker je $R^+ = R \cup R^2 \cup \cdots$, je seveda $R \subseteq R^+$. \kljuka
+
+Prepričajmo se zdaj, da je relacija $R^+$ vselej tranzitivna. V ta namen predpostavimo, da za poljubne $x,y,z \in A$ velja $xR^+y$ in $yR^+z$. To pomeni
+\[
+    \exists k \in \NN \colon x R^k y \land \exists l \in \NN \colon y R^l z,
+\]
+kar lahko prepišemo v
+\[
+    \exists k, l \in \NN \colon (x R^k y \land y R^l z).
+\]
+Od tod sklepamo, da velja
+\[
+    \exists k, l \in \NN \colon (x R^l \circ R^k z),
+\]
+torej velja tudi
+\[
+    \exists m \in \NN \colon x R^m z,
+\]
+saj lahko vzamemo $m = k + l$. S tem smo dokazali $x R^+ z$, kar pomeni, da je relacija $R^+$ res tranzitivna. \kljuka
+
+Nazadnje preverimo še, da je $R^+$ najmanjša tranzitivna relacija, ki vsebuje $R$. V ta namen naj bo $S$ tranzitivna relacija v $A$, za katero velja $R \subseteq S$. Dokazati želimo, da velja $R^+ \subseteq S$. Ker je $R^+ = R \cup R^2 \cup R^3 \cup \cdots$, bo za to dovolj dokazati, da za vsak $k \in \NN$ velja vsebovanost $R^k \subseteq S$. Slednje dokažimo z indukcijo na $k$.
+\begin{description}
+    \item[Osnova indukcije ($k = 1$):] Dokazati želimo $R \subseteq S$. To velja po predpostavki. \kljuka
+    \item[Indukcijski korak ($k \to k+1$):] Predpostavimo, da velja $R^k \subseteq S$. Dokazati želimo, da velja $R^{k+1} \subseteq S$. Na predpostavki uporabimo $\circ R$ in zaradi monotonosti kompozicije dobimo $R^{k+1} = R^k \circ R \subseteq S \circ R$. Hkrati lahko na predpostavki $R \subseteq S$ uporabimo $S \circ$ in zopet iz monotonosti sledi $S \circ S \subseteq S \circ S$. Ker je $S$ tranzitivna relacija, velja $S \circ S \subseteq S$. S tem smo torej dokazali
+    \[
+        R^{k+1} \subseteq S \circ R \subseteq S \circ S \subseteq S,
+    \]
+    kar je ravno želena vsebovanost. \kljuka
+\end{description}
+\end{dokaz}
+
+\begin{zgled}
+Naj bo $A$ množica ljudi. Velja
+\[
+    \text{otrok}^\text{tranzitivnost} = \text{otrok}^+ = \text{potomec} \cup \text{potomka}.
+\]
+\end{zgled}
+
 \chapter{Urejenosti}
 \chapter{Grafi}
 
