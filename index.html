@@ -43,7 +43,7 @@
             <strong> Urban Jezernik <br>
               Univerza v Ljubljani, Fakulteta za matematiko in fiziko </strong> <br>
 
-            Zadnja posodobitev: 30. 11. 2022
+            Zadnja posodobitev: 01. 12. 2022
           </div>
 
           <div id="spinner" class="text-center">
@@ -3840,6 +3840,219 @@
             </div>
             <h2 id="posebni-elementi-v-delno-urejenih-množicah">Posebni
             elementi v delno urejenih množicah</h2>
+            <p>Naj relacija <span class="math inline">\(\leq\)</span>
+            delno ureja množico <span class="math inline">\(A\)</span>.
+            Izpostavimo nekaj posebnih elementov množice <span
+            class="math inline">\(A\)</span> glede na to delno
+            urejenost, in sicer tiste, ki so v Hassejevem diagramu
+            narisani tako, da pod oziroma nad njimi ni nobenega drugega
+            elementa ali pa so celo pod oziroma nad vsemi drugimi
+            elementi.</p>
+            <p>Naj bo <span class="math inline">\(a \in A\)</span>.
+            Rečemo, da:</p>
+            <ul>
+            <li><p><span class="math inline">\(a\)</span> je
+            <span><strong><em>minimalen</em></strong></span> v <span
+            class="math inline">\(A\)</span>, če in samo če <span
+            class="math inline">\(\forall x \in A \colon (x \leq a
+            \Rightarrow x = a)\)</span>,</p></li>
+            <li><p><span class="math inline">\(a\)</span> je
+            <span><strong><em>maksimalen</em></strong></span> v <span
+            class="math inline">\(A\)</span>, če in samo če <span
+            class="math inline">\(\forall x \in A \colon (a \leq x
+            \Rightarrow x = a)\)</span>,</p></li>
+            <li><p><span class="math inline">\(a\)</span> je
+            <span><strong><em>prvi/najmanjši</em></strong></span> v
+            <span class="math inline">\(A\)</span>, če in samo če <span
+            class="math inline">\(\forall x \in A \colon a \leq
+            x\)</span>,</p></li>
+            <li><p><span class="math inline">\(a\)</span> je
+            <span><strong><em>zadnji/največji</em></strong></span> v
+            <span class="math inline">\(A\)</span>, če in samo če <span
+            class="math inline">\(\forall x \in A \colon x \leq
+            a\)</span>.</p></li>
+            </ul>
+            <div class="zgled">
+            <p><strong>Zgled 4.3</strong>. </p>
+            <ul>
+            <li><p>Naj bo <span class="math inline">\(A = \{ 1, 2,
+            \dots, 10 \}\)</span>, opremljena z relacijo deljivosti
+            <span class="math inline">\(|\)</span>. Minimalni element je
+            <span class="math inline">\(1\)</span> in to je hkrati tudi
+            prvi element. Maksimalnih elementov je več, in sicer <span
+            class="math inline">\(7\)</span>, <span
+            class="math inline">\(10\)</span>, <span
+            class="math inline">\(9\)</span>, <span
+            class="math inline">\(6\)</span>, <span
+            class="math inline">\(8\)</span>. Zadnjih elementov pa
+            ni.</p></li>
+            <li><p>Naj bo <span class="math inline">\(A = \{ B \mid B
+            \subseteq \{ 1, 2, 3 \} \} \backslash \{ \emptyset
+            \}\)</span>, opremljena z relacijo vsebovanosti množic <span
+            class="math inline">\(\subseteq\)</span>. Minimalni elementi
+            so <span class="math inline">\(\{ 1 \}\)</span>, <span
+            class="math inline">\(\{ 2 \}\)</span>, <span
+            class="math inline">\(\{ 3 \}\)</span>. Prvih elementov ni.
+            Maksimalni element je <span class="math inline">\(\{ 1, 2, 3
+            \}\)</span> in ta je hkrati zadnji.</p></li>
+            <li><p>Naj bo <span class="math inline">\(A =
+            \mathbf{Z}\)</span>, opremljena z relacijo <span
+            class="math inline">\(\leq\)</span>. Tukaj ni nobenih
+            posebnih elementov.</p></li>
+            <li><p>Naj bo <span class="math inline">\(A\)</span>
+            poljubna množica, opremljena z relacijo <span
+            class="math inline">\(id_A\)</span>. Tukaj je vsak element
+            maksimalen in vsak minimalen. Če ima <span
+            class="math inline">\(A\)</span> vsaj <span
+            class="math inline">\(2\)</span> elementa, potem ni niti
+            prvih niti zadnjih elementov.</p></li>
+            </ul>
+            </div>
+            <div class="trditev">
+            <p><strong>Trditev 4.1</strong>. Naj bo <span
+            class="math inline">\(A\)</span> delno urejena z <span
+            class="math inline">\(\leq\)</span>.</p>
+            <ol>
+            <li><p>Vsak prvi element je minimalen.</p></li>
+            <li><p>Vsak zadnji element je maksimalen.</p></li>
+            <li><p>Če v <span class="math inline">\(A\)</span> obstaja
+            prvi element, je en sam.</p></li>
+            <li><p>Če v <span class="math inline">\(A\)</span> obstaja
+            zadnji element, je en sam.</p></li>
+            </ol>
+            </div>
+            <div class="proof">
+            <p><em>Proof.</em> 1. Naj bo <span class="math inline">\(a
+            \in A\)</span> prvi. Dokazujemo, da je <span
+            class="math inline">\(a\)</span> minimalen. V ta namen
+            izberimo poljuben <span class="math inline">\(x \in
+            A\)</span>, za katerega velja <span class="math inline">\(x
+            \leq a\)</span>. Dokazati želimo, da je <span
+            class="math inline">\(x = a\)</span>. Ker je <span
+            class="math inline">\(a\)</span> prvi, velja <span
+            class="math inline">\(a \leq x\)</span>. Iz
+            antisimetričnosti relacije <span
+            class="math inline">\(\leq\)</span> od tod sledi <span
+            class="math inline">\(x = a\)</span>. <span
+            class="math inline">\(\checkmark\)</span></p>
+            <p>2. Naj bosta <span class="math inline">\(a,b \in
+            A\)</span> prva. Dokazati želimo, da je <span
+            class="math inline">\(a = b\)</span>. Ker je <span
+            class="math inline">\(a\)</span> prvi, velja <span
+            class="math inline">\(a \leq b\)</span>. Ker je <span
+            class="math inline">\(b\)</span> prvi, velja <span
+            class="math inline">\(b \leq a\)</span>. Iz
+            antisimetričnosti relacije <span
+            class="math inline">\(\leq\)</span> sledi <span
+            class="math inline">\(a = b\)</span>. <span
+            class="math inline">\(\checkmark\)</span> ◻</p>
+            </div>
+            <div class="trditev">
+            <p><strong>Trditev 4.2</strong>. Naj bo <span
+            class="math inline">\(A\)</span> <em>linearno</em> urejena z
+            <span class="math inline">\(\leq\)</span>.</p>
+            <ol>
+            <li><p>Element <span class="math inline">\(a \in A\)</span>
+            je prvi, če in samo če je <span
+            class="math inline">\(a\)</span> minimalen.</p></li>
+            <li><p>Element <span class="math inline">\(a \in A\)</span>
+            je zadnji, če in samo če je <span
+            class="math inline">\(a\)</span> maksimalen.</p></li>
+            </ol>
+            </div>
+            <div class="proof">
+            <p><em>Proof.</em> 1. Po prejšnji trditvi bo dovolj dokazati
+            implikacijo <span
+            class="math inline">\((\Leftarrow)\)</span>. Naj bo torej
+            <span class="math inline">\(a \in A\)</span> minimalen.
+            Dokazati želimo, da je <span
+            class="math inline">\(a\)</span> prvi. V ta namen izberimo
+            poljuben <span class="math inline">\(x \in A\)</span>.
+            Dokazati želimo, da je <span class="math inline">\(a \leq
+            x\)</span>. Linearna urejenost je strogo sovisna, zato velja
+            <span class="math inline">\(a \leq x\)</span> ali <span
+            class="math inline">\(x \leq a\)</span>. Uporabimo analizo
+            primerov.</p>
+            <ul>
+            <li><p>Če je <span class="math inline">\(a \leq x\)</span>,
+            potem želeno velja. <span
+            class="math inline">\(\checkmark\)</span></p></li>
+            <li><p>Če je <span class="math inline">\(x \leq a\)</span>,
+            iz minimalnosti <span class="math inline">\(a\)</span> sledi
+            <span class="math inline">\(x = a\)</span>, torej velja tudi
+            <span class="math inline">\(a \leq x\)</span>. <span
+            class="math inline">\(\checkmark\)</span>.</p></li>
+            </ul>
+            <p> ◻</p>
+            </div>
+            <p>Naj bo množica <span class="math inline">\(A\)</span>
+            delno urejena z relacijo <span
+            class="math inline">\(R\)</span> in naj bo <span
+            class="math inline">\(B \subseteq A\)</span> poljubna
+            podmnožica <span class="math inline">\(A\)</span>. V tem
+            primeru lahko relacijo <span
+            class="math inline">\(R\)</span>
+            <span><strong><em>zožimo</em></strong></span> na množico
+            <span class="math inline">\(B\)</span> in dobimo relacijo
+            <span class="math display">\[R |_B = R \cap (B \times B)
+            \subseteq B \times B\]</span> v množici <span
+            class="math inline">\(B\)</span>. Na ta način lahko govorimo
+            o minimalnih, maksimalnih, prvih in zadnjih elementih
+            množice <span class="math inline">\(B\)</span> glede na
+            relacijo <span class="math inline">\(R|_B\)</span>.</p>
+            <ul>
+            <li><p>Če ima <span class="math inline">\(B\)</span> prvi
+            element, ga imenujemo
+            <span><strong><em>minimum</em></strong></span> množice <span
+            class="math inline">\(B\)</span> in označimo z <span
+            class="math inline">\(\min B\)</span>.</p></li>
+            <li><p>Če ima <span class="math inline">\(B\)</span> zadnji
+            element, ga imenujemo
+            <span><strong><em>maksimum</em></strong></span> množice
+            <span class="math inline">\(B\)</span> in označimo z <span
+            class="math inline">\(\max B\)</span>.</p></li>
+            <li><p>Element <span class="math inline">\(a \in A\)</span>
+            je <span><strong><em>zgornja meja</em></strong></span> za
+            <span class="math inline">\(B\)</span>, če <span
+            class="math inline">\(\forall x \in B \colon x \leq
+            a\)</span>.</p></li>
+            <li><p>Element <span class="math inline">\(a \in A\)</span>
+            je <span><strong><em>spodnja meja</em></strong></span> za
+            <span class="math inline">\(B\)</span>, če <span
+            class="math inline">\(\forall x \in B \colon a \leq
+            x\)</span>.</p></li>
+            </ul>
+            <div class="zgled">
+            <p><strong>Zgled 4.4</strong>. </p>
+            <ul>
+            <li><p>Naj bo <span class="math inline">\(A =
+            \mathbf{R}\)</span>, opremljena z relacijo <span
+            class="math inline">\(\leq\)</span>. Naj bo <span
+            class="math inline">\(B = (0,1)\)</span> odprti interval.
+            Tedaj <span class="math inline">\(\min B\)</span> in <span
+            class="math inline">\(\max B\)</span> ne obstajata. Vsako
+            število <span class="math inline">\(a \geq 1\)</span> je
+            zgornja meja za <span class="math inline">\(B\)</span> in
+            vsako število <span class="math inline">\(a \leq 0\)</span>
+            je spodnja meja za <span
+            class="math inline">\(B\)</span>.</p></li>
+            <li><p>Naj bo <span class="math inline">\(A =
+            \mathbf{N}\)</span>, opremljena z relacijo deljivosti <span
+            class="math inline">\(|\)</span>. Naj bo <span
+            class="math inline">\(B = \{ 12, 18, 24, 72 \}\)</span>.
+            Tedaj <span class="math inline">\(\min B\)</span> ne
+            obstaja, <span class="math inline">\(\max B\)</span> pa je
+            enak <span class="math inline">\(72\)</span>. Vsako število
+            oblike <span class="math inline">\(72k\)</span> za <span
+            class="math inline">\(k \in \mathbf{N}\)</span> je zgornja
+            meja za <span class="math inline">\(B\)</span>. Števila
+            <span class="math inline">\(1\)</span>,<span
+            class="math inline">\(2\)</span>,<span
+            class="math inline">\(3\)</span>,<span
+            class="math inline">\(6\)</span> so spodnje meje za <span
+            class="math inline">\(B\)</span>.</p></li>
+            </ul>
+            </div>
             <h1 id="grafi">Grafi</h1>
             <section class="footnotes footnotes-end-of-document"
             role="doc-endnotes">

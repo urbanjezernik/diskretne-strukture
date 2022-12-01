@@ -1787,6 +1787,73 @@ Delno urejeno množico $A$ lahko predstavimo grafično s {\definicija Hassejevim
 
 \section{Posebni elementi v delno urejenih množicah}
 
+Naj relacija $\leq$ delno ureja množico $A$. Izpostavimo nekaj posebnih elementov množice $A$ glede na to delno urejenost, in sicer tiste, ki so v Hassejevem diagramu narisani tako, da pod oziroma nad njimi ni nobenega drugega elementa ali pa so celo pod oziroma nad vsemi drugimi elementi. 
+
+Naj bo $a \in A$. Rečemo, da:
+\begin{itemize}
+    \item $a$ je {\definicija minimalen} v $A$, če in samo če $\forall x \in A \colon (x \leq a \Rightarrow x = a)$,
+    \item $a$ je {\definicija maksimalen} v $A$, če in samo če $\forall x \in A \colon (a \leq x \Rightarrow x = a)$,
+    \item $a$ je {\definicija prvi/najmanjši} v $A$, če in samo če $\forall x \in A \colon a \leq x$,
+    \item $a$ je {\definicija zadnji/največji} v $A$, če in samo če $\forall x \in A \colon x \leq a$.
+\end{itemize}
+
+\begin{zgled} \leavevmode
+\begin{itemize}
+    \item Naj bo $A = \{ 1, 2, \dots, 10 \}$, opremljena z relacijo deljivosti $|$. Minimalni element je $1$ in to je hkrati tudi prvi element. Maksimalnih elementov je več, in sicer $7$, $10$, $9$, $6$, $8$. Zadnjih elementov pa ni.
+    \item Naj bo $A = \{ B \mid B \subseteq \{ 1, 2, 3 \} \} \backslash \{ \emptyset \}$, opremljena z relacijo vsebovanosti množic $\subseteq$. Minimalni elementi so $\{ 1 \}$, $\{ 2 \}$, $\{ 3 \}$. Prvih elementov ni. Maksimalni element je $\{ 1, 2, 3 \}$ in ta je hkrati zadnji.
+    \item Naj bo $A = \ZZ$, opremljena z relacijo $\leq$. Tukaj ni nobenih posebnih elementov.
+    \item Naj bo $A$ poljubna množica, opremljena z relacijo $id_A$. Tukaj je vsak element maksimalen in vsak minimalen. Če ima $A$ vsaj $2$ elementa, potem ni niti prvih niti zadnjih elementov.
+\end{itemize}
+\end{zgled}
+
+\begin{trditev}
+Naj bo $A$ delno urejena z $\leq$.
+\begin{enumerate}
+    \item Vsak prvi element je minimalen.
+    \item Vsak zadnji element je maksimalen.
+    \item Če v $A$ obstaja prvi element, je en sam.
+    \item Če v $A$ obstaja zadnji element, je en sam.
+\end{enumerate}
+\end{trditev}
+\begin{dokaz}
+1. Naj bo $a \in A$ prvi. Dokazujemo, da je $a$ minimalen. V ta namen izberimo poljuben $x \in A$, za katerega velja $x \leq a$. Dokazati želimo, da je $x = a$. Ker je $a$ prvi, velja $a \leq x$. Iz antisimetričnosti relacije $\leq$ od tod sledi $x = a$. \kljuka
+
+2. Naj bosta $a,b \in A$ prva. Dokazati želimo, da je $a = b$. Ker je $a$ prvi, velja $a \leq b$. Ker je $b$ prvi, velja $b \leq a$. Iz antisimetričnosti relacije $\leq$ sledi $a = b$. \kljuka
+\end{dokaz}
+
+\begin{trditev}
+Naj bo $A$ \emph{linearno} urejena z $\leq$.
+\begin{enumerate}
+    \item Element $a \in A$ je prvi, če in samo če je $a$ minimalen.
+    \item Element $a \in A$ je zadnji, če in samo če je $a$ maksimalen.
+\end{enumerate}
+\end{trditev}
+\begin{dokaz}
+1. Po prejšnji trditvi bo dovolj dokazati implikacijo $(\Leftarrow)$. Naj bo torej $a \in A$ minimalen. Dokazati želimo, da je $a$ prvi. V ta namen izberimo poljuben $x \in A$. Dokazati želimo, da je $a \leq x$. Linearna urejenost je strogo sovisna, zato velja $a \leq x$ ali $x \leq a$. Uporabimo analizo primerov. 
+\begin{itemize}
+    \item Če je $a \leq x$, potem želeno velja. \kljuka 
+    \item Če je $x \leq a$, iz minimalnosti $a$ sledi $x = a$, torej velja tudi $a \leq x$. \kljuka.
+\end{itemize}
+\end{dokaz}
+
+Naj bo množica $A$ delno urejena z relacijo $R$ in naj bo $B \subseteq A$ poljubna podmnožica $A$. V tem primeru lahko relacijo $R$ {\definicija zožimo} na množico $B$ in dobimo relacijo
+\[
+    R |_B = R \cap (B \times B) \subseteq B \times B
+\]
+v množici $B$. Na ta način lahko govorimo o minimalnih, maksimalnih, prvih in zadnjih elementih množice $B$ glede na relacijo $R|_B$.
+\begin{itemize}
+    \item Če ima $B$ prvi element, ga imenujemo {\definicija minimum} množice $B$ in označimo z $\min B$.
+    \item Če ima $B$ zadnji element, ga imenujemo {\definicija maksimum} množice $B$ in označimo z $\max B$.
+    \item Element $a \in A$ je {\definicija zgornja meja} za $B$, če $\forall x \in B \colon x \leq a$.
+    \item Element $a \in A$ je {\definicija spodnja meja} za $B$, če $\forall x \in B \colon a \leq x$.
+\end{itemize}
+
+\begin{zgled} \leavevmode
+\begin{itemize}
+    \item Naj bo $A = \RR$, opremljena z relacijo $\leq$. Naj bo $B = (0,1)$ odprti interval. Tedaj $\min B$ in $\max B$ ne obstajata. Vsako število $a \geq 1$ je zgornja meja za $B$ in vsako število $a \leq 0$ je spodnja meja za $B$.
+    \item Naj bo $A = \NN$, opremljena z relacijo deljivosti $|$. Naj bo $B = \{ 12, 18, 24, 72 \}$. Tedaj $\min B$ ne obstaja, $\max B$ pa je enak $72$. Vsako število oblike $72k$ za $k \in \NN$ je zgornja meja za $B$. Števila $1$,$2$,$3$,$6$ so spodnje meje za $B$.
+\end{itemize}
+\end{zgled}
 
 \chapter{Grafi}
 
