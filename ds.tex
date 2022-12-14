@@ -1900,7 +1900,7 @@ Delno urejena množica $A$ je {\definicija mreža}, če za vsaka dva elementa $a
 
 \chapter{Grafi}
 
-Diskretne strukture, ki smo jih obravnavali do sedaj (torej relacije), so izhajale iz našega študija izjavnega in predikatnega računa. Ogledali smo si že, kako lahko relacije predstavimo z  \emph{grafom relacije}. V tem zadnjem razdelku bomo ta abstrakten objekt, \emph{graf}, obravnavali neodvisno. Ta diskretna struktura se zelo pogosta v različnih področjih matematike, še posebej v njenih aplikacijah v resničnem svetu. Ogledali si bomo nekaj lastnosti te strukture in dokazali nekaj osnovnih izrekov o njej. 
+Diskretne strukture, ki smo jih obravnavali do sedaj (torej relacije), so izhajale iz našega študija izjavnega in predikatnega računa. Ogledali smo si že, kako lahko relacije predstavimo z  \emph{grafom relacije}. V tem zadnjem razdelku bomo ta abstrakten objekt, \emph{graf}, obravnavali neodvisno. Ta diskretna struktura je zelo pogosta v različnih področjih matematike, še posebej v njenih aplikacijah v resničnem svetu. Ogledali si bomo nekaj lastnosti te strukture in dokazali nekaj osnovnih izrekov o njej. 
 
 \section{Osnovne definicije}
 
@@ -1954,5 +1954,120 @@ Naj bo $G$ graf, predstavljen na naslednji sliki.
 
 Stopnje vozlišč so $d(a) = 2$, $d(b) = 2$, $d(c) = 3$, $d(d) = 1$, $d(e) = 0$. Vozlišče $d$ je list, vozlišče $e$ pa je izolirana točka.
 \end{zgled}
+
+Najmanjšo stopnjo vozlišča označimo z
+\[
+    \delta(G) = \min \{ d(u) \mid u \in V \},
+\]
+največjo stopnjo pa označimo z 
+\[
+  \Delta(G) = \max \{ d(u) \mid u \in V \}. 
+\]
+Graf je {\definicija regularen}, če je $\delta(G) = \Delta(G)$, torej če imajo vsa vozlišča enako stopnjo. Če je ta stopnja $d$, rečemu grafu {\definicija $d$-regularen}.
+
+\begin{zgled} \leavevmode
+\begin{itemize}
+    \item
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.5\linewidth]{img/grafi-2reg.png}
+        \caption{Zgled $2$-regularnega grafa}
+    \end{figure}
+
+    \item
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.5\linewidth]{img/grafi-3reg.png}
+        \caption{Zgled $3$-regularnega grafa}
+    \end{figure}
+
+    \item
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.5\linewidth]{img/opis-petersen.png}
+        \caption{Petersenov graf je $3$-regularen}
+    \end{figure}
+\end{itemize}
+\end{zgled}
+
+Grafe lahko ekvivalentno opišemo s pomočjo matrik. Za to imamo na voljo dve možnosti.
+
+Prva možnost je {\definicija matrika sosednosti} grafa $G$. Za njeno konstrukcijo najprej oštevilčimo množico vozlišč $V = \{ v_1, v_2, \dots, v_n \}$ in nato sestavimo matriko $A(G) = [a_{ij}]_{1 \leq i,j \leq n}$ z vnosi
+\[
+    a_{ij} = \begin{cases}
+        1 & v_i \sim v_j \\
+        0 & \text{sicer.}
+    \end{cases}
+\]
+
+\begin{zgled}
+Naj bo $G$ graf, predstavljen na naslednji sliki. Ta graf bomo srečali še večkrat, zato mu dajmo ime {\definicija lizika}.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\linewidth]{img/grafi-std.png}
+    \caption{Lizika}
+\end{figure}
+
+Matrika sosednosti lizike je 
+\[
+    A(G) = \begin{pmatrix}
+        0 & 1 & 1 & 0 \\
+        1 & 0 & 1 & 0 \\
+        1 & 1 & 0 & 1 \\
+        0 & 0 & 1 & 0
+    \end{pmatrix}.
+\]
+Opazimo, da je ta matrika simetrična. To ni slučaj, saj za vsaka $i,j$ velja $a_{ij} = 1$, če in samo če je $v_i \sim v_j$, torej če in samo če je $a_{ji} = 1$.
+\end{zgled}
+
+Druga možnost je {\definicija incidenčna matrika} grafa $G$. Za njeno konstrukcijo najprej oštevilčimo množico vozlišč $V = \{ v_1, v_2, \dots, v_n \}$ in povezav $E = \{ e_1, e_2, \dots, e_m \}$ in nato sestavimo matriko $B(G) = [b_{ij}]_{1 \leq i \leq n, 1 \leq j \leq m}$ z vnosi
+\[
+    b_{ij} = \begin{cases}
+        1 & v_i \in e_j \\
+        0 & \text{sicer.}
+    \end{cases}
+\]
+
+\begin{zgled}
+Opazujmo liziko. Povezave označimo kot $e_1 = \{ 1, 2 \}$, $e_2 = \{ 1, 3 \}$, $e_3 = \{ 2, 3 \}$ in $e_4 = \{ 3, 4 \}$. Incidenčna matrika je 
+\[
+    B(G) =
+    \begin{pmatrix}
+        1 & 1 & 0 & 0 \\
+        1 & 0 & 1 & 0 \\
+        0 & 1 & 1 & 1 \\
+        0 & 0 & 0 & 1
+    \end{pmatrix}.
+\]
+Ta matrika ni simetrična. V splošnem to niti ni kvadratna matrika, saj je število vozlišč grafa lahko različno od števila povezav.
+\end{zgled}
+
+Vsak stolpec incidenčne matrike vsebuje natanko dve enici, ker ima vsaka povezava natanko dve krajišči. Torej je vsota vseh členov matrike $B(G)$ enaka dvakratniku števila povezav, se pravi $2 |E|$. Po drugi strani pa je število enic v $i$-ti vrstici matrike $B(G)$ enako stopnji $d(v_i)$. Torej je vsota vseh členov matrike $B(G)$ enaka vsoti stopenj vseh vozlišč grafa. Na ta način smo izpeljali naslednjo elementarno, a pomembno lastnost grafov.
+
+\begin{lema}[o rokovanju]
+    Za vsak graf $G = (V,E)$ velja
+    \[
+        \sum_{v \in V} d(v) = 2 |E|.
+    \]
+\end{lema}
+
+\begin{zgled} \leavevmode
+    \begin{itemize}
+        \item Petersenov graf je $3$-regularen graf na $10$ vozliščih. Iz leme o rokovanju sklepamo, da je $10 \cdot 3 = 2 \cdot |E|$, torej ima Petersenov graf $15$ povezav. Ta sklep velja za vsak $3$-regularen graf na $10$ vozliščih.
+        \item Ali obstaja $3$-regularen graf na $9$ vozliščih? Če bi obstajal, potem bi po lemi o rokovanju veljalo $9 \cdot 3 = 2 \cdot |E|$, torej je $|E| = 27/2$, kar ni mogoče. Tak graf torej ne obstaja.
+    \end{itemize}
+\end{zgled}
+
+\begin{posledica}
+Vsak graf ima sodo mnogo točk lihe stopnje.
+\end{posledica}
+\begin{dokaz}
+Naj bo $G = (V,E)$ graf. Po lemi o rokovanju je $\sum_{v \in V} d(v)$ sodo število. Naj bo $V^0 = \{ v \in V \mid \text{$d(v)$ je sodo} \}$ in $V^1 = \{ v \in V \mid \text{$d(v)$ je liho} \}$. Torej je 
+\[
+    \sum_{v \in V^0} d(v) + \sum_{v \in V^1} d(v)
+\]
+sodo število. Ker so v prvi vsoti vsi členi $d(v)$ sodi, mora biti druga vsota soda. Vsak člen v drugi vsoti pa je lih, zato mora biti velikost množice $V^1$ soda. S tem je dokaz zaključen.
+\end{dokaz}
 
 \end{document}

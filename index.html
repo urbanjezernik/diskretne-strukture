@@ -4181,7 +4181,7 @@
             predikatnega računa. Ogledali smo si že, kako lahko relacije
             predstavimo z <em>grafom relacije</em>. V tem zadnjem
             razdelku bomo ta abstrakten objekt, <em>graf</em>,
-            obravnavali neodvisno. Ta diskretna struktura se zelo
+            obravnavali neodvisno. Ta diskretna struktura je zelo
             pogosta v različnih področjih matematike, še posebej v
             njenih aplikacijah v resničnem svetu. Ogledali si bomo nekaj
             lastnosti te strukture in dokazali nekaj osnovnih izrekov o
@@ -4278,6 +4278,169 @@
             class="math inline">\(d(e) = 0\)</span>. Vozlišče <span
             class="math inline">\(d\)</span> je list, vozlišče <span
             class="math inline">\(e\)</span> pa je izolirana točka.</p>
+            </div>
+            <p>Najmanjšo stopnjo vozlišča označimo z <span
+            class="math display">\[\delta(G) = \min \{ d(u) \mid u \in V
+            \},\]</span> največjo stopnjo pa označimo z <span
+            class="math display">\[\Delta(G) = \max \{ d(u) \mid u \in V
+            \}.\]</span> Graf je
+            <span><strong><em>regularen</em></strong></span>, če je
+            <span class="math inline">\(\delta(G) = \Delta(G)\)</span>,
+            torej če imajo vsa vozlišča enako stopnjo. Če je ta stopnja
+            <span class="math inline">\(d\)</span>, rečemu grafu
+            <span><strong><em><span
+            class="math inline">\(d\)</span>-regularen</em></strong></span>.</p>
+            <div class="zgled">
+            <p><strong>Zgled 5.4</strong>. </p>
+            <ul>
+            <li><figure>
+            <img src="img/grafi-2reg.png"
+            alt="Zgled 2-regularnega grafa" />
+            <figcaption aria-hidden="true">Zgled <span
+            class="math inline">\(2\)</span>-regularnega
+            grafa</figcaption>
+            </figure></li>
+            <li><figure>
+            <img src="img/grafi-3reg.png"
+            alt="Zgled 3-regularnega grafa" />
+            <figcaption aria-hidden="true">Zgled <span
+            class="math inline">\(3\)</span>-regularnega
+            grafa</figcaption>
+            </figure></li>
+            <li><figure>
+            <img src="img/opis-petersen.png"
+            alt="Petersenov graf je 3-regularen" />
+            <figcaption aria-hidden="true">Petersenov graf je <span
+            class="math inline">\(3\)</span>-regularen</figcaption>
+            </figure></li>
+            </ul>
+            </div>
+            <p>Grafe lahko ekvivalentno opišemo s pomočjo matrik. Za to
+            imamo na voljo dve možnosti.</p>
+            <p>Prva možnost je <span><strong><em>matrika
+            sosednosti</em></strong></span> grafa <span
+            class="math inline">\(G\)</span>. Za njeno konstrukcijo
+            najprej oštevilčimo množico vozlišč <span
+            class="math inline">\(V = \{ v_1, v_2, \dots, v_n
+            \}\)</span> in nato sestavimo matriko <span
+            class="math inline">\(A(G) = [a_{ij}]_{1 \leq i,j \leq
+            n}\)</span> z vnosi <span class="math display">\[a_{ij} =
+            \begin{cases}
+                    1 &amp; v_i \sim v_j \\
+                    0 &amp; \text{sicer.}
+                \end{cases}\]</span></p>
+            <div class="zgled">
+            <p><strong>Zgled 5.5</strong>. Naj bo <span
+            class="math inline">\(G\)</span> graf, predstavljen na
+            naslednji sliki. Ta graf bomo srečali še večkrat, zato mu
+            dajmo ime <span><strong><em>lizika</em></strong></span>.</p>
+            <figure>
+            <img src="img/grafi-std.png" alt="Lizika" />
+            <figcaption aria-hidden="true">Lizika</figcaption>
+            </figure>
+            <p>Matrika sosednosti lizike je <span
+            class="math display">\[A(G) = \begin{pmatrix}
+                    0 &amp; 1 &amp; 1 &amp; 0 \\
+                    1 &amp; 0 &amp; 1 &amp; 0 \\
+                    1 &amp; 1 &amp; 0 &amp; 1 \\
+                    0 &amp; 0 &amp; 1 &amp; 0
+                \end{pmatrix}.\]</span> Opazimo, da je ta matrika
+            simetrična. To ni slučaj, saj za vsaka <span
+            class="math inline">\(i,j\)</span> velja <span
+            class="math inline">\(a_{ij} = 1\)</span>, če in samo če je
+            <span class="math inline">\(v_i \sim v_j\)</span>, torej če
+            in samo če je <span class="math inline">\(a_{ji} =
+            1\)</span>.</p>
+            </div>
+            <p>Druga možnost je <span><strong><em>incidenčna
+            matrika</em></strong></span> grafa <span
+            class="math inline">\(G\)</span>. Za njeno konstrukcijo
+            najprej oštevilčimo množico vozlišč <span
+            class="math inline">\(V = \{ v_1, v_2, \dots, v_n
+            \}\)</span> in povezav <span class="math inline">\(E = \{
+            e_1, e_2, \dots, e_m \}\)</span> in nato sestavimo matriko
+            <span class="math inline">\(B(G) = [b_{ij}]_{1 \leq i \leq
+            n, 1 \leq j \leq m}\)</span> z vnosi <span
+            class="math display">\[b_{ij} = \begin{cases}
+                    1 &amp; v_i \in e_j \\
+                    0 &amp; \text{sicer.}
+                \end{cases}\]</span></p>
+            <div class="zgled">
+            <p><strong>Zgled 5.6</strong>. Opazujmo liziko. Povezave
+            označimo kot <span class="math inline">\(e_1 = \{ 1, 2
+            \}\)</span>, <span class="math inline">\(e_2 = \{ 1, 3
+            \}\)</span>, <span class="math inline">\(e_3 = \{ 2, 3
+            \}\)</span> in <span class="math inline">\(e_4 = \{ 3, 4
+            \}\)</span>. Incidenčna matrika je <span
+            class="math display">\[B(G) =
+                \begin{pmatrix}
+                    1 &amp; 1 &amp; 0 &amp; 0 \\
+                    1 &amp; 0 &amp; 1 &amp; 0 \\
+                    0 &amp; 1 &amp; 1 &amp; 1 \\
+                    0 &amp; 0 &amp; 0 &amp; 1
+                \end{pmatrix}.\]</span> Ta matrika ni simetrična. V
+            splošnem to niti ni kvadratna matrika, saj je število
+            vozlišč grafa lahko različno od števila povezav.</p>
+            </div>
+            <p>Vsak stolpec incidenčne matrike vsebuje natanko dve
+            enici, ker ima vsaka povezava natanko dve krajišči. Torej je
+            vsota vseh členov matrike <span
+            class="math inline">\(B(G)\)</span> enaka dvakratniku
+            števila povezav, se pravi <span class="math inline">\(2
+            |E|\)</span>. Po drugi strani pa je število enic v <span
+            class="math inline">\(i\)</span>-ti vrstici matrike <span
+            class="math inline">\(B(G)\)</span> enako stopnji <span
+            class="math inline">\(d(v_i)\)</span>. Torej je vsota vseh
+            členov matrike <span class="math inline">\(B(G)\)</span>
+            enaka vsoti stopenj vseh vozlišč grafa. Na ta način smo
+            izpeljali naslednjo elementarno, a pomembno lastnost
+            grafov.</p>
+            <div class="lema">
+            <p><strong>Lema 5.1</strong> (o rokovanju). Za vsak graf
+            <span class="math inline">\(G = (V,E)\)</span> velja <span
+            class="math display">\[\sum_{v \in V} d(v) = 2
+            |E|.\]</span></p>
+            </div>
+            <div class="zgled">
+            <p><strong>Zgled 5.7</strong>. </p>
+            <ul>
+            <li><p>Petersenov graf je <span
+            class="math inline">\(3\)</span>-regularen graf na <span
+            class="math inline">\(10\)</span> vozliščih. Iz leme o
+            rokovanju sklepamo, da je <span class="math inline">\(10
+            \cdot 3 = 2 \cdot |E|\)</span>, torej ima Petersenov graf
+            <span class="math inline">\(15\)</span> povezav. Ta sklep
+            velja za vsak <span
+            class="math inline">\(3\)</span>-regularen graf na <span
+            class="math inline">\(10\)</span> vozliščih.</p></li>
+            <li><p>Ali obstaja <span
+            class="math inline">\(3\)</span>-regularen graf na <span
+            class="math inline">\(9\)</span> vozliščih? Če bi obstajal,
+            potem bi po lemi o rokovanju veljalo <span
+            class="math inline">\(9 \cdot 3 = 2 \cdot |E|\)</span>,
+            torej je <span class="math inline">\(|E| = 27/2\)</span>,
+            kar ni mogoče. Tak graf torej ne obstaja.</p></li>
+            </ul>
+            </div>
+            <div class="posledica">
+            <p><strong>Posledica 5.1</strong>. Vsak graf ima sodo mnogo
+            točk lihe stopnje.</p>
+            </div>
+            <div class="proof">
+            <p><em>Proof.</em> Naj bo <span class="math inline">\(G =
+            (V,E)\)</span> graf. Po lemi o rokovanju je <span
+            class="math inline">\(\sum_{v \in V} d(v)\)</span> sodo
+            število. Naj bo <span class="math inline">\(V^0 = \{ v \in V
+            \mid \text{$d(v)$ je sodo} \}\)</span> in <span
+            class="math inline">\(V^1 = \{ v \in V \mid \text{$d(v)$ je
+            liho} \}\)</span>. Torej je <span
+            class="math display">\[\sum_{v \in V^0} d(v) + \sum_{v \in
+            V^1} d(v)\]</span> sodo število. Ker so v prvi vsoti vsi
+            členi <span class="math inline">\(d(v)\)</span> sodi, mora
+            biti druga vsota soda. Vsak člen v drugi vsoti pa je lih,
+            zato mora biti velikost množice <span
+            class="math inline">\(V^1\)</span> soda. S tem je dokaz
+            zaključen. ◻</p>
             </div>
             <section class="footnotes footnotes-end-of-document"
             role="doc-endnotes">
