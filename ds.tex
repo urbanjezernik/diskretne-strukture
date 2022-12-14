@@ -1900,4 +1900,59 @@ Delno urejena množica $A$ je {\definicija mreža}, če za vsaka dva elementa $a
 
 \chapter{Grafi}
 
+Diskretne strukture, ki smo jih obravnavali do sedaj (torej relacije), so izhajale iz našega študija izjavnega in predikatnega računa. Ogledali smo si že, kako lahko relacije predstavimo z  \emph{grafom relacije}. V tem zadnjem razdelku bomo ta abstrakten objekt, \emph{graf}, obravnavali neodvisno. Ta diskretna struktura se zelo pogosta v različnih področjih matematike, še posebej v njenih aplikacijah v resničnem svetu. Ogledali si bomo nekaj lastnosti te strukture in dokazali nekaj osnovnih izrekov o njej. 
+
+\section{Osnovne definicije}
+
+{\definicija Graf} $G$ je par množic $(V,E)$, kjer je $V$ neka končna\footnote{Mi se bomo omejili le na končne grafe, v matematiki pa sicer obravnavamo tudi neskončne grafe.} neprazna množica, $E$ pa je neka množica dvoelementnih podmnožic\footnote{Spomnimo se, da je relacija na množici $V$ podmnožica množice $V \times V$, torej sestoji iz \emph{urejenih} parov elementov iz $V$. Po drugi strani pa množica $E$ sestoji iz \emph{neurejenih parov} elementov iz $V$, se pravi iz podmnožic $V$ z dvema elementoma.} množice $V$. Množici $V$ pravimo {\definicija množica točk/vozlišč grafa}, množici $E$ pa pravimo {\definicija množica povezav grafa}.
+
+\begin{zgled}
+Naj bo $V = \{ 1, 2, 3, 4, 5 \}$ in naj bo
+\[
+    E = \{  
+        \{ 1, 2 \}, 
+        \{ 2, 3 \},
+        \{ 3, 4 \},
+        \{ 4, 1 \},
+        \{ 1, 3 \},
+        \{ 4, 5 \}
+         \}.
+\]
+
+Graf $G = (V,E)$ si lahko vizualiziramo tako, da vozlišča narišemo kot točke v ravnini, za tem pa vozlišči $u,v \in V$ povežemo, če in samo če je $\{ u, v \} \in E$.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\linewidth]{img/grafi-prvizgled.png}
+    \caption{Zgled vizualizacije grafa}
+\end{figure}
+
+\end{zgled}
+
+Kadar za vozlišči $u,v \in V$ velja $\{ u, v \} \in E$, potem rečemo, da sta vozlišči $u,v$ {\definicija sosednji} in pišemo $u \sim v$. Povezavo $\{ u, v \} \in E$ včasih pišemo krajše kot $uv$.
+
+Včasih definicijo grafa nekoliko omehčamo do te mere, da dopustimo obstoj {\definicija vzporednih povezav} (to pomeni, da med istim parom točk obstaja več povezav) in {\definicija zank} (to so povezave, ki imajo obe krajišči enaki). Takim splošnejšim strukturam rečemo {\definicija multigrafi}.
+
+\begin{zgled}
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.5\linewidth]{img/grafi-multigraf.png}
+        \caption{Zgled multigrafa}
+    \end{figure}
+\end{zgled}
+
+Naj bo $G = (V,E)$ graf in $u \in V$. {\definicija Stopnja točke} $u$ je število povezav v $E$, ki imajo $u$ za svoje krajišče. Stopnjo označimo kot $\deg_G(u)$ ali krajše kot $d(u)$. Točkam stopnje $0$ pravimo {\definicija izolirane točke}, točkam stopnje $1$ pa {\definicija listi}.
+
+\begin{zgled}
+Naj bo $G$ graf, predstavljen na naslednji sliki.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.75\linewidth]{img/grafi-std-izolirana.png}
+    \caption{Graf z listom in izolirano točko}
+\end{figure}
+
+Stopnje vozlišč so $d(a) = 2$, $d(b) = 2$, $d(c) = 3$, $d(d) = 1$, $d(e) = 0$. Vozlišče $d$ je list, vozlišče $e$ pa je izolirana točka.
+\end{zgled}
+
 \end{document}
