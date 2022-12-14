@@ -43,7 +43,7 @@
             <strong> Urban Jezernik <br>
               Univerza v Ljubljani, Fakulteta za matematiko in fiziko </strong> <br>
 
-            Zadnja posodobitev: 01. 12. 2022
+            Zadnja posodobitev: 14. 12. 2022
           </div>
 
           <div id="spinner" class="text-center">
@@ -114,6 +114,7 @@
               <li><a href="#posebni-elementi-v-delno-urejenih-množicah"
               id="toc-posebni-elementi-v-delno-urejenih-množicah">Posebni
               elementi v delno urejenih množicah</a></li>
+              <li><a href="#mreža" id="toc-mreža">Mreža</a></li>
               </ul></li>
               <li><a href="#grafi" id="toc-grafi">Grafi</a></li>
               </ul>
@@ -4014,12 +4015,12 @@
             <li><p>Element <span class="math inline">\(a \in A\)</span>
             je <span><strong><em>zgornja meja</em></strong></span> za
             <span class="math inline">\(B\)</span>, če <span
-            class="math inline">\(\forall x \in B \colon x \leq
+            class="math inline">\(\forall x \in B \colon \; x \leq
             a\)</span>.</p></li>
             <li><p>Element <span class="math inline">\(a \in A\)</span>
             je <span><strong><em>spodnja meja</em></strong></span> za
             <span class="math inline">\(B\)</span>, če <span
-            class="math inline">\(\forall x \in B \colon a \leq
+            class="math inline">\(\forall x \in B \colon \; a \leq
             x\)</span>.</p></li>
             </ul>
             <div class="zgled">
@@ -4053,6 +4054,123 @@
             class="math inline">\(B\)</span>.</p></li>
             </ul>
             </div>
+            <p>Med vsemimi zgornjimi oziroma spodnjimi mejami včasih
+            obstajajo najmanjše oziroma največje take meje. Za te
+            uvedemo posebno ime.</p>
+            <ul>
+            <li><p>Naj bo <span class="math inline">\(M\)</span> množica
+            vseh zgornjih mej za <span class="math inline">\(B\)</span>,
+            se pravi <span class="math display">\[M = \{ a \in A \mid
+            \forall x \in B \colon \; x \leq a \}.\]</span> Če ima <span
+            class="math inline">\(M\)</span> prvi element, ga imenujemo
+            <span><strong><em>supremum</em></strong></span> ali
+            <span><strong><em>najmanjša zgornja
+            meja</em></strong></span> množice <span
+            class="math inline">\(B\)</span> in označimo s <span
+            class="math inline">\(\sup B\)</span>.</p></li>
+            <li><p>Naj bo <span class="math inline">\(m\)</span> množica
+            vseh spodnjih mej za <span class="math inline">\(B\)</span>,
+            se pravi <span class="math display">\[m = \{ a \in A \mid
+            \forall x \in B \colon \; a \leq x \}.\]</span> Če ima <span
+            class="math inline">\(m\)</span> zadnji element, ga
+            imenujemo <span><strong><em>infimum</em></strong></span> ali
+            <span><strong><em>največja spodnja meja</em></strong></span>
+            množice <span class="math inline">\(B\)</span> in označimo s
+            <span class="math inline">\(\inf B\)</span>.</p></li>
+            </ul>
+            <div class="zgled">
+            <p><strong>Zgled 4.5</strong>. </p>
+            <ul>
+            <li><p>Naj bo <span class="math inline">\(A =
+            \mathbf{R}\)</span>, opremljena z običajno relacijo <span
+            class="math inline">\(\leq\)</span>. Naj bo <span
+            class="math inline">\(B = (0,1)\)</span>. Velja <span
+            class="math inline">\(\inf B = 0\)</span> in <span
+            class="math inline">\(\sup B = 1\)</span>.</p></li>
+            <li><p>Naj bo <span class="math inline">\(A =
+            \mathbf{N}\)</span>, opremljena z relacijo deljivosti <span
+            class="math inline">\(|\)</span>. Naj bo <span
+            class="math inline">\(B = \{ 12, 18, 24, 72 \}\)</span>.
+            Tedaj je infimum <span class="math inline">\(\inf B\)</span>
+            enak največjemu skupnemu delitelju <span
+            class="math inline">\(D(12, 18, 24, 72) = 6\)</span>,
+            supremum <span class="math inline">\(\sup B\)</span> pa je
+            enak najmanjšemu skupnemu večkratniku <span
+            class="math inline">\(v(12, 18, 24, 72) =
+            72\)</span>.</p></li>
+            <li><p>Infimum in supremum ne obstajata vedno. Na primer, če
+            vzamemo <span class="math inline">\(A = \mathbf{R}\)</span>
+            z relacijo <span class="math inline">\(\leq\)</span> in
+            <span class="math inline">\(B = \{ n \mid n \in
+            \mathbf{N}\}\)</span>, potem množica <span
+            class="math inline">\(B\)</span> nima zgornjih mej v množici
+            <span class="math inline">\(A\)</span>, torej je <span
+            class="math inline">\(M = \emptyset\)</span>. Prazna množica
+            seveda nima prvega elementa, torej množica <span
+            class="math inline">\(B\)</span> nima supremuma.</p></li>
+            </ul>
+            </div>
+            <p>Kadar ima množica <span class="math inline">\(B\)</span>
+            zadnji element, je ta seveda enak <span
+            class="math inline">\(\sup B\)</span>. Sorodno velja v
+            primeru, ko ima <span class="math inline">\(B\)</span> prvi
+            element, takrat je ta enak <span class="math inline">\(\inf
+            B\)</span>.</p>
+            <h2 id="mreža">Mreža</h2>
+            <p>Nazadnje si na hitro oglejmo še eno strukturo urejenosti,
+            ki leži vmes med delno urejenostjo in linearno
+            urejenostjo.</p>
+            <p>Delno urejena množica <span
+            class="math inline">\(A\)</span> je
+            <span><strong><em>mreža</em></strong></span>, če za vsaka
+            dva elementa <span class="math inline">\(a,b \in A\)</span>
+            obstajata <span class="math inline">\(\inf \{ a, b
+            \}\)</span> in <span class="math inline">\(\sup \{ a, b
+            \}\)</span>.</p>
+            <div class="zgled">
+            <p><strong>Zgled 4.6</strong>. </p>
+            <ul>
+            <li><p>Vsaka linearno urejena množica <span
+            class="math inline">\(A\)</span> je mreža. Res, za vsaka
+            <span class="math inline">\(a,b \in A\)</span> velja <span
+            class="math inline">\(\inf \{ a, b \} = \min \{ a,b
+            \}\)</span> in <span class="math inline">\(\sup \{ a, b \} =
+            \max \{ a, b \}\)</span> in tako minimum kot maksimum
+            obstajata, ker je <span class="math inline">\(A\)</span>
+            linearno urejena in zato v posebnem sovisna.</p></li>
+            <li><p>Naj bo <span class="math inline">\(A =
+            \mathbf{N}\)</span>, opremljena z relacijo deljivosti <span
+            class="math inline">\(|\)</span>. Ta delno urejena množica
+            je mreža, saj za vsaka <span class="math inline">\(a, b \in
+            \mathbf{N}\)</span> velja <span class="math inline">\(\inf
+            \{ a,b \} = D(a,b)\)</span> in <span
+            class="math inline">\(\sup \{ a, b \} =
+            v(a,b)\)</span>.</p></li>
+            <li><p>Naj bo <span class="math inline">\(S\)</span>
+            poljubna neprazna množica in naj bo <span
+            class="math inline">\(A\)</span> množica podmnožic <span
+            class="math inline">\(S\)</span>, se pravi <span
+            class="math inline">\(A = \{ B \mid B \subseteq S
+            \}\)</span>, opremljena z relacijo vsebovanosti množic <span
+            class="math inline">\(\subseteq\)</span>. Ta delno urejena
+            množica je mreža, saj za vsaki množici <span
+            class="math inline">\(B, C \in A\)</span> velja <span
+            class="math inline">\(\inf \{ B, C \} = B \cap C\)</span> in
+            <span class="math inline">\(\sup \{ B, C \} = B \cup
+            C\)</span>.</p></li>
+            <li><p>Zadnji zgled modificirajmo tako, da za množico <span
+            class="math inline">\(A\)</span> vzamemo le
+            <em>neprazne</em> podmnožice množice <span
+            class="math inline">\(S\)</span>. To je še vedno delno
+            urejena množica. Za različna elementa <span
+            class="math inline">\(x,y \in S\)</span> infimum <span
+            class="math inline">\(\inf \{ \{ x \}, \{ y \} \}\)</span>
+            <em>ne</em> obstaja. To torej ni mreža.</p></li>
+            </ul>
+            </div>
+            <p><em>Linearna urejenost</em> je torej poseben primer
+            <em>mreže</em>, ta pa je poseben primer <em>delne
+            urejenosti</em>.</p>
             <h1 id="grafi">Grafi</h1>
             <section class="footnotes footnotes-end-of-document"
             role="doc-endnotes">

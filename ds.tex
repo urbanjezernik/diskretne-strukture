@@ -1844,8 +1844,8 @@ v množici $B$. Na ta način lahko govorimo o minimalnih, maksimalnih, prvih in 
 \begin{itemize}
     \item Če ima $B$ prvi element, ga imenujemo {\definicija minimum} množice $B$ in označimo z $\min B$.
     \item Če ima $B$ zadnji element, ga imenujemo {\definicija maksimum} množice $B$ in označimo z $\max B$.
-    \item Element $a \in A$ je {\definicija zgornja meja} za $B$, če $\forall x \in B \colon x \leq a$.
-    \item Element $a \in A$ je {\definicija spodnja meja} za $B$, če $\forall x \in B \colon a \leq x$.
+    \item Element $a \in A$ je {\definicija zgornja meja} za $B$, če $\forall x \in B \colon \; x \leq a$.
+    \item Element $a \in A$ je {\definicija spodnja meja} za $B$, če $\forall x \in B \colon \; a \leq x$.
 \end{itemize}
 
 \begin{zgled} \leavevmode
@@ -1854,6 +1854,49 @@ v množici $B$. Na ta način lahko govorimo o minimalnih, maksimalnih, prvih in 
     \item Naj bo $A = \NN$, opremljena z relacijo deljivosti $|$. Naj bo $B = \{ 12, 18, 24, 72 \}$. Tedaj $\min B$ ne obstaja, $\max B$ pa je enak $72$. Vsako število oblike $72k$ za $k \in \NN$ je zgornja meja za $B$. Števila $1$,$2$,$3$,$6$ so spodnje meje za $B$.
 \end{itemize}
 \end{zgled}
+
+Med vsemimi zgornjimi oziroma spodnjimi mejami včasih obstajajo najmanjše oziroma največje take meje. Za te uvedemo posebno ime.
+\begin{itemize}
+    \item Naj bo $M$ množica vseh zgornjih mej za $B$, se pravi
+    \[
+        M = \{ a \in A \mid \forall x \in B \colon \; x \leq a \}.
+    \]
+    Če ima $M$ prvi element, ga imenujemo {\definicija supremum} ali {\definicija najmanjša zgornja meja} množice $B$ in označimo s $\sup B$.
+    
+    \item Naj bo $m$ množica vseh spodnjih mej za $B$, se pravi
+    \[
+        m = \{ a \in A \mid \forall x \in B \colon \; a \leq x \}.
+    \]
+    Če ima $m$ zadnji element, ga imenujemo {\definicija infimum} ali {\definicija največja spodnja meja} množice $B$ in označimo s $\inf B$.
+\end{itemize}
+
+\begin{zgled} \leavevmode
+    \begin{itemize}
+        \item Naj bo $A = \RR$, opremljena z običajno relacijo $\leq$. Naj bo $B = (0,1)$. Velja
+        $\inf B = 0$ in $\sup B = 1$.
+        \item Naj bo $A = \NN$, opremljena z relacijo deljivosti $|$. Naj bo $B = \{ 12, 18, 24, 72 \}$. Tedaj je infimum $\inf B$ enak največjemu skupnemu delitelju $D(12, 18, 24, 72) = 6$, supremum $\sup B$ pa je enak najmanjšemu skupnemu večkratniku $v(12, 18, 24, 72) = 72$.
+        \item Infimum in supremum ne obstajata vedno. Na primer, če vzamemo $A = \RR$ z relacijo $\leq$ in $B = \{ n \mid n \in \NN \}$, potem množica $B$ nima zgornjih mej v množici $A$, torej je $M = \emptyset$. Prazna množica seveda nima prvega elementa, torej množica $B$ nima supremuma.
+    \end{itemize}
+\end{zgled}
+
+Kadar ima množica $B$ zadnji element, je ta seveda enak $\sup B$. Sorodno velja v primeru, ko ima $B$ prvi element, takrat je ta enak $\inf B$.
+
+\section{Mreža}
+
+Nazadnje si na hitro oglejmo še eno strukturo urejenosti, ki leži vmes med delno urejenostjo in linearno urejenostjo.
+
+Delno urejena množica $A$ je {\definicija mreža}, če za vsaka dva elementa $a,b \in A$ obstajata $\inf \{ a, b \}$ in $\sup \{ a, b \}$.
+
+\begin{zgled} \leavevmode
+    \begin{itemize}
+        \item Vsaka linearno urejena množica $A$ je mreža. Res, za vsaka $a,b \in A$ velja $\inf \{ a, b \} = \min \{ a,b \}$ in $\sup \{ a, b \} = \max \{ a, b \}$ in tako minimum kot maksimum obstajata, ker je $A$ linearno urejena in zato v posebnem sovisna.
+        \item Naj bo $A = \NN$, opremljena z relacijo deljivosti $|$. Ta delno urejena množica je mreža, saj za vsaka $a, b \in \NN$ velja $\inf \{ a,b \} = D(a,b)$ in $\sup \{ a, b \} = v(a,b)$.
+        \item Naj bo $S$ poljubna neprazna množica in naj bo $A$ množica podmnožic $S$, se pravi $A = \{ B \mid B \subseteq S \}$, opremljena z relacijo vsebovanosti množic $\subseteq$. Ta delno urejena množica je mreža, saj za vsaki množici $B, C \in A$ velja $\inf \{ B, C \} = B \cap C$ in $\sup \{ B, C \} = B \cup C$.
+        \item Zadnji zgled modificirajmo tako, da za množico $A$ vzamemo le \emph{neprazne} podmnožice množice $S$. To je še vedno delno urejena množica. Za različna elementa $x,y \in S$ infimum $\inf \{ \{ x \}, \{ y \} \}$ \emph{ne} obstaja. To torej ni mreža.
+    \end{itemize}
+\end{zgled}
+
+\emph{Linearna urejenost} je torej poseben primer \emph{mreže}, ta pa je poseben primer \emph{delne urejenosti}.
 
 \chapter{Grafi}
 
