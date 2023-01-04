@@ -126,6 +126,8 @@
               <li><a href="#invariante-grafov"
               id="toc-invariante-grafov">Invariante grafov</a></li>
               <li><a href="#drevesa" id="toc-drevesa">Drevesa</a></li>
+              <li><a href="#eulerjevi-grafi"
+              id="toc-eulerjevi-grafi">Eulerjevi grafi</a></li>
               </ul></li>
               </ul>
             </div>
@@ -5013,7 +5015,7 @@
             <figcaption aria-hidden="true">Drevo</figcaption>
             </figure>
             </div>
-            <p>Ker dreves nimajo ciklov, so dvodelna. Imajo pa drevesa
+            <p>Ker drevesa nimajo ciklov, so dvodelna. Imajo pa drevesa
             še veliko drugih čudovitih lastnosti.</p>
             <div class="trditev">
             <p><strong>Trditev 5.3</strong>. Naj bo <span
@@ -5221,6 +5223,36 @@
             class="math inline">\(G\)</span> je res drevo. <span
             class="math inline">\(\checkmark\)</span> ◻</p>
             </div>
+            <h2 id="eulerjevi-grafi">Eulerjevi grafi</h2>
+            <p>Sprehod v grafu je <span><strong><em>Eulerjev
+            sprehod</em></strong></span>, če vsebuje <em>vsako
+            povezavo</em> grafa natanko enkrat.
+            <span><strong><em>Eulerjev obhod</em></strong></span> je
+            obhod, ki je Eulerjev sprehod.</p>
+            <div class="zgled">
+            <p><strong>Zgled 5.17</strong>. Lizika vsebuje Eulerjev
+            sprehod, cikel <span class="math inline">\(C_5\)</span>
+            vsebuje Eulerjev obhod, poln graf <span
+            class="math inline">\(K_5\)</span> vsebuje Eulerjev
+            obhod.</p>
+            </div>
+            <p>Graf je <span><strong><em>Eulerjev</em></strong></span>,
+            če vsebuje Eulerjev obhod. Za to, da je graf Eulerjev,
+            morata biti izpolnjena naslednja dva pogoja:</p>
+            <ul>
+            <li><p>graf je povezan,</p></li>
+            <li><p>vsa vozlišča so sode stopnje.<a href="#fn19"
+            class="footnote-ref" id="fnref19"
+            role="doc-noteref"><sup>19</sup></a></p></li>
+            </ul>
+            <p>Presenetljivo pa sta ta dva očitna potrebna pogoja tudi
+            zadostna.</p>
+            <div class="izrek">
+            <p><strong>Izrek 5.1</strong>. Naj bo <span
+            class="math inline">\(G\)</span> povezan graf. Potem je
+            <span class="math inline">\(G\)</span> Eulerjev natanko
+            tedaj, ko so vsa vozlišča sode stopnje.</p>
+            </div>
             <section class="footnotes footnotes-end-of-document"
             role="doc-endnotes">
             <hr />
@@ -5340,6 +5372,11 @@
             <li id="fn18" role="doc-endnote"><p>V dokazu trditve smo
             namreč uporabili le lastnost 2. drevesa.<a href="#fnref18"
             class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn19" role="doc-endnote"><p>Če namreč med Eulerjevim
+            obhodom pridemo v neko vozlišče, moramo iz njega tudi oditi.
+            Enako velja za začetno vozlišče obhoda, ki je enako
+            končnemu.<a href="#fnref19" class="footnote-back"
+            role="doc-backlink">↩︎</a></p></li>
             </ol>
             </section>
 

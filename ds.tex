@@ -2344,7 +2344,7 @@ Drevo je povezan graf brez ciklov. Njegova vozlišča stopnje $1$ so listi.
 \end{figure}    
 \end{zgled}
 
-Ker dreves nimajo ciklov, so dvodelna. Imajo pa drevesa še veliko drugih čudovitih lastnosti.
+Ker drevesa nimajo ciklov, so dvodelna. Imajo pa drevesa še veliko drugih čudovitih lastnosti.
 
 \begin{trditev}
     Naj bo $T$ drevo.
@@ -2395,5 +2395,26 @@ Po predzadnji trditvi vemo, da 1. $\Rightarrow$ 2. in 1. $\Rightarrow$ 3. Po zad
 \]
 Dobljeno je sprto s predpostavko $|E(G)| = |V(G)| - 1$. Cikel $C$ v $G$ torej ne obstaja in $G$ je res drevo. \kljuka
 \end{dokaz}
+
+
+\section{Eulerjevi grafi}
+
+Sprehod v grafu je {\definicija Eulerjev sprehod}, če vsebuje \emph{vsako povezavo} grafa natanko enkrat. {\definicija Eulerjev obhod} je obhod, ki je Eulerjev sprehod.
+
+\begin{zgled}
+Lizika vsebuje Eulerjev sprehod, cikel $C_5$ vsebuje Eulerjev obhod, poln graf $K_5$ vsebuje Eulerjev obhod.
+\end{zgled}
+
+Graf je {\definicija Eulerjev}, če vsebuje Eulerjev obhod. Za to, da je graf Eulerjev, morata biti izpolnjena naslednja dva pogoja:
+\begin{itemize}
+    \item graf je povezan,
+    \item vsa vozlišča so sode stopnje.\footnote{Če namreč med Eulerjevim obhodom pridemo v neko vozlišče, moramo iz njega tudi oditi. Enako velja za začetno vozlišče obhoda, ki je enako končnemu.}
+\end{itemize}
+
+Presenetljivo pa sta ta dva očitna potrebna pogoja tudi zadostna.
+
+\begin{izrek}
+    Naj bo $G$ povezan graf. Potem je $G$ Eulerjev natanko tedaj, ko so vsa vozlišča sode stopnje.
+\end{izrek}
 
 \end{document}
