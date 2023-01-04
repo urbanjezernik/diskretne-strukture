@@ -2180,4 +2180,154 @@ Oglejmo si zdaj še nekaj osnovnih operacij, ki jih lahko izvedemo na danem graf
     \]
 \end{itemize}
 
+\section{Invariante grafov}
+
+Dana sta grafa $G_1, G_2$, ki sicer na prvi pogled izgledata drugače, a če ustrezno oštevilčimo vozlišča obeh grafov, potem vidimo, da povezave v obeh grafih potekajo med natanko istimi pari vozlišč. V tem primeru lahko \emph{identificiramo} ta dva grafa. Natančneje, preslikava $h \colon V(G_1) \to V(G_2)$ je {\definicija izomorfizem grafov}, če je $h$ bijekcija in velja
+\[
+    \forall u,v \in V(G_1) \colon 
+    \left( \{ u,v \} \in E(G_1) \Leftrightarrow \{ h(u), h(v) \} \in E(G_2) \right).
+\]
+V tem primeru rečemo, da sta grafa $G_1$ in $G_2$ {\definicija izomorfna} in pišemo $G_1 \cong G_2$. V posebnem primeru, ko je $G_1 = G_2$, izomorfizmu grafov $h$ pravimo {\definicija avtomorfizem grafa} $G_1$.
+
+\begin{zgled} \leavevmode
+    \begin{itemize}
+        \item Za vsak graf $G$ je preslikava
+        \[
+            h \colon V(G) \to V(G), \quad 
+            u \mapsto u  
+        \]
+        avtomorfizem grafa $G$. Pravimo mu {\definicija trivialni avtomorfizem}.
+
+        \item Naj bo $G = C_n$ cikel dolžine $n$. Ta cikel lahko \emph{zavrtimo} za $1$ v smeri urinega kazalca. Natančneje, definirajmo preslikavo
+        \[
+            h \colon \ZZ/n\ZZ \to \ZZ/n\ZZ, \quad
+            u \mapsto u + 1.
+        \]
+        Za vsaki vozlišči $u,v \in \ZZ/n\ZZ$ velja
+        \[
+            \{ u,v \} \in E(C_n) \Leftrightarrow v = u \pm 1 \pmod{n}
+        \]
+        in
+        \[
+            \{ h(u), h(v) \} \in E(C_n) \Leftrightarrow h(v) = h(u) \pm 1 \pmod{n}
+            \Leftrightarrow v = u \pm 1 \pmod{n}.
+        \]
+        Preslikava $h$ je torej avtomorfizem grafa $C_n$.
+
+        \item Naj bo $G_1 = C_6$ cikel dolžine $6$ in $G_2$ graf z vozlišči in povezavami
+        \[
+            V(G_2) = \{ a,b,c,d,e,f \}, \quad
+            E(G_2) = \{ ad, ae, bd, bf, ce, cf \}.
+        \]
+        Prepričajmo se, da sta grafa $G_1$ in $G_2$ izomorfna. Definirajmo preslikavo
+        \[
+            h \colon V(G_1) \to V(G_2), \quad
+            0 \mapsto d, 1 \mapsto a, 2 \mapsto e, 3 \mapsto c, 4 \mapsto f, 5 \mapsto b.
+        \]
+        Za vsaka $i,j \in V(G_1)$ velja $i \sim j$, če in samo če $h(i) \sim h(j)$. Preslikava $h$ je torej izomorfizem grafov.
+    \end{itemize}
+\end{zgled}
+
+Kako bi dokazali, da dana grafa \emph{nista} izomorfna? V tem primeru ponavadi uporabimo kakšno lastnost grafov (na primer število povezav, dvodelnost), ki se pri izomorfizmu ohranja. Natančneje, naj bo $\mathcal{L}$ neka lastnost grafov. Rečemo, da je $\mathcal{L}$ {\definicija invarianta grafa}, če za vsaka dva izomorfna grafa $G_1, G_2$ velja, da ima $G_1$ lastnost $\mathcal{L}$ natanko tedaj, ko ima $G_2$ lastnost $\mathcal{L}$.
+
+\begin{zgled}
+    Invariante grafov so število točk, število povezav, dvodelnost, število točk stopnje $3$, število trikotnikov, \dots
+\end{zgled}
+
+Če želimo dokazati, da dana grafa nista izomorfna, lahko torej poiščemo kakšno invarianto, v kateri se obravnavana grafa razlikujeta.
+
+\begin{zgled} \leavevmode
+    \begin{itemize}
+        \item Naj bo $L$ lizika in $C_4$ cikel. Lizika ima vozlišče stopnnje $3$, cikel pa je $2$-regularen. Ta dva grafa torej nista izomorfna.
+        
+        \item Dana sta naslednja grafa $G_1$ in $G_2$.
+        
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=0.5\linewidth]{img/grafi-zanimiv-zgled.png}
+            \caption{Graf $G_1$}
+        \end{figure}
+
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=0.5\linewidth]{img/grafi-primerjava.png}
+            \caption{Graf $G_2$}
+        \end{figure}
+
+        Ali sta $G_1$ in $G_2$ izomorfna? Ujemata se v številu vozlišč in številu povezav. Oba vsebujeta $5$-cikel, zato nista dvodelna. Oba sta kubična grafa. Noben od grafov ne vsebuje trikotnika. Ta dva grafa pa se razlikujeta v dolžini najkrajšnega cikla v grafu, ki ji pravimo {\definicija ožina grafa}. Ožina je seveda invarianta grafov. Ožina grafa $G_1$ je $5$, ožina grafa $G_2$ pa je $4$. Ta dva grafa torej nista izomorfna.
+    \end{itemize}
+\end{zgled}
+
+Poglejmo si še nekaj invariant grafov, ki temeljijo na opazovanju \emph{poti}. Naj bo $G = (V,E)$ graf. 
+
+\begin{itemize}
+    \item {\definicija Sprehod} v $G$ je zaporedje
+    \[
+        v_0 e_1 v_1 e_2 v_2 \cdots v_{k-1} e_k v_k,
+    \]
+    kjer je $v_i \in V$, $e_i = \{ v_{i-1}, v_i \} \in E$. Pri tem številu $k$ pravimo {\definicija dolžina sprehoda}. Pogosto izpustimo podatke o povezavah in zapišemo le zaporedje vozlišč $v_0 v_1 v_2 \dots v_k$.
+
+    \item {\definicija Obhod} je sklenjen sprehod, se pravi $v_0 = v_k$.
+    \item {\definicija Enostaven sprehod} je sprehod, v katerem so vse \emph{povezave} različne med sabo.
+    \item {\definicija Pot} je enostaven sprehod, v katerem so vsa \emph{vozlišča} različna med sabo.
+    \item {\definicija Cikel} je enostaven obhod, v katerem so vozlišča $v_0, v_1, \dots, v_{k-1}$ različna med sabo.
+\end{itemize}
+
+\begin{zgled}
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.5\linewidth]{img/grafi-pot-cikel.png}
+        \caption{Graf z rdečo potjo in zelenim ciklom}
+    \end{figure}
+\end{zgled}
+
+Ni vsak sprehod pot. Je pa povsod, kjer je sprehod, tudi pot.
+
+\begin{trditev}
+Če v grafu obstaja sprehod od $u$ do $v$, potem obstaja tudi pot od $u$ do $v$.
+\end{trditev}
+\begin{dokaz}
+Dokazujemo z indukcijo na dolžino sprehoda $k$.
+
+Baza indukcije je $k = 1$. V tem primeru je sprehod kar enak $P_2$, kar je pot. \kljuka
+
+Predpostavimo zdaj, da trditev že velja za vse sprehodi dolžine kvečjemu $k$. Naj bo $v_1 v_1 \dots v_{k+1}$ sprehod dolžine $k+1$. Po indukcijski predpostavki obstaja pot od $v_0$ do $v_k$, označimo jo z $v_0 u_1 u_2 \dots u_{k-1} v_k$. 
+
+\begin{itemize}
+    \item Če se $v_{k+1}$ ne pojavi na tej poti, potem je $v_0 u_1 u_2 \dots u_{k-1} v_k v_{k+1}$ pot od $v_0$ do $v_{k+1}$. \kljuka
+    \item Predpostavimo zdaj, da se $v_{k+1}$ pojavi na tej poti, se pravi $v_{k+1} = u_j$ za nek $1 \leq j \leq k-1$. Tedaj je $v_0 u_1 u_2 \dots u_j$ pot od $v_0$ do $v_{k+1}$. \kljuka
+\end{itemize}
+\end{dokaz}
+
+\begin{domacanaloga}
+Dokaži, da v vsakem grafu, v katerem obstaja sklenjen sprehod lihe dolžine, obstaja tudi cikel lihe dolžine. S tem v dokaz kriterija dvodelnosti grafov vstaviš še zadnji kos sestavljanke.
+\end{domacanaloga}
+
+S pomočjo koncepta poti na množico vozlišč grafa vpeljemo naslednjo relacijo $R$. Za vozlišči $u,v$ grafa velja $u R v$, če in samo če v grafu obstaja pot od $u$ do $v$. Lahko je preveriti, da je $R$ ekvivalenčna relacija.\footnote{Tranzitivnost relacije $R$ sledi iz zadnje trditve: če v grafu obstaja pot od $u$ do $v$ in pot od $v$ do $w$, potem v grafu obstaja \emph{sprehod} od $u$ do $w$, zato po trditvi obstaja tudi \emph{pot} od $u$ do $w$.} Ekvivalenčne razrede $V/R$ imenujemo {\definicija povezane komponente} grafa. Število povezanih komponent označimo z $\Omega(G)$. Če je $\Omega(G) = 1$, potem rečemo, da je graf {\definicija povezan}.
+
+\begin{zgled}
+Lizika je povezan graf. Če liziki odstranimo vozlišče stopnje $3$, dobimo graf, ki je disjunktna unija grafov $P_2$ in izolirane točke. Ta graf ni povezan, ima dve povezani komponenti.
+\end{zgled}
+
+{\definicija Razdalja} med vozliščema $u,v$, ki jo označimo kot $d(u,v)$, je dolžina najkrajše poti med vozliščema $u$ in $v$, če je le $u R v$. V primeru, ko $u$ in $v$ nista v relaciji $R$, definiramo $d(u,v) = \infty$.
+
+\begin{zgled}
+    V naslednjem grafu za vozlišči $u,v$ na zunanjem ciklu velja $d(u,v)=2$.
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.5\linewidth]{img/grafi-razdalja.png}
+        \caption{Razdalja med vozliščema}
+    \end{figure}
+\end{zgled}
+
+{\definicija Premer} grafa je
+\[
+    \mathrm{diam}(G) = \max_{u,v \in G} d(u,v),
+\]
+se pravi največja možna razdalja med vsakim parom vozlišč.
+
+\begin{domacanaloga}
+    Prepričaj se, da je premer grafa iz zadnjega zgleda enak $2$. Določi še premer Petersenovega grafa.
+\end{domacanaloga}
+
 \end{document}

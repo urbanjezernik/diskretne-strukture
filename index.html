@@ -123,6 +123,8 @@
               <li><a href="#standardni-primeri-in-operacije"
               id="toc-standardni-primeri-in-operacije">Standardni
               primeri in operacije</a></li>
+              <li><a href="#invariante-grafov"
+              id="toc-invariante-grafov">Invariante grafov</a></li>
               </ul></li>
               </ul>
             </div>
@@ -4716,6 +4718,281 @@
                     E(G_1 \cup G_2) = E(G_1) \cup
             E(G_2).\]</span></p></li>
             </ul>
+            <h2 id="invariante-grafov">Invariante grafov</h2>
+            <p>Dana sta grafa <span class="math inline">\(G_1,
+            G_2\)</span>, ki sicer na prvi pogled izgledata drugače, a
+            če ustrezno oštevilčimo vozlišča obeh grafov, potem vidimo,
+            da povezave v obeh grafih potekajo med natanko istimi pari
+            vozlišč. V tem primeru lahko <em>identificiramo</em> ta dva
+            grafa. Natančneje, preslikava <span class="math inline">\(h
+            \colon V(G_1) \to V(G_2)\)</span> je
+            <span><strong><em>izomorfizem grafov</em></strong></span>,
+            če je <span class="math inline">\(h\)</span> bijekcija in
+            velja <span class="math display">\[\forall u,v \in V(G_1)
+            \colon
+                \left( \{ u,v \} \in E(G_1) \Leftrightarrow \{ h(u),
+            h(v) \} \in E(G_2) \right).\]</span> V tem primeru rečemo,
+            da sta grafa <span class="math inline">\(G_1\)</span> in
+            <span class="math inline">\(G_2\)</span>
+            <span><strong><em>izomorfna</em></strong></span> in pišemo
+            <span class="math inline">\(G_1 \cong G_2\)</span>. V
+            posebnem primeru, ko je <span class="math inline">\(G_1 =
+            G_2\)</span>, izomorfizmu grafov <span
+            class="math inline">\(h\)</span> pravimo
+            <span><strong><em>avtomorfizem grafa</em></strong></span>
+            <span class="math inline">\(G_1\)</span>.</p>
+            <div class="zgled">
+            <p><strong>Zgled 5.10</strong>. </p>
+            <ul>
+            <li><p>Za vsak graf <span class="math inline">\(G\)</span>
+            je preslikava <span class="math display">\[h \colon V(G) \to
+            V(G), \quad
+                        u \mapsto u\]</span> avtomorfizem grafa <span
+            class="math inline">\(G\)</span>. Pravimo mu
+            <span><strong><em>trivialni
+            avtomorfizem</em></strong></span>.</p></li>
+            <li><p>Naj bo <span class="math inline">\(G = C_n\)</span>
+            cikel dolžine <span class="math inline">\(n\)</span>. Ta
+            cikel lahko <em>zavrtimo</em> za <span
+            class="math inline">\(1\)</span> v smeri urinega kazalca.
+            Natančneje, definirajmo preslikavo <span
+            class="math display">\[h \colon \mathbf{Z}/n\mathbf{Z}\to
+            \mathbf{Z}/n\mathbf{Z}, \quad
+                        u \mapsto u + 1.\]</span> Za vsaki vozlišči
+            <span class="math inline">\(u,v \in
+            \mathbf{Z}/n\mathbf{Z}\)</span> velja <span
+            class="math display">\[\{ u,v \} \in E(C_n) \Leftrightarrow
+            v = u \pm 1 \pmod{n}\]</span> in <span
+            class="math display">\[\{ h(u), h(v) \} \in E(C_n)
+            \Leftrightarrow h(v) = h(u) \pm 1 \pmod{n}
+                        \Leftrightarrow v = u \pm 1 \pmod{n}.\]</span>
+            Preslikava <span class="math inline">\(h\)</span> je torej
+            avtomorfizem grafa <span
+            class="math inline">\(C_n\)</span>.</p></li>
+            <li><p>Naj bo <span class="math inline">\(G_1 = C_6\)</span>
+            cikel dolžine <span class="math inline">\(6\)</span> in
+            <span class="math inline">\(G_2\)</span> graf z vozlišči in
+            povezavami <span class="math display">\[V(G_2) = \{
+            a,b,c,d,e,f \}, \quad
+                        E(G_2) = \{ ad, ae, bd, bf, ce, cf \}.\]</span>
+            Prepričajmo se, da sta grafa <span
+            class="math inline">\(G_1\)</span> in <span
+            class="math inline">\(G_2\)</span> izomorfna. Definirajmo
+            preslikavo <span class="math display">\[h \colon V(G_1) \to
+            V(G_2), \quad
+                        0 \mapsto d, 1 \mapsto a, 2 \mapsto e, 3 \mapsto
+            c, 4 \mapsto f, 5 \mapsto b.\]</span> Za vsaka <span
+            class="math inline">\(i,j \in V(G_1)\)</span> velja <span
+            class="math inline">\(i \sim j\)</span>, če in samo če <span
+            class="math inline">\(h(i) \sim h(j)\)</span>. Preslikava
+            <span class="math inline">\(h\)</span> je torej izomorfizem
+            grafov.</p></li>
+            </ul>
+            </div>
+            <p>Kako bi dokazali, da dana grafa <em>nista</em> izomorfna?
+            V tem primeru ponavadi uporabimo kakšno lastnost grafov (na
+            primer število povezav, dvodelnost), ki se pri izomorfizmu
+            ohranja. Natančneje, naj bo <span
+            class="math inline">\(\mathcal{L}\)</span> neka lastnost
+            grafov. Rečemo, da je <span
+            class="math inline">\(\mathcal{L}\)</span>
+            <span><strong><em>invarianta grafa</em></strong></span>, če
+            za vsaka dva izomorfna grafa <span
+            class="math inline">\(G_1, G_2\)</span> velja, da ima <span
+            class="math inline">\(G_1\)</span> lastnost <span
+            class="math inline">\(\mathcal{L}\)</span> natanko tedaj, ko
+            ima <span class="math inline">\(G_2\)</span> lastnost <span
+            class="math inline">\(\mathcal{L}\)</span>.</p>
+            <div class="zgled">
+            <p><strong>Zgled 5.11</strong>. Invariante grafov so število
+            točk, število povezav, dvodelnost, število točk stopnje
+            <span class="math inline">\(3\)</span>, število trikotnikov,
+            …</p>
+            </div>
+            <p>Če želimo dokazati, da dana grafa nista izomorfna, lahko
+            torej poiščemo kakšno invarianto, v kateri se obravnavana
+            grafa razlikujeta.</p>
+            <div class="zgled">
+            <p><strong>Zgled 5.12</strong>. </p>
+            <ul>
+            <li><p>Naj bo <span class="math inline">\(L\)</span> lizika
+            in <span class="math inline">\(C_4\)</span> cikel. Lizika
+            ima vozlišče stopnnje <span
+            class="math inline">\(3\)</span>, cikel pa je <span
+            class="math inline">\(2\)</span>-regularen. Ta dva grafa
+            torej nista izomorfna.</p></li>
+            <li><p>Dana sta naslednja grafa <span
+            class="math inline">\(G_1\)</span> in <span
+            class="math inline">\(G_2\)</span>.</p>
+            <figure>
+            <img src="img/grafi-zanimiv-zgled.png" alt="Graf G_1" />
+            <figcaption aria-hidden="true">Graf <span
+            class="math inline">\(G_1\)</span></figcaption>
+            </figure>
+            <figure>
+            <img src="img/grafi-primerjava.png" alt="Graf G_2" />
+            <figcaption aria-hidden="true">Graf <span
+            class="math inline">\(G_2\)</span></figcaption>
+            </figure>
+            <p>Ali sta <span class="math inline">\(G_1\)</span> in <span
+            class="math inline">\(G_2\)</span> izomorfna? Ujemata se v
+            številu vozlišč in številu povezav. Oba vsebujeta <span
+            class="math inline">\(5\)</span>-cikel, zato nista dvodelna.
+            Oba sta kubična grafa. Noben od grafov ne vsebuje
+            trikotnika. Ta dva grafa pa se razlikujeta v dolžini
+            najkrajšnega cikla v grafu, ki ji pravimo
+            <span><strong><em>ožina grafa</em></strong></span>. Ožina je
+            seveda invarianta grafov. Ožina grafa <span
+            class="math inline">\(G_1\)</span> je <span
+            class="math inline">\(5\)</span>, ožina grafa <span
+            class="math inline">\(G_2\)</span> pa je <span
+            class="math inline">\(4\)</span>. Ta dva grafa torej nista
+            izomorfna.</p></li>
+            </ul>
+            </div>
+            <p>Poglejmo si še nekaj invariant grafov, ki temeljijo na
+            opazovanju <em>poti</em>. Naj bo <span
+            class="math inline">\(G = (V,E)\)</span> graf.</p>
+            <ul>
+            <li><p><span><strong><em>Sprehod</em></strong></span> v
+            <span class="math inline">\(G\)</span> je zaporedje <span
+            class="math display">\[v_0 e_1 v_1 e_2 v_2 \cdots v_{k-1}
+            e_k v_k,\]</span> kjer je <span class="math inline">\(v_i
+            \in V\)</span>, <span class="math inline">\(e_i = \{
+            v_{i-1}, v_i \} \in E\)</span>. Pri tem številu <span
+            class="math inline">\(k\)</span> pravimo
+            <span><strong><em>dolžina sprehoda</em></strong></span>.
+            Pogosto izpustimo podatke o povezavah in zapišemo le
+            zaporedje vozlišč <span class="math inline">\(v_0 v_1 v_2
+            \dots v_k\)</span>.</p></li>
+            <li><p><span><strong><em>Obhod</em></strong></span> je
+            sklenjen sprehod, se pravi <span class="math inline">\(v_0 =
+            v_k\)</span>.</p></li>
+            <li><p><span><strong><em>Enostaven
+            sprehod</em></strong></span> je sprehod, v katerem so vse
+            <em>povezave</em> različne med sabo.</p></li>
+            <li><p><span><strong><em>Pot</em></strong></span> je
+            enostaven sprehod, v katerem so vsa <em>vozlišča</em>
+            različna med sabo.</p></li>
+            <li><p><span><strong><em>Cikel</em></strong></span> je
+            enostaven obhod, v katerem so vozlišča <span
+            class="math inline">\(v_0, v_1, \dots, v_{k-1}\)</span>
+            različna med sabo.</p></li>
+            </ul>
+            <div class="zgled">
+            <p><strong>Zgled 5.13</strong>. <img
+            src="img/grafi-pot-cikel.png" title="fig:"
+            alt="Graf z rdečo potjo in zelenim ciklom" /></p>
+            </div>
+            <p>Ni vsak sprehod pot. Je pa povsod, kjer je sprehod, tudi
+            pot.</p>
+            <div class="trditev">
+            <p><strong>Trditev 5.2</strong>. Če v grafu obstaja sprehod
+            od <span class="math inline">\(u\)</span> do <span
+            class="math inline">\(v\)</span>, potem obstaja tudi pot od
+            <span class="math inline">\(u\)</span> do <span
+            class="math inline">\(v\)</span>.</p>
+            </div>
+            <div class="proof">
+            <p><em>Proof.</em> Dokazujemo z indukcijo na dolžino
+            sprehoda <span class="math inline">\(k\)</span>.</p>
+            <p>Baza indukcije je <span class="math inline">\(k =
+            1\)</span>. V tem primeru je sprehod kar enak <span
+            class="math inline">\(P_2\)</span>, kar je pot. <span
+            class="math inline">\(\checkmark\)</span></p>
+            <p>Predpostavimo zdaj, da trditev že velja za vse sprehodi
+            dolžine kvečjemu <span class="math inline">\(k\)</span>. Naj
+            bo <span class="math inline">\(v_1 v_1 \dots
+            v_{k+1}\)</span> sprehod dolžine <span
+            class="math inline">\(k+1\)</span>. Po indukcijski
+            predpostavki obstaja pot od <span
+            class="math inline">\(v_0\)</span> do <span
+            class="math inline">\(v_k\)</span>, označimo jo z <span
+            class="math inline">\(v_0 u_1 u_2 \dots u_{k-1}
+            v_k\)</span>.</p>
+            <ul>
+            <li><p>Če se <span class="math inline">\(v_{k+1}\)</span> ne
+            pojavi na tej poti, potem je <span class="math inline">\(v_0
+            u_1 u_2 \dots u_{k-1} v_k v_{k+1}\)</span> pot od <span
+            class="math inline">\(v_0\)</span> do <span
+            class="math inline">\(v_{k+1}\)</span>. <span
+            class="math inline">\(\checkmark\)</span></p></li>
+            <li><p>Predpostavimo zdaj, da se <span
+            class="math inline">\(v_{k+1}\)</span> pojavi na tej poti,
+            se pravi <span class="math inline">\(v_{k+1} = u_j\)</span>
+            za nek <span class="math inline">\(1 \leq j \leq
+            k-1\)</span>. Tedaj je <span class="math inline">\(v_0 u_1
+            u_2 \dots u_j\)</span> pot od <span
+            class="math inline">\(v_0\)</span> do <span
+            class="math inline">\(v_{k+1}\)</span>. <span
+            class="math inline">\(\checkmark\)</span></p></li>
+            </ul>
+            <p> ◻</p>
+            </div>
+            <div class="domacanaloga">
+            <p><strong>Domača naloga 5.1</strong>. Dokaži, da v vsakem
+            grafu, v katerem obstaja sklenjen sprehod lihe dolžine,
+            obstaja tudi cikel lihe dolžine. S tem v dokaz kriterija
+            dvodelnosti grafov vstaviš še zadnji kos sestavljanke.</p>
+            </div>
+            <p>S pomočjo koncepta poti na množico vozlišč grafa vpeljemo
+            naslednjo relacijo <span class="math inline">\(R\)</span>.
+            Za vozlišči <span class="math inline">\(u,v\)</span> grafa
+            velja <span class="math inline">\(u R v\)</span>, če in samo
+            če v grafu obstaja pot od <span
+            class="math inline">\(u\)</span> do <span
+            class="math inline">\(v\)</span>. Lahko je preveriti, da je
+            <span class="math inline">\(R\)</span> ekvivalenčna
+            relacija.<a href="#fn16" class="footnote-ref" id="fnref16"
+            role="doc-noteref"><sup>16</sup></a> Ekvivalenčne razrede
+            <span class="math inline">\(V/R\)</span> imenujemo
+            <span><strong><em>povezane komponente</em></strong></span>
+            grafa. Število povezanih komponent označimo z <span
+            class="math inline">\(\Omega(G)\)</span>. Če je <span
+            class="math inline">\(\Omega(G) = 1\)</span>, potem rečemo,
+            da je graf
+            <span><strong><em>povezan</em></strong></span>.</p>
+            <div class="zgled">
+            <p><strong>Zgled 5.14</strong>. Lizika je povezan graf. Če
+            liziki odstranimo vozlišče stopnje <span
+            class="math inline">\(3\)</span>, dobimo graf, ki je
+            disjunktna unija grafov <span
+            class="math inline">\(P_2\)</span> in izolirane točke. Ta
+            graf ni povezan, ima dve povezani komponenti.</p>
+            </div>
+            <p><span><strong><em>Razdalja</em></strong></span> med
+            vozliščema <span class="math inline">\(u,v\)</span>, ki jo
+            označimo kot <span class="math inline">\(d(u,v)\)</span>, je
+            dolžina najkrajše poti med vozliščema <span
+            class="math inline">\(u\)</span> in <span
+            class="math inline">\(v\)</span>, če je le <span
+            class="math inline">\(u R v\)</span>. V primeru, ko <span
+            class="math inline">\(u\)</span> in <span
+            class="math inline">\(v\)</span> nista v relaciji <span
+            class="math inline">\(R\)</span>, definiramo <span
+            class="math inline">\(d(u,v) = \infty\)</span>.</p>
+            <div class="zgled">
+            <p><strong>Zgled 5.15</strong>. V naslednjem grafu za
+            vozlišči <span class="math inline">\(u,v\)</span> na
+            zunanjem ciklu velja <span
+            class="math inline">\(d(u,v)=2\)</span>.</p>
+            <figure>
+            <img src="img/grafi-razdalja.png"
+            alt="Razdalja med vozliščema" />
+            <figcaption aria-hidden="true">Razdalja med
+            vozliščema</figcaption>
+            </figure>
+            </div>
+            <p><span><strong><em>Premer</em></strong></span> grafa je
+            <span class="math display">\[\mathrm{diam}(G) = \max_{u,v
+            \in G} d(u,v),\]</span> se pravi največja možna razdalja med
+            vsakim parom vozlišč.</p>
+            <div class="domacanaloga">
+            <p><strong>Domača naloga 5.2</strong>. Prepričaj se, da je
+            premer grafa iz zadnjega zgleda enak <span
+            class="math inline">\(2\)</span>. Določi še premer
+            Petersenovega grafa.</p>
+            </div>
             <section class="footnotes footnotes-end-of-document"
             role="doc-endnotes">
             <hr />
@@ -4811,6 +5088,19 @@
             to vozlišče za začetno in ponovimo opisan postopek.<a
             href="#fnref15" class="footnote-back"
             role="doc-backlink">↩︎</a></p></li>
+            <li id="fn16" role="doc-endnote"><p>Tranzitivnost relacije
+            <span class="math inline">\(R\)</span> sledi iz zadnje
+            trditve: če v grafu obstaja pot od <span
+            class="math inline">\(u\)</span> do <span
+            class="math inline">\(v\)</span> in pot od <span
+            class="math inline">\(v\)</span> do <span
+            class="math inline">\(w\)</span>, potem v grafu obstaja
+            <em>sprehod</em> od <span class="math inline">\(u\)</span>
+            do <span class="math inline">\(w\)</span>, zato po trditvi
+            obstaja tudi <em>pot</em> od <span
+            class="math inline">\(u\)</span> do <span
+            class="math inline">\(w\)</span>.<a href="#fnref16"
+            class="footnote-back" role="doc-backlink">↩︎</a></p></li>
             </ol>
             </section>
 
