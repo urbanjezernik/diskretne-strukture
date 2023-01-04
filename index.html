@@ -125,6 +125,7 @@
               primeri in operacije</a></li>
               <li><a href="#invariante-grafov"
               id="toc-invariante-grafov">Invariante grafov</a></li>
+              <li><a href="#drevesa" id="toc-drevesa">Drevesa</a></li>
               </ul></li>
               </ul>
             </div>
@@ -4606,16 +4607,16 @@
             vsebuje lihega cikla. Naj bo <span class="math inline">\(v
             \in V(G)\)</span> poljubno začetno vozlišče. Za vozlišče
             <span class="math inline">\(u \in V(G)\)</span> naj bo <span
-            class="math inline">\(d(u)\)</span> najmanjše število
+            class="math inline">\(d(v,u)\)</span> najmanjše število
             povezav, ki jih potrebujemo, da od vozlišča <span
             class="math inline">\(v\)</span> pridemo do vozlišča <span
             class="math inline">\(u\)</span>.<a href="#fn11"
             class="footnote-ref" id="fnref11"
             role="doc-noteref"><sup>11</sup></a> Vozlišča <span
             class="math inline">\(u\)</span>, za katera je <span
-            class="math inline">\(d(u)\)</span> sodo število, obarvamo z
-            rdečo, vozlišča <span class="math inline">\(u\)</span>, za
-            katera je <span class="math inline">\(d(u)\)</span> liho
+            class="math inline">\(d(v,u)\)</span> sodo število, obarvamo
+            z rdečo, vozlišča <span class="math inline">\(u\)</span>, za
+            katera je <span class="math inline">\(d(v,u)\)</span> liho
             število, pa obarvamo z modro.<a href="#fn12"
             class="footnote-ref" id="fnref12"
             role="doc-noteref"><sup>12</sup></a> Naj bo <span
@@ -4628,10 +4629,10 @@
             class="math inline">\(u, w \in B\)</span>.<a href="#fn13"
             class="footnote-ref" id="fnref13"
             role="doc-noteref"><sup>13</sup></a> Torej sta <span
-            class="math inline">\(d(u)\)</span> in <span
-            class="math inline">\(d(w)\)</span> oba liha. V grafu <span
-            class="math inline">\(G\)</span> lahko torej pridemo od
-            vozlišča <span class="math inline">\(v\)</span> do <span
+            class="math inline">\(d(v,u)\)</span> in <span
+            class="math inline">\(d(v,w)\)</span> oba liha. V grafu
+            <span class="math inline">\(G\)</span> lahko torej pridemo
+            od vozlišča <span class="math inline">\(v\)</span> do <span
             class="math inline">\(u\)</span> po liho povezavah in prav
             tako od vozlišča <span class="math inline">\(v\)</span> do
             <span class="math inline">\(w\)</span> po liho povezavah. V
@@ -4998,6 +4999,228 @@
             class="math inline">\(2\)</span>. Določi še premer
             Petersenovega grafa.</p>
             </div>
+            <h2 id="drevesa">Drevesa</h2>
+            <p>Grafu, ki ne vsebuje ciklov, pravimo
+            <span><strong><em>gozd</em></strong></span>. Povezanemu
+            gozdu pravimo
+            <span><strong><em>drevo</em></strong></span>.</p>
+            <div class="zgled">
+            <p><strong>Zgled 5.16</strong>. Drevo je povezan graf brez
+            ciklov. Njegova vozlišča stopnje <span
+            class="math inline">\(1\)</span> so listi.</p>
+            <figure>
+            <img src="img/grafi-drevo.png" alt="Drevo" />
+            <figcaption aria-hidden="true">Drevo</figcaption>
+            </figure>
+            </div>
+            <p>Ker dreves nimajo ciklov, so dvodelna. Imajo pa drevesa
+            še veliko drugih čudovitih lastnosti.</p>
+            <div class="trditev">
+            <p><strong>Trditev 5.3</strong>. Naj bo <span
+            class="math inline">\(T\)</span> drevo.</p>
+            <ol>
+            <li><p>Če je <span class="math inline">\(|V(T)| &gt;
+            1\)</span>, potem ima <span class="math inline">\(T\)</span>
+            vsaj <span class="math inline">\(2\)</span> lista.</p></li>
+            <li><p><span class="math inline">\(|E(T)| = |V(T)| -
+            1\)</span>.</p></li>
+            <li><p>Za vsaka <span class="math inline">\(u,v \in
+            V(T)\)</span> obstaja <em>natanko ena</em> pot od <span
+            class="math inline">\(u\)</span> do <span
+            class="math inline">\(v\)</span>.</p></li>
+            </ol>
+            </div>
+            <div class="proof">
+            <p><em>Proof.</em> 1. Naj bo <span
+            class="math inline">\(P\)</span> pot <em>nadaljše možne
+            dolžine</em> v drevesu <span
+            class="math inline">\(T\)</span>. Naj bo <span
+            class="math inline">\(u\)</span> začetek in <span
+            class="math inline">\(v\)</span> konec poti <span
+            class="math inline">\(P\)</span>. Trdimo, da je <span
+            class="math inline">\(d(u) = d(v) = 1\)</span>. Uporabimo
+            dokaz s protislovjem. Naj bo <span
+            class="math inline">\(w\)</span> predzadnje vozlišče na poti
+            <span class="math inline">\(P\)</span>. Predpostavimo, da
+            velja <span class="math inline">\(d(v) \geq 2\)</span>.
+            Torej obstaja vozlišče <span class="math inline">\(x \in
+            V\)</span>, <span class="math inline">\(x \neq w\)</span>,
+            <span class="math inline">\(x \sim v\)</span>. Ker v grafu
+            <span class="math inline">\(T\)</span> ni ciklov, vozlišče
+            <span class="math inline">\(x\)</span> ni na poti <span
+            class="math inline">\(P\)</span>. Zato lahko pot <span
+            class="math inline">\(P\)</span> podaljšamo s povezavo <span
+            class="math inline">\(v \sim x\)</span>. To je protislovje z
+            izbiro najdaljše možne poti <span
+            class="math inline">\(P\)</span>. Torej je res <span
+            class="math inline">\(d(v) = 1\)</span>. Podobno dokažemo
+            <span class="math inline">\(d(u) = 1\)</span>. Vozlišči
+            <span class="math inline">\(u\)</span> in <span
+            class="math inline">\(v\)</span> sta torej lista drevesa.
+            <span class="math inline">\(\checkmark\)</span></p>
+            <p>2. Dokazujemo z indukcijo na <span
+            class="math inline">\(n = |V(T)|\)</span>. Baza je primer
+            <span class="math inline">\(n = 1\)</span>, ko drevo <span
+            class="math inline">\(T\)</span> sestoji iz enega samega
+            vozlišča in nima nič povezav. V tem primeru formula <span
+            class="math inline">\(0 = 1 - 1\)</span> seveda drži. Za
+            indukcijski korak predpostavimo, da formula drži za vsako
+            drevo na <span class="math inline">\(n\)</span> vozliščih in
+            naj bo <span class="math inline">\(T\)</span> drevo na <span
+            class="math inline">\(n+1\)</span> vozliščih. Naj bo <span
+            class="math inline">\(v\)</span> list <span
+            class="math inline">\(T\)</span>, ki obstaja po prejšnji
+            točki. Naj bo <span class="math inline">\(T&#39; = T -
+            v\)</span>. Tedaj je graf <span
+            class="math inline">\(T&#39;\)</span> brez ciklov in
+            povezan,<a href="#fn17" class="footnote-ref" id="fnref17"
+            role="doc-noteref"><sup>17</sup></a> torej je <span
+            class="math inline">\(T&#39;\)</span> drevo z <span
+            class="math inline">\(n\)</span> vozlišči. Po indukcijski
+            predpostavki sledi <span class="math inline">\(|E(T&#39;)| =
+            n - 1\)</span>. Hkrati velja <span
+            class="math inline">\(|E(T)| = |E(T&#39;)| + 1\)</span>,
+            torej ima drevo <span class="math inline">\(T\)</span>
+            natanko <span class="math inline">\(n\)</span> povezav in
+            formula velja. <span
+            class="math inline">\(\checkmark\)</span></p>
+            <p>3. Predpostavimo, da obstajata različni poti od nekega
+            vozlišča <span class="math inline">\(u\)</span> do nekega
+            vozlišča <span class="math inline">\(v\)</span>, recimo jima
+            <span class="math inline">\(P_1, P_2\)</span>. Naj bo <span
+            class="math inline">\(w\)</span> zadnje vozlišče, v katerem
+            se <span class="math inline">\(P_1, P_2\)</span> še ujemata.
+            Naj bo <span class="math inline">\(x\)</span> prvo vozlišče
+            na <span class="math inline">\(P_1\)</span> po <span
+            class="math inline">\(w\)</span>, ki je hkrati na <span
+            class="math inline">\(P_2\)</span>. Tedaj dobimo cikel <span
+            class="math inline">\(wP_1xP_2w\)</span>. To je protislovje,
+            ker je <span class="math inline">\(T\)</span> drevo. <span
+            class="math inline">\(\checkmark\)</span> ◻</p>
+            </div>
+            <p>Drevesa zelo preprosto postanejo nepovezana. Povezava
+            <span class="math inline">\(e\)</span> v povezanem grafu
+            <span class="math inline">\(G\)</span> je
+            <span><strong><em>most</em></strong></span>, če graf <span
+            class="math inline">\(G - e\)</span> <em>ni</em> povezan.
+            Vsaka povezava, ki povezuje list s preostankom drevesa, je
+            most. Res pa je še več.</p>
+            <div class="trditev">
+            <p><strong>Trditev 5.4</strong>. Vsaka povezava v drevesu je
+            most.</p>
+            </div>
+            <div class="proof">
+            <p><em>Proof.</em> Naj bo <span
+            class="math inline">\(T\)</span> drevo. Naj bo <span
+            class="math inline">\(e = \{ u, v \}\)</span> poljubna
+            povezava v <span class="math inline">\(T\)</span>. Po zadnji
+            trditvi je ta povezava <em>edina</em> pot od <span
+            class="math inline">\(u\)</span> do <span
+            class="math inline">\(v\)</span> v drevesu <span
+            class="math inline">\(T\)</span>. Torej v grafu <span
+            class="math inline">\(T - e\)</span> <em>ne</em> obstaja pot
+            od <span class="math inline">\(u\)</span> do <span
+            class="math inline">\(v\)</span>. To pomeni, da graf <span
+            class="math inline">\(T - e\)</span> ni povezan. Povezava
+            <span class="math inline">\(e\)</span> je torej most. ◻</p>
+            </div>
+            <p>Vse te čudovite lastnosti, ki jih imajo drevesa, v
+            resnici <em>karakterizirajo</em> drevesa.</p>
+            <div class="trditev">
+            <p><strong>Trditev 5.5</strong>. Naj bo <span
+            class="math inline">\(G\)</span> graf. Naslednje trditve so
+            ekvivalentne.</p>
+            <ol>
+            <li><p><span class="math inline">\(G\)</span> je
+            drevo.</p></li>
+            <li><p>Med vsakima dvema vozliščema v <span
+            class="math inline">\(G\)</span> obstaja natanko ena
+            pot.</p></li>
+            <li><p><span class="math inline">\(G\)</span> je povezan in
+            <span class="math inline">\(|E(G)| = |V(G)| -
+            1\)</span>.</p></li>
+            <li><p><span class="math inline">\(G\)</span> je povezan in
+            vsaka njegova povezava je most.</p></li>
+            </ol>
+            </div>
+            <div class="proof">
+            <p><em>Proof.</em> Po predzadnji trditvi vemo, da 1. <span
+            class="math inline">\(\Rightarrow\)</span> 2. in 1. <span
+            class="math inline">\(\Rightarrow\)</span> 3. Po zadnji
+            trditvi vemo, da celo 2. <span
+            class="math inline">\(\Rightarrow\)</span> 4.<a href="#fn18"
+            class="footnote-ref" id="fnref18"
+            role="doc-noteref"><sup>18</sup></a> Dokažimo zdaj še 4.
+            <span class="math inline">\(\Rightarrow\)</span> 1. in 3.
+            <span class="math inline">\(\Rightarrow\)</span> 1.</p>
+            <p>4. <span class="math inline">\(\Rightarrow\)</span> 1.:
+            Predpostavimo, da <span class="math inline">\(G\)</span> ni
+            drevo in da v <span class="math inline">\(G\)</span> torej
+            obstaja cikel <span class="math inline">\(C\)</span>. Naj bo
+            <span class="math inline">\(e\)</span> povezava na <span
+            class="math inline">\(C\)</span>. Tedaj po predpostavki graf
+            <span class="math inline">\(G - e\)</span> <em>ni</em>
+            povezan. Naj bosta <span class="math inline">\(x,y\)</span>
+            vozlišči grafa <span class="math inline">\(G\)</span>, ki
+            nista povezani v <span class="math inline">\(G - e\)</span>.
+            Ker je graf <span class="math inline">\(G\)</span> povezan,
+            obstaja pot <span class="math inline">\(P\)</span> od <span
+            class="math inline">\(x\)</span> do <span
+            class="math inline">\(y\)</span> v <span
+            class="math inline">\(G\)</span>. Ta pot nujno prečka
+            povezavo <span class="math inline">\(e\)</span>. Nadomestimo
+            to prečkanje povezave <span class="math inline">\(e\)</span>
+            s potjo <span class="math inline">\(C - e\)</span>. Torej v
+            grafu <span class="math inline">\(G - e\)</span> obstaja
+            sprehod od <span class="math inline">\(x\)</span> do <span
+            class="math inline">\(y\)</span>, zato pa tudi pot. To je
+            protislovje z izbiro vozlišč <span
+            class="math inline">\(x,y\)</span>. Torej cikel <span
+            class="math inline">\(C\)</span> v <span
+            class="math inline">\(G\)</span> ne obstaja in <span
+            class="math inline">\(G\)</span> je res drevo. <span
+            class="math inline">\(\checkmark\)</span></p>
+            <p>3. <span class="math inline">\(\Rightarrow\)</span> 1.:
+            Predpostavimo, da <span class="math inline">\(G\)</span> ni
+            drevo in da v <span class="math inline">\(G\)</span> torej
+            obstaja cikel <span class="math inline">\(C\)</span>. Za
+            vsako vozlišče <span class="math inline">\(v \in V(G)
+            \backslash V(C)\)</span> izberimo pot <span
+            class="math inline">\(P_v\)</span> najkrajše možne dolžine
+            od <span class="math inline">\(v\)</span> do cikla <span
+            class="math inline">\(C\)</span>. Naj bo <span
+            class="math inline">\(e_v\)</span> prva povezava na poti
+            <span class="math inline">\(P_v\)</span>. Trdimo, da za
+            <span class="math inline">\(u \neq v\)</span> velja <span
+            class="math inline">\(e_u \neq e_v\)</span>. Res, če je
+            <span class="math inline">\(e_u = e_v\)</span>, potem sta
+            <span class="math inline">\(u\)</span> in <span
+            class="math inline">\(v\)</span> nujno povezani vozlišči
+            vozlišče <span class="math inline">\(u\)</span> je povezano
+            s ciklom <span class="math inline">\(C\)</span> s potjo
+            <span class="math inline">\(P_v - e\)</span>. Torej je
+            dolžina poti <span class="math inline">\(P_u\)</span>, ki je
+            najkrajše možne dolžine, enaka kvečjemu dolžini poti <span
+            class="math inline">\(P_v\)</span> manj <span
+            class="math inline">\(1\)</span>. Od tod sledi, da je
+            dolžina poti <span class="math inline">\(P_u - e\)</span>
+            strogo manjša od dolžine poti <span
+            class="math inline">\(P_v\)</span>. Torej smo našli pot, ki
+            povezuje <span class="math inline">\(u\)</span> s <span
+            class="math inline">\(C\)</span> in je krajše dolžine kot
+            <span class="math inline">\(P_v\)</span>. To je protislovje.
+            Res torej za <span class="math inline">\(u \neq v\)</span>
+            velja <span class="math inline">\(e_u \neq e_v\)</span>. Od
+            tod sledi <span class="math display">\[|E(G)| \geq |E(C)| +
+            |\{ e_v \mid v \in V(G) \backslash V(C) \}|
+                = |V(C)| + (|V(G)| - |V(C)|)
+                = |V(G)|.\]</span> Dobljeno je sprto s predpostavko
+            <span class="math inline">\(|E(G)| = |V(G)| - 1\)</span>.
+            Cikel <span class="math inline">\(C\)</span> v <span
+            class="math inline">\(G\)</span> torej ne obstaja in <span
+            class="math inline">\(G\)</span> je res drevo. <span
+            class="math inline">\(\checkmark\)</span> ◻</p>
+            </div>
             <section class="footnotes footnotes-end-of-document"
             role="doc-endnotes">
             <hr />
@@ -5060,19 +5283,19 @@
             href="#fnref10" class="footnote-back"
             role="doc-backlink">↩︎</a></p></li>
             <li id="fn11" role="doc-endnote"><p>Kasneje bomo številu
-            <span class="math inline">\(d(u)\)</span> rekli tudi dolžina
-            najkrajše poti od <span class="math inline">\(v\)</span> do
-            <span class="math inline">\(u\)</span>. Lahko se zgodi, da
-            je od <span class="math inline">\(v\)</span> sploh ne moremo
-            priti do <span class="math inline">\(u\)</span>, na primer
-            če je <span class="math inline">\(u\)</span> izolirana
-            točka. V tem primeru definiramo <span
-            class="math inline">\(d(u) = \infty\)</span>.<a
-            href="#fnref11" class="footnote-back"
+            <span class="math inline">\(d(v,u)\)</span> rekli tudi
+            dolžina najkrajše poti od <span
+            class="math inline">\(v\)</span> do <span
+            class="math inline">\(u\)</span>. Lahko se zgodi, da je od
+            <span class="math inline">\(v\)</span> sploh ne moremo priti
+            do <span class="math inline">\(u\)</span>, na primer če je
+            <span class="math inline">\(u\)</span> izolirana točka. V
+            tem primeru definiramo <span class="math inline">\(d(v,u) =
+            \infty\)</span>.<a href="#fnref11" class="footnote-back"
             role="doc-backlink">↩︎</a></p></li>
             <li id="fn12" role="doc-endnote"><p>Če je <span
-            class="math inline">\(d(u) = \infty\)</span>, potem vozlišča
-            <span class="math inline">\(u\)</span> zaenkrat ne
+            class="math inline">\(d(v,u) = \infty\)</span>, potem
+            vozlišča <span class="math inline">\(u\)</span> zaenkrat ne
             obarvamo.<a href="#fnref12" class="footnote-back"
             role="doc-backlink">↩︎</a></p></li>
             <li id="fn13" role="doc-endnote"><p>Analogen argument
@@ -5087,11 +5310,11 @@
             <li id="fn15" role="doc-endnote"><p>Natančneje, podgraf
             grafa <span class="math inline">\(G\)</span>, vpet v
             vozlišča <span class="math inline">\(u\)</span>, za katera
-            velja <span class="math inline">\(d(u) &lt; \infty\)</span>,
-            je dvodelen. Če obstaja kakšno vozlišče z <span
-            class="math inline">\(d(u) = \infty\)</span>, zdaj vzamemo
-            to vozlišče za začetno in ponovimo opisan postopek.<a
-            href="#fnref15" class="footnote-back"
+            velja <span class="math inline">\(d(v,u) &lt;
+            \infty\)</span>, je dvodelen. Če obstaja kakšno vozlišče z
+            <span class="math inline">\(d(v,u) = \infty\)</span>, zdaj
+            vzamemo to vozlišče za začetno in ponovimo opisan
+            postopek.<a href="#fnref15" class="footnote-back"
             role="doc-backlink">↩︎</a></p></li>
             <li id="fn16" role="doc-endnote"><p>Tranzitivnost relacije
             <span class="math inline">\(R\)</span> sledi iz zadnje
@@ -5105,6 +5328,17 @@
             obstaja tudi <em>pot</em> od <span
             class="math inline">\(u\)</span> do <span
             class="math inline">\(w\)</span>.<a href="#fnref16"
+            class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn17" role="doc-endnote"><p>List <span
+            class="math inline">\(v\)</span> je lahko le začetek ali
+            konec poti, zato pot med vozliščema <span
+            class="math inline">\(x,y \in V(T)\)</span>, <span
+            class="math inline">\(x,y \neq v\)</span>, <em>ne</em>
+            vsebuje <span class="math inline">\(v\)</span>.<a
+            href="#fnref17" class="footnote-back"
+            role="doc-backlink">↩︎</a></p></li>
+            <li id="fn18" role="doc-endnote"><p>V dokazu trditve smo
+            namreč uporabili le lastnost 2. drevesa.<a href="#fnref18"
             class="footnote-back" role="doc-backlink">↩︎</a></p></li>
             </ol>
             </section>

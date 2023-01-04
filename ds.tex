@@ -2127,9 +2127,9 @@ Graf je dvodelen natanko tedaj, ko ne vsebuje lihega cikla.
 \begin{dokaz}
 $(\Rightarrow)$: Naj bo $G$ dvodelen graf. Tedaj je vsak njegov podgraf tudi dvodelen. Ker lihi cikli niso dvodelni, jih $G$ ne more vsebovati. \kljuka
 
-$(\Leftarrow)$: Predpostavimo, da $G$ ne vsebuje lihega cikla. Naj bo $v \in V(G)$ poljubno začetno vozlišče. Za vozlišče $u \in V(G)$ naj bo $d(u)$ najmanjše število povezav, ki jih potrebujemo, da od vozlišča $v$ pridemo do vozlišča $u$.\footnote{Kasneje bomo številu $d(u)$ rekli tudi dolžina najkrajše poti od $v$ do $u$. Lahko se zgodi, da je od $v$ sploh ne moremo priti do $u$, na primer če je $u$ izolirana točka. V tem primeru definiramo $d(u) = \infty$.} Vozlišča $u$, za katera je $d(u)$ sodo število, obarvamo z rdečo, vozlišča $u$, za katera je $d(u)$ liho število, pa obarvamo z modro.\footnote{Če je $d(u) = \infty$, potem vozlišča $u$ zaenkrat ne obarvamo.} Naj bo $A$ množica vseh rdečih vozlišč, $B$ pa množica modrih vozlišč.
+$(\Leftarrow)$: Predpostavimo, da $G$ ne vsebuje lihega cikla. Naj bo $v \in V(G)$ poljubno začetno vozlišče. Za vozlišče $u \in V(G)$ naj bo $d(v,u)$ najmanjše število povezav, ki jih potrebujemo, da od vozlišča $v$ pridemo do vozlišča $u$.\footnote{Kasneje bomo številu $d(v,u)$ rekli tudi dolžina najkrajše poti od $v$ do $u$. Lahko se zgodi, da je od $v$ sploh ne moremo priti do $u$, na primer če je $u$ izolirana točka. V tem primeru definiramo $d(v,u) = \infty$.} Vozlišča $u$, za katera je $d(v,u)$ sodo število, obarvamo z rdečo, vozlišča $u$, za katera je $d(v,u)$ liho število, pa obarvamo z modro.\footnote{Če je $d(v,u) = \infty$, potem vozlišča $u$ zaenkrat ne obarvamo.} Naj bo $A$ množica vseh rdečih vozlišč, $B$ pa množica modrih vozlišč.
 
-Predpostavimo, da je $\{ u, w \}$ povezava v $G$, za katero je $u, w \in B$.\footnote{Analogen argument deluje, če sta obe krajišči v $A$.} Torej sta $d(u)$ in $d(w)$ oba liha. V grafu $G$ lahko torej pridemo od vozlišča $v$ do $u$ po liho povezavah in prav tako od vozlišča $v$ do $w$ po liho povezavah. V grafu $G$ lahko torej začnemo pri vozlišču $v$ in po liho korakih pridemo do $u$, za tem prečkamo povezavo $uw$ in nato nadaljujemo od $w$ do $v$. Skupaj se sprehodimo po liho mnogo povezavah.\footnote{Pri tem morda kakšno vozlišče sicer obiščemo več kot enkrat, zato to morda ni podgraf $G$.} Nekoliko kasneje bomo premislili, da ima vsak graf z obhodom lihe dolžine tudi lih cikel. Ker pa lihih ciklov v $G$ po predpostavki ni, smo dosegli protislovje s predpostavko, da v $G$ obstajajo povezave med vozlišči v množici $B$ oziroma v množici $A$. Takih povezav torej ni in graf $G$ je dvodelen.\footnote{Natančneje, podgraf grafa $G$, vpet v vozlišča $u$, za katera velja $d(u) < \infty$, je dvodelen. Če obstaja kakšno vozlišče z $d(u) = \infty$, zdaj vzamemo to vozlišče za začetno in ponovimo opisan postopek.}
+Predpostavimo, da je $\{ u, w \}$ povezava v $G$, za katero je $u, w \in B$.\footnote{Analogen argument deluje, če sta obe krajišči v $A$.} Torej sta $d(v,u)$ in $d(v,w)$ oba liha. V grafu $G$ lahko torej pridemo od vozlišča $v$ do $u$ po liho povezavah in prav tako od vozlišča $v$ do $w$ po liho povezavah. V grafu $G$ lahko torej začnemo pri vozlišču $v$ in po liho korakih pridemo do $u$, za tem prečkamo povezavo $uw$ in nato nadaljujemo od $w$ do $v$. Skupaj se sprehodimo po liho mnogo povezavah.\footnote{Pri tem morda kakšno vozlišče sicer obiščemo več kot enkrat, zato to morda ni podgraf $G$.} Nekoliko kasneje bomo premislili, da ima vsak graf z obhodom lihe dolžine tudi lih cikel. Ker pa lihih ciklov v $G$ po predpostavki ni, smo dosegli protislovje s predpostavko, da v $G$ obstajajo povezave med vozlišči v množici $B$ oziroma v množici $A$. Takih povezav torej ni in graf $G$ je dvodelen.\footnote{Natančneje, podgraf grafa $G$, vpet v vozlišča $u$, za katera velja $d(v,u) < \infty$, je dvodelen. Če obstaja kakšno vozlišče z $d(v,u) = \infty$, zdaj vzamemo to vozlišče za začetno in ponovimo opisan postopek.}
 \end{dokaz}
 
 \begin{itemize}
@@ -2330,5 +2330,70 @@ se pravi največja možna razdalja med vsakim parom vozlišč. Premer je invaria
 \begin{domacanaloga}
     Prepričaj se, da je premer grafa iz zadnjega zgleda enak $2$. Določi še premer Petersenovega grafa.
 \end{domacanaloga}
+
+\section{Drevesa}
+
+Grafu, ki ne vsebuje ciklov, pravimo {\definicija gozd}. Povezanemu gozdu pravimo {\definicija drevo}.
+
+\begin{zgled}
+Drevo je povezan graf brez ciklov. Njegova vozlišča stopnje $1$ so listi.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\linewidth]{img/grafi-drevo.png}
+    \caption{Drevo}
+\end{figure}    
+\end{zgled}
+
+Ker dreves nimajo ciklov, so dvodelna. Imajo pa drevesa še veliko drugih čudovitih lastnosti.
+
+\begin{trditev}
+    Naj bo $T$ drevo.
+    \begin{enumerate}
+        \item Če je $|V(T)| > 1$, potem ima $T$ vsaj $2$ lista.
+        \item $|E(T)| = |V(T)| - 1$.
+        \item Za vsaka $u,v \in V(T)$ obstaja \emph{natanko ena} pot od $u$ do $v$.
+    \end{enumerate}
+\end{trditev}
+\begin{dokaz}
+1. Naj bo $P$ pot \emph{nadaljše možne dolžine} v drevesu $T$. Naj bo $u$ začetek in $v$ konec poti $P$. Trdimo, da je $d(u) = d(v) = 1$. Uporabimo dokaz s protislovjem. Naj bo $w$ predzadnje vozlišče na poti $P$. Predpostavimo, da velja $d(v) \geq 2$. Torej obstaja vozlišče $x \in V$, $x \neq w$, $x \sim v$. Ker v grafu $T$ ni ciklov, vozlišče $x$ ni na poti $P$. Zato lahko pot $P$ podaljšamo s povezavo $v \sim x$. To je protislovje z izbiro najdaljše možne poti $P$. Torej je res $d(v) = 1$. Podobno dokažemo $d(u) = 1$. Vozlišči $u$ in $v$ sta torej lista drevesa. \kljuka
+
+2. Dokazujemo z indukcijo na $n = |V(T)|$. Baza je primer $n = 1$, ko drevo $T$ sestoji iz enega samega vozlišča in nima nič povezav. V tem primeru formula $0 = 1 - 1$ seveda drži. Za indukcijski korak predpostavimo, da formula drži za vsako drevo na $n$ vozliščih in naj bo $T$ drevo na $n+1$ vozliščih. Naj bo $v$ list $T$, ki obstaja po prejšnji točki. Naj bo $T' = T - v$. Tedaj je graf $T'$ brez ciklov in povezan,\footnote{List $v$ je lahko le začetek ali konec poti, zato pot med vozliščema $x,y \in V(T)$, $x,y \neq v$, \emph{ne} vsebuje $v$.} torej je $T'$ drevo z $n$ vozlišči. Po indukcijski predpostavki sledi $|E(T')| = n - 1$. Hkrati velja $|E(T)| = |E(T')| + 1$, torej ima drevo $T$ natanko $n$ povezav in formula velja. \kljuka
+
+3. Predpostavimo, da obstajata različni poti od nekega vozlišča $u$ do nekega vozlišča $v$, recimo jima $P_1, P_2$. Naj bo $w$ zadnje vozlišče, v katerem se $P_1, P_2$ še ujemata. Naj bo $x$ prvo vozlišče na $P_1$ po $w$, ki je hkrati na $P_2$. Tedaj dobimo cikel $wP_1xP_2w$. To je protislovje, ker je $T$ drevo. \kljuka
+\end{dokaz}
+
+Drevesa zelo preprosto postanejo nepovezana. Povezava $e$ v povezanem grafu $G$ je {\definicija most}, če graf $G - e$ \emph{ni} povezan. Vsaka povezava, ki povezuje list s preostankom drevesa, je most. Res pa je še več.
+
+\begin{trditev}
+Vsaka povezava v drevesu je most.
+\end{trditev}
+\begin{dokaz}
+    Naj bo $T$ drevo. Naj bo $e = \{ u, v \}$ poljubna povezava v $T$. Po zadnji trditvi je ta povezava \emph{edina} pot od $u$ do $v$ v drevesu $T$. Torej v grafu $T - e$ \emph{ne} obstaja pot od $u$ do $v$. To pomeni, da graf $T - e$ ni povezan. Povezava $e$ je torej most.
+\end{dokaz}
+
+Vse te čudovite lastnosti, ki jih imajo drevesa, v resnici \emph{karakterizirajo} drevesa.
+
+\begin{trditev}
+    Naj bo $G$ graf. Naslednje trditve so ekvivalentne.
+    \begin{enumerate}
+        \item $G$ je drevo.
+        \item Med vsakima dvema vozliščema v $G$ obstaja natanko ena pot.
+        \item $G$ je povezan in $|E(G)| = |V(G)| - 1$.
+        \item $G$ je povezan in vsaka njegova povezava je most.
+    \end{enumerate}
+\end{trditev}
+\begin{dokaz}
+Po predzadnji trditvi vemo, da 1. $\Rightarrow$ 2. in 1. $\Rightarrow$ 3. Po zadnji trditvi vemo, da celo 2. $\Rightarrow$ 4.\footnote{V dokazu trditve smo namreč uporabili le lastnost 2. drevesa.} Dokažimo zdaj še 4. $\Rightarrow$ 1. in 3. $\Rightarrow$ 1.
+
+4. $\Rightarrow$ 1.: Predpostavimo, da $G$ ni drevo in da v $G$ torej obstaja cikel $C$. Naj bo $e$ povezava na $C$. Tedaj po predpostavki graf $G - e$ \emph{ni} povezan. Naj bosta $x,y$ vozlišči grafa $G$, ki nista povezani v $G - e$. Ker je graf $G$ povezan, obstaja pot $P$ od $x$ do $y$ v $G$. Ta pot nujno prečka povezavo $e$. Nadomestimo to prečkanje povezave $e$ s potjo $C - e$. Torej v grafu $G - e$ obstaja sprehod od $x$ do $y$, zato pa tudi pot. To je protislovje z izbiro vozlišč $x,y$. Torej cikel $C$ v $G$ ne obstaja in $G$ je res drevo. \kljuka
+
+3. $\Rightarrow$ 1.: Predpostavimo, da $G$ ni drevo in da v $G$ torej obstaja cikel $C$. Za vsako vozlišče $v \in V(G) \backslash V(C)$ izberimo pot $P_v$ najkrajše možne dolžine od $v$ do cikla $C$. Naj bo $e_v$ prva povezava na poti $P_v$. Trdimo, da za $u \neq v$ velja $e_u \neq e_v$. Res, če je $e_u = e_v$, potem sta $u$ in $v$ nujno povezani vozlišči vozlišče $u$ je povezano s ciklom $C$ s potjo $P_v - e$. Torej je dolžina poti $P_u$, ki je najkrajše možne dolžine, enaka kvečjemu dolžini poti $P_v$ manj $1$. Od tod sledi, da je dolžina poti $P_u - e$ strogo manjša od dolžine poti $P_v$. Torej smo našli pot, ki povezuje $u$ s $C$ in je krajše dolžine kot $P_v$. To je protislovje. Res torej za $u \neq v$ velja $e_u \neq e_v$. Od tod sledi
+\[
+    |E(G)| \geq |E(C)| + |\{ e_v \mid v \in V(G) \backslash V(C) \}|
+    = |V(C)| + (|V(G)| - |V(C)|)
+    = |V(G)|.
+\]
+Dobljeno je sprto s predpostavko $|E(G)| = |V(G)| - 1$. Cikel $C$ v $G$ torej ne obstaja in $G$ je res drevo. \kljuka
+\end{dokaz}
 
 \end{document}
