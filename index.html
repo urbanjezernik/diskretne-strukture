@@ -43,7 +43,7 @@
             <strong> Urban Jezernik <br>
               Univerza v Ljubljani, Fakulteta za matematiko in fiziko </strong> <br>
 
-            Zadnja posodobitev: 14. 12. 2022
+            Zadnja posodobitev: 04. 01. 2023
           </div>
 
           <div id="spinner" class="text-center">
@@ -120,6 +120,9 @@
               <ul>
               <li><a href="#osnovne-definicije"
               id="toc-osnovne-definicije">Osnovne definicije</a></li>
+              <li><a href="#standardni-primeri-in-operacije"
+              id="toc-standardni-primeri-in-operacije">Standardni
+              primeri in operacije</a></li>
               </ul></li>
               </ul>
             </div>
@@ -4466,6 +4469,253 @@
             class="math inline">\(H\)</span> vpet podgraf grafa <span
             class="math inline">\(G\)</span>.</p>
             </div>
+            <h2 id="standardni-primeri-in-operacije">Standardni primeri
+            in operacije</h2>
+            <p>V tem razdelku si bomo ogledali nekaj standardnih
+            primerov grafov in elementarne operacije, ki jih lahko
+            izvajamo na njih, da dobimo nove grafe.</p>
+            <h3 id="standardni-primeri">Standardni primeri</h3>
+            <p>Naj bo <span class="math inline">\(n \in
+            \mathbf{N}\)</span> in naj bo <span
+            class="math inline">\(\mathbf{Z}/n\mathbf{Z}\)</span>
+            kvocientna množica množice <span
+            class="math inline">\(\mathbf{Z}\)</span> po relaciji <span
+            class="math inline">\(\mod{n}\)</span>. Elemente množice
+            <span class="math inline">\(\mathbf{Z}/n\mathbf{Z}\)</span>
+            lahko torej identificiramo z ostanki pri deljenju z <span
+            class="math inline">\(n\)</span>, se pravi s števili <span
+            class="math inline">\(0, 1, \dots, n-1\)</span>. Te ostanke
+            lahko tudi seštevamo (po modulu <span
+            class="math inline">\(n\)</span>).<a href="#fn9"
+            class="footnote-ref" id="fnref9"
+            role="doc-noteref"><sup>9</sup></a> S pomočjo množice <span
+            class="math inline">\(\mathbf{Z}/n\mathbf{Z}\)</span> bomo
+            definirali nekaj osnovnih primerov grafov.</p>
+            <ul>
+            <li><p><span><strong><em>Poln graf</em></strong></span>
+            <span class="math inline">\(K_n\)</span> ima vozlišča in
+            povezave <span class="math display">\[V =
+            \mathbf{Z}/n\mathbf{Z}, \quad
+                E = \{ \{ u,v \} \mid u,v \in \mathbf{Z}/n\mathbf{Z}, \
+            u \neq v \}.\]</span> Ta graf ima <span
+            class="math inline">\(n\)</span> vozlišč in <span
+            class="math inline">\(\binom{n}{2}\)</span> povezav. Je
+            <span class="math inline">\((n-1)\)</span>-regularen
+            graf.</p></li>
+            <li><p><span><strong><em>Pot</em></strong></span> <span
+            class="math inline">\(P_n\)</span> ima vozlišča in povezave
+            <span class="math display">\[V = \mathbf{Z}/n\mathbf{Z},
+            \quad
+                E = \{ \{ u, u+1 \} \mid u \in \{ 0, 1, \dots, n-2
+            \}.\]</span> Ta graf ima <span
+            class="math inline">\(n\)</span> vozlišč in <span
+            class="math inline">\(n-1\)</span> povezav. Rečemo, da je
+            <span><strong><em>dolžina</em></strong></span> poti <span
+            class="math inline">\(P_n\)</span> enaka <span
+            class="math inline">\(n-1\)</span>.</p></li>
+            <li><p><span><strong><em>Cikel</em></strong></span> <span
+            class="math inline">\(C_n\)</span> (definiran le za <span
+            class="math inline">\(n \geq 3\)</span>) ima vozlišča in
+            povezave <span class="math display">\[V =
+            \mathbf{Z}/n\mathbf{Z}, \quad
+                E = \{ \{ u, u+1 \} \mid u \in
+            \mathbf{Z}/n\mathbf{Z}\}.\]</span> Ta graf ima <span
+            class="math inline">\(n\)</span> vozlišč in <span
+            class="math inline">\(n\)</span> povezav. Je <span
+            class="math inline">\(2\)</span>-regularen graf.</p></li>
+            </ul>
+            <p>Nekaj dodatnih primerov grafov bomo uvedli s pomočjo
+            naslednje lastnosti grafov. Graf <span
+            class="math inline">\(G = (V,E)\)</span> je
+            <span><strong><em>dvodelen</em></strong></span>, če lahko
+            množico vozlišč <span class="math inline">\(V\)</span>
+            zapišemo kot disjunktno unijo <span class="math inline">\(V
+            = A \cup B\)</span>, <span class="math inline">\(A \cap B =
+            \emptyset\)</span>, pri čemer mora za vsako povezavo v <span
+            class="math inline">\(E\)</span> biti eno krajišče v <span
+            class="math inline">\(A\)</span>, drugo pa v <span
+            class="math inline">\(B\)</span>.<a href="#fn10"
+            class="footnote-ref" id="fnref10"
+            role="doc-noteref"><sup>10</sup></a></p>
+            <div class="zgled">
+            <p><strong>Zgled 5.9</strong>. </p>
+            <ul>
+            <li><p>Poln graf <span class="math inline">\(K_n\)</span> ni
+            dvodelen graf za <span class="math inline">\(n \geq
+            3\)</span>.</p></li>
+            <li><p>Pot <span class="math inline">\(P_n\)</span> je
+            dvodelen graf za <span class="math inline">\(n \geq
+            2\)</span>, saj lahko množico <span
+            class="math inline">\(\mathbf{Z}/n\mathbf{Z}\)</span>
+            zapišemo kot unijo sodih števil (<span
+            class="math inline">\(A\)</span>) in lihih števil (<span
+            class="math inline">\(B\)</span>) med <span
+            class="math inline">\(0\)</span> in <span
+            class="math inline">\(n-1\)</span>, povezave v <span
+            class="math inline">\(P_n\)</span> pa vedno tečejo le med
+            sodimi in lihimi števili.</p></li>
+            <li><p>Cikel <span class="math inline">\(C_n\)</span> je
+            dvodelen graf, če je <span class="math inline">\(n\)</span>
+            sodo število. V tem primeru lahko namreč uporabimo enak
+            argument kot za pot <span
+            class="math inline">\(P_n\)</span>, saj lahko <span
+            class="math inline">\(\mathbf{Z}/n\mathbf{Z}\)</span>
+            razdelimo na soda in liha števila in vse povezave v <span
+            class="math inline">\(C_n\)</span> tečejo le med sodimi in
+            lihimi števili.</p>
+            <p>Ta argument pa ne deluje, ko je <span
+            class="math inline">\(n\)</span> liho število, saj takrat
+            dobimo še dodatno povezavo med sodima številoma <span
+            class="math inline">\(0 \sim n-1\)</span>. Prepričajmo se,
+            da cikel <span class="math inline">\(C_n\)</span> za <span
+            class="math inline">\(n\)</span> lih <em>ni</em> dvodelen.
+            Res, denimo, da je z razčlenitvijo vozlišč <span
+            class="math inline">\(V = A \cup B\)</span>. Brez škode
+            lahko predpostavimo, da je <span class="math inline">\(0 \in
+            A\)</span>. Potem je nujno <span class="math inline">\(1 \in
+            B\)</span> in za tem <span class="math inline">\(2 \in
+            A\)</span> in za tem <span class="math inline">\(3 \in
+            B\)</span> in tako dalje vse do <span
+            class="math inline">\(n-1 \in A\)</span>, saj je <span
+            class="math inline">\(n\)</span> liho. Ker pa je <span
+            class="math inline">\(0 \sim n-1\)</span> v ciklu <span
+            class="math inline">\(C_n\)</span>, dobimo povezavo dveh
+            vozlišč v množici <span class="math inline">\(A\)</span>,
+            kar je sprto s predpostavko o dvodelnosti grafa. Lihi cikli
+            torej niso dvodelni.</p></li>
+            </ul>
+            </div>
+            <p>Ni se težko prepričati, da je obstoj lihih ciklov v grafu
+            <em>edina</em> obstrukcija k dvodelnosti grafa.</p>
+            <div class="trditev">
+            <p><strong>Trditev 5.1</strong>. Graf je dvodelen natanko
+            tedaj, ko ne vsebuje lihega cikla.</p>
+            </div>
+            <div class="proof">
+            <p><em>Proof.</em> <span
+            class="math inline">\((\Rightarrow)\)</span>: Naj bo <span
+            class="math inline">\(G\)</span> dvodelen graf. Tedaj je
+            vsak njegov podgraf tudi dvodelen. Ker lihi cikli niso
+            dvodelni, jih <span class="math inline">\(G\)</span> ne more
+            vsebovati. <span
+            class="math inline">\(\checkmark\)</span></p>
+            <p><span class="math inline">\((\Leftarrow)\)</span>:
+            Predpostavimo, da <span class="math inline">\(G\)</span> ne
+            vsebuje lihega cikla. Naj bo <span class="math inline">\(v
+            \in V(G)\)</span> poljubno začetno vozlišče. Za vozlišče
+            <span class="math inline">\(u \in V(G)\)</span> naj bo <span
+            class="math inline">\(d(u)\)</span> najmanjše število
+            povezav, ki jih potrebujemo, da od vozlišča <span
+            class="math inline">\(v\)</span> pridemo do vozlišča <span
+            class="math inline">\(u\)</span>.<a href="#fn11"
+            class="footnote-ref" id="fnref11"
+            role="doc-noteref"><sup>11</sup></a> Vozlišča <span
+            class="math inline">\(u\)</span>, za katera je <span
+            class="math inline">\(d(u)\)</span> sodo število, obarvamo z
+            rdečo, vozlišča <span class="math inline">\(u\)</span>, za
+            katera je <span class="math inline">\(d(u)\)</span> liho
+            število, pa obarvamo z modro.<a href="#fn12"
+            class="footnote-ref" id="fnref12"
+            role="doc-noteref"><sup>12</sup></a> Naj bo <span
+            class="math inline">\(A\)</span> množica vseh rdečih
+            vozlišč, <span class="math inline">\(B\)</span> pa množica
+            modrih vozlišč.</p>
+            <p>Predpostavimo, da je <span class="math inline">\(\{ u, w
+            \}\)</span> povezava v <span
+            class="math inline">\(G\)</span>, za katero je <span
+            class="math inline">\(u, w \in B\)</span>.<a href="#fn13"
+            class="footnote-ref" id="fnref13"
+            role="doc-noteref"><sup>13</sup></a> Torej sta <span
+            class="math inline">\(d(u)\)</span> in <span
+            class="math inline">\(d(w)\)</span> oba liha. V grafu <span
+            class="math inline">\(G\)</span> lahko torej pridemo od
+            vozlišča <span class="math inline">\(v\)</span> do <span
+            class="math inline">\(u\)</span> po liho povezavah in prav
+            tako od vozlišča <span class="math inline">\(v\)</span> do
+            <span class="math inline">\(w\)</span> po liho povezavah. V
+            grafu <span class="math inline">\(G\)</span> lahko torej
+            začnemo pri vozlišču <span class="math inline">\(v\)</span>
+            in po liho korakih pridemo do <span
+            class="math inline">\(u\)</span>, za tem prečkamo povezavo
+            <span class="math inline">\(uw\)</span> in nato nadaljujemo
+            od <span class="math inline">\(w\)</span> do <span
+            class="math inline">\(v\)</span>. Skupaj se sprehodimo po
+            liho mnogo povezavah.<a href="#fn14" class="footnote-ref"
+            id="fnref14" role="doc-noteref"><sup>14</sup></a> Nekoliko
+            kasneje bomo premislili, da ima vsak graf z obhodom lihe
+            dolžine tudi lih cikel. Ker pa lihih ciklov v <span
+            class="math inline">\(G\)</span> po predpostavki ni, smo
+            dosegli protislovje s predpostavko, da v <span
+            class="math inline">\(G\)</span> obstajajo povezave med
+            vozlišči v množici <span class="math inline">\(B\)</span>
+            oziroma v množici <span class="math inline">\(A\)</span>.
+            Takih povezav torej ni in graf <span
+            class="math inline">\(G\)</span> je dvodelen.<a href="#fn15"
+            class="footnote-ref" id="fnref15"
+            role="doc-noteref"><sup>15</sup></a> ◻</p>
+            </div>
+            <ul>
+            <li><p><span><strong><em>Poln dvodelni
+            graf</em></strong></span> <span
+            class="math inline">\(K_{m,n}\)</span> ima vozlišča in
+            povezave <span class="math display">\[V = A \cup B, |A| = m,
+            |B|=n, A \cap B = \emptyset, \quad
+                E = \{ \{ u,v\} \mid u \in A, v \in B \}.\]</span> V tem
+            grafu so torej vsa vozlišča množice <span
+            class="math inline">\(A\)</span> povezana z vsemi vozlišči
+            množice <span class="math inline">\(B\)</span>. Ta graf ima
+            <span class="math inline">\(m+n\)</span> vozlišč in <span
+            class="math inline">\(m \cdot n\)</span> povezav.</p></li>
+            <li><p>Grafom <span class="math inline">\(K_{1,n}\)</span>
+            za <span class="math inline">\(n \geq 3\)</span> pravimo
+            <span><strong><em>zvezde</em></strong></span>.</p></li>
+            <li><p><span><strong><em>Kolo</em></strong></span> <span
+            class="math inline">\(W_n\)</span> (definiran le za <span
+            class="math inline">\(n \geq 3\)</span>) ima vozlišča in
+            povezave <span class="math display">\[V =
+            \mathbf{Z}/n\mathbf{Z}\cup \{ \infty \}, \quad
+                E = \{ \{ u, u+1 \} \mid u \in \mathbf{Z}/n\mathbf{Z}\}
+            \cup \{ \{ u, \infty \} \mid u \in
+            \mathbf{Z}/n\mathbf{Z}\}.\]</span> Ta graf ima <span
+            class="math inline">\(n+1\)</span> vozlišč in <span
+            class="math inline">\(2n\)</span> povezav.</p></li>
+            </ul>
+            <h3 id="operacije">Operacije</h3>
+            <p>Oglejmo si zdaj še nekaj osnovnih operacij, ki jih lahko
+            izvedemo na danem grafu oziroma grafih.</p>
+            <ul>
+            <li><p><span><strong><em>Odstranjevanje
+            vozlišč</em></strong></span>. Dan je graf <span
+            class="math inline">\(G = (V,E)\)</span> in <span
+            class="math inline">\(u \in V\)</span>. Graf <span
+            class="math inline">\(G - u\)</span> ima vozlišča in
+            povezave <span class="math display">\[V(G - u) = V
+            \backslash \{ u \}, \quad
+                    E(G - u) = \{ e \in E \mid u \notin e
+            \}.\]</span></p></li>
+            <li><p><span><strong><em>Odstranjevanje
+            povezav</em></strong></span>. Dan je graf <span
+            class="math inline">\(G = (V,E)\)</span> in <span
+            class="math inline">\(e \in E\)</span>. Graf <span
+            class="math inline">\(G - e\)</span> ima vozlišča in
+            povezave <span class="math display">\[V(G - e) = V, \quad
+                    E(G - e) = E \backslash \{ e \}.\]</span></p></li>
+            <li><p><span><strong><em>Komplementiran
+            graf</em></strong></span>. Dan je graf <span
+            class="math inline">\(G = (V,E)\)</span>. Graf <span
+            class="math inline">\(\bar G\)</span> ima vozlišča in
+            povezave <span class="math display">\[V(\bar G) = V, \quad
+                    E(\bar G) = \{ \{ u,v \} \mid u,v \in V, \{ u,v \}
+            \notin E \}.\]</span></p></li>
+            <li><p><span><strong><em>Unija grafov</em></strong></span>.
+            Dana sta grafa <span class="math inline">\(G_1,
+            G_2\)</span>. Graf <span class="math inline">\(G_1 \cup
+            G_2\)</span> ima vozlišča in povezave <span
+            class="math display">\[V(G_1 \cup G_2) = V(G_1) \cup V(G_2),
+            \quad
+                    E(G_1 \cup G_2) = E(G_1) \cup
+            E(G_2).\]</span></p></li>
+            </ul>
             <section class="footnotes footnotes-end-of-document"
             role="doc-endnotes">
             <hr />
@@ -4517,6 +4767,49 @@
             class="math inline">\(V\)</span>, se pravi iz podmnožic
             <span class="math inline">\(V\)</span> z dvema elementoma.<a
             href="#fnref8" class="footnote-back"
+            role="doc-backlink">↩︎</a></p></li>
+            <li id="fn9" role="doc-endnote"><p>Na primer <span
+            class="math inline">\(3 + 7 \equiv 1 \pmod{9}\)</span>.<a
+            href="#fnref9" class="footnote-back"
+            role="doc-backlink">↩︎</a></p></li>
+            <li id="fn10" role="doc-endnote"><p>Vozlišča grafa lahko
+            torej razdelimo na dva dela, pri čemer povezave v grafu
+            potekajo le med vozlišči iz različnih delov.<a
+            href="#fnref10" class="footnote-back"
+            role="doc-backlink">↩︎</a></p></li>
+            <li id="fn11" role="doc-endnote"><p>Kasneje bomo številu
+            <span class="math inline">\(d(u)\)</span> rekli tudi dolžina
+            najkrajše poti od <span class="math inline">\(v\)</span> do
+            <span class="math inline">\(u\)</span>. Lahko se zgodi, da
+            je od <span class="math inline">\(v\)</span> sploh ne moremo
+            priti do <span class="math inline">\(u\)</span>, na primer
+            če je <span class="math inline">\(u\)</span> izolirana
+            točka. V tem primeru definiramo <span
+            class="math inline">\(d(u) = \infty\)</span>.<a
+            href="#fnref11" class="footnote-back"
+            role="doc-backlink">↩︎</a></p></li>
+            <li id="fn12" role="doc-endnote"><p>Če je <span
+            class="math inline">\(d(u) = \infty\)</span>, potem vozlišča
+            <span class="math inline">\(u\)</span> zaenkrat ne
+            obarvamo.<a href="#fnref12" class="footnote-back"
+            role="doc-backlink">↩︎</a></p></li>
+            <li id="fn13" role="doc-endnote"><p>Analogen argument
+            deluje, če sta obe krajišči v <span
+            class="math inline">\(A\)</span>.<a href="#fnref13"
+            class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn14" role="doc-endnote"><p>Pri tem morda kakšno
+            vozlišče sicer obiščemo več kot enkrat, zato to morda ni
+            podgraf <span class="math inline">\(G\)</span>.<a
+            href="#fnref14" class="footnote-back"
+            role="doc-backlink">↩︎</a></p></li>
+            <li id="fn15" role="doc-endnote"><p>Natančneje, podgraf
+            grafa <span class="math inline">\(G\)</span>, vpet v
+            vozlišča <span class="math inline">\(u\)</span>, za katera
+            velja <span class="math inline">\(d(u) &lt; \infty\)</span>,
+            je dvodelen. Če obstaja kakšno vozlišče z <span
+            class="math inline">\(d(u) = \infty\)</span>, zdaj vzamemo
+            to vozlišče za začetno in ponovimo opisan postopek.<a
+            href="#fnref15" class="footnote-back"
             role="doc-backlink">↩︎</a></p></li>
             </ol>
             </section>

@@ -2076,4 +2076,108 @@ Graf $H$ je {\definicija podgraf} grafa $G$, če velja $V(H) \subseteq V(G)$ in 
 Naj bo $G$ lizika z vozlišči $V(G) = \{ 1,2,3,4 \}$. Naj bo $H$ graf z vozlišči $V(H) = \{ 1,2,3,4 \}$ in povezavami $E(H) = \emptyset$. Tedaj je $H$ vpet podgraf grafa $G$.
 \end{zgled}
 
+\section{Standardni primeri in operacije}
+
+V tem razdelku si bomo ogledali nekaj standardnih primerov grafov in elementarne operacije, ki jih lahko izvajamo na njih, da dobimo nove grafe.
+
+\subsection{Standardni primeri}
+
+Naj bo $n \in \NN$ in naj bo $\ZZ/n\ZZ$ kvocientna množica množice $\ZZ$ po relaciji $\mod{n}$. Elemente množice $\ZZ/n\ZZ$ lahko torej identificiramo z ostanki pri deljenju z $n$, se pravi s števili $0, 1, \dots, n-1$. Te ostanke lahko tudi seštevamo (po modulu $n$).\footnote{Na primer $3 + 7 \equiv 1 \pmod{9}$.} S pomočjo množice $\ZZ/n\ZZ$ bomo definirali nekaj osnovnih primerov grafov.
+
+\begin{itemize}
+    \item {\definicija Poln graf} $K_n$ ima vozlišča in povezave 
+\[
+    V = \ZZ/n\ZZ, \quad
+    E = \{ \{ u,v \} \mid u,v \in \ZZ/n\ZZ, \ u \neq v \}.
+\]
+Ta graf ima $n$ vozlišč in $\binom{n}{2}$ povezav. Je $(n-1)$-regularen graf.
+
+    \item {\definicija Pot} $P_n$ ima vozlišča in povezave
+\[
+    V = \ZZ/n\ZZ, \quad
+    E = \{ \{ u, u+1 \} \mid u \in \{ 0, 1, \dots, n-2 \}.
+\]
+Ta graf ima $n$ vozlišč in $n-1$ povezav. Rečemo, da je {\definicija dolžina} poti $P_n$ enaka $n-1$.
+
+    \item {\definicija Cikel} $C_n$ (definiran le za $n \geq 3$) ima vozlišča in povezave
+\[
+    V = \ZZ/n\ZZ, \quad
+    E = \{ \{ u, u+1 \} \mid u \in \ZZ/n\ZZ \}.
+\]
+Ta graf ima $n$ vozlišč in $n$ povezav. Je $2$-regularen graf.
+\end{itemize}
+
+Nekaj dodatnih primerov grafov bomo uvedli s pomočjo naslednje lastnosti grafov. Graf $G = (V,E)$ je {\definicija dvodelen}, če lahko množico vozlišč $V$ zapišemo kot disjunktno unijo $V = A \cup B$, $A \cap B = \emptyset$, pri čemer mora za vsako povezavo v $E$ biti eno krajišče v $A$, drugo pa v $B$.\footnote{Vozlišča grafa lahko torej razdelimo na dva dela, pri čemer povezave v grafu potekajo le med vozlišči iz različnih delov.}
+
+\begin{zgled} \leavevmode
+    \begin{itemize}
+        \item Poln graf $K_n$ ni dvodelen graf za $n \geq 3$.
+        \item Pot $P_n$ je dvodelen graf za $n \geq 2$, saj lahko množico $\ZZ/n\ZZ$ zapišemo kot unijo sodih števil ($A$) in lihih števil ($B$) med $0$ in $n-1$, povezave v $P_n$ pa vedno tečejo le med sodimi in lihimi števili.
+        \item Cikel $C_n$ je dvodelen graf, če je $n$ sodo število. V tem primeru lahko namreč uporabimo enak argument kot za pot $P_n$, saj lahko $\ZZ/n\ZZ$ razdelimo na soda in liha števila in vse povezave v $C_n$ tečejo le med sodimi in lihimi števili. 
+        
+        Ta argument pa ne deluje, ko je $n$ liho število, saj takrat dobimo še dodatno povezavo med sodima številoma $0 \sim n-1$. Prepričajmo se, da cikel $C_n$ za $n$ lih \emph{ni} dvodelen. Res, denimo, da je z razčlenitvijo vozlišč $V = A \cup B$. Brez škode lahko predpostavimo, da je $0 \in A$. Potem je nujno $1 \in B$ in za tem $2 \in A$ in za tem $3 \in B$ in tako dalje vse do $n-1 \in A$, saj je $n$ liho. Ker pa je $0 \sim n-1$ v ciklu $C_n$, dobimo povezavo dveh vozlišč v množici $A$, kar je sprto s predpostavko o dvodelnosti grafa. Lihi cikli torej niso dvodelni.
+    \end{itemize}
+\end{zgled}
+
+Ni se težko prepričati, da je obstoj lihih ciklov v grafu \emph{edina} obstrukcija k dvodelnosti grafa.
+
+\begin{trditev}
+Graf je dvodelen natanko tedaj, ko ne vsebuje lihega cikla.
+\end{trditev}
+\begin{dokaz}
+$(\Rightarrow)$: Naj bo $G$ dvodelen graf. Tedaj je vsak njegov podgraf tudi dvodelen. Ker lihi cikli niso dvodelni, jih $G$ ne more vsebovati. \kljuka
+
+$(\Leftarrow)$: Predpostavimo, da $G$ ne vsebuje lihega cikla. Naj bo $v \in V(G)$ poljubno začetno vozlišče. Za vozlišče $u \in V(G)$ naj bo $d(u)$ najmanjše število povezav, ki jih potrebujemo, da od vozlišča $v$ pridemo do vozlišča $u$.\footnote{Kasneje bomo številu $d(u)$ rekli tudi dolžina najkrajše poti od $v$ do $u$. Lahko se zgodi, da je od $v$ sploh ne moremo priti do $u$, na primer če je $u$ izolirana točka. V tem primeru definiramo $d(u) = \infty$.} Vozlišča $u$, za katera je $d(u)$ sodo število, obarvamo z rdečo, vozlišča $u$, za katera je $d(u)$ liho število, pa obarvamo z modro.\footnote{Če je $d(u) = \infty$, potem vozlišča $u$ zaenkrat ne obarvamo.} Naj bo $A$ množica vseh rdečih vozlišč, $B$ pa množica modrih vozlišč.
+
+Predpostavimo, da je $\{ u, w \}$ povezava v $G$, za katero je $u, w \in B$.\footnote{Analogen argument deluje, če sta obe krajišči v $A$.} Torej sta $d(u)$ in $d(w)$ oba liha. V grafu $G$ lahko torej pridemo od vozlišča $v$ do $u$ po liho povezavah in prav tako od vozlišča $v$ do $w$ po liho povezavah. V grafu $G$ lahko torej začnemo pri vozlišču $v$ in po liho korakih pridemo do $u$, za tem prečkamo povezavo $uw$ in nato nadaljujemo od $w$ do $v$. Skupaj se sprehodimo po liho mnogo povezavah.\footnote{Pri tem morda kakšno vozlišče sicer obiščemo več kot enkrat, zato to morda ni podgraf $G$.} Nekoliko kasneje bomo premislili, da ima vsak graf z obhodom lihe dolžine tudi lih cikel. Ker pa lihih ciklov v $G$ po predpostavki ni, smo dosegli protislovje s predpostavko, da v $G$ obstajajo povezave med vozlišči v množici $B$ oziroma v množici $A$. Takih povezav torej ni in graf $G$ je dvodelen.\footnote{Natančneje, podgraf grafa $G$, vpet v vozlišča $u$, za katera velja $d(u) < \infty$, je dvodelen. Če obstaja kakšno vozlišče z $d(u) = \infty$, zdaj vzamemo to vozlišče za začetno in ponovimo opisan postopek.}
+\end{dokaz}
+
+\begin{itemize}
+    \item {\definicija Poln dvodelni graf} $K_{m,n}$ ima vozlišča in povezave
+\[
+    V = A \cup B, |A| = m, |B|=n, A \cap B = \emptyset, \quad
+    E = \{ \{ u,v\} \mid u \in A, v \in B \}.
+\]
+V tem grafu so torej vsa vozlišča množice $A$ povezana z vsemi vozlišči množice $B$. Ta graf ima $m+n$ vozlišč in $m \cdot n$ povezav. 
+
+    \item Grafom $K_{1,n}$ za $n \geq 3$ pravimo {\definicija zvezde}.
+
+    \item {\definicija Kolo} $W_n$ (definiran le za $n \geq 3$) ima vozlišča in povezave
+\[
+    V = \ZZ/n\ZZ \cup \{ \infty \}, \quad
+    E = \{ \{ u, u+1 \} \mid u \in \ZZ/n\ZZ \} \cup \{ \{ u, \infty \} \mid u \in \ZZ/n\ZZ \}.
+\]
+Ta graf ima $n+1$ vozlišč in $2n$ povezav.
+\end{itemize}
+
+\subsection{Operacije}
+
+Oglejmo si zdaj še nekaj osnovnih operacij, ki jih lahko izvedemo na danem grafu oziroma grafih.
+
+\begin{itemize}
+    \item {\definicija Odstranjevanje vozlišč}. Dan je graf $G = (V,E)$ in $u \in V$. Graf $G - u$ ima vozlišča in povezave
+    \[
+        V(G - u) = V \backslash \{ u \}, \quad
+        E(G - u) = \{ e \in E \mid u \notin e \}.
+    \]
+
+    \item {\definicija Odstranjevanje povezav}. Dan je graf $G = (V,E)$ in $e \in E$. Graf $G - e$ ima vozlišča in povezave
+    \[
+        V(G - e) = V, \quad
+        E(G - e) = E \backslash \{ e \}.   
+    \]
+
+    \item {\definicija Komplementiran graf}. Dan je graf $G = (V,E)$. Graf $\bar G$ ima vozlišča in povezave
+    \[
+        V(\bar G) = V, \quad
+        E(\bar G) = \{ \{ u,v \} \mid u,v \in V, \{ u,v \} \notin E \}.
+    \]
+
+    \item {\definicija Unija grafov}. Dana sta grafa $G_1, G_2$. Graf $G_1 \cup G_2$ ima vozlišča in povezave
+    \[
+        V(G_1 \cup G_2) = V(G_1) \cup V(G_2), \quad 
+        E(G_1 \cup G_2) = E(G_1) \cup E(G_2).
+    \]
+\end{itemize}
+
 \end{document}
