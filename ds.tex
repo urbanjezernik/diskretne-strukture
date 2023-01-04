@@ -2274,6 +2274,7 @@ Poglejmo si še nekaj invariant grafov, ki temeljijo na opazovanju \emph{poti}. 
 \end{itemize}
 
 \begin{zgled}
+    V naslednjem grafu je označen primer poti in primer cikla.
     \begin{figure}[h]
         \centering
         \includegraphics[width=0.5\linewidth]{img/grafi-pot-cikel.png}
@@ -2303,7 +2304,7 @@ Predpostavimo zdaj, da trditev že velja za vse sprehodi dolžine kvečjemu $k$.
 Dokaži, da v vsakem grafu, v katerem obstaja sklenjen sprehod lihe dolžine, obstaja tudi cikel lihe dolžine. S tem v dokaz kriterija dvodelnosti grafov vstaviš še zadnji kos sestavljanke.
 \end{domacanaloga}
 
-S pomočjo koncepta poti na množico vozlišč grafa vpeljemo naslednjo relacijo $R$. Za vozlišči $u,v$ grafa velja $u R v$, če in samo če v grafu obstaja pot od $u$ do $v$. Lahko je preveriti, da je $R$ ekvivalenčna relacija.\footnote{Tranzitivnost relacije $R$ sledi iz zadnje trditve: če v grafu obstaja pot od $u$ do $v$ in pot od $v$ do $w$, potem v grafu obstaja \emph{sprehod} od $u$ do $w$, zato po trditvi obstaja tudi \emph{pot} od $u$ do $w$.} Ekvivalenčne razrede $V/R$ imenujemo {\definicija povezane komponente} grafa. Število povezanih komponent označimo z $\Omega(G)$. Če je $\Omega(G) = 1$, potem rečemo, da je graf {\definicija povezan}.
+S pomočjo koncepta poti na množico vozlišč grafa vpeljemo naslednjo relacijo $R$. Za vozlišči $u,v$ grafa velja $u R v$, če in samo če v grafu obstaja pot od $u$ do $v$. Lahko je preveriti, da je $R$ ekvivalenčna relacija.\footnote{Tranzitivnost relacije $R$ sledi iz zadnje trditve: če v grafu obstaja pot od $u$ do $v$ in pot od $v$ do $w$, potem v grafu obstaja \emph{sprehod} od $u$ do $w$, zato po trditvi obstaja tudi \emph{pot} od $u$ do $w$.} Ekvivalenčne razrede $V/R$ imenujemo {\definicija povezane komponente} grafa. Število povezanih komponent označimo z $\Omega(G)$. Če je $\Omega(G) = 1$, potem rečemo, da je graf {\definicija povezan}. Število povezanih komponent je invariatna grafov.
 
 \begin{zgled}
 Lizika je povezan graf. Če liziki odstranimo vozlišče stopnje $3$, dobimo graf, ki je disjunktna unija grafov $P_2$ in izolirane točke. Ta graf ni povezan, ima dve povezani komponenti.
@@ -2324,7 +2325,7 @@ Lizika je povezan graf. Če liziki odstranimo vozlišče stopnje $3$, dobimo gra
 \[
     \mathrm{diam}(G) = \max_{u,v \in G} d(u,v),
 \]
-se pravi največja možna razdalja med vsakim parom vozlišč.
+se pravi največja možna razdalja med vsakim parom vozlišč. Premer je invarianta grafov.
 
 \begin{domacanaloga}
     Prepričaj se, da je premer grafa iz zadnjega zgleda enak $2$. Določi še premer Petersenovega grafa.
