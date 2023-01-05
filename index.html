@@ -5656,6 +5656,180 @@
             grafu</figcaption>
             </figure>
             </div>
+            <p>Zdaj si bomo pogledali še nekaj zadostnih pogojev za
+            hamiltonskost. Naslonili jih bomo na naslednjo lemo.</p>
+            <div class="lema">
+            <p><strong>Lema 5.2</strong>. Naj za vozlišči <span
+            class="math inline">\(u,v\)</span> grafa <span
+            class="math inline">\(G\)</span> velja <span
+            class="math inline">\(u \neq v\)</span>, <span
+            class="math inline">\(u \not\sim v\)</span>, <span
+            class="math inline">\(d(u) + d(v) \geq |V(G)|\)</span>.
+            Tedaj je <span class="math inline">\(G\)</span> Hamiltonov,
+            če in samo če je <span class="math inline">\(G + uv\)</span>
+            Hamiltonov.</p>
+            </div>
+            <div class="proof">
+            <p><em>Proof.</em> <span
+            class="math inline">\((\Rightarrow)\)</span>: Če je graf
+            <span class="math inline">\(G\)</span> Hamiltonov s
+            Hamiltonovim ciklom <span class="math inline">\(C\)</span>,
+            potem je isti cikel <span class="math inline">\(C\)</span>
+            tudi Hamiltonov cikel v grafu <span class="math inline">\(G
+            + uv\)</span>. <span
+            class="math inline">\(\checkmark\)</span></p>
+            <p><span class="math inline">\((\Leftarrow)\)</span>: Naj bo
+            <span class="math inline">\(C\)</span> Hamiltonov cikel v
+            grafu <span class="math inline">\(G + uv\)</span>.
+            Privzemimo, da <span class="math inline">\(G\)</span> ni
+            Hamiltonov graf. Torej je povezava <span
+            class="math inline">\(uv\)</span> nujno na ciklu <span
+            class="math inline">\(C\)</span>. Graf <span
+            class="math inline">\(G\)</span> zato vsebuje Hamiltonovo
+            pot <span class="math inline">\(C - uv = v_1 v_2 \dots
+            v_n\)</span> z začetkom v <span class="math inline">\(u =
+            v_1\)</span> in koncem v <span class="math inline">\(v =
+            v_n\)</span>, pri čemer je <span class="math inline">\(n =
+            |V(G)|\)</span>.</p>
+            <p>Opazumo sosede vozlišča <span
+            class="math inline">\(u\)</span>. Recimo, da za nek <span
+            class="math inline">\(i &lt; n\)</span> velja <span
+            class="math inline">\(u \sim v_{i+1}\)</span>. Premislimo,
+            da tedaj vozlišče <span class="math inline">\(v\)</span> ni
+            povezano z neposrednim predhodnikom vozlišča <span
+            class="math inline">\(v_{i+1}\)</span>, to je <span
+            class="math inline">\(v_i\)</span>. Res, če je <span
+            class="math inline">\(v \sim v_i\)</span>, potem v <span
+            class="math inline">\(G\)</span> najdemo Hamiltonov cikel
+            <span class="math inline">\(v_1 \dots v_i v_n \dots v_{i+1}
+            v_1\)</span>, ki pa po predpostavki ne obstaja.</p>
+            <p>Noben od <span class="math inline">\(d(u)\)</span>
+            neposrednih predhodnikov sosedov <span
+            class="math inline">\(u\)</span> torej ni sosed <span
+            class="math inline">\(v\)</span>. To pomeni, da je število
+            sosedov <span class="math inline">\(v\)</span> enako
+            kvečjemu <span class="math inline">\(n - 1 - d(u)\)</span>,
+            kjer smo upoštevali še, da vozlišče <span
+            class="math inline">\(v\)</span> ni povezano samo s sabo. Od
+            tod sledi <span class="math inline">\(d(v) \leq n - 1 -
+            d(u)\)</span>, kar je enakovredno <span
+            class="math inline">\(d(u) + d(v) \leq n -1\)</span>. To je
+            sprto s predpostavko <span class="math inline">\(d(u) + d(v)
+            \geq n = |V(G)|\)</span>. Graf <span
+            class="math inline">\(G\)</span> je nazadnje torej res
+            Hamiltonov. <span
+            class="math inline">\(\checkmark\)</span> ◻</p>
+            </div>
+            <div class="izrek">
+            <p><strong>Izrek 5.5</strong> (Ore). Naj bo <span
+            class="math inline">\(G\)</span> graf z <span
+            class="math inline">\(|V(G)| \geq 3\)</span>. Če za vsaki
+            dve vozlišči <span class="math inline">\(u,v \in
+            V(G)\)</span> z lastnostjo <span class="math inline">\(u
+            \neq v\)</span>, <span class="math inline">\(u \not\sim
+            v\)</span> velja <span class="math inline">\(d(u) + d(v)
+            \geq |V(G)|\)</span>, potem je <span
+            class="math inline">\(G\)</span> Hamiltonov.</p>
+            </div>
+            <div class="proof">
+            <p><em>Proof.</em> Grafu <span
+            class="math inline">\(G\)</span> dodajamo povezave, dokler
+            ne dobimo polnega grafa <span
+            class="math inline">\(K_n\)</span>. Po lemi je graf <span
+            class="math inline">\(G\)</span> Hamiltonov, če in samo če
+            je <span class="math inline">\(K_n\)</span> Hamiltonov, kar
+            pa je res (za <span class="math inline">\(\geq
+            3\)</span>). ◻</p>
+            </div>
+            <div class="zgled">
+            <p><strong>Zgled 5.23</strong>. Za vsaki različni nepovezani
+            vozlišči v naslednjem grafu velja <span
+            class="math inline">\(d(u) + d(v) \geq 7\)</span>. Po
+            Orejevem izreku je graf Hamiltonov. Poišči Hamiltonov cikel
+            v njem!</p>
+            <figure>
+            <img src="img/grafi-hamilton-ore.png"
+            alt="Hamiltonov graf po Orejevem izreku" />
+            <figcaption aria-hidden="true">Hamiltonov graf po Orejevem
+            izreku</figcaption>
+            </figure>
+            </div>
+            <div class="izrek">
+            <p><strong>Izrek 5.6</strong> (Dirac). Naj bo <span
+            class="math inline">\(G\)</span> graf z <span
+            class="math inline">\(|V(G)| \geq 3\)</span>. Če je <span
+            class="math inline">\(\delta(G) \geq |V(G)|/2\)</span>,
+            potem je <span class="math inline">\(G\)</span>
+            Hamiltonov.</p>
+            </div>
+            <div class="proof">
+            <p><em>Proof.</em> Po predpostavki za vsaki vozlišči <span
+            class="math inline">\(u,v \in V(G)\)</span> velja <span
+            class="math inline">\(d(u) + d(v) \geq |V(G)|\)</span>. Po
+            Orejevem izreku je graf <span
+            class="math inline">\(G\)</span> zato Hamiltonov. ◻</p>
+            </div>
+            <div class="zgled">
+            <p><strong>Zgled 5.24</strong>. Najmanjša stopnja vozlišča v
+            naslednjem grafu je <span class="math inline">\(3\)</span>,
+            število vozlišč pa je <span
+            class="math inline">\(6\)</span>. Po Diracovem izreku je
+            graf Hamiltonov. Poišči Hamiltonov cikel v njem!</p>
+            <figure>
+            <img src="img/grafi-hamilton-dirac.png"
+            alt="Hamiltonov graf po Diracovem izreku" />
+            <figcaption aria-hidden="true">Hamiltonov graf po Diracovem
+            izreku</figcaption>
+            </figure>
+            </div>
+            <p>Včasih se znajdemo v situaciji, ko nam ob danem grafu
+            niti potrebni niti zadostni pogoji ne odgovorijo na
+            vprašanje, ali je graf Hamiltonov. V tem primeru posežemo po
+            bolj ad hoc tehnikah, kot je prikazano v naslednjem
+            zgledu.</p>
+            <div class="zgled">
+            <p><strong>Zgled 5.25</strong>. Ali je Petersenov graf
+            Hamiltonov? Na naslednji sliki je prikazana Hamiltonova
+            pot.</p>
+            <figure>
+            <img src="img/grafi-petersen-hamilton-pot.png"
+            alt="Hamiltonova pot v Petersenovem grafu" />
+            <figcaption aria-hidden="true">Hamiltonova pot v
+            Petersenovem grafu</figcaption>
+            </figure>
+            <p>S protislovjem premislimo, da Hamiltonov cikel ne
+            obstaja. Če bi namreč <span class="math inline">\(C\)</span>
+            bil Hamiltonov cikel, potem bi vseboval <span
+            class="math inline">\(10\)</span> vozlišč Petersenovega
+            grafa in <span class="math inline">\(10\)</span> povezav.
+            Označimo vozlišča na <span class="math inline">\(C\)</span>
+            z <span class="math inline">\(v_1v_2 \dots v_{10}\)</span>.
+            Ker ima Petersenov graf <span
+            class="math inline">\(15\)</span> povezav, iščemo torej še
+            <span class="math inline">\(5\)</span> dodatnih tetivnih
+            povezav, ki jih dodamo ciklu <span
+            class="math inline">\(C\)</span>, da dobimo Petersenov graf.
+            Vemo, da je Petersenov graf <span
+            class="math inline">\(3\)</span>-regularen, zato moramo po
+            eno tako tetivno povezavo dodati vsakemu vozlišči na ciklu
+            <span class="math inline">\(C\)</span>. Vemo, da Petersenov
+            graf nima <span class="math inline">\(3\)</span>-ciklov in
+            nima <span class="math inline">\(4\)</span>-ciklov, hkrati
+            pa ima <span class="math inline">\(5\)</span>-cikel. Gotovo
+            torej obstaja vozlišče na <span
+            class="math inline">\(C\)</span>, brez škode je to kar <span
+            class="math inline">\(v_1\)</span>, ki ima tetivno povezavo
+            do soseda antipodnega vozlišča <span
+            class="math inline">\(v_6\)</span>, brez škode je to kar
+            <span class="math inline">\(v_5\)</span>. Opazujmo zdaj
+            vozlišče <span class="math inline">\(v_6\)</span>. Tudi to
+            vozlišče mora imeti tetivno povezavo do nekega vozlišča na
+            <span class="math inline">\(C\)</span>. Ker pa Petersenov
+            graf nima <span class="math inline">\(3\)</span>-ciklov in
+            nima <span class="math inline">\(4\)</span>-ciklov, taka
+            tetivna povezava ne obstaja. To je protislovje z obstojem
+            Hamiltonovega cikla v Petersenovem grafu.</p>
+            </div>
             <section class="footnotes footnotes-end-of-document"
             role="doc-endnotes">
             <hr />

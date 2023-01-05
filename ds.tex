@@ -2576,4 +2576,67 @@ Dvodelen graf iz zadnjega zgleda ni Hamiltonov, saj z odstranitvijo $5$ točk gr
 \end{figure}  
 \end{zgled}
 
+Zdaj si bomo pogledali še nekaj zadostnih pogojev za hamiltonskost. Naslonili jih bomo na naslednjo lemo.
+
+\begin{lema}
+    Naj za vozlišči $u,v$ grafa $G$ velja $u \neq v$, $u \not\sim v$, $d(u) + d(v) \geq |V(G)|$. Tedaj je $G$ Hamiltonov, če in samo če je $G + uv$ Hamiltonov.
+\end{lema}
+\begin{dokaz}
+$(\Rightarrow)$: Če je graf $G$ Hamiltonov s Hamiltonovim ciklom $C$, potem je isti cikel $C$ tudi Hamiltonov cikel v grafu $G + uv$. \kljuka
+
+$(\Leftarrow)$: Naj bo $C$ Hamiltonov cikel v grafu $G + uv$. Privzemimo, da $G$ ni Hamiltonov graf. Torej je povezava $uv$ nujno na ciklu $C$. Graf $G$ zato vsebuje Hamiltonovo pot $C - uv = v_1 v_2 \dots v_n$ z začetkom v $u = v_1$ in koncem v $v = v_n$, pri čemer je $n = |V(G)|$.
+
+Opazumo sosede vozlišča $u$. Recimo, da za nek $i < n$ velja $u \sim v_{i+1}$. Premislimo, da tedaj vozlišče $v$ ni povezano z neposrednim predhodnikom vozlišča $v_{i+1}$, to je $v_i$. Res, če je $v \sim v_i$, potem v $G$ najdemo Hamiltonov cikel $v_1 \dots v_i v_n \dots v_{i+1} v_1$, ki pa po predpostavki ne obstaja.
+
+Noben od $d(u)$ neposrednih predhodnikov sosedov $u$ torej ni sosed $v$. To pomeni, da je število sosedov $v$ enako kvečjemu $n - 1 - d(u)$, kjer smo upoštevali še, da vozlišče $v$ ni povezano samo s sabo. Od tod sledi $d(v) \leq n - 1 - d(u)$, kar je enakovredno $d(u) + d(v) \leq n -1$. To je sprto s predpostavko $d(u) + d(v) \geq n = |V(G)|$. Graf $G$ je nazadnje torej res Hamiltonov. \kljuka
+\end{dokaz}
+
+\begin{izrek}[Ore]
+    Naj bo $G$ graf z $|V(G)| \geq 3$. Če za vsaki dve vozlišči $u,v \in V(G)$ z lastnostjo $u \neq v$, $u \not\sim v$ velja $d(u) + d(v) \geq |V(G)|$, potem je $G$ Hamiltonov.
+\end{izrek}
+\begin{dokaz}
+Grafu $G$ dodajamo povezave, dokler ne dobimo polnega grafa $K_n$. Po lemi je graf $G$ Hamiltonov, če in samo če je $K_n$ Hamiltonov, kar pa je res (za $\geq 3$).
+\end{dokaz}
+
+\begin{zgled}
+    Za vsaki različni nepovezani vozlišči v naslednjem grafu velja $d(u) + d(v) \geq 7$. Po Orejevem izreku je graf Hamiltonov. Poišči Hamiltonov cikel v njem!
+
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.5\linewidth]{img/grafi-hamilton-ore.png}
+        \caption{Hamiltonov graf po Orejevem izreku}
+    \end{figure}  
+\end{zgled}
+
+\begin{izrek}[Dirac]
+    Naj bo $G$ graf z $|V(G)| \geq 3$. Če je $\delta(G) \geq |V(G)|/2$, potem je $G$ Hamiltonov.
+\end{izrek}
+\begin{dokaz}
+    Po predpostavki za vsaki vozlišči $u,v \in V(G)$ velja $d(u) + d(v) \geq |V(G)|$. Po Orejevem izreku je graf $G$ zato Hamiltonov.
+\end{dokaz}
+
+\begin{zgled}
+    Najmanjša stopnja vozlišča v naslednjem grafu je $3$, število vozlišč pa je $6$. Po Diracovem izreku je graf Hamiltonov. Poišči Hamiltonov cikel v njem!
+
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.25\linewidth]{img/grafi-hamilton-dirac.png}
+        \caption{Hamiltonov graf po Diracovem izreku}
+    \end{figure}  
+\end{zgled}
+
+Včasih se znajdemo v situaciji, ko nam ob danem grafu niti potrebni niti zadostni pogoji ne odgovorijo na vprašanje, ali je graf Hamiltonov. V tem primeru posežemo po bolj ad hoc tehnikah, kot je prikazano v naslednjem zgledu.
+
+\begin{zgled}
+    Ali je Petersenov graf Hamiltonov? Na naslednji sliki je prikazana Hamiltonova pot.
+
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.25\linewidth]{img/grafi-petersen-hamilton-pot.png}
+        \caption{Hamiltonova pot v Petersenovem grafu}
+    \end{figure}     
+
+    S protislovjem premislimo, da Hamiltonov cikel ne obstaja. Če bi namreč $C$ bil Hamiltonov cikel, potem bi vseboval $10$ vozlišč Petersenovega grafa in $10$ povezav. Označimo vozlišča na $C$ z $v_1v_2 \dots v_{10}$. Ker ima Petersenov graf $15$ povezav, iščemo torej še $5$ dodatnih tetivnih povezav, ki jih dodamo ciklu $C$, da dobimo Petersenov graf. Vemo, da je Petersenov graf $3$-regularen, zato moramo po eno tako tetivno povezavo dodati vsakemu vozlišči na ciklu $C$. Vemo, da Petersenov graf nima $3$-ciklov in nima $4$-ciklov, hkrati pa ima $5$-cikel. Gotovo torej obstaja vozlišče na $C$, brez škode je to kar $v_1$, ki ima tetivno povezavo do soseda antipodnega vozlišča $v_6$, brez škode je to kar $v_5$. Opazujmo zdaj vozlišče $v_6$. Tudi to vozlišče mora imeti tetivno povezavo do nekega vozlišča na $C$. Ker pa Petersenov graf nima $3$-ciklov in nima $4$-ciklov, taka tetivna povezava ne obstaja. To je protislovje z obstojem Hamiltonovega cikla v Petersenovem grafu.
+\end{zgled}
+
 \end{document}
