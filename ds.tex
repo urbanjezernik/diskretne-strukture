@@ -2416,5 +2416,83 @@ Presenetljivo pa sta ta dva očitna potrebna pogoja tudi zadostna.
 \begin{izrek}
     Naj bo $G$ povezan graf. Potem je $G$ Eulerjev natanko tedaj, ko so vsa vozlišča sode stopnje.
 \end{izrek}
+\begin{dokaz}
+Dokazujemo le implikacijo iz desne v levo. Naj bo $S$ sprehod najdaljše možne dolžine v $G$, ki vsebuje vsako povezavo v $G$ \emph{kvečjemu enkrat}. Naj bo $u$ začetno vozlišče $S$ in $v$ končno vozlišče. Za vsakega soseda $w \sim u$ mora biti tudi povezava $\{ u, w \}$ na $S$, sicer lahko $S$ podaljšamo. Ker je $u$ sode stopnje in se sprehod $S$ začne v $u$, se mora tudi končati v $u$.\footnote{Vsaka povezava, ki je na $S$ in vstopi v $u$ in ni začetna povezava na $S$, mora iz $u$ tudi izstopiti.} Torej je $u = v$ in sprehod $S$ je v resnici \emph{obhod}. 
 
+Premislimo, da je ta obhod Eulerjev. Res, če ni, potem izberimo neko povezavo $e = \{ x, y \}$, ki ni na $S$. Naj bo $Q$ neka najkrajša pot od $y$ do sprehoda $S$.\footnote{Taka pot obstaja, ker je graf $G$ povezan.}, zapišimo $Q = y \cdots z$ za vozlišče $z$ na obhodu $S$. Ker je $Q$ najkrajša, nobeno od njegovih vozlišč razen $v$ ne leži na $S$. Potemtakem je sprehod $xy \cdots v \cdots y \cdots v$, kjer se najprej sprehodimo od $x$ do $y$ prek $e$, potem od $y$ do $v$ prek $Q$ in nazadnje od $v$ do $v$ prek $S$, daljši od $S$ in vsako povezavo vsebuje kvečjemu enkrat. To je protislovje z izbiro $S$.
+\end{dokaz}
+
+Soroden kriterij imamo na voljo tudi za Eulerjeve sprehode.
+
+\begin{izrek}
+Naj bo $G$ povezan graf. Potem ima $G$ Eulerjev sprehod natanko tedaj, ko ima največ $2$ vozlišči lihe stopnje.
+\end{izrek}
+\begin{dokaz}
+$(\Rightarrow)$: Vsa vozlišča razen morda začetnega in končnega imajo sodo stopnjo, ker za vsako vhodno povezavo obstaja izhodna. \kljuka
+
+$(\Leftarrow)$: Število vozlišč lihe stopnje je sodo po lemi o rokovanju, torej je lahko enako le $0$ ali $2$. 
+\begin{itemize}
+    \item Če je enako $0$, potem so vsa vozlišča sode stopnje, zato obstaja celo Eulerjev obhod. \kljuka
+    \item Če je enako $2$, potem vozlišči lihe stopnje označimo z $u,v$. Dodajmo povezavo $\{ u, v \}$ grafu $G$. Nov graf $G + uv$ ima vsa vozlišča sode stopnje, torej ima Eulerjev obhod $S$. Tedaj je $S - uv$ Eulerjev sprehod v grafu $G$. \kljuka
+\end{itemize}
+\end{dokaz}
+
+\subsection{Mostovi}
+
+Eulerjeva izvirna motivacija za študiranje Eulerjevih obhodov je bil {\definicija problem königsberških mostov}, ki vprašuje, ali se je v takratnem mestu Königsberg\footnote{Danes imenovanem Kaliningrad.} bilo mogoče sprehoditi po mestu na tak način, da bi začeli in končali sprehod na isti točki, pri tem pa bi se po vsakem od mostov mesta sprehodili natanko enkrat.\footnote{Ta problem je Euler razrešil leta 1736.}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\linewidth]{img/konigsberg.png}
+    \caption{Mostovi v Königsbergu, vir: Wikipedia}
+\end{figure}    
+
+Ta problem lahko prevedemo na teorijo grafo na naslednji način. Vsaki zemeljski masi priredimo vozlišče, mostu pa povezavo. Dobimo multigraf s štirimi vozlišči, eno je stopnje $5$, tri pa so stopnje $3$. Po dokazanih izrekih\footnote{Ni se težko prepričati, da ta dva izreka veljata tudi za multigrafe.} o obstoju Eulerjeve poti oziroma obhoda sklepamo, da v tem grafu ne obstaja niti Eulerjev sprehod. Želen obhod v mestu torej ni mogoč. 
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.25\linewidth]{img/grafi-konigsberg.png}
+    \caption{Graf königsberških mostov}
+\end{figure}    
+
+Sorodno lahko obravnavamo {\definicija problem ljubljanskih mostov}. Ljubljana ima sicer bistveno več mostov kot stari Königsberg, zato se osredotočimo le na centralni del mesta, ki ga severno od gradu omejuje Ljubljanica, južno pa Gruberjev prekop.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1\linewidth]{img/ljubljana.png}
+    \caption{Ljubljanski mostovi}
+\end{figure}    
+
+Imamo torej tri zemeljske mase: severo-zahodno (vključuje FMF), osrednjo (vključuje grad) in južno (vključuje Golovec). Prva je z drugo povezana z $18$ mostovi, druga pa s tretjo z $9$ mostovi. Dobimo torej multigraf s tremi vozlišči stopnje $18$, $27$ in $9$. Po izreku v centralni Ljubljani Eulerjev obhod ne obstaja, obstaja pa Eulerjev sprehod. Pri tem moramo v slednjem začeti in končati sprehod v vozliščih lihe stopnje, torej v posebnem ne na FMF.
+
+\subsection{Risanje grafa v eni potezi}
+
+Dan je graf. Ali ga lahko narišemo v eni potezi? Se pravi, ali lahko na list papirja narišemo graf tako, da vzamemo v roke pisalo, se z njim dotaknemo papirja, neprekinjeno rišemo povezave grafa (brez da bi večkrat potegnili pisalo čez isto povezavo) in na ta način narišemo vse povezave grafa? 
+
+Ta problem je enakovreden temu, da v grafu najdemo Eulerjev sprehod, ki ga lahko neprekinjeno narišemo. Če graf nima Eulerjevega sprehoda, ga torej v eni potezi ne moremo narisati.
+
+\begin{zgled}
+Oglejmo si naslednji graf.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\linewidth]{img/grafi-enapoteza.png}
+    \caption{Risanje grafa s čim manj potezami}
+\end{figure}    
+
+Ta graf je kubičen, zato nima Eulerjevega obhoda in ga ne moremo narisati v eni potezi. Kolikšno je najmanjše število potez, ki zadoščajo, da narišemo ta graf? Na sliki je prikazano, kako ta graf lahko narišemo s $4$ potezami. Vsaka poteza je prikazana s svojo barvo. Prepričajmo se, da pa tega grafa ne moremo narisati z manj kot $4$ potezami. To lahko vidimo tako, da seštejemo stopnje vseh vozlišč v grafu. Po lemi o rokovanju je ta vsota soda. Po drugi strani ima vsaka poteza svoje začetno in končno vozlišče (morda sta to enaki vozlišči), torej skupno prispeva k vsoti stopenj $2$ za vozlišča na sprehodu in $1$ za začetno in končno vozlišče. Graf, narisan v $3$ potezah, bi zato imel kvečjemu $6$ vozlišč lihe stopnje. Obravnavan graf pa ima $8$ vozlišč stopnje $3$.
+\end{zgled}
+
+Zadnji zgled lahko posplošimo na naslednji način.
+
+\begin{trditev}
+Naj bo $G$ povezan graf z $\ell$ vozlišči lihe stopnje. Najmanjše število potez, s katerimi lahko narišemo $G$, je $1$ za $\ell = 0$ in $\ell/2$ za $\ell > 0$.
+\end{trditev}
+\begin{dokaz}
+Po lemi o rokovanju je $\ell$ sodo število. Če je $\ell = 0$, po izreku obstaja Eulerjev obhod, torej lahko graf narišemo v eni potezi. Če pa je $\ell > 0$, potem po argumentu v zadnjem zgledu gotovo potrebujemo vsaj $\ell/2$ potez, da narišemo graf $G$. Prepričajmo se, da $\ell/2$ potez tudi zadostuje. Res, naj bodo $u_1, u_2, \dots, u_{\ell/2}$ ter $v_1, v_2, \dots, v_{\ell/2}$ vozlišča lihe stopnje v $G$. Tedaj graf $G + u_1 v_1 + u_2 v_2 + \cdots u_{\ell/2} v_{\ell/2}$ nima vozlišč lihe stopnje, torej ima Eulerjev obhod
+\[
+    S = u_1 v_1 \cdots u_2 v_2 \cdots u_{\ell/2} v_{\ell/2} \cdots u_1.
+\]
+To pomeni, da lahko graf $G$ narišemo v $\ell/2$ potezah, in sicer v 1. potezi narišemo del $S$ od $v_1$ do $u_2$, v 2. potezi narišemo del $S$ od $u_2$ do $v_2$, \dots, v $\ell/2$-ti potezi narišemo del $S$ od $v_{\ell/2}$ do $u_1$.
+\end{dokaz}
 \end{document}

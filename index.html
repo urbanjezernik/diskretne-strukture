@@ -43,7 +43,7 @@
             <strong> Urban Jezernik <br>
               Univerza v Ljubljani, Fakulteta za matematiko in fiziko </strong> <br>
 
-            Zadnja posodobitev: 04. 01. 2023
+            Zadnja posodobitev: 05. 01. 2023
           </div>
 
           <div id="spinner" class="text-center">
@@ -5253,6 +5253,240 @@
             <span class="math inline">\(G\)</span> Eulerjev natanko
             tedaj, ko so vsa vozlišča sode stopnje.</p>
             </div>
+            <div class="proof">
+            <p><em>Proof.</em> Dokazujemo le implikacijo iz desne v
+            levo. Naj bo <span class="math inline">\(S\)</span> sprehod
+            najdaljše možne dolžine v <span
+            class="math inline">\(G\)</span>, ki vsebuje vsako povezavo
+            v <span class="math inline">\(G\)</span> <em>kvečjemu
+            enkrat</em>. Naj bo <span class="math inline">\(u\)</span>
+            začetno vozlišče <span class="math inline">\(S\)</span> in
+            <span class="math inline">\(v\)</span> končno vozlišče. Za
+            vsakega soseda <span class="math inline">\(w \sim u\)</span>
+            mora biti tudi povezava <span class="math inline">\(\{ u, w
+            \}\)</span> na <span class="math inline">\(S\)</span>, sicer
+            lahko <span class="math inline">\(S\)</span> podaljšamo. Ker
+            je <span class="math inline">\(u\)</span> sode stopnje in se
+            sprehod <span class="math inline">\(S\)</span> začne v <span
+            class="math inline">\(u\)</span>, se mora tudi končati v
+            <span class="math inline">\(u\)</span>.<a href="#fn20"
+            class="footnote-ref" id="fnref20"
+            role="doc-noteref"><sup>20</sup></a> Torej je <span
+            class="math inline">\(u = v\)</span> in sprehod <span
+            class="math inline">\(S\)</span> je v resnici
+            <em>obhod</em>.</p>
+            <p>Premislimo, da je ta obhod Eulerjev. Res, če ni, potem
+            izberimo neko povezavo <span class="math inline">\(e = \{ x,
+            y \}\)</span>, ki ni na <span
+            class="math inline">\(S\)</span>. Naj bo <span
+            class="math inline">\(Q\)</span> neka najkrajša pot od <span
+            class="math inline">\(y\)</span> do sprehoda <span
+            class="math inline">\(S\)</span>.<a href="#fn21"
+            class="footnote-ref" id="fnref21"
+            role="doc-noteref"><sup>21</sup></a>, zapišimo <span
+            class="math inline">\(Q = y \cdots z\)</span> za vozlišče
+            <span class="math inline">\(z\)</span> na obhodu <span
+            class="math inline">\(S\)</span>. Ker je <span
+            class="math inline">\(Q\)</span> najkrajša, nobeno od
+            njegovih vozlišč razen <span
+            class="math inline">\(v\)</span> ne leži na <span
+            class="math inline">\(S\)</span>. Potemtakem je sprehod
+            <span class="math inline">\(xy \cdots v \cdots y \cdots
+            v\)</span>, kjer se najprej sprehodimo od <span
+            class="math inline">\(x\)</span> do <span
+            class="math inline">\(y\)</span> prek <span
+            class="math inline">\(e\)</span>, potem od <span
+            class="math inline">\(y\)</span> do <span
+            class="math inline">\(v\)</span> prek <span
+            class="math inline">\(Q\)</span> in nazadnje od <span
+            class="math inline">\(v\)</span> do <span
+            class="math inline">\(v\)</span> prek <span
+            class="math inline">\(S\)</span>, daljši od <span
+            class="math inline">\(S\)</span> in vsako povezavo vsebuje
+            kvečjemu enkrat. To je protislovje z izbiro <span
+            class="math inline">\(S\)</span>. ◻</p>
+            </div>
+            <p>Soroden kriterij imamo na voljo tudi za Eulerjeve
+            sprehode.</p>
+            <div class="izrek">
+            <p><strong>Izrek 5.2</strong>. Naj bo <span
+            class="math inline">\(G\)</span> povezan graf. Potem ima
+            <span class="math inline">\(G\)</span> Eulerjev sprehod
+            natanko tedaj, ko ima največ <span
+            class="math inline">\(2\)</span> vozlišči lihe stopnje.</p>
+            </div>
+            <div class="proof">
+            <p><em>Proof.</em> <span
+            class="math inline">\((\Rightarrow)\)</span>: Vsa vozlišča
+            razen morda začetnega in končnega imajo sodo stopnjo, ker za
+            vsako vhodno povezavo obstaja izhodna. <span
+            class="math inline">\(\checkmark\)</span></p>
+            <p><span class="math inline">\((\Leftarrow)\)</span>:
+            Število vozlišč lihe stopnje je sodo po lemi o rokovanju,
+            torej je lahko enako le <span
+            class="math inline">\(0\)</span> ali <span
+            class="math inline">\(2\)</span>.</p>
+            <ul>
+            <li><p>Če je enako <span class="math inline">\(0\)</span>,
+            potem so vsa vozlišča sode stopnje, zato obstaja celo
+            Eulerjev obhod. <span
+            class="math inline">\(\checkmark\)</span></p></li>
+            <li><p>Če je enako <span class="math inline">\(2\)</span>,
+            potem vozlišči lihe stopnje označimo z <span
+            class="math inline">\(u,v\)</span>. Dodajmo povezavo <span
+            class="math inline">\(\{ u, v \}\)</span> grafu <span
+            class="math inline">\(G\)</span>. Nov graf <span
+            class="math inline">\(G + uv\)</span> ima vsa vozlišča sode
+            stopnje, torej ima Eulerjev obhod <span
+            class="math inline">\(S\)</span>. Tedaj je <span
+            class="math inline">\(S - uv\)</span> Eulerjev sprehod v
+            grafu <span class="math inline">\(G\)</span>. <span
+            class="math inline">\(\checkmark\)</span></p></li>
+            </ul>
+            <p> ◻</p>
+            </div>
+            <h3 id="mostovi">Mostovi</h3>
+            <p>Eulerjeva izvirna motivacija za študiranje Eulerjevih
+            obhodov je bil <span><strong><em>problem königsberških
+            mostov</em></strong></span>, ki vprašuje, ali se je v
+            takratnem mestu Königsberg<a href="#fn22"
+            class="footnote-ref" id="fnref22"
+            role="doc-noteref"><sup>22</sup></a> bilo mogoče sprehoditi
+            po mestu na tak način, da bi začeli in končali sprehod na
+            isti točki, pri tem pa bi se po vsakem od mostov mesta
+            sprehodili natanko enkrat.<a href="#fn23"
+            class="footnote-ref" id="fnref23"
+            role="doc-noteref"><sup>23</sup></a></p>
+            <figure>
+            <img src="img/konigsberg.png"
+            alt="Mostovi v Königsbergu, vir: Wikipedia" />
+            <figcaption aria-hidden="true">Mostovi v Königsbergu, vir:
+            Wikipedia</figcaption>
+            </figure>
+            <p>Ta problem lahko prevedemo na teorijo grafo na naslednji
+            način. Vsaki zemeljski masi priredimo vozlišče, mostu pa
+            povezavo. Dobimo multigraf s štirimi vozlišči, eno je
+            stopnje <span class="math inline">\(5\)</span>, tri pa so
+            stopnje <span class="math inline">\(3\)</span>. Po dokazanih
+            izrekih<a href="#fn24" class="footnote-ref" id="fnref24"
+            role="doc-noteref"><sup>24</sup></a> o obstoju Eulerjeve
+            poti oziroma obhoda sklepamo, da v tem grafu ne obstaja niti
+            Eulerjev sprehod. Želen obhod v mestu torej ni mogoč.</p>
+            <figure>
+            <img src="img/grafi-konigsberg.png"
+            alt="Graf königsberških mostov" />
+            <figcaption aria-hidden="true">Graf königsberških
+            mostov</figcaption>
+            </figure>
+            <p>Sorodno lahko obravnavamo <span><strong><em>problem
+            ljubljanskih mostov</em></strong></span>. Ljubljana ima
+            sicer bistveno več mostov kot stari Königsberg, zato se
+            osredotočimo le na centralni del mesta, ki ga severno od
+            gradu omejuje Ljubljanica, južno pa Gruberjev prekop.</p>
+            <figure>
+            <img src="img/ljubljana.png" alt="Ljubljanski mostovi" />
+            <figcaption aria-hidden="true">Ljubljanski
+            mostovi</figcaption>
+            </figure>
+            <p>Imamo torej tri zemeljske mase: severo-zahodno (vključuje
+            FMF), osrednjo (vključuje grad) in južno (vključuje
+            Golovec). Prva je z drugo povezana z <span
+            class="math inline">\(18\)</span> mostovi, druga pa s tretjo
+            z <span class="math inline">\(9\)</span> mostovi. Dobimo
+            torej multigraf s tremi vozlišči stopnje <span
+            class="math inline">\(18\)</span>, <span
+            class="math inline">\(27\)</span> in <span
+            class="math inline">\(9\)</span>. Po izreku v centralni
+            Ljubljani Eulerjev obhod ne obstaja, obstaja pa Eulerjev
+            sprehod. Pri tem moramo v slednjem začeti in končati sprehod
+            v vozliščih lihe stopnje, torej v posebnem ne na FMF.</p>
+            <h3 id="risanje-grafa-v-eni-potezi">Risanje grafa v eni
+            potezi</h3>
+            <p>Dan je graf. Ali ga lahko narišemo v eni potezi? Se
+            pravi, ali lahko na list papirja narišemo graf tako, da
+            vzamemo v roke pisalo, se z njim dotaknemo papirja,
+            neprekinjeno rišemo povezave grafa (brez da bi večkrat
+            potegnili pisalo čez isto povezavo) in na ta način narišemo
+            vse povezave grafa?</p>
+            <p>Ta problem je enakovreden temu, da v grafu najdemo
+            Eulerjev sprehod, ki ga lahko neprekinjeno narišemo. Če graf
+            nima Eulerjevega sprehoda, ga torej v eni potezi ne moremo
+            narisati.</p>
+            <div class="zgled">
+            <p><strong>Zgled 5.18</strong>. Oglejmo si naslednji
+            graf.</p>
+            <figure>
+            <img src="img/grafi-enapoteza.png"
+            alt="Risanje grafa s čim manj potezami" />
+            <figcaption aria-hidden="true">Risanje grafa s čim manj
+            potezami</figcaption>
+            </figure>
+            <p>Ta graf je kubičen, zato nima Eulerjevega obhoda in ga ne
+            moremo narisati v eni potezi. Kolikšno je najmanjše število
+            potez, ki zadoščajo, da narišemo ta graf? Na sliki je
+            prikazano, kako ta graf lahko narišemo s <span
+            class="math inline">\(4\)</span> potezami. Vsaka poteza je
+            prikazana s svojo barvo. Prepričajmo se, da pa tega grafa ne
+            moremo narisati z manj kot <span
+            class="math inline">\(4\)</span> potezami. To lahko vidimo
+            tako, da seštejemo stopnje vseh vozlišč v grafu. Po lemi o
+            rokovanju je ta vsota soda. Po drugi strani ima vsaka poteza
+            svoje začetno in končno vozlišče (morda sta to enaki
+            vozlišči), torej skupno prispeva k vsoti stopenj <span
+            class="math inline">\(2\)</span> za vozlišča na sprehodu in
+            <span class="math inline">\(1\)</span> za začetno in končno
+            vozlišče. Graf, narisan v <span
+            class="math inline">\(3\)</span> potezah, bi zato imel
+            kvečjemu <span class="math inline">\(6\)</span> vozlišč lihe
+            stopnje. Obravnavan graf pa ima <span
+            class="math inline">\(8\)</span> vozlišč stopnje <span
+            class="math inline">\(3\)</span>.</p>
+            </div>
+            <p>Zadnji zgled lahko posplošimo na naslednji način.</p>
+            <div class="trditev">
+            <p><strong>Trditev 5.6</strong>. Naj bo <span
+            class="math inline">\(G\)</span> povezan graf z <span
+            class="math inline">\(\ell\)</span> vozlišči lihe stopnje.
+            Najmanjše število potez, s katerimi lahko narišemo <span
+            class="math inline">\(G\)</span>, je <span
+            class="math inline">\(1\)</span> za <span
+            class="math inline">\(\ell = 0\)</span> in <span
+            class="math inline">\(\ell/2\)</span> za <span
+            class="math inline">\(\ell &gt; 0\)</span>.</p>
+            </div>
+            <div class="proof">
+            <p><em>Proof.</em> Po lemi o rokovanju je <span
+            class="math inline">\(\ell\)</span> sodo število. Če je
+            <span class="math inline">\(\ell = 0\)</span>, po izreku
+            obstaja Eulerjev obhod, torej lahko graf narišemo v eni
+            potezi. Če pa je <span class="math inline">\(\ell &gt;
+            0\)</span>, potem po argumentu v zadnjem zgledu gotovo
+            potrebujemo vsaj <span class="math inline">\(\ell/2\)</span>
+            potez, da narišemo graf <span
+            class="math inline">\(G\)</span>. Prepričajmo se, da <span
+            class="math inline">\(\ell/2\)</span> potez tudi zadostuje.
+            Res, naj bodo <span class="math inline">\(u_1, u_2, \dots,
+            u_{\ell/2}\)</span> ter <span class="math inline">\(v_1,
+            v_2, \dots, v_{\ell/2}\)</span> vozlišča lihe stopnje v
+            <span class="math inline">\(G\)</span>. Tedaj graf <span
+            class="math inline">\(G + u_1 v_1 + u_2 v_2 + \cdots
+            u_{\ell/2} v_{\ell/2}\)</span> nima vozlišč lihe stopnje,
+            torej ima Eulerjev obhod <span class="math display">\[S =
+            u_1 v_1 \cdots u_2 v_2 \cdots u_{\ell/2} v_{\ell/2} \cdots
+            u_1.\]</span> To pomeni, da lahko graf <span
+            class="math inline">\(G\)</span> narišemo v <span
+            class="math inline">\(\ell/2\)</span> potezah, in sicer v 1.
+            potezi narišemo del <span class="math inline">\(S\)</span>
+            od <span class="math inline">\(v_1\)</span> do <span
+            class="math inline">\(u_2\)</span>, v 2. potezi narišemo del
+            <span class="math inline">\(S\)</span> od <span
+            class="math inline">\(u_2\)</span> do <span
+            class="math inline">\(v_2\)</span>, …, v <span
+            class="math inline">\(\ell/2\)</span>-ti potezi narišemo del
+            <span class="math inline">\(S\)</span> od <span
+            class="math inline">\(v_{\ell/2}\)</span> do <span
+            class="math inline">\(u_1\)</span>. ◻</p>
+            </div>
             <section class="footnotes footnotes-end-of-document"
             role="doc-endnotes">
             <hr />
@@ -5376,6 +5610,27 @@
             obhodom pridemo v neko vozlišče, moramo iz njega tudi oditi.
             Enako velja za začetno vozlišče obhoda, ki je enako
             končnemu.<a href="#fnref19" class="footnote-back"
+            role="doc-backlink">↩︎</a></p></li>
+            <li id="fn20" role="doc-endnote"><p>Vsaka povezava, ki je na
+            <span class="math inline">\(S\)</span> in vstopi v <span
+            class="math inline">\(u\)</span> in ni začetna povezava na
+            <span class="math inline">\(S\)</span>, mora iz <span
+            class="math inline">\(u\)</span> tudi izstopiti.<a
+            href="#fnref20" class="footnote-back"
+            role="doc-backlink">↩︎</a></p></li>
+            <li id="fn21" role="doc-endnote"><p>Taka pot obstaja, ker je
+            graf <span class="math inline">\(G\)</span> povezan.<a
+            href="#fnref21" class="footnote-back"
+            role="doc-backlink">↩︎</a></p></li>
+            <li id="fn22" role="doc-endnote"><p>Danes imenovanem
+            Kaliningrad.<a href="#fnref22" class="footnote-back"
+            role="doc-backlink">↩︎</a></p></li>
+            <li id="fn23" role="doc-endnote"><p>Ta problem je Euler
+            razrešil leta 1736.<a href="#fnref23" class="footnote-back"
+            role="doc-backlink">↩︎</a></p></li>
+            <li id="fn24" role="doc-endnote"><p>Ni se težko prepričati,
+            da ta dva izreka veljata tudi za multigrafe.<a
+            href="#fnref24" class="footnote-back"
             role="doc-backlink">↩︎</a></p></li>
             </ol>
             </section>
