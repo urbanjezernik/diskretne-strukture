@@ -2439,7 +2439,7 @@ $(\Leftarrow)$: Število vozlišč lihe stopnje je sodo po lemi o rokovanju, tor
 
 \subsection{Mostovi}
 
-Eulerjeva izvirna motivacija za študiranje Eulerjevih obhodov je bil {\definicija problem königsberških mostov}, ki vprašuje, ali se je v takratnem mestu Königsberg\footnote{Danes imenovanem Kaliningrad.} bilo mogoče sprehoditi po mestu na tak način, da bi začeli in končali sprehod na isti točki, pri tem pa bi se po vsakem od mostov mesta sprehodili natanko enkrat.\footnote{Ta problem je Euler razrešil leta 1736.}
+Eulerjeva izvirna motivacija za študiranje obhodov v grafih, ki jim danes pravimo Eulerjevi obhodi, je bil {\definicija problem königsberških mostov}. Ta vprašuje, ali se je v takratnem mestu Königsberg\footnote{Danes imenovanem Kaliningrad.} bilo mogoče sprehoditi po mestu na tak način, da bi začeli in končali sprehod na isti točki, pri tem pa bi se po vsakem od mostov mesta sprehodili natanko enkrat.\footnote{Ta problem je Euler razrešil leta 1736.}
 
 \begin{figure}[h]
     \centering
@@ -2495,4 +2495,85 @@ Po lemi o rokovanju je $\ell$ sodo število. Če je $\ell = 0$, po izreku obstaj
 \]
 To pomeni, da lahko graf $G$ narišemo v $\ell/2$ potezah, in sicer v 1. potezi narišemo del $S$ od $v_1$ do $u_2$, v 2. potezi narišemo del $S$ od $u_2$ do $v_2$, \dots, v $\ell/2$-ti potezi narišemo del $S$ od $v_{\ell/2}$ do $u_1$.
 \end{dokaz}
+
+\section{Hamiltonovi grafi}
+
+Hamiltonovi grafi so analogni Eulerjevim, kjer le zamenjamo vlogo povezav in vozlišč. Vpeta pot v grafu je {\definicija Hamiltonova pot}. Vpeti cikel v grafu je {\definicija Hamiltonov cikel}. 
+
+\begin{zgled}
+    \leavevmode
+    \begin{itemize}
+        \item Lizika vsebuje Hamiltonovo pot, poln graf $K_4$ vsebuje Hamiltonov cikel.
+        \item Naslednji grafi vsebujejo Hamiltonove cikle, ki so označeni z rdečo barvo.
+        
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=1\linewidth]{img/grafi-hamilton.png}
+            \caption{Grafi s Hamiltonovim ciklom}
+        \end{figure}  
+
+        \item Ali naslednji graf vsebuje Hamiltonov cikel?
+
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=0.5\linewidth]{img/grafi-hamilton-zgled.png}
+            \caption{Ali ta graf vsebuje Hamiltonov cikel?}
+        \end{figure}  
+
+    \end{itemize}
+\end{zgled}
+
+Graf je {\definicija Hamiltonov}, če vsebuje Hamiltonov cikel. 
+
+V prejšnjem razdelku smo spoznali, da lahko za poljuben graf zelo hitro ugotovimo, ali je Eulerjev. Za ugotavljanje hamiltonskosti grafa pa ni znan noben preprost postopek, ki bi bil uporaben za vse grafe. Preverjanje hamiltonskosti je običajno bistveno težji problem od preverjanja, ali je graf Eulerjev.\footnote{Hamilton je Hamiltonove grafe opazoval približno sto let po Eulerju.} Poznanih pa je nekaj \emph{potrebnih} pogojev in nekaj \emph{zadostnih} pogojev za hamiltonskost. 
+
+\begin{izrek}[potreben pogoj za hamiltonskost]
+Naj bo $G$ graf. Predpostavimo, da v $G$ obstaja neprazna podmnožica $S \subseteq V(G)$, za katero velja $\Omega(G-S) > |S|$. Tedaj graf $G$ \emph{ni} Hamiltonov.
+\end{izrek}
+\begin{dokaz}
+Predpostavimo, da je $G$ Hamiltonov graf s Hamiltonovim ciklom $C$. Naj bo $S$ neka neprazna množica vozlišč grafa $G$. Ko odstranimo vozlišča $S$ s cikla $C$, ta cikel razpade na kvečjemu $|S|$ komponent (krožnih lokov). Ti loki so prek povezav grafa $G$, ki ne ležijo na ciklu $C$, lahko morda še povezani med sabo. Graf $G - S$ ima zatorej kvečjemu $|S|$ komponent in velja torej $\Omega(G - S) \leq |S|$. S tem je dokaz zaključen.
+\end{dokaz}
+
+\begin{zgled}
+Ko liziki odstranimo vozlišče stopnje $3$, razpade na dve komponenti. Lizika torej ni Hamiltonov graf.
+\end{zgled}
+
+Zabeležimo poseben primer dokazanega izreka za dvodelne grafe.
+
+\begin{posledica}
+Naj bo $G$ dvodelen graf z $V(G) = A \cup B$, $A \cap B = \emptyset$, pri čemer ima vsaka povezava v $E(G)$ eno krajišče v $A$, drugo pa v $B$. Če je $|A| \neq |B|$, potem $G$ \emph{ni} Hamiltonov.
+\end{posledica}
+\begin{dokaz}
+    Brez škode za splošnost lahko predpostavimo, da velja $|A| < |B|$. Vzemimo $S = A$. Ko v grafu $G$ odstranimo vozlišča $A$, nam ostane graf z vozlišči $B$ in brez povezav. Velja torej $\Omega(G-A) = |B| > |A|$. Po izreku graf $G$ zato ni Hamiltonov.
+\end{dokaz}
+
+\begin{zgled}
+Vrnimo se k zadnjemu zgledu iz začetka tega razdelka. Obravnavani graf je dvodelen z biparticijo vozlišč $A \cup B$, pri čemer je $|A| = 5$ in $|B| = 6$. Po posledici ta graf zato ni Hamiltonov.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\linewidth]{img/grafi-hamilton-zgled-dvodelen.png}
+    \caption{Dvodelen graf, ki ni Hamiltonov}
+\end{figure}  
+\end{zgled}
+
+Analogen potreben pogoj lahko izpeljemo za obstoj Hamiltonove poti.
+
+\begin{izrek}[potreben pogoj za obstoj Hamiltonove poti]
+Naj bo $G$ graf. Predpostavimo, da v $G$ obstaja neprazna podmnožica $S \subseteq V(G)$, za katero velja $\Omega(G-S) > |S| + 1$. Tedaj graf $G$ \emph{nima} Hamiltonove poti.   
+\end{izrek}
+\begin{dokaz}
+    Predpostavimo, da ima $G$ Hamiltonovo pot $P$. Naj bo $S$ neka neprazna množica vozlišč grafa $G$. Ko odstranimo vozlišča $S$ s poti $P$, ta pot razpade na kvečjemu $|S|+1$ komponent (delov poti). Ti deli so prek povezav grafa $G$, ki ne ležijo na poti $P$, lahko morda še povezani med sabo. Graf $G - S$ ima zatorej kvečjemu $|S| + 1$ komponent in velja torej $\Omega(G - S) \leq |S| + 1$. S tem je dokaz zaključen.
+\end{dokaz}
+
+\begin{zgled}
+Dvodelen graf iz zadnjega zgleda ni Hamiltonov, saj z odstranitvijo $5$ točk graf razpade na $6$ komponent. Iz tega argumenta pa še ne sledi, da ta graf nima Hamiltonove poti, saj bi za to moral razpasti na vsaj $7$ komponent. V resnici ta graf ima Hamiltonovo pot, kot je prikazano na naslednji sliki. 
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\linewidth]{img/grafi-hamilton-zgled-pot.png}
+    \caption{Hamiltonova pot v grafu}
+\end{figure}  
+\end{zgled}
+
 \end{document}
