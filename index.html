@@ -130,6 +130,8 @@
               id="toc-eulerjevi-grafi">Eulerjevi grafi</a></li>
               <li><a href="#hamiltonovi-grafi"
               id="toc-hamiltonovi-grafi">Hamiltonovi grafi</a></li>
+              <li><a href="#ravninski-grafi"
+              id="toc-ravninski-grafi">Ravninski grafi</a></li>
               </ul></li>
               </ul>
             </div>
@@ -5901,6 +5903,395 @@
             <span class="math inline">\(8 \times 8\)</span>, vir:
             Wikipedia</figcaption>
             </figure>
+            <h2 id="ravninski-grafi">Ravninski grafi</h2>
+            <p>Obravnavajmo naslednji izziv, ki je na prvi pogled
+            osnovnošolska naloga. Pred nami so <span
+            class="math inline">\(3\)</span> hiše in <span
+            class="math inline">\(3\)</span> drevesa. S potjo je
+            potrebno povezati vsako hišo z vsakim drevesom, ne da bi se
+            pri tem poti sekale med sabo. Če si vsako hišo oziroma drevo
+            predstavljamo kot vozlišče, pot pa kot povezavo, potem
+            pravzaprav vprašujemo, če lahko graf <span
+            class="math inline">\(K_{3,3}\)</span> narišemo v ravnino
+            tako, da se nobeni dve povezavi med sabo ne sekata (razen v
+            vozliščih). Splošneje se lahko torej vprašamo, ali lahko
+            poljuben graf narišemo v ravnini brez križanja povezav.</p>
+            <div class="zgled">
+            <p><strong>Zgled 5.27</strong>. Nekatere grafe gotovo lahko
+            narišemo v ravnini brez križanja povezav, na primer liziko,
+            cikle, drevesa. Tudi poln graf <span
+            class="math inline">\(K_4\)</span> lahko narišemo na ta
+            način, kot je prikazano na sliki.</p>
+            <figure>
+            <img src="img/grafi-ravninski-k4.png"
+            alt="Ravninski graf K_4" />
+            <figcaption aria-hidden="true">Ravninski graf <span
+            class="math inline">\(K_4\)</span></figcaption>
+            </figure>
+            </div>
+            <p>Po nekaj poskusih se zdi, da grafa <span
+            class="math inline">\(K_{3,3}\)</span> ne moremo narisati na
+            želeni način v ravnini. Kako bi dokazali, da je to res
+            nemogoče? Preden lahko odgovorimo na to vprašanje, moramo
+            najprej matematično bolj natančno formulirati problem.</p>
+            <p><span><strong><em>Vložitev grafa <span
+            class="math inline">\(G\)</span> v
+            ravnino</em></strong></span> je injektivna preslikava <span
+            class="math inline">\(\phi \colon V(G) \to
+            \mathbf{R}^2\)</span> skupaj z družino zveznih preslikav
+            <span class="math inline">\(\phi_e \colon [0,1] \to
+            \mathbf{R}^2\)</span> za vsako povezavo <span
+            class="math inline">\(e \in E(G)\)</span>, da velja:</p>
+            <ol>
+            <li><p>če je <span class="math inline">\(e = \{ u,v \} \in
+            E(G)\)</span>, potem je <span class="math inline">\(\{
+            \phi_e(0), \phi_e(1) \} = \{ \phi(u), \phi(v) \}\)</span>,<a
+            href="#fn27" class="footnote-ref" id="fnref27"
+            role="doc-noteref"><sup>27</sup></a></p></li>
+            <li><p>za vsak <span class="math inline">\(e \in
+            E(G)\)</span> je <span
+            class="math inline">\(\phi_e|_{(0,1)}\)</span> injektivna,<a
+            href="#fn28" class="footnote-ref" id="fnref28"
+            role="doc-noteref"><sup>28</sup></a></p></li>
+            <li><p>za vsaka <span class="math inline">\(e, e&#39; \in
+            E(G)\)</span>, <span class="math inline">\(e \neq
+            e&#39;\)</span>, velja <span
+            class="math inline">\(\mathrm{im} \phi_e|_{(0,1)} \cap
+            \mathrm{im} \phi_{e&#39;}|_{(0,1)} = \emptyset\)</span>,<a
+            href="#fn29" class="footnote-ref" id="fnref29"
+            role="doc-noteref"><sup>29</sup></a></p></li>
+            <li><p>za vsak <span class="math inline">\(e \in
+            E(G)\)</span> velja <span class="math inline">\(\mathrm{im}
+            \phi_e|_{(0,1)} \cap \mathrm{im} \phi =
+            \emptyset\)</span>.<a href="#fn30" class="footnote-ref"
+            id="fnref30" role="doc-noteref"><sup>30</sup></a></p></li>
+            </ol>
+            <p>Vse podatke o vložitvi grafa v ravnino zberemo v par
+            <span class="math inline">\((\phi, \{ \phi_e \}_{e \in
+            E(G)})\)</span>, ki ga krajše označimo kot <span
+            class="math inline">\(\mathcal{G}\)</span>.<a href="#fn31"
+            class="footnote-ref" id="fnref31"
+            role="doc-noteref"><sup>31</sup></a></p>
+            <p>Graf <span class="math inline">\(G\)</span> je
+            <span><strong><em>ravninski</em></strong></span>, če ima
+            kakšno vložitev v ravnino. Pri tem seveda lahko obstajajo
+            različne vložitve.</p>
+            <div class="zgled">
+            <p><strong>Zgled 5.28</strong>. Disjunktno unijo <span
+            class="math inline">\(K_3 \cup K_3\)</span> lahko narišemo v
+            ravnino na dva vsaj načina, in sicer lahko en trikotnik
+            narišemo znotraj drugega ali pa dva trikotnika narišemo
+            enega ob drugem.</p>
+            <figure>
+            <img src="img/grafi-ravninski-k3k3.png"
+            alt="Dve različni vložitvi grafa K_3 \cup K_3 v ravnino" />
+            <figcaption aria-hidden="true">Dve različni vložitvi grafa
+            <span class="math inline">\(K_3 \cup K_3\)</span> v
+            ravnino</figcaption>
+            </figure>
+            </div>
+            <p>Vložitev grafa razdeli ravnino na povezane dele, ki jim
+            pravimo <span><strong><em>lica</em></strong></span>
+            vložitve. Vselej je natanko eno lice neomejeno – imenujemo
+            ga <span><strong><em>zunanje lice</em></strong></span>.</p>
+            <div class="zgled">
+            <p><strong>Zgled 5.29</strong>. </p>
+            <ul>
+            <li><p>Vsaka ravninska vložitev drevesa ima eno samo lice,
+            saj graf nima nobenih ciklov.</p></li>
+            <li><p>Obe vložitvi grafa <span class="math inline">\(K_3
+            \cup K_3\)</span> iz zadnjega zgleda imata <span
+            class="math inline">\(3\)</span> lica.</p>
+            <figure>
+            <img src="img/grafi-ravninski-k3k3-lica.png"
+            alt="Lica vložitev grafa K_3 \cup K_3 v ravnino" />
+            <figcaption aria-hidden="true">Lica vložitev grafa <span
+            class="math inline">\(K_3 \cup K_3\)</span> v
+            ravnino</figcaption>
+            </figure></li>
+            </ul>
+            </div>
+            <p>Naj bo <span class="math inline">\(\mathcal{G}\)</span>
+            vložitev grafa <span class="math inline">\(G\)</span> v
+            ravnino. Označimo množico točk v ravnini, ki predstavljajo
+            vozlišča, povezave in lica: <span
+            class="math display">\[\begin{aligned}
+                V(\mathcal{G}) &amp;= \{ \phi(u) \mid u \in V(G) \}
+            \subseteq \mathbf{R}^2, \\
+                E(\mathcal{G}) &amp;= \{ \mathrm{im} \phi_e \mid e \in
+            E(G) \}, \\
+                F(\mathcal{G}) &amp;= \{ f \mid \text{$f$ lice vložitve
+            $\mathcal{G}$}\}.\end{aligned}\]</span>
+            <span><strong><em>Dolžina lica</em></strong></span> <span
+            class="math inline">\(f \in F(\mathcal{G})\)</span> je
+            število povezav, ki ležijo na robu lica <span
+            class="math inline">\(f\)</span>. To dolžino označimo z
+            <span class="math inline">\(\ell(f)\)</span>.</p>
+            <div class="zgled">
+            <p><strong>Zgled 5.30</strong>. Obravnavajmo ravninski
+            vložitvi <span class="math inline">\(K_3 \cup K_3\)</span>
+            iz zadnjega zgleda. V prvi ravninski vložitvi je dolžina
+            rdečega lica enaka <span class="math inline">\(3\)</span>,
+            dolžina modrega je enaka <span
+            class="math inline">\(6\)</span> in dolžina zelenega je
+            enaka <span class="math inline">\(3\)</span>. V drugi
+            ravninski vložitvi sta dolžini modrega in rdečega lica enaki
+            <span class="math inline">\(3\)</span>, dolžina zelenega pa
+            je enaka <span class="math inline">\(6\)</span>.</p>
+            </div>
+            <div class="izrek">
+            <p><strong>Izrek 5.8</strong> (lema o rokovanju za ravninske
+            grafe). Naj bo <span class="math inline">\(G\)</span> graf z
+            ravninsko vložitvijo <span
+            class="math inline">\(\mathcal{G}\)</span>. Potem je <span
+            class="math display">\[\sum_{f \in F(\mathcal{G})} \ell(f) =
+            2 \cdot |E(G)|.\]</span></p>
+            </div>
+            <div class="proof">
+            <p><em>Proof.</em> Pristopimo podobno kot pri dokazu leme o
+            rokovanju. Slika vsake povezave v <span
+            class="math inline">\(E(G)\)</span> pripada robu dveh lic
+            (vsakemu enkrat) ali enega samega lica (dvakrat). Naj bo
+            <span class="math inline">\(E(G) = \{ e_1, e_2, \dots, e_a
+            \}\)</span> in <span class="math inline">\(F(\mathcal{G}) =
+            \{ f_1, f_2, \dots, f_b \}\)</span>. Definirajmo matriko
+            <span class="math inline">\(M = [m_{ij}]_{1 \leq i \leq a, 1
+            \leq j \leq b}\)</span> razsežnosti <span
+            class="math inline">\(a \times b\)</span> z vnosi <span
+            class="math display">\[m_{ij} = \begin{cases}
+                    0 &amp; \text{$e_j$ ni na robu $f_i$,} \\
+                    1 &amp; \text{$e_j$ je na robu $f_i$ (enkrat),} \\
+                    2 &amp; \text{$e_j$ je na robu $f_i$ (dvakrat).}
+                \end{cases}\]</span> Vsota vseh vnosov matrike <span
+            class="math inline">\(M\)</span> je po eni strani enaka
+            <span class="math display">\[\sum_{i = 1}^a \sum_{j = 1}^b
+            m_{ij} = \sum_{i = 1}^a \ell(f_i) = \sum_{f \in
+            F(\mathcal{G})} \ell(f),\]</span> po drugi strani pa je
+            enaka <span class="math display">\[\sum_{j = 1}^b \sum_{i =
+            1}^a  m_{ij} = \sum_{j = 1}^b 2 = 2b = 2 \cdot
+            |E(G)|,\]</span> s čimer je dokaz zaključen. ◻</p>
+            </div>
+            <p>Med števili <span
+            class="math inline">\(|V(\mathcal{G})|\)</span>, <span
+            class="math inline">\(|E(\mathcal{G})|\)</span> in <span
+            class="math inline">\(|F(\mathcal{G})|\)</span> velja
+            naslednja povezava.</p>
+            <div class="izrek">
+            <p><strong>Izrek 5.9</strong> (Eulerjeva formula). Naj bo
+            <span class="math inline">\(G\)</span> <em>povezan</em> graf
+            z ravninsko vložitvijo <span
+            class="math inline">\(\mathcal{G}\)</span>. Tedaj je <span
+            class="math display">\[|V(\mathcal{G})| - |E(\mathcal{G})| +
+            |F(\mathcal{G})| = 2.\]</span></p>
+            </div>
+            <div class="proof">
+            <p><em>Proof.</em> Dokazujemo z indukcijo na število ciklov
+            <span class="math inline">\(c\)</span> v grafu <span
+            class="math inline">\(G\)</span>.</p>
+            <p>Baza indukcije je <span class="math inline">\(c =
+            0\)</span>. V tem primeru je <span
+            class="math inline">\(G\)</span> drevo. Velja torej <span
+            class="math inline">\(|E(\mathcal{G})| = |V(\mathcal{G})| -
+            1\)</span> in hkrati <span
+            class="math inline">\(|F(\mathcal{G})| = 1\)</span>, torej
+            Eulerjeva formula velja. <span
+            class="math inline">\(\checkmark\)</span></p>
+            <p>Privzemimo zdaj, da formula velja za vse grafe z največ
+            <span class="math inline">\(c\)</span> cikli. Naj bo <span
+            class="math inline">\(G\)</span> graf s <span
+            class="math inline">\(c+1\)</span> cikli. Naj bo <span
+            class="math inline">\(C\)</span> nek cikel v <span
+            class="math inline">\(G\)</span> z povezavo <span
+            class="math inline">\(\{ u,v \}\)</span> na <span
+            class="math inline">\(C\)</span>. Opazujmo graf <span
+            class="math inline">\(G&#39; = G - uv\)</span>. Naj bo <span
+            class="math inline">\(\mathcal{G}&#39;\)</span> ravninska
+            vložitev tega grafa, ki ga dobimo iz ravninske vložitve
+            <span class="math inline">\(\mathcal{G}\)</span>. Graf <span
+            class="math inline">\(G&#39;\)</span> je povezan in ima manj
+            ciklov kot <span class="math inline">\(G\)</span>, zato
+            lahko na njem uporabimo indukcijsko predpostavko. Za ta graf
+            velja <span class="math inline">\(|V(G&#39;)| =
+            |V(G)|\)</span> in <span class="math inline">\(|E(G&#39;)| =
+            |E(G)| - 1\)</span>, hkrati pa se z odstranitvijo povezave
+            <span class="math inline">\(uv\)</span> lici s skupnim robom
+            <span class="math inline">\(uv\)</span> spojita v eno lice,
+            zato je <span class="math inline">\(|F(\mathcal{G}&#39;)| =
+            |F(\mathcal{G})| - 1\)</span>. Ker po indukcijski
+            predpostavki velja <span
+            class="math inline">\(|V(\mathcal{G}&#39;)| -
+            |E(\mathcal{G}&#39;)| + |F(\mathcal{G}&#39;)| = 2\)</span>,
+            od tod sledi <span class="math inline">\(|V(\mathcal{G})| -
+            |E(\mathcal{G})| + |F(\mathcal{G})| = 2\)</span>. <span
+            class="math inline">\(\checkmark\)</span> ◻</p>
+            </div>
+            <p>Eulerjevo formulo lahko posplošimo tudi na neravninske
+            grafe.</p>
+            <div class="posledica">
+            <p><strong>Posledica 5.3</strong>. Naj bo <span
+            class="math inline">\(G\)</span> graf z <span
+            class="math inline">\(\Omega\)</span> povezanimi
+            komponentami in z ravninsko vložitvijo <span
+            class="math inline">\(\mathcal{G}\)</span>. Tedaj je <span
+            class="math display">\[|V(\mathcal{G})| - |E(\mathcal{G})| +
+            |F(\mathcal{G})| = 1 + \Omega.\]</span></p>
+            </div>
+            <div class="proof">
+            <p><em>Proof.</em> Naj bodo <span class="math inline">\(G_1,
+            G_2, \dots, G_\Omega\)</span> povezane komponente grafa
+            <span class="math inline">\(G\)</span>. Dodajmo povezave
+            <span class="math inline">\(e_1, e_2, \dots, e_{\Omega -
+            1}\)</span> grafu <span class="math inline">\(G\)</span>, da
+            postane povezan in da v vložitvi <span
+            class="math inline">\(\mathcal{G}\)</span> ne ustvarimo lic
+            (na primer vse komponente grafa <span
+            class="math inline">\(G\)</span> povežemo s prvo). Tedaj za
+            graf <span class="math inline">\(G + e_1 + e_2 + \cdots +
+            e_{\Omega - 1}\)</span> velja Eulerjeva formula. Ta graf ima
+            enako število vozlišč in lic kot <span
+            class="math inline">\(\mathcal{G}\)</span>, hkrati pa ima
+            <span class="math inline">\(\Omega-1\)</span> več povezav.
+            Velja torej <span class="math display">\[|V(\mathcal{G})| -
+            (|E(\mathcal{G})| + \Omega - 1) + |F(\mathcal{G})| =
+            2,\]</span> od koder sledi želeno <span
+            class="math display">\[|V(\mathcal{G})| - |E(\mathcal{G})| +
+            |F(\mathcal{G})| = 1 + \Omega.\]</span> ◻</p>
+            </div>
+            <p>S pomočjo Eulerjeve formule lahko izpeljemo
+            <em>potreben</em> pogoj za ravninskost grafa.</p>
+            <div class="trditev">
+            <p><strong>Trditev 5.7</strong>. Naj bo <span
+            class="math inline">\(G\)</span> ravninski graf z vsaj tremi
+            vozlišči. Tedaj je <span class="math display">\[|E(G)| \leq
+            3 \cdot |V(G)| - 6.\]</span> Če je graf <span
+            class="math inline">\(G\)</span> brez <span
+            class="math inline">\(3\)</span>-ciklov, potem je celo <span
+            class="math display">\[|E(G)| \leq 2 \cdot |V(G)| -
+            4.\]</span></p>
+            </div>
+            <div class="proof">
+            <p><em>Proof.</em> Naj bo <span
+            class="math inline">\(\mathcal{G}\)</span> ena od vložitev
+            grafa <span class="math inline">\(G\)</span> v ravnino.
+            Ocenimo število lic te vložitve. Vsako lice je dolžine vsaj
+            <span class="math inline">\(3\)</span>.<a href="#fn32"
+            class="footnote-ref" id="fnref32"
+            role="doc-noteref"><sup>32</sup></a> Po lemi o rokovanju za
+            ravninske grafe od tod sledi ocena <span
+            class="math display">\[2 \cdot |E(G)| = \sum_{f \in
+            F(\mathcal{G})} \ell(f) \geq \sum_{f \in F(\mathcal{G})} 3 =
+            3 \cdot |F(\mathcal{G})|.\]</span> Število lic lahko torej
+            ocenimo navzgor kot <span
+            class="math inline">\(|F(\mathcal{G})| \leq \frac23
+            |E(G)|\)</span>. Iz Eulerjeve formule zdaj sledi <span
+            class="math display">\[2 \leq |V(G)| - |E(G)| +
+            |F(\mathcal{G})| \leq |V(G)| - \frac13 |E(G)|,\]</span> ker
+            je enakovredno želeni neenakosti <span
+            class="math inline">\(|E(G)| \leq 3 \cdot |V(G)| -
+            6\)</span>.</p>
+            <p>Če graf <span class="math inline">\(G\)</span> nima <span
+            class="math inline">\(3\)</span>-ciklov, potem je vsako lice
+            dolžine vsaj <span class="math inline">\(4\)</span>. Če
+            torej v prvi neenakosti uporabimo to močnejšo oceno o
+            dolžinah lic, z enakim postopkom dobimo še drugo neenakost v
+            trditvi. ◻</p>
+            </div>
+            <div class="zgled">
+            <p><strong>Zgled 5.31</strong>. </p>
+            <ul>
+            <li><p>Uporabimo zadnjo trditev za to, da dokažemo, da graf
+            <span class="math inline">\(K_{3,3}\)</span>, ki smo ga
+            obravnavali na začetku tega razdelka, res ni ravninski. Ta
+            graf ima <span class="math inline">\(6\)</span> vozlišč in
+            <span class="math inline">\(9\)</span> povezav. Ker je
+            dvodelen, ne vsebuje <span
+            class="math inline">\(3\)</span>-ciklov. Če bi bil
+            ravninski, bi zanj torej morala veljati neenakost <span
+            class="math inline">\(9 \leq 2 \cdot 6 - 4 = 8\)</span>, kar
+            pa ne drži.</p></li>
+            <li><p>Premislimo, da tudi graf <span
+            class="math inline">\(K_5\)</span> ni ravninski. Ta graf ima
+            <span class="math inline">\(5\)</span> vozlišč in <span
+            class="math inline">\(10\)</span> povezav. Če bi bil
+            ravninski, bi zanj morala veljati neenakost <span
+            class="math inline">\(10 \leq 3 \cdot 5 - 6 = 9\)</span>,
+            kar pa ne drži.</p></li>
+            </ul>
+            </div>
+            <p>Naj bo <span class="math inline">\(G\)</span> ravninski
+            graf. Če je <span class="math inline">\(H\)</span>
+            <em>podgraf</em> grafa <span
+            class="math inline">\(G\)</span>, potem je tudi <span
+            class="math inline">\(H\)</span> ravninski, saj lahko iz
+            ravninske vložitve <span
+            class="math inline">\(\mathcal{G}\)</span> preprosto
+            odstranimo nepotrebna vozlišča in povezave. Na ta način
+            lahko najdemo še več grafov, ki niso ravninski. Poznamo pa
+            še dve malo bolj fleksibilni konstrukciji s podobno
+            lastnostjo.</p>
+            <ol>
+            <li><p>Graf <span class="math inline">\(H\)</span> je
+            <span><strong><em>minor</em></strong></span> grafa <span
+            class="math inline">\(G\)</span>, če ga lahko konstruiramo
+            iz nekega podgrafa <span class="math inline">\(G\)</span> s
+            <em>krčenjem nekaterih povezav</em>.<a href="#fn33"
+            class="footnote-ref" id="fnref33"
+            role="doc-noteref"><sup>33</sup></a></p>
+            <div class="zgled">
+            <p><strong>Zgled 5.32</strong>. Če v Petersenovem grafu
+            skrčimo povezave, ki povezujejo zunanji cikel z notranjim,
+            dobimo graf <span class="math inline">\(K_5\)</span>. Ta
+            graf je torej minor Petersenovega grafa.</p>
+            </div>
+            <p>Minor ravninskega grafa je ravninski graf, saj lahko
+            krčenje povezav v ravnini izvedemo tako, da pri tem ne pride
+            do sekanja ostalih povezav.</p>
+            <div class="posledica">
+            <p><strong>Posledica 5.4</strong>. Če graf <span
+            class="math inline">\(G\)</span> vsebuje minor <span
+            class="math inline">\(K_{3,3}\)</span> ali <span
+            class="math inline">\(K_5\)</span>, potem ni ravninski.</p>
+            </div>
+            <div class="zgled">
+            <p><strong>Zgled 5.33</strong>. Petersenov graf ni
+            ravninski.</p>
+            </div>
+            <p><span><strong><em>Wagnerjev izrek</em></strong></span>
+            nam pove, da velja celo obrat posledice. Če graf <span
+            class="math inline">\(G\)</span> <em>ne</em> vsebuje minorja
+            <span class="math inline">\(K_{3,3}\)</span> ali <span
+            class="math inline">\(K_5\)</span>, potem <em>je</em>
+            ravninski. Dokaz izpustimo.</p></li>
+            <li><p>Graf <span class="math inline">\(H\)</span> je
+            <span><strong><em>subdivizija</em></strong></span> grafa
+            <span class="math inline">\(G\)</span>, če ga lahko
+            konstruiramo iz <span class="math inline">\(G\)</span> tako,
+            da <em>nekatere povezave nadomestimo s potmi dolžine <span
+            class="math inline">\(2\)</span> ali več</em>.<a
+            href="#fn34" class="footnote-ref" id="fnref34"
+            role="doc-noteref"><sup>34</sup></a></p>
+            <p>Subdivizija ravninskega grafa je ravninski graf.</p>
+            <div class="posledica">
+            <p><strong>Posledica 5.5</strong>. Če graf <span
+            class="math inline">\(G\)</span> vsebuje subdivizijo <span
+            class="math inline">\(K_{3,3}\)</span> ali <span
+            class="math inline">\(K_5\)</span>, potem ni ravninski.</p>
+            </div>
+            <p><span><strong><em>Izrek Kuratowskega</em></strong></span>
+            nam pove, da velja celo obrat posledice. Če graf <span
+            class="math inline">\(G\)</span> <em>ne</em> vsebuje
+            subdivizije <span class="math inline">\(K_{3,3}\)</span> ali
+            <span class="math inline">\(K_5\)</span>, potem <em>je</em>
+            ravninski. Dokaz izpustimo.</p>
+            <div class="domacanaloga">
+            <p><strong>Domača naloga 5.4</strong>. Vemo že, da
+            Petersenov graf ni ravninski. Po izreku Kuratowskega torej
+            vsebuje subdivizijo <span
+            class="math inline">\(K_{3,3}\)</span> ali <span
+            class="math inline">\(K_5\)</span>. Poišči to
+            subdivizijo!</p>
+            </div></li>
+            </ol>
             <section class="footnotes footnotes-end-of-document"
             role="doc-endnotes">
             <hr />
@@ -6062,6 +6453,57 @@
             vozlišča pa konjiček lahko skoči le v modro vozlišče.<a
             href="#fnref26" class="footnote-back"
             role="doc-backlink">↩︎</a></p></li>
+            <li id="fn27" role="doc-endnote"><p>Preslikava <span
+            class="math inline">\(\phi_e\)</span> torej preslika rob
+            intervala <span class="math inline">\([0,1]\)</span> v sliki
+            krajišč povezave <span class="math inline">\(e\)</span> s
+            povezavo <span class="math inline">\(\phi\)</span>.<a
+            href="#fnref27" class="footnote-back"
+            role="doc-backlink">↩︎</a></p></li>
+            <li id="fn28" role="doc-endnote"><p>Pri risanju povezave
+            <span class="math inline">\(e\)</span> ni nobenih
+            samopresečnih točk.<a href="#fnref28" class="footnote-back"
+            role="doc-backlink">↩︎</a></p></li>
+            <li id="fn29" role="doc-endnote"><p>Tukaj smo z <span
+            class="math inline">\(\phi_e |_{(0,1)}\)</span> označili
+            zožitev preslikave <span
+            class="math inline">\(\phi_e\)</span> na odprti interval
+            <span class="math inline">\((0,1)\)</span>, z <span
+            class="math inline">\(\mathrm{im} f\)</span> pa smo označili
+            sliko preslikave <span class="math inline">\(f\)</span>.
+            Nobeni dve narisani povezavi se torej ne sekata (razen morda
+            v robnih točkah).<a href="#fnref29" class="footnote-back"
+            role="doc-backlink">↩︎</a></p></li>
+            <li id="fn30" role="doc-endnote"><p>Narisana povezava lahko
+            prečka narisano vozlišče, če in samo če je to rob narisane
+            povezave.<a href="#fnref30" class="footnote-back"
+            role="doc-backlink">↩︎</a></p></li>
+            <li id="fn31" role="doc-endnote"><p>Oznako <span
+            class="math inline">\(G\)</span> torej uporabljamo za
+            abstraktni graf, se pravi <span class="math inline">\(G =
+            (V,E)\)</span>, oznako <span
+            class="math inline">\(\mathcal{G}\)</span> pa uporabljamo za
+            vložitev grafa <span class="math inline">\(G\)</span> v
+            ravnino, se pravi <span class="math inline">\(\mathcal{G}=
+            (\phi, \{ \phi_e \}_{e \in E})\)</span>.<a href="#fnref31"
+            class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn32" role="doc-endnote"><p>Ker ima <span
+            class="math inline">\(G\)</span> vsaj <span
+            class="math inline">\(3\)</span> vozlišča, je vsako lice
+            omejeno s ciklom dolžine vsaj <span
+            class="math inline">\(3\)</span> ali pa s <span
+            class="math inline">\(P_2\)</span> (dvakrat).<a
+            href="#fnref32" class="footnote-back"
+            role="doc-backlink">↩︎</a></p></li>
+            <li id="fn33" role="doc-endnote"><p>Predstavljamo si, da
+            izbrane povezave počasi krajšamo, dokler se krajišči ne
+            združita. Po tem morebitne zanke odstranimo in vzporedne
+            povezave identificiramo, da dobimo na koncu tega postopka
+            res graf in ne multigrafa.<a href="#fnref33"
+            class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn34" role="doc-endnote"><p>Določenim povezavam
+            torej dodamo nekaj vozlišč.<a href="#fnref34"
+            class="footnote-back" role="doc-backlink">↩︎</a></p></li>
             </ol>
             </section>
 

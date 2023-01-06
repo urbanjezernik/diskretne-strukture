@@ -58,6 +58,7 @@
 \def\EE{\mathbf{E}}
 \def\PP{\mathbf{P}}
 \def\HH{\mathbf{H}}
+\def\GG{\mathcal{G}}
 \def\youngsym{\sigma_{\lambda}}
 
 \DeclareMathOperator\image{im}
@@ -2677,5 +2678,202 @@ V posebnem torej obstaja obhod na standardni šahovnici $8 \times 8$.
     \includegraphics[width=0.5\linewidth]{img/grafi-konjicek.png}
     \caption{Konjičkov obhod na šahovnici $8 \times 8$, vir: Wikipedia}
 \end{figure}  
+
+\section{Ravninski grafi}
+
+Obravnavajmo naslednji izziv, ki je na prvi pogled osnovnošolska naloga. Pred nami so $3$ hiše in $3$ drevesa. S potjo je potrebno povezati vsako hišo z vsakim drevesom, ne da bi se pri tem poti sekale med sabo. Če si vsako hišo oziroma drevo predstavljamo kot vozlišče, pot pa kot povezavo, potem pravzaprav vprašujemo, če lahko graf $K_{3,3}$ narišemo v ravnino tako, da se nobeni dve povezavi med sabo ne sekata (razen v vozliščih). Splošneje se lahko torej vprašamo, ali lahko poljuben graf narišemo v ravnini brez križanja povezav.
+
+\begin{zgled}
+    Nekatere grafe gotovo lahko narišemo v ravnini brez križanja povezav, na primer liziko, cikle, drevesa. Tudi poln graf $K_4$ lahko narišemo na ta način, kot je prikazano na sliki.
+
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.5\linewidth]{img/grafi-ravninski-k4.png}
+        \caption{Ravninski graf $K_4$}
+    \end{figure}    
+\end{zgled}
+
+Po nekaj poskusih se zdi, da grafa $K_{3,3}$ ne moremo narisati na želeni način v ravnini. Kako bi dokazali, da je to res nemogoče? Preden lahko odgovorimo na to vprašanje, moramo najprej matematično bolj natančno formulirati problem.
+
+{\definicija Vložitev grafa $G$ v ravnino} je injektivna preslikava $\phi \colon V(G) \to \RR^2$ skupaj z družino zveznih preslikav $\phi_e \colon [0,1] \to \RR^2$ za vsako povezavo $e \in E(G)$, da velja:
+\begin{enumerate}
+    \item če je $e = \{ u,v \} \in E(G)$, potem je $\{ \phi_e(0), \phi_e(1) \} = \{ \phi(u), \phi(v) \}$,\footnote{Preslikava $\phi_e$ torej preslika rob intervala $[0,1]$ v sliki krajišč povezave $e$ s povezavo $\phi$.}
+    \item za vsak $e \in E(G)$ je $\phi_e|_{(0,1)}$ injektivna,\footnote{Pri risanju povezave $e$ ni nobenih samopresečnih točk.}
+    \item za vsaka $e, e' \in E(G)$, $e \neq e'$, velja $\mathrm{im} \phi_e|_{(0,1)} \cap \mathrm{im} \phi_{e'}|_{(0,1)} = \emptyset$,\footnote{Tukaj smo z $\phi_e |_{(0,1)}$ označili zožitev preslikave $\phi_e$ na odprti interval $(0,1)$, z $\mathrm{im} f$ pa smo označili sliko preslikave $f$. Nobeni dve narisani povezavi se torej ne sekata (razen morda v robnih točkah).}
+    \item za vsak $e \in E(G)$ velja $\mathrm{im} \phi_e|_{(0,1)} \cap \mathrm{im} \phi = \emptyset$.\footnote{Narisana povezava lahko prečka narisano vozlišče, če in samo če je to rob narisane povezave.}
+\end{enumerate}
+Vse podatke o vložitvi grafa v ravnino zberemo v par $(\phi, \{ \phi_e \}_{e \in E(G)})$, ki ga krajše označimo kot $\GG$.\footnote{Oznako $G$ torej uporabljamo za abstraktni graf, se pravi $G = (V,E)$, oznako $\GG$ pa uporabljamo za vložitev grafa $G$ v ravnino, se pravi $\GG = (\phi, \{ \phi_e \}_{e \in E})$.}
+    
+Graf $G$ je {\definicija ravninski}, če ima kakšno vložitev v ravnino. Pri tem seveda lahko obstajajo različne vložitve.
+
+\begin{zgled}
+Disjunktno unijo $K_3 \cup K_3$ lahko narišemo v ravnino na dva vsaj načina, in sicer lahko en trikotnik narišemo znotraj drugega ali pa dva trikotnika narišemo enega ob drugem.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\linewidth]{img/grafi-ravninski-k3k3.png}
+    \caption{Dve različni vložitvi grafa $K_3 \cup K_3$ v ravnino}
+\end{figure} 
+\end{zgled}
+
+Vložitev grafa razdeli ravnino na povezane dele, ki jim pravimo {\definicija lica} vložitve. Vselej je natanko eno lice neomejeno -- imenujemo ga {\definicija zunanje lice}.
+
+\begin{zgled} \leavevmode
+    \begin{itemize}
+        \item Vsaka ravninska vložitev drevesa ima eno samo lice, saj graf nima nobenih ciklov.
+        \item Obe vložitvi grafa $K_3 \cup K_3$ iz zadnjega zgleda imata $3$ lica.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\linewidth]{img/grafi-ravninski-k3k3-lica.png}
+    \caption{Lica vložitev grafa $K_3 \cup K_3$ v ravnino}
+\end{figure} 
+\end{itemize}
+\end{zgled}
+
+
+Naj bo $\GG$ vložitev grafa $G$ v ravnino. Označimo množico točk v ravnini, ki predstavljajo vozlišča, povezave in lica:
+\begin{align*}
+    V(\GG) &= \{ \phi(u) \mid u \in V(G) \} \subseteq \RR^2, \\
+    E(\GG) &= \{ \mathrm{im} \phi_e \mid e \in E(G) \}, \\
+    F(\GG) &= \{ f \mid \text{$f$ lice vložitve $\GG$}\}.
+\end{align*}
+{\definicija Dolžina lica} $f \in F(\GG)$ je število povezav, ki ležijo na robu lica $f$. To dolžino označimo z $\ell(f)$.
+
+\begin{zgled}
+Obravnavajmo ravninski vložitvi $K_3 \cup K_3$ iz zadnjega zgleda. V prvi ravninski vložitvi je dolžina rdečega lica enaka $3$, dolžina modrega je enaka $6$ in dolžina zelenega je enaka $3$. V drugi ravninski vložitvi sta dolžini modrega in rdečega lica enaki $3$, dolžina zelenega pa je enaka $6$.
+\end{zgled}
+
+\begin{izrek}[lema o rokovanju za ravninske grafe]
+    Naj bo $G$ graf z ravninsko vložitvijo $\GG$. Potem je
+    \[
+        \sum_{f \in F(\GG)} \ell(f) = 2 \cdot |E(G)|.
+    \]
+\end{izrek}
+\begin{dokaz}
+Pristopimo podobno kot pri dokazu leme o rokovanju. Slika vsake povezave v $E(G)$ pripada robu dveh lic (vsakemu enkrat) ali enega samega lica (dvakrat). Naj bo $E(G) = \{ e_1, e_2, \dots, e_a \}$ in $F(\GG) = \{ f_1, f_2, \dots, f_b \}$. Definirajmo matriko $M = [m_{ij}]_{1 \leq i \leq a, 1 \leq j \leq b}$ razsežnosti $a \times b$ z vnosi
+\[
+    m_{ij} = \begin{cases}
+        0 & \text{$e_j$ ni na robu $f_i$,} \\
+        1 & \text{$e_j$ je na robu $f_i$ (enkrat),} \\
+        2 & \text{$e_j$ je na robu $f_i$ (dvakrat).}
+    \end{cases}
+\]
+Vsota vseh vnosov matrike $M$ je po eni strani enaka
+\[
+    \sum_{i = 1}^a \sum_{j = 1}^b m_{ij} = \sum_{i = 1}^a \ell(f_i) = \sum_{f \in F(\GG)} \ell(f),
+\]
+po drugi strani pa je enaka
+\[
+    \sum_{j = 1}^b \sum_{i = 1}^a  m_{ij} = \sum_{j = 1}^b 2 = 2b = 2 \cdot |E(G)|,
+\]
+s čimer je dokaz zaključen.
+\end{dokaz}
+
+Med števili $|V(\GG)|$, $|E(\GG)|$ in $|F(\GG)|$ velja naslednja povezava.
+
+\begin{izrek}[Eulerjeva formula]
+    Naj bo $G$ \emph{povezan} graf z ravninsko vložitvijo $\GG$. Tedaj je
+    \[
+        |V(\GG)| - |E(\GG)| + |F(\GG)| = 2.
+    \]
+\end{izrek}
+\begin{dokaz}
+Dokazujemo z indukcijo na število ciklov $c$ v grafu $G$.
+
+Baza indukcije je $c = 0$. V tem primeru je $G$ drevo. Velja torej $|E(\GG)| = |V(\GG)| - 1$ in hkrati $|F(\GG)| = 1$, torej Eulerjeva formula velja. \kljuka
+
+Privzemimo zdaj, da formula velja za vse grafe z največ $c$ cikli. Naj bo $G$ graf s $c+1$ cikli. Naj bo $C$ nek cikel v $G$ z povezavo $\{ u,v \}$ na $C$. Opazujmo graf $G' = G - uv$. Naj bo $\GG'$ ravninska vložitev tega grafa, ki ga dobimo iz ravninske vložitve $\GG$. Graf $G'$ je povezan in ima manj ciklov kot $G$, zato lahko na njem uporabimo indukcijsko predpostavko. Za ta graf velja $|V(G')| = |V(G)|$ in $|E(G')| = |E(G)| - 1$, hkrati pa se z odstranitvijo povezave $uv$ lici s skupnim robom $uv$ spojita v eno lice, zato je $|F(\GG')| = |F(\GG)| - 1$. Ker po indukcijski predpostavki velja $|V(\GG')| - |E(\GG')| + |F(\GG')| = 2$, od tod sledi $|V(\GG)| - |E(\GG)| + |F(\GG)| = 2$. \kljuka
+\end{dokaz}
+
+Eulerjevo formulo lahko posplošimo tudi na neravninske grafe.
+
+\begin{posledica}
+Naj bo $G$ graf z $\Omega$ povezanimi komponentami in z ravninsko vložitvijo $\GG$. Tedaj je
+\[
+    |V(\GG)| - |E(\GG)| + |F(\GG)| = 1 + \Omega.
+\]
+\end{posledica}
+\begin{dokaz}
+Naj bodo $G_1, G_2, \dots, G_\Omega$ povezane komponente grafa $G$. Dodajmo povezave $e_1, e_2, \dots, e_{\Omega - 1}$ grafu $G$, da postane povezan in da v vložitvi $\GG$ ne ustvarimo lic (na primer vse komponente grafa $G$ povežemo s prvo). Tedaj za graf $G + e_1 + e_2 + \cdots + e_{\Omega - 1}$ velja Eulerjeva formula. Ta graf ima enako število vozlišč in lic kot $\GG$, hkrati pa ima $\Omega-1$ več povezav. Velja torej
+\[
+    |V(\GG)| - (|E(\GG)| + \Omega - 1) + |F(\GG)| = 2,
+\]
+od koder sledi želeno
+\[
+    |V(\GG)| - |E(\GG)| + |F(\GG)| = 1 + \Omega.
+\]
+\end{dokaz}
+
+S pomočjo Eulerjeve formule lahko izpeljemo \emph{potreben} pogoj za ravninskost grafa.
+
+\begin{trditev}
+    Naj bo $G$ ravninski graf z vsaj tremi vozlišči. Tedaj je
+    \[
+        |E(G)| \leq 3 \cdot |V(G)| - 6.
+    \]
+    Če je graf $G$ brez $3$-ciklov, potem je celo
+    \[
+        |E(G)| \leq 2 \cdot |V(G)| - 4.
+    \]
+\end{trditev}
+\begin{dokaz}
+    Naj bo $\GG$ ena od vložitev grafa $G$ v ravnino. Ocenimo število lic te vložitve. Vsako lice je dolžine vsaj $3$.\footnote{Ker ima $G$ vsaj $3$ vozlišča, je vsako lice omejeno s ciklom dolžine vsaj $3$ ali pa s $P_2$ (dvakrat).} Po lemi o rokovanju za ravninske grafe od tod sledi ocena
+    \[
+        2 \cdot |E(G)| = \sum_{f \in F(\GG)} \ell(f) \geq \sum_{f \in F(\GG)} 3 = 3 \cdot |F(\GG)|.
+        \]
+    Število lic lahko torej ocenimo navzgor kot $|F(\GG)| \leq \frac23 |E(G)|$. Iz Eulerjeve formule zdaj sledi
+    \[
+        2 \leq |V(G)| - |E(G)| + |F(\GG)| \leq |V(G)| - \frac13 |E(G)|,
+    \]
+    ker je enakovredno želeni neenakosti $|E(G)| \leq 3 \cdot |V(G)| - 6$.
+
+    Če graf $G$ nima $3$-ciklov, potem je vsako lice dolžine vsaj $4$. Če torej v prvi neenakosti uporabimo to močnejšo oceno o dolžinah lic, z enakim postopkom dobimo še drugo neenakost v trditvi.
+\end{dokaz}
+
+\begin{zgled}
+\leavevmode
+\begin{itemize}
+    \item Uporabimo zadnjo trditev za to, da dokažemo, da graf $K_{3,3}$, ki smo ga obravnavali na začetku tega razdelka, res ni ravninski. Ta graf ima $6$ vozlišč in $9$ povezav. Ker je dvodelen, ne vsebuje $3$-ciklov. Če bi bil ravninski, bi zanj torej morala veljati neenakost $9 \leq 2 \cdot 6 - 4 = 8$, kar pa ne drži.
+    \item Premislimo, da tudi graf $K_5$ ni ravninski. Ta graf ima $5$ vozlišč in $10$ povezav. Če bi bil ravninski, bi zanj morala veljati neenakost $10 \leq 3 \cdot 5 - 6 = 9$, kar pa ne drži.
+\end{itemize}
+\end{zgled}
+
+Naj bo $G$ ravninski graf. Če je $H$ \emph{podgraf} grafa $G$, potem je tudi $H$ ravninski, saj lahko iz ravninske vložitve $\GG$ preprosto odstranimo nepotrebna vozlišča in povezave. Na ta način lahko najdemo še več grafov, ki niso ravninski. Poznamo pa še dve malo bolj fleksibilni konstrukciji s podobno lastnostjo.
+
+\begin{enumerate}
+    \item Graf $H$ je {\definicija minor} grafa $G$, če ga lahko konstruiramo iz nekega podgrafa $G$ s \emph{krčenjem nekaterih povezav}.\footnote{Predstavljamo si, da izbrane povezave počasi krajšamo, dokler se krajišči ne združita. Po tem morebitne zanke odstranimo in vzporedne povezave identificiramo, da dobimo na koncu tega postopka res graf in ne multigrafa.}
+    
+    \begin{zgled}
+        Če v Petersenovem grafu skrčimo povezave, ki povezujejo zunanji cikel z notranjim, dobimo graf $K_5$. Ta graf je torej minor Petersenovega grafa.
+    \end{zgled}
+        
+    Minor ravninskega grafa je ravninski graf, saj lahko krčenje povezav v ravnini izvedemo tako, da pri tem ne pride do sekanja ostalih povezav.
+
+    \begin{posledica}
+        Če graf $G$ vsebuje minor $K_{3,3}$ ali $K_5$, potem ni ravninski.
+    \end{posledica}
+
+    \begin{zgled}
+        Petersenov graf ni ravninski.
+    \end{zgled}
+
+    {\definicija Wagnerjev izrek} nam pove, da velja celo obrat posledice. Če graf $G$ \emph{ne} vsebuje minorja $K_{3,3}$ ali $K_5$, potem \emph{je} ravninski. Dokaz izpustimo.
+
+    \item Graf $H$ je {\definicija subdivizija} grafa $G$, če ga lahko konstruiramo iz $G$ tako, da \emph{nekatere povezave nadomestimo s potmi dolžine $2$ ali več}.\footnote{Določenim povezavam torej dodamo nekaj vozlišč.}
+        
+    Subdivizija ravninskega grafa je ravninski graf.
+
+    \begin{posledica}
+        Če graf $G$ vsebuje subdivizijo $K_{3,3}$ ali $K_5$, potem ni ravninski.
+    \end{posledica}
+
+    {\definicija Izrek Kuratowskega} nam pove, da velja celo obrat posledice. Če graf $G$ \emph{ne} vsebuje subdivizije $K_{3,3}$ ali $K_5$, potem \emph{je} ravninski. Dokaz izpustimo.
+
+    \begin{domacanaloga}
+        Vemo že, da Petersenov graf ni ravninski. Po izreku Kuratowskega torej vsebuje subdivizijo $K_{3,3}$ ali $K_5$. Poišči to subdivizijo!
+    \end{domacanaloga}
+\end{enumerate}
+
 
 \end{document}
