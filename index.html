@@ -43,7 +43,7 @@
             <strong> Urban Jezernik <br>
               Univerza v Ljubljani, Fakulteta za matematiko in fiziko </strong> <br>
 
-            Zadnja posodobitev: 05. 01. 2023
+            Zadnja posodobitev: 06. 01. 2023
           </div>
 
           <div id="spinner" class="text-center">
@@ -5830,6 +5830,77 @@
             tetivna povezava ne obstaja. To je protislovje z obstojem
             Hamiltonovega cikla v Petersenovem grafu.</p>
             </div>
+            <h3 id="šahovski-konjiček">Šahovski konjiček</h3>
+            <p>Opazujmo gibanje šahovskega konjička na šahovnici
+            dimenzij <span class="math inline">\(m \times n\)</span>.
+            Ali lahko konjiček z zaporedjem skokov obišče vsako polje
+            šahovnice natanko enkrat in zaključi na začetnem polju? To
+            je problem <span><strong><em>požrešnega šahovskega
+            konjička</em></strong></span>.</p>
+            <p>Polja šahovnice si lahko predstavljamo kot vozlišča
+            grafa, možnost skoka konjička iz enega polja na drugega pa
+            predstavimo s povezavo. V tem smislu je problem požrešnega
+            šahovskega konjička enakovreden obstoju Hamiltonovega cikla
+            v tem grafu.</p>
+            <figure>
+            <img src="img/grafi-konjicek-88.png"
+            alt="Graf, ki prikazuje možne skoke konjička na šahovski plošči 8 \times 8; v vozliščih so vpisane stopnje, vir: Wikipedia" />
+            <figcaption aria-hidden="true">Graf, ki prikazuje možne
+            skoke konjička na šahovski plošči <span
+            class="math inline">\(8 \times 8\)</span>; v vozliščih so
+            vpisane stopnje, vir: Wikipedia</figcaption>
+            </figure>
+            <p>Poglejmo si nekaj posebnih primerov.</p>
+            <div class="zgled">
+            <p><strong>Zgled 5.26</strong>. </p>
+            <ul>
+            <li><p>Obravnavajmo šahovnico dimenzij <span
+            class="math inline">\(3 \times 3\)</span>. Če konjiček začne
+            v centralnem polju, potem nima kam skočiti, saj je plošča
+            premajhna. Centralno vozlišče prirejenega grafa je torej
+            izolirana točka in graf ni povezan, zato seveda tudi nima
+            Hamiltonovega cikla.</p></li>
+            <li><p>Obravnavajmo šahovnico dimenzij <span
+            class="math inline">\(5 \times 5\)</span>. Dobimo graf na
+            <span class="math inline">\(25\)</span> vozliščih. Če
+            obarvamo vozlišča s črno in belo barvo kot na šahovnici,
+            potem je zaradi dejstva, da konjiček vedno skoči s črnega
+            polja na belo oziroma obratno, prirejeni graf
+            <em>dvodelen</em>. Ker ima šahovnica <span
+            class="math inline">\(25\)</span> vozlišč, je število belih
+            vozlišč različno od števila črnih vozlišč. Po izreku ta graf
+            torej ni Hamiltonov. Enak argument deluje za vse šahovnice z
+            lihim številom polj.</p></li>
+            </ul>
+            </div>
+            <div class="domacanaloga">
+            <p><strong>Domača naloga 5.3</strong>. Obravnavaj šahovnico
+            dimenzije <span class="math inline">\(4 \times n\)</span> za
+            <span class="math inline">\(n \geq 4\)</span>. Dokaži, da
+            Hamiltonov cikel <em>ne</em> obstaja.<a href="#fn26"
+            class="footnote-ref" id="fnref26"
+            role="doc-noteref"><sup>26</sup></a></p>
+            </div>
+            <p>Izkaže se, da sta po eni strani lihost števila polj in po
+            drugi strani premajhno število vrstic oziroma stolpcev
+            šahovnice <em>edini</em> oviri za obstoj Hamiltonovega
+            cikla, a tega ne bomo dokazali.</p>
+            <div class="izrek">
+            <p><strong>Izrek 5.7</strong> (Schwenk). Konjičkov obhod na
+            šahovnici <span class="math inline">\(m \times n\)</span>
+            obstaja, če je le <span class="math inline">\(m \cdot
+            n\)</span> sodo število in <span class="math inline">\(m, n
+            &gt; 4\)</span>.</p>
+            </div>
+            <p>V posebnem torej obstaja obhod na standardni šahovnici
+            <span class="math inline">\(8 \times 8\)</span>.</p>
+            <figure>
+            <img src="img/grafi-konjicek.png"
+            alt="Konjičkov obhod na šahovnici 8 \times 8, vir: Wikipedia" />
+            <figcaption aria-hidden="true">Konjičkov obhod na šahovnici
+            <span class="math inline">\(8 \times 8\)</span>, vir:
+            Wikipedia</figcaption>
+            </figure>
             <section class="footnotes footnotes-end-of-document"
             role="doc-endnotes">
             <hr />
@@ -5978,6 +6049,18 @@
             <li id="fn25" role="doc-endnote"><p>Hamilton je Hamiltonove
             grafe opazoval približno sto let po Eulerju.<a
             href="#fnref25" class="footnote-back"
+            role="doc-backlink">↩︎</a></p></li>
+            <li id="fn26" role="doc-endnote"><p>V pomoč ti bo, če
+            vozlišča v vrsticah <span class="math inline">\(1\)</span>
+            in <span class="math inline">\(4\)</span> obarvaš rdeče,
+            vozlišča v vrsticah <span class="math inline">\(2\)</span>
+            in <span class="math inline">\(3\)</span> pa modro. Konjiček
+            lahko sicer skoči iz modrega vozlišča nazaj v modro
+            vozlišče, na primer iz polja <span
+            class="math inline">\((2,1)\)</span> v <span
+            class="math inline">\((3,3)\)</span>, ampak iz rdečega
+            vozlišča pa konjiček lahko skoči le v modro vozlišče.<a
+            href="#fnref26" class="footnote-back"
             role="doc-backlink">↩︎</a></p></li>
             </ol>
             </section>

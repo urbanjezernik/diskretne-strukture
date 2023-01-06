@@ -2639,4 +2639,43 @@ Včasih se znajdemo v situaciji, ko nam ob danem grafu niti potrebni niti zadost
     S protislovjem premislimo, da Hamiltonov cikel ne obstaja. Če bi namreč $C$ bil Hamiltonov cikel, potem bi vseboval $10$ vozlišč Petersenovega grafa in $10$ povezav. Označimo vozlišča na $C$ z $v_1v_2 \dots v_{10}$. Ker ima Petersenov graf $15$ povezav, iščemo torej še $5$ dodatnih tetivnih povezav, ki jih dodamo ciklu $C$, da dobimo Petersenov graf. Vemo, da je Petersenov graf $3$-regularen, zato moramo po eno tako tetivno povezavo dodati vsakemu vozlišči na ciklu $C$. Vemo, da Petersenov graf nima $3$-ciklov in nima $4$-ciklov, hkrati pa ima $5$-cikel. Gotovo torej obstaja vozlišče na $C$, brez škode je to kar $v_1$, ki ima tetivno povezavo do soseda antipodnega vozlišča $v_6$, brez škode je to kar $v_5$. Opazujmo zdaj vozlišče $v_6$. Tudi to vozlišče mora imeti tetivno povezavo do nekega vozlišča na $C$. Ker pa Petersenov graf nima $3$-ciklov in nima $4$-ciklov, taka tetivna povezava ne obstaja. To je protislovje z obstojem Hamiltonovega cikla v Petersenovem grafu.
 \end{zgled}
 
+\subsection{Šahovski konjiček}
+
+Opazujmo gibanje šahovskega konjička na šahovnici dimenzij $m \times n$. Ali lahko konjiček z zaporedjem skokov obišče vsako polje šahovnice natanko enkrat in zaključi na začetnem polju? To je problem {\definicija požrešnega šahovskega konjička}. 
+
+Polja šahovnice si lahko predstavljamo kot vozlišča grafa, možnost skoka konjička iz enega polja na drugega pa predstavimo s povezavo. V tem smislu je problem požrešnega šahovskega konjička enakovreden obstoju Hamiltonovega cikla v tem grafu.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\linewidth]{img/grafi-konjicek-88.png}
+    \caption{Graf, ki prikazuje možne skoke konjička na šahovski plošči $8 \times 8$; v vozliščih so vpisane stopnje, vir: Wikipedia}
+\end{figure}    
+
+Poglejmo si nekaj posebnih primerov.
+
+\begin{zgled} \leavevmode
+\begin{itemize}
+    \item Obravnavajmo šahovnico dimenzij $3 \times 3$. Če konjiček začne v centralnem polju, potem nima kam skočiti, saj je plošča premajhna. Centralno vozlišče prirejenega grafa je torej izolirana točka in graf ni povezan, zato seveda tudi nima Hamiltonovega cikla.
+    \item Obravnavajmo šahovnico dimenzij $5 \times 5$. Dobimo graf na $25$ vozliščih. Če obarvamo vozlišča s črno in belo barvo kot na šahovnici, potem je zaradi dejstva, da konjiček vedno skoči s črnega polja na belo oziroma obratno, prirejeni graf \emph{dvodelen}. Ker ima šahovnica $25$ vozlišč, je število belih vozlišč različno od števila črnih vozlišč. Po izreku ta graf torej ni Hamiltonov. Enak argument deluje za vse šahovnice z lihim številom polj.
+\end{itemize}
+\end{zgled}
+
+\begin{domacanaloga}
+    Obravnavaj šahovnico dimenzije $4 \times n$ za $n \geq 4$. Dokaži, da Hamiltonov cikel \emph{ne} obstaja.\footnote{V pomoč ti bo, če vozlišča v vrsticah $1$ in $4$ obarvaš rdeče, vozlišča v vrsticah $2$ in $3$ pa modro. Konjiček lahko sicer skoči iz modrega vozlišča nazaj v modro vozlišče, na primer iz polja $(2,1)$ v $(3,3)$, ampak iz rdečega vozlišča pa konjiček lahko skoči le v modro vozlišče.}
+\end{domacanaloga}
+
+Izkaže se, da sta po eni strani lihost števila polj in po drugi strani premajhno število vrstic oziroma stolpcev šahovnice \emph{edini} oviri za obstoj Hamiltonovega cikla, a tega ne bomo dokazali.
+
+\begin{izrek}[Schwenk]
+    Konjičkov obhod na šahovnici $m \times n$ obstaja, če je le $m \cdot n$ sodo število in $m, n > 4$.
+\end{izrek}
+
+V posebnem torej obstaja obhod na standardni šahovnici $8 \times 8$.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\linewidth]{img/grafi-konjicek.png}
+    \caption{Konjičkov obhod na šahovnici $8 \times 8$, vir: Wikipedia}
+\end{figure}  
+
 \end{document}
