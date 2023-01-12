@@ -2929,6 +2929,12 @@ Dokaz tega izreka je zelo zahteven in vključuje intenzivno uporabo računalnika
 
 \begin{zgled}
 Opazujmo zemljevid sveta, na katerem so označene državne meje in meje z morji. Države in morja si predstavljajmo kot vozlišča, obstoj skupne meje pa naj pomeni sosednost vozlišč. Na ta način dobimo graf, ki je ravninski, saj je izvirni zemljevid narisan na ravnino. Po izreku je ta graf vozliščno $4$-obarvljiv. To pomeni, da lahko zemljevid sveta obarvamo s $4$ barvami, pri čemer nobeni dve sosednji državi nista enake barve.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\linewidth]{img/obcine.png}
+    \caption{Barvanje občin v Sloveniji s štirimi barvami, vir: Wikimedia}
+\end{figure}
 \end{zgled}
 
 Za poljubne grafe, ne nujno ravninske, lahko precej preprosto zgornjo mejo za kromatično število dobimo iz maksimalne stopnje vozlišča v $G$, števila $\Delta(G)$.
@@ -2937,7 +2943,7 @@ Za poljubne grafe, ne nujno ravninske, lahko precej preprosto zgornjo mejo za kr
 Za vsak graf $G$ je $\chi(G) \leq \Delta(G) + 1$.
 \end{trditev}
 \begin{dokaz}
-Vozlišča barvajmo v poljubnem vrstnem redu. Prvo vozlišče obarvamo z barvo $1$. Vsako naslednje vozlišče obarvamo z najmanjšo od prostih barv. Ker ima vsako vozlišče največ $\Deta(G)$ sosedov, uporabljamo pa množico barv $\{ 1,2, \dots, \Delta(G) \}$, je vedno na voljo vsaj ena prosta barva in postopek se uspešno izvede do konca.
+Vozlišča barvajmo v poljubnem vrstnem redu. Prvo vozlišče obarvamo z barvo $1$. Vsako naslednje vozlišče obarvamo z najmanjšo od prostih barv. Ker ima vsako vozlišče največ $\Delta(G)$ sosedov, uporabljamo pa množico barv $\{ 1,2, \dots, \Delta(G) \}$, je vedno na voljo vsaj ena prosta barva in postopek se uspešno izvede do konca.
 \end{dokaz}
 
 \begin{zgled} \leavevmode
