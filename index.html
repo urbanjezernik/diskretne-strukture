@@ -43,7 +43,7 @@
             <strong> Urban Jezernik <br>
               Univerza v Ljubljani, Fakulteta za matematiko in fiziko </strong> <br>
 
-            Zadnja posodobitev: 06. 01. 2023
+            Zadnja posodobitev: 12. 01. 2023
           </div>
 
           <div id="spinner" class="text-center">
@@ -132,6 +132,8 @@
               id="toc-hamiltonovi-grafi">Hamiltonovi grafi</a></li>
               <li><a href="#ravninski-grafi"
               id="toc-ravninski-grafi">Ravninski grafi</a></li>
+              <li><a href="#barvanja-grafov"
+              id="toc-barvanja-grafov">Barvanja grafov</a></li>
               </ul></li>
               </ul>
             </div>
@@ -6292,6 +6294,456 @@
             subdivizijo!</p>
             </div></li>
             </ol>
+            <h2 id="barvanja-grafov">Barvanja grafov</h2>
+            <p>V tem zaključnem razdelku bomo vzeli v roke barvice in z
+            njimi barvali vozlišča in povezave grafov. Prikazali bomo
+            tudi en zgled uporabe teh barvanj.</p>
+            <h3 id="barvanja-vozlišč">Barvanja vozlišč</h3>
+            <p>Naj bo <span class="math inline">\(G\)</span> graf in
+            <span class="math inline">\(k\)</span> naravno število.
+            Rečemo, da je graf <span class="math inline">\(G\)</span>
+            <span><strong><em>vozliščno <span
+            class="math inline">\(k\)</span>-obarvljiv</em></strong></span>,
+            če obstaja preslikava <span class="math inline">\(c \colon
+            V(G) \to \{ 1,2, \dots, k\}\)</span> z lastnostjo <span
+            class="math display">\[\forall u,v \in V(G) \colon u \sim v
+            \Rightarrow c(u) \neq c(v).\]</span> Vsaki dve povezani
+            vozlišči moramo torej obarvati z različnima barvama.
+            Preslikavo <span class="math inline">\(c\)</span> imenujemo
+            <span><strong><em>vozliščno <span
+            class="math inline">\(k\)</span>-barvanje</em></strong></span>
+            grafa <span class="math inline">\(G\)</span>.</p>
+            <div class="zgled">
+            <p><strong>Zgled 5.34</strong>. </p>
+            <ul>
+            <li><p>Liziko lahko obarvamo s <span class="math inline">\(k
+            = 3\)</span> barvami. Vozlišče stopnje <span
+            class="math inline">\(3\)</span> najprej obravamo z barvo
+            <span class="math inline">\(1\)</span>, potem pa list in eno
+            od vozlišč stopnje <span class="math inline">\(2\)</span>
+            obarvamo z barvo <span class="math inline">\(2\)</span>,
+            drugo vozlišče stopnje <span
+            class="math inline">\(2\)</span> pa z barvo <span
+            class="math inline">\(3\)</span>.</p></li>
+            <li><p>Graf je dvodelen, če in samo če je vozliščno <span
+            class="math inline">\(2\)</span>-obarvljiv.</p></li>
+            </ul>
+            </div>
+            <p>Predvsem nas zanima, kolikšno je <em>najmanjše</em>
+            število barv, ki jih potrebujemo, da obarvamo vozlišča
+            grafa. To število, se pravi <span
+            class="math display">\[\chi(G) = \min \{ k \in
+            \mathbf{N}\mid \text{$G$ je vozliščno $k$-obarvljiv}
+            \},\]</span> imenujemo <span><strong><em>kromatično
+            število</em></strong></span> grafa <span
+            class="math inline">\(G\)</span>.</p>
+            <div class="zgled">
+            <p><strong>Zgled 5.35</strong>. </p>
+            <ul>
+            <li><p><span class="math inline">\(\chi(G) = 1\)</span>, če
+            in samo če v grafu <span class="math inline">\(G\)</span> ni
+            povezav, se pravi <span class="math inline">\(E(G) =
+            \emptyset\)</span>.</p></li>
+            <li><p><span class="math inline">\(\chi(G) = 2\)</span>, če
+            in samo če je graf <span class="math inline">\(G\)</span>
+            dvodelen.</p></li>
+            <li><p>Kromatično število cikla <span
+            class="math inline">\(\chi(C_n)\)</span> je <span
+            class="math inline">\(2\)</span>, če je <span
+            class="math inline">\(n\)</span> sodo, saj je v tem primeru
+            graf dvodelen. Če je <span class="math inline">\(n\)</span>
+            liho, pa graf ni dvodelen, zato je <span
+            class="math inline">\(\chi(C_n) \geq 3\)</span>. Po drugi
+            strani pa <span class="math inline">\(3\)</span> barve zares
+            zadostujejo, da pobarvamo vozlišča lihega cikla.<a
+            href="#fn35" class="footnote-ref" id="fnref35"
+            role="doc-noteref"><sup>35</sup></a></p></li>
+            <li><p><span class="math inline">\(\chi(K_n) =
+            n\)</span>.</p></li>
+            </ul>
+            </div>
+            <p>Če je <span class="math inline">\(H\)</span> podgraf
+            grafa <span class="math inline">\(G\)</span>, potem je
+            seveda <span class="math inline">\(\chi(H) \leq
+            \chi(G)\)</span>, saj lahko uporabimo isto barvanje, zoženo
+            na <span class="math inline">\(V(H)\)</span>. Na ta način
+            lahko izpeljemo <em>spodnjo mejo</em> za kromatično število
+            grafa <span class="math inline">\(G\)</span>. Izberimo poln
+            podgraf v <span class="math inline">\(G\)</span>. Takemu
+            podgrafu rečemo
+            <span><strong><em>klika</em></strong></span>. Število
+            vozlišč največje klike označimo z <span
+            class="math inline">\(\omega(G)\)</span>. Za kliko <span
+            class="math inline">\(H\)</span> v grafu <span
+            class="math inline">\(G\)</span> velja <span
+            class="math inline">\(\chi(H) = |V(H)|\)</span>, ker je
+            <span class="math inline">\(H\)</span> poln graf. Od tod
+            sklepamo, da je <span class="math inline">\(\omega(G) \leq
+            \chi(G)\)</span>. Velikost največje klike nam torej podaja
+            spodnjo mejo za kromatično število.</p>
+            <div class="zgled">
+            <p><strong>Zgled 5.36</strong>. </p>
+            <ul>
+            <li><p>Za liziko <span class="math inline">\(L\)</span>
+            velja <span class="math inline">\(\omega(L) = 3\)</span> in
+            hkrati <span class="math inline">\(\chi(L) =
+            3\)</span>.</p></li>
+            <li><p>Za Petersenov graf <span
+            class="math inline">\(P\)</span> velja <span
+            class="math inline">\(\omega(P) = 2\)</span>. Ker <span
+            class="math inline">\(P\)</span> ni dvodelen, velja <span
+            class="math inline">\(\chi(P) \geq 3\)</span>. Ni težko
+            najti barvanja grafa <span class="math inline">\(P\)</span>
+            s tremi barvami, zato velja <span
+            class="math inline">\(\chi(P) = 3\)</span>.</p></li>
+            </ul>
+            </div>
+            <p>Poglejmo si še nekaj <em>zgornjih</em> mej za kromatično
+            število. Za ravninske grafe imamo na voljo naslednji
+            presenetljiv in zelo močan rezultat.</p>
+            <div class="izrek">
+            <p><strong>Izrek 5.10</strong> (o štirih barvah). Za vsak
+            ravninski graf <span class="math inline">\(G\)</span> je
+            <span class="math inline">\(\chi(G) \leq 4\)</span>.</p>
+            </div>
+            <p>Dokaz tega izreka je zelo zahteven in vključuje
+            intenzivno uporabo računalnika za pregledovanje posebnih
+            primerov.</p>
+            <div class="zgled">
+            <p><strong>Zgled 5.37</strong>. Opazujmo zemljevid sveta, na
+            katerem so označene državne meje in meje z morji. Države in
+            morja si predstavljajmo kot vozlišča, obstoj skupne meje pa
+            naj pomeni sosednost vozlišč. Na ta način dobimo graf, ki je
+            ravninski, saj je izvirni zemljevid narisan na ravnino. Po
+            izreku je ta graf vozliščno <span
+            class="math inline">\(4\)</span>-obarvljiv. To pomeni, da
+            lahko zemljevid sveta obarvamo s <span
+            class="math inline">\(4\)</span> barvami, pri čemer nobeni
+            dve sosednji državi nista enake barve.</p>
+            </div>
+            <p>Za poljubne grafe, ne nujno ravninske, lahko precej
+            preprosto zgornjo mejo za kromatično število dobimo iz
+            maksimalne stopnje vozlišča v <span
+            class="math inline">\(G\)</span>, števila <span
+            class="math inline">\(\Delta(G)\)</span>.</p>
+            <div class="trditev">
+            <p><strong>Trditev 5.8</strong>. Za vsak graf <span
+            class="math inline">\(G\)</span> je <span
+            class="math inline">\(\chi(G) \leq \Delta(G) +
+            1\)</span>.</p>
+            </div>
+            <div class="proof">
+            <p><em>Proof.</em> Vozlišča barvajmo v poljubnem vrstnem
+            redu. Prvo vozlišče obarvamo z barvo <span
+            class="math inline">\(1\)</span>. Vsako naslednje vozlišče
+            obarvamo z najmanjšo od prostih barv. Ker ima vsako vozlišče
+            največ <span class="math inline">\(\Deta(G)\)</span>
+            sosedov, uporabljamo pa množico barv <span
+            class="math inline">\(\{ 1,2, \dots, \Delta(G) \}\)</span>,
+            je vedno na voljo vsaj ena prosta barva in postopek se
+            uspešno izvede do konca. ◻</p>
+            </div>
+            <div class="zgled">
+            <p><strong>Zgled 5.38</strong>. </p>
+            <ul>
+            <li><p>Za poln graf <span class="math inline">\(K_n\)</span>
+            velja <span class="math inline">\(\Delta(K_n) = n-1\)</span>
+            in <span class="math inline">\(\chi(K_n) = n\)</span>, torej
+            za ta graf velja enakost v zadnji trditvi.</p></li>
+            <li><p>Za cikel <span class="math inline">\(C_n\)</span>
+            velja <span class="math inline">\(\Delta(C_n) = 2\)</span>,
+            kromatično število <span
+            class="math inline">\(\chi(C_n)\)</span> pa je bodisi <span
+            class="math inline">\(2\)</span> za sode <span
+            class="math inline">\(n\)</span> bodisi <span
+            class="math inline">\(3\)</span> za lihe <span
+            class="math inline">\(n\)</span>. V primeru sodega cikla je
+            kromatično število torej enako maksimalni stopnji, v primeru
+            lihega cikla pa velja enakost v zadnji trditvi.</p></li>
+            </ul>
+            </div>
+            <p><span><strong><em>Brooksov izrek</em></strong></span> nam
+            pove, da za povezan graf <span
+            class="math inline">\(G\)</span>, ki <em>ni poln in ni lih
+            cikel</em>, velja celo nekoliko strožja neenakost od te, ki
+            smo jo dokazali v trditvi, in sicer <span
+            class="math inline">\(\chi(G) \leq \Delta(G)\)</span>. Dokaz
+            izpustimo.</p>
+            <div class="zgled">
+            <p><strong>Zgled 5.39</strong>. Kemična tovarna pri delu
+            uporablja snovi <span class="math inline">\(S_1, S_2, \dots,
+            S_n\)</span>. Zaradi nevarnosti eksplozije nekaterih med
+            njimi ne smemo skladiščiti skupaj. Kolikšno je najmanjše
+            potrebno število prostorov za varno skladiščenje teh snovi?
+            Ta problem imenujemo <span><strong><em>problem skladiščenja
+            nevarnih snovi</em></strong></span>.</p>
+            <p>Za razrešitev problema definirajmo graf <span
+            class="math inline">\(G\)</span> z vozlišči <span
+            class="math inline">\(V(G) = \{ S_1, S_2, \dots, S_n
+            \}\)</span>, pri čemer sta vozlišči <span
+            class="math inline">\(u,v \in V(G)\)</span> povezani, če in
+            samo če snovi <span class="math inline">\(u\)</span> in
+            <span class="math inline">\(v\)</span> <em>ne</em> smemo
+            skladiščiti skupaj. Razporeditev snovi po prostorih podamo s
+            funkcijo, ki vsakemu vozlišči priredi številko prostora, se
+            pravi s funkcijo <span class="math inline">\(c \colon V(G)
+            \to \{ 1, 2, \dots, k \}\)</span>, za katero pa mora veljati
+            <span class="math inline">\(uv \in E(G) \Rightarrow c(u)
+            \neq c(v)\)</span>. Optimalna rešitev problema je torej
+            vozliščno barvanje grafa <span
+            class="math inline">\(G\)</span> s <span
+            class="math inline">\(\chi(G)\)</span> barvami.</p>
+            </div>
+            <h3 id="barvanja-povezav">Barvanja povezav</h3>
+            <p>Naj bo <span class="math inline">\(G\)</span> graf in
+            <span class="math inline">\(k\)</span> naravno število.
+            Rečemo, da je graf <span class="math inline">\(G\)</span>
+            <span><strong><em>povezavno <span
+            class="math inline">\(k\)</span>-obarvljiv</em></strong></span>,
+            če obstaja preslikava <span class="math inline">\(c \colon
+            E(G) \to \{ 1,2, \dots, k\}\)</span> z lastnostjo <span
+            class="math display">\[\forall e,f \in E(G) \colon e \cap f
+            \neq \emptyset \Rightarrow c(e) \neq c(f).\]</span> Vsaki
+            dve povezavi s skupnim krajišem moramo torej obarvati z
+            različnima barvama. Preslikavo <span
+            class="math inline">\(c\)</span> imenujemo
+            <span><strong><em>povezavno <span
+            class="math inline">\(k\)</span>-barvanje</em></strong></span>
+            grafa <span class="math inline">\(G\)</span>.</p>
+            <div class="zgled">
+            <p><strong>Zgled 5.40</strong>. Liziko <span
+            class="math inline">\(L\)</span> lahko povezavno obarvamo s
+            tremi barvami. Vse tri barve porabimo za <span
+            class="math inline">\(3\)</span>-cikel v liziki, z eno od
+            treh povezav pa potem pobarvamo še dodatno povezavo v
+            liziki.</p>
+            </div>
+            <p>Kot pri barvanju vozlišč nas predvsem zanima, kolikšno je
+            <em>najmanjše</em> število barv, ki jih potrebujemo, da
+            obarvamo povezave grafa. To število, se pravi <span
+            class="math display">\[\chi&#39;(G) = \min \{ k \in
+            \mathbf{N}\mid \text{$G$ je povezavno $k$-obarvljiv}
+            \},\]</span> imenujemo <span><strong><em>kromatični
+            indeks</em></strong></span> grafa <span
+            class="math inline">\(G\)</span>.</p>
+            <div class="zgled">
+            <p><strong>Zgled 5.41</strong>. </p>
+            <ul>
+            <li><p><span class="math inline">\(\chi&#39;(G) =
+            0\)</span>, če in samo če v grafu <span
+            class="math inline">\(G\)</span> ni povezav, se pravi <span
+            class="math inline">\(E(G) = \emptyset\)</span>.</p></li>
+            <li><p>Kromatični indeks cikla <span
+            class="math inline">\(\chi&#39;(C_n)\)</span> je <span
+            class="math inline">\(2\)</span>, če je <span
+            class="math inline">\(n\)</span> sodo, saj lahko povezave
+            pobarvamo alternirajoče z dvema barvama. Če je <span
+            class="math inline">\(n\)</span> liho, pa je <span
+            class="math inline">\(\chi&#39;(C_n) \geq 3\)</span>. Po
+            drugi strani pa <span class="math inline">\(3\)</span> barve
+            zares zadostujejo, da pobarvamo povezave lihega cikla,
+            podobno kot pri barvanju vozlišč.</p></li>
+            <li><p><span class="math inline">\(\chi&#39;(K_{1,n}) =
+            n\)</span>.</p></li>
+            </ul>
+            </div>
+            <p>Opazujmo vozlišče maksimalne stopnje v <span
+            class="math inline">\(G\)</span>. Vsaka povezava z enim
+            krajiščem v tem vozlišču mora biti pobarvana s svojo barvo.
+            Velja torej <span class="math inline">\(\chi&#39;(G) \geq
+            \Delta(G)\)</span>, kar nam podaja <em>spodnjo</em> mejo za
+            kromatični indeks. Za nekatere grafe velja kar enakost v tej
+            neenakosti.</p>
+            <div class="izrek">
+            <p><strong>Izrek 5.11</strong>. Za <em>dvodelen</em> graf
+            <span class="math inline">\(G\)</span> je <span
+            class="math inline">\(\chi&#39;(G) = \Delta(G)\)</span>.</p>
+            </div>
+            <div class="proof">
+            <p><em>Proof.</em> Dokazujemo z indukcijo na <span
+            class="math inline">\(|E(G)|\)</span>.</p>
+            <p>Baza indukcije je <span class="math inline">\(|E(G)| =
+            0\)</span>. V tem primeru je <span
+            class="math inline">\(\chi&#39;(G) = 0 =
+            \Delta(G)\)</span>. <span
+            class="math inline">\(\checkmark\)</span></p>
+            <p>Naj bo zdaj <span class="math inline">\(G\)</span>
+            dvodelen graf in predpostavimo, da izrek že velja za vse
+            grafe z manj povezavami, kot jih ima <span
+            class="math inline">\(G\)</span>. Naj bo <span
+            class="math inline">\(B = \{ 1,2,\dots, \Delta(G)\}\)</span>
+            množica barv, s katerimi želimo pobarvati povezave <span
+            class="math inline">\(G\)</span>. Iz grafa <span
+            class="math inline">\(G\)</span> odstranimo neko povezavo
+            <span class="math inline">\(e = uv \in E(G)\)</span>. Po
+            indukciji lahko graf <span
+            class="math inline">\(G-e\)</span> obarvamo z barvami iz
+            <span class="math inline">\(B\)</span>. Naj bo <span
+            class="math inline">\(c&#39;\)</span> tako barvanje. To
+            barvanje bi radi razširili še na vozlišče <span
+            class="math inline">\(e\)</span>.</p>
+            <p>Naj bo <span
+            class="math inline">\(\mathop{\mathrm{pr}}(x)\)</span>
+            množica prostih barv v vozlišču <span
+            class="math inline">\(x\)</span>, torej tistih barv, ki jih
+            barvanje <span class="math inline">\(c&#39;\)</span> ne
+            uporabi pri barvanju povezav z enim krajiščem <span
+            class="math inline">\(x\)</span>. V grafu <span
+            class="math inline">\(G - e\)</span> velja <span
+            class="math inline">\(d(u), d(v) &lt; \Delta(G)\)</span>,
+            zato je <span class="math inline">\(\mathop{\mathrm{pr}}(u)
+            \neq \emptyset\)</span> in <span
+            class="math inline">\(\mathop{\mathrm{pr}}(v) \neq
+            \emptyset\)</span>.</p>
+            <p>Če je <span class="math inline">\(\mathop{\mathrm{pr}}(u)
+            \cap \mathop{\mathrm{pr}}(v) \neq \emptyset\)</span>, potem
+            lahko povezavo <span class="math inline">\(e\)</span>
+            pobarvamo s poljubno barvo iz preseka <span
+            class="math inline">\(\mathop{\mathrm{pr}}(u) \cap
+            \mathop{\mathrm{pr}}(v)\)</span>. <span
+            class="math inline">\(\checkmark\)</span></p>
+            <p>Predpostavimo zdaj, da je <span
+            class="math inline">\(\mathop{\mathrm{pr}}(u) \cap
+            \mathop{\mathrm{pr}}(v) = \emptyset\)</span>. Izberimo <span
+            class="math inline">\(\alpha \in
+            \mathop{\mathrm{pr}}(u)\)</span> in <span
+            class="math inline">\(\beta \in
+            \mathop{\mathrm{pr}}(v)\)</span>. Cilj je zamenjati barvo
+            <span class="math inline">\(\beta\)</span> pri vozlišču
+            <span class="math inline">\(u\)</span> z barvo <span
+            class="math inline">\(\alpha\)</span>, nakar bomo povezavo
+            <span class="math inline">\(e\)</span> pobarvali z barvo
+            <span class="math inline">\(\beta\)</span>. Kako izvedemo to
+            zamenjavo?</p>
+            <div class="domacanaloga">
+            <p><strong>Domača naloga 5.5</strong>. Naj bo <span
+            class="math inline">\(P\)</span> najdaljša možna pot v <span
+            class="math inline">\(G - e\)</span>, ki se začne v <span
+            class="math inline">\(u\)</span> in je obarvana le z barvama
+            <span class="math inline">\(\alpha\)</span> in <span
+            class="math inline">\(\beta\)</span>. Prepričaj se najprej,
+            da vozlišče <span class="math inline">\(v\)</span> ni na
+            <span class="math inline">\(P\)</span>. Za tem na povezavah
+            poti <span class="math inline">\(P\)</span> zamenjaj barvi
+            <span class="math inline">\(\alpha\)</span> in <span
+            class="math inline">\(\beta\)</span> med seboj. Na ta način
+            smo malo spremenili barvanje <span
+            class="math inline">\(c&#39;\)</span> in dosegli, da je
+            <span class="math inline">\(\beta \in
+            \mathop{\mathrm{pr}}(u)\)</span>. Ker je tudi <span
+            class="math inline">\(\beta \in
+            \mathop{\mathrm{pr}}(v)\)</span>, lahko torej res povezavo
+            <span class="math inline">\(e\)</span> obravamo z <span
+            class="math inline">\(\beta\)</span>.</p>
+            </div>
+            <p> ◻</p>
+            </div>
+            <div class="zgled">
+            <p><strong>Zgled 5.42</strong>. Velja <span
+            class="math inline">\(\chi&#39;(K_{m,n}) = \max \{ m, n
+            \}\)</span>.</p>
+            </div>
+            <p><em>Zgornjo</em> mejo za kromatični indeks pa nam poda
+            naslednji presenetljiv izrek.</p>
+            <div class="izrek">
+            <p><strong>Izrek 5.12</strong> (Vizing). Za vsak graf <span
+            class="math inline">\(G\)</span> je <span
+            class="math inline">\(\chi&#39;(G) \leq \Delta(G) +
+            1\)</span>.</p>
+            </div>
+            <p>Za kromatični indeks vselej torej velja <span
+            class="math inline">\(\Delta(G) \leq \chi&#39;(G) \leq
+            \Delta(G) + 1\)</span>.</p>
+            <div class="zgled">
+            <p><strong>Zgled 5.43</strong>. Naj bo <span
+            class="math inline">\(P\)</span> Petersenov graf. Velja
+            <span class="math inline">\(\Delta(P) = 3\)</span>, zato je
+            <span class="math inline">\(3 \leq \chi&#39;(P) \leq
+            4\)</span>. Povezavnega barvanja s štirimi barvami ni težko
+            najti.</p>
+            <div class="domacanaloga">
+            <p><strong>Domača naloga 5.6</strong>. Dokaži, da velja
+            <span class="math inline">\(\chi&#39;(P) = 4\)</span>.</p>
+            </div>
+            </div>
+            <p>Vsak graf <span class="math inline">\(G\)</span> torej
+            zadošča bodisi <span class="math inline">\(\chi&#39;(G) =
+            \Delta(G)\)</span> bodisi <span
+            class="math inline">\(\chi&#39;(G) = \Delta(G) + 1\)</span>.
+            Grafov, ki zadoščajo prvi enakosti, pravimo grafi
+            <span><strong><em>razreda I</em></strong></span>, tistim, ki
+            zadoščajo drugi enakosti, pa pravimo grafi
+            <span><strong><em>razreda II</em></strong></span>.</p>
+            <div class="zgled">
+            <p><strong>Zgled 5.44</strong>. Dvodelni grafi so razreda I.
+            Petersenov graf je razreda II.</p>
+            </div>
+            <p>Oglejmo si še, v kateri razred sodijo polni grafi.
+            Polovico teh grafov lahko obdelamo z naslednjo preprosto
+            trditvijo.</p>
+            <div class="trditev">
+            <p><strong>Trditev 5.9</strong>. Regularni grafi na
+            <em>liho</em> mnogo vozliščih so razreda II.</p>
+            </div>
+            <div class="proof">
+            <p><em>Proof.</em> Recimo, da obstaja <span
+            class="math inline">\(d\)</span>-regularen graf razreda I na
+            liho mnogo vozliščih. Torej obstaja barvanje povezav <span
+            class="math inline">\(c \colon E(G) \to \{ 1, 2, \dots, d
+            \}\)</span>. Naj bo <span class="math inline">\(H\)</span>
+            podgraf grafa <span class="math inline">\(G\)</span> z
+            množico povezav <span class="math inline">\(E(H) =
+            c^{-1}\)</span>. Podgraf <span
+            class="math inline">\(H\)</span> torej sestoji iz tistih
+            povezav, ki so obravana z barvo <span
+            class="math inline">\(1\)</span>, in njihovih krajišč. Ker
+            je graf <span class="math inline">\(G\)</span> <span
+            class="math inline">\(d\)</span>-regularen, v vsakem
+            vozlišču nujno nastopajo vse barve. Torej ima vsako vozlišče
+            kakšno povezavo barve <span
+            class="math inline">\(1\)</span>, zato je <span
+            class="math inline">\(V(H) = V(G)\)</span>. Podgraf <span
+            class="math inline">\(H\)</span> je torej vpet. Hkrati za
+            vsako vozlišče <span class="math inline">\(u\)</span> velja
+            <span class="math inline">\(d_H(u) = 1\)</span>, saj ima
+            <span class="math inline">\(H\)</span> le povezave barve
+            <span class="math inline">\(1\)</span>. Po lemi o rokovanju
+            od tod sledi <span class="math display">\[2 |E(H)| = \sum_{v
+            \in V(H)} d(v) = |V(H)| = |V(G)|.\]</span> Dobljeno je
+            protislovno s predpostavko, da ima <span
+            class="math inline">\(G\)</span> liho mnogo vozlišč. ◻</p>
+            </div>
+            <div class="zgled">
+            <p><strong>Zgled 5.45</strong>. </p>
+            <ul>
+            <li><p>Po trditvi velja <span
+            class="math inline">\(\chi&#39;(K_{2n+1}) = 2n+1\)</span>,
+            torej je <span class="math inline">\(K_{2n+1}\)</span>
+            razreda II.</p></li>
+            <li><p>Velja <span class="math inline">\(\chi&#39;(K_{2n +
+            2}) = 2n+1\)</span>, zato je <span
+            class="math inline">\(K_{2n+2}\)</span> razreda I. Tako
+            barvanje lahko najdemo na naslednji način. Najprej <span
+            class="math inline">\(2n+1\)</span> vozlišč grafa
+            razporedimo v cikel, ki ga narišemo kot pravilen <span
+            class="math inline">\((2n+1)\)</span>-kotnik, zadnje
+            vozlišče pa damo v središče tega cikla. Zunanji cikel je
+            dolžine <span class="math inline">\(2n+1\)</span>, ki ga
+            povezavno obarvamo z <span
+            class="math inline">\(2n+1\)</span> različnimi barvami. Zdaj
+            izberemo eno od povezav na zunanjem ciklu, obarvamo z barvo
+            <span class="math inline">\(b\)</span>, in povlečemo
+            povezave, vzporedne tej povezavi, vse jih obarvamo z barvo
+            <span class="math inline">\(b\)</span>. Nazadnje povlečemo
+            še povezavo med središčnim vozliščem in vozliščem na ciklu,
+            ki je kraji na nobeno od prej opisanih povezav, tudi to
+            zadnjo povezavo obarvamo z barvo <span
+            class="math inline">\(b\)</span>. Enako ponovimo za vse
+            povezave na zunanjem ciklu. Na ta način dobimo povezavno
+            <span class="math inline">\((2n+1)\)</span>-barvanje grafa
+            <span class="math inline">\(K_{2n+2}\)</span>.</p></li>
+            </ul>
+            </div>
             <section class="footnotes footnotes-end-of-document"
             role="doc-endnotes">
             <hr />
@@ -6504,6 +6956,11 @@
             <li id="fn34" role="doc-endnote"><p>Določenim povezavam
             torej dodamo nekaj vozlišč.<a href="#fnref34"
             class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn35" role="doc-endnote"><p>Najprej prvih <span
+            class="math inline">\(n-1\)</span> vozlišč pobarvamo
+            alternirajoče z dvema barvama, zadnje vozlišče pa pobarvamo
+            s tretjo barvo.<a href="#fnref35" class="footnote-back"
+            role="doc-backlink">↩︎</a></p></li>
             </ol>
             </section>
 

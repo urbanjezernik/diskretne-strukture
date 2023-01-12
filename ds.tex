@@ -62,6 +62,7 @@
 \def\youngsym{\sigma_{\lambda}}
 
 \DeclareMathOperator\image{im}
+\DeclareMathOperator\pr{pr}
 \DeclareMathOperator\sgn{sgn}
 \DeclareMathOperator\Res{Res}
 \DeclareMathOperator\Ind{Ind}
@@ -2875,5 +2876,178 @@ Naj bo $G$ ravninski graf. Če je $H$ \emph{podgraf} grafa $G$, potem je tudi $H
     \end{domacanaloga}
 \end{enumerate}
 
+\section{Barvanja grafov}
+
+V tem zaključnem razdelku bomo vzeli v roke barvice in z njimi barvali vozlišča in povezave grafov. Prikazali bomo tudi en zgled uporabe teh barvanj.
+
+\subsection{Barvanja vozlišč}
+
+Naj bo $G$ graf in $k$ naravno število. Rečemo, da je graf $G$ {\definicija vozliščno $k$-obarvljiv}, če obstaja preslikava $c \colon V(G) \to \{ 1,2, \dots, k\}$ z lastnostjo
+\[
+    \forall u,v \in V(G) \colon u \sim v \Rightarrow c(u) \neq c(v).
+\]
+Vsaki dve povezani vozlišči moramo torej obarvati z različnima barvama. Preslikavo $c$ imenujemo {\definicija vozliščno $k$-barvanje} grafa $G$.
+
+\begin{zgled} \leavevmode
+\begin{itemize}
+\item Liziko lahko obarvamo s $k = 3$ barvami. Vozlišče stopnje $3$ najprej obravamo z barvo $1$, potem pa list in eno od vozlišč stopnje $2$ obarvamo z barvo $2$, drugo vozlišče stopnje $2$ pa z barvo $3$. 
+\item Graf je dvodelen, če in samo če je vozliščno $2$-obarvljiv.
+\end{itemize}
+\end{zgled}
+
+Predvsem nas zanima, kolikšno je \emph{najmanjše} število barv, ki jih potrebujemo, da obarvamo vozlišča grafa. To število, se pravi
+\[
+\chi(G) = \min \{ k \in \NN \mid \text{$G$ je vozliščno $k$-obarvljiv} \},
+\]
+imenujemo {\definicija kromatično število} grafa $G$.
+
+\begin{zgled} \leavevmode
+\begin{itemize}
+    \item $\chi(G) = 1$, če in samo če v grafu $G$ ni povezav, se pravi $E(G) = \emptyset$.
+    \item $\chi(G) = 2$, če in samo če je graf $G$ dvodelen.
+    \item Kromatično število cikla $\chi(C_n)$ je $2$, če je $n$ sodo, saj je v tem primeru graf dvodelen. Če je $n$ liho, pa graf ni dvodelen, zato je $\chi(C_n) \geq 3$. Po drugi strani pa $3$ barve zares zadostujejo, da pobarvamo vozlišča lihega cikla.\footnote{Najprej prvih $n-1$ vozlišč pobarvamo alternirajoče z dvema barvama, zadnje vozlišče pa pobarvamo s tretjo barvo.}
+    \item $\chi(K_n) = n$.
+\end{itemize}
+\end{zgled}
+
+Če je $H$ podgraf grafa $G$, potem je seveda $\chi(H) \leq \chi(G)$, saj lahko uporabimo isto barvanje, zoženo na $V(H)$. Na ta način lahko izpeljemo \emph{spodnjo mejo} za kromatično število grafa $G$. Izberimo poln podgraf v $G$. Takemu podgrafu rečemo {\definicija klika}. Število vozlišč največje klike označimo z $\omega(G)$. Za kliko $H$ v grafu $G$ velja $\chi(H) = |V(H)|$, ker je $H$ poln graf. Od tod sklepamo, da je $\omega(G) \leq \chi(G)$. Velikost največje klike nam torej podaja spodnjo mejo za kromatično število.
+
+\begin{zgled} \leavevmode
+\begin{itemize}
+\item Za liziko $L$ velja $\omega(L) = 3$ in hkrati $\chi(L) = 3$.
+\item Za Petersenov graf $P$ velja $\omega(P) = 2$. Ker $P$ ni dvodelen, velja $\chi(P) \geq 3$. Ni težko najti barvanja grafa $P$ s tremi barvami, zato velja $\chi(P) = 3$.
+\end{itemize}
+\end{zgled}
+
+Poglejmo si še nekaj \emph{zgornjih} mej za kromatično število. Za ravninske grafe imamo na voljo naslednji presenetljiv in zelo močan rezultat.
+
+\begin{izrek}[o štirih barvah]
+Za vsak ravninski graf $G$ je $\chi(G) \leq 4$.
+\end{izrek}
+
+Dokaz tega izreka je zelo zahteven in vključuje intenzivno uporabo računalnika za pregledovanje posebnih primerov.
+
+\begin{zgled}
+Opazujmo zemljevid sveta, na katerem so označene državne meje in meje z morji. Države in morja si predstavljajmo kot vozlišča, obstoj skupne meje pa naj pomeni sosednost vozlišč. Na ta način dobimo graf, ki je ravninski, saj je izvirni zemljevid narisan na ravnino. Po izreku je ta graf vozliščno $4$-obarvljiv. To pomeni, da lahko zemljevid sveta obarvamo s $4$ barvami, pri čemer nobeni dve sosednji državi nista enake barve.
+\end{zgled}
+
+Za poljubne grafe, ne nujno ravninske, lahko precej preprosto zgornjo mejo za kromatično število dobimo iz maksimalne stopnje vozlišča v $G$, števila $\Delta(G)$.
+
+\begin{trditev}
+Za vsak graf $G$ je $\chi(G) \leq \Delta(G) + 1$.
+\end{trditev}
+\begin{dokaz}
+Vozlišča barvajmo v poljubnem vrstnem redu. Prvo vozlišče obarvamo z barvo $1$. Vsako naslednje vozlišče obarvamo z najmanjšo od prostih barv. Ker ima vsako vozlišče največ $\Deta(G)$ sosedov, uporabljamo pa množico barv $\{ 1,2, \dots, \Delta(G) \}$, je vedno na voljo vsaj ena prosta barva in postopek se uspešno izvede do konca.
+\end{dokaz}
+
+\begin{zgled} \leavevmode
+\begin{itemize}
+    \item Za poln graf $K_n$ velja $\Delta(K_n) = n-1$ in $\chi(K_n) = n$, torej za ta graf velja enakost v zadnji trditvi.
+    \item Za cikel $C_n$ velja $\Delta(C_n) = 2$, kromatično število $\chi(C_n)$ pa je bodisi $2$ za sode $n$ bodisi $3$ za lihe $n$. V primeru sodega cikla je kromatično število torej enako maksimalni stopnji, v primeru lihega cikla pa velja enakost v zadnji trditvi.
+\end{itemize}
+\end{zgled}
+
+{\definicija Brooksov izrek} nam pove, da za povezan graf $G$, ki \emph{ni poln in ni lih cikel}, velja celo nekoliko strožja neenakost od te, ki smo jo dokazali v trditvi, in sicer $\chi(G) \leq \Delta(G)$. Dokaz izpustimo. 
+
+\begin{zgled}
+Kemična tovarna pri delu uporablja snovi $S_1, S_2, \dots, S_n$. Zaradi nevarnosti eksplozije nekaterih med njimi ne smemo skladiščiti skupaj. Kolikšno je najmanjše potrebno število prostorov za varno skladiščenje teh snovi? Ta problem imenujemo {\definicija problem skladiščenja nevarnih snovi}.
+
+Za razrešitev problema definirajmo graf $G$ z vozlišči $V(G) = \{ S_1, S_2, \dots, S_n \}$, pri čemer sta vozlišči $u,v \in V(G)$ povezani, če in samo če snovi $u$ in $v$ \emph{ne} smemo skladiščiti skupaj. Razporeditev snovi po prostorih podamo s funkcijo, ki vsakemu vozlišči priredi številko prostora, se pravi s funkcijo $c \colon V(G) \to \{ 1, 2, \dots, k \}$, za katero pa mora veljati $uv \in E(G) \Rightarrow c(u) \neq c(v)$. Optimalna rešitev problema je torej vozliščno barvanje grafa $G$ s $\chi(G)$ barvami.
+\end{zgled}
+
+\subsection{Barvanja povezav}
+
+Naj bo $G$ graf in $k$ naravno število. Rečemo, da je graf $G$ {\definicija povezavno $k$-obarvljiv}, če obstaja preslikava $c \colon E(G) \to \{ 1,2, \dots, k\}$ z lastnostjo
+\[
+    \forall e,f \in E(G) \colon e \cap f \neq \emptyset \Rightarrow c(e) \neq c(f).
+\]
+Vsaki dve povezavi s skupnim krajišem moramo torej obarvati z različnima barvama. Preslikavo $c$ imenujemo {\definicija povezavno $k$-barvanje} grafa $G$.
+
+\begin{zgled}
+Liziko $L$ lahko povezavno obarvamo s tremi barvami. Vse tri barve porabimo za $3$-cikel v liziki, z eno od treh povezav pa potem pobarvamo še dodatno povezavo v liziki.
+\end{zgled}
+
+Kot pri barvanju vozlišč nas predvsem zanima, kolikšno je \emph{najmanjše} število barv, ki jih potrebujemo, da obarvamo povezave grafa. To število, se pravi
+\[
+\chi'(G) = \min \{ k \in \NN \mid \text{$G$ je povezavno $k$-obarvljiv} \},
+\]
+imenujemo {\definicija kromatični indeks} grafa $G$.
+
+\begin{zgled} \leavevmode
+\begin{itemize}
+    \item $\chi'(G) = 0$, če in samo če v grafu $G$ ni povezav, se pravi $E(G) = \emptyset$.
+    \item Kromatični indeks cikla $\chi'(C_n)$ je $2$, če je $n$ sodo, saj lahko povezave pobarvamo alternirajoče z dvema barvama. Če je $n$ liho, pa je $\chi'(C_n) \geq 3$. Po drugi strani pa $3$ barve zares zadostujejo, da pobarvamo povezave lihega cikla, podobno kot pri barvanju vozlišč.
+    \item $\chi'(K_{1,n}) = n$.
+\end{itemize}
+\end{zgled}
+
+Opazujmo vozlišče maksimalne stopnje v $G$. Vsaka povezava z enim krajiščem v tem vozlišču mora biti pobarvana s svojo barvo. Velja torej $\chi'(G) \geq \Delta(G)$, kar nam podaja \emph{spodnjo} mejo za kromatični indeks. Za nekatere grafe velja kar enakost v tej neenakosti.
+
+\begin{izrek}
+Za \emph{dvodelen} graf $G$ je $\chi'(G) = \Delta(G)$.
+\end{izrek}
+\begin{dokaz}
+Dokazujemo z indukcijo na $|E(G)|$.
+
+Baza indukcije je $|E(G)| = 0$. V tem primeru je $\chi'(G) = 0 = \Delta(G)$. \kljuka
+
+Naj bo zdaj $G$ dvodelen graf in predpostavimo, da izrek že velja za vse grafe z manj povezavami, kot jih ima $G$. Naj bo $B = \{ 1,2,\dots, \Delta(G)\}$ množica barv, s katerimi želimo pobarvati povezave $G$. Iz grafa $G$ odstranimo neko povezavo $e = uv \in E(G)$. Po indukciji lahko graf $G-e$ obarvamo z barvami iz $B$. Naj bo $c'$ tako barvanje. To barvanje bi radi razširili še na vozlišče $e$. 
+
+Naj bo $\pr(x)$ množica prostih barv v vozlišču $x$, torej tistih barv, ki jih barvanje $c'$ ne uporabi pri barvanju povezav z enim krajiščem $x$. V grafu $G - e$ velja $d(u), d(v) < \Delta(G)$, zato je $\pr(u) \neq \emptyset$ in $\pr(v) \neq \emptyset$. 
+
+Če je $\pr(u) \cap \pr(v) \neq \emptyset$, potem lahko povezavo $e$ pobarvamo s poljubno barvo iz preseka $\pr(u) \cap \pr(v)$. \kljuka
+
+Predpostavimo zdaj, da je $\pr(u) \cap \pr(v) = \emptyset$. Izberimo $\alpha \in \pr(u)$ in $\beta \in \pr(v)$. Cilj je zamenjati barvo $\beta$ pri vozlišču $u$ z barvo $\alpha$, nakar bomo povezavo $e$ pobarvali z barvo $\beta$. Kako izvedemo to zamenjavo?
+
+\begin{domacanaloga}
+Naj bo $P$ najdaljša možna pot v $G - e$, ki se začne v $u$ in je obarvana le z barvama $\alpha$ in $\beta$. Prepričaj se najprej, da vozlišče $v$ ni na $P$. Za tem na povezavah poti $P$ zamenjaj barvi $\alpha$ in $\beta$ med seboj. Na ta način smo malo spremenili barvanje $c'$ in dosegli, da je $\beta \in \pr(u)$. Ker je tudi $\beta \in \pr(v)$, lahko torej res povezavo $e$ obravamo z $\beta$.
+\end{domacanaloga}
+\end{dokaz}
+
+\begin{zgled}
+Velja $\chi'(K_{m,n}) = \max \{ m, n \}$.
+\end{zgled}
+
+\emph{Zgornjo} mejo za kromatični indeks pa nam poda naslednji presenetljiv izrek.
+
+\begin{izrek}[Vizing]
+Za vsak graf $G$ je $\chi'(G) \leq \Delta(G) + 1$.
+\end{izrek}
+
+Za kromatični indeks vselej torej velja $\Delta(G) \leq \chi'(G) \leq \Delta(G) + 1$.
+
+\begin{zgled}
+Naj bo $P$ Petersenov graf. Velja $\Delta(P) = 3$, zato je $3 \leq \chi'(P) \leq 4$. Povezavnega barvanja s štirimi barvami ni težko najti.
+
+\begin{domacanaloga}
+Dokaži, da velja $\chi'(P) = 4$.
+\end{domacanaloga}
+\end{zgled}
+
+Vsak graf $G$ torej zadošča bodisi $\chi'(G) = \Delta(G)$ bodisi $\chi'(G) = \Delta(G) + 1$. Grafov, ki zadoščajo prvi enakosti, pravimo grafi {\definicija razreda I}, tistim, ki zadoščajo drugi enakosti, pa pravimo grafi {\definicija razreda II}. 
+
+\begin{zgled}
+Dvodelni grafi so razreda I. Petersenov graf je razreda II.
+\end{zgled}
+
+Oglejmo si še, v kateri razred sodijo polni grafi. Polovico teh grafov lahko obdelamo z naslednjo preprosto trditvijo.
+
+\begin{trditev}
+Regularni grafi na \emph{liho} mnogo vozliščih so razreda II.
+\end{trditev}
+\begin{dokaz}
+Recimo, da obstaja $d$-regularen graf razreda I na liho mnogo vozliščih. Torej obstaja barvanje povezav $c \colon E(G) \to \{ 1, 2, \dots, d \}$. Naj bo $H$ podgraf grafa $G$ z množico povezav $E(H) = c^{-1}$. Podgraf $H$ torej sestoji iz tistih povezav, ki so obravana z barvo $1$, in njihovih krajišč. Ker je graf $G$ $d$-regularen, v vsakem vozlišču nujno nastopajo vse barve. Torej ima vsako vozlišče kakšno povezavo barve $1$, zato je $V(H) = V(G)$. Podgraf $H$ je torej vpet. Hkrati za vsako vozlišče $u$ velja $d_H(u) = 1$, saj ima $H$ le povezave barve $1$. Po lemi o rokovanju od tod sledi
+\[
+2 |E(H)| = \sum_{v \in V(H)} d(v) = |V(H)| = |V(G)|.
+\]
+Dobljeno je protislovno s predpostavko, da ima $G$ liho mnogo vozlišč.
+\end{dokaz}
+
+\begin{zgled} \leavevmode
+\begin{itemize}
+\item Po trditvi velja $\chi'(K_{2n+1}) = 2n+1$, torej je $K_{2n+1}$ razreda II.
+\item Velja $\chi'(K_{2n + 2}) = 2n+1$, zato je $K_{2n+2}$ razreda I. Tako barvanje lahko najdemo na naslednji način. Najprej $2n+1$ vozlišč grafa razporedimo v cikel, ki ga narišemo kot pravilen $(2n+1)$-kotnik, zadnje vozlišče pa damo v središče tega cikla. Zunanji cikel je dolžine $2n+1$, ki ga povezavno obarvamo z $2n+1$ različnimi barvami. Zdaj izberemo eno od povezav na zunanjem ciklu, obarvamo z barvo $b$, in povlečemo povezave, vzporedne tej povezavi, vse jih obarvamo z barvo $b$. Nazadnje povlečemo še povezavo med središčnim vozliščem in vozliščem na ciklu, ki je kraji na nobeno od prej opisanih povezav, tudi to zadnjo povezavo obarvamo z barvo $b$. Enako ponovimo za vse povezave na zunanjem ciklu. Na ta način dobimo povezavno $(2n+1)$-barvanje grafa $K_{2n+2}$.
+\end{itemize}
+\end{zgled}
 
 \end{document}
