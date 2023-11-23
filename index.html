@@ -33,6 +33,89 @@
 
   <body>
     
+    <!-- Bootstrap Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Diskretne strukture</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarContent">
+          <ul class="navbar-nav mr-auto">
+<li class="nav-item dropdown">
+<a class="nav-link dropdown-toggle" href="#" id="#izjavni-račun" role="button" data-bs-toggle="dropdown" aria-expanded="false">Izjavni račun</a>
+<ul class="dropdown-menu" aria-labelledby="#izjavni-račun">
+<li><a class="dropdown-item" href="#izjave-in-izjavni-vezniki">Izjave in izjavni
+              vezniki</a></li>
+<li><a class="dropdown-item" href="#izjavni-izrazi">Izjavni izrazi</a></li>
+<li><a class="dropdown-item" href="#tavtologije-in-enakovredni-izrazi">Tavtologije in
+              enakovredni izrazi</a></li>
+<li><a class="dropdown-item" href="#dno-in-kno">DNO in
+              KNO</a></li>
+<li><a class="dropdown-item" href="#sklepanje-v-izjavnem-računu">Sklepanje v izjavnem
+              računu</a></li>
+</ul>
+</li>
+<li class="nav-item dropdown">
+<a class="nav-link dropdown-toggle" href="#" id="#predikatni-račun" role="button" data-bs-toggle="dropdown" aria-expanded="false">Predikatni račun</a>
+<ul class="dropdown-menu" aria-labelledby="#predikatni-račun">
+<li><a class="dropdown-item" href="#motivacija">Motivacija</a></li>
+<li><a class="dropdown-item" href="#sintaksa-predikatnega-računa">Sintaksa
+              predikatnega računa</a></li>
+<li><a class="dropdown-item" href="#semantika-predikatnega-računa">Semantika
+              predikatnega računa</a></li>
+<li><a class="dropdown-item" href="#logično-veljavne-formule-in-enakovrednosti">Logično
+              veljavne formule in enakovrednosti</a></li>
+<li><a class="dropdown-item" href="#sklepanje-v-predikatnem-računu">Sklepanje v
+              predikatnem računu</a></li>
+</ul>
+</li>
+<li class="nav-item dropdown">
+<a class="nav-link dropdown-toggle" href="#" id="#relacije" role="button" data-bs-toggle="dropdown" aria-expanded="false">Relacije</a>
+<ul class="dropdown-menu" aria-labelledby="#relacije">
+<li><a class="dropdown-item" href="#definicija-in-lastnosti-relacij">Definicija in
+              lastnosti relacij</a></li>
+<li><a class="dropdown-item" href="#ekvivalenčne-relacije">Ekvivalenčne
+              relacije</a></li>
+<li><a class="dropdown-item" href="#operacije-z-relacijami">Operacije z
+              relacijami</a></li>
+<li><a class="dropdown-item" href="#potence-in-ovojnice-relacij">Potence in ovojnice
+              relacij</a></li>
+</ul>
+</li>
+<li class="nav-item dropdown">
+<a class="nav-link dropdown-toggle" href="#" id="#urejenosti" role="button" data-bs-toggle="dropdown" aria-expanded="false">Urejenosti</a>
+<ul class="dropdown-menu" aria-labelledby="#urejenosti">
+<li><a class="dropdown-item" href="#delna-in-linearna-urejenost">Delna in linearna
+              urejenost</a></li>
+<li><a class="dropdown-item" href="#posebni-elementi-v-delno-urejenih-množicah">Posebni
+              elementi v delno urejenih množicah</a></li>
+<li><a class="dropdown-item" href="#mreža">Mreža</a></li>
+</ul>
+</li>
+<li class="nav-item dropdown">
+<a class="nav-link dropdown-toggle" href="#" id="#grafi" role="button" data-bs-toggle="dropdown" aria-expanded="false">Grafi</a>
+<ul class="dropdown-menu" aria-labelledby="#grafi">
+<li><a class="dropdown-item" href="#osnovne-definicije">Osnovne definicije</a></li>
+<li><a class="dropdown-item" href="#standardni-primeri-in-operacije">Standardni
+              primeri in operacije</a></li>
+<li><a class="dropdown-item" href="#invariante-grafov">Invariante grafov</a></li>
+<li><a class="dropdown-item" href="#drevesa">Drevesa</a></li>
+<li><a class="dropdown-item" href="#eulerjevi-grafi">Eulerjevi grafi</a></li>
+<li><a class="dropdown-item" href="#hamiltonovi-grafi">Hamiltonovi grafi</a></li>
+<li><a class="dropdown-item" href="#ravninski-grafi">Ravninski grafi</a></li>
+<li><a class="dropdown-item" href="#barvanja-grafov">Barvanja grafov</a></li>
+</ul>
+</li>
+</ul>
+            <!-- Python script will populate this -->
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- end of Navbar -->
+
+
     <div class="container-fluid">
       <div class="row flex-nowrap">
         <div class="col-lg-7 mx-auto p-4">
@@ -43,7 +126,7 @@
             <strong> Urban Jezernik <br>
               Univerza v Ljubljani, Fakulteta za matematiko in fiziko </strong> <br>
 
-            Zadnja posodobitev: 15. 11. 2023
+            Zadnja posodobitev: 23. 11. 2023
           </div>
 
           <div id="spinner" class="text-center">
@@ -52,91 +135,7 @@
 
           <div id="hidden_contents" style="display:none">
 
-            <div class="kazalo">
-              <h3>Kazalo</h3>
-              <ul>
-              <li><a href="#izjavni-račun"
-              id="toc-izjavni-račun">Izjavni račun</a>
-              <ul>
-              <li><a href="#izjave-in-izjavni-vezniki"
-              id="toc-izjave-in-izjavni-vezniki">Izjave in izjavni
-              vezniki</a></li>
-              <li><a href="#izjavni-izrazi"
-              id="toc-izjavni-izrazi">Izjavni izrazi</a></li>
-              <li><a href="#tavtologije-in-enakovredni-izrazi"
-              id="toc-tavtologije-in-enakovredni-izrazi">Tavtologije in
-              enakovredni izrazi</a></li>
-              <li><a href="#dno-in-kno" id="toc-dno-in-kno">DNO in
-              KNO</a></li>
-              <li><a href="#sklepanje-v-izjavnem-računu"
-              id="toc-sklepanje-v-izjavnem-računu">Sklepanje v izjavnem
-              računu</a></li>
-              </ul></li>
-              <li><a href="#predikatni-račun"
-              id="toc-predikatni-račun">Predikatni račun</a>
-              <ul>
-              <li><a href="#motivacija"
-              id="toc-motivacija">Motivacija</a></li>
-              <li><a href="#sintaksa-predikatnega-računa"
-              id="toc-sintaksa-predikatnega-računa">Sintaksa
-              predikatnega računa</a></li>
-              <li><a href="#semantika-predikatnega-računa"
-              id="toc-semantika-predikatnega-računa">Semantika
-              predikatnega računa</a></li>
-              <li><a href="#logično-veljavne-formule-in-enakovrednosti"
-              id="toc-logično-veljavne-formule-in-enakovrednosti">Logično
-              veljavne formule in enakovrednosti</a></li>
-              <li><a href="#sklepanje-v-predikatnem-računu"
-              id="toc-sklepanje-v-predikatnem-računu">Sklepanje v
-              predikatnem računu</a></li>
-              </ul></li>
-              <li><a href="#relacije" id="toc-relacije">Relacije</a>
-              <ul>
-              <li><a href="#definicija-in-lastnosti-relacij"
-              id="toc-definicija-in-lastnosti-relacij">Definicija in
-              lastnosti relacij</a></li>
-              <li><a href="#ekvivalenčne-relacije"
-              id="toc-ekvivalenčne-relacije">Ekvivalenčne
-              relacije</a></li>
-              <li><a href="#operacije-z-relacijami"
-              id="toc-operacije-z-relacijami">Operacije z
-              relacijami</a></li>
-              <li><a href="#potence-in-ovojnice-relacij"
-              id="toc-potence-in-ovojnice-relacij">Potence in ovojnice
-              relacij</a></li>
-              </ul></li>
-              <li><a href="#urejenosti"
-              id="toc-urejenosti">Urejenosti</a>
-              <ul>
-              <li><a href="#delna-in-linearna-urejenost"
-              id="toc-delna-in-linearna-urejenost">Delna in linearna
-              urejenost</a></li>
-              <li><a href="#posebni-elementi-v-delno-urejenih-množicah"
-              id="toc-posebni-elementi-v-delno-urejenih-množicah">Posebni
-              elementi v delno urejenih množicah</a></li>
-              <li><a href="#mreža" id="toc-mreža">Mreža</a></li>
-              </ul></li>
-              <li><a href="#grafi" id="toc-grafi">Grafi</a>
-              <ul>
-              <li><a href="#osnovne-definicije"
-              id="toc-osnovne-definicije">Osnovne definicije</a></li>
-              <li><a href="#standardni-primeri-in-operacije"
-              id="toc-standardni-primeri-in-operacije">Standardni
-              primeri in operacije</a></li>
-              <li><a href="#invariante-grafov"
-              id="toc-invariante-grafov">Invariante grafov</a></li>
-              <li><a href="#drevesa" id="toc-drevesa">Drevesa</a></li>
-              <li><a href="#eulerjevi-grafi"
-              id="toc-eulerjevi-grafi">Eulerjevi grafi</a></li>
-              <li><a href="#hamiltonovi-grafi"
-              id="toc-hamiltonovi-grafi">Hamiltonovi grafi</a></li>
-              <li><a href="#ravninski-grafi"
-              id="toc-ravninski-grafi">Ravninski grafi</a></li>
-              <li><a href="#barvanja-grafov"
-              id="toc-barvanja-grafov">Barvanja grafov</a></li>
-              </ul></li>
-              </ul>
-            </div>
+            
 
             <h3 class="unnumbered" id="kratek-opis-predmeta">Kratek opis
             predmeta</h3>

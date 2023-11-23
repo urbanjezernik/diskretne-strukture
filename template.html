@@ -38,6 +38,23 @@
     $include-before$
     $endfor$
 
+    <!-- Bootstrap Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">$pagetitle$</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarContent">
+          <ul class="navbar-nav mr-auto" id="dynamic-toc">
+            <!-- Python script will populate this -->
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- end of Navbar -->
+
+
     <div class="container-fluid">
       <div class="row flex-nowrap">
         <div class="col-lg-7 mx-auto p-4">
