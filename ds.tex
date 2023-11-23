@@ -1360,7 +1360,7 @@ Množica $R$ je {\definicija dvomestna relacija} v množici $A$, če je $R \subs
         \begin{itemize}
             \item $R = \emptyset \subset A \times A$. To je {\definicija prazna relacija}. V tej relaciji noben element množice $A$ ni v relaciji z nobenim drugim.
             \item $R = A \times A \subseteq A \times A$. To je {\definicija univerzalna relacija}. V tej relaciji je vsak element množice $A$ v relaciji z vsakim drugim.
-            \item $R = id_A = \{ (x,x) \mid x \in A \} \subseteq A \times A$. To je {\definicija relacija enakosti}. V tej relaciji je vsak element množice $A$ v relaciji le s sabo.
+            \item $R = \{ (x,x) \mid x \in A \} \subseteq A \times A$. To je {\definicija relacija enakosti}. Zanjo uporabljamo oznako $id_A$. V tej relaciji je vsak element množice $A$ v relaciji le s sabo.
         \end{itemize}
     \end{itemize}
 \end{zgled}
@@ -1379,7 +1379,11 @@ Relacijo si lahko predstavljamo kot množico točk v \emph{kvadratu} $A \times A
 \begin{zgled} \leavevmode
     \begin{itemize}
         \item Naj bo $A = \{ 1,2,3,4 \}$ in $R = \{ (1,3), (2,2), (4,3) \}$. V tem primeru je $\mathcal{D}_R = \{1,2,3\}$ in $\mathcal{Z}_R = \{2,3\}$.
-        \item Naj bo $A = \NN_0$ in $R  = \{ (x,y) \in \NN_0 \times \NN_0 \mid \exists z \in \NN_0 \colon x + z + 1 = y \}$. Relacija $R$ predstavlja relacijo $<$ v $\NN_0$. V tem primeru je $\mathcal{D}_R = \NN_0$ in $\mathcal{Z}_R = \NN$.
+        \item Naj bo $A = \NN_0$ in 
+            \[
+            R  = \{ (x,y) \in \NN_0 \times \NN_0 \mid \exists z \in \NN_0 \colon x + z + 1 = y \}.
+            \] 
+            Relacija $R$ predstavlja relacijo $<$ v $\NN_0$. V tem primeru je $\mathcal{D}_R = \NN_0$ in $\mathcal{Z}_R = \NN$.
     \end{itemize}
 \end{zgled}
 
@@ -1450,8 +1454,8 @@ Iz leme v posebnem sledi, da je vsak element danega ekvivalenčnega razreda tudi
 \begin{izrek}
 Naj bo $R \subseteq A \times A$ ekvivalenčna relacija. Tedaj velja:
 \begin{enumerate}
-    \item $\forall x \in A \colon R[x] \neq \emptyset$,
-    \item $\forall x, y \in A \colon (R[x] \neq R[y] \Rightarrow R[x] \cap R[y] = \emptyset)$,
+    \item Za vsak $x \in A$ je $R[x] \neq \emptyset$.
+    \item Za vsaka $x,y \in A$ velja implikacija $R[x] \neq R[y] \Rightarrow R[x] \cap R[y] = \emptyset$,
     \item $\bigcup_{x \in A} R[x] = A$.
 \end{enumerate}
 \end{izrek}
@@ -1476,7 +1480,11 @@ Predpostavimo lahko, da obstaja $z \in R[x] \cap R[y]$. To pomeni, da velja $zRx
     \item Naj bo $A$ poljubna množica in $R$ relacija enakosti v $A$. Za vsak $x \in A$ velja $R[x] = \{ x \}$. Množica ekvivalenčnih razredov je enaka $A/R = \{ \{ x \} \mid x \in A \}$.
     \item Naj bo $A$ poljubna množica in $R$ univerzalna relacija v $A$. Za vsak $x \in A$ velja $R[x] = A$. Imamo torej en sam ekvivalenčni razred in velja $A/R = \{ A \}$.
     \item Naj bo $A$ množica premic v prostoru $\RR^3$ in naj bo $R$ relacija vzporednosti premic. Za dano premico $p$ je torej $R[p]$ ravno množica vseh premic, ki so vzporedne $p$. Ekvivalenčni razredi torej ustrezajo vsem smerem v $\RR^3$ oziroma enotskim vektorjem v $\RR^3$.
-    \item Množico $\ZZ$ lahko definiramo kot kvocientno množico množice $A = \NN_0 \times \NN_0$ po relaciji $R$, kjer je $(a,b)R(c,d)$, če in samo če $a+d = b+c$. Velja $R[(a,b)] = \{ (c,d) \in \NN_0 \times \NN_0 \mid c-d = a-b \}$, zato lahko množic ekvivalenčnih razredov $A/R$ identificiramo z množico $\ZZ$ prek bijekcije $R[(a,b)] \mapsto a-b$ za $(a,b) \in A$.
+    \item Množico $\ZZ$ lahko definiramo kot kvocientno množico množice $A = \NN_0 \times \NN_0$ po relaciji $R$, kjer je $(a,b)R(c,d)$, če in samo če $a+d = b+c$. Velja
+    \[
+        R[(a,b)] = \{ (c,d) \in \NN_0 \times \NN_0 \mid c-d = a-b \}, 
+    \]
+    zato lahko množico ekvivalenčnih razredov $A/R$ identificiramo z množico $\ZZ$ prek bijekcije $R[(a,b)] \mapsto a-b$ za $(a,b) \in A$.
     \item Naj bo $m \in \NN$. Na množici celih števil $\ZZ$ definiramo relacijo {\definicija kongruence po modulu} $m$ kot
     \[
         x \equiv y \pmod{m} \Longleftarrow \exists k \in \ZZ \mid x - y = k \cdot m.
