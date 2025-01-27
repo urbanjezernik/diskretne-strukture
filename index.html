@@ -126,7 +126,7 @@
             <strong> Urban Jezernik <br>
               Univerza v Ljubljani, Fakulteta za matematiko in fiziko </strong> <br>
 
-            Zadnja posodobitev: 23. 11. 2023
+            Zadnja posodobitev: 27. 01. 2025
           </div>
 
           <div id="spinner" class="text-center">
@@ -184,8 +184,8 @@
             narisati v ravnini, brez da bi se vsaj dve povezavi
             sekali.</p>
             <figure>
-            <img src="img/opis-petersen.png" />
-            <figcaption>Petersenov graf</figcaption>
+            <img src="img/opis-petersen.png" alt="Petersenov graf" />
+            <figcaption aria-hidden="true">Petersenov graf</figcaption>
             </figure>
             </div>
             <h3 class="unnumbered" id="literatura">Literatura</h3>
@@ -813,7 +813,7 @@
             </div>
             <p>Enakovrednemu paru izjavnih izrazov <span
             class="math inline">\(A \sim B\)</span> rečemo
-            <span><strong><em>zakoni izjavnega
+            <span><strong><em>zakon izjavnega
             računa</em></strong></span>. V vsakem izjavnem izrazu lahko
             poljuben izraz zamenjamo z enakovrednim in s tem
             poenostavimo izjavni izraz.</p>
@@ -1013,7 +1013,7 @@
             izraz res enakovreden začetnemu izrazu <span
             class="math inline">\(A\)</span>.</p>
             <div class="trditev">
-            <p><strong>Trditev 1.1</strong>. Naj bo <span
+            <p><strong>Trditev 1.3</strong>. Naj bo <span
             class="math inline">\(A\)</span> kontingenten izraz. Potem
             je <span class="math inline">\(A \sim
             \mathop{\mathrm{DNO}}(A)\)</span>.</p>
@@ -1285,7 +1285,7 @@
             <p>V takih primerih si lahko pomagamo z naslednjim
             alternativnim načinom preverjanja veljavnosti sklepa.</p>
             <div class="izrek">
-            <p><strong>Izrek 1.1</strong> (o naravni dedukciji). Naj
+            <p><strong>Izrek 1.4</strong> (o naravni dedukciji). Naj
             bodo <span class="math inline">\(A_1, A_2, \dots,
             A_k\)</span> izjavni izrazi. Če obstaja zaporedje izjavnih
             izrazov <span class="math inline">\(B_1, B_2, \dots,
@@ -1305,7 +1305,7 @@
             sklepanja,</p></li>
             </ol>
             <p>potem velja <span class="math inline">\(A_1, A_2, \dots,
-            A_k \models B\)</span>.</p>
+            A_k \models B_n\)</span>.</p>
             </div>
             <div class="proof">
             <p><em>Proof.</em> Dokazujemo z indukcijo na <span
@@ -1316,7 +1316,7 @@
             <span class="math inline">\(A_1, A_2, \dots, A_k\)</span>
             ali tavtologija. V vsakem od teh primerov velja <span
             class="math inline">\(A_1, A_2, \dots, A_k \models
-            B\)</span>. <span
+            B_n\)</span>. <span
             class="math inline">\(\checkmark\)</span></p>
             <p>Predpostavimo zdaj, da trditev že velja za <span
             class="math inline">\(1, 2, \dots, n-1\)</span> in dokažimo
@@ -1330,18 +1330,18 @@
             <li><p>Če je <span class="math inline">\(B_n\)</span> eden
             od <span class="math inline">\(A_1, A_2, \dots,
             A_k\)</span>, potem velja <span class="math inline">\(A_1,
-            A_2, \dots, A_k \models B\)</span>. <span
+            A_2, \dots, A_k \models B_n\)</span>. <span
             class="math inline">\(\checkmark\)</span></p></li>
             <li><p>Če je <span class="math inline">\(B_n\)</span>
             tavtologija, potem velja <span class="math inline">\(A_1,
-            A_2, \dots, A_k \models B\)</span>. <span
+            A_2, \dots, A_k \models B_n\)</span>. <span
             class="math inline">\(\checkmark\)</span></p></li>
             <li><p>Če je <span class="math inline">\(B_n \sim
             B_j\)</span> za nek <span class="math inline">\(j &lt;
             n\)</span>, potem po indukcijski predpostavki <span
             class="math inline">\(A_1, A_2, \dots, A_k \models
             B_j\)</span> velja <span class="math inline">\(A_1, A_2,
-            \dots, A_k \models B\)</span>. <span
+            \dots, A_k \models B_n\)</span>. <span
             class="math inline">\(\checkmark\)</span></p></li>
             <li><p>Naj nazadnje <span class="math inline">\(B_n\)</span>
             logično sledi iz <span class="math inline">\(B_1, B_2,
@@ -1350,7 +1350,7 @@
             class="math inline">\(j &lt; n\)</span> logično sledi iz
             <span class="math inline">\(A_1, A_2, \dots, A_k\)</span>,
             velja tudi <span class="math inline">\(A_1, A_2, \dots, A_k
-            \models B\)</span>. <span
+            \models B_n\)</span>. <span
             class="math inline">\(\checkmark\)</span></p></li>
             </ol>
             <p> ◻</p>
@@ -1507,10 +1507,10 @@
             protislovjem in analiza primerov. Vse te pomožne sklepe bomo
             izpeljali s pomočjo naslednje trditve.</p>
             <div class="trditev">
-            <p><strong>Trditev 1.2</strong>. Velja <span
+            <p><strong>Trditev 1.5</strong>. Velja <span
             class="math inline">\(A_1, A_2, \dots, A_k \models
             B\)</span>, če in samo če je <span class="math inline">\(A_1
-            \land A_2 \land \cdot \land A_k \models B\)</span>
+            \land A_2 \land \dots \land A_k \Rightarrow B\)</span>
             tavtologija.</p>
             </div>
             <div class="proof">
@@ -1525,20 +1525,21 @@
             resničen tudi zaključek <span
             class="math inline">\(B\)</span>. Torej je <span
             class="math inline">\(A_1 \land A_2 \land \cdot \land A_k
-            \models B\)</span> tavtologija. <span
+            \Rightarrow B\)</span> tavtologija. <span
             class="math inline">\(\checkmark\)</span></p>
             <p>Predpostavimo sedaj, da je <span
             class="math inline">\(A_1 \land A_2 \land \cdot \land A_k
-            \models B\)</span> tavtologija. Dokazati želimo veljavnost
-            sklepa <span class="math inline">\(A_1, A_2, \dots, A_k
-            \models B\)</span>. Predpostavimo torej, da so resnične vse
-            predpostavke <span class="math inline">\(A_1, A_2, \dots,
-            A_k\)</span>. Potem je resnična tudi njihova konjunkcija
-            <span class="math inline">\(A_1 \land A_2 \land \cdots \land
-            A_k\)</span>. Iz predpostavke od tod sledi, da mora biti
-            resnična tudi izjava <span class="math inline">\(B\)</span>.
-            Sklep <span class="math inline">\(A_1, A_2, \dots, A_k
-            \models B\)</span> je torej veljaven. <span
+            \Rightarrow B\)</span> tavtologija. Dokazati želimo
+            veljavnost sklepa <span class="math inline">\(A_1, A_2,
+            \dots, A_k \models B\)</span>. Predpostavimo torej, da so
+            resnične vse predpostavke <span class="math inline">\(A_1,
+            A_2, \dots, A_k\)</span>. Potem je resnična tudi njihova
+            konjunkcija <span class="math inline">\(A_1 \land A_2 \land
+            \cdots \land A_k\)</span>. Iz predpostavke od tod sledi, da
+            mora biti resnična tudi izjava <span
+            class="math inline">\(B\)</span>. Sklep <span
+            class="math inline">\(A_1, A_2, \dots, A_k \models
+            B\)</span> je torej veljaven. <span
             class="math inline">\(\checkmark\)</span> ◻</p>
             </div>
             <p><span><strong><em>Pogojni sklep</em></strong></span> (PS)
@@ -1550,7 +1551,7 @@
             class="math inline">\(C\)</span>. Veljavnost tega pomožnega
             sklepa sledi iz naslednjega izreka.</p>
             <div class="izrek">
-            <p><strong>Izrek 1.2</strong> (o pogojnem sklepu). Velja
+            <p><strong>Izrek 1.6</strong> (o pogojnem sklepu). Velja
             <span class="math inline">\(A_1, A_2, \dots, A_k \models B
             \Rightarrow C\)</span>, če in samo če velja <span
             class="math inline">\(A_1, A_2, \dots, A_k, B \models
@@ -1643,7 +1644,7 @@
             Veljavnost tega pomožnega sklepa sledi iz naslednjega
             izreka.</p>
             <div class="izrek">
-            <p><strong>Izrek 1.3</strong> (o sklepu s protislovjem).
+            <p><strong>Izrek 1.7</strong> (o sklepu s protislovjem).
             Velja <span class="math inline">\(A_1, A_2, \dots, A_k
             \models B\)</span>, če in samo če velja <span
             class="math inline">\(A_1, A_2, \dots, A_k, \lnot B \models
@@ -1788,7 +1789,7 @@
             Podobno kot pri prejšnjih dveh pomožnih sklepih veljavnost
             tega pomožnega sklepa sledi iz naslednjega izreka.</p>
             <div class="izrek">
-            <p><strong>Izrek 1.4</strong> (o analizi primerov). Velja
+            <p><strong>Izrek 1.8</strong> (o analizi primerov). Velja
             <span class="math inline">\(A_1, A_2, \dots, A_k, B_1 \lor
             B_2 \models C\)</span>, če in samo če veljata oba sklepa
             <span class="math inline">\(A_1, A_2, \dots, A_k, B_1
@@ -1796,7 +1797,7 @@
             \dots, A_k, B_2 \models C\)</span>.</p>
             </div>
             <div class="domacanaloga">
-            <p><strong>Domača naloga 1.3</strong>. Dokaži izrek o
+            <p><strong>Domača naloga 1.9</strong>. Dokaži izrek o
             analizi primerov.</p>
             </div>
             <div class="zgled">
@@ -1906,7 +1907,7 @@
             pravilen. Predikatni račun je nadgradnja izjavnega računa, v
             katerem izjavne spremeljivke <span
             class="math inline">\(p_1, p_2, z\)</span> obravnavamo
-            nekoliko podrobneje, tako da bo ta sklep pravilen tudi v tem
+            nekoliko podrobneje, tako da bo ta sklep pravilen v tem
             novem računu.</p>
             <p>Uvedimo naslednje oznake:</p>
             <dl>
@@ -2031,8 +2032,8 @@
             </dl>
             <p>V tem zgledu so naše spremenljivke <span
             class="math inline">\(x\)</span> iz množice naravnih števil,
-            v prejšnjih zgledih pa so bile iz množice živali. Pomembno
-            je, da se na začetku dogovorimo o področju pogovora oziroma
+            v prejšnjem zgledu pa so bile iz množice ljudi. Pomembno je,
+            da se na začetku dogovorimo o področju pogovora oziroma
             <span><strong><em>domeni</em></strong></span>, saj izjave,
             ki jih zapišemo, morda v drugi domeni pomenijo čisto nekaj
             drugega.</p>
@@ -2088,7 +2089,7 @@
             računa</h2>
             <p>Zdaj smo pripravljeni, da formalno definiramo vse
             koncepte v predikatnem računu. Sistematično bomo našteli
-            sibmole, ki jih uporabljamo, in opisali, kako iz njih
+            simbole, ki jih uporabljamo, in opisali, kako iz njih
             sestavljamo izjavne formule.</p>
             <p>Naj bo področje pogovora dano z neko množico <span
             class="math inline">\(D\)</span>.</p>
@@ -2481,8 +2482,8 @@
             veljavna formula.</p>
             <p>V ta namen moramo dokazati, da za <em>vsako</em>
             interpretacijo <span class="math inline">\(I\)</span> velja
-            <span class="math inline">\(I \models \bar \phi\)</span>.
-            Naj bo torej <span class="math inline">\(I\)</span> poljubna
+            <span class="math inline">\(I \models \phi\)</span>. Naj bo
+            torej <span class="math inline">\(I\)</span> poljubna
             interpretacija. V tej interpretaciji moramo torej dokazati,
             da je izjava <span class="math inline">\(\bar \phi\)</span>
             veljavna, kar je enakovredno veljavnosti sklepa <span
@@ -2528,11 +2529,10 @@
             sabo.</p></li>
             </ol>
             <p>S tem smo dokazali veljavnost sklepa in torej veljavnost
-            <span class="math inline">\(I \models \bar \phi\)</span>.
-            Ker je bila interpretacija <span
-            class="math inline">\(I\)</span> poljubna, je torej <span
-            class="math inline">\(\phi\)</span> res logično veljavna
-            formula.</p>
+            <span class="math inline">\(I \models \phi\)</span>. Ker je
+            bila interpretacija <span class="math inline">\(I\)</span>
+            poljubna, je torej <span class="math inline">\(\phi\)</span>
+            res logično veljavna formula.</p>
             </div>
             <div class="zgled">
             <p><strong>Zgled 2.12</strong>. Naj bosta <span
@@ -2719,8 +2719,8 @@
             dobimo <span class="math display">\[\exists x \colon ( P(x)
             \land \exists y \colon Q(y) )
                 \sim
-                \exists x \colon ( \exists y \colon Q(y) \land \colon
-            P(x) ).\]</span> Slednja formula je enakovredna <span
+                \exists x \colon ( \exists y \colon Q(y) \land P(x)
+            ).\]</span> Slednja formula je enakovredna <span
             class="math display">\[\exists x \exists y \colon (Q(y)
             \land P(x)),\]</span> ki je v preneksni obliki.</p>
             </div>
@@ -2791,14 +2791,14 @@
             <p><strong>Zgled 2.16</strong>. Dokažimo veljavnost sklepa
             <span class="math display">\[\exists x \colon P(x), \
                 \forall x \colon (P(x) \Rightarrow \lnot Q(x) \lor
-            \forall y \colon R(y) \models
+            \forall y \colon R(y)) \models
                 \exists x \colon (Q(x) \Rightarrow R(x)).\]</span> V ta
             namen naj bo <span class="math inline">\(I\)</span>
             <em>poljubna</em> interpretacija. Zopet lahko uporabimo
             pogojni sklep in predpostavimo, da sta resnični izjavi <span
             class="math display">\[\exists x \colon \bar P(x), \
                 \forall x \colon (\bar P(x) \Rightarrow \lnot \bar Q(x)
-            \lor \forall y \colon \bar R(y).\]</span> Dokazati želimo
+            \lor \forall y \colon \bar R(y)).\]</span> Dokazati želimo
             resničnost izjave <span class="math inline">\(\exists x
             \colon (\bar Q(x) \Rightarrow \bar R(x))\)</span>, ki trdi,
             da obstaja element v <span class="math inline">\(D\)</span>
@@ -2884,8 +2884,8 @@
             class="math inline">\(b\)</span>, če je <span
             class="math inline">\((a,b) \in R\)</span>.</p>
             <figure>
-            <img src="img/relacije-graf.png" />
-            <figcaption>Graf relacije <span
+            <img src="img/relacije-graf.png" alt="Graf relacije R" />
+            <figcaption aria-hidden="true">Graf relacije <span
             class="math inline">\(R\)</span></figcaption>
             </figure></li>
             <li><p>Naj bo <span class="math inline">\(A =
@@ -3112,7 +3112,7 @@
             <p>Iz leme v posebnem sledi, da je vsak element danega
             ekvivalenčnega razreda tudi njegov predstavnik.</p>
             <div class="izrek">
-            <p><strong>Izrek 3.1</strong>. Naj bo <span
+            <p><strong>Izrek 3.2</strong>. Naj bo <span
             class="math inline">\(R \subseteq A \times A\)</span>
             ekvivalenčna relacija. Tedaj velja:</p>
             <ol>
@@ -3240,9 +3240,8 @@
                     \vdots \\
                     R_m[m-1] &amp;= \{ x \in \mathbf{Z}\mid \exists k
             \in \mathbf{Z}\colon x = k m +m-1 \}.
-                
-            \end{aligned}\]</span> Za <span class="math inline">\(m =
-            1\)</span> je torej <span class="math inline">\(R_1 =
+                \end{aligned}\]</span> Za <span class="math inline">\(m
+            = 1\)</span> je torej <span class="math inline">\(R_1 =
             A\)</span>, za <span class="math inline">\(m = 2\)</span> pa
             ima <span class="math inline">\(R_2\)</span> dva
             ekvivalenčna razreda, in sicer množico sodih števil in
@@ -3257,15 +3256,15 @@
             množicami. Nekaj osnovnih takih operacij in njihovih
             interpretacij je zbranih v naslednji trditvi.</p>
             <div class="trditev">
-            <p><strong>Trditev 3.1</strong>. Naj bosta <span
+            <p><strong>Trditev 3.3</strong>. Naj bosta <span
             class="math inline">\(R,S \subseteq A \times A\)</span>
             relaciji. Potem so tudi <span class="math display">\[R \cup
             S, \
                 R \cap S, \
                 R \backslash S, \
-                R \oplus S\]</span> relacije v <span
-            class="math inline">\(A\)</span> in za vse <span
-            class="math inline">\(x,y \in A\)</span> velja:</p>
+                R \oplus S = (R \cup S) \backslash (R \cap S)\]</span>
+            relacije v <span class="math inline">\(A\)</span> in za vse
+            <span class="math inline">\(x,y \in A\)</span> velja:</p>
             <ul>
             <li><p><span class="math inline">\(x(R \cup S) y
             \Leftrightarrow x R y \lor x S y\)</span>,</p></li>
@@ -3290,7 +3289,7 @@
             (y,x) \in R \}\)</span>. Tudi ti dve relaciji lahko
             intepretiramo na enostaven način.</p>
             <div class="trditev">
-            <p><strong>Trditev 3.2</strong>. Za vse <span
+            <p><strong>Trditev 3.4</strong>. Za vse <span
             class="math inline">\(x,y \in A\)</span> velja:</p>
             <ul>
             <li><p><span class="math inline">\(x R^c y \Leftrightarrow
@@ -3386,8 +3385,8 @@
             ( (x T u \land uSv) \land vRy) ) \\
                 &amp;\Leftrightarrow \exists v \colon (x S \circ T v
             \land vRy) \\
-                &amp;\Leftrightarrow x R \circ (S \circ T) y.
-            \end{aligned}\]</span></p>
+                &amp;\Leftrightarrow x R \circ (S \circ T)
+            y.\end{aligned}\]</span></p>
             <div class="zgled">
             <p><strong>Zgled 3.7</strong>. Naj bo <span
             class="math inline">\(A\)</span> množica ljudi.</p>
@@ -3414,7 +3413,7 @@
             <p>Osnovne lastnosti relacij lahko opišemo v jeziku operacij
             z relacijami na naslednji način.</p>
             <div class="izrek">
-            <p><strong>Izrek 3.2</strong> (algebraična karakterizacija
+            <p><strong>Izrek 3.5</strong> (algebraična karakterizacija
             lastnosti relacij). Naj bo <span class="math inline">\(R
             \subseteq A \times A\)</span>. Tedaj je:</p>
             <ol>
@@ -3502,8 +3501,8 @@
             \Rightarrow y = z) \\
                 &amp;\Leftrightarrow \forall y,z \colon \left( (y,z) \in
             R \circ R^T \Rightarrow y = z \right) \\
-                &amp;\Leftrightarrow R \circ R^T \subseteq id_A.
-            \end{aligned}\]</span> ◻</p>
+                &amp;\Leftrightarrow R \circ R^T \subseteq
+            id_A.\end{aligned}\]</span> ◻</p>
             </div>
             <h2 id="potence-in-ovojnice-relacij">Potence in ovojnice
             relacij</h2>
@@ -3520,7 +3519,7 @@
             <dt>indukcijski korak:</dt>
             <dd>
             <p><span class="math inline">\(\forall n \in \mathbf{N}_0
-            \colon R^{n+1} = R^n \circ R^0\)</span>.</p>
+            \colon R^{n+1} = R^n \circ R\)</span>.</p>
             </dd>
             </dl>
             <div class="zgled">
@@ -3539,7 +3538,7 @@
             <p>Kompozicijske potence delijo nekatere lastnosti s
             potencami števil.</p>
             <div class="trditev">
-            <p><strong>Trditev 3.3</strong>. Za vse <span
+            <p><strong>Trditev 3.6</strong>. Za vse <span
             class="math inline">\(m,n \in \mathbf{N}_0\)</span> velja
             <span class="math inline">\(R^n \circ R^m = R^{n+m}\)</span>
             in <span class="math inline">\((R^n)^m = R^{n \cdot
@@ -3638,7 +3637,7 @@
             vedno. Prepričajmo se, da vselej obstajajo vsaj ovojnice
             glede na najbolj pomembne lastnosti relacij.</p>
             <div class="izrek">
-            <p><strong>Izrek 3.3</strong>. Za vsako relacijo <span
+            <p><strong>Izrek 3.7</strong>. Za vsako relacijo <span
             class="math inline">\(R \subseteq A \times A\)</span>
             obstajajo ovojnice <span
             class="math inline">\(R^\text{refleksivnost}\)</span>, <span
@@ -3833,8 +3832,9 @@
             10 \}\)</span>, opremljena z relacijo deljivosti naravnih
             števil <span class="math inline">\(|\)</span>.</p>
             <figure>
-            <img src="img/relacije-hasse.png" />
-            <figcaption>Hassejev diagram relacije
+            <img src="img/relacije-hasse.png"
+            alt="Hassejev diagram relacije deljivosti" />
+            <figcaption aria-hidden="true">Hassejev diagram relacije
             deljivosti</figcaption>
             </figure></li>
             <li><p>Naj bo <span class="math inline">\(A = \{ B \mid B
@@ -3842,16 +3842,19 @@
             <span class="math inline">\(\subseteq\)</span> vsebovanosti
             množic.</p>
             <figure>
-            <img src="img/relacije-hasse-mnozice.png" />
-            <figcaption>Hassejev diagram relacije vsebovanosti
-            množic</figcaption>
+            <img src="img/relacije-hasse-mnozice.png"
+            alt="Hassejev diagram relacije vsebovanosti množic" />
+            <figcaption aria-hidden="true">Hassejev diagram relacije
+            vsebovanosti množic</figcaption>
             </figure></li>
             <li><p>Naj bo <span class="math inline">\(A = \{ 1,2,3,4,5
             \}\)</span>, opremljena z običajno relacijo <span
             class="math inline">\(\leq\)</span> (manjše ali enako).</p>
             <figure>
-            <img src="img/relacije-hasse-linearna.png" />
-            <figcaption>Hassejev diagram običajne relacije <span
+            <img src="img/relacije-hasse-linearna.png"
+            alt="Hassejev diagram običajne relacije \leq" />
+            <figcaption aria-hidden="true">Hassejev diagram običajne
+            relacije <span
             class="math inline">\(\leq\)</span></figcaption>
             </figure></li>
             </ul>
@@ -4233,8 +4236,10 @@
             \in V\)</span> povežemo, če in samo če je <span
             class="math inline">\(\{ u, v \} \in E\)</span>.</p>
             <figure>
-            <img src="img/grafi-prvizgled.png" />
-            <figcaption>Zgled vizualizacije grafa</figcaption>
+            <img src="img/grafi-prvizgled.png"
+            alt="Zgled vizualizacije grafa" />
+            <figcaption aria-hidden="true">Zgled vizualizacije
+            grafa</figcaption>
             </figure>
             </div>
             <p>Kadar za vozlišči <span class="math inline">\(u,v \in
@@ -4255,11 +4260,9 @@
             rečemo
             <span><strong><em>multigrafi</em></strong></span>.</p>
             <div class="zgled">
-            <p><strong>Zgled 5.2</strong>. </p>
-            <figure>
-            <img src="img/grafi-multigraf.png" />
-            <figcaption>Zgled multigrafa</figcaption>
-            </figure>
+            <p><strong>Zgled 5.2</strong>. <img
+            src="img/grafi-multigraf.png" title="fig:"
+            alt="Zgled multigrafa" /></p>
             </div>
             <p>Naj bo <span class="math inline">\(G = (V,E)\)</span>
             graf in <span class="math inline">\(u \in V\)</span>.
@@ -4279,8 +4282,10 @@
             class="math inline">\(G\)</span> graf, predstavljen na
             naslednji sliki.</p>
             <figure>
-            <img src="img/grafi-std-izolirana.png" />
-            <figcaption>Graf z listom in izolirano točko</figcaption>
+            <img src="img/grafi-std-izolirana.png"
+            alt="Graf z listom in izolirano točko" />
+            <figcaption aria-hidden="true">Graf z listom in izolirano
+            točko</figcaption>
             </figure>
             <p>Stopnje vozlišč so <span class="math inline">\(d(a) =
             2\)</span>, <span class="math inline">\(d(b) = 2\)</span>,
@@ -4305,20 +4310,23 @@
             <p><strong>Zgled 5.4</strong>. </p>
             <ul>
             <li><figure>
-            <img src="img/grafi-2reg.png" />
-            <figcaption>Zgled <span
+            <img src="img/grafi-2reg.png"
+            alt="Zgled 2-regularnega grafa" />
+            <figcaption aria-hidden="true">Zgled <span
             class="math inline">\(2\)</span>-regularnega
             grafa</figcaption>
             </figure></li>
             <li><figure>
-            <img src="img/grafi-3reg.png" />
-            <figcaption>Zgled <span
+            <img src="img/grafi-3reg.png"
+            alt="Zgled 3-regularnega grafa" />
+            <figcaption aria-hidden="true">Zgled <span
             class="math inline">\(3\)</span>-regularnega
             grafa</figcaption>
             </figure></li>
             <li><figure>
-            <img src="img/opis-petersen.png" />
-            <figcaption>Petersenov graf je <span
+            <img src="img/opis-petersen.png"
+            alt="Petersenov graf je 3-regularen" />
+            <figcaption aria-hidden="true">Petersenov graf je <span
             class="math inline">\(3\)</span>-regularen</figcaption>
             </figure></li>
             </ul>
@@ -4343,8 +4351,8 @@
             naslednji sliki. Ta graf bomo srečali še večkrat, zato mu
             dajmo ime <span><strong><em>lizika</em></strong></span>.</p>
             <figure>
-            <img src="img/grafi-std.png" />
-            <figcaption>Lizika</figcaption>
+            <img src="img/grafi-std.png" alt="Lizika" />
+            <figcaption aria-hidden="true">Lizika</figcaption>
             </figure>
             <p>Matrika sosednosti lizike je <span
             class="math display">\[A(G) = \begin{pmatrix}
@@ -4431,7 +4439,7 @@
             </ul>
             </div>
             <div class="posledica">
-            <p><strong>Posledica 5.1</strong>. Vsak graf ima sodo mnogo
+            <p><strong>Posledica 5.2</strong>. Vsak graf ima sodo mnogo
             točk lihe stopnje.</p>
             </div>
             <div class="proof">
@@ -4593,7 +4601,7 @@
             <p>Ni se težko prepričati, da je obstoj lihih ciklov v grafu
             <em>edina</em> obstrukcija k dvodelnosti grafa.</p>
             <div class="trditev">
-            <p><strong>Trditev 5.1</strong>. Graf je dvodelen natanko
+            <p><strong>Trditev 5.3</strong>. Graf je dvodelen natanko
             tedaj, ko ne vsebuje lihega cikla.</p>
             </div>
             <div class="proof">
@@ -4828,13 +4836,13 @@
             class="math inline">\(G_1\)</span> in <span
             class="math inline">\(G_2\)</span>.</p>
             <figure>
-            <img src="img/grafi-zanimiv-zgled.png" />
-            <figcaption>Graf <span
+            <img src="img/grafi-zanimiv-zgled.png" alt="Graf G_1" />
+            <figcaption aria-hidden="true">Graf <span
             class="math inline">\(G_1\)</span></figcaption>
             </figure>
             <figure>
-            <img src="img/grafi-primerjava.png" />
-            <figcaption>Graf <span
+            <img src="img/grafi-primerjava.png" alt="Graf G_2" />
+            <figcaption aria-hidden="true">Graf <span
             class="math inline">\(G_2\)</span></figcaption>
             </figure>
             <p>Ali sta <span class="math inline">\(G_1\)</span> in <span
@@ -4886,15 +4894,16 @@
             <p><strong>Zgled 5.13</strong>. V naslednjem grafu je
             označen primer poti in primer cikla.</p>
             <figure>
-            <img src="img/grafi-pot-cikel.png" />
-            <figcaption>Graf z rdečo potjo in zelenim
+            <img src="img/grafi-pot-cikel.png"
+            alt="Graf z rdečo potjo in zelenim ciklom" />
+            <figcaption aria-hidden="true">Graf z rdečo potjo in zelenim
             ciklom</figcaption>
             </figure>
             </div>
             <p>Ni vsak sprehod pot. Je pa povsod, kjer je sprehod, tudi
             pot.</p>
             <div class="trditev">
-            <p><strong>Trditev 5.2</strong>. Če v grafu obstaja sprehod
+            <p><strong>Trditev 5.4</strong>. Če v grafu obstaja sprehod
             od <span class="math inline">\(u\)</span> do <span
             class="math inline">\(v\)</span>, potem obstaja tudi pot od
             <span class="math inline">\(u\)</span> do <span
@@ -4937,7 +4946,7 @@
             <p> ◻</p>
             </div>
             <div class="domacanaloga">
-            <p><strong>Domača naloga 5.1</strong>. Dokaži, da v vsakem
+            <p><strong>Domača naloga 5.5</strong>. Dokaži, da v vsakem
             grafu, v katerem obstaja sklenjen sprehod lihe dolžine,
             obstaja tudi cikel lihe dolžine. S tem v dokaz kriterija
             dvodelnosti grafov vstaviš še zadnji kos sestavljanke.</p>
@@ -4984,8 +4993,10 @@
             zunanjem ciklu velja <span
             class="math inline">\(d(u,v)=2\)</span>.</p>
             <figure>
-            <img src="img/grafi-razdalja.png" />
-            <figcaption>Razdalja med vozliščema</figcaption>
+            <img src="img/grafi-razdalja.png"
+            alt="Razdalja med vozliščema" />
+            <figcaption aria-hidden="true">Razdalja med
+            vozliščema</figcaption>
             </figure>
             </div>
             <p><span><strong><em>Premer</em></strong></span> grafa je
@@ -4993,7 +5004,7 @@
             \in G} d(u,v),\]</span> se pravi največja možna razdalja med
             vsakim parom vozlišč. Premer je invarianta grafov.</p>
             <div class="domacanaloga">
-            <p><strong>Domača naloga 5.2</strong>. Prepričaj se, da je
+            <p><strong>Domača naloga 5.6</strong>. Prepričaj se, da je
             premer grafa iz zadnjega zgleda enak <span
             class="math inline">\(2\)</span>. Določi še premer
             Petersenovega grafa.</p>
@@ -5008,14 +5019,14 @@
             ciklov. Njegova vozlišča stopnje <span
             class="math inline">\(1\)</span> so listi.</p>
             <figure>
-            <img src="img/grafi-drevo.png" />
-            <figcaption>Drevo</figcaption>
+            <img src="img/grafi-drevo.png" alt="Drevo" />
+            <figcaption aria-hidden="true">Drevo</figcaption>
             </figure>
             </div>
             <p>Ker drevesa nimajo ciklov, so dvodelna. Imajo pa drevesa
             še veliko drugih čudovitih lastnosti.</p>
             <div class="trditev">
-            <p><strong>Trditev 5.3</strong>. Naj bo <span
+            <p><strong>Trditev 5.7</strong>. Naj bo <span
             class="math inline">\(T\)</span> drevo.</p>
             <ol>
             <li><p>Če je <span class="math inline">\(|V(T)| &gt;
@@ -5105,7 +5116,7 @@
             Vsaka povezava, ki povezuje list s preostankom drevesa, je
             most. Res pa je še več.</p>
             <div class="trditev">
-            <p><strong>Trditev 5.4</strong>. Vsaka povezava v drevesu je
+            <p><strong>Trditev 5.8</strong>. Vsaka povezava v drevesu je
             most.</p>
             </div>
             <div class="proof">
@@ -5126,7 +5137,7 @@
             <p>Vse te čudovite lastnosti, ki jih imajo drevesa, v
             resnici <em>karakterizirajo</em> drevesa.</p>
             <div class="trditev">
-            <p><strong>Trditev 5.5</strong>. Naj bo <span
+            <p><strong>Trditev 5.9</strong>. Naj bo <span
             class="math inline">\(G\)</span> graf. Naslednje trditve so
             ekvivalentne.</p>
             <ol>
@@ -5245,7 +5256,7 @@
             <p>Presenetljivo pa sta ta dva očitna potrebna pogoja tudi
             zadostna.</p>
             <div class="izrek">
-            <p><strong>Izrek 5.1</strong>. Naj bo <span
+            <p><strong>Izrek 5.10</strong>. Naj bo <span
             class="math inline">\(G\)</span> povezan graf. Potem je
             <span class="math inline">\(G\)</span> Eulerjev natanko
             tedaj, ko so vsa vozlišča sode stopnje.</p>
@@ -5286,18 +5297,18 @@
             class="math inline">\(S\)</span>. Ker je <span
             class="math inline">\(Q\)</span> najkrajša, nobeno od
             njegovih vozlišč razen <span
-            class="math inline">\(v\)</span> ne leži na <span
+            class="math inline">\(z\)</span> ne leži na <span
             class="math inline">\(S\)</span>. Potemtakem je sprehod
-            <span class="math inline">\(xy \cdots v \cdots y \cdots
-            v\)</span>, kjer se najprej sprehodimo od <span
+            <span class="math inline">\(xy \cdots z \cdots z\)</span>,
+            kjer se najprej sprehodimo od <span
             class="math inline">\(x\)</span> do <span
             class="math inline">\(y\)</span> prek <span
             class="math inline">\(e\)</span>, potem od <span
             class="math inline">\(y\)</span> do <span
-            class="math inline">\(v\)</span> prek <span
+            class="math inline">\(z\)</span> prek <span
             class="math inline">\(Q\)</span> in nazadnje od <span
-            class="math inline">\(v\)</span> do <span
-            class="math inline">\(v\)</span> prek <span
+            class="math inline">\(z\)</span> do <span
+            class="math inline">\(z\)</span> prek <span
             class="math inline">\(S\)</span>, daljši od <span
             class="math inline">\(S\)</span> in vsako povezavo vsebuje
             kvečjemu enkrat. To je protislovje z izbiro <span
@@ -5306,7 +5317,7 @@
             <p>Soroden kriterij imamo na voljo tudi za Eulerjeve
             sprehode.</p>
             <div class="izrek">
-            <p><strong>Izrek 5.2</strong>. Naj bo <span
+            <p><strong>Izrek 5.11</strong>. Naj bo <span
             class="math inline">\(G\)</span> povezan graf. Potem ima
             <span class="math inline">\(G\)</span> Eulerjev sprehod
             natanko tedaj, ko ima največ <span
@@ -5356,8 +5367,9 @@
             class="footnote-ref" id="fnref23"
             role="doc-noteref"><sup>23</sup></a></p>
             <figure>
-            <img src="img/konigsberg.png" />
-            <figcaption>Mostovi v Königsbergu, vir:
+            <img src="img/konigsberg.png"
+            alt="Mostovi v Königsbergu, vir: Wikipedia" />
+            <figcaption aria-hidden="true">Mostovi v Königsbergu, vir:
             Wikipedia</figcaption>
             </figure>
             <p>Ta problem lahko prevedemo na teorijo grafo na naslednji
@@ -5370,8 +5382,10 @@
             poti oziroma obhoda sklepamo, da v tem grafu ne obstaja niti
             Eulerjev sprehod. Želen obhod v mestu torej ni mogoč.</p>
             <figure>
-            <img src="img/grafi-konigsberg.png" />
-            <figcaption>Graf königsberških mostov</figcaption>
+            <img src="img/grafi-konigsberg.png"
+            alt="Graf königsberških mostov" />
+            <figcaption aria-hidden="true">Graf königsberških
+            mostov</figcaption>
             </figure>
             <p>Sorodno lahko obravnavamo <span><strong><em>problem
             ljubljanskih mostov</em></strong></span>. Ljubljana ima
@@ -5379,8 +5393,9 @@
             osredotočimo le na centralni del mesta, ki ga severno od
             gradu omejuje Ljubljanica, južno pa Gruberjev prekop.</p>
             <figure>
-            <img src="img/ljubljana.png" />
-            <figcaption>Ljubljanski mostovi, vir:
+            <img src="img/ljubljana.png"
+            alt="Ljubljanski mostovi, vir: OpenStreetMap" />
+            <figcaption aria-hidden="true">Ljubljanski mostovi, vir:
             OpenStreetMap</figcaption>
             </figure>
             <p>Imamo torej tri zemeljske mase: severo-zahodno (vključuje
@@ -5411,8 +5426,10 @@
             <p><strong>Zgled 5.18</strong>. Oglejmo si naslednji
             graf.</p>
             <figure>
-            <img src="img/grafi-enapoteza.png" />
-            <figcaption>Risanje grafa s čim manj potezami</figcaption>
+            <img src="img/grafi-enapoteza.png"
+            alt="Risanje grafa s čim manj potezami" />
+            <figcaption aria-hidden="true">Risanje grafa s čim manj
+            potezami</figcaption>
             </figure>
             <p>Ta graf je kubičen, zato nima Eulerjevega obhoda in ga ne
             moremo narisati v eni potezi. Kolikšno je najmanjše število
@@ -5437,7 +5454,7 @@
             </div>
             <p>Zadnji zgled lahko posplošimo na naslednji način.</p>
             <div class="trditev">
-            <p><strong>Trditev 5.6</strong>. Naj bo <span
+            <p><strong>Trditev 5.12</strong>. Naj bo <span
             class="math inline">\(G\)</span> povezan graf z <span
             class="math inline">\(\ell\)</span> vozlišči lihe stopnje.
             Najmanjše število potez, s katerimi lahko narišemo <span
@@ -5495,14 +5512,17 @@
             <li><p>Naslednji grafi vsebujejo Hamiltonove cikle, ki so
             označeni z rdečo barvo.</p>
             <figure>
-            <img src="img/grafi-hamilton.png" />
-            <figcaption>Grafi s Hamiltonovim ciklom</figcaption>
+            <img src="img/grafi-hamilton.png"
+            alt="Grafi s Hamiltonovim ciklom" />
+            <figcaption aria-hidden="true">Grafi s Hamiltonovim
+            ciklom</figcaption>
             </figure></li>
             <li><p>Ali naslednji graf vsebuje Hamiltonov cikel?</p>
             <figure>
-            <img src="img/grafi-hamilton-zgled.png" />
-            <figcaption>Ali ta graf vsebuje Hamiltonov
-            cikel?</figcaption>
+            <img src="img/grafi-hamilton-zgled.png"
+            alt="Ali ta graf vsebuje Hamiltonov cikel?" />
+            <figcaption aria-hidden="true">Ali ta graf vsebuje
+            Hamiltonov cikel?</figcaption>
             </figure></li>
             </ul>
             </div>
@@ -5519,7 +5539,7 @@
             <em>potrebnih</em> pogojev in nekaj <em>zadostnih</em>
             pogojev za hamiltonskost.</p>
             <div class="izrek">
-            <p><strong>Izrek 5.3</strong> (potreben pogoj za
+            <p><strong>Izrek 5.13</strong> (potreben pogoj za
             hamiltonskost). Naj bo <span
             class="math inline">\(G\)</span> graf. Predpostavimo, da v
             <span class="math inline">\(G\)</span> obstaja neprazna
@@ -5557,7 +5577,7 @@
             <p>Zabeležimo poseben primer dokazanega izreka za dvodelne
             grafe.</p>
             <div class="posledica">
-            <p><strong>Posledica 5.2</strong>. Naj bo <span
+            <p><strong>Posledica 5.14</strong>. Naj bo <span
             class="math inline">\(G\)</span> dvodelen graf z <span
             class="math inline">\(V(G) = A \cup B\)</span>, <span
             class="math inline">\(A \cap B = \emptyset\)</span>, pri
@@ -5588,14 +5608,16 @@
             5\)</span> in <span class="math inline">\(|B| = 6\)</span>.
             Po posledici ta graf zato ni Hamiltonov.</p>
             <figure>
-            <img src="img/grafi-hamilton-zgled-dvodelen.png" />
-            <figcaption>Dvodelen graf, ki ni Hamiltonov</figcaption>
+            <img src="img/grafi-hamilton-zgled-dvodelen.png"
+            alt="Dvodelen graf, ki ni Hamiltonov" />
+            <figcaption aria-hidden="true">Dvodelen graf, ki ni
+            Hamiltonov</figcaption>
             </figure>
             </div>
             <p>Analogen potreben pogoj lahko izpeljemo za obstoj
             Hamiltonove poti.</p>
             <div class="izrek">
-            <p><strong>Izrek 5.4</strong> (potreben pogoj za obstoj
+            <p><strong>Izrek 5.15</strong> (potreben pogoj za obstoj
             Hamiltonove poti). Naj bo <span
             class="math inline">\(G\)</span> graf. Predpostavimo, da v
             <span class="math inline">\(G\)</span> obstaja neprazna
@@ -5634,14 +5656,16 @@
             graf ima Hamiltonovo pot, kot je prikazano na naslednji
             sliki.</p>
             <figure>
-            <img src="img/grafi-hamilton-zgled-pot.png" />
-            <figcaption>Hamiltonova pot v grafu</figcaption>
+            <img src="img/grafi-hamilton-zgled-pot.png"
+            alt="Hamiltonova pot v grafu" />
+            <figcaption aria-hidden="true">Hamiltonova pot v
+            grafu</figcaption>
             </figure>
             </div>
             <p>Zdaj si bomo pogledali še nekaj zadostnih pogojev za
             hamiltonskost. Naslonili jih bomo na naslednjo lemo.</p>
             <div class="lema">
-            <p><strong>Lema 5.2</strong>. Naj za vozlišči <span
+            <p><strong>Lema 5.16</strong>. Naj za vozlišči <span
             class="math inline">\(u,v\)</span> grafa <span
             class="math inline">\(G\)</span> velja <span
             class="math inline">\(u \neq v\)</span>, <span
@@ -5673,7 +5697,7 @@
             v_1\)</span> in koncem v <span class="math inline">\(v =
             v_n\)</span>, pri čemer je <span class="math inline">\(n =
             |V(G)|\)</span>.</p>
-            <p>Opazumo sosede vozlišča <span
+            <p>Opazujmo sosede vozlišča <span
             class="math inline">\(u\)</span>. Recimo, da za nek <span
             class="math inline">\(i &lt; n\)</span> velja <span
             class="math inline">\(u \sim v_{i+1}\)</span>. Premislimo,
@@ -5703,7 +5727,7 @@
             class="math inline">\(\checkmark\)</span> ◻</p>
             </div>
             <div class="izrek">
-            <p><strong>Izrek 5.5</strong> (Ore). Naj bo <span
+            <p><strong>Izrek 5.17</strong> (Ore). Naj bo <span
             class="math inline">\(G\)</span> graf z <span
             class="math inline">\(|V(G)| \geq 3\)</span>. Če za vsaki
             dve vozlišči <span class="math inline">\(u,v \in
@@ -5730,12 +5754,14 @@
             Orejevem izreku je graf Hamiltonov. Poišči Hamiltonov cikel
             v njem!</p>
             <figure>
-            <img src="img/grafi-hamilton-ore.png" />
-            <figcaption>Hamiltonov graf po Orejevem izreku</figcaption>
+            <img src="img/grafi-hamilton-ore.png"
+            alt="Hamiltonov graf po Orejevem izreku" />
+            <figcaption aria-hidden="true">Hamiltonov graf po Orejevem
+            izreku</figcaption>
             </figure>
             </div>
             <div class="izrek">
-            <p><strong>Izrek 5.6</strong> (Dirac). Naj bo <span
+            <p><strong>Izrek 5.18</strong> (Dirac). Naj bo <span
             class="math inline">\(G\)</span> graf z <span
             class="math inline">\(|V(G)| \geq 3\)</span>. Če je <span
             class="math inline">\(\delta(G) \geq |V(G)|/2\)</span>,
@@ -5756,8 +5782,10 @@
             class="math inline">\(6\)</span>. Po Diracovem izreku je
             graf Hamiltonov. Poišči Hamiltonov cikel v njem!</p>
             <figure>
-            <img src="img/grafi-hamilton-dirac.png" />
-            <figcaption>Hamiltonov graf po Diracovem izreku</figcaption>
+            <img src="img/grafi-hamilton-dirac.png"
+            alt="Hamiltonov graf po Diracovem izreku" />
+            <figcaption aria-hidden="true">Hamiltonov graf po Diracovem
+            izreku</figcaption>
             </figure>
             </div>
             <p>Včasih se znajdemo v situaciji, ko nam ob danem grafu
@@ -5770,9 +5798,10 @@
             Hamiltonov? Na naslednji sliki je prikazana Hamiltonova
             pot.</p>
             <figure>
-            <img src="img/grafi-petersen-hamilton-pot.png" />
-            <figcaption>Hamiltonova pot v Petersenovem
-            grafu</figcaption>
+            <img src="img/grafi-petersen-hamilton-pot.png"
+            alt="Hamiltonova pot v Petersenovem grafu" />
+            <figcaption aria-hidden="true">Hamiltonova pot v
+            Petersenovem grafu</figcaption>
             </figure>
             <p>S protislovjem premislimo, da Hamiltonov cikel ne
             obstaja. Če bi namreč <span class="math inline">\(C\)</span>
@@ -5820,11 +5849,12 @@
             šahovskega konjička enakovreden obstoju Hamiltonovega cikla
             v tem grafu.</p>
             <figure>
-            <img src="img/grafi-konjicek-graf.png" />
-            <figcaption>Graf, ki prikazuje možne skoke konjička na
-            šahovski plošči <span class="math inline">\(8 \times
-            8\)</span>; v vozliščih so vpisane stopnje, vir:
-            Wikipedia</figcaption>
+            <img src="img/grafi-konjicek-graf.png"
+            alt="Graf, ki prikazuje možne skoke konjička na šahovski plošči 8 \times 8; v vozliščih so vpisane stopnje, vir: Wikipedia" />
+            <figcaption aria-hidden="true">Graf, ki prikazuje možne
+            skoke konjička na šahovski plošči <span
+            class="math inline">\(8 \times 8\)</span>; v vozliščih so
+            vpisane stopnje, vir: Wikipedia</figcaption>
             </figure>
             <p>Poglejmo si nekaj posebnih primerov.</p>
             <div class="zgled">
@@ -5850,7 +5880,7 @@
             </ul>
             </div>
             <div class="domacanaloga">
-            <p><strong>Domača naloga 5.3</strong>. Obravnavaj šahovnico
+            <p><strong>Domača naloga 5.19</strong>. Obravnavaj šahovnico
             dimenzije <span class="math inline">\(4 \times n\)</span> za
             <span class="math inline">\(n \geq 4\)</span>. Dokaži, da
             Hamiltonov cikel <em>ne</em> obstaja.<a href="#fn26"
@@ -5862,7 +5892,7 @@
             šahovnice <em>edini</em> oviri za obstoj Hamiltonovega
             cikla, a tega ne bomo dokazali.</p>
             <div class="izrek">
-            <p><strong>Izrek 5.7</strong> (Schwenk). Konjičkov obhod na
+            <p><strong>Izrek 5.20</strong> (Schwenk). Konjičkov obhod na
             šahovnici <span class="math inline">\(m \times n\)</span>
             obstaja, če je le <span class="math inline">\(m \cdot
             n\)</span> sodo število in <span class="math inline">\(m, n
@@ -5871,9 +5901,10 @@
             <p>V posebnem torej obstaja obhod na standardni šahovnici
             <span class="math inline">\(8 \times 8\)</span>.</p>
             <figure>
-            <img src="img/grafi-konjicek.png" />
-            <figcaption>Konjičkov obhod na šahovnici <span
-            class="math inline">\(8 \times 8\)</span>, vir:
+            <img src="img/grafi-konjicek.png"
+            alt="Konjičkov obhod na šahovnici 8 \times 8, vir: Wikipedia" />
+            <figcaption aria-hidden="true">Konjičkov obhod na šahovnici
+            <span class="math inline">\(8 \times 8\)</span>, vir:
             Wikipedia</figcaption>
             </figure>
             <h2 id="ravninski-grafi">Ravninski grafi</h2>
@@ -5896,8 +5927,9 @@
             class="math inline">\(K_4\)</span> lahko narišemo na ta
             način, kot je prikazano na sliki.</p>
             <figure>
-            <img src="img/grafi-ravninski-k4.png" />
-            <figcaption>Ravninski graf <span
+            <img src="img/grafi-ravninski-k4.png"
+            alt="Ravninski graf K_4" />
+            <figcaption aria-hidden="true">Ravninski graf <span
             class="math inline">\(K_4\)</span></figcaption>
             </figure>
             </div>
@@ -5955,9 +5987,10 @@
             narišemo znotraj drugega ali pa dva trikotnika narišemo
             enega ob drugem.</p>
             <figure>
-            <img src="img/grafi-ravninski-k3k3.png" />
-            <figcaption>Dve različni vložitvi grafa <span
-            class="math inline">\(K_3 \cup K_3\)</span> v
+            <img src="img/grafi-ravninski-k3k3.png"
+            alt="Dve različni vložitvi grafa K_3 \cup K_3 v ravnino" />
+            <figcaption aria-hidden="true">Dve različni vložitvi grafa
+            <span class="math inline">\(K_3 \cup K_3\)</span> v
             ravnino</figcaption>
             </figure>
             </div>
@@ -5974,8 +6007,9 @@
             \cup K_3\)</span> iz zadnjega zgleda imata <span
             class="math inline">\(3\)</span> lica.</p>
             <figure>
-            <img src="img/grafi-ravninski-k3k3-lica.png" />
-            <figcaption>Lica vložitev grafa <span
+            <img src="img/grafi-ravninski-k3k3-lica.png"
+            alt="Lica vložitev grafa K_3 \cup K_3 v ravnino" />
+            <figcaption aria-hidden="true">Lica vložitev grafa <span
             class="math inline">\(K_3 \cup K_3\)</span> v
             ravnino</figcaption>
             </figure></li>
@@ -5991,12 +6025,12 @@
                 E(\mathcal{G}) &amp;= \{ \mathrm{im} \phi_e \mid e \in
             E(G) \}, \\
                 F(\mathcal{G}) &amp;= \{ f \mid \text{$f$ lice vložitve
-            $\mathcal{G}$}\}.
-            \end{aligned}\]</span> <span><strong><em>Dolžina
-            lica</em></strong></span> <span class="math inline">\(f \in
-            F(\mathcal{G})\)</span> je število povezav, ki ležijo na
-            robu lica <span class="math inline">\(f\)</span>. Dolžino
-            označimo z <span class="math inline">\(\ell(f)\)</span>.</p>
+            $\mathcal{G}$}\}.\end{aligned}\]</span>
+            <span><strong><em>Dolžina lica</em></strong></span> <span
+            class="math inline">\(f \in F(\mathcal{G})\)</span> je
+            število povezav, ki ležijo na robu lica <span
+            class="math inline">\(f\)</span>. Dolžino označimo z <span
+            class="math inline">\(\ell(f)\)</span>.</p>
             <div class="zgled">
             <p><strong>Zgled 5.30</strong>. Obravnavajmo ravninski
             vložitvi <span class="math inline">\(K_3 \cup K_3\)</span>
@@ -6010,12 +6044,12 @@
             je enaka <span class="math inline">\(6\)</span>.</p>
             </div>
             <div class="izrek">
-            <p><strong>Izrek 5.8</strong> (lema o rokovanju za ravninske
-            grafe). Naj bo <span class="math inline">\(G\)</span> graf z
-            ravninsko vložitvijo <span
-            class="math inline">\(\mathcal{G}\)</span>. Potem je <span
-            class="math display">\[\sum_{f \in F(\mathcal{G})} \ell(f) =
-            2 \cdot |E(G)|.\]</span></p>
+            <p><strong>Izrek 5.21</strong> (lema o rokovanju za
+            ravninske grafe). Naj bo <span
+            class="math inline">\(G\)</span> graf z ravninsko vložitvijo
+            <span class="math inline">\(\mathcal{G}\)</span>. Potem je
+            <span class="math display">\[\sum_{f \in F(\mathcal{G})}
+            \ell(f) = 2 \cdot |E(G)|.\]</span></p>
             </div>
             <div class="proof">
             <p><em>Proof.</em> Pristopimo podobno kot pri dokazu leme o
@@ -6047,7 +6081,7 @@
             class="math inline">\(|F(\mathcal{G})|\)</span> velja
             naslednja povezava.</p>
             <div class="izrek">
-            <p><strong>Izrek 5.9</strong> (Eulerjeva formula). Naj bo
+            <p><strong>Izrek 5.22</strong> (Eulerjeva formula). Naj bo
             <span class="math inline">\(G\)</span> <em>povezan</em> graf
             z ravninsko vložitvijo <span
             class="math inline">\(\mathcal{G}\)</span>. Tedaj je <span
@@ -6081,12 +6115,13 @@
             class="math inline">\(G&#39;\)</span> je povezan in ima manj
             ciklov kot <span class="math inline">\(G\)</span>, zato
             lahko na njem uporabimo indukcijsko predpostavko. Za ta graf
-            velja <span class="math inline">\(|V(G&#39;)| =
-            |V(G)|\)</span> in <span class="math inline">\(|E(G&#39;)| =
-            |E(G)| - 1\)</span>, hkrati pa se z odstranitvijo povezave
-            <span class="math inline">\(uv\)</span> lici s skupnim robom
-            <span class="math inline">\(uv\)</span> spojita v eno lice,
-            zato je <span class="math inline">\(|F(\mathcal{G}&#39;)| =
+            velja <span class="math inline">\(|V(\mathcal{G}&#39;)| =
+            |V(G)|\)</span> in <span
+            class="math inline">\(|E(\mathcal{G}&#39;)| = |E(G)| -
+            1\)</span>, hkrati pa se z odstranitvijo povezave <span
+            class="math inline">\(uv\)</span> lici s skupnim robom <span
+            class="math inline">\(uv\)</span> spojita v eno lice, zato
+            je <span class="math inline">\(|F(\mathcal{G}&#39;)| =
             |F(\mathcal{G})| - 1\)</span>. Ker po indukcijski
             predpostavki velja <span
             class="math inline">\(|V(\mathcal{G}&#39;)| -
@@ -6095,10 +6130,10 @@
             |E(\mathcal{G})| + |F(\mathcal{G})| = 2\)</span>. <span
             class="math inline">\(\checkmark\)</span> ◻</p>
             </div>
-            <p>Eulerjevo formulo lahko posplošimo tudi na neravninske
+            <p>Eulerjevo formulo lahko posplošimo tudi na nepovezane
             grafe.</p>
             <div class="posledica">
-            <p><strong>Posledica 5.3</strong>. Naj bo <span
+            <p><strong>Posledica 5.23</strong>. Naj bo <span
             class="math inline">\(G\)</span> graf z <span
             class="math inline">\(\Omega\)</span> povezanimi
             komponentami in z ravninsko vložitvijo <span
@@ -6130,7 +6165,7 @@
             <p>S pomočjo Eulerjeve formule lahko izpeljemo
             <em>potreben</em> pogoj za ravninskost grafa.</p>
             <div class="trditev">
-            <p><strong>Trditev 5.7</strong>. Naj bo <span
+            <p><strong>Trditev 5.24</strong>. Naj bo <span
             class="math inline">\(G\)</span> ravninski graf z vsaj tremi
             vozlišči. Tedaj je <span class="math display">\[|E(G)| \leq
             3 \cdot |V(G)| - 6.\]</span> Če je graf <span
@@ -6217,7 +6252,7 @@
             krčenje povezav v ravnini izvedemo tako, da pri tem ne pride
             do sekanja ostalih povezav.</p>
             <div class="posledica">
-            <p><strong>Posledica 5.4</strong>. Če graf <span
+            <p><strong>Posledica 5.25</strong>. Če graf <span
             class="math inline">\(G\)</span> vsebuje minor <span
             class="math inline">\(K_{3,3}\)</span> ali <span
             class="math inline">\(K_5\)</span>, potem ni ravninski.</p>
@@ -6242,7 +6277,7 @@
             role="doc-noteref"><sup>34</sup></a></p>
             <p>Subdivizija ravninskega grafa je ravninski graf.</p>
             <div class="posledica">
-            <p><strong>Posledica 5.5</strong>. Če graf <span
+            <p><strong>Posledica 5.26</strong>. Če graf <span
             class="math inline">\(G\)</span> vsebuje subdivizijo <span
             class="math inline">\(K_{3,3}\)</span> ali <span
             class="math inline">\(K_5\)</span>, potem ni ravninski.</p>
@@ -6254,7 +6289,7 @@
             <span class="math inline">\(K_5\)</span>, potem <em>je</em>
             ravninski. Dokaz izpustimo.</p>
             <div class="domacanaloga">
-            <p><strong>Domača naloga 5.4</strong>. Vemo že, da
+            <p><strong>Domača naloga 5.27</strong>. Vemo že, da
             Petersenov graf ni ravninski. Po izreku Kuratowskega torej
             vsebuje subdivizijo <span
             class="math inline">\(K_{3,3}\)</span> ali <span
@@ -6370,7 +6405,7 @@
             število. Za ravninske grafe imamo na voljo naslednji
             presenetljiv in zelo močan rezultat.</p>
             <div class="izrek">
-            <p><strong>Izrek 5.10</strong> (o štirih barvah). Za vsak
+            <p><strong>Izrek 5.28</strong> (o štirih barvah). Za vsak
             ravninski graf <span class="math inline">\(G\)</span> je
             <span class="math inline">\(\chi(G) \leq 4\)</span>.</p>
             </div>
@@ -6389,9 +6424,10 @@
             class="math inline">\(4\)</span> barvami, pri čemer nobeni
             dve sosednji državi nista enake barve.</p>
             <figure>
-            <img src="img/obcine.png" />
-            <figcaption>Barvanje občin v Sloveniji s štirimi barvami,
-            vir: Wikimedia</figcaption>
+            <img src="img/obcine.png"
+            alt="Barvanje občin v Sloveniji s štirimi barvami, vir: Wikimedia" />
+            <figcaption aria-hidden="true">Barvanje občin v Sloveniji s
+            štirimi barvami, vir: Wikimedia</figcaption>
             </figure>
             </div>
             <p>Za poljubne grafe, ne nujno ravninske, lahko precej
@@ -6400,7 +6436,7 @@
             class="math inline">\(G\)</span>, števila <span
             class="math inline">\(\Delta(G)\)</span>.</p>
             <div class="trditev">
-            <p><strong>Trditev 5.8</strong>. Za vsak graf <span
+            <p><strong>Trditev 5.29</strong>. Za vsak graf <span
             class="math inline">\(G\)</span> je <span
             class="math inline">\(\chi(G) \leq \Delta(G) +
             1\)</span>.</p>
@@ -6528,7 +6564,7 @@
             kromatični indeks. Za nekatere grafe velja kar enakost v tej
             neenakosti.</p>
             <div class="izrek">
-            <p><strong>Izrek 5.11</strong>. Za <em>dvodelen</em> graf
+            <p><strong>Izrek 5.30</strong>. Za <em>dvodelen</em> graf
             <span class="math inline">\(G\)</span> je <span
             class="math inline">\(\chi&#39;(G) = \Delta(G)\)</span>.</p>
             </div>
@@ -6589,7 +6625,7 @@
             <span class="math inline">\(\beta\)</span>. Kako izvedemo to
             zamenjavo?</p>
             <div class="domacanaloga">
-            <p><strong>Domača naloga 5.5</strong>. Naj bo <span
+            <p><strong>Domača naloga 5.31</strong>. Naj bo <span
             class="math inline">\(P\)</span> najdaljša možna pot v <span
             class="math inline">\(G - e\)</span>, ki se začne v <span
             class="math inline">\(u\)</span> in je obarvana le z barvama
@@ -6619,7 +6655,7 @@
             <p><em>Zgornjo</em> mejo za kromatični indeks pa nam poda
             naslednji presenetljiv izrek.</p>
             <div class="izrek">
-            <p><strong>Izrek 5.12</strong> (Vizing). Za vsak graf <span
+            <p><strong>Izrek 5.32</strong> (Vizing). Za vsak graf <span
             class="math inline">\(G\)</span> je <span
             class="math inline">\(\chi&#39;(G) \leq \Delta(G) +
             1\)</span>.</p>
@@ -6635,7 +6671,7 @@
             4\)</span>. Povezavnega barvanja s štirimi barvami ni težko
             najti.</p>
             <div class="domacanaloga">
-            <p><strong>Domača naloga 5.6</strong>. Dokaži, da velja
+            <p><strong>Domača naloga 5.33</strong>. Dokaži, da velja
             <span class="math inline">\(\chi&#39;(P) = 4\)</span>.</p>
             </div>
             </div>
@@ -6655,7 +6691,7 @@
             Polovico teh grafov lahko obdelamo z naslednjo preprosto
             trditvijo.</p>
             <div class="trditev">
-            <p><strong>Trditev 5.9</strong>. Regularni grafi na
+            <p><strong>Trditev 5.34</strong>. Regularni grafi na
             <em>liho</em> mnogo vozliščih so razreda II.</p>
             </div>
             <div class="proof">
@@ -6666,7 +6702,7 @@
             \}\)</span>. Naj bo <span class="math inline">\(H\)</span>
             podgraf grafa <span class="math inline">\(G\)</span> z
             množico povezav <span class="math inline">\(E(H) =
-            c^{-1}\)</span>. Podgraf <span
+            c^{-1}(1)\)</span>. Podgraf <span
             class="math inline">\(H\)</span> torej sestoji iz tistih
             povezav, ki so obravana z barvo <span
             class="math inline">\(1\)</span>, in njihovih krajišč. Ker
@@ -6717,100 +6753,104 @@
             <span class="math inline">\(K_{2n+2}\)</span>.</p></li>
             </ul>
             </div>
-            <aside id="footnotes"
-            class="footnotes footnotes-end-of-document"
+            <section class="footnotes footnotes-end-of-document"
             role="doc-endnotes">
             <hr />
             <ol>
-            <li id="fn1"><p>Lat. <em>Reductio ad absurdum</em>.<a
-            href="#fnref1" class="footnote-back"
+            <li id="fn1" role="doc-endnote"><p>Lat. <em>Reductio ad
+            absurdum</em>.<a href="#fnref1" class="footnote-back"
             role="doc-backlink">↩︎</a></p></li>
-            <li id="fn2"><p>Ta induktivna definicija je podobna kot
-            induktivna definicija izjavnih izrazov v izjavnem računu.<a
-            href="#fnref2" class="footnote-back"
+            <li id="fn2" role="doc-endnote"><p>Ta induktivna definicija
+            je podobna kot induktivna definicija izjavnih izrazov v
+            izjavnem računu.<a href="#fnref2" class="footnote-back"
             role="doc-backlink">↩︎</a></p></li>
-            <li id="fn3"><p>Podmnožicam <span
+            <li id="fn3" role="doc-endnote"><p>Podmnožicam <span
             class="math inline">\(D^n\)</span> rečemo tudi
             <span><strong><em><span
             class="math inline">\(n\)</span>-mestne
             relacije</em></strong></span> v <span
             class="math inline">\(D\)</span>.<a href="#fnref3"
             class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-            <li id="fn4"><p>To pomeni, da v grafu relacije <span
-            class="math inline">\(R\)</span> obstaja usmerjena pot
-            dolžine vsaj <span class="math inline">\(1\)</span> od <span
+            <li id="fn4" role="doc-endnote"><p>To pomeni, da v grafu
+            relacije <span class="math inline">\(R\)</span> obstaja
+            usmerjena pot dolžine vsaj <span
+            class="math inline">\(1\)</span> od <span
             class="math inline">\(x\)</span> do <span
             class="math inline">\(y\)</span>. Več o takih poteh bomo
             spoznali v razdelku o grafih.<a href="#fnref4"
             class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-            <li id="fn5"><p>To pomeni, da v grafu relacije <span
-            class="math inline">\(R\)</span> obstaja usmerjena pot od
-            <span class="math inline">\(x\)</span> do <span
-            class="math inline">\(y\)</span>, pri čemer dopuščamo tudi
-            možnost zanke.<a href="#fnref5" class="footnote-back"
+            <li id="fn5" role="doc-endnote"><p>To pomeni, da v grafu
+            relacije <span class="math inline">\(R\)</span> obstaja
+            usmerjena pot od <span class="math inline">\(x\)</span> do
+            <span class="math inline">\(y\)</span>, pri čemer dopuščamo
+            tudi možnost zanke.<a href="#fnref5" class="footnote-back"
             role="doc-backlink">↩︎</a></p></li>
-            <li id="fn6"><p>Na primer, <span
+            <li id="fn6" role="doc-endnote"><p>Na primer, <span
             class="math inline">\(R\)</span> morda ni refleksivna ali pa
             ni tranzitivna.<a href="#fnref6" class="footnote-back"
             role="doc-backlink">↩︎</a></p></li>
-            <li id="fn7"><p>Mi se bomo omejili le na končne grafe, v
-            matematiki pa sicer obravnavamo tudi neskončne grafe.<a
-            href="#fnref7" class="footnote-back"
+            <li id="fn7" role="doc-endnote"><p>Mi se bomo omejili le na
+            končne grafe, v matematiki pa sicer obravnavamo tudi
+            neskončne grafe.<a href="#fnref7" class="footnote-back"
             role="doc-backlink">↩︎</a></p></li>
-            <li id="fn8"><p>Spomnimo se, da je relacija na množici <span
-            class="math inline">\(V\)</span> podmnožica množice <span
-            class="math inline">\(V \times V\)</span>, torej sestoji iz
-            <em>urejenih</em> parov elementov iz <span
-            class="math inline">\(V\)</span>. Po drugi strani pa množica
-            <span class="math inline">\(E\)</span> sestoji iz
-            <em>neurejenih parov</em> elementov iz <span
+            <li id="fn8" role="doc-endnote"><p>Spomnimo se, da je
+            relacija na množici <span class="math inline">\(V\)</span>
+            podmnožica množice <span class="math inline">\(V \times
+            V\)</span>, torej sestoji iz <em>urejenih</em> parov
+            elementov iz <span class="math inline">\(V\)</span>. Po
+            drugi strani pa množica <span
+            class="math inline">\(E\)</span> sestoji iz <em>neurejenih
+            parov</em> elementov iz <span
             class="math inline">\(V\)</span>, se pravi iz podmnožic
             <span class="math inline">\(V\)</span> z dvema elementoma.<a
             href="#fnref8" class="footnote-back"
             role="doc-backlink">↩︎</a></p></li>
-            <li id="fn9"><p>Na primer <span class="math inline">\(3 + 7
-            \equiv 1 \pmod{9}\)</span>.<a href="#fnref9"
+            <li id="fn9" role="doc-endnote"><p>Na primer <span
+            class="math inline">\(3 + 7 \equiv 1 \pmod{9}\)</span>.<a
+            href="#fnref9" class="footnote-back"
+            role="doc-backlink">↩︎</a></p></li>
+            <li id="fn10" role="doc-endnote"><p>Vozlišča grafa lahko
+            torej razdelimo na dva dela, pri čemer povezave v grafu
+            potekajo le med vozlišči iz različnih delov.<a
+            href="#fnref10" class="footnote-back"
+            role="doc-backlink">↩︎</a></p></li>
+            <li id="fn11" role="doc-endnote"><p>Kasneje bomo številu
+            <span class="math inline">\(d(v,u)\)</span> rekli tudi
+            dolžina najkrajše poti od <span
+            class="math inline">\(v\)</span> do <span
+            class="math inline">\(u\)</span>. Lahko se zgodi, da je od
+            <span class="math inline">\(v\)</span> sploh ne moremo priti
+            do <span class="math inline">\(u\)</span>, na primer če je
+            <span class="math inline">\(u\)</span> izolirana točka. V
+            tem primeru definiramo <span class="math inline">\(d(v,u) =
+            \infty\)</span>.<a href="#fnref11" class="footnote-back"
+            role="doc-backlink">↩︎</a></p></li>
+            <li id="fn12" role="doc-endnote"><p>Če je <span
+            class="math inline">\(d(v,u) = \infty\)</span>, potem
+            vozlišča <span class="math inline">\(u\)</span> zaenkrat ne
+            obarvamo.<a href="#fnref12" class="footnote-back"
+            role="doc-backlink">↩︎</a></p></li>
+            <li id="fn13" role="doc-endnote"><p>Analogen argument
+            deluje, če sta obe krajišči v <span
+            class="math inline">\(A\)</span>.<a href="#fnref13"
             class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-            <li id="fn10"><p>Vozlišča grafa lahko torej razdelimo na dva
-            dela, pri čemer povezave v grafu potekajo le med vozlišči iz
-            različnih delov.<a href="#fnref10" class="footnote-back"
+            <li id="fn14" role="doc-endnote"><p>Pri tem morda kakšno
+            vozlišče sicer obiščemo več kot enkrat, zato to morda ni
+            podgraf <span class="math inline">\(G\)</span>.<a
+            href="#fnref14" class="footnote-back"
             role="doc-backlink">↩︎</a></p></li>
-            <li id="fn11"><p>Kasneje bomo številu <span
-            class="math inline">\(d(v,u)\)</span> rekli tudi dolžina
-            najkrajše poti od <span class="math inline">\(v\)</span> do
-            <span class="math inline">\(u\)</span>. Lahko se zgodi, da
-            je od <span class="math inline">\(v\)</span> sploh ne moremo
-            priti do <span class="math inline">\(u\)</span>, na primer
-            če je <span class="math inline">\(u\)</span> izolirana
-            točka. V tem primeru definiramo <span
-            class="math inline">\(d(v,u) = \infty\)</span>.<a
-            href="#fnref11" class="footnote-back"
+            <li id="fn15" role="doc-endnote"><p>Natančneje, podgraf
+            grafa <span class="math inline">\(G\)</span>, vpet v
+            vozlišča <span class="math inline">\(u\)</span>, za katera
+            velja <span class="math inline">\(d(v,u) &lt;
+            \infty\)</span>, je dvodelen. Če obstaja kakšno vozlišče z
+            <span class="math inline">\(d(v,u) = \infty\)</span>, zdaj
+            vzamemo to vozlišče za začetno in ponovimo opisan
+            postopek.<a href="#fnref15" class="footnote-back"
             role="doc-backlink">↩︎</a></p></li>
-            <li id="fn12"><p>Če je <span class="math inline">\(d(v,u) =
-            \infty\)</span>, potem vozlišča <span
-            class="math inline">\(u\)</span> zaenkrat ne obarvamo.<a
-            href="#fnref12" class="footnote-back"
-            role="doc-backlink">↩︎</a></p></li>
-            <li id="fn13"><p>Analogen argument deluje, če sta obe
-            krajišči v <span class="math inline">\(A\)</span>.<a
-            href="#fnref13" class="footnote-back"
-            role="doc-backlink">↩︎</a></p></li>
-            <li id="fn14"><p>Pri tem morda kakšno vozlišče sicer
-            obiščemo več kot enkrat, zato to morda ni podgraf <span
-            class="math inline">\(G\)</span>.<a href="#fnref14"
-            class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-            <li id="fn15"><p>Natančneje, podgraf grafa <span
-            class="math inline">\(G\)</span>, vpet v vozlišča <span
-            class="math inline">\(u\)</span>, za katera velja <span
-            class="math inline">\(d(v,u) &lt; \infty\)</span>, je
-            dvodelen. Če obstaja kakšno vozlišče z <span
-            class="math inline">\(d(v,u) = \infty\)</span>, zdaj vzamemo
-            to vozlišče za začetno in ponovimo opisan postopek.<a
-            href="#fnref15" class="footnote-back"
-            role="doc-backlink">↩︎</a></p></li>
-            <li id="fn16"><p>Tranzitivnost relacije <span
-            class="math inline">\(R\)</span> sledi iz zadnje trditve: če
-            v grafu obstaja pot od <span
+            <li id="fn16" role="doc-endnote"><p>Tranzitivnost relacije
+            <span class="math inline">\(R\)</span> sledi iz zadnje
+            trditve: če v grafu obstaja pot od <span
             class="math inline">\(u\)</span> do <span
             class="math inline">\(v\)</span> in pot od <span
             class="math inline">\(v\)</span> do <span
@@ -6821,66 +6861,71 @@
             class="math inline">\(u\)</span> do <span
             class="math inline">\(w\)</span>.<a href="#fnref16"
             class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-            <li id="fn17"><p>List <span class="math inline">\(v\)</span>
-            je lahko le začetek ali konec poti, zato pot med vozliščema
-            <span class="math inline">\(x,y \in V(T)\)</span>, <span
+            <li id="fn17" role="doc-endnote"><p>List <span
+            class="math inline">\(v\)</span> je lahko le začetek ali
+            konec poti, zato pot med vozliščema <span
+            class="math inline">\(x,y \in V(T)\)</span>, <span
             class="math inline">\(x,y \neq v\)</span>, <em>ne</em>
             vsebuje <span class="math inline">\(v\)</span>.<a
             href="#fnref17" class="footnote-back"
             role="doc-backlink">↩︎</a></p></li>
-            <li id="fn18"><p>V dokazu trditve smo namreč uporabili le
-            lastnost 2. drevesa.<a href="#fnref18" class="footnote-back"
+            <li id="fn18" role="doc-endnote"><p>V dokazu trditve smo
+            namreč uporabili le lastnost 2. drevesa.<a href="#fnref18"
+            class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn19" role="doc-endnote"><p>Če namreč med Eulerjevim
+            obhodom pridemo v neko vozlišče, moramo iz njega tudi oditi.
+            Enako velja za začetno vozlišče obhoda, ki je enako
+            končnemu.<a href="#fnref19" class="footnote-back"
             role="doc-backlink">↩︎</a></p></li>
-            <li id="fn19"><p>Če namreč med Eulerjevim obhodom pridemo v
-            neko vozlišče, moramo iz njega tudi oditi. Enako velja za
-            začetno vozlišče obhoda, ki je enako končnemu.<a
-            href="#fnref19" class="footnote-back"
-            role="doc-backlink">↩︎</a></p></li>
-            <li id="fn20"><p>Vsaka povezava, ki je na <span
-            class="math inline">\(S\)</span> in vstopi v <span
+            <li id="fn20" role="doc-endnote"><p>Vsaka povezava, ki je na
+            <span class="math inline">\(S\)</span> in vstopi v <span
             class="math inline">\(u\)</span> in ni začetna povezava na
             <span class="math inline">\(S\)</span>, mora iz <span
             class="math inline">\(u\)</span> tudi izstopiti.<a
             href="#fnref20" class="footnote-back"
             role="doc-backlink">↩︎</a></p></li>
-            <li id="fn21"><p>Taka pot obstaja, ker je graf <span
-            class="math inline">\(G\)</span> povezan.<a href="#fnref21"
-            class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-            <li id="fn22"><p>Danes imenovanem Kaliningrad.<a
-            href="#fnref22" class="footnote-back"
+            <li id="fn21" role="doc-endnote"><p>Taka pot obstaja, ker je
+            graf <span class="math inline">\(G\)</span> povezan.<a
+            href="#fnref21" class="footnote-back"
             role="doc-backlink">↩︎</a></p></li>
-            <li id="fn23"><p>Ta problem je Euler razrešil leta 1736.<a
-            href="#fnref23" class="footnote-back"
+            <li id="fn22" role="doc-endnote"><p>Danes imenovanem
+            Kaliningrad.<a href="#fnref22" class="footnote-back"
             role="doc-backlink">↩︎</a></p></li>
-            <li id="fn24"><p>Ni se težko prepričati, da ta dva izreka
-            veljata tudi za multigrafe.<a href="#fnref24"
-            class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-            <li id="fn25"><p>Hamilton je Hamiltonove grafe opazoval
-            približno sto let po Eulerju.<a href="#fnref25"
-            class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-            <li id="fn26"><p>V pomoč ti bo, če vozlišča v vrsticah <span
-            class="math inline">\(1\)</span> in <span
-            class="math inline">\(4\)</span> obarvaš rdeče, vozlišča v
-            vrsticah <span class="math inline">\(2\)</span> in <span
-            class="math inline">\(3\)</span> pa modro. Konjiček lahko
-            sicer skoči iz modrega vozlišča nazaj v modro vozlišče, na
-            primer iz polja <span class="math inline">\((2,1)\)</span> v
-            <span class="math inline">\((3,3)\)</span>, ampak iz rdečega
+            <li id="fn23" role="doc-endnote"><p>Ta problem je Euler
+            razrešil leta 1736.<a href="#fnref23" class="footnote-back"
+            role="doc-backlink">↩︎</a></p></li>
+            <li id="fn24" role="doc-endnote"><p>Ni se težko prepričati,
+            da ta dva izreka veljata tudi za multigrafe.<a
+            href="#fnref24" class="footnote-back"
+            role="doc-backlink">↩︎</a></p></li>
+            <li id="fn25" role="doc-endnote"><p>Hamilton je Hamiltonove
+            grafe opazoval približno sto let po Eulerju.<a
+            href="#fnref25" class="footnote-back"
+            role="doc-backlink">↩︎</a></p></li>
+            <li id="fn26" role="doc-endnote"><p>V pomoč ti bo, če
+            vozlišča v vrsticah <span class="math inline">\(1\)</span>
+            in <span class="math inline">\(4\)</span> obarvaš rdeče,
+            vozlišča v vrsticah <span class="math inline">\(2\)</span>
+            in <span class="math inline">\(3\)</span> pa modro. Konjiček
+            lahko sicer skoči iz modrega vozlišča nazaj v modro
+            vozlišče, na primer iz polja <span
+            class="math inline">\((2,1)\)</span> v <span
+            class="math inline">\((3,3)\)</span>, ampak iz rdečega
             vozlišča pa konjiček lahko skoči le v modro vozlišče.<a
             href="#fnref26" class="footnote-back"
             role="doc-backlink">↩︎</a></p></li>
-            <li id="fn27"><p>Preslikava <span
+            <li id="fn27" role="doc-endnote"><p>Preslikava <span
             class="math inline">\(\phi_e\)</span> torej preslika rob
             intervala <span class="math inline">\([0,1]\)</span> v sliki
             krajišč povezave <span class="math inline">\(e\)</span> s
             povezavo <span class="math inline">\(\phi\)</span>.<a
             href="#fnref27" class="footnote-back"
             role="doc-backlink">↩︎</a></p></li>
-            <li id="fn28"><p>Pri risanju povezave <span
-            class="math inline">\(e\)</span> ni nobenih samopresečnih
-            točk.<a href="#fnref28" class="footnote-back"
+            <li id="fn28" role="doc-endnote"><p>Pri risanju povezave
+            <span class="math inline">\(e\)</span> ni nobenih
+            samopresečnih točk.<a href="#fnref28" class="footnote-back"
             role="doc-backlink">↩︎</a></p></li>
-            <li id="fn29"><p>Tukaj smo z <span
+            <li id="fn29" role="doc-endnote"><p>Tukaj smo z <span
             class="math inline">\(\phi_e |_{(0,1)}\)</span> označili
             zožitev preslikave <span
             class="math inline">\(\phi_e\)</span> na odprti interval
@@ -6890,11 +6935,11 @@
             Nobeni dve narisani povezavi se torej ne sekata (razen morda
             v robnih točkah).<a href="#fnref29" class="footnote-back"
             role="doc-backlink">↩︎</a></p></li>
-            <li id="fn30"><p>Narisana povezava lahko prečka narisano
-            vozlišče, če in samo če je to rob narisane povezave.<a
-            href="#fnref30" class="footnote-back"
+            <li id="fn30" role="doc-endnote"><p>Narisana povezava lahko
+            prečka narisano vozlišče, če in samo če je to rob narisane
+            povezave.<a href="#fnref30" class="footnote-back"
             role="doc-backlink">↩︎</a></p></li>
-            <li id="fn31"><p>Oznako <span
+            <li id="fn31" role="doc-endnote"><p>Oznako <span
             class="math inline">\(G\)</span> torej uporabljamo za
             abstraktni graf, se pravi <span class="math inline">\(G =
             (V,E)\)</span>, oznako <span
@@ -6903,7 +6948,7 @@
             ravnino, se pravi <span class="math inline">\(\mathcal{G}=
             (\phi, \{ \phi_e \}_{e \in E})\)</span>.<a href="#fnref31"
             class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-            <li id="fn32"><p>Ker ima <span
+            <li id="fn32" role="doc-endnote"><p>Ker ima <span
             class="math inline">\(G\)</span> vsaj <span
             class="math inline">\(3\)</span> vozlišča, je vsako lice
             omejeno s ciklom dolžine vsaj <span
@@ -6911,22 +6956,22 @@
             class="math inline">\(P_2\)</span> (dvakrat).<a
             href="#fnref32" class="footnote-back"
             role="doc-backlink">↩︎</a></p></li>
-            <li id="fn33"><p>Predstavljamo si, da izbrane povezave
-            počasi krajšamo, dokler se krajišči ne združita. Po tem
-            morebitne zanke odstranimo in vzporedne povezave
-            identificiramo, da dobimo na koncu tega postopka res graf in
-            ne multigrafa.<a href="#fnref33" class="footnote-back"
-            role="doc-backlink">↩︎</a></p></li>
-            <li id="fn34"><p>Določenim povezavam torej dodamo nekaj
-            vozlišč.<a href="#fnref34" class="footnote-back"
-            role="doc-backlink">↩︎</a></p></li>
-            <li id="fn35"><p>Najprej prvih <span
+            <li id="fn33" role="doc-endnote"><p>Predstavljamo si, da
+            izbrane povezave počasi krajšamo, dokler se krajišči ne
+            združita. Po tem morebitne zanke odstranimo in vzporedne
+            povezave identificiramo, da dobimo na koncu tega postopka
+            res graf in ne multigrafa.<a href="#fnref33"
+            class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn34" role="doc-endnote"><p>Določenim povezavam
+            torej dodamo nekaj vozlišč.<a href="#fnref34"
+            class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn35" role="doc-endnote"><p>Najprej prvih <span
             class="math inline">\(n-1\)</span> vozlišč pobarvamo
             alternirajoče z dvema barvama, zadnje vozlišče pa pobarvamo
             s tretjo barvo.<a href="#fnref35" class="footnote-back"
             role="doc-backlink">↩︎</a></p></li>
             </ol>
-            </aside>
+            </section>
 
           </div>
         </div>

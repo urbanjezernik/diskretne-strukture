@@ -117,6 +117,9 @@
 \def\vaje{{\literatura ($\to$ vaje)}}
 \def\kljuka{$\checkmark$}
 
+% good numbering
+\newtheorem{theorem}{Theorem}[section]
+
 \theoremstyle{definition}
 
 \newtheoremstyle{zgled}
@@ -139,7 +142,9 @@
  { }{}
 
 \theoremstyle{odprtproblem}
-\newtheorem*{odprtproblem}{Odprt problem}
+% \newtheorem*{odprtproblem}{Odprt problem}
+% good numbering
+\newtheorem{odprtproblem}[theorem]{Odprt problem}
 
 \newtheoremstyle{domacanaloga}
  {}{}%
@@ -150,7 +155,9 @@
  { }{}
 
 \theoremstyle{domacanaloga}
-\newtheorem*{domacanaloga}{Domača naloga}
+% \newtheorem*{domacanaloga}{Domača naloga}
+% good numbering
+\newtheorem{domacanaloga}[theorem]{Domača naloga}
 
 \newenvironment{dokaz}
     {\color{siva}\begin{proof}}
@@ -165,14 +172,24 @@
  { }{}
 
 \theoremstyle{izrek}
-\newtheorem*{izrek}{Izrek}
+% \newtheorem*{izrek}{Izrek}
+% good numbering
+\newtheorem{izrek}[theorem]{Izrek}
 
-\newtheorem*{trditev}{Trditev}
-\newtheorem*{pomoznatrditev}{Pomožna trditev}
+% \newtheorem*{trditev}{Trditev}
+% \newtheorem*{pomoznatrditev}{Pomožna trditev}
+% good numbering
+\newtheorem{trditev}[theorem]{Trditev}
+\newtheorem{pomoznatrditev}[theorem]{Pomožna trditev}
 
-\newtheorem*{lema}{Lema}
 
-\newtheorem*{posledica}{Posledica}
+% \newtheorem*{lema}{Lema}
+% good numbering
+\newtheorem{lema}[theorem]{Lema}
+
+% \newtheorem*{posledica}{Posledica}
+% good numbering
+\newtheorem{posledica}[theorem]{Posledica}
 
 \newenvironment{povzetek}
     {
@@ -194,7 +211,7 @@
 \definecolor{rjava}{rgb}{0.7490196078431373, 0.3686274509803922, 0.1843137254901961}
 \definecolor{modra}{rgb}{0.2784313725490196, 0.5411764705882353, 0.8392156862745098}
 \definecolor{vijolicna}{rgb}{0.48627450980392156, 0.2980392156862745, 0.792156862745098}
-\definecolor{siva}{rgb}{0.5, 0.5, 0.5}
+\definecolor{siva}{rgb}{0.7, 0.7, 0.7}
 \definecolor{svetlosiva}{rgb}{0.7, 0.7, 0.7}
 
 
@@ -467,7 +484,7 @@ Naj bosta $A$ in $B$ izjavna izraza. Kadar je $A \Leftrightarrow B$ tavtologija,
 Velja $p \Rightarrow q \sim \lnot p \lor q \sim \lnot q \Rightarrow \lnot p$ in $p \land (\lnot q \lor p) \sim p$.
 \end{zgled}
 
-Enakovrednemu paru izjavnih izrazov $A \sim B$ rečemo {\definicija zakoni izjavnega računa}. V vsakem izjavnem izrazu lahko poljuben izraz zamenjamo z enakovrednim in s tem poenostavimo izjavni izraz.
+Enakovrednemu paru izjavnih izrazov $A \sim B$ rečemo {\definicija zakon izjavnega računa}. V vsakem izjavnem izrazu lahko poljuben izraz zamenjamo z enakovrednim in s tem poenostavimo izjavni izraz.
 
 \begin{zgled}
 Velja
@@ -651,19 +668,19 @@ Naj bodo $A_1, A_2, \dots, A_k$ izjavni izrazi. Če obstaja zaporedje izjavnih i
     \item $B_i \sim B_j$ za nek $j < i$,
     \item $B_i$ logično sledi iz $B_1, B_2, \dots, B_{i-1}$ po enem od osnovnih pravil sklepanja,
 \end{enumerate}
-potem velja $A_1, A_2, \dots, A_k \models B$.
+potem velja $A_1, A_2, \dots, A_k \models B_n$.
 \end{izrek}
 \begin{dokaz}
 Dokazujemo z indukcijo na $n$.
 
-Baza indukcije je $n = 1$. V tem primeru je po predpostavki izjavni izraz $B_1$ lahko le eden od $A_1, A_2, \dots, A_k$ ali tavtologija. V vsakem od teh primerov velja $A_1, A_2, \dots, A_k \models B$. \kljuka
+Baza indukcije je $n = 1$. V tem primeru je po predpostavki izjavni izraz $B_1$ lahko le eden od $A_1, A_2, \dots, A_k$ ali tavtologija. V vsakem od teh primerov velja $A_1, A_2, \dots, A_k \models B_n$. \kljuka
 
 Predpostavimo zdaj, da trditev že velja za $1, 2, \dots, n-1$ in dokažimo veljavnost za $n$. Drži torej $A_1, A_2, \dots, A_k \models B_j$ za vsak $j = 1, 2, \dots, n-1$. Obravnavajmo različne možnosti glede na to, katera od predpostavk velja za $B_n$.
 \begin{enumerate}
-    \item Če je $B_n$ eden od $A_1, A_2, \dots, A_k$, potem velja $A_1, A_2, \dots, A_k \models B$. \kljuka
-    \item Če je $B_n$ tavtologija, potem velja $A_1, A_2, \dots, A_k \models B$. \kljuka
-    \item Če je $B_n \sim B_j$ za nek $j < n$, potem po indukcijski predpostavki $A_1, A_2, \dots, A_k \models B_j$ velja $A_1, A_2, \dots, A_k \models B$. \kljuka
-    \item Naj nazadnje $B_n$ logično sledi iz $B_1, B_2, \dots, B_{n-1}$. Ker vsak $B_j$ za $j < n$ logično sledi iz $A_1, A_2, \dots, A_k$, velja tudi $A_1, A_2, \dots, A_k \models B$. \kljuka
+    \item Če je $B_n$ eden od $A_1, A_2, \dots, A_k$, potem velja $A_1, A_2, \dots, A_k \models B_n$. \kljuka
+    \item Če je $B_n$ tavtologija, potem velja $A_1, A_2, \dots, A_k \models B_n$. \kljuka
+    \item Če je $B_n \sim B_j$ za nek $j < n$, potem po indukcijski predpostavki $A_1, A_2, \dots, A_k \models B_j$ velja $A_1, A_2, \dots, A_k \models B_n$. \kljuka
+    \item Naj nazadnje $B_n$ logično sledi iz $B_1, B_2, \dots, B_{n-1}$. Ker vsak $B_j$ za $j < n$ logično sledi iz $A_1, A_2, \dots, A_k$, velja tudi $A_1, A_2, \dots, A_k \models B_n$. \kljuka
 \end{enumerate}
 \end{dokaz}
 
@@ -722,12 +739,12 @@ Poiščimo protiprimer. Želimo, da so resnične vse predpostavke, zaključek pa
 Pri dokazovanju bolj kompleksnih sklepov si lahko včasih pomagamo tudi s kakšnimi {\definicija pomožnimi sklepi}. Pogledali si bomo tri take osnovne pomožne sklepe, in sicer pogojni sklep, sklepanje s protislovjem in analiza primerov. Vse te pomožne sklepe bomo izpeljali s pomočjo naslednje trditve.
 
 \begin{trditev}
-Velja $A_1, A_2, \dots, A_k \models B$, če in samo če je $A_1 \land A_2 \land \cdot \land A_k \models B$ tavtologija.
+Velja $A_1, A_2, \dots, A_k \models B$, če in samo če je $A_1 \land A_2 \land \dots \land A_k \Rightarrow B$ tavtologija.
 \end{trditev}
 \begin{dokaz}
-Predpostavimo najprej, da velja $A_1, A_2, \dots, A_k \models B$. Če je $A_1 \land A_2 \land \cdots \land A_k$ resnična izjava, potem so resnične vse izjave $A_i$ za $i = 1,2, \dots, k$, torej so vse predpostavke $A_1, A_2, \dots, A_k$ resnične. Od tod sledi, da je resničen tudi zaključek $B$. Torej je $A_1 \land A_2 \land \cdot \land A_k \models B$ tavtologija. \kljuka
+Predpostavimo najprej, da velja $A_1, A_2, \dots, A_k \models B$. Če je $A_1 \land A_2 \land \cdots \land A_k$ resnična izjava, potem so resnične vse izjave $A_i$ za $i = 1,2, \dots, k$, torej so vse predpostavke $A_1, A_2, \dots, A_k$ resnične. Od tod sledi, da je resničen tudi zaključek $B$. Torej je $A_1 \land A_2 \land \cdot \land A_k \Rightarrow B$ tavtologija. \kljuka
 
-Predpostavimo sedaj, da je $A_1 \land A_2 \land \cdot \land A_k \models B$ tavtologija. Dokazati želimo veljavnost sklepa $A_1, A_2, \dots, A_k \models B$. Predpostavimo torej, da so resnične vse predpostavke $A_1, A_2, \dots, A_k$. Potem je resnična tudi njihova konjunkcija $A_1 \land A_2 \land \cdots \land A_k$. Iz predpostavke od tod sledi, da mora biti resnična tudi izjava $B$. Sklep $A_1, A_2, \dots, A_k \models B$ je torej veljaven. \kljuka
+Predpostavimo sedaj, da je $A_1 \land A_2 \land \cdot \land A_k \Rightarrow B$ tavtologija. Dokazati želimo veljavnost sklepa $A_1, A_2, \dots, A_k \models B$. Predpostavimo torej, da so resnične vse predpostavke $A_1, A_2, \dots, A_k$. Potem je resnična tudi njihova konjunkcija $A_1 \land A_2 \land \cdots \land A_k$. Iz predpostavke od tod sledi, da mora biti resnična tudi izjava $B$. Sklep $A_1, A_2, \dots, A_k \models B$ je torej veljaven. \kljuka
 \end{dokaz}
 
 {\definicija Pogojni sklep} (PS) uporabimo, kadar dokazujemo sklep, v katerem ima zaključek obliko implikacije. Če želimo sklepati na zaključek $B \Rightarrow C$, dodamo izjavo $B$ med predpostavke in skušamo sklepati na zaključek $C$. Veljavnost tega pomožnega sklepa sledi iz naslednjega izreka.
@@ -864,7 +881,7 @@ Oglejmo si naslednji sklep, zapisan v slovenščini.
 
 V izjavnem računu ta sklep zapišemo kot $p_1, p_2 \models z$. Seveda pa ta sklep v izjavnem računu ni veljaven, protiprimer je namreč nabor $p_1 = 1, p_2 = 1, z = 0$. 
 
-Kljub temu se zdi, da je ta sklep v slovenščini vsekakor pravilen. Predikatni račun je nadgradnja izjavnega računa, v katerem izjavne spremeljivke $p_1, p_2, z$ obravnavamo nekoliko podrobneje, tako da bo ta sklep pravilen tudi v tem novem računu.
+Kljub temu se zdi, da je ta sklep v slovenščini vsekakor pravilen. Predikatni račun je nadgradnja izjavnega računa, v katerem izjavne spremeljivke $p_1, p_2, z$ obravnavamo nekoliko podrobneje, tako da bo ta sklep pravilen v tem novem računu.
 
 Uvedimo naslednje oznake:
 
@@ -928,7 +945,7 @@ Uvedimo naslednje oznake:
     \item[$V(x,y)$:] $x$ je večje od $y$.
 \end{description}
 
-V tem zgledu so naše spremenljivke $x$ iz množice naravnih števil, v prejšnjih zgledih pa so bile iz množice živali. Pomembno je, da se na začetku dogovorimo o področju pogovora oziroma {\definicija domeni}, saj izjave, ki jih zapišemo, morda v drugi domeni pomenijo čisto nekaj drugega.
+V tem zgledu so naše spremenljivke $x$ iz množice naravnih števil, v prejšnjem zgledu pa so bile iz množice ljudi. Pomembno je, da se na začetku dogovorimo o področju pogovora oziroma {\definicija domeni}, saj izjave, ki jih zapišemo, morda v drugi domeni pomenijo čisto nekaj drugega.
 
 Evklidov izrek lahko nazadnje zapišemo v predikatnem računu na naslednji način:
 \[
@@ -960,7 +977,7 @@ Tukaj smo naleteli še na zadnji fenomen, ki ga bomo imeli v predikatnem računu
 
 \section{Sintaksa predikatnega računa}
 
-Zdaj smo pripravljeni, da formalno definiramo vse koncepte v predikatnem računu. Sistematično bomo našteli sibmole, ki jih uporabljamo, in opisali, kako iz njih sestavljamo izjavne formule.
+Zdaj smo pripravljeni, da formalno definiramo vse koncepte v predikatnem računu. Sistematično bomo našteli simbole, ki jih uporabljamo, in opisali, kako iz njih sestavljamo izjavne formule.
 
 Naj bo področje pogovora dano z neko množico $D$.
 
@@ -1122,7 +1139,7 @@ Naj bosta $P$ in $Q$ enomestna predikata. Opazujmo izjavno formulo
 \]
 Prepričajmo se, da je $\phi$ logično veljavna formula.
 
-V ta namen moramo dokazati, da za \emph{vsako} interpretacijo $I$ velja $I \models \bar \phi$. Naj bo torej $I$ poljubna interpretacija. V tej interpretaciji moramo torej dokazati, da je izjava $\bar \phi$ veljavna, kar je enakovredno veljavnosti sklepa $\models \bar \phi$, se pravi veljavnosti sklepa
+V ta namen moramo dokazati, da za \emph{vsako} interpretacijo $I$ velja $I \models \phi$. Naj bo torej $I$ poljubna interpretacija. V tej interpretaciji moramo torej dokazati, da je izjava $\bar \phi$ veljavna, kar je enakovredno veljavnosti sklepa $\models \bar \phi$, se pravi veljavnosti sklepa
 \[
     \models 
     \forall x \colon \bar P(x) \lor \forall x \colon \bar Q(x) \Rightarrow \forall x \colon (\bar P(x) \lor \bar Q(x)).
@@ -1138,7 +1155,7 @@ Predpostavka tega sklepa ima obliko disjunkcije, zato lahko uporabimo analizo pr
     \item Predpostavimo $\forall x \colon \bar P(x)$. Dokazati želimo, da je izjava $\forall x \colon (\bar P(x) \lor \bar Q(x))$ resnična. V ta namen izberimo poljuben $x_0 \in D$. Po predpostavki za vsak $x$ iz $D$ velja $\bar P(x)$, zato v posebnem to velja za element $x_0$, se pravi da je izjava $\bar P(x_0)$ resnična. Od tod sledi, da je resnična tudi izjava $\bar P(x_0) \lor \bar Q(x_0)$. Ker je bil $x_0$ poljuben element iz $D$, smo s tem premislili, da je izjava $\forall x \colon (\bar P(x) \lor \bar Q(x))$ resnična. To je bil naš cilj, zato je sklep v tem primeru veljaven.
     \item Predpostavimo $\forall x \colon \bar Q(x)$. Kot zgoraj želimo dokazati, da je izjava $\forall x \colon (\bar P(x) \lor \bar Q(x))$ resnična. Dokaz je povsem analogen tistemu iz prejšnje točke, le $P$ in $Q$ zamenjamo med sabo.
 \end{enumerate}
-S tem smo dokazali veljavnost sklepa in torej veljavnost $I \models \bar \phi$. Ker je bila interpretacija $I$ poljubna, je torej $\phi$ res logično veljavna formula.
+S tem smo dokazali veljavnost sklepa in torej veljavnost $I \models \phi$. Ker je bila interpretacija $I$ poljubna, je torej $\phi$ res logično veljavna formula.
 \end{zgled}
 
 \begin{zgled}
@@ -1220,7 +1237,7 @@ Zdaj lahko uporabimo distributivnost kvantifikatorjev glede na konjunkcijo, da d
 \[
     \exists x \colon ( P(x) \land \exists y \colon Q(y) )
     \sim 
-    \exists x \colon ( \exists y \colon Q(y) \land \colon P(x) ).
+    \exists x \colon ( \exists y \colon Q(y) \land P(x) ).
 \]
 Slednja formula je enakovredna
 \[
@@ -1284,13 +1301,13 @@ V posebnem je veljaven sklep, ki smo ga videli na začetku tega poglavja in ki n
 Dokažimo veljavnost sklepa
 \[
     \exists x \colon P(x), \
-    \forall x \colon (P(x) \Rightarrow \lnot Q(x) \lor \forall y \colon R(y) \models
+    \forall x \colon (P(x) \Rightarrow \lnot Q(x) \lor \forall y \colon R(y)) \models
     \exists x \colon (Q(x) \Rightarrow R(x)).
 \]
 V ta namen naj bo $I$ \emph{poljubna} interpretacija. Zopet lahko uporabimo pogojni sklep in predpostavimo, da sta resnični izjavi
 \[
     \exists x \colon \bar P(x), \
-    \forall x \colon (\bar P(x) \Rightarrow \lnot \bar Q(x) \lor \forall y \colon \bar R(y).
+    \forall x \colon (\bar P(x) \Rightarrow \lnot \bar Q(x) \lor \forall y \colon \bar R(y)).
 \]
 Dokazati želimo resničnost izjave $\exists x \colon (\bar Q(x) \Rightarrow \bar R(x))$, ki trdi, da obstaja element v $D$ z neko posebno lastnostjo. 
 
@@ -1510,7 +1527,7 @@ Naj bosta $R,S \subseteq A \times A$ relaciji. Potem so tudi
     R \cup S, \
     R \cap S, \
     R \backslash S, \
-    R \oplus S
+    R \oplus S = (R \cup S) \backslash (R \cap S)
 \]
 relacije v $A$ in za vse $x,y \in A$ velja:
 \begin{itemize}
@@ -1626,7 +1643,7 @@ Naj bo $R \subseteq A \times A$. Tedaj je:
 Naj bo $R \subseteq A \times A$. {\definicija Kompozicijsko potenco} relacije $R$ definiramo induktivno na naslednji način:
 \begin{description}
     \item[osnova:] $R^0 = id_A$,
-    \item[indukcijski korak:] $\forall n \in \NN_0 \colon R^{n+1} = R^n \circ R^0$.
+    \item[indukcijski korak:] $\forall n \in \NN_0 \colon R^{n+1} = R^n \circ R$.
 \end{description}
 
 \begin{zgled}
@@ -2429,7 +2446,7 @@ Presenetljivo pa sta ta dva očitna potrebna pogoja tudi zadostna.
 \begin{dokaz}
 Dokazujemo le implikacijo iz desne v levo. Naj bo $S$ sprehod najdaljše možne dolžine v $G$, ki vsebuje vsako povezavo v $G$ \emph{kvečjemu enkrat}. Naj bo $u$ začetno vozlišče $S$ in $v$ končno vozlišče. Za vsakega soseda $w \sim u$ mora biti tudi povezava $\{ u, w \}$ na $S$, sicer lahko $S$ podaljšamo. Ker je $u$ sode stopnje in se sprehod $S$ začne v $u$, se mora tudi končati v $u$.\footnote{Vsaka povezava, ki je na $S$ in vstopi v $u$ in ni začetna povezava na $S$, mora iz $u$ tudi izstopiti.} Torej je $u = v$ in sprehod $S$ je v resnici \emph{obhod}. 
 
-Premislimo, da je ta obhod Eulerjev. Res, če ni, potem izberimo neko povezavo $e = \{ x, y \}$, ki ni na $S$. Naj bo $Q$ neka najkrajša pot od $y$ do sprehoda $S$.\footnote{Taka pot obstaja, ker je graf $G$ povezan.}, zapišimo $Q = y \cdots z$ za vozlišče $z$ na obhodu $S$. Ker je $Q$ najkrajša, nobeno od njegovih vozlišč razen $v$ ne leži na $S$. Potemtakem je sprehod $xy \cdots v \cdots y \cdots v$, kjer se najprej sprehodimo od $x$ do $y$ prek $e$, potem od $y$ do $v$ prek $Q$ in nazadnje od $v$ do $v$ prek $S$, daljši od $S$ in vsako povezavo vsebuje kvečjemu enkrat. To je protislovje z izbiro $S$.
+Premislimo, da je ta obhod Eulerjev. Res, če ni, potem izberimo neko povezavo $e = \{ x, y \}$, ki ni na $S$. Naj bo $Q$ neka najkrajša pot od $y$ do sprehoda $S$.\footnote{Taka pot obstaja, ker je graf $G$ povezan.}, zapišimo $Q = y \cdots z$ za vozlišče $z$ na obhodu $S$. Ker je $Q$ najkrajša, nobeno od njegovih vozlišč razen $z$ ne leži na $S$. Potemtakem je sprehod $xy \cdots z \cdots z$, kjer se najprej sprehodimo od $x$ do $y$ prek $e$, potem od $y$ do $z$ prek $Q$ in nazadnje od $z$ do $z$ prek $S$, daljši od $S$ in vsako povezavo vsebuje kvečjemu enkrat. To je protislovje z izbiro $S$.
 \end{dokaz}
 
 Soroden kriterij imamo na voljo tudi za Eulerjeve sprehode.
@@ -2596,7 +2613,7 @@ $(\Rightarrow)$: Če je graf $G$ Hamiltonov s Hamiltonovim ciklom $C$, potem je 
 
 $(\Leftarrow)$: Naj bo $C$ Hamiltonov cikel v grafu $G + uv$. Privzemimo, da $G$ ni Hamiltonov graf. Torej je povezava $uv$ nujno na ciklu $C$. Graf $G$ zato vsebuje Hamiltonovo pot $C - uv = v_1 v_2 \dots v_n$ z začetkom v $u = v_1$ in koncem v $v = v_n$, pri čemer je $n = |V(G)|$.
 
-Opazumo sosede vozlišča $u$. Recimo, da za nek $i < n$ velja $u \sim v_{i+1}$. Premislimo, da tedaj vozlišče $v$ ni povezano z neposrednim predhodnikom vozlišča $v_{i+1}$, to je $v_i$. Res, če je $v \sim v_i$, potem v $G$ najdemo Hamiltonov cikel $v_1 \dots v_i v_n \dots v_{i+1} v_1$, ki pa po predpostavki ne obstaja.
+Opazujmo sosede vozlišča $u$. Recimo, da za nek $i < n$ velja $u \sim v_{i+1}$. Premislimo, da tedaj vozlišče $v$ ni povezano z neposrednim predhodnikom vozlišča $v_{i+1}$, to je $v_i$. Res, če je $v \sim v_i$, potem v $G$ najdemo Hamiltonov cikel $v_1 \dots v_i v_n \dots v_{i+1} v_1$, ki pa po predpostavki ne obstaja.
 
 Noben od $d(u)$ neposrednih predhodnikov sosedov $u$ torej ni sosed $v$. To pomeni, da je število sosedov $v$ enako kvečjemu $n - 1 - d(u)$, kjer smo upoštevali še, da vozlišče $v$ ni povezano samo s sabo. Od tod sledi $d(v) \leq n - 1 - d(u)$, kar je enakovredno $d(u) + d(v) \leq n -1$. To je sprto s predpostavko $d(u) + d(v) \geq n = |V(G)|$. Graf $G$ je nazadnje torej res Hamiltonov. \kljuka
 \end{dokaz}
@@ -2792,10 +2809,10 @@ Dokazujemo z indukcijo na število ciklov $c$ v grafu $G$.
 
 Baza indukcije je $c = 0$. V tem primeru je $G$ drevo. Velja torej $|E(\GG)| = |V(\GG)| - 1$ in hkrati $|F(\GG)| = 1$, torej Eulerjeva formula velja. \kljuka
 
-Privzemimo zdaj, da formula velja za vse grafe z največ $c$ cikli. Naj bo $G$ graf s $c+1$ cikli. Naj bo $C$ nek cikel v $G$ z povezavo $\{ u,v \}$ na $C$. Opazujmo graf $G' = G - uv$. Naj bo $\GG'$ ravninska vložitev tega grafa, ki ga dobimo iz ravninske vložitve $\GG$. Graf $G'$ je povezan in ima manj ciklov kot $G$, zato lahko na njem uporabimo indukcijsko predpostavko. Za ta graf velja $|V(G')| = |V(G)|$ in $|E(G')| = |E(G)| - 1$, hkrati pa se z odstranitvijo povezave $uv$ lici s skupnim robom $uv$ spojita v eno lice, zato je $|F(\GG')| = |F(\GG)| - 1$. Ker po indukcijski predpostavki velja $|V(\GG')| - |E(\GG')| + |F(\GG')| = 2$, od tod sledi $|V(\GG)| - |E(\GG)| + |F(\GG)| = 2$. \kljuka
+Privzemimo zdaj, da formula velja za vse grafe z največ $c$ cikli. Naj bo $G$ graf s $c+1$ cikli. Naj bo $C$ nek cikel v $G$ z povezavo $\{ u,v \}$ na $C$. Opazujmo graf $G' = G - uv$. Naj bo $\GG'$ ravninska vložitev tega grafa, ki ga dobimo iz ravninske vložitve $\GG$. Graf $G'$ je povezan in ima manj ciklov kot $G$, zato lahko na njem uporabimo indukcijsko predpostavko. Za ta graf velja $|V(\GG')| = |V(G)|$ in $|E(\GG')| = |E(G)| - 1$, hkrati pa se z odstranitvijo povezave $uv$ lici s skupnim robom $uv$ spojita v eno lice, zato je $|F(\GG')| = |F(\GG)| - 1$. Ker po indukcijski predpostavki velja $|V(\GG')| - |E(\GG')| + |F(\GG')| = 2$, od tod sledi $|V(\GG)| - |E(\GG)| + |F(\GG)| = 2$. \kljuka
 \end{dokaz}
 
-Eulerjevo formulo lahko posplošimo tudi na neravninske grafe.
+Eulerjevo formulo lahko posplošimo tudi na nepovezane grafe.
 
 \begin{posledica}
 Naj bo $G$ graf z $\Omega$ povezanimi komponentami in z ravninsko vložitvijo $\GG$. Tedaj je
@@ -3050,7 +3067,7 @@ Oglejmo si še, v kateri razred sodijo polni grafi. Polovico teh grafov lahko ob
 Regularni grafi na \emph{liho} mnogo vozliščih so razreda II.
 \end{trditev}
 \begin{dokaz}
-Recimo, da obstaja $d$-regularen graf razreda I na liho mnogo vozliščih. Torej obstaja barvanje povezav $c \colon E(G) \to \{ 1, 2, \dots, d \}$. Naj bo $H$ podgraf grafa $G$ z množico povezav $E(H) = c^{-1}$. Podgraf $H$ torej sestoji iz tistih povezav, ki so obravana z barvo $1$, in njihovih krajišč. Ker je graf $G$ $d$-regularen, v vsakem vozlišču nujno nastopajo vse barve. Torej ima vsako vozlišče kakšno povezavo barve $1$, zato je $V(H) = V(G)$. Podgraf $H$ je torej vpet. Hkrati za vsako vozlišče $u$ velja $d_H(u) = 1$, saj ima $H$ le povezave barve $1$. Po lemi o rokovanju od tod sledi
+Recimo, da obstaja $d$-regularen graf razreda I na liho mnogo vozliščih. Torej obstaja barvanje povezav $c \colon E(G) \to \{ 1, 2, \dots, d \}$. Naj bo $H$ podgraf grafa $G$ z množico povezav $E(H) = c^{-1}(1)$. Podgraf $H$ torej sestoji iz tistih povezav, ki so obravana z barvo $1$, in njihovih krajišč. Ker je graf $G$ $d$-regularen, v vsakem vozlišču nujno nastopajo vse barve. Torej ima vsako vozlišče kakšno povezavo barve $1$, zato je $V(H) = V(G)$. Podgraf $H$ je torej vpet. Hkrati za vsako vozlišče $u$ velja $d_H(u) = 1$, saj ima $H$ le povezave barve $1$. Po lemi o rokovanju od tod sledi
 \[
 2 |E(H)| = \sum_{v \in V(H)} d(v) = |V(H)| = |V(G)|.
 \]
