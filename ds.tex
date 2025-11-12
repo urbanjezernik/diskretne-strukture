@@ -264,7 +264,7 @@ Konkreten graf na spodnji sliki se imenuje {\definicija Petersenov graf}. Ta gra
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.5\linewidth]{img/opis-petersen.png}
+    \includegraphics{img/opis-petersen.png}
     \caption{Petersenov graf}
 \end{figure}
 \end{zgled}
@@ -1363,7 +1363,7 @@ Množica $R$ je {\definicija dvomestna relacija} v množici $A$, če je $R \subs
 
         \begin{figure}[h]
             \centering
-            \includegraphics[width=0.3\linewidth]{img/relacije-graf.png}
+            \includegraphics{img/relacije-graf.png}
             \caption{Graf relacije $R$}
         \end{figure}
 
@@ -1789,7 +1789,7 @@ Delno urejeno množico $A$ lahko predstavimo grafično s {\definicija Hassejevim
     
     \begin{figure}[h]
         \centering
-        \includegraphics[width=0.5\linewidth]{img/relacije-hasse.png}
+        \includegraphics{img/relacije-hasse.png}
         \caption{Hassejev diagram relacije deljivosti}
     \end{figure}
     
@@ -1797,7 +1797,7 @@ Delno urejeno množico $A$ lahko predstavimo grafično s {\definicija Hassejevim
     
     \begin{figure}[h]
         \centering
-        \includegraphics[width=0.5\linewidth]{img/relacije-hasse-mnozice.png}
+        \includegraphics{img/relacije-hasse-mnozice.png}
         \caption{Hassejev diagram relacije vsebovanosti množic}
     \end{figure}
 
@@ -1805,7 +1805,7 @@ Delno urejeno množico $A$ lahko predstavimo grafično s {\definicija Hassejevim
     
     \begin{figure}[h]
         \centering
-        \includegraphics[height=0.5\linewidth]{img/relacije-hasse-linearna.png}
+        \includegraphics{img/relacije-hasse-linearna.png}
         \caption{Hassejev diagram običajne relacije $\leq$}
     \end{figure}
 
@@ -1950,7 +1950,7 @@ Graf $G = (V,E)$ si lahko vizualiziramo tako, da vozlišča narišemo kot točke
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.5\linewidth]{img/grafi-prvizgled.png}
+    \includegraphics{img/grafi-prvizgled.png}
     \caption{Zgled vizualizacije grafa}
 \end{figure}
 
@@ -1963,7 +1963,7 @@ Včasih definicijo grafa nekoliko omehčamo do te mere, da dopustimo obstoj {\de
 \begin{zgled}
     \begin{figure}[h]
         \centering
-        \includegraphics[width=0.5\linewidth]{img/grafi-multigraf.png}
+        \includegraphics{img/grafi-multigraf.png}
         \caption{Zgled multigrafa}
     \end{figure}
 \end{zgled}
@@ -1975,7 +1975,7 @@ Naj bo $G$ graf, predstavljen na naslednji sliki.
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.75\linewidth]{img/grafi-std-izolirana.png}
+    \includegraphics{img/grafi-std-izolirana.png}
     \caption{Graf z listom in izolirano točko}
 \end{figure}
 
@@ -1997,21 +1997,21 @@ Graf je {\definicija regularen}, če je $\delta(G) = \Delta(G)$, torej če imajo
     \item
     \begin{figure}[h]
         \centering
-        \includegraphics[width=0.5\linewidth]{img/grafi-2reg.png}
+        \includegraphics{img/grafi-2reg.png}
         \caption{Zgled $2$-regularnega grafa}
     \end{figure}
 
     \item
     \begin{figure}[h]
         \centering
-        \includegraphics[width=0.5\linewidth]{img/grafi-3reg.png}
+        \includegraphics{img/grafi-3reg.png}
         \caption{Zgled $3$-regularnega grafa}
     \end{figure}
 
     \item
     \begin{figure}[h]
         \centering
-        \includegraphics[width=0.5\linewidth]{img/opis-petersen.png}
+        \includegraphics{img/opis-petersen.png}
         \caption{Petersenov graf je $3$-regularen}
     \end{figure}
 \end{itemize}
@@ -2032,7 +2032,7 @@ Naj bo $G$ graf, predstavljen na naslednji sliki. Ta graf bomo srečali še več
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.5\linewidth]{img/grafi-std.png}
+    \includegraphics{img/grafi-std.png}
     \caption{Lizika}
 \end{figure}
 
@@ -2090,7 +2090,7 @@ Vsak stolpec incidenčne matrike vsebuje natanko dve enici, ker ima vsaka poveza
 Vsak graf ima sodo mnogo točk lihe stopnje.
 \end{posledica}
 \begin{dokaz}
-Naj bo $G = (V,E)$ graf. Po lemi o rokovanju je $\sum_{v \in V} d(v)$ sodo število. Naj bo $V^0 = \{ v \in V \mid \text{$d(v)$ je sodo} \}$ in $V^1 = \{ v \in V \mid \text{$d(v)$ je liho} \}$. Torej je 
+Naj bo $G = (V,E)$ graf. Po lemi o rokovanju je $\sum_{v \in V} d(v)$ sodo število. Naj bo $V^0 = \{ v \in V \mid d(v) \text{ sodo} \}$ in $V^1 = \{ v \in V \mid d(v) \text{ liho} \}$. Torej je 
 \[
     \sum_{v \in V^0} d(v) + \sum_{v \in V^1} d(v)
 \]
@@ -2271,13 +2271,13 @@ Kako bi dokazali, da dana grafa \emph{nista} izomorfna? V tem primeru ponavadi u
         
         \begin{figure}[h]
             \centering
-            \includegraphics[width=0.5\linewidth]{img/grafi-zanimiv-zgled.png}
+            \includegraphics{img/grafi-zanimiv-zgled.png}
             \caption{Graf $G_1$}
         \end{figure}
 
         \begin{figure}[h]
             \centering
-            \includegraphics[width=0.5\linewidth]{img/grafi-primerjava.png}
+            \includegraphics{img/grafi-primerjava.png}
             \caption{Graf $G_2$}
         \end{figure}
 
@@ -2304,7 +2304,7 @@ Poglejmo si še nekaj invariant grafov, ki temeljijo na opazovanju \emph{poti}. 
     V naslednjem grafu je označen primer poti in primer cikla.
     \begin{figure}[h]
         \centering
-        \includegraphics[width=0.5\linewidth]{img/grafi-pot-cikel.png}
+        \includegraphics{img/grafi-pot-cikel.png}
         \caption{Graf z rdečo potjo in zelenim ciklom}
     \end{figure}
 \end{zgled}
@@ -2343,7 +2343,7 @@ Lizika je povezan graf. Če liziki odstranimo vozlišče stopnje $3$, dobimo gra
     V naslednjem grafu za vozlišči $u,v$ na zunanjem ciklu velja $d(u,v)=2$.
     \begin{figure}[h]
         \centering
-        \includegraphics[width=0.5\linewidth]{img/grafi-razdalja.png}
+        \includegraphics{img/grafi-razdalja.png}
         \caption{Razdalja med vozliščema}
     \end{figure}
 \end{zgled}
@@ -2366,7 +2366,7 @@ Grafu, ki ne vsebuje ciklov, pravimo {\definicija gozd}. Povezanemu gozdu pravim
 Drevo je povezan graf brez ciklov. Njegova vozlišča stopnje $1$ so listi.
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.5\linewidth]{img/grafi-drevo.png}
+    \includegraphics{img/grafi-drevo.png}
     \caption{Drevo}
 \end{figure}    
 \end{zgled}
@@ -2470,7 +2470,7 @@ Eulerjeva izvirna motivacija za študiranje obhodov v grafih, ki jim danes pravi
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.5\linewidth]{img/konigsberg.png}
+    \includegraphics{img/konigsberg.png}
     \caption{Mostovi v Königsbergu, vir: Wikipedia}
 \end{figure}    
 
@@ -2478,7 +2478,7 @@ Ta problem lahko prevedemo na teorijo grafo na naslednji način. Vsaki zemeljski
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.25\linewidth]{img/grafi-konigsberg.png}
+    \includegraphics{img/grafi-konigsberg.png}
     \caption{Graf königsberških mostov}
 \end{figure}    
 
@@ -2486,7 +2486,7 @@ Sorodno lahko obravnavamo {\definicija problem ljubljanskih mostov}. Ljubljana i
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=1\linewidth]{img/ljubljana.png}
+    \includegraphics{img/ljubljana.png}
     \caption{Ljubljanski mostovi, vir: OpenStreetMap}
 \end{figure}    
 
@@ -2503,7 +2503,7 @@ Oglejmo si naslednji graf.
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.5\linewidth]{img/grafi-enapoteza.png}
+    \includegraphics{img/grafi-enapoteza.png}
     \caption{Risanje grafa s čim manj potezami}
 \end{figure}    
 
@@ -2535,7 +2535,7 @@ Hamiltonovi grafi so analogni Eulerjevim, kjer le zamenjamo vlogo povezav in voz
         
         \begin{figure}[h]
             \centering
-            \includegraphics[width=1\linewidth]{img/grafi-hamilton.png}
+            \includegraphics{img/grafi-hamilton.png}
             \caption{Grafi s Hamiltonovim ciklom}
         \end{figure}  
 
@@ -2543,7 +2543,7 @@ Hamiltonovi grafi so analogni Eulerjevim, kjer le zamenjamo vlogo povezav in voz
 
         \begin{figure}[h]
             \centering
-            \includegraphics[width=0.5\linewidth]{img/grafi-hamilton-zgled.png}
+            \includegraphics{img/grafi-hamilton-zgled.png}
             \caption{Ali ta graf vsebuje Hamiltonov cikel?}
         \end{figure}  
 
@@ -2579,7 +2579,7 @@ Vrnimo se k zadnjemu zgledu iz začetka tega razdelka. Obravnavani graf je dvode
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.5\linewidth]{img/grafi-hamilton-zgled-dvodelen.png}
+    \includegraphics{img/grafi-hamilton-zgled-dvodelen.png}
     \caption{Dvodelen graf, ki ni Hamiltonov}
 \end{figure}  
 \end{zgled}
@@ -2598,7 +2598,7 @@ Dvodelen graf iz zadnjega zgleda ni Hamiltonov, saj z odstranitvijo $5$ točk gr
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.5\linewidth]{img/grafi-hamilton-zgled-pot.png}
+    \includegraphics{img/grafi-hamilton-zgled-pot.png}
     \caption{Hamiltonova pot v grafu}
 \end{figure}  
 \end{zgled}
@@ -2630,7 +2630,7 @@ Grafu $G$ dodajamo povezave, dokler ne dobimo polnega grafa $K_n$. Po lemi je gr
 
     \begin{figure}[h]
         \centering
-        \includegraphics[width=0.5\linewidth]{img/grafi-hamilton-ore.png}
+        \includegraphics{img/grafi-hamilton-ore.png}
         \caption{Hamiltonov graf po Orejevem izreku}
     \end{figure}  
 \end{zgled}
@@ -2647,7 +2647,7 @@ Grafu $G$ dodajamo povezave, dokler ne dobimo polnega grafa $K_n$. Po lemi je gr
 
     \begin{figure}[h]
         \centering
-        \includegraphics[width=0.25\linewidth]{img/grafi-hamilton-dirac.png}
+        \includegraphics{img/grafi-hamilton-dirac.png}
         \caption{Hamiltonov graf po Diracovem izreku}
     \end{figure}  
 \end{zgled}
@@ -2659,7 +2659,7 @@ Včasih se znajdemo v situaciji, ko nam ob danem grafu niti potrebni niti zadost
 
     \begin{figure}[h]
         \centering
-        \includegraphics[width=0.25\linewidth]{img/grafi-petersen-hamilton-pot.png}
+        \includegraphics{img/grafi-petersen-hamilton-pot.png}
         \caption{Hamiltonova pot v Petersenovem grafu}
     \end{figure}     
 
@@ -2674,7 +2674,7 @@ Polja šahovnice si lahko predstavljamo kot vozlišča grafa, možnost skoka kon
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.5\linewidth]{img/grafi-konjicek-graf.png}
+    \includegraphics{img/grafi-konjicek-graf.png}
     \caption{Graf, ki prikazuje možne skoke konjička na šahovski plošči $8 \times 8$; v vozliščih so vpisane stopnje, vir: Wikipedia}
 \end{figure}    
 
@@ -2701,7 +2701,7 @@ V posebnem torej obstaja obhod na standardni šahovnici $8 \times 8$.
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.5\linewidth]{img/grafi-konjicek.png}
+    \includegraphics{img/grafi-konjicek.png}
     \caption{Konjičkov obhod na šahovnici $8 \times 8$, vir: Wikipedia}
 \end{figure}  
 
@@ -2714,7 +2714,7 @@ Obravnavajmo naslednji izziv, ki je na prvi pogled osnovnošolska naloga. Pred n
 
     \begin{figure}[h]
         \centering
-        \includegraphics[width=0.5\linewidth]{img/grafi-ravninski-k4.png}
+        \includegraphics{img/grafi-ravninski-k4.png}
         \caption{Ravninski graf $K_4$}
     \end{figure}    
 \end{zgled}
@@ -2957,7 +2957,7 @@ Opazujmo zemljevid sveta, na katerem so označene državne meje in meje z morji.
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.5\linewidth]{img/obcine.png}
+    \includegraphics{img/obcine.png}
     \caption{Barvanje občin v Sloveniji s štirimi barvami, vir: Wikimedia}
 \end{figure}
 \end{zgled}

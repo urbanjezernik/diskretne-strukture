@@ -1,0 +1,139 @@
+# Book settings
+# Learn more at https://jupyterbook.org/customize/config.html
+
+title: Teorija upodobitev
+author: Urban Jezernik
+
+# Force re-execution of notebooks on each build.
+# See https://jupyterbook.org/content/execute.html
+execute:
+  execute_notebooks: force
+
+# Define the name of the latex output file for PDF builds
+latex:
+  latex_documents:
+    targetname: book.tex
+
+# Add a bibtex file so that we can create citations
+bibtex_bibfiles:
+  - references.bib
+
+# Information about where the book exists on the web
+repository:
+  url: https://github.com/executablebooks/jupyter-book  # Online location of your book
+  path_to_book: docs  # Optional path to your book, relative to the repository root
+  branch: master  # Which branch of the repository should be used when creating links (optional)
+
+# Add GitHub buttons to your book
+# See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository
+html:
+  use_issues_button: true
+  use_repository_button: true
+  baseurl: /teorija-upodobitev/
+
+
+myst_enable_extensions:
+  - dollarmath
+  - amsmath
+
+# mybook/_config.yml
+sphinx:
+  config:
+    html_show_copyright: false  
+    language: sl
+    html_context:
+      default_mode: light
+    html_theme_options:
+      home_page_in_toc: true      
+      use_sidenotes: true      # <-- activates margin/sidenotes
+      # secondary_sidebar_items: []  
+      show_nav_level: 2          # <- expand headings down to <h2>
+    html_sidebars:
+      "**":                              # match every page
+        # - search-field.html       # 🔍  built-in search input
+        - sbt-sidebar-nav.html       # 📚  book nav  ← choose ONE of these
+        # - page-toc.html           # 📑  per-page outline  ← *now on the left*
+        # - page-toc.html            # ← our sections/subsections
+    mathjax3_config:
+      tex:
+        macros:
+          # ----- blackboard / bold letters -----
+          NN: "\\mathbf{N}"
+          ZZ: "\\mathbf{Z}"
+          QQ: "\\mathbf{Q}"
+          RR: "\\mathbf{R}"
+          CC: "\\mathbf{C}"
+          FF: "\\mathbf{F}"
+          EE: "\\mathbf{E}"
+          PP: "\\mathbf{P}"
+          HH: "\\mathbf{H}"
+          oneone: "\\mathbf{1}"       # see note **1**
+          Fcal: "\\mathcal{F}"
+          conclass: "\\mathcal{C}"
+
+          # ----- operators (\\operatorname{…}) -----
+          image: "\\operatorname{im}"
+          sgn: "\\operatorname{sgn}"
+          Res: "\\operatorname{Res}"
+          Ind: "\\operatorname{Ind}"
+          Rep: "\\operatorname{Rep}"
+          mult: "\\operatorname{mult}"
+          Izotip: "\\operatorname{Izotip}"
+          MK: "\\operatorname{MK}"
+          tr: "\\operatorname{tr}"
+          Irr: "\\operatorname{Irr}"
+          SU: "\\mathrm{SU}"
+          characteristic: "\\operatorname{char}"
+          kk: "\\operatorname{k}"
+          cl: "\\operatorname{cl}"
+          inv: "\\operatorname{inv}"
+          Eigenvalues: "\\operatorname{Spec}"
+          Eigenspace: "\\operatorname{LP}"
+          fun: "\\operatorname{fun}"
+          HS: "\\operatorname{HS}"
+          St: "\\operatorname{St}"
+          Realpart: "\\operatorname{Re}"
+          Aut: "\\operatorname{Aut}"
+          GL: "\\operatorname{GL}"
+          SL: "\\operatorname{SL}"
+          PSL: "\\operatorname{PSL}"
+          U:  "\\operatorname{U}"
+          SO: "\\operatorname{SO}"
+          Gal: "\\operatorname{Gal}"
+          Sym: "\\operatorname{Sym}"
+          Homeo: "\\operatorname{Homeo}"
+          Cay: "\\operatorname{Cay}"
+          Isom: "\\operatorname{Isom}"
+          id: "\\operatorname{id}"
+          supp: "\\operatorname{supp}"
+          End: "\\operatorname{End}"
+          Mat: "\\operatorname{Mat}"
+          Cone: "\\operatorname{Cone}"
+          diam: "\\operatorname{diam}"
+          Ad: "\\operatorname{Ad}"
+          imaginary: "\\operatorname{Im}" 
+          glfrak: "\\mathfrak{gl}"
+          slfrak: "\\mathfrak{sl}"
+          sufrak: "\\mathfrak{su}"
+          DNO: "\\operatorname{DNO}"
+          KNO: "\\operatorname{KNO}"
+          GG: "\\mathcal{G}"
+
+          # ----- text macro -----
+          GAP: ["\\texttt{GAP}", 0]
+
+          # ----- Young diagram character -----
+          youngsym: "\\sigma_{\\lambda}"
+
+          mat: ["\\begin{pmatrix} #1 & #2\\\\ #3 & #4 \\end{pmatrix}", 4]
+
+          abs: ["\\lvert #1 \\rvert", 1]
+
+
+html_static_path:
+  - mybook/_static          # wherever mystyle.css lives
+
+html_js_files:
+  - fix-pipe-tables.js
+  - bs-table-wrapper.js
+  - quiz.js

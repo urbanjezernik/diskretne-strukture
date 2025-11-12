@@ -1,0 +1,804 @@
+
+<!DOCTYPE html>
+
+
+<html lang="sl" data-content_root="../" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Relacije &#8212; Teorija upodobitev</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystyle.css?v=a5ebfbfa" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=a3a20203"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/translations.js?v=852ec8ec"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"tex": {"macros": {"NN": "\\mathbf{N}", "ZZ": "\\mathbf{Z}", "QQ": "\\mathbf{Q}", "RR": "\\mathbf{R}", "CC": "\\mathbf{C}", "FF": "\\mathbf{F}", "EE": "\\mathbf{E}", "PP": "\\mathbf{P}", "HH": "\\mathbf{H}", "oneone": "\\mathbf{1}", "Fcal": "\\mathcal{F}", "conclass": "\\mathcal{C}", "image": "\\operatorname{im}", "sgn": "\\operatorname{sgn}", "Res": "\\operatorname{Res}", "Ind": "\\operatorname{Ind}", "Rep": "\\operatorname{Rep}", "mult": "\\operatorname{mult}", "Izotip": "\\operatorname{Izotip}", "MK": "\\operatorname{MK}", "tr": "\\operatorname{tr}", "Irr": "\\operatorname{Irr}", "SU": "\\mathrm{SU}", "characteristic": "\\operatorname{char}", "kk": "\\operatorname{k}", "cl": "\\operatorname{cl}", "inv": "\\operatorname{inv}", "Eigenvalues": "\\operatorname{Spec}", "Eigenspace": "\\operatorname{LP}", "fun": "\\operatorname{fun}", "HS": "\\operatorname{HS}", "St": "\\operatorname{St}", "Realpart": "\\operatorname{Re}", "Aut": "\\operatorname{Aut}", "GL": "\\operatorname{GL}", "SL": "\\operatorname{SL}", "PSL": "\\operatorname{PSL}", "U": "\\operatorname{U}", "SO": "\\operatorname{SO}", "Gal": "\\operatorname{Gal}", "Sym": "\\operatorname{Sym}", "Homeo": "\\operatorname{Homeo}", "Cay": "\\operatorname{Cay}", "Isom": "\\operatorname{Isom}", "id": "\\operatorname{id}", "supp": "\\operatorname{supp}", "End": "\\operatorname{End}", "Mat": "\\operatorname{Mat}", "Cone": "\\operatorname{Cone}", "diam": "\\operatorname{diam}", "Ad": "\\operatorname{Ad}", "imaginary": "\\operatorname{Im}", "glfrak": "\\mathfrak{gl}", "slfrak": "\\mathfrak{sl}", "sufrak": "\\mathfrak{su}", "DNO": "\\operatorname{DNO}", "KNO": "\\operatorname{KNO}", "GG": "\\mathcal{G}", "GAP": ["\\texttt{GAP}", 0], "youngsym": "\\sigma_{\\lambda}", "mat": ["\\begin{pmatrix} #1 & #2\\\\ #3 & #4 \\end{pmatrix}", 4], "abs": ["\\lvert #1 \\rvert", 1]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/chapter03';</script>
+    <script src="../_static/bs-table-wrapper.js?v=8f7ea02a"></script>
+    <script src="../_static/fix-pipe-tables.js?v=5aeff36a"></script>
+    <link rel="canonical" href="/teorija-upodobitev/content/chapter03.html" />
+    <link rel="index" title="Abecedni seznam" href="../genindex.html" />
+    <link rel="search" title="Išči" href="../search.html" />
+    <link rel="next" title="Urejenosti" href="chapter04.html" />
+    <link rel="prev" title="Predikatni račun" href="chapter02.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="sl"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="light">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Diskretne strukture
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="chapter01.html">Izjavni račun</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter02.html">Predikatni račun</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Relacije</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter04.html">Urejenosti</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter05.html">Grafi</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Prenesite to stran">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/content/chapter03.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Prenesite izvorno datoteko"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Natisni v PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Celozaslonski način"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Išči" aria-label="Išči" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Relacije</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Vsebina </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definicija-in-lastnosti-relacij">Definicija in lastnosti relacij</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ekvivalencne-relacije">Ekvivalenčne relacije</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#operacije-z-relacijami">Operacije z relacijami</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#potence-in-ovojnice-relacij">Potence in ovojnice relacij</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <style>
+  body { counter-reset: chapter 2 izrek 0 zgled 0 domacanaloga 0
+                 lema 0 trditev 0 definicija 0 dokaz 0; }
+</style><section class="tex2jax_ignore mathjax_ignore" id="relacije">
+<h1>Relacije<a class="headerlink" href="#relacije" title="Link to this heading">#</a></h1>
+<p>Ena od pomembnih komponent predikatnega računa so <em>predikati</em>. V konkretni interpretaciji <span class="math notranslate nohighlight">\(I\)</span> z domeno <span class="math notranslate nohighlight">\(D\)</span> te predstavimo kot množice nekaterih <span class="math notranslate nohighlight">\(n\)</span>-teric iz <span class="math notranslate nohighlight">\(D\)</span>. Enomestni predikati so torej kar podmnožice <span class="math notranslate nohighlight">\(D\)</span>, dvomestni predikati pa so podmnožice <span class="math notranslate nohighlight">\(D \times D\)</span>. V tem poglavju si bomo podrobneje pogledali dvomestne predikate, ki jih nasploh v matematiki imenujemo <em>relacije</em>. Pogledali si bomo njihove <em>lastnosti</em> ter različne <em>konstrukcije</em> relacij.</p>
+<section id="definicija-in-lastnosti-relacij">
+<h2>Definicija in lastnosti relacij<a class="headerlink" href="#definicija-in-lastnosti-relacij" title="Link to this heading">#</a></h2>
+<p>Množica <span class="math notranslate nohighlight">\(R\)</span> je <span class="definicija">dvomestna relacija</span> v množici <span class="math notranslate nohighlight">\(A\)</span>, če je <span class="math notranslate nohighlight">\(R \subseteq A \times A\)</span>.</p>
+<div class="zgled">
+<ul>
+<li><p>Naj bo <span class="math notranslate nohighlight">\(A = \{ 1,2,3,4 \}\)</span>. V tej množici imamo relacijo</p>
+<div class="math notranslate nohighlight">
+\[R = \{ (1,2), (2,3), (3,1), (3,3), (3,4) \} \subseteq A \times A.\]</div>
+<p>To relacijo lahko predstavimo grafično z <span class="definicija">grafom relacije</span>. Elementi množice <span class="math notranslate nohighlight">\(A\)</span> so vozlišča, vozlišči <span class="math notranslate nohighlight">\(a\)</span> in <span class="math notranslate nohighlight">\(b\)</span> pa povežemo s puščico od <span class="math notranslate nohighlight">\(a\)</span> do <span class="math notranslate nohighlight">\(b\)</span>, če je <span class="math notranslate nohighlight">\((a,b) \in R\)</span>.</p>
+<figure>
+<img src="img/relacije-graf.png" />
+<figcaption>Graf relacije <span class="math inline"><em>R</em></span></figcaption>
+</figure>
+</li>
+<li><p>Naj bo <span class="math notranslate nohighlight">\(A = \NN_0\)</span> in <span class="math notranslate nohighlight">\(R\)</span> relacija, podana kot</p>
+<div class="math notranslate nohighlight">
+\[R = \{ (x,y) \in \NN_0 \times \NN_0 \mid \exists z \in \NN_0 \colon x + z = y \}.\]</div>
+<p>Ta relacija <span class="math notranslate nohighlight">\(R\)</span> predstavlja relacijo <span class="math notranslate nohighlight">\(\leq\)</span> na množici <span class="math notranslate nohighlight">\(\NN_0\)</span>, se pravi <span class="math notranslate nohighlight">\((x,y) \in R \Leftrightarrow x \leq y\)</span>.</p>
+</li>
+<li><p>V vsaki množici <span class="math notranslate nohighlight">\(A\)</span> imamo naslednje relacije:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(R = \emptyset \subset A \times A\)</span>. To je <span class="definicija">prazna relacija</span>. V tej relaciji noben element množice <span class="math notranslate nohighlight">\(A\)</span> ni v relaciji z nobenim drugim.</p></li>
+<li><p><span class="math notranslate nohighlight">\(R = A \times A \subseteq A \times A\)</span>. To je <span class="definicija">univerzalna relacija</span>. V tej relaciji je vsak element množice <span class="math notranslate nohighlight">\(A\)</span> v relaciji z vsakim drugim.</p></li>
+<li><p><span class="math notranslate nohighlight">\(R = \{ (x,x) \mid x \in A \} \subseteq A \times A\)</span>. To je <span class="definicija">relacija enakosti</span>. Zanjo uporabljamo oznako <span class="math notranslate nohighlight">\(id_A\)</span>. V tej relaciji je vsak element množice <span class="math notranslate nohighlight">\(A\)</span> v relaciji le s sabo.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<p>Če je <span class="math notranslate nohighlight">\(R \subseteq A \times A\)</span> relacija, potem namesto oznake <span class="math notranslate nohighlight">\((x,y) \in R\)</span> pišemo tudi <span class="math notranslate nohighlight">\(xRy\)</span> in beremo <em><span class="math notranslate nohighlight">\(x\)</span> je v relaciji <span class="math notranslate nohighlight">\(R\)</span> z <span class="math notranslate nohighlight">\(y\)</span></em>.</p>
+<p>Relacijo si lahko predstavljamo kot množico točk v <em>kvadratu</em> <span class="math notranslate nohighlight">\(A \times A\)</span>. Za vsaka <span class="math notranslate nohighlight">\(x,y \in A\)</span>, za katera je <span class="math notranslate nohighlight">\(xRy\)</span>, označimo točko <span class="math notranslate nohighlight">\((x,y)\)</span> v tem kvadratu. Na ta način lahko relacijo <span class="math notranslate nohighlight">\(R\)</span> vidimo kot neko množico točk v <span class="math notranslate nohighlight">\(A \times A\)</span>. Kot pri grafih funkcij uporabimo terminologijo, ki nam pove, kako izgleda ta množica točk. <span class="definicija">Domena/definicijsko območje</span> relacije <span class="math notranslate nohighlight">\(R\)</span> je množica</p>
+<div class="math notranslate nohighlight">
+\[\mathcal{D}_R = \{ x \in A \mid \exists y \in A \colon x R y \},\]</div>
+<p><span class="definicija">zaloga vrednosti</span> relacije <span class="math notranslate nohighlight">\(R\)</span> pa je</p>
+<div class="math notranslate nohighlight">
+\[\mathcal{Z}_R = \{ y \in A \mid \exists x \in A \colon x R y \}.\]</div>
+<div class="zgled">
+<ul>
+<li><p>Naj bo <span class="math notranslate nohighlight">\(A = \{ 1,2,3,4 \}\)</span> in <span class="math notranslate nohighlight">\(R = \{ (1,3), (2,2), (4,3) \}\)</span>. V tem primeru je <span class="math notranslate nohighlight">\(\mathcal{D}_R = \{1,2,3\}\)</span> in <span class="math notranslate nohighlight">\(\mathcal{Z}_R = \{2,3\}\)</span>.</p></li>
+<li><p>Naj bo <span class="math notranslate nohighlight">\(A = \NN_0\)</span> in</p>
+<div class="math notranslate nohighlight">
+\[R  = \{ (x,y) \in \NN_0 \times \NN_0 \mid \exists z \in \NN_0 \colon x + z + 1 = y \}.\]</div>
+<p>Relacija <span class="math notranslate nohighlight">\(R\)</span> predstavlja relacijo <span class="math notranslate nohighlight">\(&lt;\)</span> v <span class="math notranslate nohighlight">\(\NN_0\)</span>. V tem primeru je <span class="math notranslate nohighlight">\(\mathcal{D}_R = \NN_0\)</span> in <span class="math notranslate nohighlight">\(\mathcal{Z}_R = \NN\)</span>.</p>
+</li>
+</ul>
+</div>
+<p>Izpostavimo <span class="definicija">nekaj lastnosti, ki jih lahko ima relacija</span> <span class="math notranslate nohighlight">\(R \subseteq A \times A\)</span>. Rečemo, da je relacija <span class="math notranslate nohighlight">\(R\)</span>:</p>
+<ul class="simple">
+<li><p><span class="definicija">refleksivna</span>, če <span class="math notranslate nohighlight">\(\forall x \in A \colon x R x\)</span>,</p></li>
+<li><p><span class="definicija">irefleksivna</span>, če <span class="math notranslate nohighlight">\(\forall x \in A \colon \lnot x R x\)</span>,</p></li>
+<li><p><span class="definicija">simetrična</span>, če <span class="math notranslate nohighlight">\(\forall x,y \in A \colon (x R y \Rightarrow y R x)\)</span>,</p></li>
+<li><p><span class="definicija">asimetrična</span>, če <span class="math notranslate nohighlight">\(\forall x,y \in A \colon (x R y \Rightarrow \lnot y R x)\)</span>,</p></li>
+<li><p><span class="definicija">antisimetrična</span>, če <span class="math notranslate nohighlight">\(\forall x,y \in A \colon (xRy \land yRx \Rightarrow x = y)\)</span>,</p></li>
+<li><p><span class="definicija">tranzitivna</span>, če <span class="math notranslate nohighlight">\(\forall x,y,z \in A \colon (xRy \land yRz \Rightarrow xRz)\)</span>,</p></li>
+<li><p><span class="definicija">intranzitivna</span>, če <span class="math notranslate nohighlight">\(\forall x,y,z \in A \colon (xRy \land yRz \Rightarrow \lnot xRz)\)</span>,</p></li>
+<li><p><span class="definicija">strogo sovisna</span>, če <span class="math notranslate nohighlight">\(\forall x,y \in A \colon (xRy \lor yRx)\)</span>,</p></li>
+<li><p><span class="definicija">sovisna</span>, če <span class="math notranslate nohighlight">\(\forall x,y \in A \colon x \neq y \Rightarrow xRy \lor yRx\)</span>,</p></li>
+<li><p><span class="definicija">enolična</span>, če <span class="math notranslate nohighlight">\(\forall x,y,z \in A \colon (xRy \land xRz \Rightarrow y = z)\)</span>.</p></li>
+</ul>
+<div class="zgled">
+<ul class="simple">
+<li><p>Opazujmo relacijo enakosti <span class="math notranslate nohighlight">\(=\)</span> v množici <span class="math notranslate nohighlight">\(A\)</span>. Od naštetih lastnosti je ta relacija refleksivna, simetrična, antisimetrična, tranzitivna in enolična.</p></li>
+<li><p>Opazujmo relacijo <span class="math notranslate nohighlight">\(\leq\)</span> v <span class="math notranslate nohighlight">\(\NN_0\)</span>. Ta relacija je refleksivna, antisimetrična, tranzitivna in strogo sovisna.</p></li>
+<li><p>Opazujmo relacijo <span class="math notranslate nohighlight">\(&lt;\)</span> v <span class="math notranslate nohighlight">\(\NN_0\)</span>. Ta relacija je irefleksivna, asimetrična, tranzitivna in sovisna.</p></li>
+<li><p>Opazujmo relacijo <em>je mama</em> v množici ljudi. Ta relacija je irefleksivna, asimetrična, antisimetrična in intranzitivna.</p></li>
+</ul>
+</div>
+</section>
+<section id="ekvivalencne-relacije">
+<h2>Ekvivalenčne relacije<a class="headerlink" href="#ekvivalencne-relacije" title="Link to this heading">#</a></h2>
+<p>Relacija <span class="math notranslate nohighlight">\(R \subseteq A \times A\)</span> je <span class="definicija">ekvivalenčna</span>, če je refleksivna, simetrična in tranzitivna.</p>
+<div class="zgled">
+<p>Naslednje relacije so ekvivalenčne:</p>
+<ul class="simple">
+<li><p>relacija enakosti <span class="math notranslate nohighlight">\(=\)</span>,</p></li>
+<li><p>univerzalna relacija <span class="math notranslate nohighlight">\(A \times A\)</span>,</p></li>
+<li><p>relacija vzporednosti premic v <span class="math notranslate nohighlight">\(\RR^2\)</span>,</p></li>
+<li><p>relacija <em>ima enako barvo oči kot</em> v množici ljudi,</p></li>
+<li><p>relacija <em>ima enak BDP kot</em> v množici držav.</p></li>
+</ul>
+</div>
+<p>Naj bo <span class="math notranslate nohighlight">\(R \subseteq A \times A\)</span> ekvivalenčna relacija. Vsakemu elementu <span class="math notranslate nohighlight">\(x \in A\)</span> priredimo njegov <span class="definicija">ekvivalenčni razred</span></p>
+<div class="math notranslate nohighlight">
+\[R[x] = \{ y \in A \mid yRx \}.\]</div>
+<p>Element <span class="math notranslate nohighlight">\(x\)</span> je <span class="definicija">predstavnik</span> ekvivalenčnega razreda <span class="math notranslate nohighlight">\(R[x]\)</span>. Množico vseh ekvivalenčnih razredov označimo z</p>
+<div class="math notranslate nohighlight">
+\[A/R = \{ R[x] \mid x \in A \}\]</div>
+<p>in jo imenujemo <span class="definicija">kvocientna množica</span> množice <span class="math notranslate nohighlight">\(A\)</span> po relaciji <span class="math notranslate nohighlight">\(R\)</span>.</p>
+<div class="lema">
+<p>Naj bo <span class="math notranslate nohighlight">\(R \subseteq A \times A\)</span> ekvivalenčna relacija. Tedaj velja</p>
+<div class="math notranslate nohighlight">
+\[\forall x,y \in A \colon (R[x] = R[y] \Leftrightarrow xRy).\]</div>
+</div>
+<div class="dokaz">
+<p>Vzemimo poljubna <span class="math notranslate nohighlight">\(x,y \in A\)</span>.</p>
+<p><span class="math notranslate nohighlight">\((\Rightarrow)\)</span>: Predpostavimo, da velja <span class="math notranslate nohighlight">\(R[x] = R[y]\)</span>. Ker je <span class="math notranslate nohighlight">\(R\)</span> refleksivna relacija, velja <span class="math notranslate nohighlight">\(xRx\)</span>, torej je <span class="math notranslate nohighlight">\(x \in R[x]\)</span>. Od tod sledi <span class="math notranslate nohighlight">\(x \in R[y]\)</span>, zato je <span class="math notranslate nohighlight">\(xRy\)</span>.</p>
+<p><span class="math notranslate nohighlight">\((\Leftarrow)\)</span>: Predpostavimo, da velja <span class="math notranslate nohighlight">\(xRy\)</span>. Izberimo poljuben <span class="math notranslate nohighlight">\(z \in R[x]\)</span>. Velja torej <span class="math notranslate nohighlight">\(zRx\)</span>. Ker je <span class="math notranslate nohighlight">\(R\)</span> tranzitivna relacija, iz <span class="math notranslate nohighlight">\(xRy\)</span> in <span class="math notranslate nohighlight">\(zRx\)</span> sledi <span class="math notranslate nohighlight">\(zRy\)</span>. To pomeni, da je <span class="math notranslate nohighlight">\(z \in R[y]\)</span>. Ker je bil <span class="math notranslate nohighlight">\(z\)</span> poljuben element <span class="math notranslate nohighlight">\(R[x]\)</span>, od tod sklepamo, da velja <span class="math notranslate nohighlight">\(R[x] \subseteq R[y]\)</span>. Zaradi simetričnosti relacije <span class="math notranslate nohighlight">\(R\)</span> lahko ponovimo ta argument, pri čemer vlogi <span class="math notranslate nohighlight">\(x\)</span> in <span class="math notranslate nohighlight">\(y\)</span> zamenjamo med sabo. Na ta način dobimo še vsebovanost <span class="math notranslate nohighlight">\(R[y] \subseteq R[x]\)</span>. Res torej velja <span class="math notranslate nohighlight">\(R[x] = R[y]\)</span>.</p>
+</div>
+<p>Iz leme v posebnem sledi, da je vsak element danega ekvivalenčnega razreda tudi njegov predstavnik.</p>
+<div class="izrek">
+<p>Naj bo <span class="math notranslate nohighlight">\(R \subseteq A \times A\)</span> ekvivalenčna relacija. Tedaj velja:</p>
+<ol class="arabic simple">
+<li><p>Za vsak <span class="math notranslate nohighlight">\(x \in A\)</span> je <span class="math notranslate nohighlight">\(R[x] \neq \emptyset\)</span>.</p></li>
+<li><p>Za vsaka <span class="math notranslate nohighlight">\(x,y \in A\)</span> velja implikacija <span class="math notranslate nohighlight">\(R[x] \neq R[y] \Rightarrow R[x] \cap R[y] = \emptyset\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\bigcup_{x \in A} R[x] = A\)</span>.</p></li>
+</ol>
+</div>
+<p>Povedano še drugače, ekvivalenčna relacija razdeli množico <span class="math notranslate nohighlight">\(A\)</span> na paroma tuje neprazne bloke.</p>
+<div class="dokaz">
+<p>1. Vzemimo poljuben <span class="math notranslate nohighlight">\(x \in A\)</span>. Ker je <span class="math notranslate nohighlight">\(R\)</span> refleksivna, velja <span class="math notranslate nohighlight">\(x R x\)</span>, zato je <span class="math notranslate nohighlight">\(x \in R[x]\)</span>. Torej je res <span class="math notranslate nohighlight">\(R[x] \neq \emptyset\)</span>.</p>
+<p>2. Vzemimo poljubna <span class="math notranslate nohighlight">\(x,y \in A\)</span>. Dokažimo kontrapozicijo trditve, se pravi veljavnost implikacije</p>
+<div class="math notranslate nohighlight">
+\[R[x]\cap R[y] \neq \emptyset \Rightarrow R[x] = R[y].\]</div>
+<p>Predpostavimo lahko, da obstaja <span class="math notranslate nohighlight">\(z \in R[x] \cap R[y]\)</span>. To pomeni, da velja <span class="math notranslate nohighlight">\(zRx \land zRy\)</span>. Zaradi simetričnosti <span class="math notranslate nohighlight">\(R\)</span> sledi <span class="math notranslate nohighlight">\(xRz \land zRy\)</span>, od koder zaradi tranzitivnosti <span class="math notranslate nohighlight">\(R\)</span> velja <span class="math notranslate nohighlight">\(xRy\)</span>. Iz leme zdaj sledi, da je <span class="math notranslate nohighlight">\(R[x] = R[y]\)</span>.</p>
+<p>3. Vzemimo poljuben <span class="math notranslate nohighlight">\(x \in A\)</span>. Velja <span class="math notranslate nohighlight">\(x \in R[x]\)</span>, zato je <span class="math notranslate nohighlight">\(x \in \bigcup_{y \in A} R[y]\)</span>. Ker je bil <span class="math notranslate nohighlight">\(x\)</span> poljuben, sledi <span class="math notranslate nohighlight">\(\bigcup_{y \in A} R[y] \supseteq A\)</span>. Obratna vsebovanost je očitna.</p>
+</div>
+<div class="zgled">
+<ul>
+<li><p>Naj bo <span class="math notranslate nohighlight">\(A\)</span> množica ljudi in <span class="math notranslate nohighlight">\(R\)</span> relacija <em>ima enako barvo oči kot</em>. Ekvivalenčni razred neke osebe z modrimi očmi torej sestavljajo ravno vse osebe z modrimi očmi. Ekvivalenčni razredi torej ustrezajo barvam oči.</p></li>
+<li><p>Naj bo <span class="math notranslate nohighlight">\(A\)</span> poljubna množica in <span class="math notranslate nohighlight">\(R\)</span> relacija enakosti v <span class="math notranslate nohighlight">\(A\)</span>. Za vsak <span class="math notranslate nohighlight">\(x \in A\)</span> velja <span class="math notranslate nohighlight">\(R[x] = \{ x \}\)</span>. Množica ekvivalenčnih razredov je enaka <span class="math notranslate nohighlight">\(A/R = \{ \{ x \} \mid x \in A \}\)</span>.</p></li>
+<li><p>Naj bo <span class="math notranslate nohighlight">\(A\)</span> poljubna množica in <span class="math notranslate nohighlight">\(R\)</span> univerzalna relacija v <span class="math notranslate nohighlight">\(A\)</span>. Za vsak <span class="math notranslate nohighlight">\(x \in A\)</span> velja <span class="math notranslate nohighlight">\(R[x] = A\)</span>. Imamo torej en sam ekvivalenčni razred in velja <span class="math notranslate nohighlight">\(A/R = \{ A \}\)</span>.</p></li>
+<li><p>Naj bo <span class="math notranslate nohighlight">\(A\)</span> množica premic v prostoru <span class="math notranslate nohighlight">\(\RR^3\)</span> in naj bo <span class="math notranslate nohighlight">\(R\)</span> relacija vzporednosti premic. Za dano premico <span class="math notranslate nohighlight">\(p\)</span> je torej <span class="math notranslate nohighlight">\(R[p]\)</span> ravno množica vseh premic, ki so vzporedne <span class="math notranslate nohighlight">\(p\)</span>. Ekvivalenčni razredi torej ustrezajo vsem smerem v <span class="math notranslate nohighlight">\(\RR^3\)</span> oziroma enotskim vektorjem v <span class="math notranslate nohighlight">\(\RR^3\)</span>.</p></li>
+<li><p>Množico <span class="math notranslate nohighlight">\(\ZZ\)</span> lahko definiramo kot kvocientno množico množice <span class="math notranslate nohighlight">\(A = \NN_0 \times \NN_0\)</span> po relaciji <span class="math notranslate nohighlight">\(R\)</span>, kjer je <span class="math notranslate nohighlight">\((a,b)R(c,d)\)</span>, če in samo če <span class="math notranslate nohighlight">\(a+d = b+c\)</span>. Velja</p>
+<div class="math notranslate nohighlight">
+\[R[(a,b)] = \{ (c,d) \in \NN_0 \times \NN_0 \mid c-d = a-b \},\]</div>
+<p>zato lahko množico ekvivalenčnih razredov <span class="math notranslate nohighlight">\(A/R\)</span> identificiramo z množico <span class="math notranslate nohighlight">\(\ZZ\)</span> prek bijekcije <span class="math notranslate nohighlight">\(R[(a,b)] \mapsto a-b\)</span> za <span class="math notranslate nohighlight">\((a,b) \in A\)</span>.</p>
+</li>
+<li><p>Naj bo <span class="math notranslate nohighlight">\(m \in \NN\)</span>. Na množici celih števil <span class="math notranslate nohighlight">\(\ZZ\)</span> definiramo relacijo <span class="definicija">kongruence po modulu</span> <span class="math notranslate nohighlight">\(m\)</span> kot</p>
+<div class="math notranslate nohighlight">
+\[x \equiv y \pmod{m} \Longleftarrow \exists k \in \ZZ \mid x - y = k \cdot m.\]</div>
+<p>Elementa <span class="math notranslate nohighlight">\(x,y \in \ZZ\)</span> sta torej kongruentna po modulu <span class="math notranslate nohighlight">\(m\)</span>, če im samo če dajeta isti ostanek pri deljenju z <span class="math notranslate nohighlight">\(m\)</span>. Ni se težko prepričati, da je to ekvivalenčni relacija. Označimo jo z <span class="math notranslate nohighlight">\(R_m\)</span>. Ekvivalenčni razredi ustrezajo ostankom pri deljenju z <span class="math notranslate nohighlight">\(m\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+        R_m[0] &amp;= \{ x \in \ZZ \mid \exists k \in \ZZ \colon x = k m \}, \\
+        R_m[1] &amp;= \{ x \in \ZZ \mid \exists k \in \ZZ \colon x = k m + 1 \}, \\
+        \vdots \\
+        R_m[m-1] &amp;= \{ x \in \ZZ \mid \exists k \in \ZZ \colon x = k m +m-1 \}.
+    
+\end{aligned}\end{split}\]</div>
+<p>Za <span class="math notranslate nohighlight">\(m = 1\)</span> je torej <span class="math notranslate nohighlight">\(R_1 = A\)</span>, za <span class="math notranslate nohighlight">\(m = 2\)</span> pa ima <span class="math notranslate nohighlight">\(R_2\)</span> dva ekvivalenčna razreda, in sicer množico sodih števil in množico lihih števil.</p>
+</li>
+</ul>
+</div>
+</section>
+<section id="operacije-z-relacijami">
+<h2>Operacije z relacijami<a class="headerlink" href="#operacije-z-relacijami" title="Link to this heading">#</a></h2>
+<p>Relacije v dani množici <span class="math notranslate nohighlight">\(A\)</span> so podmnožice <span class="math notranslate nohighlight">\(A \times A\)</span>, zato lahko z njimi izvajamo vse operacije, ki jih imamo na voljo z množicami. Nekaj osnovnih takih operacij in njihovih interpretacij je zbranih v naslednji trditvi.</p>
+<div class="trditev">
+<p>Naj bosta <span class="math notranslate nohighlight">\(R,S \subseteq A \times A\)</span> relaciji. Potem so tudi</p>
+<div class="math notranslate nohighlight">
+\[R \cup S, \
+    R \cap S, \
+    R \backslash S, \
+    R \oplus S = (R \cup S) \backslash (R \cap S)\]</div>
+<p>relacije v <span class="math notranslate nohighlight">\(A\)</span> in za vse <span class="math notranslate nohighlight">\(x,y \in A\)</span> velja:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(x(R \cup S) y \Leftrightarrow x R y \lor x S y\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(x(R \cap S) y \Leftrightarrow x R y \land x S y\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(x(R \backslash S) y \Leftrightarrow x R y \land \lnot (x S y)\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(x(R \oplus S) y \Leftrightarrow x R y + x S y\)</span>.</p></li>
+</ul>
+</div>
+<p>Oglejmo si še nekaj manj poznanih operacij z relacijami. Za dano relacijo <span class="math notranslate nohighlight">\(R \subseteq A \times A\)</span> je <span class="definicija">komplement relacije</span> <span class="math notranslate nohighlight">\(R\)</span> relacija <span class="math notranslate nohighlight">\(R^c = A \times A \backslash R\)</span>. <span class="definicija">Transponirana relacija</span> relacije <span class="math notranslate nohighlight">\(R\)</span> je relacija <span class="math notranslate nohighlight">\(R^T = \{ (x,y) \in A \times A \mid (y,x) \in R \}\)</span>. Tudi ti dve relaciji lahko intepretiramo na enostaven način.</p>
+<div class="trditev">
+<p>Za vse <span class="math notranslate nohighlight">\(x,y \in A\)</span> velja:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(x R^c y \Leftrightarrow \lnot (x R y)\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(x R^T y \Leftrightarrow y R x\)</span>.</p></li>
+</ul>
+</div>
+<div class="zgled">
+<p>Naj bo <span class="math notranslate nohighlight">\(A = \NN\)</span>. Med dobro poznanimi relacijami v <span class="math notranslate nohighlight">\(\NN\)</span> veljajo naslednje enakosti:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\((&lt;) \cup (=) = (\leq)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\((\leq) \backslash (=) = (&lt;)\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\((\leq) \cap (\geq) = (=)\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\((\leq) \cup (\geq) = \NN \times \NN\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\((&lt;) \cap (&gt;) = \emptyset\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\((&lt;) \cup (&gt;) = (\neq) = (=)^c\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\((\leq)^c = (&gt;)\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\((\leq)^T = (\geq)\)</span>.</p></li>
+</ul>
+</div>
+<p>Nazadnje si oglejmo še eno nekoliko bolj zapleteno operacijo. Naj bosta <span class="math notranslate nohighlight">\(R,S\)</span> relaciji v <span class="math notranslate nohighlight">\(A\)</span>. <span class="definicija">Kompozitum</span> relacij <span class="math notranslate nohighlight">\(R,S\)</span> je relacija</p>
+<div class="math notranslate nohighlight">
+\[R \circ S = \{ (x,y) \in A \times A \mid \exists u \in A \mid (x S u \land u R y)\}.\]</div>
+<p>Oglejmo si nekaj osnovnih lastnosti operacij transponiranja in kompozituma. Za vse relacije <span class="math notranslate nohighlight">\(R,S,T \subseteq A \times A\)</span> velja:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\((R^T)^T = R\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\((R \cup S)^T = R^T \cup S^T\)</span>,<br />
+<span class="math notranslate nohighlight">\((R \cap S)^T = R^T \cap S^T\)</span>,<br />
+<span class="math notranslate nohighlight">\((R \backslash S)^T = R^T \backslash S^T\)</span>,<br />
+<span class="math notranslate nohighlight">\((R \oplus S)^T = R^T \oplus S^T\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(R \circ id_A = R = id_A \circ R\)</span> (<span class="definicija"><span class="math notranslate nohighlight">\(id_A\)</span> je enota za komponiranje</span>),</p></li>
+<li><p><span class="math notranslate nohighlight">\((R \circ S) \circ T = R \circ (S \circ T)\)</span> (<span class="definicija">asociativnost komponiranja</span>),</p></li>
+<li><p><span class="math notranslate nohighlight">\((R \circ S)^T = S^T \circ R^T\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\((R \cup S) \circ T = R \circ T \cup S \circ T\)</span>,<br />
+<span class="math notranslate nohighlight">\(R \circ (S \cup T) = R \circ S \cup R \circ T\)</span> (<span class="definicija">distributivnost <span class="math notranslate nohighlight">\(\circ\)</span> glede na <span class="math notranslate nohighlight">\(\cup\)</span></span>),</p></li>
+<li><p><span class="math notranslate nohighlight">\(R \subseteq S \Rightarrow R \circ T \subseteq S \circ T\)</span>,<br />
+<span class="math notranslate nohighlight">\(R \subseteq S \Rightarrow T \circ R \subseteq T \circ S\)</span> (<span class="definicija">monotonost <span class="math notranslate nohighlight">\(\circ\)</span> glede na <span class="math notranslate nohighlight">\(\subseteq\)</span></span>).</p></li>
+</ul>
+<p>Preverimo le zelo pomembno asociativnost komponiranja. Za vsaka <span class="math notranslate nohighlight">\(x,y \in A\)</span> velja</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+    x (R \circ S) \circ T y &amp;\Leftrightarrow \exists u \colon (xTu \land u R \circ S y) \\
+    &amp;\Leftrightarrow \exists u \colon (xTu \land \exists v \colon (uSv \land v Ry)) \\
+    &amp;\Leftrightarrow \exists u \exists v \colon (xTu \land (uSv \land vRy)) \\
+    &amp;\Leftrightarrow \exists v \exists u \colon ((xTu \land uSv) \land vRy) \\
+    &amp;\Leftrightarrow \exists v \colon (\exists u \colon ( (x T u \land uSv) \land vRy) ) \\
+    &amp;\Leftrightarrow \exists v \colon (x S \circ T v \land vRy) \\
+    &amp;\Leftrightarrow x R \circ (S \circ T) y.
+\end{aligned}\end{split}\]</div>
+<div class="zgled">
+<p>Naj bo <span class="math notranslate nohighlight">\(A\)</span> množica ljudi.</p>
+<ul>
+<li><p>Kaj je relacija <span class="math notranslate nohighlight">\(\text{hči} \circ \text{mož}\)</span>? Za osebi <span class="math notranslate nohighlight">\(x,y \in A\)</span> velja</p>
+<div class="math notranslate nohighlight">
+\[x (\text{hči} \circ \text{mož}) y \Leftrightarrow
+        \exists u \colon (x \text{mož} u \land u \text{hči} y),\]</div>
+<p>torej kadar je <span class="math notranslate nohighlight">\(x\)</span> hčerin mož <span class="math notranslate nohighlight">\(y\)</span>-a, se pravi kadar je <span class="math notranslate nohighlight">\(x\)</span> zet <span class="math notranslate nohighlight">\(y\)</span>. Velja torej <span class="math notranslate nohighlight">\(\text{hči} \circ \text{mož} = \text{zet}\)</span>.</p>
+</li>
+<li><p><span class="math notranslate nohighlight">\(\text{oče} \circ \text{brat} = \text{stric}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\text{zakonec} \circ \text{mati} = \text{tašča}\)</span></p></li>
+</ul>
+</div>
+<p>Osnovne lastnosti relacij lahko opišemo v jeziku operacij z relacijami na naslednji način.</p>
+<div class="izrek">
+<p>Naj bo <span class="math notranslate nohighlight">\(R \subseteq A \times A\)</span>. Tedaj je:</p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(R\)</span> refleksivna, če in samo če <span class="math notranslate nohighlight">\(id_A \subseteq R\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(R\)</span> irefleksivna, če in samo če <span class="math notranslate nohighlight">\(R \cap id_A = \emptyset\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(R\)</span> simetrična, če in samo če <span class="math notranslate nohighlight">\(R = R^T\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(R\)</span> asimetrična, če in samo če <span class="math notranslate nohighlight">\(R \cap R^T = \emptyset\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(R\)</span> antisimetrična, če in samo če <span class="math notranslate nohighlight">\(R \cap R^T \subseteq id_A\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(R\)</span> tranzitivna, če in samo če <span class="math notranslate nohighlight">\(R \circ R \subseteq R\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(R\)</span> intranzitivna, če in samo če <span class="math notranslate nohighlight">\((R \circ R) \cap R = \emptyset\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(R\)</span> strogo sovisna, če in samo če <span class="math notranslate nohighlight">\(R \cup R^T = A \times A\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(R\)</span> sovisna, če in samo če <span class="math notranslate nohighlight">\(R \cup R^T \cup id_A = A \times A\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(R\)</span> enolična, če in samo če <span class="math notranslate nohighlight">\(R \circ R^T \subseteq id_A\)</span>.</p></li>
+</ol>
+</div>
+<div class="dokaz">
+<p>6. <span class="math notranslate nohighlight">\((\Rightarrow)\)</span>: Predpostavimo, da je <span class="math notranslate nohighlight">\(R\)</span> tranzitivna. Dokazati želimo, da je <span class="math notranslate nohighlight">\(R \circ R \subseteq R\)</span>. V ta namen izberimo poljuben element <span class="math notranslate nohighlight">\((x,y) \in R \circ R\)</span>. To pomeni, da obstaja <span class="math notranslate nohighlight">\(u \in A\)</span>, za katerega velja <span class="math notranslate nohighlight">\(xRu \land uRy\)</span>. Iz tranzitivnosti relacije <span class="math notranslate nohighlight">\(R\)</span> od tod sledi <span class="math notranslate nohighlight">\(xRy\)</span>. Slednje pomeni ravno <span class="math notranslate nohighlight">\((x,y) \in R\)</span>. Ker je bil <span class="math notranslate nohighlight">\((x,y)\)</span> poljuben element <span class="math notranslate nohighlight">\(R \circ R\)</span>, smo s tem dokazali vsebovanost <span class="math notranslate nohighlight">\(R \circ R \subseteq R\)</span>.</p>
+<p>6. <span class="math notranslate nohighlight">\((\Leftarrow)\)</span>: Predpostavimo, da je <span class="math notranslate nohighlight">\(R \circ R \subseteq R\)</span>. Dokazati želimo, da je <span class="math notranslate nohighlight">\(R\)</span> tranzitivna. V ta namen predpostavimo, da za poljubne elemente <span class="math notranslate nohighlight">\(x,y,z \in A\)</span> velja <span class="math notranslate nohighlight">\(xRy\)</span> in <span class="math notranslate nohighlight">\(yRz\)</span>. Torej <span class="math notranslate nohighlight">\(\exists u \colon (xRu \land uRz)\)</span>, kar pomeni, da je <span class="math notranslate nohighlight">\((x,z) \in R \circ R\)</span>. Ker je <span class="math notranslate nohighlight">\(R \circ R \subseteq R\)</span>, od tod sledi <span class="math notranslate nohighlight">\((x,z) \in R\)</span>, se pravi <span class="math notranslate nohighlight">\(xRz\)</span>. S tem smo dokazali tranzitivnost relacije <span class="math notranslate nohighlight">\(R\)</span>.</p>
+<p>10. Velja</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+    \text{$R$ enolična} &amp;\Leftrightarrow \forall x,y,z \colon (xRy \land xRz \Rightarrow y=z) \\
+    &amp;\Leftrightarrow \forall x,y,z \colon (yR^Tx \land xRy \Rightarrow y = z) \\
+    &amp;\Leftrightarrow \forall y,z \colon \left( \forall x \colon (\lnot(yR^Tx \land xRy) \lor y=z) \right) \\
+    &amp;\Leftrightarrow \forall y,z \colon \left( \lnot \exists x \colon (yR^Tx \land xRy) \lor y=z \right) \\
+    &amp;\Leftrightarrow \forall y,z \colon \left( \lnot (y R \circ R^T z) \lor y = z \right) \\
+    &amp;\Leftrightarrow \forall y,z \colon (y R \circ R^T z \Rightarrow y = z) \\
+    &amp;\Leftrightarrow \forall y,z \colon \left( (y,z) \in R \circ R^T \Rightarrow y = z \right) \\
+    &amp;\Leftrightarrow R \circ R^T \subseteq id_A.
+\end{aligned}\end{split}\]</div>
+</div>
+</section>
+<section id="potence-in-ovojnice-relacij">
+<h2>Potence in ovojnice relacij<a class="headerlink" href="#potence-in-ovojnice-relacij" title="Link to this heading">#</a></h2>
+<p>Naj bo <span class="math notranslate nohighlight">\(R \subseteq A \times A\)</span>. <span class="definicija">Kompozicijsko potenco</span> relacije <span class="math notranslate nohighlight">\(R\)</span> definiramo induktivno na naslednji način:</p>
+<p>osnova:<br />
+<span class="math notranslate nohighlight">\(R^0 = id_A\)</span>,</p>
+<p>indukcijski korak:<br />
+<span class="math notranslate nohighlight">\(\forall n \in \NN_0 \colon R^{n+1} = R^n \circ R\)</span>.</p>
+<div class="zgled">
+<p>Najprej velja</p>
+<div class="math notranslate nohighlight">
+\[R^1 = R^{0+1} = R^0 \circ R = id_A \circ R = R,\]</div>
+<p>za tem velja</p>
+<div class="math notranslate nohighlight">
+\[R^2 = R^{1+1} = R^1 \circ R = R \circ R\]</div>
+<p>in induktivno je <span class="math notranslate nohighlight">\(R^n\)</span> enak kompoziciji <span class="math notranslate nohighlight">\(n\)</span>-tih <span class="math notranslate nohighlight">\(R\)</span>-jev. Ker je operacija komponiranja asociativna, nam pri tem ni potrebno postavljati oklepajev, saj je rezultat neodvisen od vrstnega reda izvajanja kompozicij.</p>
+</div>
+<p>Kompozicijske potence delijo nekatere lastnosti s potencami števil.</p>
+<div class="trditev">
+<p>Za vse <span class="math notranslate nohighlight">\(m,n \in \NN_0\)</span> velja <span class="math notranslate nohighlight">\(R^n \circ R^m = R^{n+m}\)</span> in <span class="math notranslate nohighlight">\((R^n)^m = R^{n \cdot m}\)</span>.</p>
+</div>
+<div class="dokaz">
+<p>Vaja. Najlažje bo šlo z indukcijo na <span class="math notranslate nohighlight">\(m\)</span>.</p>
+</div>
+<div class="zgled">
+<p>Naj bo <span class="math notranslate nohighlight">\(A\)</span> množica ljudi in <span class="math notranslate nohighlight">\(R = \text{otrok}\)</span>. Tedaj je <span class="math notranslate nohighlight">\(R^2 = \text{vnuk} \cup \text{vnukinja}\)</span> in <span class="math notranslate nohighlight">\(R^3 = \text{pravnuk} \cup \text{pravnukinja}\)</span> in za vsak <span class="math notranslate nohighlight">\(n \geq 2\)</span> je</p>
+<div class="math notranslate nohighlight">
+\[R^n = \text{(pra)$^{n-2}$vnuk} \cup \text{(pra)$^{n-2}$vnukinja}.\]</div>
+</div>
+<p>Naj bo <span class="math notranslate nohighlight">\(R \subseteq A \times A\)</span>. S pomočjo kompozicijske potence definirajmo še dve pomembni konstrukciji, in sicer</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(R^+ = \bigcup_{k = 1}^\infty R^k = R \cup R^2 \cup R^3 \cup \cdots\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(R^* = \bigcup_{k = 0}^\infty R^k = id_A \cup R \cup R^2 \cup R^3 \cup \cdots\)</span>,</p></li>
+</ul>
+<p>Seveda velja <span class="math notranslate nohighlight">\(R^* = R^+ \cup id_A\)</span>. Relaciji <span class="math notranslate nohighlight">\(R^+\)</span> in <span class="math notranslate nohighlight">\(R^*\)</span> lahko opišemo še na naslednji način. Za vsaka <span class="math notranslate nohighlight">\(x,y \in A\)</span> velja:</p>
+<ul>
+<span class="sidenote"><sup>1</sup>To pomeni, da v grafu relacije <span class="math notranslate nohighlight">\(R\)</span> obstaja usmerjena pot dolžine vsaj <span class="math notranslate nohighlight">\(1\)</span> od <span class="math notranslate nohighlight">\(x\)</span> do <span class="math notranslate nohighlight">\(y\)</span>. Več o takih poteh bomo spoznali v razdelku o grafih.</span><li><p><span class="math notranslate nohighlight">\(x R^+ y \Leftrightarrow \exists k \in \NN \colon x R^k y\)</span>,<label for='sidenote-role-1' class='margin-toggle'><span id="id1">
+<sup>1</sup></span>
+
+</label><input type='checkbox' id='sidenote-role-1' name='sidenote-role-1' class='margin-toggle'><span class="sidenote d-n"><sup>1</sup>To pomeni, da v grafu relacije <span class="math notranslate nohighlight">\(R\)</span> obstaja usmerjena pot dolžine vsaj <span class="math notranslate nohighlight">\(1\)</span> od <span class="math notranslate nohighlight">\(x\)</span> do <span class="math notranslate nohighlight">\(y\)</span>. Več o takih poteh bomo spoznali v razdelku o grafih.</span></p></li>
+<span class="sidenote"><sup>2</sup>To pomeni, da v grafu relacije <span class="math notranslate nohighlight">\(R\)</span> obstaja usmerjena pot od <span class="math notranslate nohighlight">\(x\)</span> do <span class="math notranslate nohighlight">\(y\)</span>, pri čemer dopuščamo tudi možnost zanke.</span><li><p><span class="math notranslate nohighlight">\(x R^+ y \Leftrightarrow \exists k \in \NN_0 \colon x R^k y\)</span>,<label for='sidenote-role-2' class='margin-toggle'><span id="id2">
+<sup>2</sup></span>
+
+</label><input type='checkbox' id='sidenote-role-2' name='sidenote-role-2' class='margin-toggle'><span class="sidenote d-n"><sup>2</sup>To pomeni, da v grafu relacije <span class="math notranslate nohighlight">\(R\)</span> obstaja usmerjena pot od <span class="math notranslate nohighlight">\(x\)</span> do <span class="math notranslate nohighlight">\(y\)</span>, pri čemer dopuščamo tudi možnost zanke.</span></p></li>
+</ul>
+<div class="zgled">
+<p>Naj bo <span class="math notranslate nohighlight">\(A\)</span> množica ljudi in <span class="math notranslate nohighlight">\(R = \text{otrok}\)</span>. Velja <span class="math notranslate nohighlight">\(R^+ = \text{potomec} \cup \text{potomka}\)</span>.</p>
+</div>
+<p>Nazadnje se pogovorimo še o tem, kako dano relacijo <span class="math notranslate nohighlight">\(R \subseteq A \times A\)</span>, ki ne zadošča določenim želenim lastnostim,<label for='sidenote-role-3' class='margin-toggle'><span id="id3">
+<sup>3</sup></span>
+
+</label><input type='checkbox' id='sidenote-role-3' name='sidenote-role-3' class='margin-toggle'><span class="sidenote"><sup>3</sup>Na primer, <span class="math notranslate nohighlight">\(R\)</span> morda ni refleksivna ali pa ni tranzitivna.</span> <em>popraviti</em> do nove relacije, ki ni preveč drugačna od <span class="math notranslate nohighlight">\(R\)</span>, a za razliko od <span class="math notranslate nohighlight">\(R\)</span> zadošča želenim lastnostim. Iščemo torej novo relacijo, ki <em>vsebuje</em> relacijo <span class="math notranslate nohighlight">\(R\)</span>, ima želene lastnosti in je hkrati <em>najmanjša</em> relacija med vsemi relacijami, ki imajo ti dve lastnosti.</p>
+<p>Naj bo <span class="math notranslate nohighlight">\(\mathcal{L}\)</span> neka lasnost relacij v množici <span class="math notranslate nohighlight">\(A\)</span>. Naj bo <span class="math notranslate nohighlight">\(R \subseteq A \times A\)</span>. Relacija <span class="math notranslate nohighlight">\(R^{\mathcal{L}}\)</span> je <span class="math notranslate nohighlight">\(\mathcal{L}\)</span>-ovojnica relacije <span class="math notranslate nohighlight">\(R\)</span>, če velja:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(R \subseteq R^{\mathcal{L}}\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(R^{\mathcal{L}}\)</span> ima lastnost <span class="math notranslate nohighlight">\(\mathcal{L}\)</span>,</p></li>
+<li><p>če ima poljubna relacija <span class="math notranslate nohighlight">\(S \subseteq A \times A\)</span> lastnost <span class="math notranslate nohighlight">\(\mathcal{L}\)</span> in velja <span class="math notranslate nohighlight">\(R \subseteq S\)</span>, potem je <span class="math notranslate nohighlight">\(R^{\mathcal{L}} \subseteq S\)</span>.</p></li>
+</ul>
+<p>V primeru, ko relacija <span class="math notranslate nohighlight">\(R\)</span> že ima lastnost <span class="math notranslate nohighlight">\(\mathcal{L}\)</span>, je seveda <span class="math notranslate nohighlight">\(R^{\mathcal{L}} = R\)</span>. V splošnem pa ovojnica <span class="math notranslate nohighlight">\(R^{\mathcal{L}}\)</span> ne obstaja vedno. Prepričajmo se, da vselej obstajajo vsaj ovojnice glede na najbolj pomembne lastnosti relacij.</p>
+<div class="izrek">
+<p>Za vsako relacijo <span class="math notranslate nohighlight">\(R \subseteq A \times A\)</span> obstajajo ovojnice <span class="math notranslate nohighlight">\(R^\text{refleksivnost}\)</span>, <span class="math notranslate nohighlight">\(R^\text{simetričnost}\)</span>, <span class="math notranslate nohighlight">\(R^\text{tranzitivnost}\)</span>, <span class="math notranslate nohighlight">\(R^\text{ekvivalenčnost}\)</span> in velja:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(R^\text{refleksivnost} = R \cup id_A\)</span> (<span class="definicija">refleksivna ovojnica</span>),</p></li>
+<li><p><span class="math notranslate nohighlight">\(R^\text{simetričnost} = R \cup R^T\)</span> (<span class="definicija">simetrična ovojnica</span>),</p></li>
+<li><p><span class="math notranslate nohighlight">\(R^\text{tranzitivnost} = R^+\)</span> (<span class="definicija">tranzitivna ovojnica</span>),</p></li>
+<li><p><span class="math notranslate nohighlight">\(R^\text{ekvivalenčnost} = (R \cup R^T)^*\)</span> (<span class="definicija">ekvivalenčna ovojnica</span>).</p></li>
+</ul>
+</div>
+<div class="dokaz">
+<p>Preverimo le trditev glede tranzitivne ovojnice. Dokazati torej želimo, da relacija <span class="math notranslate nohighlight">\(R^+\)</span> zadošča vsem trem kriterijem v definiciji ovojnice.</p>
+<p>Preverimo najprej, da velja <span class="math notranslate nohighlight">\(R \subseteq R^+\)</span>. Res, ker je <span class="math notranslate nohighlight">\(R^+ = R \cup R^2 \cup \cdots\)</span>, je seveda <span class="math notranslate nohighlight">\(R \subseteq R^+\)</span>.</p>
+<p>Prepričajmo se zdaj, da je relacija <span class="math notranslate nohighlight">\(R^+\)</span> vselej tranzitivna. V ta namen predpostavimo, da za poljubne <span class="math notranslate nohighlight">\(x,y,z \in A\)</span> velja <span class="math notranslate nohighlight">\(xR^+y\)</span> in <span class="math notranslate nohighlight">\(yR^+z\)</span>. To pomeni</p>
+<div class="math notranslate nohighlight">
+\[\exists k \in \NN \colon x R^k y \land \exists l \in \NN \colon y R^l z,\]</div>
+<p>kar lahko prepišemo v</p>
+<div class="math notranslate nohighlight">
+\[\exists k, l \in \NN \colon (x R^k y \land y R^l z).\]</div>
+<p>Od tod sklepamo, da velja</p>
+<div class="math notranslate nohighlight">
+\[\exists k, l \in \NN \colon (x R^l \circ R^k z),\]</div>
+<p>torej velja tudi</p>
+<div class="math notranslate nohighlight">
+\[\exists m \in \NN \colon x R^m z,\]</div>
+<p>saj lahko vzamemo <span class="math notranslate nohighlight">\(m = k + l\)</span>. S tem smo dokazali <span class="math notranslate nohighlight">\(x R^+ z\)</span>, kar pomeni, da je relacija <span class="math notranslate nohighlight">\(R^+\)</span> res tranzitivna.</p>
+<p>Nazadnje preverimo še, da je <span class="math notranslate nohighlight">\(R^+\)</span> najmanjša tranzitivna relacija, ki vsebuje <span class="math notranslate nohighlight">\(R\)</span>. V ta namen naj bo <span class="math notranslate nohighlight">\(S\)</span> tranzitivna relacija v <span class="math notranslate nohighlight">\(A\)</span>, za katero velja <span class="math notranslate nohighlight">\(R \subseteq S\)</span>. Dokazati želimo, da velja <span class="math notranslate nohighlight">\(R^+ \subseteq S\)</span>. Ker je <span class="math notranslate nohighlight">\(R^+ = R \cup R^2 \cup R^3 \cup \cdots\)</span>, bo za to dovolj dokazati, da za vsak <span class="math notranslate nohighlight">\(k \in \NN\)</span> velja vsebovanost <span class="math notranslate nohighlight">\(R^k \subseteq S\)</span>. Slednje dokažimo z indukcijo na <span class="math notranslate nohighlight">\(k\)</span>.</p>
+<p>Osnova indukcije (<span class="math notranslate nohighlight">\(k = 1\)</span>):<br />
+Dokazati želimo <span class="math notranslate nohighlight">\(R \subseteq S\)</span>. To velja po predpostavki.</p>
+<p>Indukcijski korak (<span class="math notranslate nohighlight">\(k \to k+1\)</span>):<br />
+Predpostavimo, da velja <span class="math notranslate nohighlight">\(R^k \subseteq S\)</span>. Dokazati želimo, da velja <span class="math notranslate nohighlight">\(R^{k+1} \subseteq S\)</span>. Na predpostavki uporabimo <span class="math notranslate nohighlight">\(\circ R\)</span> in zaradi monotonosti kompozicije dobimo <span class="math notranslate nohighlight">\(R^{k+1} = R^k \circ R \subseteq S \circ R\)</span>. Hkrati lahko na predpostavki <span class="math notranslate nohighlight">\(R \subseteq S\)</span> uporabimo <span class="math notranslate nohighlight">\(S \circ\)</span> in zopet iz monotonosti sledi <span class="math notranslate nohighlight">\(S \circ S \subseteq S \circ S\)</span>. Ker je <span class="math notranslate nohighlight">\(S\)</span> tranzitivna relacija, velja <span class="math notranslate nohighlight">\(S \circ S \subseteq S\)</span>. S tem smo torej dokazali</p>
+<div class="math notranslate nohighlight">
+\[R^{k+1} \subseteq S \circ R \subseteq S \circ S \subseteq S,\]</div>
+<p>kar je ravno želena vsebovanost.</p>
+</div>
+<div class="zgled">
+<p>Naj bo <span class="math notranslate nohighlight">\(A\)</span> množica ljudi. Velja</p>
+<div class="math notranslate nohighlight">
+\[\text{otrok}^\text{tranzitivnost} = \text{otrok}^+ = \text{potomec} \cup \text{potomka}.\]</div>
+</div>
+<hr class="footnotes docutils" />
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./content"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="chapter02.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">nazaj</p>
+        <p class="prev-next-title">Predikatni račun</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="chapter04.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">naprej</p>
+        <p class="prev-next-title">Urejenosti</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Vsebina
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definicija-in-lastnosti-relacij">Definicija in lastnosti relacij</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ekvivalencne-relacije">Ekvivalenčne relacije</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#operacije-z-relacijami">Operacije z relacijami</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#potence-in-ovojnice-relacij">Potence in ovojnice relacij</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+Avtor Urban Jezernik
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

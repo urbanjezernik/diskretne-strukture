@@ -1,0 +1,880 @@
+
+<!DOCTYPE html>
+
+
+<html lang="sl" data-content_root="../" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Predikatni račun &#8212; Teorija upodobitev</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystyle.css?v=a5ebfbfa" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=a3a20203"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/translations.js?v=852ec8ec"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"tex": {"macros": {"NN": "\\mathbf{N}", "ZZ": "\\mathbf{Z}", "QQ": "\\mathbf{Q}", "RR": "\\mathbf{R}", "CC": "\\mathbf{C}", "FF": "\\mathbf{F}", "EE": "\\mathbf{E}", "PP": "\\mathbf{P}", "HH": "\\mathbf{H}", "oneone": "\\mathbf{1}", "Fcal": "\\mathcal{F}", "conclass": "\\mathcal{C}", "image": "\\operatorname{im}", "sgn": "\\operatorname{sgn}", "Res": "\\operatorname{Res}", "Ind": "\\operatorname{Ind}", "Rep": "\\operatorname{Rep}", "mult": "\\operatorname{mult}", "Izotip": "\\operatorname{Izotip}", "MK": "\\operatorname{MK}", "tr": "\\operatorname{tr}", "Irr": "\\operatorname{Irr}", "SU": "\\mathrm{SU}", "characteristic": "\\operatorname{char}", "kk": "\\operatorname{k}", "cl": "\\operatorname{cl}", "inv": "\\operatorname{inv}", "Eigenvalues": "\\operatorname{Spec}", "Eigenspace": "\\operatorname{LP}", "fun": "\\operatorname{fun}", "HS": "\\operatorname{HS}", "St": "\\operatorname{St}", "Realpart": "\\operatorname{Re}", "Aut": "\\operatorname{Aut}", "GL": "\\operatorname{GL}", "SL": "\\operatorname{SL}", "PSL": "\\operatorname{PSL}", "U": "\\operatorname{U}", "SO": "\\operatorname{SO}", "Gal": "\\operatorname{Gal}", "Sym": "\\operatorname{Sym}", "Homeo": "\\operatorname{Homeo}", "Cay": "\\operatorname{Cay}", "Isom": "\\operatorname{Isom}", "id": "\\operatorname{id}", "supp": "\\operatorname{supp}", "End": "\\operatorname{End}", "Mat": "\\operatorname{Mat}", "Cone": "\\operatorname{Cone}", "diam": "\\operatorname{diam}", "Ad": "\\operatorname{Ad}", "imaginary": "\\operatorname{Im}", "glfrak": "\\mathfrak{gl}", "slfrak": "\\mathfrak{sl}", "sufrak": "\\mathfrak{su}", "DNO": "\\operatorname{DNO}", "KNO": "\\operatorname{KNO}", "GG": "\\mathcal{G}", "GAP": ["\\texttt{GAP}", 0], "youngsym": "\\sigma_{\\lambda}", "mat": ["\\begin{pmatrix} #1 & #2\\\\ #3 & #4 \\end{pmatrix}", 4], "abs": ["\\lvert #1 \\rvert", 1]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/chapter02';</script>
+    <script src="../_static/bs-table-wrapper.js?v=8f7ea02a"></script>
+    <script src="../_static/fix-pipe-tables.js?v=5aeff36a"></script>
+    <link rel="canonical" href="/teorija-upodobitev/content/chapter02.html" />
+    <link rel="index" title="Abecedni seznam" href="../genindex.html" />
+    <link rel="search" title="Išči" href="../search.html" />
+    <link rel="next" title="Relacije" href="chapter03.html" />
+    <link rel="prev" title="Izjavni račun" href="chapter01.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="sl"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="light">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Diskretne strukture
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="chapter01.html">Izjavni račun</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Predikatni račun</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter03.html">Relacije</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter04.html">Urejenosti</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter05.html">Grafi</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Prenesite to stran">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/content/chapter02.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Prenesite izvorno datoteko"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Natisni v PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Celozaslonski način"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Išči" aria-label="Išči" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Predikatni račun</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Vsebina </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivacija">Motivacija</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sintaksa-predikatnega-racuna">Sintaksa predikatnega računa</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simboli">Simboli</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#termi">Termi</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#izjavne-formule">Izjavne formule</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#semantika-predikatnega-racuna">Semantika predikatnega računa</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logicno-veljavne-formule-in-enakovrednosti">Logično veljavne formule in enakovrednosti</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sklepanje-v-predikatnem-racunu">Sklepanje v predikatnem računu</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <style>
+  body { counter-reset: chapter 1 izrek 0 zgled 0 domacanaloga 0
+                 lema 0 trditev 0 definicija 0 dokaz 0; }
+</style><section class="tex2jax_ignore mathjax_ignore" id="predikatni-racun">
+<h1>Predikatni račun<a class="headerlink" href="#predikatni-racun" title="Link to this heading">#</a></h1>
+<p>Predikatni račun je <em>nadgradnja</em> izjavnega računa, ki omogoča bolj natančno logično izražanje. Najprej si bomo na konkretnih primerih pogledali, katere novosti prinaša predikatni račun. Za tem bomo te formalno definirali in razvili podobno teorijo kot v izjavnem računu.</p>
+<section id="motivacija">
+<h2>Motivacija<a class="headerlink" href="#motivacija" title="Link to this heading">#</a></h2>
+<p>Na konkretnih zgledih si oglejmo nekaj simbolov in formul, ki jih bomo videli v predikatnem računu. Ti zgledi nam bodo pomagali, da bomo v naslednjem razdelku lažje predelali formalne definicije predikatnega računa.</p>
+<div class="zgled">
+<p>Oglejmo si naslednji sklep, zapisan v slovenščini.</p>
+<p><span class="math notranslate nohighlight">\(p_1\)</span>:<br />
+Vsak zajec ljubi korenje.</p>
+<p><span class="math notranslate nohighlight">\(p_2\)</span>:<br />
+Feliks je zajec.</p>
+<p><span class="math notranslate nohighlight">\(z\)</span>:<br />
+Torej Feliks ljubi korenje.</p>
+<p>V izjavnem računu ta sklep zapišemo kot <span class="math notranslate nohighlight">\(p_1, p_2 \models z\)</span>. Seveda pa ta sklep v izjavnem računu ni veljaven, protiprimer je namreč nabor <span class="math notranslate nohighlight">\(p_1 = 1, p_2 = 1, z = 0\)</span>.</p>
+<p>Kljub temu se zdi, da je ta sklep v slovenščini vsekakor pravilen. Predikatni račun je nadgradnja izjavnega računa, v katerem izjavne spremeljivke <span class="math notranslate nohighlight">\(p_1, p_2, z\)</span> obravnavamo nekoliko podrobneje, tako da bo ta sklep pravilen v tem novem računu.</p>
+<p>Uvedimo naslednje oznake:</p>
+<p><span class="math notranslate nohighlight">\(Z(x)\)</span>:<br />
+<span class="math notranslate nohighlight">\(x\)</span> je zajec.</p>
+<p><span class="math notranslate nohighlight">\(K(x)\)</span>:<br />
+<span class="math notranslate nohighlight">\(x\)</span> ljubi korenje.</p>
+<p><span class="math notranslate nohighlight">\(a\)</span>:<br />
+Feliks</p>
+<p><span class="math notranslate nohighlight">\(\forall x\)</span>:<br />
+za vsak <span class="math notranslate nohighlight">\(x\)</span></p>
+<p>S temi oznakami lahko sklep zapišemo bolj natančno takole:</p>
+<p><span class="math notranslate nohighlight">\(p_1\)</span>:<br />
+<span class="math notranslate nohighlight">\(\forall x \colon (Z(x) \Rightarrow K(x))\)</span></p>
+<p><span class="math notranslate nohighlight">\(p_2\)</span>:<br />
+<span class="math notranslate nohighlight">\(Z(a)\)</span></p>
+<p><span class="math notranslate nohighlight">\(z\)</span>:<br />
+<span class="math notranslate nohighlight">\(K(a)\)</span></p>
+<p>V predikatnem jeziku bomo torej poleg izjavnih vezikov in ločil iz izjavnega računa imeli <span class="definicija">individualne spremenljivke</span> (<span class="math notranslate nohighlight">\(x\)</span>), <span class="definicija">individualne konstante</span> (<span class="math notranslate nohighlight">\(a\)</span>), <span class="definicija">predikate</span> (<span class="math notranslate nohighlight">\(Z\)</span>, <span class="math notranslate nohighlight">\(K\)</span>) in <span class="definicija">univerzalni kvantifikator</span> (<span class="math notranslate nohighlight">\(\forall\)</span>).</p>
+</div>
+<div class="zgled">
+<p>Prevedimo nekaj izjav iz slovenščine v nov jezik predikatnega računa, kot smo to storili v zadnjem zgledu. Izjave so naslednje:</p>
+<ol class="arabic simple">
+<li><p>Vsi gasilci so hrabri.</p></li>
+<li><p>Nekateri gasilci so hrabri.</p></li>
+<li><p>Nekateri gasilci niso hrabri.</p></li>
+<li><p>Noben gasilec ni hraber.</p></li>
+</ol>
+<p>Uvedimo naslednje oznake:</p>
+<p><span class="math notranslate nohighlight">\(G(x)\)</span>:<br />
+<span class="math notranslate nohighlight">\(x\)</span> je gasilec.</p>
+<p><span class="math notranslate nohighlight">\(H(x)\)</span>:<br />
+<span class="math notranslate nohighlight">\(x\)</span> je hraber.</p>
+<p><span class="math notranslate nohighlight">\(\exists x\)</span>:<br />
+obstaja <span class="math notranslate nohighlight">\(x\)</span></p>
+<p>Izjave v slovenščini lahko s temi oznakami zapišemo na naslednji način:</p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(\forall x \colon (G(x) \Rightarrow H(x))\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\exists x \colon (G(x) \land H(x))\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\exists x \colon (G(x) \land \lnot H(x))\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\forall x \colon (G(x) \Rightarrow \lnot H(x))\)</span></p></li>
+</ol>
+<p>Tukaj smo videli še en simbol kvantifikacije, ki ga bomo imeli v predikatnem računu, in sicer <span class="definicija">eksistenčni kvantifikator</span> (<span class="math notranslate nohighlight">\(\exists\)</span>).</p>
+</div>
+<div class="zgled">
+<p>Storimo podobno kot v zadnjih dveh zgledih še za naslednjo matematično izjavo. <em>Evklidov izrek</em> nam pove, da obstaja neskončno mnogo praštevil.</p>
+<p>Če želimo to izjavo zapisati na podoben način kot prejšnje izjave v tem poglavju, nam bo v pomoč, če jo prepišemo v nekoliko drugačno obliko, in sicer kot izjavo, da obstajajo poljubno velika praštevila. Še vedno ni jasno, kako bi izrazili del izjave, ki pravi, da obstajajo <em>poljubno velika</em> števila, zato bodimo še nekoliko bolj eksplicitni glede tega dela izjave. Evklidov izrek je ekvivalenten izjavi, da za vsako naravno število obstaja večje naravno število, ki je praštevilo. To zadnjo izjavo pa lahko zapišemo v predikatnem računu.</p>
+<p>Uvedimo naslednje oznake:</p>
+<p><span class="math notranslate nohighlight">\(P(x)\)</span>:<br />
+<span class="math notranslate nohighlight">\(x\)</span> je praštevilo.</p>
+<p><span class="math notranslate nohighlight">\(V(x,y)\)</span>:<br />
+<span class="math notranslate nohighlight">\(x\)</span> je večje od <span class="math notranslate nohighlight">\(y\)</span>.</p>
+<p>V tem zgledu so naše spremenljivke <span class="math notranslate nohighlight">\(x\)</span> iz množice naravnih števil, v prejšnjem zgledu pa so bile iz množice ljudi. Pomembno je, da se na začetku dogovorimo o področju pogovora oziroma <span class="definicija">domeni</span>, saj izjave, ki jih zapišemo, morda v drugi domeni pomenijo čisto nekaj drugega.</p>
+<p>Evklidov izrek lahko nazadnje zapišemo v predikatnem računu na naslednji način:</p>
+<div class="math notranslate nohighlight">
+\[\forall x \exists y \colon (V(y,x) \land P(y)).\]</div>
+<p>Tukaj smo srečali predikat <span class="math notranslate nohighlight">\(V\)</span>, ki je nekoliko drugačen od predikatov, ki smo jih videli do sedaj. Predikat <span class="math notranslate nohighlight">\(V\)</span> je namreč <em>dvomesten</em> (ima dva parametra), drugi predikati pa so bili vsi <em>enomestni</em>.</p>
+</div>
+<div class="zgled">
+<p>V prejšnjem zgledu smo govorili o praštevilih, za katere smo uvedli predikat <span class="math notranslate nohighlight">\(P\)</span>. Seveda pa bi lahko samo dejstvo, da je spremenljivka <span class="math notranslate nohighlight">\(x\)</span> praštevilo, se pravi da je izjava <span class="math notranslate nohighlight">\(P(x)\)</span> resnična, podrobneje opisali v predikatnem računu. To storimo v tem zgledu.</p>
+<p>Po definiciji je naravno število <span class="math notranslate nohighlight">\(n\)</span> praštevilo, če in samo če ima natanko dva naravna delitelja. Uvedimo naslednje oznake:</p>
+<p><span class="math notranslate nohighlight">\(f(x,y)\)</span>:<br />
+produkt <span class="math notranslate nohighlight">\(x\)</span> in <span class="math notranslate nohighlight">\(y\)</span></p>
+<p><span class="math notranslate nohighlight">\(E(x,y)\)</span>:<br />
+<span class="math notranslate nohighlight">\(x\)</span> je enak <span class="math notranslate nohighlight">\(y\)</span>.</p>
+<p>Definicijo predikata <span class="math notranslate nohighlight">\(P\)</span> lahko zapišemo na naslednji način:</p>
+<div class="math notranslate nohighlight">
+\[\forall x \colon \left( 
+    P(x) \Leftrightarrow V(x,1) \land \forall u \forall v \colon ( E(x, f(u,v)) \Rightarrow E(u,1) \land E(v,1) ).
+    \right)\]</div>
+<p>Tukaj smo naleteli še na zadnji fenomen, ki ga bomo imeli v predikatnem računu, in sicer je to <span class="definicija">funkcijski simbol</span> <span class="math notranslate nohighlight">\(f\)</span>, ki iz danih števil izračuna njun produkt.</p>
+</div>
+</section>
+<section id="sintaksa-predikatnega-racuna">
+<h2>Sintaksa predikatnega računa<a class="headerlink" href="#sintaksa-predikatnega-racuna" title="Link to this heading">#</a></h2>
+<p>Zdaj smo pripravljeni, da formalno definiramo vse koncepte v predikatnem računu. Sistematično bomo našteli simbole, ki jih uporabljamo, in opisali, kako iz njih sestavljamo izjavne formule.</p>
+<p>Naj bo področje pogovora dano z neko množico <span class="math notranslate nohighlight">\(D\)</span>.</p>
+<section id="simboli">
+<h3>Simboli<a class="headerlink" href="#simboli" title="Link to this heading">#</a></h3>
+<p>V predikatnem računu uporabljamo naslednje simbole:</p>
+<ol class="arabic simple">
+<li><p><span class="definicija">Individualne konstante</span>, ki jih bomo označevali z <span class="math notranslate nohighlight">\(a,b,c,\dots\)</span>. To so <em>konkretni</em> elementi množice <span class="math notranslate nohighlight">\(D\)</span>.</p></li>
+<li><p><span class="definicija">Individualne spremenljivke</span>, ki jih bomo označevali z <span class="math notranslate nohighlight">\(x,y,z,\dots\)</span>. To so <em>poljubni</em> elementi množice <span class="math notranslate nohighlight">\(D\)</span>.</p></li>
+<li><p><span class="definicija">Predikati</span>, ki jih bomo označevali s <span class="math notranslate nohighlight">\(P,Q,R,\dots\)</span>. Ti predstavljajo relacije med elementi množice <span class="math notranslate nohighlight">\(D\)</span>. Predikati so lahko enomestni, dvomestni, …, <span class="math notranslate nohighlight">\(n\)</span>-mestni, …</p></li>
+<li><p><span class="definicija">Funkcijski simboli</span>, ki jih bomo označevali s <span class="math notranslate nohighlight">\(f,g,h,\dots\)</span>. Tudi ti so lahko <span class="math notranslate nohighlight">\(n\)</span>-mestni za poljubno naravno število <span class="math notranslate nohighlight">\(n\)</span>. Funkcijski simboli predstavljajo funkcije iz <span class="math notranslate nohighlight">\(n\)</span>-teric elementov <span class="math notranslate nohighlight">\(D\)</span> v <span class="math notranslate nohighlight">\(D\)</span>.</p></li>
+<li><p>Izjavni vezniki iz izjavnega računa</p></li>
+<li><p><span class="definicija">Simbola kvantifikacije</span> <span class="math notranslate nohighlight">\(\forall\)</span> in <span class="math notranslate nohighlight">\(\exists\)</span>.</p></li>
+<li><p>Ločila <code class="docutils literal notranslate"><span class="pre">():,</span></code></p></li>
+</ol>
+</section>
+<section id="termi">
+<h3>Termi<a class="headerlink" href="#termi" title="Link to this heading">#</a></h3>
+<p>Najosnovnejše izjave, ki jih v predikatnem računu sestavljamo z naštetimi simboli, so <span class="definicija">termi</span>. Definiramo jih induktivno,<label for='sidenote-role-1' class='margin-toggle'><span id="id1">
+<sup>1</sup></span>
+
+</label><input type='checkbox' id='sidenote-role-1' name='sidenote-role-1' class='margin-toggle'><span class="sidenote"><sup>1</sup>Ta induktivna definicija je podobna kot induktivna definicija izjavnih izrazov v izjavnem računu.</span> in sicer na naslednji način:</p>
+<ul class="simple">
+<li><p><em>Osnovni term 1:</em> Vsaka <em>individualna konstanta</em> je term.</p></li>
+<li><p><em>Osnovni term 2:</em> Vsaka <em>individualna spremenljivka</em> je term.</p></li>
+<li><p><em>Sestavljeni term:</em> Če je <span class="math notranslate nohighlight">\(f\)</span> <em><span class="math notranslate nohighlight">\(n\)</span>-mesten funkcijski simbol</em> in so <span class="math notranslate nohighlight">\(t_1, t_2, \dots, t_n\)</span> termi, potem je <span class="math notranslate nohighlight">\(f(t_1,t_2,\dots,t_n)\)</span> term.</p></li>
+</ul>
+<p>Termi, ki <em>ne</em> vsebujejo nobenih individualnih spremenljivk, se imenujejo <span class="definicija">zaprti termi</span>.</p>
+<div class="zgled">
+<p>Naj bo <span class="math notranslate nohighlight">\(a\)</span> individualna konstanta, <span class="math notranslate nohighlight">\(x,y\)</span> individualni spremenljivki, <span class="math notranslate nohighlight">\(f\)</span> enomesten funkcijski simbol, <span class="math notranslate nohighlight">\(g\)</span> dvomesten funkcijski simbol. Tedaj so</p>
+<div class="math notranslate nohighlight">
+\[x, \ y, \ a, \ f(x), \ f(a), \ f(f(a)), \ g(x,f(f(y)))\]</div>
+<p>termi. Tretji, peti in šesti izmed teh so zaprti termi.</p>
+</div>
+</section>
+<section id="izjavne-formule">
+<h3>Izjavne formule<a class="headerlink" href="#izjavne-formule" title="Link to this heading">#</a></h3>
+<p><span class="definicija">Izjavne formule</span> so bolj kompleksne izjave v predikatnem računu, ki jih sestavljamo s pomočjo termov. Njihova definicija je induktivna, in sicer:</p>
+<ul class="simple">
+<li><p><em>Osnovna izjavna formula:</em> Naj bo <span class="math notranslate nohighlight">\(P\)</span> neki <span class="math notranslate nohighlight">\(n\)</span>-mestni predikat in <span class="math notranslate nohighlight">\(t_1, t_2, \dots, t_n\)</span> termi. Potem je <span class="math notranslate nohighlight">\(P(t_1, t_2, \dots, t_n)\)</span> izjavna formula. Taki izjavni formuli rečemo <span class="definicija">atomarna</span>.</p></li>
+<li><p><em>Sestavljena izjavna formula 1:</em> Naj bo <span class="math notranslate nohighlight">\(F\)</span> neki <span class="math notranslate nohighlight">\(n\)</span>-mestni izjavni veznik in <span class="math notranslate nohighlight">\(\phi_1, \phi_2, \dots, \phi_n\)</span> izjavne formule. Potem je <span class="math notranslate nohighlight">\(F(\phi_1, \phi_2, \dots, \phi_n)\)</span> izjavna formula.</p></li>
+<li><p><em>Sestavljena izjavna formula 2:</em> Naj bo <span class="math notranslate nohighlight">\(\phi\)</span> izjavna formula in <span class="math notranslate nohighlight">\(x\)</span> individualna spremenljivka. Potem sta <span class="math notranslate nohighlight">\((\forall x \colon \phi)\)</span> in <span class="math notranslate nohighlight">\((\exists x \colon \phi)\)</span> izjavni formuli. Pri tem je <span class="math notranslate nohighlight">\(\forall x\)</span> <span class="definicija">univerzalni kvantifikator</span>, <span class="math notranslate nohighlight">\(\exists x\)</span> <span class="definicija">eksistenčni kvantifikator</span>, formula <span class="math notranslate nohighlight">\(\phi\)</span> pa je <span class="definicija">doseg kvantifikatorja</span>.</p></li>
+</ul>
+<p>Kot pri izjavnem računu sprejmemo <span class="definicija">dogovor o prednostnem vrstnem redu kvantifikatorjev in opuščjanju ločil</span>:</p>
+<ul class="simple">
+<li><p>za izjavne veznike in zunanje oklepaje velja dogovor iz izjavnega računa,</p></li>
+<li><p>kvantifikatorji imajo prednost pred izjavnimi vezniki,</p></li>
+<li><p>ločila med zaporednimi kvantifikatorji izpuščamo.</p></li>
+</ul>
+<div class="zgled">
+<p>V zgledih na začetku tega poglavja smo srečali naslednje izjavne formule:</p>
+<div class="math notranslate nohighlight">
+\[Z(x), \ K(x), \ Z(a), \ K(a), \ \lnot H(x), \ \forall x \colon (G(x) \Rightarrow H(x)), \ \forall x \exists y \colon (V(y,x) \land P(x)).\]</div>
+</div>
+<p>Analogno definiciji zaprtosti termov uvedemo koncept zaprtosti izjavnih formul. Nastop individualne spremenljivke v izjavni formuli je <span class="definicija">vezan</span>, če je del kvantifikatorja ali leži v dosegu kvantifikatorja, ki vsebuje to spremenljivko. Če nastop ni vezan, je <span class="definicija">prost</span>. Izjavna formula je <span class="definicija">zaprta</span>, če so vsi nastopi individualnih spremenljivk v njej vezani.</p>
+<div class="zgled">
+<p>Naslednje izjavne formule so zaprte:</p>
+<div class="math notranslate nohighlight">
+\[P(a), \ \forall x \colon P(x), \ \forall x \exists y \colon V(x,y).\]</div>
+<p>Naslednje izjavne formule pa niso zaprte:</p>
+<div class="math notranslate nohighlight">
+\[P(x), \ \exists y \colon V(x,y), \ \forall x \colon (V(x,y) \Rightarrow \exists P(y)).\]</div>
+</div>
+<p>Postojmo le še pri enem osnovnem konceptu v zvezi z izjavnimi formulami, in sicer substitucijo. Naj bo <span class="math notranslate nohighlight">\(\phi\)</span> izjavna formula z individualno spremenljivko <span class="math notranslate nohighlight">\(x\)</span>, tako da lahko zapišemo formulo kot <span class="math notranslate nohighlight">\(\phi(x)\)</span>. Če je <span class="math notranslate nohighlight">\(t\)</span> nek term, potem s <span class="math notranslate nohighlight">\(\phi(t)\)</span> označimo izjavno formulo, ki jo dobimo iz <span class="math notranslate nohighlight">\(\phi(x)\)</span>, če v njej vse <em>proste</em> nastope <span class="math notranslate nohighlight">\(x\)</span> zamenjamo s <span class="math notranslate nohighlight">\(t\)</span>. V tem primeru rečemo, da smo <span class="math notranslate nohighlight">\(\phi(t)\)</span> dobili s <span class="definicija">substitucijo</span> iz <span class="math notranslate nohighlight">\(\phi(x)\)</span> spremenljivke <span class="math notranslate nohighlight">\(x\)</span> s termom <span class="math notranslate nohighlight">\(t\)</span>.</p>
+<div class="zgled">
+<p>Naj bo <span class="math notranslate nohighlight">\(\phi(x) = \exists y \colon R(x,y)\)</span> in <span class="math notranslate nohighlight">\(t = f(a)\)</span>. Potem je <span class="math notranslate nohighlight">\(\phi(t) = \exists y \colon R(f(a), y)\)</span>.</p>
+</div>
+<p>Analogno lahko v formuli <span class="math notranslate nohighlight">\(\phi(x_1, x_2, \dots, x_n)\)</span> z različnimi individualnimi spremenljivkami <span class="math notranslate nohighlight">\(x_1, x_2, \dots, x_n\)</span> izvedemo substitucijo vseh prostih nastopov <span class="math notranslate nohighlight">\(x_i\)</span> s termom <span class="math notranslate nohighlight">\(t_i\)</span> za <span class="math notranslate nohighlight">\(i = 1,2,\dots,n\)</span>.</p>
+</section>
+</section>
+<section id="semantika-predikatnega-racuna">
+<h2>Semantika predikatnega računa<a class="headerlink" href="#semantika-predikatnega-racuna" title="Link to this heading">#</a></h2>
+<p>Do zdaj smo se ukvarjali s tem, kako v predikatnem računu zapišemo izjavne formule. Te formule same po sebi pa seveda nimajo nikakršnega pomena, dokler ne določimo, kaj je domena in kaj predstavljajo individualne konstante, predikati in funkcijski simboli. S tem se ukvarja <em>semantika</em> predikatnega računa. Če smo torej do zdaj iz izjav v slovenščini sestavljali formule, bomo tukaj iz formul sestavljali izjave v slovenščini.</p>
+<p>Naj bo <span class="math notranslate nohighlight">\(\Fcal\)</span> neka množica izjavnih formul, ki jim želimo določiti pomen. <span class="definicija">Interpretacijo</span> <span class="math notranslate nohighlight">\(I\)</span> formul iz <span class="math notranslate nohighlight">\(\Fcal\)</span> podamo tako, da:</p>
+<ol class="arabic">
+<li><p>izberemo neprazno množico objektov (to je <span class="definicija">domena</span> ali področje pogovora),</p></li>
+<li><p>vsaki individualni konstanti <span class="math notranslate nohighlight">\(a\)</span> iz <span class="math notranslate nohighlight">\(\Fcal\)</span> priredimo nek element <span class="math notranslate nohighlight">\(\bar a \in D\)</span>,</p></li>
+<span class="sidenote"><sup>2</sup>Podmnožicam <span class="math notranslate nohighlight">\(D^n\)</span> rečemo tudi <span class="definicija"><span class="math notranslate nohighlight">\(n\)</span>-mestne relacije</span> v <span class="math notranslate nohighlight">\(D\)</span>.</span><li><p>vsakemu <span class="math notranslate nohighlight">\(n\)</span>-mestnemu predikatu <span class="math notranslate nohighlight">\(P\)</span> iz <span class="math notranslate nohighlight">\(\Fcal\)</span> priredimo neko podmnožico <span class="math notranslate nohighlight">\(\bar P\)</span> v <span class="math notranslate nohighlight">\(D^n = D \times D \times \cdots \times D\)</span>, ki predstavlja vse <span class="math notranslate nohighlight">\(n\)</span>-terice elementov, za katere je <span class="math notranslate nohighlight">\(P\)</span> resničen,<label for='sidenote-role-2' class='margin-toggle'><span id="id2">
+<sup>2</sup></span>
+
+</label><input type='checkbox' id='sidenote-role-2' name='sidenote-role-2' class='margin-toggle'><span class="sidenote d-n"><sup>2</sup>Podmnožicam <span class="math notranslate nohighlight">\(D^n\)</span> rečemo tudi <span class="definicija"><span class="math notranslate nohighlight">\(n\)</span>-mestne relacije</span> v <span class="math notranslate nohighlight">\(D\)</span>.</span></p></li>
+<li><p>vsakemu <span class="math notranslate nohighlight">\(n\)</span>-mestnemu funkcijskemu simbolu <span class="math notranslate nohighlight">\(f\)</span> priredimo preslikavo <span class="math notranslate nohighlight">\(\bar f\)</span>, ki vsako urejeno <span class="math notranslate nohighlight">\(n\)</span>-terico elementov <span class="math notranslate nohighlight">\(D\)</span> preslika v točno določen element <span class="math notranslate nohighlight">\(D\)</span>, se pravi funkcijo iz <span class="math notranslate nohighlight">\(D^n\)</span> v <span class="math notranslate nohighlight">\(D\)</span>.</p></li>
+</ol>
+<p>Izjavne veznike iz izjavnega računa interpretiramo,kot smo jih že v izjavnem računu. Simbola kvantifikacije interpretiramo na naslednji način:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\forall x\)</span> intepretiramo kot <em>za vsak <span class="math notranslate nohighlight">\(x\)</span> iz <span class="math notranslate nohighlight">\(D\)</span></em>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\exists x\)</span> interpretiramo kot <em>obstaja <span class="math notranslate nohighlight">\(x\)</span> iz <span class="math notranslate nohighlight">\(D\)</span></em>.</p></li>
+</ul>
+<div class="zgled">
+<p>Naj bo</p>
+<div class="math notranslate nohighlight">
+\[\Fcal = \{ P(a), P(x), \forall x \colon P(x), P(f(a,b)) \}\]</div>
+<p>množica izjavnih formul. Da lahko te formule interpretiramo, moramo izbrati neko intepretacijo. Vzemimo tole intepretacijo <span class="math notranslate nohighlight">\(I\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[D = \NN, \ \bar a = 2, \ \bar b = 3, \ \bar P = \PP, \ \bar f(x,y) = 2x + y,\]</div>
+<p>kjer je <span class="math notranslate nohighlight">\(\PP\)</span> množica praštevil. V tej interpretaciji term <span class="math notranslate nohighlight">\(\overline{f(a,b)}\)</span> torej intepretiramo kot</p>
+<div class="math notranslate nohighlight">
+\[\overline{f(a,b)}
+    = \bar f (\bar a, \bar b)
+    = 2 \bar a + \bar b
+    = 7.\]</div>
+<p>Oglejmo si pomene izjavnih formul v <span class="math notranslate nohighlight">\(\Fcal\)</span> v interpretaciji <span class="math notranslate nohighlight">\(I\)</span>.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>formula <span class="math notranslate nohighlight">\(\phi\)</span></p></th>
+<th class="head text-left"><p>poved <span class="math notranslate nohighlight">\(\bar \phi\)</span></p></th>
+<th class="head text-left"><p>komentar</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p><span class="math notranslate nohighlight">\(P(a)\)</span></p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(2\)</span> je praštevilo</p></td>
+<td class="text-left"><p>resnična izjava</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p><span class="math notranslate nohighlight">\(P(x)\)</span></p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(x\)</span> je praštevilo</p></td>
+<td class="text-left"><p>ni izjava</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p><span class="math notranslate nohighlight">\(\forall x \colon P(x)\)</span></p></td>
+<td class="text-left"><p>vsako naravno število je praštevilo</p></td>
+<td class="text-left"><p>lažna izjava</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p><span class="math notranslate nohighlight">\(P(f(a,b))\)</span></p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(7\)</span> je praštevilo</p></td>
+<td class="text-left"><p>resnična izjava</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Interpretacije formul iz <span class="math notranslate nohighlight">\(\Fcal\)</span> v <span class="math notranslate nohighlight">\(I\)</span></p>
+</div>
+<p>Zaprtemu termu <span class="math notranslate nohighlight">\(t\)</span> ustreza element <span class="math notranslate nohighlight">\(\bar t \in D\)</span>, zaprti izjavni formuli <span class="math notranslate nohighlight">\(\phi\)</span> pa ustreza izjava <span class="math notranslate nohighlight">\(\bar \phi\)</span>. Kadar izjavna formula <span class="math notranslate nohighlight">\(\phi\)</span> ni zaprta, tedaj <span class="math notranslate nohighlight">\(\bar \phi\)</span> <em>ni</em> izjava, saj je odvisna od prostih spremenljivk.</p>
+<div class="zgled">
+<p>Opazujmo izjavno formulo <span class="math notranslate nohighlight">\(\phi = \forall x \exists y \colon R(x,y)\)</span>. Poglejmo si nekaj različnih interpretacij te formule.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>interpretacija <span class="math notranslate nohighlight">\(I\)</span></p></th>
+<th class="head text-left"><p>poved <span class="math notranslate nohighlight">\(\bar \phi\)</span></p></th>
+<th class="head text-left"><p>komentar</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><span class="math notranslate nohighlight">\(I_1\)</span>: <span class="math notranslate nohighlight">\(D = \NN\)</span>, <span class="math notranslate nohighlight">\(\bar R(x,y) = x &lt; y\)</span></p></td>
+<td class="text-left"><p>za vsako naravno število obstaja večje naravno število</p></td>
+<td class="text-left"><p>resnična izjava</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><span class="math notranslate nohighlight">\(I_2\)</span>: <span class="math notranslate nohighlight">\(D = \NN\)</span>, <span class="math notranslate nohighlight">\(\bar R(x,y) = x &gt; y\)</span></p></td>
+<td class="text-left"><p>za vsako naravno število obstaja manjše naravno število</p></td>
+<td class="text-left"><p>lažna izjava</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><span class="math notranslate nohighlight">\(I_3\)</span>: <span class="math notranslate nohighlight">\(D = \ZZ\)</span>, <span class="math notranslate nohighlight">\(\bar R(x,y) = x &gt; y\)</span></p></td>
+<td class="text-left"><p>za vsako celo število obstaja manjše celo število</p></td>
+<td class="text-left"><p>resnična izjava</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Različne interpretacije formule <span class="math notranslate nohighlight">\(\phi\)</span></p>
+</div>
+<p>Dani zaprti izjavni formuli <span class="math notranslate nohighlight">\(\phi\)</span> lahko torej v nekaterih interpretacijah ustrezajo resnične izjave, v drugih interpretacijah pa lažje izjave. Rečemo, da je zaprta izjavna formula <span class="math notranslate nohighlight">\(\phi\)</span> <span class="definicija">resnična v interpretaciji</span> <span class="math notranslate nohighlight">\(I\)</span>, če je resnična izjava <span class="math notranslate nohighlight">\(\bar \phi\)</span>. V tem primeru pišemo <span class="math notranslate nohighlight">\(I \models \phi\)</span>.</p>
+</section>
+<section id="logicno-veljavne-formule-in-enakovrednosti">
+<h2>Logično veljavne formule in enakovrednosti<a class="headerlink" href="#logicno-veljavne-formule-in-enakovrednosti" title="Link to this heading">#</a></h2>
+<p>Kadar je zaprta izjavna formula <span class="math notranslate nohighlight">\(\phi\)</span> resnična v <em>vseh</em> interpretacijah, ji pravimo <span class="definicija">logično veljavna</span>. Sorodno izjavni formuli <span class="math notranslate nohighlight">\(\phi\)</span>, ki je lažna v <em>vseh</em> interpretacijah, pravimo <span class="definicija">protislovna</span>.</p>
+<div class="zgled">
+<p>Naj bosta <span class="math notranslate nohighlight">\(P\)</span> in <span class="math notranslate nohighlight">\(Q\)</span> enomestna predikata. Opazujmo izjavno formulo</p>
+<div class="math notranslate nohighlight">
+\[\phi = \forall x \colon P(x) \lor \forall x \colon Q(x) \Rightarrow \forall x \colon (P(x) \lor Q(x)).\]</div>
+<p>Prepričajmo se, da je <span class="math notranslate nohighlight">\(\phi\)</span> logično veljavna formula.</p>
+<p>V ta namen moramo dokazati, da za <em>vsako</em> interpretacijo <span class="math notranslate nohighlight">\(I\)</span> velja <span class="math notranslate nohighlight">\(I \models \phi\)</span>. Naj bo torej <span class="math notranslate nohighlight">\(I\)</span> poljubna interpretacija. V tej interpretaciji moramo torej dokazati, da je izjava <span class="math notranslate nohighlight">\(\bar \phi\)</span> veljavna, kar je enakovredno veljavnosti sklepa <span class="math notranslate nohighlight">\(\models \bar \phi\)</span>, se pravi veljavnosti sklepa</p>
+<div class="math notranslate nohighlight">
+\[\models 
+    \forall x \colon \bar P(x) \lor \forall x \colon \bar Q(x) \Rightarrow \forall x \colon (\bar P(x) \lor \bar Q(x)).\]</div>
+<p>Zaključek tega sklepa ima obliko implikacije, zato lahko uporabimo pogojni sklep. Dokazati moramo torej veljavnost sklepa</p>
+<div class="math notranslate nohighlight">
+\[\forall x \colon \bar P(x) \lor \forall x \colon \bar Q(x)
+    \models
+    \forall x \colon (\bar P(x) \lor \bar Q(x)).\]</div>
+<p>Predpostavka tega sklepa ima obliko disjunkcije, zato lahko uporabimo analizo primerov.</p>
+<ol class="arabic simple">
+<li><p>Predpostavimo <span class="math notranslate nohighlight">\(\forall x \colon \bar P(x)\)</span>. Dokazati želimo, da je izjava <span class="math notranslate nohighlight">\(\forall x \colon (\bar P(x) \lor \bar Q(x))\)</span> resnična. V ta namen izberimo poljuben <span class="math notranslate nohighlight">\(x_0 \in D\)</span>. Po predpostavki za vsak <span class="math notranslate nohighlight">\(x\)</span> iz <span class="math notranslate nohighlight">\(D\)</span> velja <span class="math notranslate nohighlight">\(\bar P(x)\)</span>, zato v posebnem to velja za element <span class="math notranslate nohighlight">\(x_0\)</span>, se pravi da je izjava <span class="math notranslate nohighlight">\(\bar P(x_0)\)</span> resnična. Od tod sledi, da je resnična tudi izjava <span class="math notranslate nohighlight">\(\bar P(x_0) \lor \bar Q(x_0)\)</span>. Ker je bil <span class="math notranslate nohighlight">\(x_0\)</span> poljuben element iz <span class="math notranslate nohighlight">\(D\)</span>, smo s tem premislili, da je izjava <span class="math notranslate nohighlight">\(\forall x \colon (\bar P(x) \lor \bar Q(x))\)</span> resnična. To je bil naš cilj, zato je sklep v tem primeru veljaven.</p></li>
+<li><p>Predpostavimo <span class="math notranslate nohighlight">\(\forall x \colon \bar Q(x)\)</span>. Kot zgoraj želimo dokazati, da je izjava <span class="math notranslate nohighlight">\(\forall x \colon (\bar P(x) \lor \bar Q(x))\)</span> resnična. Dokaz je povsem analogen tistemu iz prejšnje točke, le <span class="math notranslate nohighlight">\(P\)</span> in <span class="math notranslate nohighlight">\(Q\)</span> zamenjamo med sabo.</p></li>
+</ol>
+<p>S tem smo dokazali veljavnost sklepa in torej veljavnost <span class="math notranslate nohighlight">\(I \models \phi\)</span>. Ker je bila interpretacija <span class="math notranslate nohighlight">\(I\)</span> poljubna, je torej <span class="math notranslate nohighlight">\(\phi\)</span> res logično veljavna formula.</p>
+</div>
+<div class="zgled">
+<p>Naj bosta <span class="math notranslate nohighlight">\(P\)</span> in <span class="math notranslate nohighlight">\(Q\)</span> enomestna predikata. Opazujmo izjavno formulo</p>
+<div class="math notranslate nohighlight">
+\[\psi = \forall x \colon (P(x) \lor Q(x)) \Rightarrow \forall x \colon P(x) \lor \forall x \colon Q(x).\]</div>
+<p>Prepričajmo se, da <span class="math notranslate nohighlight">\(\psi\)</span> ni logično veljavna.</p>
+<p>V ta namen zadošča poiskati neko interpretacijo <span class="math notranslate nohighlight">\(I\)</span>, v kateri <span class="math notranslate nohighlight">\(\psi\)</span> ni resnična. Možnosti za to je veliko. Vzamemo lahko naslednjo interpretacijo:</p>
+<div class="math notranslate nohighlight">
+\[D = \NN, \ \bar P = \{ 2 n \mid n \in \NN \}, \ \bar Q = \{ 2n - 1 \mid n \in \NN \}.\]</div>
+<p>Velja <span class="math notranslate nohighlight">\(\psi = \psi_1 \Rightarrow \psi_2\)</span>, kjer je</p>
+<div class="math notranslate nohighlight">
+\[\psi_1 = \forall x \colon (P(x) \lor Q(x)), \
+    \psi_2 = \forall x \colon P(x) \lor \forall x \colon Q(x).\]</div>
+<p>V interpretaciji <span class="math notranslate nohighlight">\(I\)</span> je izjava <span class="math notranslate nohighlight">\(\bar \psi_1\)</span> enakovredna izjavi, da je vsako naravno število sodo ali liho, izjava <span class="math notranslate nohighlight">\(\bar \psi_2\)</span> pa je enakovredna izjavi, da so vsa naravna števila soda ali pa so vsa naravna števila liha. Prva od teh dveh izjav je resnična, druga pa je lažna. V interpretaciji <span class="math notranslate nohighlight">\(I\)</span> je zato <span class="math notranslate nohighlight">\(\bar \psi_1 \Rightarrow \bar \psi_2\)</span> lažna izjava, torej je <span class="math notranslate nohighlight">\(\bar\psi\)</span> lažna v <span class="math notranslate nohighlight">\(I\)</span>. Izjavna formula <span class="math notranslate nohighlight">\(\psi\)</span> torej res ni logično veljavna.</p>
+<div class="domacanaloga">
+<p>Poišči kakšno interpretacijo, v kateri je izjavna formula <span class="math notranslate nohighlight">\(\psi\)</span> resnična.</p>
+</div>
+</div>
+<div class="zgled">
+<p>Naj bo <span class="math notranslate nohighlight">\(R\)</span> dvomestni predikat. Opazujmo izjavno formulo</p>
+<div class="math notranslate nohighlight">
+\[\chi = \exists y \forall x \colon (R(x,y) \Leftrightarrow \lnot R(x,x)).\]</div>
+<p>Prepričajmo se, da je <span class="math notranslate nohighlight">\(\chi\)</span> protislovna izjavna formula.</p>
+<p>V ta namen moramo dokazati, da za <em>vsako</em> interpretacijo <span class="math notranslate nohighlight">\(I\)</span> velja, da je izjava <span class="math notranslate nohighlight">\(\bar \chi\)</span> lažna v <span class="math notranslate nohighlight">\(I\)</span>. Naj bo torej <span class="math notranslate nohighlight">\(I\)</span> poljubna interpretacija. Dokazati želimo veljavnost sklepa</p>
+<div class="math notranslate nohighlight">
+\[\models \lnot \left( \exists y \forall x \colon (\bar R(x,y) \Leftrightarrow \lnot \bar R(x,x)) \right).\]</div>
+<p>Ker ima zaključek obliko negacije, lahko uporabimo sklepanje s protislovjem. Predpostavimo torej, da je v interpretaciji <span class="math notranslate nohighlight">\(I\)</span> izjava <span class="math notranslate nohighlight">\(\lnot \bar \chi\)</span> lažna, se pravi da je <span class="math notranslate nohighlight">\(\bar \chi\)</span> resnična. Dokazati želimo protislovje <span class="math notranslate nohighlight">\(0\)</span>. Po predpostavki o resničnosti <span class="math notranslate nohighlight">\(\bar \chi\)</span> obstaja nek <span class="math notranslate nohighlight">\(y_0 \in D\)</span>, za da je izjava</p>
+<div class="math notranslate nohighlight">
+\[\forall x \colon (\bar R(x, y_0) \Leftrightarrow \lnot \bar R(x,x))\]</div>
+<p>resnična. Torej za vsak <span class="math notranslate nohighlight">\(x\)</span> iz <span class="math notranslate nohighlight">\(D\)</span> velja <span class="math notranslate nohighlight">\(\bar R(x, y_0) \Leftrightarrow \lnot \bar R(x,x)\)</span>. V posebnem to velja za element <span class="math notranslate nohighlight">\(y_0\)</span>, se pravi da je izjava <span class="math notranslate nohighlight">\(\bar R(x_0, y_0) \Leftrightarrow \lnot \bar R(x_0,x_0)\)</span> resnična. Ampak zadnja izjava je po izjavnem računu enakovredna <span class="math notranslate nohighlight">\(0\)</span>. Na ta način smo izpeljali, da je <span class="math notranslate nohighlight">\(0\)</span> resnična izjava. To je lažno, zato smo izpeljali <span class="math notranslate nohighlight">\(0\)</span>, kar je bil naš cilj dokazovanja s protislovjem. Izjava <span class="math notranslate nohighlight">\(\lnot \bar \chi\)</span> je torej v interpretaciji <span class="math notranslate nohighlight">\(I\)</span> resnična, kar pomeni, da <span class="math notranslate nohighlight">\(\chi\)</span> ni resnična v <span class="math notranslate nohighlight">\(I\)</span>. Ker je bila <span class="math notranslate nohighlight">\(I\)</span> poljubna interpretacija, smo se s tem prepričali, da je <span class="math notranslate nohighlight">\(\chi\)</span> protislovna izjavna formula.</p>
+</div>
+<p>Po analogiji z izjavnim računom rečemo, da sta izjavni formuli <span class="math notranslate nohighlight">\(\phi, \psi\)</span> <span class="definicija">enakovredni</span>, če je formula <span class="math notranslate nohighlight">\(\phi \Leftrightarrow \psi\)</span> logično veljavna. V tem primeru pišemo <span class="math notranslate nohighlight">\(\phi \sim \psi\)</span>.</p>
+<p>Zabeležimo nekaj pomembnih enakovrednosti, ki veljajo v predikatnem računu. Za vsaki izjavni formuli <span class="math notranslate nohighlight">\(\phi, \psi\)</span> in individualni spremenljivki <span class="math notranslate nohighlight">\(x,y\)</span> velja:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\lnot \forall x \colon \phi \sim \exists x \colon \lnot \phi\)</span>,<br />
+<span class="math notranslate nohighlight">\(\lnot \exists x \colon \phi \sim \forall x \colon \lnot \phi\)</span> (<span class="definicija">negacija kvantificirane formule</span>)</p></li>
+<li><p><span class="math notranslate nohighlight">\(\forall x \forall y \colon \phi \sim \forall y \forall x \colon \phi\)</span>,<br />
+<span class="math notranslate nohighlight">\(\exists x \exists y \colon \phi \sim \exists y \exists x \colon \phi\)</span> (<span class="definicija">komutativnost istovrstnih kvantifikatorjev</span>)</p></li>
+<li><p><span class="math notranslate nohighlight">\(\forall x \colon (\phi \land \psi) \sim \forall x \colon \psi \land \forall x \colon \psi\)</span>,<br />
+<span class="math notranslate nohighlight">\(\exists x \colon (\phi \lor \psi) \sim \exists x \colon \psi \lor \exists x \colon \psi\)</span> (<span class="definicija">distributivnost kvantifikatorjev glede na <span class="math notranslate nohighlight">\(\land, \lor\)</span></span>)</p></li>
+<li><p><span class="math notranslate nohighlight">\(\forall x \colon (\phi \lor \psi) \sim \forall x \colon \phi \lor \psi\)</span>, če <span class="math notranslate nohighlight">\(x\)</span> ne nastopa prosto v <span class="math notranslate nohighlight">\(\psi\)</span>;<br />
+<span class="math notranslate nohighlight">\(\exists x \colon (\phi \land \psi) \sim \exists x \colon \phi \land \psi\)</span>, če <span class="math notranslate nohighlight">\(x\)</span> ne nastopa prosto v <span class="math notranslate nohighlight">\(\psi\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\forall x \colon \phi \sim \phi\)</span>, če <span class="math notranslate nohighlight">\(x\)</span> ne nastopa prosto v <span class="math notranslate nohighlight">\(\phi\)</span>;<br />
+<span class="math notranslate nohighlight">\(\exists x \colon \phi \sim \phi\)</span>, če <span class="math notranslate nohighlight">\(x\)</span> ne nastopa prosto v <span class="math notranslate nohighlight">\(\phi\)</span> (<span class="definicija">opuščanje odvečnih kvantifikatorjev</span>)</p></li>
+<li><p><span class="math notranslate nohighlight">\(\forall x \colon \phi(x) \sim \forall y \colon \phi(y)\)</span>, če <span class="math notranslate nohighlight">\(y\)</span> ne nastopa v <span class="math notranslate nohighlight">\(\phi(x)\)</span> niti prosto niti vezano;<br />
+<span class="math notranslate nohighlight">\(\exists x \colon \phi(x) \sim \exists y \colon \phi(y)\)</span>, če <span class="math notranslate nohighlight">\(y\)</span> ne nastopa v <span class="math notranslate nohighlight">\(\phi(x)\)</span> niti prosto niti vezano (<span class="definicija">preimenovanje vezanih spremenljivk</span>).</p></li>
+</ul>
+<div class="zgled">
+<p>Za vsako izjavno formulo <span class="math notranslate nohighlight">\(\phi\)</span> obstaja enakovredna formula <span class="math notranslate nohighlight">\(\psi\)</span>, pri kateri stojijo vsi kvantifikatorji na začetku formule. Rečemo, da je <span class="math notranslate nohighlight">\(\psi\)</span> v <span class="definicija">preneksni obliki</span>. Kako ta transformacija deluje, si oglejmo na dveh konkretnih primerih.</p>
+<p>Opazujmo najprej izjavno formulo</p>
+<div class="math notranslate nohighlight">
+\[\lnot \forall x \exists y \colon R(x,y).\]</div>
+<p>S pomočjo negacije kvantificirane formule izpeljemo, da je ta izjavna formula enakovredna formuli</p>
+<div class="math notranslate nohighlight">
+\[\exists x \colon (\lnot \exists y \colon R(x,y))
+    \sim \exists x \forall y \colon \lnot R(x,y),\]</div>
+<p>slednja pa je v preneksni obliki.</p>
+<p>Oglejmo si zdaj še izjavno formulo</p>
+<div class="math notranslate nohighlight">
+\[\exists x \colon P(x) \land \exists x \colon Q(x).\]</div>
+<p>Spremenljivki <span class="math notranslate nohighlight">\(x\)</span> v obeh delih konjunkcije sta neodvisni, zato lahko za večjo jasnost v drugem delu to spremenljivko preimenujemo in dobimo enakovredno izjavno formulo</p>
+<div class="math notranslate nohighlight">
+\[\exists x \colon P(x) \land \exists y \colon Q(y).\]</div>
+<p>Zdaj lahko uporabimo distributivnost kvantifikatorjev glede na konjunkcijo, da dobimo</p>
+<div class="math notranslate nohighlight">
+\[\exists x \colon ( P(x) \land \exists y \colon Q(y) )
+    \sim 
+    \exists x \colon ( \exists y \colon Q(y) \land P(x) ).\]</div>
+<p>Slednja formula je enakovredna</p>
+<div class="math notranslate nohighlight">
+\[\exists x \exists y \colon (Q(y) \land P(x)),\]</div>
+<p>ki je v preneksni obliki.</p>
+</div>
+</section>
+<section id="sklepanje-v-predikatnem-racunu">
+<h2>Sklepanje v predikatnem računu<a class="headerlink" href="#sklepanje-v-predikatnem-racunu" title="Link to this heading">#</a></h2>
+<p>Končno zaporedje izjavnih formul <span class="math notranslate nohighlight">\(\phi_1, \phi_2, \dots, \phi_k, \psi\)</span> je <span class="definicija">veljaven</span> ali <span class="definicija">pravilen sklep</span>, če je izjavna formula <span class="math notranslate nohighlight">\(\phi_1 \land \phi_2 \land \cdots \land \phi_k \Rightarrow \psi\)</span> logično veljavna. V tem primeru uporabljamo oznako <span class="math notranslate nohighlight">\(\phi_1, \phi_2, \dots, \phi_k \models \psi\)</span>.</p>
+<p>Podrobno si oglejmo, kako lahko uporabimo znanje o predikatnem in izjavnem računu, da dokažemo veljavnost nekaterih sklepov.</p>
+<div class="zgled">
+<p>Dokažimo veljavnost sklepa</p>
+<div class="math notranslate nohighlight">
+\[P(a), \ \forall x \colon (P(x) \Rightarrow Q(x)) \models Q(a).\]</div>
+<p>Dokazati torej želimo, da je formula</p>
+<div class="math notranslate nohighlight">
+\[P(a) \land \forall x \colon (P(x) \Rightarrow Q(x)) \Rightarrow Q(a)\]</div>
+<p>logično veljavna.</p>
+<p>V ta namen na bo <span class="math notranslate nohighlight">\(I\)</span> <em>poljubna</em> interpretacija. Dokažimo resničnost izjave</p>
+<div class="math notranslate nohighlight">
+\[\bar P( \bar a) \land \forall x \colon (\bar P(x) \Rightarrow \bar Q(x)) \Rightarrow \bar Q(\bar a).\]</div>
+<p>Za to lahko uporabimo <em>pogojni sklep</em>. Predpostavimo, da je resnična izjava</p>
+<div class="math notranslate nohighlight">
+\[\bar P( \bar a) \land \forall x \colon (\bar P(x) \Rightarrow \bar Q(x))\]</div>
+<p>Dokazati želimo, da je resnična tudi izjava <span class="math notranslate nohighlight">\(\bar Q(\bar a)\)</span>.</p>
+<p>Najprej na predpostavki uporabimo <em>poenostavitev</em>. Resnični sta torej izjavi</p>
+<div class="math notranslate nohighlight">
+\[\bar P( \bar a), \ \forall x \colon (\bar P(x) \Rightarrow \bar Q(x)).\]</div>
+<p>Torej je za vsak <span class="math notranslate nohighlight">\(x_0 \in D\)</span> resnična izjava <span class="math notranslate nohighlight">\(P(x_0) \Rightarrow Q(x_0)\)</span>. V posebnem to velja za <span class="math notranslate nohighlight">\(x_0 = \bar a\)</span>, zato je izjava <span class="math notranslate nohighlight">\(\bar P(\bar a) \Rightarrow \bar Q(\bar a)\)</span> resnična. Ker je resnična tudi izjava <span class="math notranslate nohighlight">\(\bar P( \bar a)\)</span>, lahko uporabimo <em>modus ponens</em>. Sledi, da je resnična tudi izjava <span class="math notranslate nohighlight">\(\bar Q(\bar a)\)</span>. S tem je dokaz zaključen.</p>
+<p>Res torej velja</p>
+<div class="math notranslate nohighlight">
+\[I \models \bar P( \bar a) \land \forall x \colon (\bar P(x) \Rightarrow \bar Q(x)) \Rightarrow \bar Q(\bar a).\]</div>
+<p>Ker je bila interpretacija <span class="math notranslate nohighlight">\(I\)</span> poljubna, smo s tem dokazali veljavnost sklepa</p>
+<div class="math notranslate nohighlight">
+\[P(a), \ \forall x \colon (P(x) \Rightarrow Q(x)) \models Q(a).\]</div>
+<p>V posebnem je veljaven sklep, ki smo ga videli na začetku tega poglavja in ki nas je motiviral k definiciji predikatnega računa.</p>
+<div class="description">
+<p>Vsak zajec ljubi korenje.</p>
+<p>Feliks je zajec.</p>
+<p>Torej Feliks ljubi korenje.</p>
+</div>
+</div>
+<div class="zgled">
+<p>Dokažimo veljavnost sklepa</p>
+<div class="math notranslate nohighlight">
+\[\exists x \colon P(x), \
+    \forall x \colon (P(x) \Rightarrow \lnot Q(x) \lor \forall y \colon R(y)) \models
+    \exists x \colon (Q(x) \Rightarrow R(x)).\]</div>
+<p>V ta namen naj bo <span class="math notranslate nohighlight">\(I\)</span> <em>poljubna</em> interpretacija. Zopet lahko uporabimo pogojni sklep in predpostavimo, da sta resnični izjavi</p>
+<div class="math notranslate nohighlight">
+\[\exists x \colon \bar P(x), \
+    \forall x \colon (\bar P(x) \Rightarrow \lnot \bar Q(x) \lor \forall y \colon \bar R(y)).\]</div>
+<p>Dokazati želimo resničnost izjave <span class="math notranslate nohighlight">\(\exists x \colon (\bar Q(x) \Rightarrow \bar R(x))\)</span>, ki trdi, da obstaja element v <span class="math notranslate nohighlight">\(D\)</span> z neko posebno lastnostjo.</p>
+<p>Kako najti ta element? Uporabimo lahko prvo predpostavko, po kateri obstaja element <span class="math notranslate nohighlight">\(\bar a \in D\)</span>, da je izjava <span class="math notranslate nohighlight">\(\bar P(\bar a)\)</span> resnična. Hkrati po drugi predpostavki za vsak <span class="math notranslate nohighlight">\(x_0 \in D\)</span> velja</p>
+<div class="math notranslate nohighlight">
+\[\bar P(x_0) \Rightarrow \lnot \bar Q(x_0) \lor \forall y \colon \bar R(y).\]</div>
+<p>V posebnem to velja za <span class="math notranslate nohighlight">\(x_0 = \bar a\)</span>, zato je resnična izjava</p>
+<div class="math notranslate nohighlight">
+\[\bar P(\bar a) \Rightarrow \lnot \bar Q(\bar a) \lor \forall y \colon \bar R(y).\]</div>
+<p>Ker je po predpostavki izjava <span class="math notranslate nohighlight">\(\bar P(\bar a)\)</span> resnična, lahko uporabimo <em>modus ponens</em> in sklenemo, da je resnična tudi izjava</p>
+<div class="math notranslate nohighlight">
+\[\lnot \bar Q(\bar a) \lor \forall y \colon \bar R(y).\]</div>
+<p>Zdaj lahko uporabimo <em>analizo primerov</em>.</p>
+<ol class="arabic">
+<li><p>Predpostavimo, da je resnična izjava <span class="math notranslate nohighlight">\(\lnot \bar Q(\bar a)\)</span>. Uporabimo <em>pridružitev</em> in sklenemo, da je resnična izjava</p>
+<div class="math notranslate nohighlight">
+\[\lnot \bar Q(\bar a) \lor \bar R(\bar a) \sim \bar Q(\bar a) \Rightarrow \bar R(\bar a)\]</div>
+</li>
+<li><p>Predpostavimo, da je resnična izjava <span class="math notranslate nohighlight">\(\forall y \colon \bar R(y)\)</span>. Torej za vsak <span class="math notranslate nohighlight">\(y_0 \in D\)</span> velja <span class="math notranslate nohighlight">\(\bar R(y_0)\)</span>. V posebnem to velja za <span class="math notranslate nohighlight">\(y_0 = \bar a\)</span>. Torej je resnična izjava <span class="math notranslate nohighlight">\(\bar R(\bar a)\)</span>. Uporabimo <em>pridružitev</em> in sklenemo, da je resnična izjava</p>
+<div class="math notranslate nohighlight">
+\[\lnot \bar Q(\bar a) \lor \bar R(\bar a) \sim \bar Q(\bar a) \Rightarrow \bar R(\bar a).\]</div>
+</li>
+</ol>
+<p>Z analizo primerov smo zaključili, da je resnična izjava</p>
+<div class="math notranslate nohighlight">
+\[\bar Q(\bar a) \Rightarrow \bar R(\bar a).\]</div>
+<p>Torej je resnična tudi izjava</p>
+<div class="math notranslate nohighlight">
+\[\exists x \colon ( \bar Q(x) \Rightarrow \bar R(x) ),\]</div>
+<p>kar smo ravno želeli dokazati.</p>
+</div>
+<hr class="footnotes docutils" />
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./content"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="chapter01.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">nazaj</p>
+        <p class="prev-next-title">Izjavni račun</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="chapter03.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">naprej</p>
+        <p class="prev-next-title">Relacije</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Vsebina
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivacija">Motivacija</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sintaksa-predikatnega-racuna">Sintaksa predikatnega računa</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simboli">Simboli</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#termi">Termi</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#izjavne-formule">Izjavne formule</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#semantika-predikatnega-racuna">Semantika predikatnega računa</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logicno-veljavne-formule-in-enakovrednosti">Logično veljavne formule in enakovrednosti</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sklepanje-v-predikatnem-racunu">Sklepanje v predikatnem računu</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+Avtor Urban Jezernik
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

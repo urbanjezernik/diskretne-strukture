@@ -1,0 +1,590 @@
+
+<!DOCTYPE html>
+
+
+<html lang="sl" data-content_root="../" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Urejenosti &#8212; Teorija upodobitev</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystyle.css?v=a5ebfbfa" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=a3a20203"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/translations.js?v=852ec8ec"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"tex": {"macros": {"NN": "\\mathbf{N}", "ZZ": "\\mathbf{Z}", "QQ": "\\mathbf{Q}", "RR": "\\mathbf{R}", "CC": "\\mathbf{C}", "FF": "\\mathbf{F}", "EE": "\\mathbf{E}", "PP": "\\mathbf{P}", "HH": "\\mathbf{H}", "oneone": "\\mathbf{1}", "Fcal": "\\mathcal{F}", "conclass": "\\mathcal{C}", "image": "\\operatorname{im}", "sgn": "\\operatorname{sgn}", "Res": "\\operatorname{Res}", "Ind": "\\operatorname{Ind}", "Rep": "\\operatorname{Rep}", "mult": "\\operatorname{mult}", "Izotip": "\\operatorname{Izotip}", "MK": "\\operatorname{MK}", "tr": "\\operatorname{tr}", "Irr": "\\operatorname{Irr}", "SU": "\\mathrm{SU}", "characteristic": "\\operatorname{char}", "kk": "\\operatorname{k}", "cl": "\\operatorname{cl}", "inv": "\\operatorname{inv}", "Eigenvalues": "\\operatorname{Spec}", "Eigenspace": "\\operatorname{LP}", "fun": "\\operatorname{fun}", "HS": "\\operatorname{HS}", "St": "\\operatorname{St}", "Realpart": "\\operatorname{Re}", "Aut": "\\operatorname{Aut}", "GL": "\\operatorname{GL}", "SL": "\\operatorname{SL}", "PSL": "\\operatorname{PSL}", "U": "\\operatorname{U}", "SO": "\\operatorname{SO}", "Gal": "\\operatorname{Gal}", "Sym": "\\operatorname{Sym}", "Homeo": "\\operatorname{Homeo}", "Cay": "\\operatorname{Cay}", "Isom": "\\operatorname{Isom}", "id": "\\operatorname{id}", "supp": "\\operatorname{supp}", "End": "\\operatorname{End}", "Mat": "\\operatorname{Mat}", "Cone": "\\operatorname{Cone}", "diam": "\\operatorname{diam}", "Ad": "\\operatorname{Ad}", "imaginary": "\\operatorname{Im}", "glfrak": "\\mathfrak{gl}", "slfrak": "\\mathfrak{sl}", "sufrak": "\\mathfrak{su}", "DNO": "\\operatorname{DNO}", "KNO": "\\operatorname{KNO}", "GG": "\\mathcal{G}", "GAP": ["\\texttt{GAP}", 0], "youngsym": "\\sigma_{\\lambda}", "mat": ["\\begin{pmatrix} #1 & #2\\\\ #3 & #4 \\end{pmatrix}", 4], "abs": ["\\lvert #1 \\rvert", 1]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/chapter04';</script>
+    <script src="../_static/bs-table-wrapper.js?v=8f7ea02a"></script>
+    <script src="../_static/fix-pipe-tables.js?v=5aeff36a"></script>
+    <link rel="canonical" href="/teorija-upodobitev/content/chapter04.html" />
+    <link rel="index" title="Abecedni seznam" href="../genindex.html" />
+    <link rel="search" title="Išči" href="../search.html" />
+    <link rel="next" title="Grafi" href="chapter05.html" />
+    <link rel="prev" title="Relacije" href="chapter03.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="sl"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="light">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Diskretne strukture
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="chapter01.html">Izjavni račun</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter02.html">Predikatni račun</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter03.html">Relacije</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Urejenosti</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter05.html">Grafi</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Prenesite to stran">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/content/chapter04.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Prenesite izvorno datoteko"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Natisni v PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Celozaslonski način"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Išči" aria-label="Išči" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Urejenosti</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Vsebina </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#delna-in-linearna-urejenost">Delna in linearna urejenost</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#posebni-elementi-v-delno-urejenih-mnozicah">Posebni elementi v delno urejenih množicah</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mreza">Mreža</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <style>
+  body { counter-reset: chapter 3 izrek 0 zgled 0 domacanaloga 0
+                 lema 0 trditev 0 definicija 0 dokaz 0; }
+</style><section class="tex2jax_ignore mathjax_ignore" id="urejenosti">
+<h1>Urejenosti<a class="headerlink" href="#urejenosti" title="Link to this heading">#</a></h1>
+<p>V tem poglavju si bomo podrobneje pogledali <em>strukture urejenosti</em>. To so relacije na dani množici, ki imajo določene dodatne lastnosti, s katerimi izrazimo, da te relacije podajajo <em>ureditev</em> elementov dane množice. Glede na lastnosti razlikujemo več tipov urejenosti.</p>
+<section id="delna-in-linearna-urejenost">
+<h2>Delna in linearna urejenost<a class="headerlink" href="#delna-in-linearna-urejenost" title="Link to this heading">#</a></h2>
+<p>Naj bo <span class="math notranslate nohighlight">\(R\)</span> relacija v <span class="math notranslate nohighlight">\(A\)</span>. Rečemo, da <span class="math notranslate nohighlight">\(R\)</span> <span class="definicija">delno ureja</span> <span class="math notranslate nohighlight">\(A\)</span>, če je <span class="math notranslate nohighlight">\(R\)</span> refleksivna, antisimetrična in tranzitivna. Rečemo, da <span class="math notranslate nohighlight">\(R\)</span> <span class="definicija">linearno ureja</span> <span class="math notranslate nohighlight">\(A\)</span>, če <span class="math notranslate nohighlight">\(R\)</span> delno ureja <span class="math notranslate nohighlight">\(A\)</span> in je <span class="math notranslate nohighlight">\(R\)</span> sovisna.</p>
+<div class="zgled">
+<ul class="simple">
+<li><p>Relacija <span class="math notranslate nohighlight">\(\leq\)</span> linearno ureja realna števila <span class="math notranslate nohighlight">\(\RR\)</span>.</p></li>
+<li><p>Relacija deljivosti <span class="math notranslate nohighlight">\(|\)</span> delno ureja naravna števila <span class="math notranslate nohighlight">\(\NN\)</span>.</p></li>
+<li><p>Naj bo <span class="math notranslate nohighlight">\(A\)</span> neka množica množic, na primer <span class="math notranslate nohighlight">\(A = \{ B \mid B \subseteq \{ 1,2,\dots, 10\} \}\)</span>. Tedaj relacija <span class="math notranslate nohighlight">\(\subseteq\)</span> vsebovanosti množic delno ureja <span class="math notranslate nohighlight">\(A\)</span>.</p></li>
+</ul>
+</div>
+<p>Kadar je <span class="math notranslate nohighlight">\(R\)</span> relacija delne urejenosti, ponavadi namesto oznake <span class="math notranslate nohighlight">\(R\)</span> pišemo kar <span class="math notranslate nohighlight">\(\leq\)</span>. Formulo <span class="math notranslate nohighlight">\(x R y\)</span> torej zapišemo kot <span class="math notranslate nohighlight">\(x \leq y\)</span>, preberemo pa jo kot <em><span class="math notranslate nohighlight">\(x\)</span> je pod <span class="math notranslate nohighlight">\(y\)</span></em>.</p>
+<p>Iz vsake relacije delne urejenosti <span class="math notranslate nohighlight">\(\leq\)</span> v <span class="math notranslate nohighlight">\(A\)</span> lahko konstruiramo še dve relaciji, in sicer:</p>
+<ul>
+<li><p><span class="definicija">relacija stroge delne urejenosti</span> <span class="math notranslate nohighlight">\(&lt;\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\forall x, y \in A \colon (x &lt; y \Leftrightarrow x \leq y \land x \neq y),\]</div>
+</li>
+<li><p><span class="definicija">relacija neposrednega predhodnika</span> <span class="math notranslate nohighlight">\(&lt; \cdot\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\forall x, y \in A \colon \left( x &lt; \cdot y \Leftrightarrow x &lt; y \land \lnot \exists z \in A \colon (x &lt; z \land z &lt; y) \right).\]</div>
+</li>
+</ul>
+<p>Relacija <span class="math notranslate nohighlight">\(&lt;\)</span> je vselej irefleksivna, asimetrična in tranzitivna. Relacija <span class="math notranslate nohighlight">\(&lt; \cdot\)</span> je vselej irefleksivna, asimetrična in intranzitivna.</p>
+<p>Delno urejeno množico <span class="math notranslate nohighlight">\(A\)</span> lahko predstavimo grafično s <span class="definicija">Hassejevim diagramom</span>. Elemente množice <span class="math notranslate nohighlight">\(A\)</span> pri tem narišemo kot točke v ravnini. Če je <span class="math notranslate nohighlight">\(x &lt; y\)</span>, potem <span class="math notranslate nohighlight">\(x\)</span> narišemo niže od točke <span class="math notranslate nohighlight">\(y\)</span>. Če je <span class="math notranslate nohighlight">\(x &lt; \cdot y\)</span>, potem <span class="math notranslate nohighlight">\(x\)</span> in <span class="math notranslate nohighlight">\(y\)</span> povežemo s črto.</p>
+<div class="zgled">
+<ul>
+<li><p>Naj bo <span class="math notranslate nohighlight">\(A = \{ 1,2,\dots, 10 \}\)</span>, opremljena z relacijo deljivosti naravnih števil <span class="math notranslate nohighlight">\(|\)</span>.</p>
+<figure>
+<img src="img/relacije-hasse.png" />
+<figcaption>Hassejev diagram relacije deljivosti</figcaption>
+</figure>
+</li>
+<li><p>Naj bo <span class="math notranslate nohighlight">\(A = \{ B \mid B \subseteq \{ 1,2,3 \} \}\)</span>, opremljena z relacijo <span class="math notranslate nohighlight">\(\subseteq\)</span> vsebovanosti množic.</p>
+<figure>
+<img src="img/relacije-hasse-mnozice.png" />
+<figcaption>Hassejev diagram relacije vsebovanosti množic</figcaption>
+</figure>
+</li>
+<li><p>Naj bo <span class="math notranslate nohighlight">\(A = \{ 1,2,3,4,5 \}\)</span>, opremljena z običajno relacijo <span class="math notranslate nohighlight">\(\leq\)</span> (manjše ali enako).</p>
+<figure>
+<img src="img/relacije-hasse-linearna.png" />
+<figcaption>Hassejev diagram običajne relacije <span class="math inline">≤</span></figcaption>
+</figure>
+</li>
+</ul>
+</div>
+</section>
+<section id="posebni-elementi-v-delno-urejenih-mnozicah">
+<h2>Posebni elementi v delno urejenih množicah<a class="headerlink" href="#posebni-elementi-v-delno-urejenih-mnozicah" title="Link to this heading">#</a></h2>
+<p>Naj relacija <span class="math notranslate nohighlight">\(\leq\)</span> delno ureja množico <span class="math notranslate nohighlight">\(A\)</span>. Izpostavimo nekaj posebnih elementov množice <span class="math notranslate nohighlight">\(A\)</span> glede na to delno urejenost, in sicer tiste, ki so v Hassejevem diagramu narisani tako, da pod oziroma nad njimi ni nobenega drugega elementa ali pa so celo pod oziroma nad vsemi drugimi elementi.</p>
+<p>Naj bo <span class="math notranslate nohighlight">\(a \in A\)</span>. Rečemo, da:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(a\)</span> je <span class="definicija">minimalen</span> v <span class="math notranslate nohighlight">\(A\)</span>, če in samo če <span class="math notranslate nohighlight">\(\forall x \in A \colon (x \leq a \Rightarrow x = a)\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(a\)</span> je <span class="definicija">maksimalen</span> v <span class="math notranslate nohighlight">\(A\)</span>, če in samo če <span class="math notranslate nohighlight">\(\forall x \in A \colon (a \leq x \Rightarrow x = a)\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(a\)</span> je <span class="definicija">prvi/najmanjši</span> v <span class="math notranslate nohighlight">\(A\)</span>, če in samo če <span class="math notranslate nohighlight">\(\forall x \in A \colon a \leq x\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(a\)</span> je <span class="definicija">zadnji/največji</span> v <span class="math notranslate nohighlight">\(A\)</span>, če in samo če <span class="math notranslate nohighlight">\(\forall x \in A \colon x \leq a\)</span>.</p></li>
+</ul>
+<div class="zgled">
+<ul class="simple">
+<li><p>Naj bo <span class="math notranslate nohighlight">\(A = \{ 1, 2, \dots, 10 \}\)</span>, opremljena z relacijo deljivosti <span class="math notranslate nohighlight">\(|\)</span>. Minimalni element je <span class="math notranslate nohighlight">\(1\)</span> in to je hkrati tudi prvi element. Maksimalnih elementov je več, in sicer <span class="math notranslate nohighlight">\(7\)</span>, <span class="math notranslate nohighlight">\(10\)</span>, <span class="math notranslate nohighlight">\(9\)</span>, <span class="math notranslate nohighlight">\(6\)</span>, <span class="math notranslate nohighlight">\(8\)</span>. Zadnjih elementov pa ni.</p></li>
+<li><p>Naj bo <span class="math notranslate nohighlight">\(A = \{ B \mid B \subseteq \{ 1, 2, 3 \} \} \backslash \{ \emptyset \}\)</span>, opremljena z relacijo vsebovanosti množic <span class="math notranslate nohighlight">\(\subseteq\)</span>. Minimalni elementi so <span class="math notranslate nohighlight">\(\{ 1 \}\)</span>, <span class="math notranslate nohighlight">\(\{ 2 \}\)</span>, <span class="math notranslate nohighlight">\(\{ 3 \}\)</span>. Prvih elementov ni. Maksimalni element je <span class="math notranslate nohighlight">\(\{ 1, 2, 3 \}\)</span> in ta je hkrati zadnji.</p></li>
+<li><p>Naj bo <span class="math notranslate nohighlight">\(A = \ZZ\)</span>, opremljena z relacijo <span class="math notranslate nohighlight">\(\leq\)</span>. Tukaj ni nobenih posebnih elementov.</p></li>
+<li><p>Naj bo <span class="math notranslate nohighlight">\(A\)</span> poljubna množica, opremljena z relacijo <span class="math notranslate nohighlight">\(id_A\)</span>. Tukaj je vsak element maksimalen in vsak minimalen. Če ima <span class="math notranslate nohighlight">\(A\)</span> vsaj <span class="math notranslate nohighlight">\(2\)</span> elementa, potem ni niti prvih niti zadnjih elementov.</p></li>
+</ul>
+</div>
+<div class="trditev">
+<p>Naj bo <span class="math notranslate nohighlight">\(A\)</span> delno urejena z <span class="math notranslate nohighlight">\(\leq\)</span>.</p>
+<ol class="arabic simple">
+<li><p>Vsak prvi element je minimalen.</p></li>
+<li><p>Vsak zadnji element je maksimalen.</p></li>
+<li><p>Če v <span class="math notranslate nohighlight">\(A\)</span> obstaja prvi element, je en sam.</p></li>
+<li><p>Če v <span class="math notranslate nohighlight">\(A\)</span> obstaja zadnji element, je en sam.</p></li>
+</ol>
+</div>
+<div class="dokaz">
+<p>1. Naj bo <span class="math notranslate nohighlight">\(a \in A\)</span> prvi. Dokazujemo, da je <span class="math notranslate nohighlight">\(a\)</span> minimalen. V ta namen izberimo poljuben <span class="math notranslate nohighlight">\(x \in A\)</span>, za katerega velja <span class="math notranslate nohighlight">\(x \leq a\)</span>. Dokazati želimo, da je <span class="math notranslate nohighlight">\(x = a\)</span>. Ker je <span class="math notranslate nohighlight">\(a\)</span> prvi, velja <span class="math notranslate nohighlight">\(a \leq x\)</span>. Iz antisimetričnosti relacije <span class="math notranslate nohighlight">\(\leq\)</span> od tod sledi <span class="math notranslate nohighlight">\(x = a\)</span>.</p>
+<p>2. Naj bosta <span class="math notranslate nohighlight">\(a,b \in A\)</span> prva. Dokazati želimo, da je <span class="math notranslate nohighlight">\(a = b\)</span>. Ker je <span class="math notranslate nohighlight">\(a\)</span> prvi, velja <span class="math notranslate nohighlight">\(a \leq b\)</span>. Ker je <span class="math notranslate nohighlight">\(b\)</span> prvi, velja <span class="math notranslate nohighlight">\(b \leq a\)</span>. Iz antisimetričnosti relacije <span class="math notranslate nohighlight">\(\leq\)</span> sledi <span class="math notranslate nohighlight">\(a = b\)</span>.</p>
+</div>
+<div class="trditev">
+<p>Naj bo <span class="math notranslate nohighlight">\(A\)</span> <em>linearno</em> urejena z <span class="math notranslate nohighlight">\(\leq\)</span>.</p>
+<ol class="arabic simple">
+<li><p>Element <span class="math notranslate nohighlight">\(a \in A\)</span> je prvi, če in samo če je <span class="math notranslate nohighlight">\(a\)</span> minimalen.</p></li>
+<li><p>Element <span class="math notranslate nohighlight">\(a \in A\)</span> je zadnji, če in samo če je <span class="math notranslate nohighlight">\(a\)</span> maksimalen.</p></li>
+</ol>
+</div>
+<div class="dokaz">
+<p>1. Po prejšnji trditvi bo dovolj dokazati implikacijo <span class="math notranslate nohighlight">\((\Leftarrow)\)</span>. Naj bo torej <span class="math notranslate nohighlight">\(a \in A\)</span> minimalen. Dokazati želimo, da je <span class="math notranslate nohighlight">\(a\)</span> prvi. V ta namen izberimo poljuben <span class="math notranslate nohighlight">\(x \in A\)</span>. Dokazati želimo, da je <span class="math notranslate nohighlight">\(a \leq x\)</span>. Linearna urejenost je strogo sovisna, zato velja <span class="math notranslate nohighlight">\(a \leq x\)</span> ali <span class="math notranslate nohighlight">\(x \leq a\)</span>. Uporabimo analizo primerov.</p>
+<ul class="simple">
+<li><p>Če je <span class="math notranslate nohighlight">\(a \leq x\)</span>, potem želeno velja.</p></li>
+<li><p>Če je <span class="math notranslate nohighlight">\(x \leq a\)</span>, iz minimalnosti <span class="math notranslate nohighlight">\(a\)</span> sledi <span class="math notranslate nohighlight">\(x = a\)</span>, torej velja tudi <span class="math notranslate nohighlight">\(a \leq x\)</span>. .</p></li>
+</ul>
+</div>
+<p>Naj bo množica <span class="math notranslate nohighlight">\(A\)</span> delno urejena z relacijo <span class="math notranslate nohighlight">\(R\)</span> in naj bo <span class="math notranslate nohighlight">\(B \subseteq A\)</span> poljubna podmnožica <span class="math notranslate nohighlight">\(A\)</span>. V tem primeru lahko relacijo <span class="math notranslate nohighlight">\(R\)</span> <span class="definicija">zožimo</span> na množico <span class="math notranslate nohighlight">\(B\)</span> in dobimo relacijo</p>
+<div class="math notranslate nohighlight">
+\[R |_B = R \cap (B \times B) \subseteq B \times B\]</div>
+<p>v množici <span class="math notranslate nohighlight">\(B\)</span>. Na ta način lahko govorimo o minimalnih, maksimalnih, prvih in zadnjih elementih množice <span class="math notranslate nohighlight">\(B\)</span> glede na relacijo <span class="math notranslate nohighlight">\(R|_B\)</span>.</p>
+<ul class="simple">
+<li><p>Če ima <span class="math notranslate nohighlight">\(B\)</span> prvi element, ga imenujemo <span class="definicija">minimum</span> množice <span class="math notranslate nohighlight">\(B\)</span> in označimo z <span class="math notranslate nohighlight">\(\min B\)</span>.</p></li>
+<li><p>Če ima <span class="math notranslate nohighlight">\(B\)</span> zadnji element, ga imenujemo <span class="definicija">maksimum</span> množice <span class="math notranslate nohighlight">\(B\)</span> in označimo z <span class="math notranslate nohighlight">\(\max B\)</span>.</p></li>
+<li><p>Element <span class="math notranslate nohighlight">\(a \in A\)</span> je <span class="definicija">zgornja meja</span> za <span class="math notranslate nohighlight">\(B\)</span>, če <span class="math notranslate nohighlight">\(\forall x \in B \colon \; x \leq a\)</span>.</p></li>
+<li><p>Element <span class="math notranslate nohighlight">\(a \in A\)</span> je <span class="definicija">spodnja meja</span> za <span class="math notranslate nohighlight">\(B\)</span>, če <span class="math notranslate nohighlight">\(\forall x \in B \colon \; a \leq x\)</span>.</p></li>
+</ul>
+<div class="zgled">
+<ul class="simple">
+<li><p>Naj bo <span class="math notranslate nohighlight">\(A = \RR\)</span>, opremljena z relacijo <span class="math notranslate nohighlight">\(\leq\)</span>. Naj bo <span class="math notranslate nohighlight">\(B = (0,1)\)</span> odprti interval. Tedaj <span class="math notranslate nohighlight">\(\min B\)</span> in <span class="math notranslate nohighlight">\(\max B\)</span> ne obstajata. Vsako število <span class="math notranslate nohighlight">\(a \geq 1\)</span> je zgornja meja za <span class="math notranslate nohighlight">\(B\)</span> in vsako število <span class="math notranslate nohighlight">\(a \leq 0\)</span> je spodnja meja za <span class="math notranslate nohighlight">\(B\)</span>.</p></li>
+<li><p>Naj bo <span class="math notranslate nohighlight">\(A = \NN\)</span>, opremljena z relacijo deljivosti <span class="math notranslate nohighlight">\(|\)</span>. Naj bo <span class="math notranslate nohighlight">\(B = \{ 12, 18, 24, 72 \}\)</span>. Tedaj <span class="math notranslate nohighlight">\(\min B\)</span> ne obstaja, <span class="math notranslate nohighlight">\(\max B\)</span> pa je enak <span class="math notranslate nohighlight">\(72\)</span>. Vsako število oblike <span class="math notranslate nohighlight">\(72k\)</span> za <span class="math notranslate nohighlight">\(k \in \NN\)</span> je zgornja meja za <span class="math notranslate nohighlight">\(B\)</span>. Števila <span class="math notranslate nohighlight">\(1\)</span>,<span class="math notranslate nohighlight">\(2\)</span>,<span class="math notranslate nohighlight">\(3\)</span>,<span class="math notranslate nohighlight">\(6\)</span> so spodnje meje za <span class="math notranslate nohighlight">\(B\)</span>.</p></li>
+</ul>
+</div>
+<p>Med vsemimi zgornjimi oziroma spodnjimi mejami včasih obstajajo najmanjše oziroma največje take meje. Za te uvedemo posebno ime.</p>
+<ul>
+<li><p>Naj bo <span class="math notranslate nohighlight">\(M\)</span> množica vseh zgornjih mej za <span class="math notranslate nohighlight">\(B\)</span>, se pravi</p>
+<div class="math notranslate nohighlight">
+\[M = \{ a \in A \mid \forall x \in B \colon \; x \leq a \}.\]</div>
+<p>Če ima <span class="math notranslate nohighlight">\(M\)</span> prvi element, ga imenujemo <span class="definicija">supremum</span> ali <span class="definicija">najmanjša zgornja meja</span> množice <span class="math notranslate nohighlight">\(B\)</span> in označimo s <span class="math notranslate nohighlight">\(\sup B\)</span>.</p>
+</li>
+<li><p>Naj bo <span class="math notranslate nohighlight">\(m\)</span> množica vseh spodnjih mej za <span class="math notranslate nohighlight">\(B\)</span>, se pravi</p>
+<div class="math notranslate nohighlight">
+\[m = \{ a \in A \mid \forall x \in B \colon \; a \leq x \}.\]</div>
+<p>Če ima <span class="math notranslate nohighlight">\(m\)</span> zadnji element, ga imenujemo <span class="definicija">infimum</span> ali <span class="definicija">največja spodnja meja</span> množice <span class="math notranslate nohighlight">\(B\)</span> in označimo s <span class="math notranslate nohighlight">\(\inf B\)</span>.</p>
+</li>
+</ul>
+<div class="zgled">
+<ul class="simple">
+<li><p>Naj bo <span class="math notranslate nohighlight">\(A = \RR\)</span>, opremljena z običajno relacijo <span class="math notranslate nohighlight">\(\leq\)</span>. Naj bo <span class="math notranslate nohighlight">\(B = (0,1)\)</span>. Velja <span class="math notranslate nohighlight">\(\inf B = 0\)</span> in <span class="math notranslate nohighlight">\(\sup B = 1\)</span>.</p></li>
+<li><p>Naj bo <span class="math notranslate nohighlight">\(A = \NN\)</span>, opremljena z relacijo deljivosti <span class="math notranslate nohighlight">\(|\)</span>. Naj bo <span class="math notranslate nohighlight">\(B = \{ 12, 18, 24, 72 \}\)</span>. Tedaj je infimum <span class="math notranslate nohighlight">\(\inf B\)</span> enak največjemu skupnemu delitelju <span class="math notranslate nohighlight">\(D(12, 18, 24, 72) = 6\)</span>, supremum <span class="math notranslate nohighlight">\(\sup B\)</span> pa je enak najmanjšemu skupnemu večkratniku <span class="math notranslate nohighlight">\(v(12, 18, 24, 72) = 72\)</span>.</p></li>
+<li><p>Infimum in supremum ne obstajata vedno. Na primer, če vzamemo <span class="math notranslate nohighlight">\(A = \RR\)</span> z relacijo <span class="math notranslate nohighlight">\(\leq\)</span> in <span class="math notranslate nohighlight">\(B = \{ n \mid n \in \NN \}\)</span>, potem množica <span class="math notranslate nohighlight">\(B\)</span> nima zgornjih mej v množici <span class="math notranslate nohighlight">\(A\)</span>, torej je <span class="math notranslate nohighlight">\(M = \emptyset\)</span>. Prazna množica seveda nima prvega elementa, torej množica <span class="math notranslate nohighlight">\(B\)</span> nima supremuma.</p></li>
+</ul>
+</div>
+<p>Kadar ima množica <span class="math notranslate nohighlight">\(B\)</span> zadnji element, je ta seveda enak <span class="math notranslate nohighlight">\(\sup B\)</span>. Sorodno velja v primeru, ko ima <span class="math notranslate nohighlight">\(B\)</span> prvi element, takrat je ta enak <span class="math notranslate nohighlight">\(\inf B\)</span>.</p>
+</section>
+<section id="mreza">
+<h2>Mreža<a class="headerlink" href="#mreza" title="Link to this heading">#</a></h2>
+<p>Nazadnje si na hitro oglejmo še eno strukturo urejenosti, ki leži vmes med delno urejenostjo in linearno urejenostjo.</p>
+<p>Delno urejena množica <span class="math notranslate nohighlight">\(A\)</span> je <span class="definicija">mreža</span>, če za vsaka dva elementa <span class="math notranslate nohighlight">\(a,b \in A\)</span> obstajata <span class="math notranslate nohighlight">\(\inf \{ a, b \}\)</span> in <span class="math notranslate nohighlight">\(\sup \{ a, b \}\)</span>.</p>
+<div class="zgled">
+<ul class="simple">
+<li><p>Vsaka linearno urejena množica <span class="math notranslate nohighlight">\(A\)</span> je mreža. Res, za vsaka <span class="math notranslate nohighlight">\(a,b \in A\)</span> velja <span class="math notranslate nohighlight">\(\inf \{ a, b \} = \min \{ a,b \}\)</span> in <span class="math notranslate nohighlight">\(\sup \{ a, b \} = \max \{ a, b \}\)</span> in tako minimum kot maksimum obstajata, ker je <span class="math notranslate nohighlight">\(A\)</span> linearno urejena in zato v posebnem sovisna.</p></li>
+<li><p>Naj bo <span class="math notranslate nohighlight">\(A = \NN\)</span>, opremljena z relacijo deljivosti <span class="math notranslate nohighlight">\(|\)</span>. Ta delno urejena množica je mreža, saj za vsaka <span class="math notranslate nohighlight">\(a, b \in \NN\)</span> velja <span class="math notranslate nohighlight">\(\inf \{ a,b \} = D(a,b)\)</span> in <span class="math notranslate nohighlight">\(\sup \{ a, b \} = v(a,b)\)</span>.</p></li>
+<li><p>Naj bo <span class="math notranslate nohighlight">\(S\)</span> poljubna neprazna množica in naj bo <span class="math notranslate nohighlight">\(A\)</span> množica podmnožic <span class="math notranslate nohighlight">\(S\)</span>, se pravi <span class="math notranslate nohighlight">\(A = \{ B \mid B \subseteq S \}\)</span>, opremljena z relacijo vsebovanosti množic <span class="math notranslate nohighlight">\(\subseteq\)</span>. Ta delno urejena množica je mreža, saj za vsaki množici <span class="math notranslate nohighlight">\(B, C \in A\)</span> velja <span class="math notranslate nohighlight">\(\inf \{ B, C \} = B \cap C\)</span> in <span class="math notranslate nohighlight">\(\sup \{ B, C \} = B \cup C\)</span>.</p></li>
+<li><p>Zadnji zgled modificirajmo tako, da za množico <span class="math notranslate nohighlight">\(A\)</span> vzamemo le <em>neprazne</em> podmnožice množice <span class="math notranslate nohighlight">\(S\)</span>. To je še vedno delno urejena množica. Za različna elementa <span class="math notranslate nohighlight">\(x,y \in S\)</span> infimum <span class="math notranslate nohighlight">\(\inf \{ \{ x \}, \{ y \} \}\)</span> <em>ne</em> obstaja. To torej ni mreža.</p></li>
+</ul>
+</div>
+<p><em>Linearna urejenost</em> je torej poseben primer <em>mreže</em>, ta pa je poseben primer <em>delne urejenosti</em>.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./content"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="chapter03.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">nazaj</p>
+        <p class="prev-next-title">Relacije</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="chapter05.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">naprej</p>
+        <p class="prev-next-title">Grafi</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Vsebina
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#delna-in-linearna-urejenost">Delna in linearna urejenost</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#posebni-elementi-v-delno-urejenih-mnozicah">Posebni elementi v delno urejenih množicah</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mreza">Mreža</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+Avtor Urban Jezernik
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

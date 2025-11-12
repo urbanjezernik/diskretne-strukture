@@ -1,0 +1,1302 @@
+
+<!DOCTYPE html>
+
+
+<html lang="sl" data-content_root="../" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Izjavni račun &#8212; Teorija upodobitev</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystyle.css?v=a5ebfbfa" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=a3a20203"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/translations.js?v=852ec8ec"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"tex": {"macros": {"NN": "\\mathbf{N}", "ZZ": "\\mathbf{Z}", "QQ": "\\mathbf{Q}", "RR": "\\mathbf{R}", "CC": "\\mathbf{C}", "FF": "\\mathbf{F}", "EE": "\\mathbf{E}", "PP": "\\mathbf{P}", "HH": "\\mathbf{H}", "oneone": "\\mathbf{1}", "Fcal": "\\mathcal{F}", "conclass": "\\mathcal{C}", "image": "\\operatorname{im}", "sgn": "\\operatorname{sgn}", "Res": "\\operatorname{Res}", "Ind": "\\operatorname{Ind}", "Rep": "\\operatorname{Rep}", "mult": "\\operatorname{mult}", "Izotip": "\\operatorname{Izotip}", "MK": "\\operatorname{MK}", "tr": "\\operatorname{tr}", "Irr": "\\operatorname{Irr}", "SU": "\\mathrm{SU}", "characteristic": "\\operatorname{char}", "kk": "\\operatorname{k}", "cl": "\\operatorname{cl}", "inv": "\\operatorname{inv}", "Eigenvalues": "\\operatorname{Spec}", "Eigenspace": "\\operatorname{LP}", "fun": "\\operatorname{fun}", "HS": "\\operatorname{HS}", "St": "\\operatorname{St}", "Realpart": "\\operatorname{Re}", "Aut": "\\operatorname{Aut}", "GL": "\\operatorname{GL}", "SL": "\\operatorname{SL}", "PSL": "\\operatorname{PSL}", "U": "\\operatorname{U}", "SO": "\\operatorname{SO}", "Gal": "\\operatorname{Gal}", "Sym": "\\operatorname{Sym}", "Homeo": "\\operatorname{Homeo}", "Cay": "\\operatorname{Cay}", "Isom": "\\operatorname{Isom}", "id": "\\operatorname{id}", "supp": "\\operatorname{supp}", "End": "\\operatorname{End}", "Mat": "\\operatorname{Mat}", "Cone": "\\operatorname{Cone}", "diam": "\\operatorname{diam}", "Ad": "\\operatorname{Ad}", "imaginary": "\\operatorname{Im}", "glfrak": "\\mathfrak{gl}", "slfrak": "\\mathfrak{sl}", "sufrak": "\\mathfrak{su}", "DNO": "\\operatorname{DNO}", "KNO": "\\operatorname{KNO}", "GG": "\\mathcal{G}", "GAP": ["\\texttt{GAP}", 0], "youngsym": "\\sigma_{\\lambda}", "mat": ["\\begin{pmatrix} #1 & #2\\\\ #3 & #4 \\end{pmatrix}", 4], "abs": ["\\lvert #1 \\rvert", 1]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/chapter01';</script>
+    <script src="../_static/bs-table-wrapper.js?v=8f7ea02a"></script>
+    <script src="../_static/fix-pipe-tables.js?v=5aeff36a"></script>
+    <link rel="canonical" href="/teorija-upodobitev/content/chapter01.html" />
+    <link rel="index" title="Abecedni seznam" href="../genindex.html" />
+    <link rel="search" title="Išči" href="../search.html" />
+    <link rel="next" title="Predikatni račun" href="chapter02.html" />
+    <link rel="prev" title="Diskretne strukture" href="../intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="sl"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="light">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Diskretne strukture
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Izjavni račun</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter02.html">Predikatni račun</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter03.html">Relacije</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter04.html">Urejenosti</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter05.html">Grafi</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Prenesite to stran">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/content/chapter01.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Prenesite izvorno datoteko"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Natisni v PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Celozaslonski način"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Išči" aria-label="Išči" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Izjavni račun</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Vsebina </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#izjave-in-izjavni-vezniki">Izjave in izjavni vezniki</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#izjavni-izrazi">Izjavni izrazi</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tavtologije-in-enakovredni-izrazi">Tavtologije in enakovredni izrazi</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dno-in-kno">DNO in KNO</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sklepanje-v-izjavnem-racunu">Sklepanje v izjavnem računu</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <style>
+  body { counter-reset: chapter 0 izrek 0 zgled 0 domacanaloga 0
+                 lema 0 trditev 0 definicija 0 dokaz 0; }
+</style><section class="tex2jax_ignore mathjax_ignore" id="izjavni-racun">
+<h1>Izjavni račun<a class="headerlink" href="#izjavni-racun" title="Link to this heading">#</a></h1>
+<p>V tem poglavju si bomo pogledali, kako <em>formaliziramo</em> preproste izjave in kako <em>dokazujemo</em> njihovo veljavnost oziroma neveljavnost.</p>
+<section id="izjave-in-izjavni-vezniki">
+<h2>Izjave in izjavni vezniki<a class="headerlink" href="#izjave-in-izjavni-vezniki" title="Link to this heading">#</a></h2>
+<p><span class="definicija">Izjava</span> je poved, ki je bodisi resnična bodisi lažna.</p>
+<div class="zgled">
+<ul class="simple">
+<li><p>Ena in ena je tri. <em>Lažna izjava.</em></p></li>
+<li><p>Ena in ena je dve. <em>Resnična izjava.</em></p></li>
+<li><p>Koliko je ena in ena? <em>Ni izjava.</em></p></li>
+<li><p>Pojdimo na kavo! <em>Ni izjava.</em></p></li>
+</ul>
+</div>
+<p>Izjave lahko razdelimo na dve skupini <em>po vsebini</em>, in sicer:</p>
+<ul class="simple">
+<li><p><span class="definicija">resnične izjave</span>, ki imajo resničnostno vrednost <span class="math notranslate nohighlight">\(1\)</span> ali <span class="math notranslate nohighlight">\(\top\)</span> ali <code class="docutils literal notranslate"><span class="pre">true</span></code>,</p></li>
+<li><p><span class="definicija">lažne izjave</span>, ki imajo resničnostno vrednost <span class="math notranslate nohighlight">\(0\)</span> ali <span class="math notranslate nohighlight">\(\bot\)</span> ali <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p></li>
+</ul>
+<p>Po <em>zgradbi</em> oziroma <em>obliki</em> pa izjave razdelimo na:</p>
+<ul class="simple">
+<li><p><span class="definicija">osnovne</span>, ki ne vsebujejo izjavnih veznikov,</p></li>
+<li><p><span class="definicija">sestavljene</span>, ki vsebujejo izjavne veznike.</p></li>
+</ul>
+<div class="zgled">
+<ul class="simple">
+<li><p>Vreme je lepo. <em>Osnovna izjava.</em></p></li>
+<li><p>Špela gre v hribe. <em>Osnovna izjava.</em></p></li>
+<li><p>Vreme je lepo <em>in</em> Špela gre v hribe. <em>Sestavljena izjava.</em></p></li>
+<li><p><em>Če</em> je vreme lepo, <em>potem</em> gre Špela v hribe. <em>Sestavljena izjava.</em></p></li>
+<li><p>Špela <em>ne</em> gre v hribe. <em>Sestavljena izjava.</em></p></li>
+</ul>
+</div>
+<p>Naj bo <span class="math notranslate nohighlight">\(n \in \NN_0\)</span>. <span class="definicija">Izjavni veznik reda <span class="math notranslate nohighlight">\(n\)</span></span> (ali <span class="definicija"><span class="math notranslate nohighlight">\(n\)</span>-mestni izjavni veznik</span>) je funkcija, ki vsaki urejeni <span class="math notranslate nohighlight">\(n\)</span>-terici ničel in enic priredi vrednost <span class="math notranslate nohighlight">\(0\)</span> ali <span class="math notranslate nohighlight">\(1\)</span>.</p>
+<div class="zgled">
+<ul>
+<li><p>Primer izjavnega veznika reda <span class="math notranslate nohighlight">\(1\)</span> je <span class="definicija">negacija</span>. Simbol za ta veznik je <span class="math notranslate nohighlight">\(\lnot\)</span>. Če je <span class="math notranslate nohighlight">\(p\)</span> izjava, njeno negacijo označimo kot <span class="math notranslate nohighlight">\(\lnot p\)</span> in preberemo kot <em>ne <span class="math notranslate nohighlight">\(p\)</span></em> ali kot <em>ni res, da velja <span class="math notranslate nohighlight">\(p\)</span></em>. Negacija <span class="math notranslate nohighlight">\(1\)</span>-terici <span class="math notranslate nohighlight">\(0\)</span> priredi vrednost <span class="math notranslate nohighlight">\(1\)</span>, <span class="math notranslate nohighlight">\(1\)</span>-terici <span class="math notranslate nohighlight">\(1\)</span> pa priredi vrednost <span class="math notranslate nohighlight">\(0\)</span>.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p><span class="math notranslate nohighlight">\(p\)</span></p></th>
+<th class="head text-center"><p><span class="math notranslate nohighlight">\(\lnot p\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>0</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>1</p></td>
+<td class="text-center"><p>0</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Resničnostna tabela negacije</p>
+</li>
+<li><p>Oglejmo si nekaj pomembnih dvomestnih izjavnih veznikov. Njihovi predpisi so zbrani v tabeli.</p>
+<ul class="simple">
+<li><p><span class="definicija">Konjunkcija</span> izjav <span class="math notranslate nohighlight">\(p\)</span> in <span class="math notranslate nohighlight">\(q\)</span> ima simbol <span class="math notranslate nohighlight">\(p \land q\)</span>, kar preberemo kot <em><span class="math notranslate nohighlight">\(p\)</span> in <span class="math notranslate nohighlight">\(q\)</span></em>.</p></li>
+<li><p><span class="definicija">Disjunkcija</span> izjav <span class="math notranslate nohighlight">\(p\)</span> in <span class="math notranslate nohighlight">\(q\)</span> ima simbol <span class="math notranslate nohighlight">\(p \lor q\)</span>, kar preberemo kot <em><span class="math notranslate nohighlight">\(p\)</span> ali <span class="math notranslate nohighlight">\(q\)</span></em>.</p></li>
+<li><p><span class="definicija">Implikacija</span> izjav <span class="math notranslate nohighlight">\(p\)</span> in <span class="math notranslate nohighlight">\(q\)</span> ima simbol <span class="math notranslate nohighlight">\(p \Rightarrow q\)</span>, kar preberemo kot <em>če <span class="math notranslate nohighlight">\(p\)</span>, potem <span class="math notranslate nohighlight">\(q\)</span></em> ali kot <em>iz <span class="math notranslate nohighlight">\(p\)</span> sledi <span class="math notranslate nohighlight">\(q\)</span></em> ali kot <em><span class="math notranslate nohighlight">\(p\)</span> je zadosten pogoj za <span class="math notranslate nohighlight">\(q\)</span></em> ali <em>kot <span class="math notranslate nohighlight">\(q\)</span> je potreben pogoj za <span class="math notranslate nohighlight">\(p\)</span></em>.</p></li>
+<li><p><span class="definicija">Ekvivalenca</span> izjav <span class="math notranslate nohighlight">\(p\)</span> in <span class="math notranslate nohighlight">\(q\)</span> ima simbol <span class="math notranslate nohighlight">\(p \Leftrightarrow q\)</span>, kar preberemo kot <em><span class="math notranslate nohighlight">\(p\)</span> natanko tedaj, ko <span class="math notranslate nohighlight">\(q\)</span></em> ali kot <em><span class="math notranslate nohighlight">\(p\)</span>, če in samo če <span class="math notranslate nohighlight">\(q\)</span></em> ali kot <em><span class="math notranslate nohighlight">\(p\)</span> je ekvivalentno <span class="math notranslate nohighlight">\(q\)</span></em>.</p></li>
+</ul>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p><span class="math notranslate nohighlight">\(p\)</span></p></th>
+<th class="head text-center"><p><span class="math notranslate nohighlight">\(q\)</span></p></th>
+<th class="head text-center"><p><span class="math notranslate nohighlight">\(p \land q\)</span></p></th>
+<th class="head text-center"><p><span class="math notranslate nohighlight">\(p \lor q\)</span></p></th>
+<th class="head text-center"><p><span class="math notranslate nohighlight">\(p \Rightarrow q\)</span></p></th>
+<th class="head text-center"><p><span class="math notranslate nohighlight">\(p \Leftrightarrow q\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>1</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>1</p></td>
+<td class="text-center"><p>0</p></td>
+<td class="text-center"><p>0</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>0</p></td>
+<td class="text-center"><p>0</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>0</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>0</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>0</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>0</p></td>
+<td class="text-center"><p>0</p></td>
+<td class="text-center"><p>0</p></td>
+<td class="text-center"><p>0</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Resničnostna tabela nekaterih pomembnih dvomestnih izjavnih veznikov</p>
+</li>
+<li><p>Izjavni veznik reda <span class="math notranslate nohighlight">\(0\)</span> je funkcija iz množice urejenih <span class="math notranslate nohighlight">\(0\)</span>-teric ničel in enic. Obstaja natanko ena taka <span class="math notranslate nohighlight">\(0\)</span>-terica, in sicer <em>prazna <span class="math notranslate nohighlight">\(0\)</span>-terica</em>. Izjavni veznik reda <span class="math notranslate nohighlight">\(0\)</span> je torej natanko določen s sliko te <span class="math notranslate nohighlight">\(0\)</span>-terice, za kar imamo dve možnosti, <span class="math notranslate nohighlight">\(0\)</span> ali <span class="math notranslate nohighlight">\(1\)</span>.</p>
+<ul class="simple">
+<li><p>Izjavni veznik reda <span class="math notranslate nohighlight">\(0\)</span>, ki ima vselej resničnostno vrednost <span class="math notranslate nohighlight">\(0\)</span>, imenujemo <span class="definicija">0</span> in preberemo kot <em>lažna izjava</em>.</p></li>
+<li><p>Izjavni veznik reda <span class="math notranslate nohighlight">\(0\)</span>, ki ima vselej resničnostno vrednost <span class="math notranslate nohighlight">\(1\)</span>, imenujemo <span class="definicija">1</span> in preberemo kot <em>resnična izjava</em>.</p></li>
+</ul>
+<p>Izjavnima veznikoma reda <span class="math notranslate nohighlight">\(0\)</span> pravimo tudi <span class="definicija">izjavni konstanti</span>.</p>
+</li>
+</ul>
+</div>
+<p>Glede na zgornjo obravnavamo izjavnih veznikov redov <span class="math notranslate nohighlight">\(0\)</span>, <span class="math notranslate nohighlight">\(1\)</span> in <span class="math notranslate nohighlight">\(2\)</span> se lahko vprašamo, koliko je vseh <span class="math notranslate nohighlight">\(n\)</span>-mestnih izjavnih veznikov za poljuben <span class="math notranslate nohighlight">\(n \in \NN_0\)</span>. Vsak tak veznik je enolično določen s svojo resničnostno tabelo, v kateri zabeležimo vrednosti veznika v <span class="definicija">izjavnih spremenljivkah</span> <span class="math notranslate nohighlight">\(p_1, p_2, \dots, p_n\)</span>, kjer vsak <span class="math notranslate nohighlight">\(p_i\)</span> zavzema vrednosti <span class="math notranslate nohighlight">\(0\)</span> ali <span class="math notranslate nohighlight">\(1\)</span>.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p><span class="math notranslate nohighlight">\(p_1\)</span></p></th>
+<th class="head text-center"><p><span class="math notranslate nohighlight">\(p_1\)</span></p></th>
+<th class="head text-center"><p><span class="math notranslate nohighlight">\(\cdots\)</span></p></th>
+<th class="head text-center"><p><span class="math notranslate nohighlight">\(p_n\)</span></p></th>
+<th class="head text-center"><p>veznik(<span class="math notranslate nohighlight">\(p_1\)</span>, <span class="math notranslate nohighlight">\(p_2\)</span>, …, <span class="math notranslate nohighlight">\(p_n\)</span>)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>1</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(\cdots\)</span></p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>0 ali 1 <em>(dve možnosti)</em></p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>1</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(\cdots\)</span></p></td>
+<td class="text-center"><p>0</p></td>
+<td class="text-center"><p>0 ali 1 <em>(dve možnosti)</em></p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p><span class="math notranslate nohighlight">\(\vdots\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(\vdots\)</span></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(\vdots\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(\vdots\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>0</p></td>
+<td class="text-center"><p>0</p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(\cdots\)</span></p></td>
+<td class="text-center"><p>0</p></td>
+<td class="text-center"><p>0 ali 1 <em>(dve možnosti)</em></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Resničnostna tabela <span class="math notranslate nohighlight">\(n\)</span>-mestnega izjavnega veznika</p>
+<p>Število vseh <span class="math notranslate nohighlight">\(n\)</span>-mestnih izjavnih veznikov torej izračunamo tako, da preštejemo število vseh možnih resničnostnih tabel. Število vrstic tabele je enako <span class="math notranslate nohighlight">\(2^n\)</span>, število vseh tabel pa je zato enako <span class="math notranslate nohighlight">\(2^{2^n}\)</span>.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p><span class="math notranslate nohighlight">\(n\)</span></p></th>
+<th class="head text-center"><p><span class="math notranslate nohighlight">\(2^n\)</span></p></th>
+<th class="head text-center"><p><span class="math notranslate nohighlight">\(2^{2^n}\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>0</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>2</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>1</p></td>
+<td class="text-center"><p>2</p></td>
+<td class="text-center"><p>4</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>2</p></td>
+<td class="text-center"><p>4</p></td>
+<td class="text-center"><p>16</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>3</p></td>
+<td class="text-center"><p>8</p></td>
+<td class="text-center"><p>256</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>4</p></td>
+<td class="text-center"><p>16</p></td>
+<td class="text-center"><p>65536</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>5</p></td>
+<td class="text-center"><p>32</p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(\sim 4 \cdot 10^9\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>6</p></td>
+<td class="text-center"><p>64</p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(\sim 2 \cdot 10^{19}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Hitra rast števila <span class="math notranslate nohighlight">\(n\)</span>-mestnih izjavnih veznikov</p>
+</section>
+<section id="izjavni-izrazi">
+<h2>Izjavni izrazi<a class="headerlink" href="#izjavni-izrazi" title="Link to this heading">#</a></h2>
+<p><span class="definicija">Izjavni izraz</span> definiramo induktivno na naslednji način:</p>
+<ul class="simple">
+<li><p><em>Osnovni izraz 1:</em> Vsaka <em>izjavna konstanta</em> (torej <span class="math notranslate nohighlight">\(0\)</span> ali <span class="math notranslate nohighlight">\(1\)</span>) je izjavni izraz.</p></li>
+<li><p><em>Osnovni izraz 2:</em> Vsaka <em>izjavna spremenljivka</em> <span class="math notranslate nohighlight">\(p_1, p_2, \dots\)</span> je izjavni izraz.</p></li>
+<li><p><em>Sestavljeni izraz:</em> Če je <span class="math notranslate nohighlight">\(f\)</span> <em>izjavni veznik</em> reda <span class="math notranslate nohighlight">\(n\)</span> in so <span class="math notranslate nohighlight">\(A_1, A_2, \dots, A_n\)</span> izjavni izrazi, potem je <span class="math notranslate nohighlight">\((f(A_1,A_2,\dots,A_n))\)</span> izjavni izraz.</p></li>
+</ul>
+<p>Izjavni izrazi so torej izjave, ki jih dobimo iz <span class="math notranslate nohighlight">\(0,1\)</span> in izjavnih spremenljivk z (večkratno) uporabo izjavnih veznikov.</p>
+<div class="zgled">
+<p>Naj bodo <span class="math notranslate nohighlight">\(p,q,r\)</span> izjavne spremenljivke. Tvorimo lahko izjavne izraze <span class="math notranslate nohighlight">\((p \Rightarrow q)\)</span>, <span class="math notranslate nohighlight">\((\lnot r)\)</span>, <span class="math notranslate nohighlight">\(((p \Rightarrow q) \land (\lnot r))\)</span>, …</p>
+</div>
+<p>Pri pisanju bolj zakompliciranih izjavnih izrazov se prične pojavljati mnogo oklepajev. V izogib pisanju prevelikega števila teh oklepajev uporabljamo naslednji <span class="definicija">dogovor o prednostnem vrstnem redu veznikov</span>:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\lnot\)</span> ima prednost pred dvomestnimi vezniki,</p></li>
+<li><p>veznik iz <span class="math notranslate nohighlight">\((\land, \lor, \Rightarrow, \Leftrightarrow)\)</span> ima prednost pred vezniki desno od sebe,</p></li>
+<li><p>če isti veznik nastopi večkrat zapored, ima levi nastop prednost pred desnim,</p></li>
+<li><p>zunanji oklepaj spuščamo.</p></li>
+</ul>
+<div class="zgled">
+<ul class="simple">
+<li><p>Izjavni izraz <span class="math notranslate nohighlight">\((p \Rightarrow (q \land r))\)</span> pišemo krajše kot <span class="math notranslate nohighlight">\(p \Rightarrow q \land r\)</span>.</p></li>
+<li><p>Izraz <span class="math notranslate nohighlight">\(p \Rightarrow q \Rightarrow r \Rightarrow s\)</span> je okrajšava za izjavni izraz <span class="math notranslate nohighlight">\((((p \Rightarrow q) \Rightarrow r) \Rightarrow s)\)</span>.</p></li>
+<li><p>Izraz <span class="math notranslate nohighlight">\(p \lor \lnot q \Leftrightarrow r \Rightarrow q\)</span> je okrajšava za izjavni izraz <span class="math notranslate nohighlight">\((( p \lor (\lnot q)) \Leftrightarrow (r \Rightarrow p))\)</span>.</p></li>
+</ul>
+</div>
+<p>Izjavni izrazi vsebujejo izjavne spremenljivke, zato določajo neko resničnostno tabelo in s tem tudi nek izjavni veznik.</p>
+<div class="zgled">
+<p>Naj bodo <span class="math notranslate nohighlight">\(p,q,r\)</span> izjavne spremenljivke in naj bo <span class="math notranslate nohighlight">\(f(p,q,r) = (p \Rightarrow q) \land \lnot r\)</span> izjavni izraz. Izračunamo lahko resničnostno tabelo tega izraza in na ta način lahko na <span class="math notranslate nohighlight">\(f\)</span> gledamo kot na izjavni veznik reda <span class="math notranslate nohighlight">\(3\)</span>.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p><span class="math notranslate nohighlight">\(p\)</span></p></th>
+<th class="head text-center"><p><span class="math notranslate nohighlight">\(q\)</span></p></th>
+<th class="head text-center"><p><span class="math notranslate nohighlight">\(r\)</span></p></th>
+<th class="head text-center"><p><span class="math notranslate nohighlight">\((p \Rightarrow q) \land \lnot r\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>1</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>0</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>1</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>0</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>1</p></td>
+<td class="text-center"><p>0</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>0</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>1</p></td>
+<td class="text-center"><p>0</p></td>
+<td class="text-center"><p>0</p></td>
+<td class="text-center"><p>0</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>0</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>0</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>0</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>0</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>0</p></td>
+<td class="text-center"><p>0</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>0</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>0</p></td>
+<td class="text-center"><p>0</p></td>
+<td class="text-center"><p>0</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Resničnostna tabela izjavnega izraza <span class="math notranslate nohighlight">\((p \Rightarrow q) \land \lnot r\)</span></p>
+</div>
+</section>
+<section id="tavtologije-in-enakovredni-izrazi">
+<h2>Tavtologije in enakovredni izrazi<a class="headerlink" href="#tavtologije-in-enakovredni-izrazi" title="Link to this heading">#</a></h2>
+<p>Če je izjavni izraz <em>resničen</em> pri vseh naborih svojih izjavnih spremenljivk, mu rečemo <span class="definicija">tavtologija</span>. Če je <em>lažen</em> pri vseh naborih, mu rečemo <span class="definicija">protislovje</span>. Če ni niti tavtologija niti protislovje, je <span class="definicija">kontingenten</span>.</p>
+<div class="zgled">
+<ul>
+<li><p>Izjavna izraza <span class="math notranslate nohighlight">\(1\)</span> in <span class="math notranslate nohighlight">\(p \lor \lnot p\)</span> sta tavtologiji.</p></li>
+<li><p>Izjavna izraza <span class="math notranslate nohighlight">\(0\)</span>, <span class="math notranslate nohighlight">\(p \land \lnot p\)</span> sta protislovji.</p></li>
+<li><p>Izračunajmo resničnostne tabele izjavnih izrazov <span class="math notranslate nohighlight">\(p \Rightarrow q \Leftrightarrow \lnot p \lor q\)</span>, <span class="math notranslate nohighlight">\(p \land \lnot (q \Rightarrow p)\)</span> in <span class="math notranslate nohighlight">\(p \land (\lnot q \lor p)\)</span>.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p><span class="math notranslate nohighlight">\(p\)</span></p></th>
+<th class="head text-center"><p><span class="math notranslate nohighlight">\(q\)</span></p></th>
+<th class="head text-center"><p><span class="math notranslate nohighlight">\(p \Rightarrow q \Leftrightarrow \lnot p \lor q\)</span></p></th>
+<th class="head text-center"><p><span class="math notranslate nohighlight">\(p \land \lnot (q \Rightarrow p)\)</span></p></th>
+<th class="head text-center"><p><span class="math notranslate nohighlight">\(p \land (\lnot q \lor p)\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>1</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>0</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>1</p></td>
+<td class="text-center"><p>0</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>0</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>0</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>0</p></td>
+<td class="text-center"><p>0</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>0</p></td>
+<td class="text-center"><p>0</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>0</p></td>
+<td class="text-center"><p>0</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Resničnostne tabele treh izjavnih izrazov</p>
+<p>Vidimo, da je prvi izraz tavtologija, drugi protislovje, tretji pa kontingenten.</p>
+<div class="domacanaloga">
+<p>Prepričaj se, da je resničnostna tabela izjavnega izraza <span class="math notranslate nohighlight">\(p \land (\lnot q \lor p)\)</span> enaka resničnosti tabeli izjavnega izraza <span class="math notranslate nohighlight">\(p\)</span>. Sklepaj, da je izjava <span class="math notranslate nohighlight">\(p \land (\lnot q \lor p) \Leftrightarrow p\)</span> tavtologija. Na podoben način se prepričaj, da je izraz <span class="math notranslate nohighlight">\(p \Rightarrow q \Leftrightarrow \lnot q \Rightarrow \lnot p\)</span> tavtologija.</p>
+</div>
+</li>
+</ul>
+</div>
+<p>Naj bosta <span class="math notranslate nohighlight">\(A\)</span> in <span class="math notranslate nohighlight">\(B\)</span> izjavna izraza. Kadar je <span class="math notranslate nohighlight">\(A \Leftrightarrow B\)</span> tavtologija, tedaj rečemo, da sta izraza <span class="math notranslate nohighlight">\(A\)</span> in <span class="math notranslate nohighlight">\(B\)</span> <span class="definicija">enakovredna</span>. Z drugimi besedami, izraza <span class="math notranslate nohighlight">\(A\)</span> in <span class="math notranslate nohighlight">\(B\)</span> sta enakovrednosta, kadar imata enaka stolpca v resničnostni tabeli. V tem primeru uporabimo oznako <span class="math notranslate nohighlight">\(A \sim B\)</span>.</p>
+<div class="zgled">
+<p>Velja <span class="math notranslate nohighlight">\(p \Rightarrow q \sim \lnot p \lor q \sim \lnot q \Rightarrow \lnot p\)</span> in <span class="math notranslate nohighlight">\(p \land (\lnot q \lor p) \sim p\)</span>.</p>
+</div>
+<p>Enakovrednemu paru izjavnih izrazov <span class="math notranslate nohighlight">\(A \sim B\)</span> rečemo <span class="definicija">zakon izjavnega računa</span>. V vsakem izjavnem izrazu lahko poljuben izraz zamenjamo z enakovrednim in s tem poenostavimo izjavni izraz.</p>
+<div class="zgled">
+<p>Velja</p>
+<div class="math notranslate nohighlight">
+\[p \land (\lnot q \lor p) \Rightarrow (\lnot q \Rightarrow \lnot p) \sim
+    p \Rightarrow (p \Rightarrow q).\]</div>
+</div>
+<p>Navedimo nekaj uporabnih zakonov izjavnega računa, ki veljajo za vse izjavne izraze <span class="math notranslate nohighlight">\(A,B,C\)</span>.</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\lnot 0 \sim 1\)</span>, <span class="math notranslate nohighlight">\(\lnot 1 \sim 0\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(A \land 0 \sim 0\)</span>, <span class="math notranslate nohighlight">\(A \land 1 \sim A\)</span>, <span class="math notranslate nohighlight">\(A \lor 0 \sim A\)</span>, <span class="math notranslate nohighlight">\(A \lor 1 \sim 1\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(A \land A \sim A\)</span>, <span class="math notranslate nohighlight">\(A \lor A \sim A\)</span> (<span class="definicija">idempotentnost</span>)</p></li>
+<li><p><span class="math notranslate nohighlight">\(A \land B \sim B \land A\)</span>, <span class="math notranslate nohighlight">\(A \lor B \sim B \lor A\)</span> (<span class="definicija">komutativnost</span>)</p></li>
+<li><p><span class="math notranslate nohighlight">\(A \land (B \land C) \sim (A \land B) \land C\)</span>, <span class="math notranslate nohighlight">\(A \lor (B \lor C) \sim (A \lor B) \lor C\)</span> (<span class="definicija">asociativnost</span>)</p></li>
+<li><p><span class="math notranslate nohighlight">\(A \land (A \lor B) \sim A\)</span>, <span class="math notranslate nohighlight">\(A \lor (A \land B) \sim A\)</span> (<span class="definicija">absorpcija</span>)</p></li>
+<li><p><span class="math notranslate nohighlight">\(A \land (B \lor C) \sim (A \land B) \lor (A \land C)\)</span>, <span class="math notranslate nohighlight">\(A \lor (B \land C) \sim (A \lor B) \land (A \lor C)\)</span> (<span class="definicija">distributivnost</span>)</p></li>
+<li><p><span class="math notranslate nohighlight">\(\lnot \lnot A \sim A\)</span> (<span class="definicija">dvojna negacija</span>)</p></li>
+<li><p><span class="math notranslate nohighlight">\(\lnot (A \land B) \sim \lnot A \lor \lnot B\)</span>, <span class="math notranslate nohighlight">\(\lnot (A \lor B) \sim \lnot A \land \lnot B\)</span> (<span class="definicija">De Morganova zakona</span>)</p></li>
+<li><p><span class="math notranslate nohighlight">\(A \Rightarrow B \sim \lnot B \Rightarrow \lnot A\)</span> (<span class="definicija">kontrapozicija</span>), <span class="math notranslate nohighlight">\(A \Rightarrow B \sim \lnot A \lor B\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(A \Leftrightarrow B \sim (A \Rightarrow B) \land (B \Rightarrow A)\)</span></p></li>
+</ul>
+<div class="zgled">
+<p>Izjavni izraz iz zadnjega zgleda lahko z naštetimi zakoni poenostavimo do</p>
+<div class="math notranslate nohighlight">
+\[p \Rightarrow (p \Rightarrow q) \sim
+    \lnot p \lor (\lnot p \lor q) \sim
+    (\lnot p \lor \lnot p) \lor q \sim
+    \lnot p \lor q \sim
+    p \Rightarrow q.\]</div>
+</div>
+</section>
+<section id="dno-in-kno">
+<h2>DNO in KNO<a class="headerlink" href="#dno-in-kno" title="Link to this heading">#</a></h2>
+<p>Do sedaj smo govorili o tem, kako za dan izjavni izraz določimo njegovo resničnostno tabelo. V tem razdelku si bomo zastavili obratno nalogo. Recimo, da je dana resničnostna tabela nekega kontingentnega izjavnega izraza <span class="math notranslate nohighlight">\(A\)</span>. Pokazali bomo, da lahko zgolj z uporabo izjavnih veznikov <span class="math notranslate nohighlight">\(\lnot\)</span>, <span class="math notranslate nohighlight">\(\land\)</span>, <span class="math notranslate nohighlight">\(\lor\)</span> sestavimo izjavni izraz <span class="math notranslate nohighlight">\(D\)</span>, tako da bo <span class="math notranslate nohighlight">\(A \sim D\)</span>. Za začetek si oglejmo, kako to naredimo na enem konkretnem primeru.</p>
+<div class="zgled">
+<p>Naj bo izjavni izraz <span class="math notranslate nohighlight">\(A\)</span> dan z resničnostno tabelo <span class="math notranslate nohighlight">\(T\)</span>.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p><span class="math notranslate nohighlight">\(p\)</span></p></th>
+<th class="head text-center"><p><span class="math notranslate nohighlight">\(q\)</span></p></th>
+<th class="head text-center"><p><span class="math notranslate nohighlight">\(r\)</span></p></th>
+<th class="head text-center"><p><span class="math notranslate nohighlight">\(A\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>1</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>0</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>1</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>0</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>1</p></td>
+<td class="text-center"><p>0</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>0</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>1</p></td>
+<td class="text-center"><p>0</p></td>
+<td class="text-center"><p>0</p></td>
+<td class="text-center"><p>0</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>0</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>0</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>0</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>0</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>0</p></td>
+<td class="text-center"><p>0</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>0</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>0</p></td>
+<td class="text-center"><p>0</p></td>
+<td class="text-center"><p>0</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Resničnostna tabela <span class="math notranslate nohighlight">\(T\)</span> izjavnega izraza <span class="math notranslate nohighlight">\(A\)</span></p>
+<p>Iskani izjavni izraz <span class="math notranslate nohighlight">\(D\)</span> mora biti resničen natanko v 2., 6. in 8. vrstici tabele <span class="math notranslate nohighlight">\(T\)</span>. To je res natanko tedaj, ko velja <span class="math notranslate nohighlight">\(p \land q \land \lnot r\)</span> ali <span class="math notranslate nohighlight">\(\lnot p \land q \land \lnot r\)</span> ali <span class="math notranslate nohighlight">\(\lnot p \land \lnot q \land \lnot r\)</span>. Torej lahko vzamemo preprosto</p>
+<div class="math notranslate nohighlight">
+\[D = (p \land q \land \lnot r) \lor (\lnot p \land q \land \lnot r) \lor (\lnot p \land \lnot q \land \lnot r)\]</div>
+<p>in res velja <span class="math notranslate nohighlight">\(D \sim A\)</span>. Dobljeni izjavni izraz <span class="math notranslate nohighlight">\(D\)</span> lahko še nekoliko poenostavimo.</p>
+<div class="domacanaloga">
+<p>Z uporabo zakonov izjavnega računa se prepričaj, da velja <span class="math notranslate nohighlight">\(D \sim \lnot (p \Rightarrow q \Rightarrow r)\)</span>.</p>
+</div>
+</div>
+<p>Naj bo zdaj <span class="math notranslate nohighlight">\(A\)</span> poljuben kontingenten izjavni izraz in <span class="math notranslate nohighlight">\(T\)</span> njegova resničnostna tabela. <span class="definicija">Disjunktivna normalna oblika</span> izraza <span class="math notranslate nohighlight">\(A\)</span> je disjunkcija <em>osnovnih konjunkcij</em> tistih vrstic, kjer je <span class="math notranslate nohighlight">\(A\)</span> resničen. Pri tem je osnovna konjunkcija neke vrstice konjunkcija tistih izjavnih spremenljivk, ki so v tej vrstici resnične, in negacij tistih izjavnih spremenljivk, ki so v tej vrstici lažne. Disjunktivno normalno obliko izraza <span class="math notranslate nohighlight">\(A\)</span> krajše pišemo kot <span class="math notranslate nohighlight">\(\DNO(A)\)</span>.</p>
+<div class="zgled">
+<p>V zadnjem zgledu je <span class="math notranslate nohighlight">\(\DNO(A) = D\)</span>.</p>
+</div>
+<p>Disjunktivna normalna oblika <span class="math notranslate nohighlight">\(\DNO(A)\)</span> je izjavni izraz, ki je zapisan le z uporabo izjavnih veznikov <span class="math notranslate nohighlight">\(\lnot\)</span>, <span class="math notranslate nohighlight">\(\land\)</span>, <span class="math notranslate nohighlight">\(\lor\)</span>. Preverimo še, da je ta izraz res enakovreden začetnemu izrazu <span class="math notranslate nohighlight">\(A\)</span>.</p>
+<div class="trditev">
+<p>Naj bo <span class="math notranslate nohighlight">\(A\)</span> kontingenten izraz. Potem je <span class="math notranslate nohighlight">\(A \sim \DNO(A)\)</span>.</p>
+</div>
+<div class="dokaz">
+<p>Naj bo <span class="math notranslate nohighlight">\(T\)</span> resničnostna tabela izraza <span class="math notranslate nohighlight">\(A\)</span>. Naj bo <span class="math notranslate nohighlight">\(i\)</span> poljubna vrstica <span class="math notranslate nohighlight">\(T\)</span>. Dokazati želimo, da imata <span class="math notranslate nohighlight">\(T\)</span> in <span class="math notranslate nohighlight">\(\DNO(A)\)</span> v tej vrstici enako resničnostno vrednost.</p>
+<p>Če je <span class="math notranslate nohighlight">\(A\)</span> resničen v vrstici <span class="math notranslate nohighlight">\(i\)</span>:<br />
+Po definiciji disjunktivne normalne oblike je <span class="math notranslate nohighlight">\(\DNO(A)\)</span> disjunkcija osnovnih konjunkcij vrstic <span class="math notranslate nohighlight">\(T\)</span>. V posebnem osnovna konjunkcija vrstice <span class="math notranslate nohighlight">\(i\)</span> nastopa v <span class="math notranslate nohighlight">\(\DNO(A)\)</span>. Ta osnovna konjunkcija je v vrstici <span class="math notranslate nohighlight">\(i\)</span> resnična, zato je resnična tudi disjunkcija <span class="math notranslate nohighlight">\(\DNO(A)\)</span>.</p>
+<p>Če je <span class="math notranslate nohighlight">\(\DNO(A)\)</span> resničen v vrstici <span class="math notranslate nohighlight">\(i\)</span>:<br />
+V tem primeru mora biti resničen vsaj en člen disjunkcije <span class="math notranslate nohighlight">\(\DNO(A)\)</span>, torej mora biti v vrstici <span class="math notranslate nohighlight">\(i\)</span> resnična osnovna konjunkcija neke vrstice <span class="math notranslate nohighlight">\(j\)</span>. Osnovna konjunkcija vrstice <span class="math notranslate nohighlight">\(j\)</span> je izraz, ki je v vrstici <span class="math notranslate nohighlight">\(j\)</span> resničen, v vseh ostalih vrsticah pa lažen. Od tod sledi, da je <span class="math notranslate nohighlight">\(i = j\)</span>. Torej <span class="math notranslate nohighlight">\(\DNO(A)\)</span> vsebuje osnovno konjunkcijo vrstice <span class="math notranslate nohighlight">\(i\)</span>, zato je <span class="math notranslate nohighlight">\(A\)</span> resničen v vrstici <span class="math notranslate nohighlight">\(i\)</span>.</p>
+<p>Res imata torej <span class="math notranslate nohighlight">\(T\)</span> in <span class="math notranslate nohighlight">\(\DNO(A)\)</span> enake resničnostne vrednosti, torej sta <span class="math notranslate nohighlight">\(A\)</span> in <span class="math notranslate nohighlight">\(\DNO(A)\)</span> enakovredna.</p>
+</div>
+<p>V sestavljanju disjunktivne normalne oblike smo opazovali vrstice, kjer je dan izjavni izraz <span class="math notranslate nohighlight">\(A\)</span> resničen. Analogno bi lahko opazovali vrstice, kjer je izraz <span class="math notranslate nohighlight">\(A\)</span> lažen, in sestavili izjavni izraz, ki bo <em>lažen</em> natanko v vrsticah, v katerih je <span class="math notranslate nohighlight">\(A\)</span> lažen. Na primeru pojasnimo, kako lahko na ta način dobimo alternativen izjavni izraz, ki je zopet izražen le z vezniki <span class="math notranslate nohighlight">\(\lnot\)</span>, <span class="math notranslate nohighlight">\(\land\)</span>, <span class="math notranslate nohighlight">\(\lor\)</span> in je enakovreden izrazu <span class="math notranslate nohighlight">\(A\)</span>.</p>
+<div class="zgled">
+<p>Naj bo <span class="math notranslate nohighlight">\(T\)</span> resničnostna tabela izjavnega izraza <span class="math notranslate nohighlight">\(A\)</span> iz predzadnjega zgleda. Ta tabela je lažna v vrsticah <span class="math notranslate nohighlight">\(1,3,4,5,7\)</span>. Sestavimo izjavni izraz <span class="math notranslate nohighlight">\(K\)</span>, ki bo lažen natanko v teh vrsticah. To je enakovredno zahtevi, da je <span class="math notranslate nohighlight">\(K\)</span> resničen natanko tedaj, ko nismo v nobeni od vrstic <span class="math notranslate nohighlight">\(1,3,4,5,7\)</span>. Slednjo zahtevo lahko izrazimo kot konjunkcijo <em>osnovnih disjunkcij</em> vrstic <span class="math notranslate nohighlight">\(1,3,4,5,7\)</span>, se pravi kot</p>
+<div class="math notranslate nohighlight">
+\[K = 
+    (\lnot p \lor \lnot q \lor \lnot r) \land
+    (\lnot p \lor q \lor \lnot r) \land
+    (\lnot p \lor q \lor r) \land
+    (o \lor \lnot q \lor \lnot r) \land
+    (p \lor q \lor \lnot r).\]</div>
+<p>Tako sestavljenemu izravnemu izrazu <span class="math notranslate nohighlight">\(K\)</span> pravimo <span class="definicija">konjunktivna normalna oblika</span> izraza <span class="math notranslate nohighlight">\(A\)</span>, krajše <span class="math notranslate nohighlight">\(\KNO(A)\)</span>. Sorodno kot za disjunktivno normalno obliko se prepričamo, da velja <span class="math notranslate nohighlight">\(\KNO(A) \sim A\)</span>.</p>
+</div>
+</section>
+<section id="sklepanje-v-izjavnem-racunu">
+<h2>Sklepanje v izjavnem računu<a class="headerlink" href="#sklepanje-v-izjavnem-racunu" title="Link to this heading">#</a></h2>
+<p><span class="definicija">Sklep</span> je končno zaporedje izjav <span class="math notranslate nohighlight">\(p_1, p_2, \dots, p_k, z\)</span>. Pri tem izjavam <span class="math notranslate nohighlight">\(p_1, p_2, \dots, p_k\)</span> pravimo <span class="definicija">predpostavke</span>, izjavi <span class="math notranslate nohighlight">\(z\)</span> pa <span class="definicija">zaključek</span>.</p>
+<div class="zgled">
+<p>Opazujmo naslednje zaporedje izjav.</p>
+<p><span class="math notranslate nohighlight">\(p_1\)</span>:<br />
+Če je ta žival ptič, potem ima krila.</p>
+<p><span class="math notranslate nohighlight">\(p_2\)</span>:<br />
+Ta žival nima kril.</p>
+<p><span class="math notranslate nohighlight">\(z\)</span>:<br />
+Ta žival ni ptič.</p>
+<p>Imamo torej sklep <span class="math notranslate nohighlight">\(p_1, p_2, z\)</span>. Ta sklep lahko zapišemo nekoliko bolj natančno z upoštevanjem sestavljene strukture izjav v sklepu. Uvedimo izjavi <span class="math notranslate nohighlight">\(p\)</span> in <span class="math notranslate nohighlight">\(q\)</span> kot:</p>
+<p><span class="math notranslate nohighlight">\(p\)</span>:<br />
+Ta žival je ptič.</p>
+<p><span class="math notranslate nohighlight">\(q\)</span>:<br />
+Ta žival ima krila.</p>
+<p>Sklep <span class="math notranslate nohighlight">\(p_1, p_2, z\)</span> lahko torej zapišemo v obliki <span class="math notranslate nohighlight">\(p \Rightarrow q, \ \lnot q, \ \lnot p\)</span>.</p>
+</div>
+<p>Zaporedje izjavnih izrazov <span class="math notranslate nohighlight">\(A_1, A_2, \dots, A_k, B\)</span> je <span class="definicija">pravilen sklep</span> (rekli bomo tudi <span class="definicija">veljaven sklep</span>), če je zaključek <span class="math notranslate nohighlight">\(B\)</span> resničen pri vseh tistih naborih izjavnih spremenljivk, pri katerih so resnične vse predpostavke <span class="math notranslate nohighlight">\(A_1, A_2, \dots, A_k\)</span>. V tem primeru pišemo <span class="math notranslate nohighlight">\(A_1, A_2, \dots, A_k \models B\)</span>.</p>
+<div class="zgled">
+<p>Sklep iz zadnjega zgleda smo zapisali v obliki <span class="math notranslate nohighlight">\(p \Rightarrow q, \ \lnot q, \ \lnot p\)</span>. Če pri tem gledamo na <span class="math notranslate nohighlight">\(p\)</span> in <span class="math notranslate nohighlight">\(q\)</span> kot na izjavni spremenljivki (in ne kot oznaki za konkretne izjave), se lahko vprašamo o veljavnosti sklepa. V ta namen sestavimo resničnostno tabelo vseh izjavnih izrazov v sklepu.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p><span class="math notranslate nohighlight">\(p\)</span></p></th>
+<th class="head text-center"><p><span class="math notranslate nohighlight">\(q\)</span></p></th>
+<th class="head text-center"><p><span class="math notranslate nohighlight">\(p \Rightarrow q\)</span></p></th>
+<th class="head text-center"><p><span class="math notranslate nohighlight">\(\lnot q\)</span></p></th>
+<th class="head text-center"><p><span class="math notranslate nohighlight">\(\lnot p\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>1</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>0</p></td>
+<td class="text-center"><p>0</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>1</p></td>
+<td class="text-center"><p>0</p></td>
+<td class="text-center"><p>0</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>0</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>0</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>0</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>0</p></td>
+<td class="text-center"><p>0</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Resničnostna tabela sklepa <span class="math notranslate nohighlight">\(p \Rightarrow q, \ \lnot q \models \lnot p\)</span></p>
+<p>Edini nabor izjavnih spremenljivk, pri katerih sta resnični obe predpostavki sklepa, je nabor <span class="math notranslate nohighlight">\((p,q)=(0,0)\)</span>. Pri tem naboru je resničen tudi zaključek sklepa. Sklep je torej veljaven, se pravi <span class="math notranslate nohighlight">\(p \Rightarrow q, \ \lnot q \models \lnot p\)</span>.</p>
+</div>
+<p>Zabeležimo nekaj pomembnih veljavnih sklepov, ki jim pravimo <span class="definicija">osnovna pravila sklepanja</span>.</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(A, \ A \Rightarrow B \models B\)</span> (<span class="definicija">modus ponens (MP)</span>)</p></li>
+<li><p><span class="math notranslate nohighlight">\(A \Rightarrow B, \ \lnot B \models \lnot A\)</span> (<span class="definicija">modus tollens (MT)</span>)</p></li>
+<li><p><span class="math notranslate nohighlight">\(A \lor B, \ \lnot B \models A\)</span> (<span class="definicija">disjunktivni silogizem (DS)</span>)</p></li>
+<li><p><span class="math notranslate nohighlight">\(A \Rightarrow B, \ B \Rightarrow C \models A \Rightarrow C\)</span> (<span class="definicija">hipotetični silogizem (HS)</span>)</p></li>
+<li><p><span class="math notranslate nohighlight">\(A \land B \models A\)</span> (<span class="definicija">poenostavitev (Po)</span>)</p></li>
+<li><p><span class="math notranslate nohighlight">\(A, \ B \models A \land B\)</span> (<span class="definicija">združitev (Zd)</span>)</p></li>
+<li><p><span class="math notranslate nohighlight">\(A \models A \lor B\)</span> (<span class="definicija">pridružitev (Pr)</span>)</p></li>
+</ul>
+<p>Drugo od teh pravil smo spoznali v zadnjem zgledu in se tudi prepričali o veljavnosti. Na podoben način preverimo veljavnosti preostalih.</p>
+<p>Pri večjem številu izjavnih spremenljivk je lahko preverjanje veljavnosti sklepa z resničnostno tabelo precej zamudno.</p>
+<div class="zgled">
+<p>Ali je sklep</p>
+<div class="math notranslate nohighlight">
+\[p \Rightarrow q, \ p \lor r, \ q \Rightarrow s, \ r \Rightarrow t, \ \lnot s \models t\]</div>
+<p>veljaven? Ta sklep vsebuje <span class="math notranslate nohighlight">\(5\)</span> izjavnih spremenljivk, zato bi za preverjanje veljavnosti morali sestaviti resničnostno tabelo z <span class="math notranslate nohighlight">\(2^5 = 32\)</span> vrsticami.</p>
+</div>
+<p>V takih primerih si lahko pomagamo z naslednjim alternativnim načinom preverjanja veljavnosti sklepa.</p>
+<div class="izrek">
+<p>Naj bodo <span class="math notranslate nohighlight">\(A_1, A_2, \dots, A_k\)</span> izjavni izrazi. Če obstaja zaporedje izjavnih izrazov <span class="math notranslate nohighlight">\(B_1, B_2, \dots, B_n\)</span>, tako da za vsak <span class="math notranslate nohighlight">\(i = 1, 2, \dots, n\)</span> velja vsaj ena od možnosti:</p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(B_i\)</span> je eden on <span class="math notranslate nohighlight">\(A_1, A_2, \dots, A_k\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(B_i\)</span> je tavtologija,</p></li>
+<li><p><span class="math notranslate nohighlight">\(B_i \sim B_j\)</span> za nek <span class="math notranslate nohighlight">\(j &lt; i\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(B_i\)</span> logično sledi iz <span class="math notranslate nohighlight">\(B_1, B_2, \dots, B_{i-1}\)</span> po enem od osnovnih pravil sklepanja,</p></li>
+</ol>
+<p>potem velja <span class="math notranslate nohighlight">\(A_1, A_2, \dots, A_k \models B_n\)</span>.</p>
+</div>
+<div class="dokaz">
+<p>Dokazujemo z indukcijo na <span class="math notranslate nohighlight">\(n\)</span>.</p>
+<p>Baza indukcije je <span class="math notranslate nohighlight">\(n = 1\)</span>. V tem primeru je po predpostavki izjavni izraz <span class="math notranslate nohighlight">\(B_1\)</span> lahko le eden od <span class="math notranslate nohighlight">\(A_1, A_2, \dots, A_k\)</span> ali tavtologija. V vsakem od teh primerov velja <span class="math notranslate nohighlight">\(A_1, A_2, \dots, A_k \models B_n\)</span>.</p>
+<p>Predpostavimo zdaj, da trditev že velja za <span class="math notranslate nohighlight">\(1, 2, \dots, n-1\)</span> in dokažimo veljavnost za <span class="math notranslate nohighlight">\(n\)</span>. Drži torej <span class="math notranslate nohighlight">\(A_1, A_2, \dots, A_k \models B_j\)</span> za vsak <span class="math notranslate nohighlight">\(j = 1, 2, \dots, n-1\)</span>. Obravnavajmo različne možnosti glede na to, katera od predpostavk velja za <span class="math notranslate nohighlight">\(B_n\)</span>.</p>
+<ol class="arabic simple">
+<li><p>Če je <span class="math notranslate nohighlight">\(B_n\)</span> eden od <span class="math notranslate nohighlight">\(A_1, A_2, \dots, A_k\)</span>, potem velja <span class="math notranslate nohighlight">\(A_1, A_2, \dots, A_k \models B_n\)</span>.</p></li>
+<li><p>Če je <span class="math notranslate nohighlight">\(B_n\)</span> tavtologija, potem velja <span class="math notranslate nohighlight">\(A_1, A_2, \dots, A_k \models B_n\)</span>.</p></li>
+<li><p>Če je <span class="math notranslate nohighlight">\(B_n \sim B_j\)</span> za nek <span class="math notranslate nohighlight">\(j &lt; n\)</span>, potem po indukcijski predpostavki <span class="math notranslate nohighlight">\(A_1, A_2, \dots, A_k \models B_j\)</span> velja <span class="math notranslate nohighlight">\(A_1, A_2, \dots, A_k \models B_n\)</span>.</p></li>
+<li><p>Naj nazadnje <span class="math notranslate nohighlight">\(B_n\)</span> logično sledi iz <span class="math notranslate nohighlight">\(B_1, B_2, \dots, B_{n-1}\)</span>. Ker vsak <span class="math notranslate nohighlight">\(B_j\)</span> za <span class="math notranslate nohighlight">\(j &lt; n\)</span> logično sledi iz <span class="math notranslate nohighlight">\(A_1, A_2, \dots, A_k\)</span>, velja tudi <span class="math notranslate nohighlight">\(A_1, A_2, \dots, A_k \models B_n\)</span>.</p></li>
+</ol>
+</div>
+<div class="zgled">
+<p>S pomočjo izreka o naravni dedukciji utemeljimo veljavnost sklepa iz zadnjega zgleda.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p><span class="math notranslate nohighlight">\(i\)</span></p></th>
+<th class="head text-left"><p><span class="math notranslate nohighlight">\(B_i\)</span></p></th>
+<th class="head text-left"><p>utemeljitev</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>1</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(p \Rightarrow q\)</span></p></td>
+<td class="text-left"><p>predpostavka</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>2</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(p \lor r\)</span></p></td>
+<td class="text-left"><p>predpostavka</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>3</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(q \Rightarrow s\)</span></p></td>
+<td class="text-left"><p>predpostavka</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>4</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(r \Rightarrow t\)</span></p></td>
+<td class="text-left"><p>predpostavka</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>5</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\lnot s\)</span></p></td>
+<td class="text-left"><p>predpostavka</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>6</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(p \Rightarrow s\)</span></p></td>
+<td class="text-left"><p>HS(1,3)</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>7</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\lnot p\)</span></p></td>
+<td class="text-left"><p>MT(6,5)</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>8</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(r \lor p\)</span></p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\sim\)</span> 2</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>9</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(r\)</span></p></td>
+<td class="text-left"><p>DS(8,7)</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>10</p></td>
+<td class="text-left"><p><u><span class="math notranslate nohighlight">\(t\)</span></u></p></td>
+<td class="text-left"><p>MP(9,4)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Uporaba naravne dedukcije za dokazovanje veljavnosti sklepa</p>
+</div>
+<p>Do zdaj smo se ukvarjali z dokazovanjem veljavnosti danega sklepa. Oglejmo si še, kako pokažemo, da sklep <em>ni</em> veljaven. Namesto tega, da sestavimo resničnostno tabelo vseh izjavnih izrazov v sklepu, lahko preprosteje pokažemo le na tisto vrstico resničnoste tabele, ki opazi neveljavnost sklepa. To pomeni, da poiščemo nek nabor vrednosti izjavnih spremenljivk, pri katerem so vse predpostavke resnične, zaključek pa je lažen. Takemu naboru rečemo <span class="definicija">protiprimer</span>.</p>
+<div class="zgled">
+<p>Opazujmo naslednji sklep.</p>
+<p><span class="math notranslate nohighlight">\(p_1\)</span>:<br />
+Ta žival ima krila ali pa ni ptič.</p>
+<p><span class="math notranslate nohighlight">\(p_2\)</span>:<br />
+Če je ta žival pritč, potem leže jajca.</p>
+<p><span class="math notranslate nohighlight">\(p_3\)</span>:<br />
+Ta žival nima kril.</p>
+<p><span class="math notranslate nohighlight">\(z\)</span>:<br />
+Torej ta žival ne leže jajc.</p>
+<p>Ta sklep lahko zapišemo nekoliko bolj natančno, če uvedemo izjave <span class="math notranslate nohighlight">\(p,q,r\)</span> kot:</p>
+<p><span class="math notranslate nohighlight">\(p\)</span>:<br />
+Ta žival ima krila.</p>
+<p><span class="math notranslate nohighlight">\(q\)</span>:<br />
+Ta žival je ptič.</p>
+<p><span class="math notranslate nohighlight">\(r\)</span>:<br />
+Ta žival leže jajca.</p>
+<p>Sklep lahko torej zapišemo na naslednji način:</p>
+<div class="math notranslate nohighlight">
+\[p \lor \lnot q, \ q \Rightarrow r, \ \lnot p \models \lnot r.\]</div>
+<p>Poiščimo protiprimer. Želimo, da so resnične vse predpostavke, zaključek pa lažen. Vzeti moramo torej <span class="math notranslate nohighlight">\(r = 1\)</span> in <span class="math notranslate nohighlight">\(p = 0\)</span>, od koder iz prve predpostavke dobimo še <span class="math notranslate nohighlight">\(q = 0\)</span>. S to izbiro je tudi druga predpostavka resnična. Nabor <span class="math notranslate nohighlight">\(p = 0, q = 0, r = 1\)</span> je torej protiprimer, ki opazi, da sklep ni pravilen.</p>
+<p>Če to prevedemo nazaj v človeški jezik, protiprimer torej predstavlja žival, ki nima kril, ni ptič in leže jajca. Konkretna taka žival je na primer kača ali krokodil.</p>
+</div>
+<p>Pri dokazovanju bolj kompleksnih sklepov si lahko včasih pomagamo tudi s kakšnimi <span class="definicija">pomožnimi sklepi</span>. Pogledali si bomo tri take osnovne pomožne sklepe, in sicer pogojni sklep, sklepanje s protislovjem in analiza primerov. Vse te pomožne sklepe bomo izpeljali s pomočjo naslednje trditve.</p>
+<div class="trditev">
+<p>Velja <span class="math notranslate nohighlight">\(A_1, A_2, \dots, A_k \models B\)</span>, če in samo če je <span class="math notranslate nohighlight">\(A_1 \land A_2 \land \dots \land A_k \Rightarrow B\)</span> tavtologija.</p>
+</div>
+<div class="dokaz">
+<p>Predpostavimo najprej, da velja <span class="math notranslate nohighlight">\(A_1, A_2, \dots, A_k \models B\)</span>. Če je <span class="math notranslate nohighlight">\(A_1 \land A_2 \land \cdots \land A_k\)</span> resnična izjava, potem so resnične vse izjave <span class="math notranslate nohighlight">\(A_i\)</span> za <span class="math notranslate nohighlight">\(i = 1,2, \dots, k\)</span>, torej so vse predpostavke <span class="math notranslate nohighlight">\(A_1, A_2, \dots, A_k\)</span> resnične. Od tod sledi, da je resničen tudi zaključek <span class="math notranslate nohighlight">\(B\)</span>. Torej je <span class="math notranslate nohighlight">\(A_1 \land A_2 \land \cdot \land A_k \Rightarrow B\)</span> tavtologija.</p>
+<p>Predpostavimo sedaj, da je <span class="math notranslate nohighlight">\(A_1 \land A_2 \land \cdot \land A_k \Rightarrow B\)</span> tavtologija. Dokazati želimo veljavnost sklepa <span class="math notranslate nohighlight">\(A_1, A_2, \dots, A_k \models B\)</span>. Predpostavimo torej, da so resnične vse predpostavke <span class="math notranslate nohighlight">\(A_1, A_2, \dots, A_k\)</span>. Potem je resnična tudi njihova konjunkcija <span class="math notranslate nohighlight">\(A_1 \land A_2 \land \cdots \land A_k\)</span>. Iz predpostavke od tod sledi, da mora biti resnična tudi izjava <span class="math notranslate nohighlight">\(B\)</span>. Sklep <span class="math notranslate nohighlight">\(A_1, A_2, \dots, A_k \models B\)</span> je torej veljaven.</p>
+</div>
+<p><span class="definicija">Pogojni sklep</span> (PS) uporabimo, kadar dokazujemo sklep, v katerem ima zaključek obliko implikacije. Če želimo sklepati na zaključek <span class="math notranslate nohighlight">\(B \Rightarrow C\)</span>, dodamo izjavo <span class="math notranslate nohighlight">\(B\)</span> med predpostavke in skušamo sklepati na zaključek <span class="math notranslate nohighlight">\(C\)</span>. Veljavnost tega pomožnega sklepa sledi iz naslednjega izreka.</p>
+<div class="izrek">
+<p>Velja <span class="math notranslate nohighlight">\(A_1, A_2, \dots, A_k \models B \Rightarrow C\)</span>, če in samo če velja <span class="math notranslate nohighlight">\(A_1, A_2, \dots, A_k, B \models C\)</span>.</p>
+</div>
+<div class="dokaz">
+<p>Naj bo <span class="math notranslate nohighlight">\(A = A_1 \land A_2 \land \cdots \land A_k\)</span>. Po zadnji trditvi je dovolj dokazati, da je <span class="math notranslate nohighlight">\(A \Rightarrow (B \Rightarrow C)\)</span> tavtologija, če in samo če je <span class="math notranslate nohighlight">\(A \land B \Rightarrow C\)</span> tavtologija. Ta dva izjavna izraza pa sta si v resnici enakovredna, saj velja</p>
+<div class="math notranslate nohighlight">
+\[A \Rightarrow (B \Rightarrow C) \sim \lnot A \lor (\lnot B \lor C) \sim (\lnot A \lor \lnot B) \lor C \sim \lnot (A \land B) \lor C \sim A \land B \Rightarrow C.\]</div>
+<p>Izraza sta torej bodisi oba tavtologiji bodisi nobenen od njiju ni tavtologija. S tem je izrek dokazan.</p>
+</div>
+<div class="zgled">
+<p>Dokažimo veljavnost sklepa</p>
+<div class="math notranslate nohighlight">
+\[p \Rightarrow q \lor r, \ \lnot r \models p \Rightarrow q.\]</div>
+<p>Ker ima zaključek obliko implikacije, lahko uporabimo pogojni sklep.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p><span class="math notranslate nohighlight">\(i\)</span></p></th>
+<th class="head text-left"><p><span class="math notranslate nohighlight">\(B_i\)</span></p></th>
+<th class="head text-left"><p>utemeljitev</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>1</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(p \Rightarrow q \lor r\)</span></p></td>
+<td class="text-left"><p>predpostavka</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>2</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\lnot r\)</span></p></td>
+<td class="text-left"><p>predpostavka</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>3.1</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(p\)</span></p></td>
+<td class="text-left"><p>predpostavka PS</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>3.2</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(q \lor r\)</span></p></td>
+<td class="text-left"><p>MP(3.1, 1)</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>3.3</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(q\)</span></p></td>
+<td class="text-left"><p>DS(3.2, 2)</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>3</p></td>
+<td class="text-left"><p><u><span class="math notranslate nohighlight">\(p \Rightarrow q\)</span></u></p></td>
+<td class="text-left"><p>PS(3.1–3.3)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Uporaba pogojnega sklepa</p>
+</div>
+<p>Pomožni <span class="definicija">sklep s protislovjem</span> (RA<label for='sidenote-role-1' class='margin-toggle'><span id="id1">
+<sup>1</sup></span>
+
+</label><input type='checkbox' id='sidenote-role-1' name='sidenote-role-1' class='margin-toggle'><span class="sidenote"><sup>1</sup>Lat. <em>Reductio ad absurdum</em>.</span>) lahko uporabimo kadar koli. Če želimo sklepati na zaključek <span class="math notranslate nohighlight">\(B\)</span>, dodamo izjavo <span class="math notranslate nohighlight">\(\lnot B\)</span> med predpostavke in skušamo sklepati na zaključek <span class="math notranslate nohighlight">\(0\)</span>. To je še posebej uporabno, kadar ima zaključek obliko negacije <span class="math notranslate nohighlight">\(\lnot B\)</span>, saj v tem primeru dodatna predpostavka postane <span class="math notranslate nohighlight">\(\lnot \lnot B \sim B\)</span>. Veljavnost tega pomožnega sklepa sledi iz naslednjega izreka.</p>
+<div class="izrek">
+<p>Velja <span class="math notranslate nohighlight">\(A_1, A_2, \dots, A_k \models B\)</span>, če in samo če velja <span class="math notranslate nohighlight">\(A_1, A_2, \dots, A_k, \lnot B \models 0\)</span>.</p>
+</div>
+<div class="dokaz">
+<p>Naj bo <span class="math notranslate nohighlight">\(A = A_1 \land A_2 \land \cdots \land A_k\)</span>. Kot v dokazu zadnjega izreka je dovolj dokazati, da je <span class="math notranslate nohighlight">\(A \Rightarrow B\)</span> tavtologija, če in samo če je <span class="math notranslate nohighlight">\(A \land \lnot B \Rightarrow 0\)</span> tavtologija. Ta dva izjavna izraza pa sta si v resnici enakovredna, saj velja</p>
+<div class="math notranslate nohighlight">
+\[A \land \lnot B \Rightarrow 0 \sim
+    \lnot A \lor \lnot \lnot B \sim
+    \lnot A \lor B \sim
+    A \Rightarrow B.\]</div>
+</div>
+<div class="zgled">
+<p>Dokažimo veljavnost sklepa</p>
+<div class="math notranslate nohighlight">
+\[p \Rightarrow \lnot (q \Rightarrow r), \ q \land s \Rightarrow r, \ s \models \lnot p.\]</div>
+<p>Ker ima zaključek obliko negacije, še posebej radi uporabimo sklepanje s protislovjem.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p><span class="math notranslate nohighlight">\(i\)</span></p></th>
+<th class="head text-left"><p><span class="math notranslate nohighlight">\(B_i\)</span></p></th>
+<th class="head text-left"><p>utemeljitev</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>1</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(p \Rightarrow \lnot(q \Rightarrow r)\)</span></p></td>
+<td class="text-left"><p>predpostavka</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>2</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(q \land s \Rightarrow r\)</span></p></td>
+<td class="text-left"><p>predpostavka</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>3</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(s\)</span></p></td>
+<td class="text-left"><p>predpostavka</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>4.1</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\lnot \lnot p\)</span></p></td>
+<td class="text-left"><p>predpostavka RA</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>4.2</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(p\)</span></p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\sim\)</span> 4.1</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>4.3</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\lnot (q \Rightarrow r)\)</span></p></td>
+<td class="text-left"><p>MP(4.2, 1)</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>4.4</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(q \land \lnot r\)</span></p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\sim\)</span> 4.3</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>4.5</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(q\)</span></p></td>
+<td class="text-left"><p>Po(4.4)</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>4.6</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(q \land s\)</span></p></td>
+<td class="text-left"><p>Zd(4.5, 3)</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>4.7</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(r\)</span></p></td>
+<td class="text-left"><p>MP(4.6, 2)</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>4.8</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\lnot r \land q\)</span></p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\sim\)</span> 4.4</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>4.9</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\lnot r\)</span></p></td>
+<td class="text-left"><p>Po(4.8)</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>4.10</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(r \land \lnot r\)</span></p></td>
+<td class="text-left"><p>Zd(4.7, 4.9)</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>4.11</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\sim\)</span> 4.10</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>4</p></td>
+<td class="text-left"><p><u><span class="math notranslate nohighlight">\(\lnot p\)</span></u></p></td>
+<td class="text-left"><p>RA(4.1–4.11)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Uporaba sklepa s protislovjem</p>
+</div>
+<p>Pomožni sklep <span class="definicija">analiza primerov</span> (AP) uporabimo, kadar dokazujemo sklep, v katerem ima ena od predpostavk obliko disjunkcije <span class="math notranslate nohighlight">\(B_1 \lor B_2\)</span>. V tem primeru lahko sklep razdelimo na dva preprostejša sklepa, pri čemer prvemu dodamo predpostavko <span class="math notranslate nohighlight">\(B_1\)</span>, drugemu pa predpostavko <span class="math notranslate nohighlight">\(B_2\)</span>. Podobno kot pri prejšnjih dveh pomožnih sklepih veljavnost tega pomožnega sklepa sledi iz naslednjega izreka.</p>
+<div class="izrek">
+<p>Velja <span class="math notranslate nohighlight">\(A_1, A_2, \dots, A_k, B_1 \lor B_2 \models C\)</span>, če in samo če veljata oba sklepa <span class="math notranslate nohighlight">\(A_1, A_2, \dots, A_k, B_1 \models C\)</span> in <span class="math notranslate nohighlight">\(A_1, A_2, \dots, A_k, B_2 \models C\)</span>.</p>
+</div>
+<div class="domacanaloga">
+<p>Dokaži izrek o analizi primerov.</p>
+</div>
+<div class="zgled">
+<p>Dokažimo veljavnost sklepa</p>
+<div class="math notranslate nohighlight">
+\[p \Rightarrow r, \ q \Rightarrow r, \ p \lor q \models r.\]</div>
+<p>Tretja predpostavka ima obliko disjunkcije, zato lahko sklep dokažemo s pomočjo analize primerov.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p><span class="math notranslate nohighlight">\(i\)</span></p></th>
+<th class="head text-left"><p><span class="math notranslate nohighlight">\(B_i\)</span></p></th>
+<th class="head text-left"><p>utemeljitev</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>1</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(p \Rightarrow r\)</span></p></td>
+<td class="text-left"><p>predpostavka</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>2</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(q \Rightarrow r\)</span></p></td>
+<td class="text-left"><p>predpostavka</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>3</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(p \lor q\)</span></p></td>
+<td class="text-left"><p>predpostavka</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>4.1.1</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(p\)</span></p></td>
+<td class="text-left"><p>predpostavka AP(3)</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>4.1.2</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(r\)</span></p></td>
+<td class="text-left"><p>MP(4.1.1, 1)</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>4.2.1</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(q\)</span></p></td>
+<td class="text-left"><p>predpostavka AP(3)</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>4.2.2</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(r\)</span></p></td>
+<td class="text-left"><p>MP(4.1.1, 2)</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>4.</p></td>
+<td class="text-left"><p><u><span class="math notranslate nohighlight">\(r\)</span></u></p></td>
+<td class="text-left"><p>AP(3, 4.1.1–4.1.2, 4.2.1–4.2.2)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Uporaba analize primerov</p>
+</div>
+<hr class="footnotes docutils" />
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./content"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">nazaj</p>
+        <p class="prev-next-title">Diskretne strukture</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="chapter02.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">naprej</p>
+        <p class="prev-next-title">Predikatni račun</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Vsebina
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#izjave-in-izjavni-vezniki">Izjave in izjavni vezniki</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#izjavni-izrazi">Izjavni izrazi</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tavtologije-in-enakovredni-izrazi">Tavtologije in enakovredni izrazi</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dno-in-kno">DNO in KNO</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sklepanje-v-izjavnem-racunu">Sklepanje v izjavnem računu</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+Avtor Urban Jezernik
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

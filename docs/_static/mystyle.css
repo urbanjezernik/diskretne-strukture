@@ -1,0 +1,203 @@
+h1, h2 {
+  color: #9E291A !important;
+}
+.naslov {
+  text-align: center;
+  padding-bottom: 3em;
+  padding-top: 3em;
+}
+.naslov h1 {
+  font-size: 4em;
+}
+.zgled, .zgledbrezstevilke {
+	color: #266633;
+}
+.odprtproblem {
+  color: #b76115;
+}
+a {
+	color: #3c6de9;
+  text-decoration: none;
+}
+nav {
+  background-color: white;
+}
+.domacanaloga {
+	color: #7D4DC9;
+}
+.proof {
+	color: #808080;
+}
+.kazalo > ul {
+    list-style: none;
+    font-weight: bold;
+    padding-left: 0;
+}
+.kazalo ul ul li{
+  list-style: none;
+  font-weight: normal;
+}
+.izrek, .trditev, .lema, .posledica {
+  border:1px solid black;
+  padding: 1em;
+  padding-bottom: 0;
+  margin-bottom: 1em;
+}
+.pomoznatrditev {
+  border:1px dashed grey;
+  padding: 1em;
+  padding-bottom: 0;
+  margin-bottom: 1em;
+}
+/* .proof, .zgled, .domacanaloga {
+  display: none;
+} */
+.math.display {
+  overflow-x: auto;
+  display: block;
+}
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+figure {
+  text-align: center;
+}
+
+div.dokaz {
+  /* font-style: italic;          whole block in italics          */
+  color: #808080;                 /* light-grey text                 */
+}
+
+span.definicija {
+  color: #9E291A;        /* same red as in MathJax */
+  font-weight: 700;      /* bold */
+  /* font-style: italic;    italic */
+}
+
+/* ────────────────────────────────────────────────────────────────
+   Automatic numbering  ChapterNumber.LocalNumber   (CSS only)
+   ──────────────────────────────────────────────────────────────── */
+
+/* 1.  “chapter” counter goes up on every top-level heading (h1)  */
+h1         { counter-increment: chapter;
+             counter-reset: stevec; }
+
+/* 2.  helper: add Chapter.Local on any div that has data-env     */
+div[data-env]::before {
+  font-weight: bold;
+}
+
+/* 3.  per-environment counters + labels -----------------------  */
+
+/* dokaz ──────────────────────────────────────────────── */
+div.dokaz > p:first-child::before {                        /* label */
+  content: "Dokaz. ";
+  font-style: italic; 
+}
+
+/* IZREK ──────────────────────────────────────────────── */
+div.izrek           { counter-increment: stevec; }          /* bump */
+div.izrek > p:first-child::before {                        /* label */
+  content: "Izrek " counter(chapter) "." counter(stevec) ". ";
+  font-weight: 700;                                        /* bold  */
+  margin-right: .4ch;                                      /* small gap */
+}
+div.izrek > p:first-child { margin-top: 0; }               /* no gap */
+
+/* ZGLED ──────────────────────────────────────────────── */
+/* 1) bump your counter on every .zgled */
+div.zgled {
+  counter-increment: stevec;
+}
+
+/* 2) when the first child is a <p>, inject *inside* that <p> (inline) */
+div.zgled > p:first-child::before {
+  content: "Zgled " counter(chapter) "." counter(stevec) ". ";
+  font-weight: 700;
+  /* inline by default, so no extra line break */
+}
+
+/* 3) when the first child is a <ul>, inject *before* the list (still inline) */
+div.zgled:has(> ul:first-child)::before {
+  content: "Zgled " counter(chapter) "." counter(stevec) ". ";
+  font-weight: 700;
+  /* inline by default, so appears right before the UL element */
+  /* margin-right if you need a little extra breathing room */
+  margin-right: .4ch;
+}
+
+/* 4) reset the top-margin on the real first child so things don’t jump down */
+div.zgled > p:first-child,
+div.zgled > ul:first-child {
+  margin-top: 0;
+}
+
+/* 2) when the first child is a <p>, inject *inside* that <p> (inline) */
+div.zgledbrezstevilke > p:first-child::before {
+  content: "Zgled. ";
+  font-weight: 700;
+  margin-top: 0;
+  /* inline by default, so no extra line break */
+}
+
+
+/* TRDITEV ────────────────────────────────────────────── */
+div.trditev         { counter-increment: stevec; }
+div.trditev > p:first-child::before {
+  content: "Trditev " counter(chapter) "." counter(stevec) ". ";
+  font-weight: 700;
+  margin-right: .4ch;
+}
+div.trditev > p:first-child { margin-top: 0; }
+
+/* LEMA ────────────────────────────────────────────── */
+div.lema         { counter-increment: stevec; }
+div.lema > p:first-child::before {
+  content: "Lema " counter(chapter) "." counter(stevec) ". ";
+  font-weight: 700;
+  margin-right: .4ch;
+}
+div.lema > p:first-child { margin-top: 0; }
+
+/* DEF ────────────────────────────────────────────── */
+div.definicija         { counter-increment: stevec; }
+div.definicija > p:first-child::before {
+  content: "Definicija " counter(chapter) "." counter(stevec) ". ";
+  font-weight: 700;
+  margin-right: .4ch;
+}
+div.definicija > p:first-child { margin-top: 0; }
+
+/* DN ────────────────────────────────────────────── */
+div.domacanaloga         { counter-increment: stevec; }
+div.domacanaloga > p:first-child::before {
+  content: "Domača naloga " counter(chapter) "." counter(stevec) ". ";
+  font-weight: 700;
+  margin-right: .4ch;
+}
+div.domacanaloga > p:first-child { margin-top: 0; }
+
+/* posl ────────────────────────────────────────────── */
+div.posledica         { counter-increment: stevec; }
+div.posledica > p:first-child::before {
+  content: "Posledica " counter(chapter) "." counter(stevec) ". ";
+  font-weight: 700;
+  margin-right: .4ch;
+}
+div.posledica > p:first-child { margin-top: 0; }
+
+/* posl ────────────────────────────────────────────── */
+div.odprtproblem         { counter-increment: stevec; }
+div.odprtproblem > p:first-child::before {
+  content: "Odprt problem " counter(chapter) "." counter(stevec) ". ";
+  font-weight: 700;
+  margin-right: .4ch;
+}
+div.odprtproblem > p:first-child { margin-top: 0; }
+/* …repeat for lema, definicija, domacanaloga … */
+
+footer.bd-footer-content {display:none;}

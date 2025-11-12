@@ -1,0 +1,1441 @@
+
+<!DOCTYPE html>
+
+
+<html lang="sl" data-content_root="../" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Grafi &#8212; Teorija upodobitev</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystyle.css?v=a5ebfbfa" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=a3a20203"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/translations.js?v=852ec8ec"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"tex": {"macros": {"NN": "\\mathbf{N}", "ZZ": "\\mathbf{Z}", "QQ": "\\mathbf{Q}", "RR": "\\mathbf{R}", "CC": "\\mathbf{C}", "FF": "\\mathbf{F}", "EE": "\\mathbf{E}", "PP": "\\mathbf{P}", "HH": "\\mathbf{H}", "oneone": "\\mathbf{1}", "Fcal": "\\mathcal{F}", "conclass": "\\mathcal{C}", "image": "\\operatorname{im}", "sgn": "\\operatorname{sgn}", "Res": "\\operatorname{Res}", "Ind": "\\operatorname{Ind}", "Rep": "\\operatorname{Rep}", "mult": "\\operatorname{mult}", "Izotip": "\\operatorname{Izotip}", "MK": "\\operatorname{MK}", "tr": "\\operatorname{tr}", "Irr": "\\operatorname{Irr}", "SU": "\\mathrm{SU}", "characteristic": "\\operatorname{char}", "kk": "\\operatorname{k}", "cl": "\\operatorname{cl}", "inv": "\\operatorname{inv}", "Eigenvalues": "\\operatorname{Spec}", "Eigenspace": "\\operatorname{LP}", "fun": "\\operatorname{fun}", "HS": "\\operatorname{HS}", "St": "\\operatorname{St}", "Realpart": "\\operatorname{Re}", "Aut": "\\operatorname{Aut}", "GL": "\\operatorname{GL}", "SL": "\\operatorname{SL}", "PSL": "\\operatorname{PSL}", "U": "\\operatorname{U}", "SO": "\\operatorname{SO}", "Gal": "\\operatorname{Gal}", "Sym": "\\operatorname{Sym}", "Homeo": "\\operatorname{Homeo}", "Cay": "\\operatorname{Cay}", "Isom": "\\operatorname{Isom}", "id": "\\operatorname{id}", "supp": "\\operatorname{supp}", "End": "\\operatorname{End}", "Mat": "\\operatorname{Mat}", "Cone": "\\operatorname{Cone}", "diam": "\\operatorname{diam}", "Ad": "\\operatorname{Ad}", "imaginary": "\\operatorname{Im}", "glfrak": "\\mathfrak{gl}", "slfrak": "\\mathfrak{sl}", "sufrak": "\\mathfrak{su}", "DNO": "\\operatorname{DNO}", "KNO": "\\operatorname{KNO}", "GG": "\\mathcal{G}", "GAP": ["\\texttt{GAP}", 0], "youngsym": "\\sigma_{\\lambda}", "mat": ["\\begin{pmatrix} #1 & #2\\\\ #3 & #4 \\end{pmatrix}", 4], "abs": ["\\lvert #1 \\rvert", 1]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/chapter05';</script>
+    <script src="../_static/bs-table-wrapper.js?v=8f7ea02a"></script>
+    <script src="../_static/fix-pipe-tables.js?v=5aeff36a"></script>
+    <link rel="canonical" href="/teorija-upodobitev/content/chapter05.html" />
+    <link rel="index" title="Abecedni seznam" href="../genindex.html" />
+    <link rel="search" title="Išči" href="../search.html" />
+    <link rel="prev" title="Urejenosti" href="chapter04.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="sl"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="light">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Diskretne strukture
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="chapter01.html">Izjavni račun</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter02.html">Predikatni račun</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter03.html">Relacije</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter04.html">Urejenosti</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Grafi</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Prenesite to stran">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/content/chapter05.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Prenesite izvorno datoteko"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Natisni v PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Celozaslonski način"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Išči" aria-label="Išči" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Grafi</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Vsebina </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#osnovne-definicije">Osnovne definicije</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#standardni-primeri-in-operacije">Standardni primeri in operacije</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#standardni-primeri">Standardni primeri</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#operacije">Operacije</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#invariante-grafov">Invariante grafov</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#drevesa">Drevesa</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eulerjevi-grafi">Eulerjevi grafi</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mostovi">Mostovi</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#risanje-grafa-v-eni-potezi">Risanje grafa v eni potezi</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hamiltonovi-grafi">Hamiltonovi grafi</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sahovski-konjicek">Šahovski konjiček</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ravninski-grafi">Ravninski grafi</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#barvanja-grafov">Barvanja grafov</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#barvanja-vozlisc">Barvanja vozlišč</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#barvanja-povezav">Barvanja povezav</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <style>
+  body { counter-reset: chapter 4 izrek 0 zgled 0 domacanaloga 0
+                 lema 0 trditev 0 definicija 0 dokaz 0; }
+</style><section class="tex2jax_ignore mathjax_ignore" id="grafi">
+<h1>Grafi<a class="headerlink" href="#grafi" title="Link to this heading">#</a></h1>
+<p>Diskretne strukture, ki smo jih obravnavali do sedaj (torej relacije), so izhajale iz našega študija izjavnega in predikatnega računa. Ogledali smo si že, kako lahko relacije predstavimo z <em>grafom relacije</em>. V tem zadnjem razdelku bomo ta abstrakten objekt, <em>graf</em>, obravnavali neodvisno. Ta diskretna struktura je zelo pogosta v različnih področjih matematike, še posebej v njenih aplikacijah v resničnem svetu. Ogledali si bomo nekaj lastnosti te strukture in dokazali nekaj osnovnih izrekov o njej.</p>
+<section id="osnovne-definicije">
+<h2>Osnovne definicije<a class="headerlink" href="#osnovne-definicije" title="Link to this heading">#</a></h2>
+<p><span class="definicija">Graf</span> <span class="math notranslate nohighlight">\(G\)</span> je par množic <span class="math notranslate nohighlight">\((V,E)\)</span>, kjer je <span class="math notranslate nohighlight">\(V\)</span> neka končna<label for='sidenote-role-1' class='margin-toggle'><span id="id1">
+<sup>1</sup></span>
+
+</label><input type='checkbox' id='sidenote-role-1' name='sidenote-role-1' class='margin-toggle'><span class="sidenote"><sup>1</sup>Mi se bomo omejili le na končne grafe, v matematiki pa sicer obravnavamo tudi neskončne grafe.</span> neprazna množica, <span class="math notranslate nohighlight">\(E\)</span> pa je neka množica dvoelementnih podmnožic<label for='sidenote-role-2' class='margin-toggle'><span id="id2">
+<sup>2</sup></span>
+
+</label><input type='checkbox' id='sidenote-role-2' name='sidenote-role-2' class='margin-toggle'><span class="sidenote"><sup>2</sup>Spomnimo se, da je relacija na množici <span class="math notranslate nohighlight">\(V\)</span> podmnožica množice <span class="math notranslate nohighlight">\(V \times V\)</span>, torej sestoji iz <em>urejenih</em> parov elementov iz <span class="math notranslate nohighlight">\(V\)</span>. Po drugi strani pa množica <span class="math notranslate nohighlight">\(E\)</span> sestoji iz <em>neurejenih parov</em> elementov iz <span class="math notranslate nohighlight">\(V\)</span>, se pravi iz podmnožic <span class="math notranslate nohighlight">\(V\)</span> z dvema elementoma.</span> množice <span class="math notranslate nohighlight">\(V\)</span>. Množici <span class="math notranslate nohighlight">\(V\)</span> pravimo <span class="definicija">množica točk/vozlišč grafa</span>, množici <span class="math notranslate nohighlight">\(E\)</span> pa pravimo <span class="definicija">množica povezav grafa</span>.</p>
+<div class="zgled">
+<p>Naj bo <span class="math notranslate nohighlight">\(V = \{ 1, 2, 3, 4, 5 \}\)</span> in naj bo</p>
+<div class="math notranslate nohighlight">
+\[E = \{  
+        \{ 1, 2 \}, 
+        \{ 2, 3 \},
+        \{ 3, 4 \},
+        \{ 4, 1 \},
+        \{ 1, 3 \},
+        \{ 4, 5 \}
+         \}.\]</div>
+<p>Graf <span class="math notranslate nohighlight">\(G = (V,E)\)</span> si lahko vizualiziramo tako, da vozlišča narišemo kot točke v ravnini, za tem pa vozlišči <span class="math notranslate nohighlight">\(u,v \in V\)</span> povežemo, če in samo če je <span class="math notranslate nohighlight">\(\{ u, v \} \in E\)</span>.</p>
+<figure>
+<img src="img/grafi-prvizgled.png" />
+<figcaption>Zgled vizualizacije grafa</figcaption>
+</figure>
+</div>
+<p>Kadar za vozlišči <span class="math notranslate nohighlight">\(u,v \in V\)</span> velja <span class="math notranslate nohighlight">\(\{ u, v \} \in E\)</span>, potem rečemo, da sta vozlišči <span class="math notranslate nohighlight">\(u,v\)</span> <span class="definicija">sosednji</span> in pišemo <span class="math notranslate nohighlight">\(u \sim v\)</span>. Povezavo <span class="math notranslate nohighlight">\(\{ u, v \} \in E\)</span> včasih pišemo krajše kot <span class="math notranslate nohighlight">\(uv\)</span>.</p>
+<p>Včasih definicijo grafa nekoliko omehčamo do te mere, da dopustimo obstoj <span class="definicija">vzporednih povezav</span> (to pomeni, da med istim parom točk obstaja več povezav) in <span class="definicija">zank</span> (to so povezave, ki imajo obe krajišči enaki). Takim splošnejšim strukturam rečemo <span class="definicija">multigrafi</span>.</p>
+<div class="zgled">
+<figure>
+<img src="img/grafi-multigraf.png" />
+<figcaption>Zgled multigrafa</figcaption>
+</figure>
+</div>
+<p>Naj bo <span class="math notranslate nohighlight">\(G = (V,E)\)</span> graf in <span class="math notranslate nohighlight">\(u \in V\)</span>. <span class="definicija">Stopnja točke</span> <span class="math notranslate nohighlight">\(u\)</span> je število povezav v <span class="math notranslate nohighlight">\(E\)</span>, ki imajo <span class="math notranslate nohighlight">\(u\)</span> za svoje krajišče. Stopnjo označimo kot <span class="math notranslate nohighlight">\(\deg_G(u)\)</span> ali krajše kot <span class="math notranslate nohighlight">\(d(u)\)</span>. Točkam stopnje <span class="math notranslate nohighlight">\(0\)</span> pravimo <span class="definicija">izolirane točke</span>, točkam stopnje <span class="math notranslate nohighlight">\(1\)</span> pa <span class="definicija">listi</span>.</p>
+<div class="zgled">
+<p>Naj bo <span class="math notranslate nohighlight">\(G\)</span> graf, predstavljen na naslednji sliki.</p>
+<figure>
+<img src="img/grafi-std-izolirana.png" />
+<figcaption>Graf z listom in izolirano točko</figcaption>
+</figure>
+<p>Stopnje vozlišč so <span class="math notranslate nohighlight">\(d(a) = 2\)</span>, <span class="math notranslate nohighlight">\(d(b) = 2\)</span>, <span class="math notranslate nohighlight">\(d(c) = 3\)</span>, <span class="math notranslate nohighlight">\(d(d) = 1\)</span>, <span class="math notranslate nohighlight">\(d(e) = 0\)</span>. Vozlišče <span class="math notranslate nohighlight">\(d\)</span> je list, vozlišče <span class="math notranslate nohighlight">\(e\)</span> pa je izolirana točka.</p>
+</div>
+<p>Najmanjšo stopnjo vozlišča označimo z</p>
+<div class="math notranslate nohighlight">
+\[\delta(G) = \min \{ d(u) \mid u \in V \},\]</div>
+<p>največjo stopnjo pa označimo z</p>
+<div class="math notranslate nohighlight">
+\[\Delta(G) = \max \{ d(u) \mid u \in V \}.\]</div>
+<p>Graf je <span class="definicija">regularen</span>, če je <span class="math notranslate nohighlight">\(\delta(G) = \Delta(G)\)</span>, torej če imajo vsa vozlišča enako stopnjo. Če je ta stopnja <span class="math notranslate nohighlight">\(d\)</span>, rečemu grafu <span class="definicija"><span class="math notranslate nohighlight">\(d\)</span>-regularen</span>.</p>
+<div class="zgled">
+<ul>
+<li><figure>
+<img src="img/grafi-2reg.png" />
+<figcaption>Zgled <span class="math inline">2</span>-regularnega grafa</figcaption>
+</figure>
+</li>
+<li><figure>
+<img src="img/grafi-3reg.png" />
+<figcaption>Zgled <span class="math inline">3</span>-regularnega grafa</figcaption>
+</figure>
+</li>
+<li><figure>
+<img src="img/opis-petersen.png" />
+<figcaption>Petersenov graf je <span class="math inline">3</span>-regularen</figcaption>
+</figure>
+</li>
+</ul>
+</div>
+<p>Grafe lahko ekvivalentno opišemo s pomočjo matrik. Za to imamo na voljo dve možnosti.</p>
+<p>Prva možnost je <span class="definicija">matrika sosednosti</span> grafa <span class="math notranslate nohighlight">\(G\)</span>. Za njeno konstrukcijo najprej oštevilčimo množico vozlišč <span class="math notranslate nohighlight">\(V = \{ v_1, v_2, \dots, v_n \}\)</span> in nato sestavimo matriko <span class="math notranslate nohighlight">\(A(G) = [a_{ij}]_{1 \leq i,j \leq n}\)</span> z vnosi</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}a_{ij} = \begin{cases}
+        1 &amp; v_i \sim v_j \\
+        0 &amp; \text{sicer.}
+    \end{cases}\end{split}\]</div>
+<div class="zgled">
+<p>Naj bo <span class="math notranslate nohighlight">\(G\)</span> graf, predstavljen na naslednji sliki. Ta graf bomo srečali še večkrat, zato mu dajmo ime <span class="definicija">lizika</span>.</p>
+<figure>
+<img src="img/grafi-std.png" />
+<figcaption>Lizika</figcaption>
+</figure>
+<p>Matrika sosednosti lizike je</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}A(G) = \begin{pmatrix}
+        0 &amp; 1 &amp; 1 &amp; 0 \\
+        1 &amp; 0 &amp; 1 &amp; 0 \\
+        1 &amp; 1 &amp; 0 &amp; 1 \\
+        0 &amp; 0 &amp; 1 &amp; 0
+    \end{pmatrix}.\end{split}\]</div>
+<p>Opazimo, da je ta matrika simetrična. To ni slučaj, saj za vsaka <span class="math notranslate nohighlight">\(i,j\)</span> velja <span class="math notranslate nohighlight">\(a_{ij} = 1\)</span>, če in samo če je <span class="math notranslate nohighlight">\(v_i \sim v_j\)</span>, torej če in samo če je <span class="math notranslate nohighlight">\(a_{ji} = 1\)</span>.</p>
+</div>
+<p>Druga možnost je <span class="definicija">incidenčna matrika</span> grafa <span class="math notranslate nohighlight">\(G\)</span>. Za njeno konstrukcijo najprej oštevilčimo množico vozlišč <span class="math notranslate nohighlight">\(V = \{ v_1, v_2, \dots, v_n \}\)</span> in povezav <span class="math notranslate nohighlight">\(E = \{ e_1, e_2, \dots, e_m \}\)</span> in nato sestavimo matriko <span class="math notranslate nohighlight">\(B(G) = [b_{ij}]_{1 \leq i \leq n, 1 \leq j \leq m}\)</span> z vnosi</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}b_{ij} = \begin{cases}
+        1 &amp; v_i \in e_j \\
+        0 &amp; \text{sicer.}
+    \end{cases}\end{split}\]</div>
+<div class="zgled">
+<p>Opazujmo liziko. Povezave označimo kot <span class="math notranslate nohighlight">\(e_1 = \{ 1, 2 \}\)</span>, <span class="math notranslate nohighlight">\(e_2 = \{ 1, 3 \}\)</span>, <span class="math notranslate nohighlight">\(e_3 = \{ 2, 3 \}\)</span> in <span class="math notranslate nohighlight">\(e_4 = \{ 3, 4 \}\)</span>. Incidenčna matrika je</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}B(G) =
+    \begin{pmatrix}
+        1 &amp; 1 &amp; 0 &amp; 0 \\
+        1 &amp; 0 &amp; 1 &amp; 0 \\
+        0 &amp; 1 &amp; 1 &amp; 1 \\
+        0 &amp; 0 &amp; 0 &amp; 1
+    \end{pmatrix}.\end{split}\]</div>
+<p>Ta matrika ni simetrična. V splošnem to niti ni kvadratna matrika, saj je število vozlišč grafa lahko različno od števila povezav.</p>
+</div>
+<p>Vsak stolpec incidenčne matrike vsebuje natanko dve enici, ker ima vsaka povezava natanko dve krajišči. Torej je vsota vseh členov matrike <span class="math notranslate nohighlight">\(B(G)\)</span> enaka dvakratniku števila povezav, se pravi <span class="math notranslate nohighlight">\(2 |E|\)</span>. Po drugi strani pa je število enic v <span class="math notranslate nohighlight">\(i\)</span>-ti vrstici matrike <span class="math notranslate nohighlight">\(B(G)\)</span> enako stopnji <span class="math notranslate nohighlight">\(d(v_i)\)</span>. Torej je vsota vseh členov matrike <span class="math notranslate nohighlight">\(B(G)\)</span> enaka vsoti stopenj vseh vozlišč grafa. Na ta način smo izpeljali naslednjo elementarno, a pomembno lastnost grafov.</p>
+<div class="lema">
+<p>Za vsak graf <span class="math notranslate nohighlight">\(G = (V,E)\)</span> velja</p>
+<div class="math notranslate nohighlight">
+\[\sum_{v \in V} d(v) = 2 |E|.\]</div>
+</div>
+<div class="zgled">
+<ul class="simple">
+<li><p>Petersenov graf je <span class="math notranslate nohighlight">\(3\)</span>-regularen graf na <span class="math notranslate nohighlight">\(10\)</span> vozliščih. Iz leme o rokovanju sklepamo, da je <span class="math notranslate nohighlight">\(10 \cdot 3 = 2 \cdot |E|\)</span>, torej ima Petersenov graf <span class="math notranslate nohighlight">\(15\)</span> povezav. Ta sklep velja za vsak <span class="math notranslate nohighlight">\(3\)</span>-regularen graf na <span class="math notranslate nohighlight">\(10\)</span> vozliščih.</p></li>
+<li><p>Ali obstaja <span class="math notranslate nohighlight">\(3\)</span>-regularen graf na <span class="math notranslate nohighlight">\(9\)</span> vozliščih? Če bi obstajal, potem bi po lemi o rokovanju veljalo <span class="math notranslate nohighlight">\(9 \cdot 3 = 2 \cdot |E|\)</span>, torej je <span class="math notranslate nohighlight">\(|E| = 27/2\)</span>, kar ni mogoče. Tak graf torej ne obstaja.</p></li>
+</ul>
+</div>
+<div class="posledica">
+<p>Vsak graf ima sodo mnogo točk lihe stopnje.</p>
+</div>
+<div class="dokaz">
+<p>Naj bo <span class="math notranslate nohighlight">\(G = (V,E)\)</span> graf. Po lemi o rokovanju je <span class="math notranslate nohighlight">\(\sum_{v \in V} d(v)\)</span> sodo število. Naj bo <span class="math notranslate nohighlight">\(V^0 = \{ v \in V \mid d(v) \text{ sodo} \}\)</span> in <span class="math notranslate nohighlight">\(V^1 = \{ v \in V \mid d(v) \text{ liho} \}\)</span>. Torej je</p>
+<div class="math notranslate nohighlight">
+\[\sum_{v \in V^0} d(v) + \sum_{v \in V^1} d(v)\]</div>
+<p>sodo število. Ker so v prvi vsoti vsi členi <span class="math notranslate nohighlight">\(d(v)\)</span> sodi, mora biti druga vsota soda. Vsak člen v drugi vsoti pa je lih, zato mora biti velikost množice <span class="math notranslate nohighlight">\(V^1\)</span> soda. S tem je dokaz zaključen.</p>
+</div>
+<p>Graf <span class="math notranslate nohighlight">\(H\)</span> je <span class="definicija">podgraf</span> grafa <span class="math notranslate nohighlight">\(G\)</span>, če velja <span class="math notranslate nohighlight">\(V(H) \subseteq V(G)\)</span> in <span class="math notranslate nohighlight">\(E(H) \subseteq E(G)\)</span>. V tem primeru pišemo <span class="math notranslate nohighlight">\(H \subseteq G\)</span>. Rečemo tudi, da graf <span class="math notranslate nohighlight">\(G\)</span> <span class="definicija">vsebuje</span> graf <span class="math notranslate nohighlight">\(H\)</span>. Podgraf <span class="math notranslate nohighlight">\(H\)</span> je <span class="definicija">vpet</span>, če velja <span class="math notranslate nohighlight">\(V(H) = V(G)\)</span>.</p>
+<div class="zgled">
+<p>Naj bo <span class="math notranslate nohighlight">\(G\)</span> lizika z vozlišči <span class="math notranslate nohighlight">\(V(G) = \{ 1,2,3,4 \}\)</span>. Naj bo <span class="math notranslate nohighlight">\(H\)</span> graf z vozlišči <span class="math notranslate nohighlight">\(V(H) = \{ 1,2,3,4 \}\)</span> in povezavami <span class="math notranslate nohighlight">\(E(H) = \emptyset\)</span>. Tedaj je <span class="math notranslate nohighlight">\(H\)</span> vpet podgraf grafa <span class="math notranslate nohighlight">\(G\)</span>.</p>
+</div>
+</section>
+<section id="standardni-primeri-in-operacije">
+<h2>Standardni primeri in operacije<a class="headerlink" href="#standardni-primeri-in-operacije" title="Link to this heading">#</a></h2>
+<p>V tem razdelku si bomo ogledali nekaj standardnih primerov grafov in elementarne operacije, ki jih lahko izvajamo na njih, da dobimo nove grafe.</p>
+<section id="standardni-primeri">
+<h3>Standardni primeri<a class="headerlink" href="#standardni-primeri" title="Link to this heading">#</a></h3>
+<p>Naj bo <span class="math notranslate nohighlight">\(n \in \NN\)</span> in naj bo <span class="math notranslate nohighlight">\(\ZZ/n\ZZ\)</span> kvocientna množica množice <span class="math notranslate nohighlight">\(\ZZ\)</span> po relaciji <span class="math notranslate nohighlight">\(\mod{n}\)</span>. Elemente množice <span class="math notranslate nohighlight">\(\ZZ/n\ZZ\)</span> lahko torej identificiramo z ostanki pri deljenju z <span class="math notranslate nohighlight">\(n\)</span>, se pravi s števili <span class="math notranslate nohighlight">\(0, 1, \dots, n-1\)</span>. Te ostanke lahko tudi seštevamo (po modulu <span class="math notranslate nohighlight">\(n\)</span>).<label for='sidenote-role-3' class='margin-toggle'><span id="id3">
+<sup>3</sup></span>
+
+</label><input type='checkbox' id='sidenote-role-3' name='sidenote-role-3' class='margin-toggle'><span class="sidenote"><sup>3</sup>Na primer <span class="math notranslate nohighlight">\(3 + 7 \equiv 1 \pmod{9}\)</span>.</span> S pomočjo množice <span class="math notranslate nohighlight">\(\ZZ/n\ZZ\)</span> bomo definirali nekaj osnovnih primerov grafov.</p>
+<ul>
+<li><p><span class="definicija">Poln graf</span> <span class="math notranslate nohighlight">\(K_n\)</span> ima vozlišča in povezave</p>
+<div class="math notranslate nohighlight">
+\[V = \ZZ/n\ZZ, \quad
+    E = \{ \{ u,v \} \mid u,v \in \ZZ/n\ZZ, \ u \neq v \}.\]</div>
+<p>Ta graf ima <span class="math notranslate nohighlight">\(n\)</span> vozlišč in <span class="math notranslate nohighlight">\(\binom{n}{2}\)</span> povezav. Je <span class="math notranslate nohighlight">\((n-1)\)</span>-regularen graf.</p>
+</li>
+<li><p><span class="definicija">Pot</span> <span class="math notranslate nohighlight">\(P_n\)</span> ima vozlišča in povezave</p>
+<div class="math notranslate nohighlight">
+\[V = \ZZ/n\ZZ, \quad
+    E = \{ \{ u, u+1 \} \mid u \in \{ 0, 1, \dots, n-2 \}.\]</div>
+<p>Ta graf ima <span class="math notranslate nohighlight">\(n\)</span> vozlišč in <span class="math notranslate nohighlight">\(n-1\)</span> povezav. Rečemo, da je <span class="definicija">dolžina</span> poti <span class="math notranslate nohighlight">\(P_n\)</span> enaka <span class="math notranslate nohighlight">\(n-1\)</span>.</p>
+</li>
+<li><p><span class="definicija">Cikel</span> <span class="math notranslate nohighlight">\(C_n\)</span> (definiran le za <span class="math notranslate nohighlight">\(n \geq 3\)</span>) ima vozlišča in povezave</p>
+<div class="math notranslate nohighlight">
+\[V = \ZZ/n\ZZ, \quad
+    E = \{ \{ u, u+1 \} \mid u \in \ZZ/n\ZZ \}.\]</div>
+<p>Ta graf ima <span class="math notranslate nohighlight">\(n\)</span> vozlišč in <span class="math notranslate nohighlight">\(n\)</span> povezav. Je <span class="math notranslate nohighlight">\(2\)</span>-regularen graf.</p>
+</li>
+</ul>
+<p>Nekaj dodatnih primerov grafov bomo uvedli s pomočjo naslednje lastnosti grafov. Graf <span class="math notranslate nohighlight">\(G = (V,E)\)</span> je <span class="definicija">dvodelen</span>, če lahko množico vozlišč <span class="math notranslate nohighlight">\(V\)</span> zapišemo kot disjunktno unijo <span class="math notranslate nohighlight">\(V = A \cup B\)</span>, <span class="math notranslate nohighlight">\(A \cap B = \emptyset\)</span>, pri čemer mora za vsako povezavo v <span class="math notranslate nohighlight">\(E\)</span> biti eno krajišče v <span class="math notranslate nohighlight">\(A\)</span>, drugo pa v <span class="math notranslate nohighlight">\(B\)</span>.<label for='sidenote-role-4' class='margin-toggle'><span id="id4">
+<sup>4</sup></span>
+
+</label><input type='checkbox' id='sidenote-role-4' name='sidenote-role-4' class='margin-toggle'><span class="sidenote"><sup>4</sup>Vozlišča grafa lahko torej razdelimo na dva dela, pri čemer povezave v grafu potekajo le med vozlišči iz različnih delov.</span></p>
+<div class="zgled">
+<ul>
+<li><p>Poln graf <span class="math notranslate nohighlight">\(K_n\)</span> ni dvodelen graf za <span class="math notranslate nohighlight">\(n \geq 3\)</span>.</p></li>
+<li><p>Pot <span class="math notranslate nohighlight">\(P_n\)</span> je dvodelen graf za <span class="math notranslate nohighlight">\(n \geq 2\)</span>, saj lahko množico <span class="math notranslate nohighlight">\(\ZZ/n\ZZ\)</span> zapišemo kot unijo sodih števil (<span class="math notranslate nohighlight">\(A\)</span>) in lihih števil (<span class="math notranslate nohighlight">\(B\)</span>) med <span class="math notranslate nohighlight">\(0\)</span> in <span class="math notranslate nohighlight">\(n-1\)</span>, povezave v <span class="math notranslate nohighlight">\(P_n\)</span> pa vedno tečejo le med sodimi in lihimi števili.</p></li>
+<li><p>Cikel <span class="math notranslate nohighlight">\(C_n\)</span> je dvodelen graf, če je <span class="math notranslate nohighlight">\(n\)</span> sodo število. V tem primeru lahko namreč uporabimo enak argument kot za pot <span class="math notranslate nohighlight">\(P_n\)</span>, saj lahko <span class="math notranslate nohighlight">\(\ZZ/n\ZZ\)</span> razdelimo na soda in liha števila in vse povezave v <span class="math notranslate nohighlight">\(C_n\)</span> tečejo le med sodimi in lihimi števili.</p>
+<p>Ta argument pa ne deluje, ko je <span class="math notranslate nohighlight">\(n\)</span> liho število, saj takrat dobimo še dodatno povezavo med sodima številoma <span class="math notranslate nohighlight">\(0 \sim n-1\)</span>. Prepričajmo se, da cikel <span class="math notranslate nohighlight">\(C_n\)</span> za <span class="math notranslate nohighlight">\(n\)</span> lih <em>ni</em> dvodelen. Res, denimo, da je z razčlenitvijo vozlišč <span class="math notranslate nohighlight">\(V = A \cup B\)</span>. Brez škode lahko predpostavimo, da je <span class="math notranslate nohighlight">\(0 \in A\)</span>. Potem je nujno <span class="math notranslate nohighlight">\(1 \in B\)</span> in za tem <span class="math notranslate nohighlight">\(2 \in A\)</span> in za tem <span class="math notranslate nohighlight">\(3 \in B\)</span> in tako dalje vse do <span class="math notranslate nohighlight">\(n-1 \in A\)</span>, saj je <span class="math notranslate nohighlight">\(n\)</span> liho. Ker pa je <span class="math notranslate nohighlight">\(0 \sim n-1\)</span> v ciklu <span class="math notranslate nohighlight">\(C_n\)</span>, dobimo povezavo dveh vozlišč v množici <span class="math notranslate nohighlight">\(A\)</span>, kar je sprto s predpostavko o dvodelnosti grafa. Lihi cikli torej niso dvodelni.</p>
+</li>
+</ul>
+</div>
+<p>Ni se težko prepričati, da je obstoj lihih ciklov v grafu <em>edina</em> obstrukcija k dvodelnosti grafa.</p>
+<div class="trditev">
+<p>Graf je dvodelen natanko tedaj, ko ne vsebuje lihega cikla.</p>
+</div>
+<div class="dokaz">
+<p><span class="math notranslate nohighlight">\((\Rightarrow)\)</span>: Naj bo <span class="math notranslate nohighlight">\(G\)</span> dvodelen graf. Tedaj je vsak njegov podgraf tudi dvodelen. Ker lihi cikli niso dvodelni, jih <span class="math notranslate nohighlight">\(G\)</span> ne more vsebovati.</p>
+<p><span class="math notranslate nohighlight">\((\Leftarrow)\)</span>: Predpostavimo, da <span class="math notranslate nohighlight">\(G\)</span> ne vsebuje lihega cikla. Naj bo <span class="math notranslate nohighlight">\(v \in V(G)\)</span> poljubno začetno vozlišče. Za vozlišče <span class="math notranslate nohighlight">\(u \in V(G)\)</span> naj bo <span class="math notranslate nohighlight">\(d(v,u)\)</span> najmanjše število povezav, ki jih potrebujemo, da od vozlišča <span class="math notranslate nohighlight">\(v\)</span> pridemo do vozlišča <span class="math notranslate nohighlight">\(u\)</span>.<label for='sidenote-role-5' class='margin-toggle'><span id="id5">
+<sup>5</sup></span>
+
+</label><input type='checkbox' id='sidenote-role-5' name='sidenote-role-5' class='margin-toggle'><span class="sidenote"><sup>5</sup>Kasneje bomo številu <span class="math notranslate nohighlight">\(d(v,u)\)</span> rekli tudi dolžina najkrajše poti od <span class="math notranslate nohighlight">\(v\)</span> do <span class="math notranslate nohighlight">\(u\)</span>. Lahko se zgodi, da je od <span class="math notranslate nohighlight">\(v\)</span> sploh ne moremo priti do <span class="math notranslate nohighlight">\(u\)</span>, na primer če je <span class="math notranslate nohighlight">\(u\)</span> izolirana točka. V tem primeru definiramo <span class="math notranslate nohighlight">\(d(v,u) = \infty\)</span>.</span> Vozlišča <span class="math notranslate nohighlight">\(u\)</span>, za katera je <span class="math notranslate nohighlight">\(d(v,u)\)</span> sodo število, obarvamo z rdečo, vozlišča <span class="math notranslate nohighlight">\(u\)</span>, za katera je <span class="math notranslate nohighlight">\(d(v,u)\)</span> liho število, pa obarvamo z modro.<label for='sidenote-role-6' class='margin-toggle'><span id="id6">
+<sup>6</sup></span>
+
+</label><input type='checkbox' id='sidenote-role-6' name='sidenote-role-6' class='margin-toggle'><span class="sidenote"><sup>6</sup>Če je <span class="math notranslate nohighlight">\(d(v,u) = \infty\)</span>, potem vozlišča <span class="math notranslate nohighlight">\(u\)</span> zaenkrat ne obarvamo.</span> Naj bo <span class="math notranslate nohighlight">\(A\)</span> množica vseh rdečih vozlišč, <span class="math notranslate nohighlight">\(B\)</span> pa množica modrih vozlišč.</p>
+<p>Predpostavimo, da je <span class="math notranslate nohighlight">\(\{ u, w \}\)</span> povezava v <span class="math notranslate nohighlight">\(G\)</span>, za katero je <span class="math notranslate nohighlight">\(u, w \in B\)</span>.<label for='sidenote-role-7' class='margin-toggle'><span id="id7">
+<sup>7</sup></span>
+
+</label><input type='checkbox' id='sidenote-role-7' name='sidenote-role-7' class='margin-toggle'><span class="sidenote"><sup>7</sup>Analogen argument deluje, če sta obe krajišči v <span class="math notranslate nohighlight">\(A\)</span>.</span> Torej sta <span class="math notranslate nohighlight">\(d(v,u)\)</span> in <span class="math notranslate nohighlight">\(d(v,w)\)</span> oba liha. V grafu <span class="math notranslate nohighlight">\(G\)</span> lahko torej pridemo od vozlišča <span class="math notranslate nohighlight">\(v\)</span> do <span class="math notranslate nohighlight">\(u\)</span> po liho povezavah in prav tako od vozlišča <span class="math notranslate nohighlight">\(v\)</span> do <span class="math notranslate nohighlight">\(w\)</span> po liho povezavah. V grafu <span class="math notranslate nohighlight">\(G\)</span> lahko torej začnemo pri vozlišču <span class="math notranslate nohighlight">\(v\)</span> in po liho korakih pridemo do <span class="math notranslate nohighlight">\(u\)</span>, za tem prečkamo povezavo <span class="math notranslate nohighlight">\(uw\)</span> in nato nadaljujemo od <span class="math notranslate nohighlight">\(w\)</span> do <span class="math notranslate nohighlight">\(v\)</span>. Skupaj se sprehodimo po liho mnogo povezavah.<label for='sidenote-role-8' class='margin-toggle'><span id="id8">
+<sup>8</sup></span>
+
+</label><input type='checkbox' id='sidenote-role-8' name='sidenote-role-8' class='margin-toggle'><span class="sidenote"><sup>8</sup>Pri tem morda kakšno vozlišče sicer obiščemo več kot enkrat, zato to morda ni podgraf <span class="math notranslate nohighlight">\(G\)</span>.</span> Nekoliko kasneje bomo premislili, da ima vsak graf z obhodom lihe dolžine tudi lih cikel. Ker pa lihih ciklov v <span class="math notranslate nohighlight">\(G\)</span> po predpostavki ni, smo dosegli protislovje s predpostavko, da v <span class="math notranslate nohighlight">\(G\)</span> obstajajo povezave med vozlišči v množici <span class="math notranslate nohighlight">\(B\)</span> oziroma v množici <span class="math notranslate nohighlight">\(A\)</span>. Takih povezav torej ni in graf <span class="math notranslate nohighlight">\(G\)</span> je dvodelen.<label for='sidenote-role-9' class='margin-toggle'><span id="id9">
+<sup>9</sup></span>
+
+</label><input type='checkbox' id='sidenote-role-9' name='sidenote-role-9' class='margin-toggle'><span class="sidenote"><sup>9</sup>Natančneje, podgraf grafa <span class="math notranslate nohighlight">\(G\)</span>, vpet v vozlišča <span class="math notranslate nohighlight">\(u\)</span>, za katera velja <span class="math notranslate nohighlight">\(d(v,u) &lt; \infty\)</span>, je dvodelen. Če obstaja kakšno vozlišče z <span class="math notranslate nohighlight">\(d(v,u) = \infty\)</span>, zdaj vzamemo to vozlišče za začetno in ponovimo opisan postopek.</span></p>
+</div>
+<ul>
+<li><p><span class="definicija">Poln dvodelni graf</span> <span class="math notranslate nohighlight">\(K_{m,n}\)</span> ima vozlišča in povezave</p>
+<div class="math notranslate nohighlight">
+\[V = A \cup B, |A| = m, |B|=n, A \cap B = \emptyset, \quad
+    E = \{ \{ u,v\} \mid u \in A, v \in B \}.\]</div>
+<p>V tem grafu so torej vsa vozlišča množice <span class="math notranslate nohighlight">\(A\)</span> povezana z vsemi vozlišči množice <span class="math notranslate nohighlight">\(B\)</span>. Ta graf ima <span class="math notranslate nohighlight">\(m+n\)</span> vozlišč in <span class="math notranslate nohighlight">\(m \cdot n\)</span> povezav.</p>
+</li>
+<li><p>Grafom <span class="math notranslate nohighlight">\(K_{1,n}\)</span> za <span class="math notranslate nohighlight">\(n \geq 3\)</span> pravimo <span class="definicija">zvezde</span>.</p></li>
+<li><p><span class="definicija">Kolo</span> <span class="math notranslate nohighlight">\(W_n\)</span> (definiran le za <span class="math notranslate nohighlight">\(n \geq 3\)</span>) ima vozlišča in povezave</p>
+<div class="math notranslate nohighlight">
+\[V = \ZZ/n\ZZ \cup \{ \infty \}, \quad
+    E = \{ \{ u, u+1 \} \mid u \in \ZZ/n\ZZ \} \cup \{ \{ u, \infty \} \mid u \in \ZZ/n\ZZ \}.\]</div>
+<p>Ta graf ima <span class="math notranslate nohighlight">\(n+1\)</span> vozlišč in <span class="math notranslate nohighlight">\(2n\)</span> povezav.</p>
+</li>
+</ul>
+</section>
+<section id="operacije">
+<h3>Operacije<a class="headerlink" href="#operacije" title="Link to this heading">#</a></h3>
+<p>Oglejmo si zdaj še nekaj osnovnih operacij, ki jih lahko izvedemo na danem grafu oziroma grafih.</p>
+<ul>
+<li><p><span class="definicija">Odstranjevanje vozlišč</span>. Dan je graf <span class="math notranslate nohighlight">\(G = (V,E)\)</span> in <span class="math notranslate nohighlight">\(u \in V\)</span>. Graf <span class="math notranslate nohighlight">\(G - u\)</span> ima vozlišča in povezave</p>
+<div class="math notranslate nohighlight">
+\[V(G - u) = V \backslash \{ u \}, \quad
+        E(G - u) = \{ e \in E \mid u \notin e \}.\]</div>
+</li>
+<li><p><span class="definicija">Odstranjevanje povezav</span>. Dan je graf <span class="math notranslate nohighlight">\(G = (V,E)\)</span> in <span class="math notranslate nohighlight">\(e \in E\)</span>. Graf <span class="math notranslate nohighlight">\(G - e\)</span> ima vozlišča in povezave</p>
+<div class="math notranslate nohighlight">
+\[V(G - e) = V, \quad
+        E(G - e) = E \backslash \{ e \}.\]</div>
+</li>
+<li><p><span class="definicija">Komplementiran graf</span>. Dan je graf <span class="math notranslate nohighlight">\(G = (V,E)\)</span>. Graf <span class="math notranslate nohighlight">\(\bar G\)</span> ima vozlišča in povezave</p>
+<div class="math notranslate nohighlight">
+\[V(\bar G) = V, \quad
+        E(\bar G) = \{ \{ u,v \} \mid u,v \in V, \{ u,v \} \notin E \}.\]</div>
+</li>
+<li><p><span class="definicija">Unija grafov</span>. Dana sta grafa <span class="math notranslate nohighlight">\(G_1, G_2\)</span>. Graf <span class="math notranslate nohighlight">\(G_1 \cup G_2\)</span> ima vozlišča in povezave</p>
+<div class="math notranslate nohighlight">
+\[V(G_1 \cup G_2) = V(G_1) \cup V(G_2), \quad 
+        E(G_1 \cup G_2) = E(G_1) \cup E(G_2).\]</div>
+</li>
+</ul>
+</section>
+</section>
+<section id="invariante-grafov">
+<h2>Invariante grafov<a class="headerlink" href="#invariante-grafov" title="Link to this heading">#</a></h2>
+<p>Dana sta grafa <span class="math notranslate nohighlight">\(G_1, G_2\)</span>, ki sicer na prvi pogled izgledata drugače, a če ustrezno oštevilčimo vozlišča obeh grafov, potem vidimo, da povezave v obeh grafih potekajo med natanko istimi pari vozlišč. V tem primeru lahko <em>identificiramo</em> ta dva grafa. Natančneje, preslikava <span class="math notranslate nohighlight">\(h \colon V(G_1) \to V(G_2)\)</span> je <span class="definicija">izomorfizem grafov</span>, če je <span class="math notranslate nohighlight">\(h\)</span> bijekcija in velja</p>
+<div class="math notranslate nohighlight">
+\[\forall u,v \in V(G_1) \colon 
+    \left( \{ u,v \} \in E(G_1) \Leftrightarrow \{ h(u), h(v) \} \in E(G_2) \right).\]</div>
+<p>V tem primeru rečemo, da sta grafa <span class="math notranslate nohighlight">\(G_1\)</span> in <span class="math notranslate nohighlight">\(G_2\)</span> <span class="definicija">izomorfna</span> in pišemo <span class="math notranslate nohighlight">\(G_1 \cong G_2\)</span>. V posebnem primeru, ko je <span class="math notranslate nohighlight">\(G_1 = G_2\)</span>, izomorfizmu grafov <span class="math notranslate nohighlight">\(h\)</span> pravimo <span class="definicija">avtomorfizem grafa</span> <span class="math notranslate nohighlight">\(G_1\)</span>.</p>
+<div class="zgled">
+<ul>
+<li><p>Za vsak graf <span class="math notranslate nohighlight">\(G\)</span> je preslikava</p>
+<div class="math notranslate nohighlight">
+\[h \colon V(G) \to V(G), \quad 
+            u \mapsto u\]</div>
+<p>avtomorfizem grafa <span class="math notranslate nohighlight">\(G\)</span>. Pravimo mu <span class="definicija">trivialni avtomorfizem</span>.</p>
+</li>
+<li><p>Naj bo <span class="math notranslate nohighlight">\(G = C_n\)</span> cikel dolžine <span class="math notranslate nohighlight">\(n\)</span>. Ta cikel lahko <em>zavrtimo</em> za <span class="math notranslate nohighlight">\(1\)</span> v smeri urinega kazalca. Natančneje, definirajmo preslikavo</p>
+<div class="math notranslate nohighlight">
+\[h \colon \ZZ/n\ZZ \to \ZZ/n\ZZ, \quad
+            u \mapsto u + 1.\]</div>
+<p>Za vsaki vozlišči <span class="math notranslate nohighlight">\(u,v \in \ZZ/n\ZZ\)</span> velja</p>
+<div class="math notranslate nohighlight">
+\[\{ u,v \} \in E(C_n) \Leftrightarrow v = u \pm 1 \pmod{n}\]</div>
+<p>in</p>
+<div class="math notranslate nohighlight">
+\[\{ h(u), h(v) \} \in E(C_n) \Leftrightarrow h(v) = h(u) \pm 1 \pmod{n}
+            \Leftrightarrow v = u \pm 1 \pmod{n}.\]</div>
+<p>Preslikava <span class="math notranslate nohighlight">\(h\)</span> je torej avtomorfizem grafa <span class="math notranslate nohighlight">\(C_n\)</span>.</p>
+</li>
+<li><p>Naj bo <span class="math notranslate nohighlight">\(G_1 = C_6\)</span> cikel dolžine <span class="math notranslate nohighlight">\(6\)</span> in <span class="math notranslate nohighlight">\(G_2\)</span> graf z vozlišči in povezavami</p>
+<div class="math notranslate nohighlight">
+\[V(G_2) = \{ a,b,c,d,e,f \}, \quad
+            E(G_2) = \{ ad, ae, bd, bf, ce, cf \}.\]</div>
+<p>Prepričajmo se, da sta grafa <span class="math notranslate nohighlight">\(G_1\)</span> in <span class="math notranslate nohighlight">\(G_2\)</span> izomorfna. Definirajmo preslikavo</p>
+<div class="math notranslate nohighlight">
+\[h \colon V(G_1) \to V(G_2), \quad
+            0 \mapsto d, 1 \mapsto a, 2 \mapsto e, 3 \mapsto c, 4 \mapsto f, 5 \mapsto b.\]</div>
+<p>Za vsaka <span class="math notranslate nohighlight">\(i,j \in V(G_1)\)</span> velja <span class="math notranslate nohighlight">\(i \sim j\)</span>, če in samo če <span class="math notranslate nohighlight">\(h(i) \sim h(j)\)</span>. Preslikava <span class="math notranslate nohighlight">\(h\)</span> je torej izomorfizem grafov.</p>
+</li>
+</ul>
+</div>
+<p>Kako bi dokazali, da dana grafa <em>nista</em> izomorfna? V tem primeru ponavadi uporabimo kakšno lastnost grafov (na primer število povezav, dvodelnost), ki se pri izomorfizmu ohranja. Natančneje, naj bo <span class="math notranslate nohighlight">\(\mathcal{L}\)</span> neka lastnost grafov. Rečemo, da je <span class="math notranslate nohighlight">\(\mathcal{L}\)</span> <span class="definicija">invarianta grafa</span>, če za vsaka dva izomorfna grafa <span class="math notranslate nohighlight">\(G_1, G_2\)</span> velja, da ima <span class="math notranslate nohighlight">\(G_1\)</span> lastnost <span class="math notranslate nohighlight">\(\mathcal{L}\)</span> natanko tedaj, ko ima <span class="math notranslate nohighlight">\(G_2\)</span> lastnost <span class="math notranslate nohighlight">\(\mathcal{L}\)</span>.</p>
+<div class="zgled">
+<p>Invariante grafov so število točk, število povezav, dvodelnost, število točk stopnje <span class="math notranslate nohighlight">\(3\)</span>, število trikotnikov, …</p>
+</div>
+<p>Če želimo dokazati, da dana grafa nista izomorfna, lahko torej poiščemo kakšno invarianto, v kateri se obravnavana grafa razlikujeta.</p>
+<div class="zgled">
+<ul>
+<li><p>Naj bo <span class="math notranslate nohighlight">\(L\)</span> lizika in <span class="math notranslate nohighlight">\(C_4\)</span> cikel. Lizika ima vozlišče stopnnje <span class="math notranslate nohighlight">\(3\)</span>, cikel pa je <span class="math notranslate nohighlight">\(2\)</span>-regularen. Ta dva grafa torej nista izomorfna.</p></li>
+<li><p>Dana sta naslednja grafa <span class="math notranslate nohighlight">\(G_1\)</span> in <span class="math notranslate nohighlight">\(G_2\)</span>.</p>
+<figure>
+<img src="img/grafi-zanimiv-zgled.png" />
+<figcaption>Graf <span class="math inline"><em>G</em><sub>1</sub></span></figcaption>
+</figure>
+<figure>
+<img src="img/grafi-primerjava.png" />
+<figcaption>Graf <span class="math inline"><em>G</em><sub>2</sub></span></figcaption>
+</figure>
+<p>Ali sta <span class="math notranslate nohighlight">\(G_1\)</span> in <span class="math notranslate nohighlight">\(G_2\)</span> izomorfna? Ujemata se v številu vozlišč in številu povezav. Oba vsebujeta <span class="math notranslate nohighlight">\(5\)</span>-cikel, zato nista dvodelna. Oba sta kubična grafa. Noben od grafov ne vsebuje trikotnika. Ta dva grafa pa se razlikujeta v dolžini najkrajšnega cikla v grafu, ki ji pravimo <span class="definicija">ožina grafa</span>. Ožina je seveda invarianta grafov. Ožina grafa <span class="math notranslate nohighlight">\(G_1\)</span> je <span class="math notranslate nohighlight">\(5\)</span>, ožina grafa <span class="math notranslate nohighlight">\(G_2\)</span> pa je <span class="math notranslate nohighlight">\(4\)</span>. Ta dva grafa torej nista izomorfna.</p>
+</li>
+</ul>
+</div>
+<p>Poglejmo si še nekaj invariant grafov, ki temeljijo na opazovanju <em>poti</em>. Naj bo <span class="math notranslate nohighlight">\(G = (V,E)\)</span> graf.</p>
+<ul>
+<li><p><span class="definicija">Sprehod</span> v <span class="math notranslate nohighlight">\(G\)</span> je zaporedje</p>
+<div class="math notranslate nohighlight">
+\[v_0 e_1 v_1 e_2 v_2 \cdots v_{k-1} e_k v_k,\]</div>
+<p>kjer je <span class="math notranslate nohighlight">\(v_i \in V\)</span>, <span class="math notranslate nohighlight">\(e_i = \{ v_{i-1}, v_i \} \in E\)</span>. Pri tem številu <span class="math notranslate nohighlight">\(k\)</span> pravimo <span class="definicija">dolžina sprehoda</span>. Pogosto izpustimo podatke o povezavah in zapišemo le zaporedje vozlišč <span class="math notranslate nohighlight">\(v_0 v_1 v_2 \dots v_k\)</span>.</p>
+</li>
+<li><p><span class="definicija">Obhod</span> je sklenjen sprehod, se pravi <span class="math notranslate nohighlight">\(v_0 = v_k\)</span>.</p></li>
+<li><p><span class="definicija">Enostaven sprehod</span> je sprehod, v katerem so vse <em>povezave</em> različne med sabo.</p></li>
+<li><p><span class="definicija">Pot</span> je enostaven sprehod, v katerem so vsa <em>vozlišča</em> različna med sabo.</p></li>
+<li><p><span class="definicija">Cikel</span> je enostaven obhod, v katerem so vozlišča <span class="math notranslate nohighlight">\(v_0, v_1, \dots, v_{k-1}\)</span> različna med sabo.</p></li>
+</ul>
+<div class="zgled">
+<p>V naslednjem grafu je označen primer poti in primer cikla.</p>
+<figure>
+<img src="img/grafi-pot-cikel.png" />
+<figcaption>Graf z rdečo potjo in zelenim ciklom</figcaption>
+</figure>
+</div>
+<p>Ni vsak sprehod pot. Je pa povsod, kjer je sprehod, tudi pot.</p>
+<div class="trditev">
+<p>Če v grafu obstaja sprehod od <span class="math notranslate nohighlight">\(u\)</span> do <span class="math notranslate nohighlight">\(v\)</span>, potem obstaja tudi pot od <span class="math notranslate nohighlight">\(u\)</span> do <span class="math notranslate nohighlight">\(v\)</span>.</p>
+</div>
+<div class="dokaz">
+<p>Dokazujemo z indukcijo na dolžino sprehoda <span class="math notranslate nohighlight">\(k\)</span>.</p>
+<p>Baza indukcije je <span class="math notranslate nohighlight">\(k = 1\)</span>. V tem primeru je sprehod kar enak <span class="math notranslate nohighlight">\(P_2\)</span>, kar je pot.</p>
+<p>Predpostavimo zdaj, da trditev že velja za vse sprehodi dolžine kvečjemu <span class="math notranslate nohighlight">\(k\)</span>. Naj bo <span class="math notranslate nohighlight">\(v_1 v_1 \dots v_{k+1}\)</span> sprehod dolžine <span class="math notranslate nohighlight">\(k+1\)</span>. Po indukcijski predpostavki obstaja pot od <span class="math notranslate nohighlight">\(v_0\)</span> do <span class="math notranslate nohighlight">\(v_k\)</span>, označimo jo z <span class="math notranslate nohighlight">\(v_0 u_1 u_2 \dots u_{k-1} v_k\)</span>.</p>
+<ul class="simple">
+<li><p>Če se <span class="math notranslate nohighlight">\(v_{k+1}\)</span> ne pojavi na tej poti, potem je <span class="math notranslate nohighlight">\(v_0 u_1 u_2 \dots u_{k-1} v_k v_{k+1}\)</span> pot od <span class="math notranslate nohighlight">\(v_0\)</span> do <span class="math notranslate nohighlight">\(v_{k+1}\)</span>.</p></li>
+<li><p>Predpostavimo zdaj, da se <span class="math notranslate nohighlight">\(v_{k+1}\)</span> pojavi na tej poti, se pravi <span class="math notranslate nohighlight">\(v_{k+1} = u_j\)</span> za nek <span class="math notranslate nohighlight">\(1 \leq j \leq k-1\)</span>. Tedaj je <span class="math notranslate nohighlight">\(v_0 u_1 u_2 \dots u_j\)</span> pot od <span class="math notranslate nohighlight">\(v_0\)</span> do <span class="math notranslate nohighlight">\(v_{k+1}\)</span>.</p></li>
+</ul>
+</div>
+<div class="domacanaloga">
+<p>Dokaži, da v vsakem grafu, v katerem obstaja sklenjen sprehod lihe dolžine, obstaja tudi cikel lihe dolžine. S tem v dokaz kriterija dvodelnosti grafov vstaviš še zadnji kos sestavljanke.</p>
+</div>
+<p>S pomočjo koncepta poti na množico vozlišč grafa vpeljemo naslednjo relacijo <span class="math notranslate nohighlight">\(R\)</span>. Za vozlišči <span class="math notranslate nohighlight">\(u,v\)</span> grafa velja <span class="math notranslate nohighlight">\(u R v\)</span>, če in samo če v grafu obstaja pot od <span class="math notranslate nohighlight">\(u\)</span> do <span class="math notranslate nohighlight">\(v\)</span>. Lahko je preveriti, da je <span class="math notranslate nohighlight">\(R\)</span> ekvivalenčna relacija.<label for='sidenote-role-10' class='margin-toggle'><span id="id10">
+<sup>10</sup></span>
+
+</label><input type='checkbox' id='sidenote-role-10' name='sidenote-role-10' class='margin-toggle'><span class="sidenote"><sup>10</sup>Tranzitivnost relacije <span class="math notranslate nohighlight">\(R\)</span> sledi iz zadnje trditve: če v grafu obstaja pot od <span class="math notranslate nohighlight">\(u\)</span> do <span class="math notranslate nohighlight">\(v\)</span> in pot od <span class="math notranslate nohighlight">\(v\)</span> do <span class="math notranslate nohighlight">\(w\)</span>, potem v grafu obstaja <em>sprehod</em> od <span class="math notranslate nohighlight">\(u\)</span> do <span class="math notranslate nohighlight">\(w\)</span>, zato po trditvi obstaja tudi <em>pot</em> od <span class="math notranslate nohighlight">\(u\)</span> do <span class="math notranslate nohighlight">\(w\)</span>.</span> Ekvivalenčne razrede <span class="math notranslate nohighlight">\(V/R\)</span> imenujemo <span class="definicija">povezane komponente</span> grafa. Število povezanih komponent označimo z <span class="math notranslate nohighlight">\(\Omega(G)\)</span>. Če je <span class="math notranslate nohighlight">\(\Omega(G) = 1\)</span>, potem rečemo, da je graf <span class="definicija">povezan</span>. Število povezanih komponent je invariatna grafov.</p>
+<div class="zgled">
+<p>Lizika je povezan graf. Če liziki odstranimo vozlišče stopnje <span class="math notranslate nohighlight">\(3\)</span>, dobimo graf, ki je disjunktna unija grafov <span class="math notranslate nohighlight">\(P_2\)</span> in izolirane točke. Ta graf ni povezan, ima dve povezani komponenti.</p>
+</div>
+<p><span class="definicija">Razdalja</span> med vozliščema <span class="math notranslate nohighlight">\(u,v\)</span>, ki jo označimo kot <span class="math notranslate nohighlight">\(d(u,v)\)</span>, je dolžina najkrajše poti med vozliščema <span class="math notranslate nohighlight">\(u\)</span> in <span class="math notranslate nohighlight">\(v\)</span>, če je le <span class="math notranslate nohighlight">\(u R v\)</span>. V primeru, ko <span class="math notranslate nohighlight">\(u\)</span> in <span class="math notranslate nohighlight">\(v\)</span> nista v relaciji <span class="math notranslate nohighlight">\(R\)</span>, definiramo <span class="math notranslate nohighlight">\(d(u,v) = \infty\)</span>.</p>
+<div class="zgled">
+<p>V naslednjem grafu za vozlišči <span class="math notranslate nohighlight">\(u,v\)</span> na zunanjem ciklu velja <span class="math notranslate nohighlight">\(d(u,v)=2\)</span>.</p>
+<figure>
+<img src="img/grafi-razdalja.png" />
+<figcaption>Razdalja med vozliščema</figcaption>
+</figure>
+</div>
+<p><span class="definicija">Premer</span> grafa je</p>
+<div class="math notranslate nohighlight">
+\[\mathrm{diam}(G) = \max_{u,v \in G} d(u,v),\]</div>
+<p>se pravi največja možna razdalja med vsakim parom vozlišč. Premer je invarianta grafov.</p>
+<div class="domacanaloga">
+<p>Prepričaj se, da je premer grafa iz zadnjega zgleda enak <span class="math notranslate nohighlight">\(2\)</span>. Določi še premer Petersenovega grafa.</p>
+</div>
+</section>
+<section id="drevesa">
+<h2>Drevesa<a class="headerlink" href="#drevesa" title="Link to this heading">#</a></h2>
+<p>Grafu, ki ne vsebuje ciklov, pravimo <span class="definicija">gozd</span>. Povezanemu gozdu pravimo <span class="definicija">drevo</span>.</p>
+<div class="zgled">
+<p>Drevo je povezan graf brez ciklov. Njegova vozlišča stopnje <span class="math notranslate nohighlight">\(1\)</span> so listi.</p>
+<figure>
+<img src="img/grafi-drevo.png" />
+<figcaption>Drevo</figcaption>
+</figure>
+</div>
+<p>Ker drevesa nimajo ciklov, so dvodelna. Imajo pa drevesa še veliko drugih čudovitih lastnosti.</p>
+<div class="trditev">
+<p>Naj bo <span class="math notranslate nohighlight">\(T\)</span> drevo.</p>
+<ol class="arabic simple">
+<li><p>Če je <span class="math notranslate nohighlight">\(|V(T)| &gt; 1\)</span>, potem ima <span class="math notranslate nohighlight">\(T\)</span> vsaj <span class="math notranslate nohighlight">\(2\)</span> lista.</p></li>
+<li><p><span class="math notranslate nohighlight">\(|E(T)| = |V(T)| - 1\)</span>.</p></li>
+<li><p>Za vsaka <span class="math notranslate nohighlight">\(u,v \in V(T)\)</span> obstaja <em>natanko ena</em> pot od <span class="math notranslate nohighlight">\(u\)</span> do <span class="math notranslate nohighlight">\(v\)</span>.</p></li>
+</ol>
+</div>
+<div class="dokaz">
+<p>1. Naj bo <span class="math notranslate nohighlight">\(P\)</span> pot <em>nadaljše možne dolžine</em> v drevesu <span class="math notranslate nohighlight">\(T\)</span>. Naj bo <span class="math notranslate nohighlight">\(u\)</span> začetek in <span class="math notranslate nohighlight">\(v\)</span> konec poti <span class="math notranslate nohighlight">\(P\)</span>. Trdimo, da je <span class="math notranslate nohighlight">\(d(u) = d(v) = 1\)</span>. Uporabimo dokaz s protislovjem. Naj bo <span class="math notranslate nohighlight">\(w\)</span> predzadnje vozlišče na poti <span class="math notranslate nohighlight">\(P\)</span>. Predpostavimo, da velja <span class="math notranslate nohighlight">\(d(v) \geq 2\)</span>. Torej obstaja vozlišče <span class="math notranslate nohighlight">\(x \in V\)</span>, <span class="math notranslate nohighlight">\(x \neq w\)</span>, <span class="math notranslate nohighlight">\(x \sim v\)</span>. Ker v grafu <span class="math notranslate nohighlight">\(T\)</span> ni ciklov, vozlišče <span class="math notranslate nohighlight">\(x\)</span> ni na poti <span class="math notranslate nohighlight">\(P\)</span>. Zato lahko pot <span class="math notranslate nohighlight">\(P\)</span> podaljšamo s povezavo <span class="math notranslate nohighlight">\(v \sim x\)</span>. To je protislovje z izbiro najdaljše možne poti <span class="math notranslate nohighlight">\(P\)</span>. Torej je res <span class="math notranslate nohighlight">\(d(v) = 1\)</span>. Podobno dokažemo <span class="math notranslate nohighlight">\(d(u) = 1\)</span>. Vozlišči <span class="math notranslate nohighlight">\(u\)</span> in <span class="math notranslate nohighlight">\(v\)</span> sta torej lista drevesa.</p>
+<p>2. Dokazujemo z indukcijo na <span class="math notranslate nohighlight">\(n = |V(T)|\)</span>. Baza je primer <span class="math notranslate nohighlight">\(n = 1\)</span>, ko drevo <span class="math notranslate nohighlight">\(T\)</span> sestoji iz enega samega vozlišča in nima nič povezav. V tem primeru formula <span class="math notranslate nohighlight">\(0 = 1 - 1\)</span> seveda drži. Za indukcijski korak predpostavimo, da formula drži za vsako drevo na <span class="math notranslate nohighlight">\(n\)</span> vozliščih in naj bo <span class="math notranslate nohighlight">\(T\)</span> drevo na <span class="math notranslate nohighlight">\(n+1\)</span> vozliščih. Naj bo <span class="math notranslate nohighlight">\(v\)</span> list <span class="math notranslate nohighlight">\(T\)</span>, ki obstaja po prejšnji točki. Naj bo <span class="math notranslate nohighlight">\(T' = T - v\)</span>. Tedaj je graf <span class="math notranslate nohighlight">\(T'\)</span> brez ciklov in povezan,<label for='sidenote-role-11' class='margin-toggle'><span id="id11">
+<sup>11</sup></span>
+
+</label><input type='checkbox' id='sidenote-role-11' name='sidenote-role-11' class='margin-toggle'><span class="sidenote"><sup>11</sup>List <span class="math notranslate nohighlight">\(v\)</span> je lahko le začetek ali konec poti, zato pot med vozliščema <span class="math notranslate nohighlight">\(x,y \in V(T)\)</span>, <span class="math notranslate nohighlight">\(x,y \neq v\)</span>, <em>ne</em> vsebuje <span class="math notranslate nohighlight">\(v\)</span>.</span> torej je <span class="math notranslate nohighlight">\(T'\)</span> drevo z <span class="math notranslate nohighlight">\(n\)</span> vozlišči. Po indukcijski predpostavki sledi <span class="math notranslate nohighlight">\(|E(T')| = n - 1\)</span>. Hkrati velja <span class="math notranslate nohighlight">\(|E(T)| = |E(T')| + 1\)</span>, torej ima drevo <span class="math notranslate nohighlight">\(T\)</span> natanko <span class="math notranslate nohighlight">\(n\)</span> povezav in formula velja.</p>
+<p>3. Predpostavimo, da obstajata različni poti od nekega vozlišča <span class="math notranslate nohighlight">\(u\)</span> do nekega vozlišča <span class="math notranslate nohighlight">\(v\)</span>, recimo jima <span class="math notranslate nohighlight">\(P_1, P_2\)</span>. Naj bo <span class="math notranslate nohighlight">\(w\)</span> zadnje vozlišče, v katerem se <span class="math notranslate nohighlight">\(P_1, P_2\)</span> še ujemata. Naj bo <span class="math notranslate nohighlight">\(x\)</span> prvo vozlišče na <span class="math notranslate nohighlight">\(P_1\)</span> po <span class="math notranslate nohighlight">\(w\)</span>, ki je hkrati na <span class="math notranslate nohighlight">\(P_2\)</span>. Tedaj dobimo cikel <span class="math notranslate nohighlight">\(wP_1xP_2w\)</span>. To je protislovje, ker je <span class="math notranslate nohighlight">\(T\)</span> drevo.</p>
+</div>
+<p>Drevesa zelo preprosto postanejo nepovezana. Povezava <span class="math notranslate nohighlight">\(e\)</span> v povezanem grafu <span class="math notranslate nohighlight">\(G\)</span> je <span class="definicija">most</span>, če graf <span class="math notranslate nohighlight">\(G - e\)</span> <em>ni</em> povezan. Vsaka povezava, ki povezuje list s preostankom drevesa, je most. Res pa je še več.</p>
+<div class="trditev">
+<p>Vsaka povezava v drevesu je most.</p>
+</div>
+<div class="dokaz">
+<p>Naj bo <span class="math notranslate nohighlight">\(T\)</span> drevo. Naj bo <span class="math notranslate nohighlight">\(e = \{ u, v \}\)</span> poljubna povezava v <span class="math notranslate nohighlight">\(T\)</span>. Po zadnji trditvi je ta povezava <em>edina</em> pot od <span class="math notranslate nohighlight">\(u\)</span> do <span class="math notranslate nohighlight">\(v\)</span> v drevesu <span class="math notranslate nohighlight">\(T\)</span>. Torej v grafu <span class="math notranslate nohighlight">\(T - e\)</span> <em>ne</em> obstaja pot od <span class="math notranslate nohighlight">\(u\)</span> do <span class="math notranslate nohighlight">\(v\)</span>. To pomeni, da graf <span class="math notranslate nohighlight">\(T - e\)</span> ni povezan. Povezava <span class="math notranslate nohighlight">\(e\)</span> je torej most.</p>
+</div>
+<p>Vse te čudovite lastnosti, ki jih imajo drevesa, v resnici <em>karakterizirajo</em> drevesa.</p>
+<div class="trditev">
+<p>Naj bo <span class="math notranslate nohighlight">\(G\)</span> graf. Naslednje trditve so ekvivalentne.</p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(G\)</span> je drevo.</p></li>
+<li><p>Med vsakima dvema vozliščema v <span class="math notranslate nohighlight">\(G\)</span> obstaja natanko ena pot.</p></li>
+<li><p><span class="math notranslate nohighlight">\(G\)</span> je povezan in <span class="math notranslate nohighlight">\(|E(G)| = |V(G)| - 1\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(G\)</span> je povezan in vsaka njegova povezava je most.</p></li>
+</ol>
+</div>
+<div class="dokaz">
+<p>Po predzadnji trditvi vemo, da 1. <span class="math notranslate nohighlight">\(\Rightarrow\)</span> 2. in 1. <span class="math notranslate nohighlight">\(\Rightarrow\)</span> 3. Po zadnji trditvi vemo, da celo 2. <span class="math notranslate nohighlight">\(\Rightarrow\)</span> 4.<label for='sidenote-role-12' class='margin-toggle'><span id="id12">
+<sup>12</sup></span>
+
+</label><input type='checkbox' id='sidenote-role-12' name='sidenote-role-12' class='margin-toggle'><span class="sidenote"><sup>12</sup>V dokazu trditve smo namreč uporabili le lastnost 2. drevesa.</span> Dokažimo zdaj še 4. <span class="math notranslate nohighlight">\(\Rightarrow\)</span> 1. in 3. <span class="math notranslate nohighlight">\(\Rightarrow\)</span> 1.</p>
+<p>4. <span class="math notranslate nohighlight">\(\Rightarrow\)</span> 1.: Predpostavimo, da <span class="math notranslate nohighlight">\(G\)</span> ni drevo in da v <span class="math notranslate nohighlight">\(G\)</span> torej obstaja cikel <span class="math notranslate nohighlight">\(C\)</span>. Naj bo <span class="math notranslate nohighlight">\(e\)</span> povezava na <span class="math notranslate nohighlight">\(C\)</span>. Tedaj po predpostavki graf <span class="math notranslate nohighlight">\(G - e\)</span> <em>ni</em> povezan. Naj bosta <span class="math notranslate nohighlight">\(x,y\)</span> vozlišči grafa <span class="math notranslate nohighlight">\(G\)</span>, ki nista povezani v <span class="math notranslate nohighlight">\(G - e\)</span>. Ker je graf <span class="math notranslate nohighlight">\(G\)</span> povezan, obstaja pot <span class="math notranslate nohighlight">\(P\)</span> od <span class="math notranslate nohighlight">\(x\)</span> do <span class="math notranslate nohighlight">\(y\)</span> v <span class="math notranslate nohighlight">\(G\)</span>. Ta pot nujno prečka povezavo <span class="math notranslate nohighlight">\(e\)</span>. Nadomestimo to prečkanje povezave <span class="math notranslate nohighlight">\(e\)</span> s potjo <span class="math notranslate nohighlight">\(C - e\)</span>. Torej v grafu <span class="math notranslate nohighlight">\(G - e\)</span> obstaja sprehod od <span class="math notranslate nohighlight">\(x\)</span> do <span class="math notranslate nohighlight">\(y\)</span>, zato pa tudi pot. To je protislovje z izbiro vozlišč <span class="math notranslate nohighlight">\(x,y\)</span>. Torej cikel <span class="math notranslate nohighlight">\(C\)</span> v <span class="math notranslate nohighlight">\(G\)</span> ne obstaja in <span class="math notranslate nohighlight">\(G\)</span> je res drevo.</p>
+<p>3. <span class="math notranslate nohighlight">\(\Rightarrow\)</span> 1.: Predpostavimo, da <span class="math notranslate nohighlight">\(G\)</span> ni drevo in da v <span class="math notranslate nohighlight">\(G\)</span> torej obstaja cikel <span class="math notranslate nohighlight">\(C\)</span>. Za vsako vozlišče <span class="math notranslate nohighlight">\(v \in V(G) \backslash V(C)\)</span> izberimo pot <span class="math notranslate nohighlight">\(P_v\)</span> najkrajše možne dolžine od <span class="math notranslate nohighlight">\(v\)</span> do cikla <span class="math notranslate nohighlight">\(C\)</span>. Naj bo <span class="math notranslate nohighlight">\(e_v\)</span> prva povezava na poti <span class="math notranslate nohighlight">\(P_v\)</span>. Trdimo, da za <span class="math notranslate nohighlight">\(u \neq v\)</span> velja <span class="math notranslate nohighlight">\(e_u \neq e_v\)</span>. Res, če je <span class="math notranslate nohighlight">\(e_u = e_v\)</span>, potem sta <span class="math notranslate nohighlight">\(u\)</span> in <span class="math notranslate nohighlight">\(v\)</span> nujno povezani vozlišči vozlišče <span class="math notranslate nohighlight">\(u\)</span> je povezano s ciklom <span class="math notranslate nohighlight">\(C\)</span> s potjo <span class="math notranslate nohighlight">\(P_v - e\)</span>. Torej je dolžina poti <span class="math notranslate nohighlight">\(P_u\)</span>, ki je najkrajše možne dolžine, enaka kvečjemu dolžini poti <span class="math notranslate nohighlight">\(P_v\)</span> manj <span class="math notranslate nohighlight">\(1\)</span>. Od tod sledi, da je dolžina poti <span class="math notranslate nohighlight">\(P_u - e\)</span> strogo manjša od dolžine poti <span class="math notranslate nohighlight">\(P_v\)</span>. Torej smo našli pot, ki povezuje <span class="math notranslate nohighlight">\(u\)</span> s <span class="math notranslate nohighlight">\(C\)</span> in je krajše dolžine kot <span class="math notranslate nohighlight">\(P_v\)</span>. To je protislovje. Res torej za <span class="math notranslate nohighlight">\(u \neq v\)</span> velja <span class="math notranslate nohighlight">\(e_u \neq e_v\)</span>. Od tod sledi</p>
+<div class="math notranslate nohighlight">
+\[|E(G)| \geq |E(C)| + |\{ e_v \mid v \in V(G) \backslash V(C) \}|
+    = |V(C)| + (|V(G)| - |V(C)|)
+    = |V(G)|.\]</div>
+<p>Dobljeno je sprto s predpostavko <span class="math notranslate nohighlight">\(|E(G)| = |V(G)| - 1\)</span>. Cikel <span class="math notranslate nohighlight">\(C\)</span> v <span class="math notranslate nohighlight">\(G\)</span> torej ne obstaja in <span class="math notranslate nohighlight">\(G\)</span> je res drevo.</p>
+</div>
+</section>
+<section id="eulerjevi-grafi">
+<h2>Eulerjevi grafi<a class="headerlink" href="#eulerjevi-grafi" title="Link to this heading">#</a></h2>
+<p>Sprehod v grafu je <span class="definicija">Eulerjev sprehod</span>, če vsebuje <em>vsako povezavo</em> grafa natanko enkrat. <span class="definicija">Eulerjev obhod</span> je obhod, ki je Eulerjev sprehod.</p>
+<div class="zgled">
+<p>Lizika vsebuje Eulerjev sprehod, cikel <span class="math notranslate nohighlight">\(C_5\)</span> vsebuje Eulerjev obhod, poln graf <span class="math notranslate nohighlight">\(K_5\)</span> vsebuje Eulerjev obhod.</p>
+</div>
+<p>Graf je <span class="definicija">Eulerjev</span>, če vsebuje Eulerjev obhod. Za to, da je graf Eulerjev, morata biti izpolnjena naslednja dva pogoja:</p>
+<ul>
+<li><p>graf je povezan,</p></li>
+<span class="sidenote"><sup>13</sup>Če namreč med Eulerjevim obhodom pridemo v neko vozlišče, moramo iz njega tudi oditi. Enako velja za začetno vozlišče obhoda, ki je enako končnemu.</span><li><p>vsa vozlišča so sode stopnje.<label for='sidenote-role-13' class='margin-toggle'><span id="id13">
+<sup>13</sup></span>
+
+</label><input type='checkbox' id='sidenote-role-13' name='sidenote-role-13' class='margin-toggle'><span class="sidenote d-n"><sup>13</sup>Če namreč med Eulerjevim obhodom pridemo v neko vozlišče, moramo iz njega tudi oditi. Enako velja za začetno vozlišče obhoda, ki je enako končnemu.</span></p></li>
+</ul>
+<p>Presenetljivo pa sta ta dva očitna potrebna pogoja tudi zadostna.</p>
+<div class="izrek">
+<p>Naj bo <span class="math notranslate nohighlight">\(G\)</span> povezan graf. Potem je <span class="math notranslate nohighlight">\(G\)</span> Eulerjev natanko tedaj, ko so vsa vozlišča sode stopnje.</p>
+</div>
+<div class="dokaz">
+<p>Dokazujemo le implikacijo iz desne v levo. Naj bo <span class="math notranslate nohighlight">\(S\)</span> sprehod najdaljše možne dolžine v <span class="math notranslate nohighlight">\(G\)</span>, ki vsebuje vsako povezavo v <span class="math notranslate nohighlight">\(G\)</span> <em>kvečjemu enkrat</em>. Naj bo <span class="math notranslate nohighlight">\(u\)</span> začetno vozlišče <span class="math notranslate nohighlight">\(S\)</span> in <span class="math notranslate nohighlight">\(v\)</span> končno vozlišče. Za vsakega soseda <span class="math notranslate nohighlight">\(w \sim u\)</span> mora biti tudi povezava <span class="math notranslate nohighlight">\(\{ u, w \}\)</span> na <span class="math notranslate nohighlight">\(S\)</span>, sicer lahko <span class="math notranslate nohighlight">\(S\)</span> podaljšamo. Ker je <span class="math notranslate nohighlight">\(u\)</span> sode stopnje in se sprehod <span class="math notranslate nohighlight">\(S\)</span> začne v <span class="math notranslate nohighlight">\(u\)</span>, se mora tudi končati v <span class="math notranslate nohighlight">\(u\)</span>.<label for='sidenote-role-14' class='margin-toggle'><span id="id14">
+<sup>14</sup></span>
+
+</label><input type='checkbox' id='sidenote-role-14' name='sidenote-role-14' class='margin-toggle'><span class="sidenote"><sup>14</sup>Vsaka povezava, ki je na <span class="math notranslate nohighlight">\(S\)</span> in vstopi v <span class="math notranslate nohighlight">\(u\)</span> in ni začetna povezava na <span class="math notranslate nohighlight">\(S\)</span>, mora iz <span class="math notranslate nohighlight">\(u\)</span> tudi izstopiti.</span> Torej je <span class="math notranslate nohighlight">\(u = v\)</span> in sprehod <span class="math notranslate nohighlight">\(S\)</span> je v resnici <em>obhod</em>.</p>
+<p>Premislimo, da je ta obhod Eulerjev. Res, če ni, potem izberimo neko povezavo <span class="math notranslate nohighlight">\(e = \{ x, y \}\)</span>, ki ni na <span class="math notranslate nohighlight">\(S\)</span>. Naj bo <span class="math notranslate nohighlight">\(Q\)</span> neka najkrajša pot od <span class="math notranslate nohighlight">\(y\)</span> do sprehoda <span class="math notranslate nohighlight">\(S\)</span>.<label for='sidenote-role-15' class='margin-toggle'><span id="id15">
+<sup>15</sup></span>
+
+</label><input type='checkbox' id='sidenote-role-15' name='sidenote-role-15' class='margin-toggle'><span class="sidenote"><sup>15</sup>Taka pot obstaja, ker je graf <span class="math notranslate nohighlight">\(G\)</span> povezan.</span>, zapišimo <span class="math notranslate nohighlight">\(Q = y \cdots z\)</span> za vozlišče <span class="math notranslate nohighlight">\(z\)</span> na obhodu <span class="math notranslate nohighlight">\(S\)</span>. Ker je <span class="math notranslate nohighlight">\(Q\)</span> najkrajša, nobeno od njegovih vozlišč razen <span class="math notranslate nohighlight">\(z\)</span> ne leži na <span class="math notranslate nohighlight">\(S\)</span>. Potemtakem je sprehod <span class="math notranslate nohighlight">\(xy \cdots z \cdots z\)</span>, kjer se najprej sprehodimo od <span class="math notranslate nohighlight">\(x\)</span> do <span class="math notranslate nohighlight">\(y\)</span> prek <span class="math notranslate nohighlight">\(e\)</span>, potem od <span class="math notranslate nohighlight">\(y\)</span> do <span class="math notranslate nohighlight">\(z\)</span> prek <span class="math notranslate nohighlight">\(Q\)</span> in nazadnje od <span class="math notranslate nohighlight">\(z\)</span> do <span class="math notranslate nohighlight">\(z\)</span> prek <span class="math notranslate nohighlight">\(S\)</span>, daljši od <span class="math notranslate nohighlight">\(S\)</span> in vsako povezavo vsebuje kvečjemu enkrat. To je protislovje z izbiro <span class="math notranslate nohighlight">\(S\)</span>.</p>
+</div>
+<p>Soroden kriterij imamo na voljo tudi za Eulerjeve sprehode.</p>
+<div class="izrek">
+<p>Naj bo <span class="math notranslate nohighlight">\(G\)</span> povezan graf. Potem ima <span class="math notranslate nohighlight">\(G\)</span> Eulerjev sprehod natanko tedaj, ko ima največ <span class="math notranslate nohighlight">\(2\)</span> vozlišči lihe stopnje.</p>
+</div>
+<div class="dokaz">
+<p><span class="math notranslate nohighlight">\((\Rightarrow)\)</span>: Vsa vozlišča razen morda začetnega in končnega imajo sodo stopnjo, ker za vsako vhodno povezavo obstaja izhodna.</p>
+<p><span class="math notranslate nohighlight">\((\Leftarrow)\)</span>: Število vozlišč lihe stopnje je sodo po lemi o rokovanju, torej je lahko enako le <span class="math notranslate nohighlight">\(0\)</span> ali <span class="math notranslate nohighlight">\(2\)</span>.</p>
+<ul class="simple">
+<li><p>Če je enako <span class="math notranslate nohighlight">\(0\)</span>, potem so vsa vozlišča sode stopnje, zato obstaja celo Eulerjev obhod.</p></li>
+<li><p>Če je enako <span class="math notranslate nohighlight">\(2\)</span>, potem vozlišči lihe stopnje označimo z <span class="math notranslate nohighlight">\(u,v\)</span>. Dodajmo povezavo <span class="math notranslate nohighlight">\(\{ u, v \}\)</span> grafu <span class="math notranslate nohighlight">\(G\)</span>. Nov graf <span class="math notranslate nohighlight">\(G + uv\)</span> ima vsa vozlišča sode stopnje, torej ima Eulerjev obhod <span class="math notranslate nohighlight">\(S\)</span>. Tedaj je <span class="math notranslate nohighlight">\(S - uv\)</span> Eulerjev sprehod v grafu <span class="math notranslate nohighlight">\(G\)</span>.</p></li>
+</ul>
+</div>
+<section id="mostovi">
+<h3>Mostovi<a class="headerlink" href="#mostovi" title="Link to this heading">#</a></h3>
+<p>Eulerjeva izvirna motivacija za študiranje obhodov v grafih, ki jim danes pravimo Eulerjevi obhodi, je bil <span class="definicija">problem königsberških mostov</span>. Ta vprašuje, ali se je v takratnem mestu Königsberg<label for='sidenote-role-16' class='margin-toggle'><span id="id16">
+<sup>16</sup></span>
+
+</label><input type='checkbox' id='sidenote-role-16' name='sidenote-role-16' class='margin-toggle'><span class="sidenote"><sup>16</sup>Danes imenovanem Kaliningrad.</span> bilo mogoče sprehoditi po mestu na tak način, da bi začeli in končali sprehod na isti točki, pri tem pa bi se po vsakem od mostov mesta sprehodili natanko enkrat.<label for='sidenote-role-17' class='margin-toggle'><span id="id17">
+<sup>17</sup></span>
+
+</label><input type='checkbox' id='sidenote-role-17' name='sidenote-role-17' class='margin-toggle'><span class="sidenote"><sup>17</sup>Ta problem je Euler razrešil leta 1736.</span></p>
+<figure>
+<img src="img/konigsberg.png" />
+<figcaption>Mostovi v Königsbergu, vir: Wikipedia</figcaption>
+</figure>
+<p>Ta problem lahko prevedemo na teorijo grafo na naslednji način. Vsaki zemeljski masi priredimo vozlišče, mostu pa povezavo. Dobimo multigraf s štirimi vozlišči, eno je stopnje <span class="math notranslate nohighlight">\(5\)</span>, tri pa so stopnje <span class="math notranslate nohighlight">\(3\)</span>. Po dokazanih izrekih<label for='sidenote-role-18' class='margin-toggle'><span id="id18">
+<sup>18</sup></span>
+
+</label><input type='checkbox' id='sidenote-role-18' name='sidenote-role-18' class='margin-toggle'><span class="sidenote"><sup>18</sup>Ni se težko prepričati, da ta dva izreka veljata tudi za multigrafe.</span> o obstoju Eulerjeve poti oziroma obhoda sklepamo, da v tem grafu ne obstaja niti Eulerjev sprehod. Želen obhod v mestu torej ni mogoč.</p>
+<figure>
+<img src="img/grafi-konigsberg.png" />
+<figcaption>Graf königsberških mostov</figcaption>
+</figure>
+<p>Sorodno lahko obravnavamo <span class="definicija">problem ljubljanskih mostov</span>. Ljubljana ima sicer bistveno več mostov kot stari Königsberg, zato se osredotočimo le na centralni del mesta, ki ga severno od gradu omejuje Ljubljanica, južno pa Gruberjev prekop.</p>
+<figure>
+<img src="img/ljubljana.png" />
+<figcaption>Ljubljanski mostovi, vir: OpenStreetMap</figcaption>
+</figure>
+<p>Imamo torej tri zemeljske mase: severo-zahodno (vključuje FMF), osrednjo (vključuje grad) in južno (vključuje Golovec). Prva je z drugo povezana z <span class="math notranslate nohighlight">\(18\)</span> mostovi, druga pa s tretjo z <span class="math notranslate nohighlight">\(9\)</span> mostovi. Dobimo torej multigraf s tremi vozlišči stopnje <span class="math notranslate nohighlight">\(18\)</span>, <span class="math notranslate nohighlight">\(27\)</span> in <span class="math notranslate nohighlight">\(9\)</span>. Po izreku v centralni Ljubljani Eulerjev obhod ne obstaja, obstaja pa Eulerjev sprehod. Pri tem moramo v slednjem začeti in končati sprehod v vozliščih lihe stopnje, torej v posebnem ne na FMF.</p>
+</section>
+<section id="risanje-grafa-v-eni-potezi">
+<h3>Risanje grafa v eni potezi<a class="headerlink" href="#risanje-grafa-v-eni-potezi" title="Link to this heading">#</a></h3>
+<p>Dan je graf. Ali ga lahko narišemo v eni potezi? Se pravi, ali lahko na list papirja narišemo graf tako, da vzamemo v roke pisalo, se z njim dotaknemo papirja, neprekinjeno rišemo povezave grafa (brez da bi večkrat potegnili pisalo čez isto povezavo) in na ta način narišemo vse povezave grafa?</p>
+<p>Ta problem je enakovreden temu, da v grafu najdemo Eulerjev sprehod, ki ga lahko neprekinjeno narišemo. Če graf nima Eulerjevega sprehoda, ga torej v eni potezi ne moremo narisati.</p>
+<div class="zgled">
+<p>Oglejmo si naslednji graf.</p>
+<figure>
+<img src="img/grafi-enapoteza.png" />
+<figcaption>Risanje grafa s čim manj potezami</figcaption>
+</figure>
+<p>Ta graf je kubičen, zato nima Eulerjevega obhoda in ga ne moremo narisati v eni potezi. Kolikšno je najmanjše število potez, ki zadoščajo, da narišemo ta graf? Na sliki je prikazano, kako ta graf lahko narišemo s <span class="math notranslate nohighlight">\(4\)</span> potezami. Vsaka poteza je prikazana s svojo barvo. Prepričajmo se, da pa tega grafa ne moremo narisati z manj kot <span class="math notranslate nohighlight">\(4\)</span> potezami. To lahko vidimo tako, da seštejemo stopnje vseh vozlišč v grafu. Po lemi o rokovanju je ta vsota soda. Po drugi strani ima vsaka poteza svoje začetno in končno vozlišče (morda sta to enaki vozlišči), torej skupno prispeva k vsoti stopenj <span class="math notranslate nohighlight">\(2\)</span> za vozlišča na sprehodu in <span class="math notranslate nohighlight">\(1\)</span> za začetno in končno vozlišče. Graf, narisan v <span class="math notranslate nohighlight">\(3\)</span> potezah, bi zato imel kvečjemu <span class="math notranslate nohighlight">\(6\)</span> vozlišč lihe stopnje. Obravnavan graf pa ima <span class="math notranslate nohighlight">\(8\)</span> vozlišč stopnje <span class="math notranslate nohighlight">\(3\)</span>.</p>
+</div>
+<p>Zadnji zgled lahko posplošimo na naslednji način.</p>
+<div class="trditev">
+<p>Naj bo <span class="math notranslate nohighlight">\(G\)</span> povezan graf z <span class="math notranslate nohighlight">\(\ell\)</span> vozlišči lihe stopnje. Najmanjše število potez, s katerimi lahko narišemo <span class="math notranslate nohighlight">\(G\)</span>, je <span class="math notranslate nohighlight">\(1\)</span> za <span class="math notranslate nohighlight">\(\ell = 0\)</span> in <span class="math notranslate nohighlight">\(\ell/2\)</span> za <span class="math notranslate nohighlight">\(\ell &gt; 0\)</span>.</p>
+</div>
+<div class="dokaz">
+<p>Po lemi o rokovanju je <span class="math notranslate nohighlight">\(\ell\)</span> sodo število. Če je <span class="math notranslate nohighlight">\(\ell = 0\)</span>, po izreku obstaja Eulerjev obhod, torej lahko graf narišemo v eni potezi. Če pa je <span class="math notranslate nohighlight">\(\ell &gt; 0\)</span>, potem po argumentu v zadnjem zgledu gotovo potrebujemo vsaj <span class="math notranslate nohighlight">\(\ell/2\)</span> potez, da narišemo graf <span class="math notranslate nohighlight">\(G\)</span>. Prepričajmo se, da <span class="math notranslate nohighlight">\(\ell/2\)</span> potez tudi zadostuje. Res, naj bodo <span class="math notranslate nohighlight">\(u_1, u_2, \dots, u_{\ell/2}\)</span> ter <span class="math notranslate nohighlight">\(v_1, v_2, \dots, v_{\ell/2}\)</span> vozlišča lihe stopnje v <span class="math notranslate nohighlight">\(G\)</span>. Tedaj graf <span class="math notranslate nohighlight">\(G + u_1 v_1 + u_2 v_2 + \cdots u_{\ell/2} v_{\ell/2}\)</span> nima vozlišč lihe stopnje, torej ima Eulerjev obhod</p>
+<div class="math notranslate nohighlight">
+\[S = u_1 v_1 \cdots u_2 v_2 \cdots u_{\ell/2} v_{\ell/2} \cdots u_1.\]</div>
+<p>To pomeni, da lahko graf <span class="math notranslate nohighlight">\(G\)</span> narišemo v <span class="math notranslate nohighlight">\(\ell/2\)</span> potezah, in sicer v 1. potezi narišemo del <span class="math notranslate nohighlight">\(S\)</span> od <span class="math notranslate nohighlight">\(v_1\)</span> do <span class="math notranslate nohighlight">\(u_2\)</span>, v 2. potezi narišemo del <span class="math notranslate nohighlight">\(S\)</span> od <span class="math notranslate nohighlight">\(u_2\)</span> do <span class="math notranslate nohighlight">\(v_2\)</span>, …, v <span class="math notranslate nohighlight">\(\ell/2\)</span>-ti potezi narišemo del <span class="math notranslate nohighlight">\(S\)</span> od <span class="math notranslate nohighlight">\(v_{\ell/2}\)</span> do <span class="math notranslate nohighlight">\(u_1\)</span>.</p>
+</div>
+</section>
+</section>
+<section id="hamiltonovi-grafi">
+<h2>Hamiltonovi grafi<a class="headerlink" href="#hamiltonovi-grafi" title="Link to this heading">#</a></h2>
+<p>Hamiltonovi grafi so analogni Eulerjevim, kjer le zamenjamo vlogo povezav in vozlišč. Vpeta pot v grafu je <span class="definicija">Hamiltonova pot</span>. Vpeti cikel v grafu je <span class="definicija">Hamiltonov cikel</span>.</p>
+<div class="zgled">
+<ul>
+<li><p>Lizika vsebuje Hamiltonovo pot, poln graf <span class="math notranslate nohighlight">\(K_4\)</span> vsebuje Hamiltonov cikel.</p></li>
+<li><p>Naslednji grafi vsebujejo Hamiltonove cikle, ki so označeni z rdečo barvo.</p>
+<figure>
+<img src="img/grafi-hamilton.png" />
+<figcaption>Grafi s Hamiltonovim ciklom</figcaption>
+</figure>
+</li>
+<li><p>Ali naslednji graf vsebuje Hamiltonov cikel?</p>
+<figure>
+<img src="img/grafi-hamilton-zgled.png" />
+<figcaption>Ali ta graf vsebuje Hamiltonov cikel?</figcaption>
+</figure>
+</li>
+</ul>
+</div>
+<p>Graf je <span class="definicija">Hamiltonov</span>, če vsebuje Hamiltonov cikel.</p>
+<p>V prejšnjem razdelku smo spoznali, da lahko za poljuben graf zelo hitro ugotovimo, ali je Eulerjev. Za ugotavljanje hamiltonskosti grafa pa ni znan noben preprost postopek, ki bi bil uporaben za vse grafe. Preverjanje hamiltonskosti je običajno bistveno težji problem od preverjanja, ali je graf Eulerjev.<label for='sidenote-role-19' class='margin-toggle'><span id="id19">
+<sup>19</sup></span>
+
+</label><input type='checkbox' id='sidenote-role-19' name='sidenote-role-19' class='margin-toggle'><span class="sidenote"><sup>19</sup>Hamilton je Hamiltonove grafe opazoval približno sto let po Eulerju.</span> Poznanih pa je nekaj <em>potrebnih</em> pogojev in nekaj <em>zadostnih</em> pogojev za hamiltonskost.</p>
+<div class="izrek">
+<p>Naj bo <span class="math notranslate nohighlight">\(G\)</span> graf. Predpostavimo, da v <span class="math notranslate nohighlight">\(G\)</span> obstaja neprazna podmnožica <span class="math notranslate nohighlight">\(S \subseteq V(G)\)</span>, za katero velja <span class="math notranslate nohighlight">\(\Omega(G-S) &gt; |S|\)</span>. Tedaj graf <span class="math notranslate nohighlight">\(G\)</span> <em>ni</em> Hamiltonov.</p>
+</div>
+<div class="dokaz">
+<p>Predpostavimo, da je <span class="math notranslate nohighlight">\(G\)</span> Hamiltonov graf s Hamiltonovim ciklom <span class="math notranslate nohighlight">\(C\)</span>. Naj bo <span class="math notranslate nohighlight">\(S\)</span> neka neprazna množica vozlišč grafa <span class="math notranslate nohighlight">\(G\)</span>. Ko odstranimo vozlišča <span class="math notranslate nohighlight">\(S\)</span> s cikla <span class="math notranslate nohighlight">\(C\)</span>, ta cikel razpade na kvečjemu <span class="math notranslate nohighlight">\(|S|\)</span> komponent (krožnih lokov). Ti loki so prek povezav grafa <span class="math notranslate nohighlight">\(G\)</span>, ki ne ležijo na ciklu <span class="math notranslate nohighlight">\(C\)</span>, lahko morda še povezani med sabo. Graf <span class="math notranslate nohighlight">\(G - S\)</span> ima zatorej kvečjemu <span class="math notranslate nohighlight">\(|S|\)</span> komponent in velja torej <span class="math notranslate nohighlight">\(\Omega(G - S) \leq |S|\)</span>. S tem je dokaz zaključen.</p>
+</div>
+<div class="zgled">
+<p>Ko liziki odstranimo vozlišče stopnje <span class="math notranslate nohighlight">\(3\)</span>, razpade na dve komponenti. Lizika torej ni Hamiltonov graf.</p>
+</div>
+<p>Zabeležimo poseben primer dokazanega izreka za dvodelne grafe.</p>
+<div class="posledica">
+<p>Naj bo <span class="math notranslate nohighlight">\(G\)</span> dvodelen graf z <span class="math notranslate nohighlight">\(V(G) = A \cup B\)</span>, <span class="math notranslate nohighlight">\(A \cap B = \emptyset\)</span>, pri čemer ima vsaka povezava v <span class="math notranslate nohighlight">\(E(G)\)</span> eno krajišče v <span class="math notranslate nohighlight">\(A\)</span>, drugo pa v <span class="math notranslate nohighlight">\(B\)</span>. Če je <span class="math notranslate nohighlight">\(|A| \neq |B|\)</span>, potem <span class="math notranslate nohighlight">\(G\)</span> <em>ni</em> Hamiltonov.</p>
+</div>
+<div class="dokaz">
+<p>Brez škode za splošnost lahko predpostavimo, da velja <span class="math notranslate nohighlight">\(|A| &lt; |B|\)</span>. Vzemimo <span class="math notranslate nohighlight">\(S = A\)</span>. Ko v grafu <span class="math notranslate nohighlight">\(G\)</span> odstranimo vozlišča <span class="math notranslate nohighlight">\(A\)</span>, nam ostane graf z vozlišči <span class="math notranslate nohighlight">\(B\)</span> in brez povezav. Velja torej <span class="math notranslate nohighlight">\(\Omega(G-A) = |B| &gt; |A|\)</span>. Po izreku graf <span class="math notranslate nohighlight">\(G\)</span> zato ni Hamiltonov.</p>
+</div>
+<div class="zgled">
+<p>Vrnimo se k zadnjemu zgledu iz začetka tega razdelka. Obravnavani graf je dvodelen z biparticijo vozlišč <span class="math notranslate nohighlight">\(A \cup B\)</span>, pri čemer je <span class="math notranslate nohighlight">\(|A| = 5\)</span> in <span class="math notranslate nohighlight">\(|B| = 6\)</span>. Po posledici ta graf zato ni Hamiltonov.</p>
+<figure>
+<img src="img/grafi-hamilton-zgled-dvodelen.png" />
+<figcaption>Dvodelen graf, ki ni Hamiltonov</figcaption>
+</figure>
+</div>
+<p>Analogen potreben pogoj lahko izpeljemo za obstoj Hamiltonove poti.</p>
+<div class="izrek">
+<p>Naj bo <span class="math notranslate nohighlight">\(G\)</span> graf. Predpostavimo, da v <span class="math notranslate nohighlight">\(G\)</span> obstaja neprazna podmnožica <span class="math notranslate nohighlight">\(S \subseteq V(G)\)</span>, za katero velja <span class="math notranslate nohighlight">\(\Omega(G-S) &gt; |S| + 1\)</span>. Tedaj graf <span class="math notranslate nohighlight">\(G\)</span> <em>nima</em> Hamiltonove poti.</p>
+</div>
+<div class="dokaz">
+<p>Predpostavimo, da ima <span class="math notranslate nohighlight">\(G\)</span> Hamiltonovo pot <span class="math notranslate nohighlight">\(P\)</span>. Naj bo <span class="math notranslate nohighlight">\(S\)</span> neka neprazna množica vozlišč grafa <span class="math notranslate nohighlight">\(G\)</span>. Ko odstranimo vozlišča <span class="math notranslate nohighlight">\(S\)</span> s poti <span class="math notranslate nohighlight">\(P\)</span>, ta pot razpade na kvečjemu <span class="math notranslate nohighlight">\(|S|+1\)</span> komponent (delov poti). Ti deli so prek povezav grafa <span class="math notranslate nohighlight">\(G\)</span>, ki ne ležijo na poti <span class="math notranslate nohighlight">\(P\)</span>, lahko morda še povezani med sabo. Graf <span class="math notranslate nohighlight">\(G - S\)</span> ima zatorej kvečjemu <span class="math notranslate nohighlight">\(|S| + 1\)</span> komponent in velja torej <span class="math notranslate nohighlight">\(\Omega(G - S) \leq |S| + 1\)</span>. S tem je dokaz zaključen.</p>
+</div>
+<div class="zgled">
+<p>Dvodelen graf iz zadnjega zgleda ni Hamiltonov, saj z odstranitvijo <span class="math notranslate nohighlight">\(5\)</span> točk graf razpade na <span class="math notranslate nohighlight">\(6\)</span> komponent. Iz tega argumenta pa še ne sledi, da ta graf nima Hamiltonove poti, saj bi za to moral razpasti na vsaj <span class="math notranslate nohighlight">\(7\)</span> komponent. V resnici ta graf ima Hamiltonovo pot, kot je prikazano na naslednji sliki.</p>
+<figure>
+<img src="img/grafi-hamilton-zgled-pot.png" />
+<figcaption>Hamiltonova pot v grafu</figcaption>
+</figure>
+</div>
+<p>Zdaj si bomo pogledali še nekaj zadostnih pogojev za hamiltonskost. Naslonili jih bomo na naslednjo lemo.</p>
+<div class="lema">
+<p>Naj za vozlišči <span class="math notranslate nohighlight">\(u,v\)</span> grafa <span class="math notranslate nohighlight">\(G\)</span> velja <span class="math notranslate nohighlight">\(u \neq v\)</span>, <span class="math notranslate nohighlight">\(u \not\sim v\)</span>, <span class="math notranslate nohighlight">\(d(u) + d(v) \geq |V(G)|\)</span>. Tedaj je <span class="math notranslate nohighlight">\(G\)</span> Hamiltonov, če in samo če je <span class="math notranslate nohighlight">\(G + uv\)</span> Hamiltonov.</p>
+</div>
+<div class="dokaz">
+<p><span class="math notranslate nohighlight">\((\Rightarrow)\)</span>: Če je graf <span class="math notranslate nohighlight">\(G\)</span> Hamiltonov s Hamiltonovim ciklom <span class="math notranslate nohighlight">\(C\)</span>, potem je isti cikel <span class="math notranslate nohighlight">\(C\)</span> tudi Hamiltonov cikel v grafu <span class="math notranslate nohighlight">\(G + uv\)</span>.</p>
+<p><span class="math notranslate nohighlight">\((\Leftarrow)\)</span>: Naj bo <span class="math notranslate nohighlight">\(C\)</span> Hamiltonov cikel v grafu <span class="math notranslate nohighlight">\(G + uv\)</span>. Privzemimo, da <span class="math notranslate nohighlight">\(G\)</span> ni Hamiltonov graf. Torej je povezava <span class="math notranslate nohighlight">\(uv\)</span> nujno na ciklu <span class="math notranslate nohighlight">\(C\)</span>. Graf <span class="math notranslate nohighlight">\(G\)</span> zato vsebuje Hamiltonovo pot <span class="math notranslate nohighlight">\(C - uv = v_1 v_2 \dots v_n\)</span> z začetkom v <span class="math notranslate nohighlight">\(u = v_1\)</span> in koncem v <span class="math notranslate nohighlight">\(v = v_n\)</span>, pri čemer je <span class="math notranslate nohighlight">\(n = |V(G)|\)</span>.</p>
+<p>Opazujmo sosede vozlišča <span class="math notranslate nohighlight">\(u\)</span>. Recimo, da za nek <span class="math notranslate nohighlight">\(i &lt; n\)</span> velja <span class="math notranslate nohighlight">\(u \sim v_{i+1}\)</span>. Premislimo, da tedaj vozlišče <span class="math notranslate nohighlight">\(v\)</span> ni povezano z neposrednim predhodnikom vozlišča <span class="math notranslate nohighlight">\(v_{i+1}\)</span>, to je <span class="math notranslate nohighlight">\(v_i\)</span>. Res, če je <span class="math notranslate nohighlight">\(v \sim v_i\)</span>, potem v <span class="math notranslate nohighlight">\(G\)</span> najdemo Hamiltonov cikel <span class="math notranslate nohighlight">\(v_1 \dots v_i v_n \dots v_{i+1} v_1\)</span>, ki pa po predpostavki ne obstaja.</p>
+<p>Noben od <span class="math notranslate nohighlight">\(d(u)\)</span> neposrednih predhodnikov sosedov <span class="math notranslate nohighlight">\(u\)</span> torej ni sosed <span class="math notranslate nohighlight">\(v\)</span>. To pomeni, da je število sosedov <span class="math notranslate nohighlight">\(v\)</span> enako kvečjemu <span class="math notranslate nohighlight">\(n - 1 - d(u)\)</span>, kjer smo upoštevali še, da vozlišče <span class="math notranslate nohighlight">\(v\)</span> ni povezano samo s sabo. Od tod sledi <span class="math notranslate nohighlight">\(d(v) \leq n - 1 - d(u)\)</span>, kar je enakovredno <span class="math notranslate nohighlight">\(d(u) + d(v) \leq n -1\)</span>. To je sprto s predpostavko <span class="math notranslate nohighlight">\(d(u) + d(v) \geq n = |V(G)|\)</span>. Graf <span class="math notranslate nohighlight">\(G\)</span> je nazadnje torej res Hamiltonov.</p>
+</div>
+<div class="izrek">
+<p>Naj bo <span class="math notranslate nohighlight">\(G\)</span> graf z <span class="math notranslate nohighlight">\(|V(G)| \geq 3\)</span>. Če za vsaki dve vozlišči <span class="math notranslate nohighlight">\(u,v \in V(G)\)</span> z lastnostjo <span class="math notranslate nohighlight">\(u \neq v\)</span>, <span class="math notranslate nohighlight">\(u \not\sim v\)</span> velja <span class="math notranslate nohighlight">\(d(u) + d(v) \geq |V(G)|\)</span>, potem je <span class="math notranslate nohighlight">\(G\)</span> Hamiltonov.</p>
+</div>
+<div class="dokaz">
+<p>Grafu <span class="math notranslate nohighlight">\(G\)</span> dodajamo povezave, dokler ne dobimo polnega grafa <span class="math notranslate nohighlight">\(K_n\)</span>. Po lemi je graf <span class="math notranslate nohighlight">\(G\)</span> Hamiltonov, če in samo če je <span class="math notranslate nohighlight">\(K_n\)</span> Hamiltonov, kar pa je res (za <span class="math notranslate nohighlight">\(\geq 3\)</span>).</p>
+</div>
+<div class="zgled">
+<p>Za vsaki različni nepovezani vozlišči v naslednjem grafu velja <span class="math notranslate nohighlight">\(d(u) + d(v) \geq 7\)</span>. Po Orejevem izreku je graf Hamiltonov. Poišči Hamiltonov cikel v njem!</p>
+<figure>
+<img src="img/grafi-hamilton-ore.png" />
+<figcaption>Hamiltonov graf po Orejevem izreku</figcaption>
+</figure>
+</div>
+<div class="izrek">
+<p>Naj bo <span class="math notranslate nohighlight">\(G\)</span> graf z <span class="math notranslate nohighlight">\(|V(G)| \geq 3\)</span>. Če je <span class="math notranslate nohighlight">\(\delta(G) \geq |V(G)|/2\)</span>, potem je <span class="math notranslate nohighlight">\(G\)</span> Hamiltonov.</p>
+</div>
+<div class="dokaz">
+<p>Po predpostavki za vsaki vozlišči <span class="math notranslate nohighlight">\(u,v \in V(G)\)</span> velja <span class="math notranslate nohighlight">\(d(u) + d(v) \geq |V(G)|\)</span>. Po Orejevem izreku je graf <span class="math notranslate nohighlight">\(G\)</span> zato Hamiltonov.</p>
+</div>
+<div class="zgled">
+<p>Najmanjša stopnja vozlišča v naslednjem grafu je <span class="math notranslate nohighlight">\(3\)</span>, število vozlišč pa je <span class="math notranslate nohighlight">\(6\)</span>. Po Diracovem izreku je graf Hamiltonov. Poišči Hamiltonov cikel v njem!</p>
+<figure>
+<img src="img/grafi-hamilton-dirac.png" />
+<figcaption>Hamiltonov graf po Diracovem izreku</figcaption>
+</figure>
+</div>
+<p>Včasih se znajdemo v situaciji, ko nam ob danem grafu niti potrebni niti zadostni pogoji ne odgovorijo na vprašanje, ali je graf Hamiltonov. V tem primeru posežemo po bolj ad hoc tehnikah, kot je prikazano v naslednjem zgledu.</p>
+<div class="zgled">
+<p>Ali je Petersenov graf Hamiltonov? Na naslednji sliki je prikazana Hamiltonova pot.</p>
+<figure>
+<img src="img/grafi-petersen-hamilton-pot.png" />
+<figcaption>Hamiltonova pot v Petersenovem grafu</figcaption>
+</figure>
+<p>S protislovjem premislimo, da Hamiltonov cikel ne obstaja. Če bi namreč <span class="math notranslate nohighlight">\(C\)</span> bil Hamiltonov cikel, potem bi vseboval <span class="math notranslate nohighlight">\(10\)</span> vozlišč Petersenovega grafa in <span class="math notranslate nohighlight">\(10\)</span> povezav. Označimo vozlišča na <span class="math notranslate nohighlight">\(C\)</span> z <span class="math notranslate nohighlight">\(v_1v_2 \dots v_{10}\)</span>. Ker ima Petersenov graf <span class="math notranslate nohighlight">\(15\)</span> povezav, iščemo torej še <span class="math notranslate nohighlight">\(5\)</span> dodatnih tetivnih povezav, ki jih dodamo ciklu <span class="math notranslate nohighlight">\(C\)</span>, da dobimo Petersenov graf. Vemo, da je Petersenov graf <span class="math notranslate nohighlight">\(3\)</span>-regularen, zato moramo po eno tako tetivno povezavo dodati vsakemu vozlišči na ciklu <span class="math notranslate nohighlight">\(C\)</span>. Vemo, da Petersenov graf nima <span class="math notranslate nohighlight">\(3\)</span>-ciklov in nima <span class="math notranslate nohighlight">\(4\)</span>-ciklov, hkrati pa ima <span class="math notranslate nohighlight">\(5\)</span>-cikel. Gotovo torej obstaja vozlišče na <span class="math notranslate nohighlight">\(C\)</span>, brez škode je to kar <span class="math notranslate nohighlight">\(v_1\)</span>, ki ima tetivno povezavo do soseda antipodnega vozlišča <span class="math notranslate nohighlight">\(v_6\)</span>, brez škode je to kar <span class="math notranslate nohighlight">\(v_5\)</span>. Opazujmo zdaj vozlišče <span class="math notranslate nohighlight">\(v_6\)</span>. Tudi to vozlišče mora imeti tetivno povezavo do nekega vozlišča na <span class="math notranslate nohighlight">\(C\)</span>. Ker pa Petersenov graf nima <span class="math notranslate nohighlight">\(3\)</span>-ciklov in nima <span class="math notranslate nohighlight">\(4\)</span>-ciklov, taka tetivna povezava ne obstaja. To je protislovje z obstojem Hamiltonovega cikla v Petersenovem grafu.</p>
+</div>
+<section id="sahovski-konjicek">
+<h3>Šahovski konjiček<a class="headerlink" href="#sahovski-konjicek" title="Link to this heading">#</a></h3>
+<p>Opazujmo gibanje šahovskega konjička na šahovnici dimenzij <span class="math notranslate nohighlight">\(m \times n\)</span>. Ali lahko konjiček z zaporedjem skokov obišče vsako polje šahovnice natanko enkrat in zaključi na začetnem polju? To je problem <span class="definicija">požrešnega šahovskega konjička</span>.</p>
+<p>Polja šahovnice si lahko predstavljamo kot vozlišča grafa, možnost skoka konjička iz enega polja na drugega pa predstavimo s povezavo. V tem smislu je problem požrešnega šahovskega konjička enakovreden obstoju Hamiltonovega cikla v tem grafu.</p>
+<figure>
+<img src="img/grafi-konjicek-graf.png" />
+<figcaption>Graf, ki prikazuje možne skoke konjička na šahovski plošči <span class="math inline">8 × 8</span>; v vozliščih so vpisane stopnje, vir: Wikipedia</figcaption>
+</figure>
+<p>Poglejmo si nekaj posebnih primerov.</p>
+<div class="zgled">
+<ul class="simple">
+<li><p>Obravnavajmo šahovnico dimenzij <span class="math notranslate nohighlight">\(3 \times 3\)</span>. Če konjiček začne v centralnem polju, potem nima kam skočiti, saj je plošča premajhna. Centralno vozlišče prirejenega grafa je torej izolirana točka in graf ni povezan, zato seveda tudi nima Hamiltonovega cikla.</p></li>
+<li><p>Obravnavajmo šahovnico dimenzij <span class="math notranslate nohighlight">\(5 \times 5\)</span>. Dobimo graf na <span class="math notranslate nohighlight">\(25\)</span> vozliščih. Če obarvamo vozlišča s črno in belo barvo kot na šahovnici, potem je zaradi dejstva, da konjiček vedno skoči s črnega polja na belo oziroma obratno, prirejeni graf <em>dvodelen</em>. Ker ima šahovnica <span class="math notranslate nohighlight">\(25\)</span> vozlišč, je število belih vozlišč različno od števila črnih vozlišč. Po izreku ta graf torej ni Hamiltonov. Enak argument deluje za vse šahovnice z lihim številom polj.</p></li>
+</ul>
+</div>
+<div class="domacanaloga">
+<p>Obravnavaj šahovnico dimenzije <span class="math notranslate nohighlight">\(4 \times n\)</span> za <span class="math notranslate nohighlight">\(n \geq 4\)</span>. Dokaži, da Hamiltonov cikel <em>ne</em> obstaja.<label for='sidenote-role-20' class='margin-toggle'><span id="id20">
+<sup>20</sup></span>
+
+</label><input type='checkbox' id='sidenote-role-20' name='sidenote-role-20' class='margin-toggle'><span class="sidenote"><sup>20</sup>V pomoč ti bo, če vozlišča v vrsticah <span class="math notranslate nohighlight">\(1\)</span> in <span class="math notranslate nohighlight">\(4\)</span> obarvaš rdeče, vozlišča v vrsticah <span class="math notranslate nohighlight">\(2\)</span> in <span class="math notranslate nohighlight">\(3\)</span> pa modro. Konjiček lahko sicer skoči iz modrega vozlišča nazaj v modro vozlišče, na primer iz polja <span class="math notranslate nohighlight">\((2,1)\)</span> v <span class="math notranslate nohighlight">\((3,3)\)</span>, ampak iz rdečega vozlišča pa konjiček lahko skoči le v modro vozlišče.</span></p>
+</div>
+<p>Izkaže se, da sta po eni strani lihost števila polj in po drugi strani premajhno število vrstic oziroma stolpcev šahovnice <em>edini</em> oviri za obstoj Hamiltonovega cikla, a tega ne bomo dokazali.</p>
+<div class="izrek">
+<p>Konjičkov obhod na šahovnici <span class="math notranslate nohighlight">\(m \times n\)</span> obstaja, če je le <span class="math notranslate nohighlight">\(m \cdot n\)</span> sodo število in <span class="math notranslate nohighlight">\(m, n &gt; 4\)</span>.</p>
+</div>
+<p>V posebnem torej obstaja obhod na standardni šahovnici <span class="math notranslate nohighlight">\(8 \times 8\)</span>.</p>
+<figure>
+<img src="img/grafi-konjicek.png" />
+<figcaption>Konjičkov obhod na šahovnici <span class="math inline">8 × 8</span>, vir: Wikipedia</figcaption>
+</figure>
+</section>
+</section>
+<section id="ravninski-grafi">
+<h2>Ravninski grafi<a class="headerlink" href="#ravninski-grafi" title="Link to this heading">#</a></h2>
+<p>Obravnavajmo naslednji izziv, ki je na prvi pogled osnovnošolska naloga. Pred nami so <span class="math notranslate nohighlight">\(3\)</span> hiše in <span class="math notranslate nohighlight">\(3\)</span> drevesa. S potjo je potrebno povezati vsako hišo z vsakim drevesom, ne da bi se pri tem poti sekale med sabo. Če si vsako hišo oziroma drevo predstavljamo kot vozlišče, pot pa kot povezavo, potem pravzaprav vprašujemo, če lahko graf <span class="math notranslate nohighlight">\(K_{3,3}\)</span> narišemo v ravnino tako, da se nobeni dve povezavi med sabo ne sekata (razen v vozliščih). Splošneje se lahko torej vprašamo, ali lahko poljuben graf narišemo v ravnini brez križanja povezav.</p>
+<div class="zgled">
+<p>Nekatere grafe gotovo lahko narišemo v ravnini brez križanja povezav, na primer liziko, cikle, drevesa. Tudi poln graf <span class="math notranslate nohighlight">\(K_4\)</span> lahko narišemo na ta način, kot je prikazano na sliki.</p>
+<figure>
+<img src="img/grafi-ravninski-k4.png" />
+<figcaption>Ravninski graf <span class="math inline"><em>K</em><sub>4</sub></span></figcaption>
+</figure>
+</div>
+<p>Po nekaj poskusih se zdi, da grafa <span class="math notranslate nohighlight">\(K_{3,3}\)</span> ne moremo narisati na želeni način v ravnini. Kako bi dokazali, da je to res nemogoče? Preden lahko odgovorimo na to vprašanje, moramo najprej matematično bolj natančno formulirati problem.</p>
+<p><span class="definicija">Vložitev grafa <span class="math notranslate nohighlight">\(G\)</span> v ravnino</span> je injektivna preslikava <span class="math notranslate nohighlight">\(\phi \colon V(G) \to \RR^2\)</span> skupaj z družino zveznih preslikav <span class="math notranslate nohighlight">\(\phi_e \colon [0,1] \to \RR^2\)</span> za vsako povezavo <span class="math notranslate nohighlight">\(e \in E(G)\)</span>, da velja:</p>
+<ol class="arabic">
+<span class="sidenote"><sup>21</sup>Preslikava <span class="math notranslate nohighlight">\(\phi_e\)</span> torej preslika rob intervala <span class="math notranslate nohighlight">\([0,1]\)</span> v sliki krajišč povezave <span class="math notranslate nohighlight">\(e\)</span> s povezavo <span class="math notranslate nohighlight">\(\phi\)</span>.</span><li><p>če je <span class="math notranslate nohighlight">\(e = \{ u,v \} \in E(G)\)</span>, potem je <span class="math notranslate nohighlight">\(\{ \phi_e(0), \phi_e(1) \} = \{ \phi(u), \phi(v) \}\)</span>,<label for='sidenote-role-21' class='margin-toggle'><span id="id21">
+<sup>21</sup></span>
+
+</label><input type='checkbox' id='sidenote-role-21' name='sidenote-role-21' class='margin-toggle'><span class="sidenote d-n"><sup>21</sup>Preslikava <span class="math notranslate nohighlight">\(\phi_e\)</span> torej preslika rob intervala <span class="math notranslate nohighlight">\([0,1]\)</span> v sliki krajišč povezave <span class="math notranslate nohighlight">\(e\)</span> s povezavo <span class="math notranslate nohighlight">\(\phi\)</span>.</span></p></li>
+<span class="sidenote"><sup>22</sup>Pri risanju povezave <span class="math notranslate nohighlight">\(e\)</span> ni nobenih samopresečnih točk.</span><li><p>za vsak <span class="math notranslate nohighlight">\(e \in E(G)\)</span> je <span class="math notranslate nohighlight">\(\phi_e|_{(0,1)}\)</span> injektivna,<label for='sidenote-role-22' class='margin-toggle'><span id="id22">
+<sup>22</sup></span>
+
+</label><input type='checkbox' id='sidenote-role-22' name='sidenote-role-22' class='margin-toggle'><span class="sidenote d-n"><sup>22</sup>Pri risanju povezave <span class="math notranslate nohighlight">\(e\)</span> ni nobenih samopresečnih točk.</span></p></li>
+<span class="sidenote"><sup>23</sup>Tukaj smo z <span class="math notranslate nohighlight">\(\phi_e |_{(0,1)}\)</span> označili zožitev preslikave <span class="math notranslate nohighlight">\(\phi_e\)</span> na odprti interval <span class="math notranslate nohighlight">\((0,1)\)</span>, z <span class="math notranslate nohighlight">\(\mathrm{im} f\)</span> pa smo označili sliko preslikave <span class="math notranslate nohighlight">\(f\)</span>. Nobeni dve narisani povezavi se torej ne sekata (razen morda v robnih točkah).</span><li><p>za vsaka <span class="math notranslate nohighlight">\(e, e' \in E(G)\)</span>, <span class="math notranslate nohighlight">\(e \neq e'\)</span>, velja <span class="math notranslate nohighlight">\(\mathrm{im} \phi_e|_{(0,1)} \cap \mathrm{im} \phi_{e'}|_{(0,1)} = \emptyset\)</span>,<label for='sidenote-role-23' class='margin-toggle'><span id="id23">
+<sup>23</sup></span>
+
+</label><input type='checkbox' id='sidenote-role-23' name='sidenote-role-23' class='margin-toggle'><span class="sidenote d-n"><sup>23</sup>Tukaj smo z <span class="math notranslate nohighlight">\(\phi_e |_{(0,1)}\)</span> označili zožitev preslikave <span class="math notranslate nohighlight">\(\phi_e\)</span> na odprti interval <span class="math notranslate nohighlight">\((0,1)\)</span>, z <span class="math notranslate nohighlight">\(\mathrm{im} f\)</span> pa smo označili sliko preslikave <span class="math notranslate nohighlight">\(f\)</span>. Nobeni dve narisani povezavi se torej ne sekata (razen morda v robnih točkah).</span></p></li>
+<span class="sidenote"><sup>24</sup>Narisana povezava lahko prečka narisano vozlišče, če in samo če je to rob narisane povezave.</span><li><p>za vsak <span class="math notranslate nohighlight">\(e \in E(G)\)</span> velja <span class="math notranslate nohighlight">\(\mathrm{im} \phi_e|_{(0,1)} \cap \mathrm{im} \phi = \emptyset\)</span>.<label for='sidenote-role-24' class='margin-toggle'><span id="id24">
+<sup>24</sup></span>
+
+</label><input type='checkbox' id='sidenote-role-24' name='sidenote-role-24' class='margin-toggle'><span class="sidenote d-n"><sup>24</sup>Narisana povezava lahko prečka narisano vozlišče, če in samo če je to rob narisane povezave.</span></p></li>
+</ol>
+<p>Vse podatke o vložitvi grafa v ravnino zberemo v par <span class="math notranslate nohighlight">\((\phi, \{ \phi_e \}_{e \in E(G)})\)</span>, ki ga krajše označimo kot <span class="math notranslate nohighlight">\(\GG\)</span>.<label for='sidenote-role-25' class='margin-toggle'><span id="id25">
+<sup>25</sup></span>
+
+</label><input type='checkbox' id='sidenote-role-25' name='sidenote-role-25' class='margin-toggle'><span class="sidenote"><sup>25</sup>Oznako <span class="math notranslate nohighlight">\(G\)</span> torej uporabljamo za abstraktni graf, se pravi <span class="math notranslate nohighlight">\(G = (V,E)\)</span>, oznako <span class="math notranslate nohighlight">\(\GG\)</span> pa uporabljamo za vložitev grafa <span class="math notranslate nohighlight">\(G\)</span> v ravnino, se pravi <span class="math notranslate nohighlight">\(\GG = (\phi, \{ \phi_e \}_{e \in E})\)</span>.</span></p>
+<p>Graf <span class="math notranslate nohighlight">\(G\)</span> je <span class="definicija">ravninski</span>, če ima kakšno vložitev v ravnino. Pri tem seveda lahko obstajajo različne vložitve.</p>
+<div class="zgled">
+<p>Disjunktno unijo <span class="math notranslate nohighlight">\(K_3 \cup K_3\)</span> lahko narišemo v ravnino na dva vsaj načina, in sicer lahko en trikotnik narišemo znotraj drugega ali pa dva trikotnika narišemo enega ob drugem.</p>
+<figure>
+<img src="img/grafi-ravninski-k3k3.png" style="width:50.0%" />
+<figcaption>Dve različni vložitvi grafa <span class="math inline"><em>K</em><sub>3</sub> ∪ <em>K</em><sub>3</sub></span> v ravnino</figcaption>
+</figure>
+</div>
+<p>Vložitev grafa razdeli ravnino na povezane dele, ki jim pravimo <span class="definicija">lica</span> vložitve. Vselej je natanko eno lice neomejeno – imenujemo ga <span class="definicija">zunanje lice</span>.</p>
+<div class="zgled">
+<ul>
+<li><p>Vsaka ravninska vložitev drevesa ima eno samo lice, saj graf nima nobenih ciklov.</p></li>
+<li><p>Obe vložitvi grafa <span class="math notranslate nohighlight">\(K_3 \cup K_3\)</span> iz zadnjega zgleda imata <span class="math notranslate nohighlight">\(3\)</span> lica.</p>
+<figure>
+<img src="img/grafi-ravninski-k3k3-lica.png" style="width:50.0%" />
+<figcaption>Lica vložitev grafa <span class="math inline"><em>K</em><sub>3</sub> ∪ <em>K</em><sub>3</sub></span> v ravnino</figcaption>
+</figure>
+</li>
+</ul>
+</div>
+<p>Naj bo <span class="math notranslate nohighlight">\(\GG\)</span> vložitev grafa <span class="math notranslate nohighlight">\(G\)</span> v ravnino. Označimo množico točk v ravnini, ki predstavljajo vozlišča, povezave in lica:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+    V(\GG) &amp;= \{ \phi(u) \mid u \in V(G) \} \subseteq \RR^2, \\
+    E(\GG) &amp;= \{ \mathrm{im} \phi_e \mid e \in E(G) \}, \\
+    F(\GG) &amp;= \{ f \mid \text{$f$ lice vložitve $\GG$}\}.
+\end{aligned}\end{split}\]</div>
+<p><span class="definicija">Dolžina lica</span> <span class="math notranslate nohighlight">\(f \in F(\GG)\)</span> je število povezav, ki ležijo na robu lica <span class="math notranslate nohighlight">\(f\)</span>. Dolžino označimo z <span class="math notranslate nohighlight">\(\ell(f)\)</span>.</p>
+<div class="zgled">
+<p>Obravnavajmo ravninski vložitvi <span class="math notranslate nohighlight">\(K_3 \cup K_3\)</span> iz zadnjega zgleda. V prvi ravninski vložitvi je dolžina rdečega lica enaka <span class="math notranslate nohighlight">\(3\)</span>, dolžina modrega je enaka <span class="math notranslate nohighlight">\(6\)</span> in dolžina zelenega je enaka <span class="math notranslate nohighlight">\(3\)</span>. V drugi ravninski vložitvi sta dolžini modrega in rdečega lica enaki <span class="math notranslate nohighlight">\(3\)</span>, dolžina zelenega pa je enaka <span class="math notranslate nohighlight">\(6\)</span>.</p>
+</div>
+<div class="izrek">
+<p>Naj bo <span class="math notranslate nohighlight">\(G\)</span> graf z ravninsko vložitvijo <span class="math notranslate nohighlight">\(\GG\)</span>. Potem je</p>
+<div class="math notranslate nohighlight">
+\[\sum_{f \in F(\GG)} \ell(f) = 2 \cdot |E(G)|.\]</div>
+</div>
+<div class="dokaz">
+<p>Pristopimo podobno kot pri dokazu leme o rokovanju. Slika vsake povezave v <span class="math notranslate nohighlight">\(E(G)\)</span> pripada robu dveh lic (vsakemu enkrat) ali enega samega lica (dvakrat). Naj bo <span class="math notranslate nohighlight">\(E(G) = \{ e_1, e_2, \dots, e_a \}\)</span> in <span class="math notranslate nohighlight">\(F(\GG) = \{ f_1, f_2, \dots, f_b \}\)</span>. Definirajmo matriko <span class="math notranslate nohighlight">\(M = [m_{ij}]_{1 \leq i \leq a, 1 \leq j \leq b}\)</span> razsežnosti <span class="math notranslate nohighlight">\(a \times b\)</span> z vnosi</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}m_{ij} = \begin{cases}
+        0 &amp; \text{$e_j$ ni na robu $f_i$,} \\
+        1 &amp; \text{$e_j$ je na robu $f_i$ (enkrat),} \\
+        2 &amp; \text{$e_j$ je na robu $f_i$ (dvakrat).}
+    \end{cases}\end{split}\]</div>
+<p>Vsota vseh vnosov matrike <span class="math notranslate nohighlight">\(M\)</span> je po eni strani enaka</p>
+<div class="math notranslate nohighlight">
+\[\sum_{i = 1}^a \sum_{j = 1}^b m_{ij} = \sum_{i = 1}^a \ell(f_i) = \sum_{f \in F(\GG)} \ell(f),\]</div>
+<p>po drugi strani pa je enaka</p>
+<div class="math notranslate nohighlight">
+\[\sum_{j = 1}^b \sum_{i = 1}^a  m_{ij} = \sum_{j = 1}^b 2 = 2b = 2 \cdot |E(G)|,\]</div>
+<p>s čimer je dokaz zaključen.</p>
+</div>
+<p>Med števili <span class="math notranslate nohighlight">\(|V(\GG)|\)</span>, <span class="math notranslate nohighlight">\(|E(\GG)|\)</span> in <span class="math notranslate nohighlight">\(|F(\GG)|\)</span> velja naslednja povezava.</p>
+<div class="izrek">
+<p>Naj bo <span class="math notranslate nohighlight">\(G\)</span> <em>povezan</em> graf z ravninsko vložitvijo <span class="math notranslate nohighlight">\(\GG\)</span>. Tedaj je</p>
+<div class="math notranslate nohighlight">
+\[|V(\GG)| - |E(\GG)| + |F(\GG)| = 2.\]</div>
+</div>
+<div class="dokaz">
+<p>Dokazujemo z indukcijo na število ciklov <span class="math notranslate nohighlight">\(c\)</span> v grafu <span class="math notranslate nohighlight">\(G\)</span>.</p>
+<p>Baza indukcije je <span class="math notranslate nohighlight">\(c = 0\)</span>. V tem primeru je <span class="math notranslate nohighlight">\(G\)</span> drevo. Velja torej <span class="math notranslate nohighlight">\(|E(\GG)| = |V(\GG)| - 1\)</span> in hkrati <span class="math notranslate nohighlight">\(|F(\GG)| = 1\)</span>, torej Eulerjeva formula velja.</p>
+<p>Privzemimo zdaj, da formula velja za vse grafe z največ <span class="math notranslate nohighlight">\(c\)</span> cikli. Naj bo <span class="math notranslate nohighlight">\(G\)</span> graf s <span class="math notranslate nohighlight">\(c+1\)</span> cikli. Naj bo <span class="math notranslate nohighlight">\(C\)</span> nek cikel v <span class="math notranslate nohighlight">\(G\)</span> z povezavo <span class="math notranslate nohighlight">\(\{ u,v \}\)</span> na <span class="math notranslate nohighlight">\(C\)</span>. Opazujmo graf <span class="math notranslate nohighlight">\(G' = G - uv\)</span>. Naj bo <span class="math notranslate nohighlight">\(\GG'\)</span> ravninska vložitev tega grafa, ki ga dobimo iz ravninske vložitve <span class="math notranslate nohighlight">\(\GG\)</span>. Graf <span class="math notranslate nohighlight">\(G'\)</span> je povezan in ima manj ciklov kot <span class="math notranslate nohighlight">\(G\)</span>, zato lahko na njem uporabimo indukcijsko predpostavko. Za ta graf velja <span class="math notranslate nohighlight">\(|V(\GG')| = |V(G)|\)</span> in <span class="math notranslate nohighlight">\(|E(\GG')| = |E(G)| - 1\)</span>, hkrati pa se z odstranitvijo povezave <span class="math notranslate nohighlight">\(uv\)</span> lici s skupnim robom <span class="math notranslate nohighlight">\(uv\)</span> spojita v eno lice, zato je <span class="math notranslate nohighlight">\(|F(\GG')| = |F(\GG)| - 1\)</span>. Ker po indukcijski predpostavki velja <span class="math notranslate nohighlight">\(|V(\GG')| - |E(\GG')| + |F(\GG')| = 2\)</span>, od tod sledi <span class="math notranslate nohighlight">\(|V(\GG)| - |E(\GG)| + |F(\GG)| = 2\)</span>.</p>
+</div>
+<p>Eulerjevo formulo lahko posplošimo tudi na nepovezane grafe.</p>
+<div class="posledica">
+<p>Naj bo <span class="math notranslate nohighlight">\(G\)</span> graf z <span class="math notranslate nohighlight">\(\Omega\)</span> povezanimi komponentami in z ravninsko vložitvijo <span class="math notranslate nohighlight">\(\GG\)</span>. Tedaj je</p>
+<div class="math notranslate nohighlight">
+\[|V(\GG)| - |E(\GG)| + |F(\GG)| = 1 + \Omega.\]</div>
+</div>
+<div class="dokaz">
+<p>Naj bodo <span class="math notranslate nohighlight">\(G_1, G_2, \dots, G_\Omega\)</span> povezane komponente grafa <span class="math notranslate nohighlight">\(G\)</span>. Dodajmo povezave <span class="math notranslate nohighlight">\(e_1, e_2, \dots, e_{\Omega - 1}\)</span> grafu <span class="math notranslate nohighlight">\(G\)</span>, da postane povezan in da v vložitvi <span class="math notranslate nohighlight">\(\GG\)</span> ne ustvarimo lic (na primer vse komponente grafa <span class="math notranslate nohighlight">\(G\)</span> povežemo s prvo). Tedaj za graf <span class="math notranslate nohighlight">\(G + e_1 + e_2 + \cdots + e_{\Omega - 1}\)</span> velja Eulerjeva formula. Ta graf ima enako število vozlišč in lic kot <span class="math notranslate nohighlight">\(\GG\)</span>, hkrati pa ima <span class="math notranslate nohighlight">\(\Omega-1\)</span> več povezav. Velja torej</p>
+<div class="math notranslate nohighlight">
+\[|V(\GG)| - (|E(\GG)| + \Omega - 1) + |F(\GG)| = 2,\]</div>
+<p>od koder sledi želeno</p>
+<div class="math notranslate nohighlight">
+\[|V(\GG)| - |E(\GG)| + |F(\GG)| = 1 + \Omega.\]</div>
+</div>
+<p>S pomočjo Eulerjeve formule lahko izpeljemo <em>potreben</em> pogoj za ravninskost grafa.</p>
+<div class="trditev">
+<p>Naj bo <span class="math notranslate nohighlight">\(G\)</span> ravninski graf z vsaj tremi vozlišči. Tedaj je</p>
+<div class="math notranslate nohighlight">
+\[|E(G)| \leq 3 \cdot |V(G)| - 6.\]</div>
+<p>Če je graf <span class="math notranslate nohighlight">\(G\)</span> brez <span class="math notranslate nohighlight">\(3\)</span>-ciklov, potem je celo</p>
+<div class="math notranslate nohighlight">
+\[|E(G)| \leq 2 \cdot |V(G)| - 4.\]</div>
+</div>
+<div class="dokaz">
+<p>Naj bo <span class="math notranslate nohighlight">\(\GG\)</span> ena od vložitev grafa <span class="math notranslate nohighlight">\(G\)</span> v ravnino. Ocenimo število lic te vložitve. Vsako lice je dolžine vsaj <span class="math notranslate nohighlight">\(3\)</span>.<label for='sidenote-role-26' class='margin-toggle'><span id="id26">
+<sup>26</sup></span>
+
+</label><input type='checkbox' id='sidenote-role-26' name='sidenote-role-26' class='margin-toggle'><span class="sidenote"><sup>26</sup>Ker ima <span class="math notranslate nohighlight">\(G\)</span> vsaj <span class="math notranslate nohighlight">\(3\)</span> vozlišča, je vsako lice omejeno s ciklom dolžine vsaj <span class="math notranslate nohighlight">\(3\)</span> ali pa s <span class="math notranslate nohighlight">\(P_2\)</span> (dvakrat).</span> Po lemi o rokovanju za ravninske grafe od tod sledi ocena</p>
+<div class="math notranslate nohighlight">
+\[2 \cdot |E(G)| = \sum_{f \in F(\GG)} \ell(f) \geq \sum_{f \in F(\GG)} 3 = 3 \cdot |F(\GG)|.\]</div>
+<p>Število lic lahko torej ocenimo navzgor kot <span class="math notranslate nohighlight">\(|F(\GG)| \leq \frac23 |E(G)|\)</span>. Iz Eulerjeve formule zdaj sledi</p>
+<div class="math notranslate nohighlight">
+\[2 \leq |V(G)| - |E(G)| + |F(\GG)| \leq |V(G)| - \frac13 |E(G)|,\]</div>
+<p>ker je enakovredno želeni neenakosti <span class="math notranslate nohighlight">\(|E(G)| \leq 3 \cdot |V(G)| - 6\)</span>.</p>
+<p>Če graf <span class="math notranslate nohighlight">\(G\)</span> nima <span class="math notranslate nohighlight">\(3\)</span>-ciklov, potem je vsako lice dolžine vsaj <span class="math notranslate nohighlight">\(4\)</span>. Če torej v prvi neenakosti uporabimo to močnejšo oceno o dolžinah lic, z enakim postopkom dobimo še drugo neenakost v trditvi.</p>
+</div>
+<div class="zgled">
+<ul class="simple">
+<li><p>Uporabimo zadnjo trditev za to, da dokažemo, da graf <span class="math notranslate nohighlight">\(K_{3,3}\)</span>, ki smo ga obravnavali na začetku tega razdelka, res ni ravninski. Ta graf ima <span class="math notranslate nohighlight">\(6\)</span> vozlišč in <span class="math notranslate nohighlight">\(9\)</span> povezav. Ker je dvodelen, ne vsebuje <span class="math notranslate nohighlight">\(3\)</span>-ciklov. Če bi bil ravninski, bi zanj torej morala veljati neenakost <span class="math notranslate nohighlight">\(9 \leq 2 \cdot 6 - 4 = 8\)</span>, kar pa ne drži.</p></li>
+<li><p>Premislimo, da tudi graf <span class="math notranslate nohighlight">\(K_5\)</span> ni ravninski. Ta graf ima <span class="math notranslate nohighlight">\(5\)</span> vozlišč in <span class="math notranslate nohighlight">\(10\)</span> povezav. Če bi bil ravninski, bi zanj morala veljati neenakost <span class="math notranslate nohighlight">\(10 \leq 3 \cdot 5 - 6 = 9\)</span>, kar pa ne drži.</p></li>
+</ul>
+</div>
+<p>Naj bo <span class="math notranslate nohighlight">\(G\)</span> ravninski graf. Če je <span class="math notranslate nohighlight">\(H\)</span> <em>podgraf</em> grafa <span class="math notranslate nohighlight">\(G\)</span>, potem je tudi <span class="math notranslate nohighlight">\(H\)</span> ravninski, saj lahko iz ravninske vložitve <span class="math notranslate nohighlight">\(\GG\)</span> preprosto odstranimo nepotrebna vozlišča in povezave. Na ta način lahko najdemo še več grafov, ki niso ravninski. Poznamo pa še dve malo bolj fleksibilni konstrukciji s podobno lastnostjo.</p>
+<ol class="arabic">
+<span class="sidenote"><sup>27</sup>Predstavljamo si, da izbrane povezave počasi krajšamo, dokler se krajišči ne združita. Po tem morebitne zanke odstranimo in vzporedne povezave identificiramo, da dobimo na koncu tega postopka res graf in ne multigrafa.</span><li><p>Graf <span class="math notranslate nohighlight">\(H\)</span> je <span class="definicija">minor</span> grafa <span class="math notranslate nohighlight">\(G\)</span>, če ga lahko konstruiramo iz nekega podgrafa <span class="math notranslate nohighlight">\(G\)</span> s <em>krčenjem nekaterih povezav</em>.<label for='sidenote-role-27' class='margin-toggle'><span id="id27">
+<sup>27</sup></span>
+
+</label><input type='checkbox' id='sidenote-role-27' name='sidenote-role-27' class='margin-toggle'><span class="sidenote d-n"><sup>27</sup>Predstavljamo si, da izbrane povezave počasi krajšamo, dokler se krajišči ne združita. Po tem morebitne zanke odstranimo in vzporedne povezave identificiramo, da dobimo na koncu tega postopka res graf in ne multigrafa.</span></p>
+<div class="zgled">
+<p>Če v Petersenovem grafu skrčimo povezave, ki povezujejo zunanji cikel z notranjim, dobimo graf <span class="math notranslate nohighlight">\(K_5\)</span>. Ta graf je torej minor Petersenovega grafa.</p>
+</div>
+<p>Minor ravninskega grafa je ravninski graf, saj lahko krčenje povezav v ravnini izvedemo tako, da pri tem ne pride do sekanja ostalih povezav.</p>
+<div class="posledica">
+<p>Če graf <span class="math notranslate nohighlight">\(G\)</span> vsebuje minor <span class="math notranslate nohighlight">\(K_{3,3}\)</span> ali <span class="math notranslate nohighlight">\(K_5\)</span>, potem ni ravninski.</p>
+</div>
+<div class="zgled">
+<p>Petersenov graf ni ravninski.</p>
+</div>
+<p><span class="definicija">Wagnerjev izrek</span> nam pove, da velja celo obrat posledice. Če graf <span class="math notranslate nohighlight">\(G\)</span> <em>ne</em> vsebuje minorja <span class="math notranslate nohighlight">\(K_{3,3}\)</span> ali <span class="math notranslate nohighlight">\(K_5\)</span>, potem <em>je</em> ravninski. Dokaz izpustimo.</p>
+</li>
+<span class="sidenote"><sup>28</sup>Določenim povezavam torej dodamo nekaj vozlišč.</span><li><p>Graf <span class="math notranslate nohighlight">\(H\)</span> je <span class="definicija">subdivizija</span> grafa <span class="math notranslate nohighlight">\(G\)</span>, če ga lahko konstruiramo iz <span class="math notranslate nohighlight">\(G\)</span> tako, da <em>nekatere povezave nadomestimo s potmi dolžine <span class="math notranslate nohighlight">\(2\)</span> ali več</em>.<label for='sidenote-role-28' class='margin-toggle'><span id="id28">
+<sup>28</sup></span>
+
+</label><input type='checkbox' id='sidenote-role-28' name='sidenote-role-28' class='margin-toggle'><span class="sidenote d-n"><sup>28</sup>Določenim povezavam torej dodamo nekaj vozlišč.</span></p>
+<p>Subdivizija ravninskega grafa je ravninski graf.</p>
+<div class="posledica">
+<p>Če graf <span class="math notranslate nohighlight">\(G\)</span> vsebuje subdivizijo <span class="math notranslate nohighlight">\(K_{3,3}\)</span> ali <span class="math notranslate nohighlight">\(K_5\)</span>, potem ni ravninski.</p>
+</div>
+<p><span class="definicija">Izrek Kuratowskega</span> nam pove, da velja celo obrat posledice. Če graf <span class="math notranslate nohighlight">\(G\)</span> <em>ne</em> vsebuje subdivizije <span class="math notranslate nohighlight">\(K_{3,3}\)</span> ali <span class="math notranslate nohighlight">\(K_5\)</span>, potem <em>je</em> ravninski. Dokaz izpustimo.</p>
+<div class="domacanaloga">
+<p>Vemo že, da Petersenov graf ni ravninski. Po izreku Kuratowskega torej vsebuje subdivizijo <span class="math notranslate nohighlight">\(K_{3,3}\)</span> ali <span class="math notranslate nohighlight">\(K_5\)</span>. Poišči to subdivizijo!</p>
+</div>
+</li>
+</ol>
+</section>
+<section id="barvanja-grafov">
+<h2>Barvanja grafov<a class="headerlink" href="#barvanja-grafov" title="Link to this heading">#</a></h2>
+<p>V tem zaključnem razdelku bomo vzeli v roke barvice in z njimi barvali vozlišča in povezave grafov. Prikazali bomo tudi en zgled uporabe teh barvanj.</p>
+<section id="barvanja-vozlisc">
+<h3>Barvanja vozlišč<a class="headerlink" href="#barvanja-vozlisc" title="Link to this heading">#</a></h3>
+<p>Naj bo <span class="math notranslate nohighlight">\(G\)</span> graf in <span class="math notranslate nohighlight">\(k\)</span> naravno število. Rečemo, da je graf <span class="math notranslate nohighlight">\(G\)</span> <span class="definicija">vozliščno <span class="math notranslate nohighlight">\(k\)</span>-obarvljiv</span>, če obstaja preslikava <span class="math notranslate nohighlight">\(c \colon V(G) \to \{ 1,2, \dots, k\}\)</span> z lastnostjo</p>
+<div class="math notranslate nohighlight">
+\[\forall u,v \in V(G) \colon u \sim v \Rightarrow c(u) \neq c(v).\]</div>
+<p>Vsaki dve povezani vozlišči moramo torej obarvati z različnima barvama. Preslikavo <span class="math notranslate nohighlight">\(c\)</span> imenujemo <span class="definicija">vozliščno <span class="math notranslate nohighlight">\(k\)</span>-barvanje</span> grafa <span class="math notranslate nohighlight">\(G\)</span>.</p>
+<div class="zgled">
+<ul class="simple">
+<li><p>Liziko lahko obarvamo s <span class="math notranslate nohighlight">\(k = 3\)</span> barvami. Vozlišče stopnje <span class="math notranslate nohighlight">\(3\)</span> najprej obravamo z barvo <span class="math notranslate nohighlight">\(1\)</span>, potem pa list in eno od vozlišč stopnje <span class="math notranslate nohighlight">\(2\)</span> obarvamo z barvo <span class="math notranslate nohighlight">\(2\)</span>, drugo vozlišče stopnje <span class="math notranslate nohighlight">\(2\)</span> pa z barvo <span class="math notranslate nohighlight">\(3\)</span>.</p></li>
+<li><p>Graf je dvodelen, če in samo če je vozliščno <span class="math notranslate nohighlight">\(2\)</span>-obarvljiv.</p></li>
+</ul>
+</div>
+<p>Predvsem nas zanima, kolikšno je <em>najmanjše</em> število barv, ki jih potrebujemo, da obarvamo vozlišča grafa. To število, se pravi</p>
+<div class="math notranslate nohighlight">
+\[\chi(G) = \min \{ k \in \NN \mid \text{$G$ je vozliščno $k$-obarvljiv} \},\]</div>
+<p>imenujemo <span class="definicija">kromatično število</span> grafa <span class="math notranslate nohighlight">\(G\)</span>.</p>
+<div class="zgled">
+<ul>
+<li><p><span class="math notranslate nohighlight">\(\chi(G) = 1\)</span>, če in samo če v grafu <span class="math notranslate nohighlight">\(G\)</span> ni povezav, se pravi <span class="math notranslate nohighlight">\(E(G) = \emptyset\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\chi(G) = 2\)</span>, če in samo če je graf <span class="math notranslate nohighlight">\(G\)</span> dvodelen.</p></li>
+<span class="sidenote"><sup>29</sup>Najprej prvih <span class="math notranslate nohighlight">\(n-1\)</span> vozlišč pobarvamo alternirajoče z dvema barvama, zadnje vozlišče pa pobarvamo s tretjo barvo.</span><li><p>Kromatično število cikla <span class="math notranslate nohighlight">\(\chi(C_n)\)</span> je <span class="math notranslate nohighlight">\(2\)</span>, če je <span class="math notranslate nohighlight">\(n\)</span> sodo, saj je v tem primeru graf dvodelen. Če je <span class="math notranslate nohighlight">\(n\)</span> liho, pa graf ni dvodelen, zato je <span class="math notranslate nohighlight">\(\chi(C_n) \geq 3\)</span>. Po drugi strani pa <span class="math notranslate nohighlight">\(3\)</span> barve zares zadostujejo, da pobarvamo vozlišča lihega cikla.<label for='sidenote-role-29' class='margin-toggle'><span id="id29">
+<sup>29</sup></span>
+
+</label><input type='checkbox' id='sidenote-role-29' name='sidenote-role-29' class='margin-toggle'><span class="sidenote d-n"><sup>29</sup>Najprej prvih <span class="math notranslate nohighlight">\(n-1\)</span> vozlišč pobarvamo alternirajoče z dvema barvama, zadnje vozlišče pa pobarvamo s tretjo barvo.</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\chi(K_n) = n\)</span>.</p></li>
+</ul>
+</div>
+<p>Če je <span class="math notranslate nohighlight">\(H\)</span> podgraf grafa <span class="math notranslate nohighlight">\(G\)</span>, potem je seveda <span class="math notranslate nohighlight">\(\chi(H) \leq \chi(G)\)</span>, saj lahko uporabimo isto barvanje, zoženo na <span class="math notranslate nohighlight">\(V(H)\)</span>. Na ta način lahko izpeljemo <em>spodnjo mejo</em> za kromatično število grafa <span class="math notranslate nohighlight">\(G\)</span>. Izberimo poln podgraf v <span class="math notranslate nohighlight">\(G\)</span>. Takemu podgrafu rečemo <span class="definicija">klika</span>. Število vozlišč največje klike označimo z <span class="math notranslate nohighlight">\(\omega(G)\)</span>. Za kliko <span class="math notranslate nohighlight">\(H\)</span> v grafu <span class="math notranslate nohighlight">\(G\)</span> velja <span class="math notranslate nohighlight">\(\chi(H) = |V(H)|\)</span>, ker je <span class="math notranslate nohighlight">\(H\)</span> poln graf. Od tod sklepamo, da je <span class="math notranslate nohighlight">\(\omega(G) \leq \chi(G)\)</span>. Velikost največje klike nam torej podaja spodnjo mejo za kromatično število.</p>
+<div class="zgled">
+<ul class="simple">
+<li><p>Za liziko <span class="math notranslate nohighlight">\(L\)</span> velja <span class="math notranslate nohighlight">\(\omega(L) = 3\)</span> in hkrati <span class="math notranslate nohighlight">\(\chi(L) = 3\)</span>.</p></li>
+<li><p>Za Petersenov graf <span class="math notranslate nohighlight">\(P\)</span> velja <span class="math notranslate nohighlight">\(\omega(P) = 2\)</span>. Ker <span class="math notranslate nohighlight">\(P\)</span> ni dvodelen, velja <span class="math notranslate nohighlight">\(\chi(P) \geq 3\)</span>. Ni težko najti barvanja grafa <span class="math notranslate nohighlight">\(P\)</span> s tremi barvami, zato velja <span class="math notranslate nohighlight">\(\chi(P) = 3\)</span>.</p></li>
+</ul>
+</div>
+<p>Poglejmo si še nekaj <em>zgornjih</em> mej za kromatično število. Za ravninske grafe imamo na voljo naslednji presenetljiv in zelo močan rezultat.</p>
+<div class="izrek">
+<p>Za vsak ravninski graf <span class="math notranslate nohighlight">\(G\)</span> je <span class="math notranslate nohighlight">\(\chi(G) \leq 4\)</span>.</p>
+</div>
+<p>Dokaz tega izreka je zelo zahteven in vključuje intenzivno uporabo računalnika za pregledovanje posebnih primerov.</p>
+<div class="zgled">
+<p>Opazujmo zemljevid sveta, na katerem so označene državne meje in meje z morji. Države in morja si predstavljajmo kot vozlišča, obstoj skupne meje pa naj pomeni sosednost vozlišč. Na ta način dobimo graf, ki je ravninski, saj je izvirni zemljevid narisan na ravnino. Po izreku je ta graf vozliščno <span class="math notranslate nohighlight">\(4\)</span>-obarvljiv. To pomeni, da lahko zemljevid sveta obarvamo s <span class="math notranslate nohighlight">\(4\)</span> barvami, pri čemer nobeni dve sosednji državi nista enake barve.</p>
+<figure>
+<img src="img/obcine.png" />
+<figcaption>Barvanje občin v Sloveniji s štirimi barvami, vir: Wikimedia</figcaption>
+</figure>
+</div>
+<p>Za poljubne grafe, ne nujno ravninske, lahko precej preprosto zgornjo mejo za kromatično število dobimo iz maksimalne stopnje vozlišča v <span class="math notranslate nohighlight">\(G\)</span>, števila <span class="math notranslate nohighlight">\(\Delta(G)\)</span>.</p>
+<div class="trditev">
+<p>Za vsak graf <span class="math notranslate nohighlight">\(G\)</span> je <span class="math notranslate nohighlight">\(\chi(G) \leq \Delta(G) + 1\)</span>.</p>
+</div>
+<div class="dokaz">
+<p>Vozlišča barvajmo v poljubnem vrstnem redu. Prvo vozlišče obarvamo z barvo <span class="math notranslate nohighlight">\(1\)</span>. Vsako naslednje vozlišče obarvamo z najmanjšo od prostih barv. Ker ima vsako vozlišče največ <span class="math notranslate nohighlight">\(\Delta(G)\)</span> sosedov, uporabljamo pa množico barv <span class="math notranslate nohighlight">\(\{ 1,2, \dots, \Delta(G) \}\)</span>, je vedno na voljo vsaj ena prosta barva in postopek se uspešno izvede do konca.</p>
+</div>
+<div class="zgled">
+<ul class="simple">
+<li><p>Za poln graf <span class="math notranslate nohighlight">\(K_n\)</span> velja <span class="math notranslate nohighlight">\(\Delta(K_n) = n-1\)</span> in <span class="math notranslate nohighlight">\(\chi(K_n) = n\)</span>, torej za ta graf velja enakost v zadnji trditvi.</p></li>
+<li><p>Za cikel <span class="math notranslate nohighlight">\(C_n\)</span> velja <span class="math notranslate nohighlight">\(\Delta(C_n) = 2\)</span>, kromatično število <span class="math notranslate nohighlight">\(\chi(C_n)\)</span> pa je bodisi <span class="math notranslate nohighlight">\(2\)</span> za sode <span class="math notranslate nohighlight">\(n\)</span> bodisi <span class="math notranslate nohighlight">\(3\)</span> za lihe <span class="math notranslate nohighlight">\(n\)</span>. V primeru sodega cikla je kromatično število torej enako maksimalni stopnji, v primeru lihega cikla pa velja enakost v zadnji trditvi.</p></li>
+</ul>
+</div>
+<p><span class="definicija">Brooksov izrek</span> nam pove, da za povezan graf <span class="math notranslate nohighlight">\(G\)</span>, ki <em>ni poln in ni lih cikel</em>, velja celo nekoliko strožja neenakost od te, ki smo jo dokazali v trditvi, in sicer <span class="math notranslate nohighlight">\(\chi(G) \leq \Delta(G)\)</span>. Dokaz izpustimo.</p>
+<div class="zgled">
+<p>Kemična tovarna pri delu uporablja snovi <span class="math notranslate nohighlight">\(S_1, S_2, \dots, S_n\)</span>. Zaradi nevarnosti eksplozije nekaterih med njimi ne smemo skladiščiti skupaj. Kolikšno je najmanjše potrebno število prostorov za varno skladiščenje teh snovi? Ta problem imenujemo <span class="definicija">problem skladiščenja nevarnih snovi</span>.</p>
+<p>Za razrešitev problema definirajmo graf <span class="math notranslate nohighlight">\(G\)</span> z vozlišči <span class="math notranslate nohighlight">\(V(G) = \{ S_1, S_2, \dots, S_n \}\)</span>, pri čemer sta vozlišči <span class="math notranslate nohighlight">\(u,v \in V(G)\)</span> povezani, če in samo če snovi <span class="math notranslate nohighlight">\(u\)</span> in <span class="math notranslate nohighlight">\(v\)</span> <em>ne</em> smemo skladiščiti skupaj. Razporeditev snovi po prostorih podamo s funkcijo, ki vsakemu vozlišči priredi številko prostora, se pravi s funkcijo <span class="math notranslate nohighlight">\(c \colon V(G) \to \{ 1, 2, \dots, k \}\)</span>, za katero pa mora veljati <span class="math notranslate nohighlight">\(uv \in E(G) \Rightarrow c(u) \neq c(v)\)</span>. Optimalna rešitev problema je torej vozliščno barvanje grafa <span class="math notranslate nohighlight">\(G\)</span> s <span class="math notranslate nohighlight">\(\chi(G)\)</span> barvami.</p>
+</div>
+</section>
+<section id="barvanja-povezav">
+<h3>Barvanja povezav<a class="headerlink" href="#barvanja-povezav" title="Link to this heading">#</a></h3>
+<p>Naj bo <span class="math notranslate nohighlight">\(G\)</span> graf in <span class="math notranslate nohighlight">\(k\)</span> naravno število. Rečemo, da je graf <span class="math notranslate nohighlight">\(G\)</span> <span class="definicija">povezavno <span class="math notranslate nohighlight">\(k\)</span>-obarvljiv</span>, če obstaja preslikava <span class="math notranslate nohighlight">\(c \colon E(G) \to \{ 1,2, \dots, k\}\)</span> z lastnostjo</p>
+<div class="math notranslate nohighlight">
+\[\forall e,f \in E(G) \colon e \cap f \neq \emptyset \Rightarrow c(e) \neq c(f).\]</div>
+<p>Vsaki dve povezavi s skupnim krajišem moramo torej obarvati z različnima barvama. Preslikavo <span class="math notranslate nohighlight">\(c\)</span> imenujemo <span class="definicija">povezavno <span class="math notranslate nohighlight">\(k\)</span>-barvanje</span> grafa <span class="math notranslate nohighlight">\(G\)</span>.</p>
+<div class="zgled">
+<p>Liziko <span class="math notranslate nohighlight">\(L\)</span> lahko povezavno obarvamo s tremi barvami. Vse tri barve porabimo za <span class="math notranslate nohighlight">\(3\)</span>-cikel v liziki, z eno od treh povezav pa potem pobarvamo še dodatno povezavo v liziki.</p>
+</div>
+<p>Kot pri barvanju vozlišč nas predvsem zanima, kolikšno je <em>najmanjše</em> število barv, ki jih potrebujemo, da obarvamo povezave grafa. To število, se pravi</p>
+<div class="math notranslate nohighlight">
+\[\chi'(G) = \min \{ k \in \NN \mid \text{$G$ je povezavno $k$-obarvljiv} \},\]</div>
+<p>imenujemo <span class="definicija">kromatični indeks</span> grafa <span class="math notranslate nohighlight">\(G\)</span>.</p>
+<div class="zgled">
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\chi'(G) = 0\)</span>, če in samo če v grafu <span class="math notranslate nohighlight">\(G\)</span> ni povezav, se pravi <span class="math notranslate nohighlight">\(E(G) = \emptyset\)</span>.</p></li>
+<li><p>Kromatični indeks cikla <span class="math notranslate nohighlight">\(\chi'(C_n)\)</span> je <span class="math notranslate nohighlight">\(2\)</span>, če je <span class="math notranslate nohighlight">\(n\)</span> sodo, saj lahko povezave pobarvamo alternirajoče z dvema barvama. Če je <span class="math notranslate nohighlight">\(n\)</span> liho, pa je <span class="math notranslate nohighlight">\(\chi'(C_n) \geq 3\)</span>. Po drugi strani pa <span class="math notranslate nohighlight">\(3\)</span> barve zares zadostujejo, da pobarvamo povezave lihega cikla, podobno kot pri barvanju vozlišč.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\chi'(K_{1,n}) = n\)</span>.</p></li>
+</ul>
+</div>
+<p>Opazujmo vozlišče maksimalne stopnje v <span class="math notranslate nohighlight">\(G\)</span>. Vsaka povezava z enim krajiščem v tem vozlišču mora biti pobarvana s svojo barvo. Velja torej <span class="math notranslate nohighlight">\(\chi'(G) \geq \Delta(G)\)</span>, kar nam podaja <em>spodnjo</em> mejo za kromatični indeks. Za nekatere grafe velja kar enakost v tej neenakosti.</p>
+<div class="izrek">
+<p>Za <em>dvodelen</em> graf <span class="math notranslate nohighlight">\(G\)</span> je <span class="math notranslate nohighlight">\(\chi'(G) = \Delta(G)\)</span>.</p>
+</div>
+<div class="dokaz">
+<p>Dokazujemo z indukcijo na <span class="math notranslate nohighlight">\(|E(G)|\)</span>.</p>
+<p>Baza indukcije je <span class="math notranslate nohighlight">\(|E(G)| = 0\)</span>. V tem primeru je <span class="math notranslate nohighlight">\(\chi'(G) = 0 = \Delta(G)\)</span>.</p>
+<p>Naj bo zdaj <span class="math notranslate nohighlight">\(G\)</span> dvodelen graf in predpostavimo, da izrek že velja za vse grafe z manj povezavami, kot jih ima <span class="math notranslate nohighlight">\(G\)</span>. Naj bo <span class="math notranslate nohighlight">\(B = \{ 1,2,\dots, \Delta(G)\}\)</span> množica barv, s katerimi želimo pobarvati povezave <span class="math notranslate nohighlight">\(G\)</span>. Iz grafa <span class="math notranslate nohighlight">\(G\)</span> odstranimo neko povezavo <span class="math notranslate nohighlight">\(e = uv \in E(G)\)</span>. Po indukciji lahko graf <span class="math notranslate nohighlight">\(G-e\)</span> obarvamo z barvami iz <span class="math notranslate nohighlight">\(B\)</span>. Naj bo <span class="math notranslate nohighlight">\(c'\)</span> tako barvanje. To barvanje bi radi razširili še na vozlišče <span class="math notranslate nohighlight">\(e\)</span>.</p>
+<p>Naj bo <span class="math notranslate nohighlight">\(\pr(x)\)</span> množica prostih barv v vozlišču <span class="math notranslate nohighlight">\(x\)</span>, torej tistih barv, ki jih barvanje <span class="math notranslate nohighlight">\(c'\)</span> ne uporabi pri barvanju povezav z enim krajiščem <span class="math notranslate nohighlight">\(x\)</span>. V grafu <span class="math notranslate nohighlight">\(G - e\)</span> velja <span class="math notranslate nohighlight">\(d(u), d(v) &lt; \Delta(G)\)</span>, zato je <span class="math notranslate nohighlight">\(\pr(u) \neq \emptyset\)</span> in <span class="math notranslate nohighlight">\(\pr(v) \neq \emptyset\)</span>.</p>
+<p>Če je <span class="math notranslate nohighlight">\(\pr(u) \cap \pr(v) \neq \emptyset\)</span>, potem lahko povezavo <span class="math notranslate nohighlight">\(e\)</span> pobarvamo s poljubno barvo iz preseka <span class="math notranslate nohighlight">\(\pr(u) \cap \pr(v)\)</span>.</p>
+<p>Predpostavimo zdaj, da je <span class="math notranslate nohighlight">\(\pr(u) \cap \pr(v) = \emptyset\)</span>. Izberimo <span class="math notranslate nohighlight">\(\alpha \in \pr(u)\)</span> in <span class="math notranslate nohighlight">\(\beta \in \pr(v)\)</span>. Cilj je zamenjati barvo <span class="math notranslate nohighlight">\(\beta\)</span> pri vozlišču <span class="math notranslate nohighlight">\(u\)</span> z barvo <span class="math notranslate nohighlight">\(\alpha\)</span>, nakar bomo povezavo <span class="math notranslate nohighlight">\(e\)</span> pobarvali z barvo <span class="math notranslate nohighlight">\(\beta\)</span>. Kako izvedemo to zamenjavo?</p>
+<div class="domacanaloga">
+<p>Naj bo <span class="math notranslate nohighlight">\(P\)</span> najdaljša možna pot v <span class="math notranslate nohighlight">\(G - e\)</span>, ki se začne v <span class="math notranslate nohighlight">\(u\)</span> in je obarvana le z barvama <span class="math notranslate nohighlight">\(\alpha\)</span> in <span class="math notranslate nohighlight">\(\beta\)</span>. Prepričaj se najprej, da vozlišče <span class="math notranslate nohighlight">\(v\)</span> ni na <span class="math notranslate nohighlight">\(P\)</span>. Za tem na povezavah poti <span class="math notranslate nohighlight">\(P\)</span> zamenjaj barvi <span class="math notranslate nohighlight">\(\alpha\)</span> in <span class="math notranslate nohighlight">\(\beta\)</span> med seboj. Na ta način smo malo spremenili barvanje <span class="math notranslate nohighlight">\(c'\)</span> in dosegli, da je <span class="math notranslate nohighlight">\(\beta \in \pr(u)\)</span>. Ker je tudi <span class="math notranslate nohighlight">\(\beta \in \pr(v)\)</span>, lahko torej res povezavo <span class="math notranslate nohighlight">\(e\)</span> obravamo z <span class="math notranslate nohighlight">\(\beta\)</span>.</p>
+</div>
+</div>
+<div class="zgled">
+<p>Velja <span class="math notranslate nohighlight">\(\chi'(K_{m,n}) = \max \{ m, n \}\)</span>.</p>
+</div>
+<p><em>Zgornjo</em> mejo za kromatični indeks pa nam poda naslednji presenetljiv izrek.</p>
+<div class="izrek">
+<p>Za vsak graf <span class="math notranslate nohighlight">\(G\)</span> je <span class="math notranslate nohighlight">\(\chi'(G) \leq \Delta(G) + 1\)</span>.</p>
+</div>
+<p>Za kromatični indeks vselej torej velja <span class="math notranslate nohighlight">\(\Delta(G) \leq \chi'(G) \leq \Delta(G) + 1\)</span>.</p>
+<div class="zgled">
+<p>Naj bo <span class="math notranslate nohighlight">\(P\)</span> Petersenov graf. Velja <span class="math notranslate nohighlight">\(\Delta(P) = 3\)</span>, zato je <span class="math notranslate nohighlight">\(3 \leq \chi'(P) \leq 4\)</span>. Povezavnega barvanja s štirimi barvami ni težko najti.</p>
+<div class="domacanaloga">
+<p>Dokaži, da velja <span class="math notranslate nohighlight">\(\chi'(P) = 4\)</span>.</p>
+</div>
+</div>
+<p>Vsak graf <span class="math notranslate nohighlight">\(G\)</span> torej zadošča bodisi <span class="math notranslate nohighlight">\(\chi'(G) = \Delta(G)\)</span> bodisi <span class="math notranslate nohighlight">\(\chi'(G) = \Delta(G) + 1\)</span>. Grafov, ki zadoščajo prvi enakosti, pravimo grafi <span class="definicija">razreda I</span>, tistim, ki zadoščajo drugi enakosti, pa pravimo grafi <span class="definicija">razreda II</span>.</p>
+<div class="zgled">
+<p>Dvodelni grafi so razreda I. Petersenov graf je razreda II.</p>
+</div>
+<p>Oglejmo si še, v kateri razred sodijo polni grafi. Polovico teh grafov lahko obdelamo z naslednjo preprosto trditvijo.</p>
+<div class="trditev">
+<p>Regularni grafi na <em>liho</em> mnogo vozliščih so razreda II.</p>
+</div>
+<div class="dokaz">
+<p>Recimo, da obstaja <span class="math notranslate nohighlight">\(d\)</span>-regularen graf razreda I na liho mnogo vozliščih. Torej obstaja barvanje povezav <span class="math notranslate nohighlight">\(c \colon E(G) \to \{ 1, 2, \dots, d \}\)</span>. Naj bo <span class="math notranslate nohighlight">\(H\)</span> podgraf grafa <span class="math notranslate nohighlight">\(G\)</span> z množico povezav <span class="math notranslate nohighlight">\(E(H) = c^{-1}(1)\)</span>. Podgraf <span class="math notranslate nohighlight">\(H\)</span> torej sestoji iz tistih povezav, ki so obravana z barvo <span class="math notranslate nohighlight">\(1\)</span>, in njihovih krajišč. Ker je graf <span class="math notranslate nohighlight">\(G\)</span> <span class="math notranslate nohighlight">\(d\)</span>-regularen, v vsakem vozlišču nujno nastopajo vse barve. Torej ima vsako vozlišče kakšno povezavo barve <span class="math notranslate nohighlight">\(1\)</span>, zato je <span class="math notranslate nohighlight">\(V(H) = V(G)\)</span>. Podgraf <span class="math notranslate nohighlight">\(H\)</span> je torej vpet. Hkrati za vsako vozlišče <span class="math notranslate nohighlight">\(u\)</span> velja <span class="math notranslate nohighlight">\(d_H(u) = 1\)</span>, saj ima <span class="math notranslate nohighlight">\(H\)</span> le povezave barve <span class="math notranslate nohighlight">\(1\)</span>. Po lemi o rokovanju od tod sledi</p>
+<div class="math notranslate nohighlight">
+\[2 |E(H)| = \sum_{v \in V(H)} d(v) = |V(H)| = |V(G)|.\]</div>
+<p>Dobljeno je protislovno s predpostavko, da ima <span class="math notranslate nohighlight">\(G\)</span> liho mnogo vozlišč.</p>
+</div>
+<div class="zgled">
+<ul class="simple">
+<li><p>Po trditvi velja <span class="math notranslate nohighlight">\(\chi'(K_{2n+1}) = 2n+1\)</span>, torej je <span class="math notranslate nohighlight">\(K_{2n+1}\)</span> razreda II.</p></li>
+<li><p>Velja <span class="math notranslate nohighlight">\(\chi'(K_{2n + 2}) = 2n+1\)</span>, zato je <span class="math notranslate nohighlight">\(K_{2n+2}\)</span> razreda I. Tako barvanje lahko najdemo na naslednji način. Najprej <span class="math notranslate nohighlight">\(2n+1\)</span> vozlišč grafa razporedimo v cikel, ki ga narišemo kot pravilen <span class="math notranslate nohighlight">\((2n+1)\)</span>-kotnik, zadnje vozlišče pa damo v središče tega cikla. Zunanji cikel je dolžine <span class="math notranslate nohighlight">\(2n+1\)</span>, ki ga povezavno obarvamo z <span class="math notranslate nohighlight">\(2n+1\)</span> različnimi barvami. Zdaj izberemo eno od povezav na zunanjem ciklu, obarvamo z barvo <span class="math notranslate nohighlight">\(b\)</span>, in povlečemo povezave, vzporedne tej povezavi, vse jih obarvamo z barvo <span class="math notranslate nohighlight">\(b\)</span>. Nazadnje povlečemo še povezavo med središčnim vozliščem in vozliščem na ciklu, ki je kraji na nobeno od prej opisanih povezav, tudi to zadnjo povezavo obarvamo z barvo <span class="math notranslate nohighlight">\(b\)</span>. Enako ponovimo za vse povezave na zunanjem ciklu. Na ta način dobimo povezavno <span class="math notranslate nohighlight">\((2n+1)\)</span>-barvanje grafa <span class="math notranslate nohighlight">\(K_{2n+2}\)</span>.</p></li>
+</ul>
+</div>
+<hr class="footnotes docutils" />
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./content"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="chapter04.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">nazaj</p>
+        <p class="prev-next-title">Urejenosti</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Vsebina
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#osnovne-definicije">Osnovne definicije</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#standardni-primeri-in-operacije">Standardni primeri in operacije</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#standardni-primeri">Standardni primeri</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#operacije">Operacije</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#invariante-grafov">Invariante grafov</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#drevesa">Drevesa</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eulerjevi-grafi">Eulerjevi grafi</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mostovi">Mostovi</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#risanje-grafa-v-eni-potezi">Risanje grafa v eni potezi</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hamiltonovi-grafi">Hamiltonovi grafi</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sahovski-konjicek">Šahovski konjiček</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ravninski-grafi">Ravninski grafi</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#barvanja-grafov">Barvanja grafov</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#barvanja-vozlisc">Barvanja vozlišč</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#barvanja-povezav">Barvanja povezav</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+Avtor Urban Jezernik
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

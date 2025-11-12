@@ -1,0 +1,8 @@
+format: jb-book
+root: intro
+chapters:
+- file: content/chapter01.md
+- file: content/chapter02.md
+- file: content/chapter03.md
+- file: content/chapter04.md
+- file: content/chapter05.md
