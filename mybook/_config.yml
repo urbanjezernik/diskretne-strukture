@@ -117,6 +117,7 @@ sphinx:
           sufrak: "\\mathfrak{su}"
           DNO: "\\operatorname{DNO}"
           KNO: "\\operatorname{KNO}"
+          pr: "\\operatorname{pr}"
           GG: "\\mathcal{G}"
 
           # ----- text macro -----
